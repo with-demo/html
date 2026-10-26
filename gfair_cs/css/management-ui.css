@@ -19,3 +19,8 @@
 @media(max-width:700px){.management-form{display:grid;grid-template-columns:1fr}.management-form .field{min-width:0}}
 
 [data-management-form="admin-save"] input[readonly]{background:#f5f5f5;color:#555;cursor:default}
+
+[data-management-form="operator-create"] .operator-phone{display:flex;align-items:center;gap:8px;max-width:420px;min-width:0}
+[data-management-form="operator-create"] .operator-phone select{width:90px;flex:0 0 90px}
+[data-management-form="operator-create"] .operator-phone input{width:110px;min-width:0;flex:1}
+[data-management-form="operator-create"] .management-type-options{height:auto;min-height:36px}

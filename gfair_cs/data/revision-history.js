@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.1","fromVersion":"v1.0","date":"2026.10.26","accountName":"mjha","summary":"관리자 등록 폼과 동일한 행 구성으로 운영용역사 등록 항목 정리","changes":["행사관리 연도 선택, 구매·수출 구분, 기업명, 담당자 이름·연락처·이메일, 사용여부 순으로 구성.","필수 항목 별표 및 검증 적용, 연락처 분할 입력과 선택 이메일 제공."]},
 {"screenId":"BAS-01","version":"v0.22","date":"2026.10.22","accountName":"mjha","summary":"검색필터를 항목명·선택 셀의 표 형태로 통일하고 키워드 마지막 행 전체 너비 적용"},
 {"screenId":"BAS-03","version":"v1.10","date":"2026.10.22","accountName":"mjha","summary":"검색필터를 항목명·선택 셀의 표 형태로 통일하고 키워드 마지막 행 전체 너비 적용"},
 {"screenId":"BAS-05","version":"v1.10","date":"2026.10.22","accountName":"mjha","summary":"검색필터를 항목명·선택 셀의 표 형태로 통일하고 키워드 마지막 행 전체 너비 적용"},
