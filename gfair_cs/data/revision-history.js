@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-17","version":"v1.29","fromVersion":"v1.28","date":"2026.10.26","accountName":"mjha","summary":"담당자 검색필터를 COM-07과 동일하게 구성","changes":["사용여부 전체/사용/미사용과 키워드 범위 전체/이름/아이디/소속 제공.","키워드 검색·Enter·초기화 동작 및 Description 동기화.","대표담당자 첫 행 고정 유지."]},
 {"screenId":"BAS-06","version":"v0.28","fromVersion":"v0.27","summary":"PW 보기 설명 06번 핀 위치 복원","changes":["여러 연도에 중복 매칭되던 핀을 첫 행 PW 보기 버튼 옆으로 연결."],"date":"2026.10.26","accountName":"mjha"},
 {"screenId":"COM-07-p01","version":"v0.1","summary":"엑셀 일괄 업로드 안내·첨부 문구 정리","changes":["상단 바이어 정보 작성 안내와 XLSX 파일 1개·용량 제한 없음 표시.","예시 계정·실제 권한 안내 문구 제거."],"date":"2026.10.26","accountName":"mjha"},
 {"screenId":"COMMON-HEADER","version":"v0.1","summary":"일반 사용자 공통 헤더 행사 선택 숨김","changes":["운영용역사·국내바이어·통역원에게 행사 셀렉트 미노출, 관리자 기존 화면별 노출 유지."],"date":"2026.10.26","accountName":"mjha"},
