@@ -28,7 +28,7 @@
 [data-management-form="operator-create"] .operator-phone input{width:110px;min-width:0;flex:1}
 [data-management-form="operator-create"] .management-type-options{height:auto;min-height:36px}
 /* 이름 버튼의 밑줄만 표시하여 셀과 중복되지 않게 한다. */
-[data-management-root] .management-name:has(>button[data-management-admin]){text-decoration:none}
+[data-management-root] .management-name:has(>button.list-name-link){text-decoration:none}
 
 #app #content :is([data-management-form^="admin-"],[data-management-form^="person-"]) .admin-phone{display:flex;gap:4px;min-width:0;width:100%}
 #app #content :is([data-management-form^="admin-"],[data-management-form^="person-"]) .admin-phone>select{flex:0 0 64px;width:64px;min-width:0;padding:6px}

@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.17","fromVersion":"v1.16","date":"2026.10.26","accountName":"mjha","summary":"담당자 이름 링크의 중복 밑줄 제거","changes":["이름 셀의 밑줄과 링크 밑줄이 겹치지 않도록 링크 밑줄 한 줄만 표시.","이름 선택·상세 이동 및 Description·알럿 동작 유지."]},
 {"screenId":"COM-07","version":"v1.16","fromVersion":"v1.15","date":"2026.10.26","accountName":"mjha","summary":"Description 표시 오류 수정 및 구매·수출 하위 담당자 예시 추가","changes":["구매·수출 용역사 각각 2026·2027 행사별 하위 담당자 5명과 가상 연락처·이메일·사용여부 예시 구성.","관련 Description의 기본값·필수여부 누락을 보완하여 JSON 원문 노출 오류 수정."]},
 {"screenId":"COM-08","version":"v0.7","fromVersion":"v0.6","date":"2026.10.26","accountName":"mjha","summary":"Description 필수 형식 누락 보완","changes":["구매·수출 용역사 각각 2026·2027 행사별 하위 담당자 5명과 가상 연락처·이메일·사용여부 예시 구성.","관련 Description의 기본값·필수여부 누락을 보완하여 JSON 원문 노출 오류 수정."]},
 {"screenId":"BAS-15","version":"v2.29","fromVersion":"v2.28","date":"2026.10.26","accountName":"mjha","summary":"구매·수출 운영용역사별 하위 담당자 예시 5명 구성","changes":["구매·수출 용역사 각각 2026·2027 행사별 하위 담당자 5명과 가상 연락처·이메일·사용여부 예시 구성.","관련 Description의 기본값·필수여부 누락을 보완하여 JSON 원문 노출 오류 수정."]},
