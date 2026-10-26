@@ -1,0 +1,132 @@
+{
+  "project": "gfair_cs",
+  "reference": "BAS-18",
+  "status": "초안",
+  "author": "with",
+  "date": "2026-10-26",
+  "notes": [
+    {
+      "id": "bas19-operator-year-20261026",
+      "screen": "BAS-19",
+      "number": 1,
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "행사연도",
+        "type": "셀렉트박스",
+        "defaultValue": "현재 목업 행사연도(2026)",
+        "required": "Y",
+        "options": "행사관리(BAS-01)에 등록된 연도 / 내림차순",
+        "detail": "- 운영용역사를 배정할 행사연도를 선택\n- 행사관리 목록에 등록된 연도를 중복 없이 최신 연도부터 표시\n- 현재 목업 행사연도가 목록에 있으면 기본 선택\n- 선택 가능한 연도가 없거나 연도를 선택하지 않으면 등록 불가",
+        "validation": "필수 선택 / 행사관리 등록 연도에 포함되어야 함",
+        "dataSource": "BAS-01 행사관리 연도",
+        "errorMessage": "필수 항목을 확인해 주세요.",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content form[data-management-form=\"operator-create\"] .field:has([name=\"year\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas19-operator-type-20261026",
+      "screen": "BAS-19",
+      "number": 2,
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "구분",
+        "type": "라디오박스",
+        "defaultValue": "구매상담",
+        "required": "Y",
+        "options": "구매상담 / 수출상담",
+        "detail": "- 운영용역사가 담당할 상담 구분을 선택\n- 구매상담 / 수출상담 중 한 개만 선택\n- 기본값은 구매상담이며 선택값을 해당 행사 배정 정보에 반영",
+        "validation": "필수 선택 / 구매상담·수출상담 중 한 개",
+        "errorMessage": "필수 항목을 확인해 주세요.",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content form[data-management-form=\"operator-create\"] .field:has([name=\"type\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas19-operator-phonePrefix-20261026",
+      "screen": "BAS-19",
+      "number": 3,
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 연락처",
+        "type": "인풋",
+        "defaultValue": "앞자리 010 / 가운데·마지막 빈 값",
+        "required": "Y",
+        "options": "010 / 011 / 016 / 017 / 018 / 019 / 02 / 031 / 032 / 033 / 041 / 042 / 043 / 044 / 051 / 052 / 053 / 054 / 055 / 061 / 062 / 063 / 064 / 070",
+        "detail": "- 등록 화면에서 담당자 연락처를 직접 입력\n- 앞자리 선택 + 가운데 숫자 3~4자리 + 마지막 숫자 4자리로 입력\n- 가운데·마지막 입력란은 숫자만 입력하며 최대 4자리로 제한\n- 각 입력란은 필수이며 번호를 하이픈(-)으로 연결해 등록",
+        "inputFormat": "숫자",
+        "inputLimit": "가운데·마지막 입력란 각각 최대 4자리",
+        "validation": "앞자리 필수 선택 / 가운데 숫자 3~4자리 / 마지막 숫자 4자리",
+        "errorMessage": "미입력·자리수 오류 시 브라우저 기본 입력 검증 안내",
+        "dataSource": "운영용역사 등록 화면 직접 입력",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content form[data-management-form=\"operator-create\"] .field:has([name=\"phonePrefix\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas19-operator-emailLocal-20261026",
+      "screen": "BAS-19",
+      "number": 4,
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 이메일",
+        "type": "인풋",
+        "defaultValue": "아이디·도메인 빈 값 / 직접입력",
+        "required": "N",
+        "options": "naver.com / gmail.com / daum.net / hanmail.net / nate.com / outlook.com / hotmail.com / 직접입력",
+        "detail": "- 등록 화면에서 담당자 이메일을 선택 입력하며 미입력 시 빈 값으로 저장\n- 아이디와 도메인을 나누어 입력하며 @를 사이에 표시\n- 도메인은 기본 메일 주소 선택 또는 직접입력\n- 도메인 선택 시 해당 값을 반영하고 읽기 전용으로 전환\n- 직접입력 선택 시 현재 도메인 값을 유지하며 편집 가능\n- 입력한 경우 아이디·도메인 누락 및 이메일 형식 검증",
+        "inputFormat": "이메일",
+        "inputLimit": "아이디 최대 64자 / 도메인 최대 253자",
+        "validation": "선택 입력 / 입력한 경우 아이디·도메인 누락 및 이메일 형식 검증",
+        "errorMessage": "이메일 아이디와 도메인을 올바르게 입력해 주세요.",
+        "dataSource": "운영용역사 등록 화면 직접 입력",
+        "policy": "- 선택 입력 항목",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content form[data-management-form=\"operator-create\"] .field:has([name=\"emailLocal\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas19-operator-status-20261026",
+      "screen": "BAS-19",
+      "number": 5,
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "사용여부",
+        "type": "라디오박스",
+        "defaultValue": "사용",
+        "required": "Y",
+        "options": "사용 / 미사용",
+        "detail": "- 운영용역사 사용여부를 사용 / 미사용 라디오 버튼으로 선택\n- 기본값은 사용이며 두 값 중 한 개만 선택\n- 기본정보의 마지막 행에 전체 너비로 표시\n- 등록 시 선택값을 운영용역사 정보에 반영",
+        "validation": "필수 선택 / 사용·미사용 중 한 개",
+        "errorMessage": "필수 항목을 확인해 주세요.",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content form[data-management-form=\"operator-create\"] .field:has([name=\"status\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}
