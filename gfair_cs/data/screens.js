@@ -3506,3 +3506,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);const list=all.find(s=>s.id==='BAS-15');list.ui.columns=['연도','구분','기업명','대표담당자','사용여부','하위 담당자수'];list.summary='행사연도·구분별 운영용역사와 대표·하위 담당자를 관리합니다.';const detail=all.find(s=>s.id==='BAS-17');detail.summary='선택한 행사연도·구분의 기본정보와 대표·하위 담당자를 확인합니다.';detail.ui.fields=[['행사연도','선택한 목록 행의 행사연도'],['구분','구매상담 / 수출상담'],['기업명','선택한 운영용역사'],['사용여부','사용 / 미사용']];detail.ui.columns=['이름','연락처','이메일','발급ID','PW'];const create=all.find(s=>s.id==='BAS-19');create.ui.actions=['목록','등록'];})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.fields=[['행사연도','현재값 기본 선택 / 행사관리 연도 또는 현재 배정 연도'],['구분','구매상담·수출상담 라디오'],['기업명','필수 입력 / 공백·다른 기업명 중복 불가'],['사용여부','사용·미사용 라디오']];s.ui.actions=['목록','수정'];})();
+
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.fields.push(['대표담당자명','담당자 정보 대표 행과 동일 / 조회 전용'],['대표연락처','대표 담당자 연락처 / 미등록 시 미등록'],['대표이메일','대표 담당자 이메일 / 미등록 시 미등록']);})();
