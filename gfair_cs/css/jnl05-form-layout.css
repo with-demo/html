@@ -124,3 +124,4 @@
 #app .journal-previous-rejections>summary::-webkit-details-marker{display:none}
 #app .journal-previous-rejections>summary::after{content:'⌄';flex:0 0 16px;text-align:center}
 #app .journal-previous-rejections[open]>summary::after{content:'⌃'}
+#app .journal-rejection-text{margin:0;width:100%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
