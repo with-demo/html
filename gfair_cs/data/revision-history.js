@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.17","date":"2026.10.26","accountName":"shyuwith","summary":"07번 처리 이력 Description을 항목별로 재분류","changes":["기능상세는 조회 기능과 구성만 유지하고 표시·활성 조건·권한·실행 시점·처리 결과를 분리.","이력 데이터 출처·반려 사유 보관·날짜 형식·예외사항을 해당 항목에 작성. 화면 동작 유지."]},
 {"screenId":"JNL-16","version":"v0.16","date":"2026.10.26","accountName":"shyuwith","summary":"처리 이력 Description 유형을 아코디언 UI로 정정","changes":["Description 유형 선택에 아코디언 UI를 추가하고 07번 처리 이력 유형 정정.","기존 설명과 처리 이력 데이터 유지."]},
 {"screenId":"JNL-16","version":"v0.15","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 처리 이력 날짜·시간 표시 통일","changes":["처리자 · YYYY-MM-DD HH:mm 형식으로 기존 예시·반려 2회 예시와 신규 처리 이력 통일.","관리자·수출상담 운영용역사 처리 이력에 적용하며 통역원 상세 구성 유지."]},
 {"screenId":"BAS-19","version":"v1.5","fromVersion":"v1.4","date":"2026.10.26","accountName":"mjha","summary":"담당자 이메일을 관리자 등록과 동일한 분할 입력 폼으로 변경","changes":["이메일 아이디·도메인 입력 및 도메인 선택/직접입력 제공.","선택 입력을 유지하고 입력 시 이메일 형식 검증 적용."]},
