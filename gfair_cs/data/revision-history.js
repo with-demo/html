@@ -1,5 +1,10 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.27","fromVersion":"v2.26","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
+{"screenId":"BAS-17","version":"v1.19","fromVersion":"v1.18","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 가상 기업명 및 대표담당자 라벨 적용","changes":["운영용역사 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경.","첫 행 라벨을 대표담당자로 변경하고 관련 Description 반영."]},
+{"screenId":"COM-06","version":"v1.14","fromVersion":"v1.13","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
+{"screenId":"COM-07","version":"v1.14","fromVersion":"v1.13","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
+{"screenId":"COM-08","version":"v0.5","fromVersion":"v0.4","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
 {"screenId":"JNL-14","version":"v0.34","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 승인 요청 강조 및 태그 다중 검색 추가","changes":["관리자·수출상담 운영용역사 승인 요청 일지를 최상단 정렬하고 행·일지 번호·상태를 흑백 명도로 강조.","태그 검색창·체크박스 다중 선택 드롭다운 추가. 선택 태그 간 OR, 다른 검색 조건과 AND로 결합.","실제 일지 해시태그를 옵션으로 제공하고 예시 태그 데이터 추가. 통역원 검색 UI 유지, 목록 Description 작성 보류 유지."]},
 {"screenId":"JNL-14","version":"v0.33","date":"2026.10.26","accountName":"shyuwith","summary":"관리자·수출용역사 작성 중 일지를 본인 작성분으로 제한","changes":["관리자·수출상담 운영용역사는 타인의 작성 중 일지를 목록에서 제외.","승인 요청·승인 완료·반려 목록과 본인의 작성 중 일지는 유지. 목록 Description 신규 작성은 보류 유지."]},
 {"screenId":"JNL-16","version":"v0.27","date":"2026.10.26","accountName":"shyuwith","summary":"타인 작성 중 일지의 검수 상세 진입 방지","changes":["역할 전환 등으로 타인 초안에 진입하면 조회 불가 안내와 목록 버튼만 표시.","본인 초안은 목록·임시 저장·등록, 제출된 일지는 기존 검수 동작 유지."]},
