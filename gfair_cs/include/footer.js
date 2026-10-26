@@ -24,7 +24,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=name-links-20261022',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=operator-email-20261026',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=operator-email-20261026',base).href;document.head.append(script);})();
+(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=operator-screens-20261026',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=operator-screens-20261026',base).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=resource-actions-20261022',document.currentScript.src).href;document.head.append(script);})();
 
@@ -35,4 +35,4 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=all-lists-20261021",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=filter-cell-alignment-20261023",base).href;js.src=new URL("search-filters.js?v=domestic-company-label-20261023",base).href;document.head.append(css,js);})();
+(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=filter-cell-alignment-20261023",base).href;js.src=new URL("search-filters.js?v=operator-screens-20261026",base).href;document.head.append(css,js);})();

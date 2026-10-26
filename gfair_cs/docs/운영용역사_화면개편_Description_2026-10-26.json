@@ -1,0 +1,168 @@
+{
+  "project": "gfair_cs",
+  "date": "2026-10-26",
+  "updates": [
+    {
+      "id": "filter-draft-20261022-bas-15-year",
+      "patch": {
+        "policy": "- 행사연도·구분별 운영용역사 배정 행을 조회\n- 같은 기업이라도 행사연도·구분이 다르면 별도 행으로 표시"
+      },
+      "screen": "BAS-15",
+      "notice": "[변경사항 있음 · 2026-10-26] 구분·기업/담당자 검색 범위 및 운영용역사 목록 개편 반영."
+    },
+    {
+      "id": "filter-draft-20261022-bas-15-type",
+      "patch": {
+        "item": "구분 검색",
+        "detail": "- 목록에 저장된 구분과 일치하는 대상만 조회\n- 전체 선택 시 구분 조건 해제\n- 연도·키워드 조건과 AND 조건으로 결합\n- 구분 선택 후 검색 실행 시 적용"
+      },
+      "screen": "BAS-15",
+      "notice": "[변경사항 있음 · 2026-10-26] 구분·기업/담당자 검색 범위 및 운영용역사 목록 개편 반영."
+    },
+    {
+      "id": "filter-draft-20261022-bas-15-scope",
+      "patch": {
+        "options": "전체 / 기업 / 담당자",
+        "detail": "- 전체는 기업명 또는 담당자 이름에 키워드가 포함된 대상을 조회\n- 기업 선택 시 기업명만, 담당자 선택 시 대표담당자 이름만 검색\n- 검색 범위 변경은 검색 실행 시 적용",
+        "policy": "- 키워드는 기업명·담당자 이름만 검색하며 구분·하위 담당자수는 검색 대상에서 제외",
+        "exception": ""
+      },
+      "screen": "BAS-15",
+      "notice": "[변경사항 있음 · 2026-10-26] 구분·기업/담당자 검색 범위 및 운영용역사 목록 개편 반영."
+    },
+    {
+      "id": "filter-draft-20261022-bas-15-keyword",
+      "patch": {
+        "detail": "- 연도·구분 조건과 AND 조건으로 결합\n- 빈 값 또는 공백만 입력하면 키워드 조건 해제\n- 선택한 범위(전체·기업·담당자)를 기준으로 대소문자 구분 없이 포함 검색\n- 입력 중에는 목록을 변경하지 않으며 검색 버튼 또는 Enter로 적용"
+      },
+      "screen": "BAS-15",
+      "notice": "[변경사항 있음 · 2026-10-26] 구분·기업/담당자 검색 범위 및 운영용역사 목록 개편 반영."
+    },
+    {
+      "id": "filter-draft-20261022-bas-15-actions",
+      "patch": {
+        "detail": "- 검색 시 연도·구분·검색 범위·키워드를 함께 적용\n- 키워드 입력 후 Enter는 검색 버튼과 동일하게 처리\n- 초기화 시 연도·구분·검색 범위를 전체로 변경하고 키워드를 비운 뒤 전체 목록 조회"
+      },
+      "screen": "BAS-15",
+      "notice": "[변경사항 있음 · 2026-10-26] 구분·기업/담당자 검색 범위 및 운영용역사 목록 개편 반영."
+    }
+  ],
+  "newNotes": [
+    {
+      "id": "bas-15-operator-list-20261026",
+      "screen": "BAS-15",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "운영용역사 목록",
+        "type": "테이블",
+        "defaultValue": "",
+        "required": "N",
+        "detail": "- 연도·구분·기업·담당자 이름·사용여부·하위 담당자수 순서로 표시\n- 기업명에만 밑줄 링크를 표시하고 클릭 또는 Enter로 BAS-17 이동\n- 기업명 외 셀과 행 전체는 상세 이동 대상에서 제외\n- 선택한 행의 행사연도·구분·기업을 상세에 전달\n- 하위 담당자수는 해당 기업·행사연도의 하위 담당자 수이며 대표담당자는 제외",
+        "destination": "BAS-17 운영용역사 상세",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .operator-list table",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas-17-operator-basic-20261026",
+      "screen": "BAS-17",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "기본정보",
+        "type": "조회",
+        "defaultValue": "",
+        "required": "N",
+        "detail": "- 목록에서 선택한 행사연도·구분의 운영용역사 기본정보 조회\n- 행사연도·구분·기업명·사용여부 네 항목 표시\n- 담당자 정보와 별도 영역으로 나누어 노출",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .operator-basic",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas-17-operator-search-20261026",
+      "screen": "BAS-17",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 키워드 검색",
+        "type": "인풋",
+        "defaultValue": "빈 값",
+        "required": "N",
+        "detail": "- 검색 범위 셀렉트 없이 키워드 입력란과 검색·초기화 버튼 제공\n- 하위 담당자의 이름·연락처·이메일·발급ID를 대소문자 구분 없이 포함 검색\n- 검색 버튼 또는 Enter로 적용하고 초기화 시 키워드 해제\n- 대표담당자는 검색 결과와 관계없이 첫 행에 고정 노출\n- 일치하는 하위 담당자가 없으면 검색 조건에 맞는 하위 담당자가 없습니다. 안내",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content [data-management-form=\"operator-staff-search\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas-17-operator-staff-20261026",
+      "screen": "BAS-17",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "대표·하위 담당자 정보",
+        "type": "테이블",
+        "defaultValue": "",
+        "required": "N",
+        "detail": "- 이름·연락처·이메일·발급ID·PW 순서로 표시\n- 첫 행은 목록의 담당자와 동일한 대표담당자이며 이름 앞에 [대표] 라벨 표시\n- 하위 담당자는 선택한 기업·행사연도에 소속된 담당자만 조회\n- 대표 계정은 선택한 행사연도·구분의 발급ID·PW 표시\n- 연락처·이메일이 없으면 미등록, 발급ID가 없으면 미발급, PW가 없으면 — 표시",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .operator-staff table",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas-17-operator-password-20261026",
+      "screen": "BAS-17",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "PW 보기·숨기기",
+        "type": "버튼",
+        "defaultValue": "마스킹",
+        "required": "N",
+        "detail": "- 발급된 PW는 기본 마스킹\n- 행별 보기 버튼으로 해당 담당자의 PW를 표시하며 숨기기로 다시 마스킹\n- 미발급 계정은 PW와 보기 버튼을 제공하지 않음\n- 상세 이동 시 이전에 표시한 PW를 다시 마스킹",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .operator-staff table tbody",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bas-19-operator-actions-20261026",
+      "screen": "BAS-19",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "[목록], [등록] 버튼",
+        "type": "버튼",
+        "defaultValue": "",
+        "required": "N",
+        "detail": "- 영역 제목은 운영용역사 기본정보로 표시\n- 하단 우측에 목록·등록 순서로 버튼 한 쌍만 표시\n- 목록 선택 시 별도 확인 없이 BAS-15 이동\n- 등록 시 기존 필수값·이메일 형식·중복 기업 검증을 유지\n- 정상 등록 시 목록에 반영하고 BAS-15 이동\n- 입력 오류가 있으면 등록을 중단하고 입력 화면 유지",
+        "destination": "BAS-15 운영용역사 관리 목록",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .page-bottom-actions",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

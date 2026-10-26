@@ -19,8 +19,9 @@ let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textCon
 if(location.hash.slice(1)==='BAS-03')labels=['바이어코드','바이어명'];if(location.hash.slice(1)==='BAS-07')labels=['통역원코드','통역원명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','소속기업'];
 if(location.hash.slice(1)==='BAS-16')labels=['이름','아이디','소속'];
+if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];
 [...new Set(['전체',...labels].filter(Boolean))].forEach(t=>select.add(new Option(t,t)));select.value=scopes.get(key(form,input))||'전체';select.addEventListener('change',()=>scopes.set(key(form,input),select.value));
-input.placeholder='검색어를 입력해 주세요';controls.append(select,input);field.append(controls);keywords.push(field);});
+input.placeholder='검색어를 입력해 주세요';if(form.hasAttribute('data-keyword-only'))controls.append(input);else controls.append(select,input);field.append(controls);keywords.push(field);});
 [...form.querySelectorAll(':scope>.row')].filter(e=>!e.children.length).forEach(e=>e.remove());keywords.forEach(f=>form.append(f));form.append(actions);
 [...form.children].filter(e=>e.matches('.field,fieldset')&&!e.classList.contains('search-keyword')).forEach(field=>{field.classList.add('search-condition');const caption=field.querySelector(':scope>legend,:scope>span,:scope>label');if(!caption)return;caption.classList.add('search-condition-caption');const controls=document.createElement('div');controls.className='search-condition-controls';[...field.childNodes].filter(n=>n!==caption).forEach(n=>controls.append(n));field.append(controls);});
 // fieldset의 범례를 가로 그리드에 맞추고 접근 가능한 그룹 이름을 유지한다.
@@ -41,7 +42,7 @@ if(keywords.length){keywords[0].querySelector('.search-keyword-controls').append
 const conditions=[...form.querySelectorAll(':scope>.search-condition')].filter(e=>!e.hidden);
 form.classList.toggle('search-single-condition',conditions.length===1);
 if(conditions.length%2===1)conditions.at(-1).classList.add('search-condition-last-odd');
-form.addEventListener('reset',()=>{keywords.forEach(f=>{const i=f.querySelector('input');scopes.delete(key(form,i));f.querySelector('select').value='전체';});});
+form.addEventListener('reset',()=>{keywords.forEach(f=>{const i=f.querySelector('input');scopes.delete(key(form,i));if(f.querySelector('select'))f.querySelector('select').value='전체';});});
 }
 function sync(){observer.disconnect();try{app.querySelectorAll('#content form.filters').forEach(enhance);}finally{observer.observe(app,{childList:true,subtree:true});}}
 const observer=new MutationObserver(sync);sync();})();
