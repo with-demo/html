@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.13","fromVersion":"v1.12","date":"2026.10.26","accountName":"mjha","summary":"중복확인 안내 문구 변경 시 영역 핀 소실 수정","changes":["폼·입력명으로 연결된 핀은 안내 문구가 변경되어도 연결 유지.","중복확인 버튼과 아이디 입력 묶음의 안정적인 선택 경로 제공.","기존 06번 설명과 위치·댓글 보존."]},
 {"screenId":"BAS-19","version":"v1.12","fromVersion":"v1.11","date":"2026.10.26","accountName":"mjha","summary":"공통 영역 핀의 클릭 대상 연결 정확도 수정","changes":["본문·팝업 내부에서 선택 경로의 유일성과 클릭 대상 일치를 저장 전에 검증.","입력칸 자체의 상대 좌표로 저장하며 본문 밖의 유사 구조로 핀이 이동하는 현상 수정.","기존 설명·댓글·저장 위치 데이터 유지."]},
 {"screenId":"BAS-17","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"mjha","summary":"대표 연락처·이메일 등록폼 통일 및 사용여부 행 정렬","changes":["대표연락처는 앞자리/가운데/마지막 번호, 대표이메일은 아이디/@/도메인/선택으로 구성.","사용여부를 마지막 전체 너비 행으로 정렬하고 대표·하위 담당자 연락처와 이메일 예시 입력.","관련 Description과 형식 검증 정의 동기화."]},
 {"screenId":"COM-08","version":"v0.9","fromVersion":"v0.8","date":"2026.10.26","accountName":"mjha","summary":"상세 첫 두 행 순서 및 팀명 소속 예시 변경","changes":["상세는 아이디/비밀번호, 이름/소속 순으로 배치.","하위 담당자 소속 예시를 운영팀·전산팀·상담지원팀 등 팀명으로 변경.","등록 순서 및 기존 저장·검증 유지."]},

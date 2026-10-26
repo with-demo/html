@@ -74,6 +74,7 @@
   if(!(clicked instanceof Element)||!scope?.contains(clicked))return null;
   const button=clicked.closest('button,a');if(button&&scope.contains(button))return button;
   const control=clicked.closest('input,select,textarea');if(control&&scope.contains(control))return control;
+  const group=clicked.closest('.admin-id-check');if(group&&scope.contains(group))return group;
   const field=clicked.closest('.field,.write-form-row');if(field&&scope.contains(field))return field;
   const target=clicked.closest('input,select,textarea,th,td,dt,dd,dl,label,h1,h2,h3,p,.dialogbody,.dialoghead,section,article');
   return target&&target!==scope&&scope.contains(target)?target:null;
@@ -82,15 +83,18 @@
  function selectorFor(target){
   const root=selectionScope(),form=target.closest('form[data-management-form]');
   if(form&&root?.contains(form)){
-   const name=target.matches('.field,.write-form-row')?target.querySelector('[name]')?.name:target.getAttribute('name');
+   if(target.matches('[data-admin-id-check]')){const selector='#'+root.id+' form[data-management-form="'+CSS.escape(form.dataset.managementForm)+'"] [data-admin-id-check]';if(root.querySelectorAll(selector).length===1)return selector;}
+   const name=target.matches('.field,.write-form-row,.admin-id-check')?target.querySelector('[name]')?.name:target.getAttribute('name');
    if(name){const base='#'+root.id+' form[data-management-form="'+CSS.escape(form.dataset.managementForm)+'"]';
-    const selector=base+(target.matches('.field,.write-form-row')?' .field:has([name="'+CSS.escape(name)+'"])':' [name="'+CSS.escape(name)+'"]');
+    const selector=base+(target.matches('.field,.write-form-row,.admin-id-check')?' '+(target.matches('.admin-id-check')?'.admin-id-check':'.field')+':has([name="'+CSS.escape(name)+'"])':' [name="'+CSS.escape(name)+'"]');
     if(root.querySelectorAll(selector).length===1&&root.querySelector(selector)===target)return selector;
    }
   }
   const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}if(el===root)parts.unshift('#'+CSS.escape(root.id));return parts.join(' > ');}
  function find(record){try{
   const anchor=record.anchor,scope=selectionScope();if(!scope)return null;const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return null;const el=matches[0];
+  // Semantic form controls remain the same target when inline validation text changes.
+  if(anchor.selector.includes('[data-management-form=')&&(/\[name=|\[data-admin-id-check/.test(anchor.selector)))return el;
   // An explicit unique element ID survives changing timestamps, counters and text.
   if(/^#[\w-]+$/.test(anchor.selector)&&el.id===anchor.selector.slice(1))return el;
   const stableText=value=>value.replace(/\d+(?:[.,:/-]\d+)*/g,'#').replace(/\s+/g,' ').trim();
