@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.19","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 작성 중·반려 상세에 개별 승인 요청 추가","changes":["좌측 하단 승인 요청으로 기존 일지를 승인 요청 상태로 제출·재제출.","우측 저장은 현재 상태를 유지하고 수정 내용만 보관. 승인 요청·승인 완료 상세에서는 요청 버튼 미표시.","목록 체크박스 일괄 승인 요청 동작 유지 및 관련 Description 추가."]},
 {"screenId":"JNL-05","version":"v0.48","date":"2026.10.26","accountName":"shyuwith","summary":"신규 등록 상담 시간 미선택 초기화","changes":["신규 등록 진입 시 상세 화면에서 남은 시작·종료 시간을 초기화.","상담 시간은 QR 자동 입력 대상에서 제외하고 작성자가 직접 입력. 상세 저장값 유지."]},
 {"screenId":"JNL-05","version":"v0.47","date":"2026.10.26","accountName":"shyuwith","summary":"Description 항목 분류 및 사용자별 현재 위치 통일","changes":["기존 기능·정책·기획비고를 유지하며 데이터 출처·실행 시점·처리 결과·검증 항목으로 분류.","관리자·통역원·수출상담 운영용역사 경로를 홈 > 상담일지 > 수출상담일지 > 상담일지 등록으로 통일."]},
 {"screenId":"JNL-16","version":"v0.18","date":"2026.10.26","accountName":"shyuwith","summary":"Description 항목 분류와 처리 이력 정렬·현재 위치 통일","changes":["기존 설명·기획비고를 보존하고 사용자별 편집 조건·검증·데이터·동작을 해당 항목으로 분류.","처리 이력의 처리자·일시 열 시작선을 맞추고 화살표 공간을 별도 확보.","세 사용자 경로를 홈 > 상담일지 > 수출상담일지 > 수출상담일지 상세로 통일."]},
