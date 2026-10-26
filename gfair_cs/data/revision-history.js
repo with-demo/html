@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.20","fromVersion":"v1.19","date":"2026.10.26","accountName":"mjha","summary":"담당자 목록 열 순서·연락처·이메일·발급ID·PW 반영","changes":["목록을 이름·소속·연락처·이메일·발급ID·PW·사용여부 순서로 표시.","PW 기본 마스킹 및 보기/숨기기 제공.","엑셀은 PW를 제외한 화면 항목 순서로 내려받고 관련 Description 동기화."]},
 {"screenId":"COM-08","version":"v0.12","fromVersion":"v0.11","date":"2026.10.26","accountName":"mjha","summary":"중복확인 02번 설명 등록 전용 노출 적용","changes":["등록에서는 기존 02번 핀·설명을 표시하고 상세에서는 숨김.","기존 설명 내용·댓글·저장 위치와 나머지 항목 번호 유지."]},
 {"screenId":"BAS-17","version":"v1.28","fromVersion":"v1.27","date":"2026.10.26","accountName":"mjha","summary":"담당자 사용유무 필터 및 이름 검색 적용","changes":["사용유무 전체/사용/미사용과 이름 포함 검색을 함께 적용.","검색 버튼·Enter로 적용하고 초기화 시 전체/빈 검색어로 복원.","대표담당자 고정 노출 유지 및 관련 Description 동기화."]},
 {"screenId":"COM-08","version":"v0.11","fromVersion":"v0.10","summary":"연락처 통합 및 Description 초안 전면 정리·기획비고 삭제","date":"2026.10.26","accountName":"mjha","changes":["전화번호·휴대전화번호를 앞자리/가운데/마지막 연락처 한 항목으로 통합.","등록·상세·엑셀의 연락처 저장 및 형식 검증 동기화.","COM-08 Description과 알럿 초안 정리, 사용자 요청에 따라 기획비고 전체 삭제 및 변경 안내 미추가."]},
