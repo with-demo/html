@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.23","date":"2026.10.26","accountName":"shyuwith","summary":"이전 반려 사유 보기를 신규 13번 Description으로 분리","changes":["07번은 관리자·수출상담 운영용역사 처리 이력 설명으로 정리.","13번은 통역원 반려 상태·반려 2회 이상 표시 조건과 읽기 전용 사유 펼침 동작으로 별도 작성.","이전 반려 사유 보기 영역에 13번 라벨 연결. 기존 화면 동작 유지."]},
 {"screenId":"JNL-14","version":"v0.31","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 반려 2회 상태 확인용 일지 추가","changes":["GF-000488 다온리빙·박서연 일지를 현재 반려 상태로 추가.","최신 반려 사유와 이전 반려 사유 보기를 상세에서 확인 가능."]},
 {"screenId":"JNL-16","version":"v0.22","date":"2026.10.26","accountName":"shyuwith","summary":"최근·이전 반려 사유를 확인할 수 있는 2회 반려 사례 추가","changes":["JNL-14의 GF-000488에서 최근 사유와 접힌 이전 반려 사유 보기 제공.","기존 재승인 요청 사례 GF-000487 유지."]},
 {"screenId":"JNL-16","version":"v0.21","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 전체 처리 이력을 최근·이전 반려 사유로 간소화","changes":["통역원 반려 상세에서는 최근 사유를 바로 표시하고 전체 처리 이력은 미표시.","여러 번 반려된 경우에만 이전 반려 사유 보기를 접힌 상태로 제공.","관리자·수출상담 운영용역사의 전체 처리 이력 유지 및 Description 반영."]},
