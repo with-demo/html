@@ -1,4 +1,10 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"pre01-qr-exported","title":"전체 QR 다운로드 완료","type":"인라인 안내","trigger":"현재 행사 해외바이어 QR PNG ZIP 생성 성공","message":"전체 {N}명의 QR을 다운로드했습니다.","confirm":"현재 화면 유지","cancel":"","screens":["PRE-01"],"source":"js/app.js"},
+{"key":"pre01-qr-empty","title":"다운로드 대상 없음","type":"인라인 안내","trigger":"현재 행사 해외바이어가 없는 상태에서 QR일괄 다운로드 클릭","message":"다운로드할 대상이 없습니다.","confirm":"다운로드 중단 후 현재 화면 유지","cancel":"","screens":["PRE-01"],"source":"js/app.js"},
+{"key":"pre01-qr-error","title":"QR 생성 실패","type":"인라인 안내","trigger":"QR PNG 또는 ZIP 생성 중 오류","message":"{오류 메시지} / QR 이미지 파일을 생성하지 못했습니다.","confirm":"현재 화면 유지 후 다시 시도","cancel":"","screens":["PRE-01"],"source":"js/app.js"},
+{"key":"bas09-qr-exported","title":"부스 QR 다운로드 완료","type":"인라인 안내","trigger":"현재 행사 참가기업 QR PNG ZIP 생성 성공","message":"부스별 QR 이미지 {N}개를 ZIP으로 다운로드했습니다. 목업 QR이며 실제 인증에는 사용할 수 없습니다.","confirm":"현재 화면 유지","cancel":"","screens":["BAS-09"],"source":"include/admin-list-ui.js"},
+{"key":"bas09-qr-empty","title":"다운로드 대상 없음","type":"인라인 안내","trigger":"현재 행사 참가기업이 없는 상태에서 QR 일괄 다운로드 클릭","message":"다운로드할 참가기업이 없습니다.","confirm":"다운로드 중단 후 현재 화면 유지","cancel":"","screens":["BAS-09"],"source":"include/admin-list-ui.js"},
+{"key":"bas09-qr-error","title":"QR 생성 실패","type":"인라인 안내","trigger":"QR PNG 또는 ZIP 생성 중 오류","message":"{오류 메시지} / QR 이미지 파일을 생성하지 못했습니다.","confirm":"현재 화면 유지 후 다시 시도","cancel":"","screens":["BAS-09"],"source":"include/admin-list-ui.js"},
 {"key":"event-selection-required","title":"선택 대상 없음","type":"인라인 안내","trigger":"선택 없이 선택 엑셀 다운로드·선택 QR다운로드 클릭","message":"대상을 선택해 주세요.","confirm":"현재 화면 유지","cancel":"","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},
 {"key":"event-selected-export","title":"선택 다운로드 완료","type":"인라인 안내","trigger":"선택 목록 XLSX 생성 성공","message":"선택한 {N}명의 정보를 다운로드했습니다.","confirm":"현재 화면 유지","cancel":"","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},
 {"key":"event-qr-export","title":"선택 QR 다운로드 완료","type":"인라인 안내","trigger":"선택한 회원의 QR PNG ZIP 생성 성공","message":"선택한 {N}명의 QR을 다운로드했습니다.","confirm":"현재 화면 유지","cancel":"","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},

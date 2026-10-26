@@ -25,7 +25,7 @@
   const id=screen(),label=b.hasAttribute('data-master-template')?'엑셀 양식 다운로드':b.dataset.label;if(!['엑셀 양식 다운로드','엑셀 일괄 업로드'].includes(label))return;
   ev.preventDefault();ev.stopImmediatePropagation();
   if(label==='엑셀 일괄 업로드'){openUpload(id);return;}
-  try{const headers=templateColumns(page(id)),blob=await GFAIRWorkbook.write([headers]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`G-FAIR_${labels[id]}_엑셀양식_검토용.xlsx`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  try{const headers=templateColumns(page(id)),blob=await GFAIRWorkbook.write([headers]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=GFAIR_DOWNLOAD_NAMES.template((document.querySelector('#event-picker')?.value||'2026').match(/20\d{2}/)?.[0]||'2026',labels[id]);link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   catch{const toast=document.getElementById('toast');if(toast){toast.textContent='엑셀 양식 생성에 실패했습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}}
  },true);
  function normalizeDob(value){const dob=String(value??'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(dob))return '';const d=new Date(dob+'T00:00:00Z');return !Number.isNaN(d.valueOf())&&d.toISOString().slice(0,10)===dob?dob:''}

@@ -45,21 +45,16 @@
   if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
   if(route==='BAS-09'){
    const sync=document.createElement('button');sync.type='button';sync.className='btn';sync.textContent='동기화 하기';sync.addEventListener('click',()=>{const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 정보를 확인했습니다. 실제 G-FAIR ADMIN 동기화는 시스템 연계 후 제공됩니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}});tools.append(sync);
-   const qrDownload=document.createElement('button');qrDownload.type='button';qrDownload.className='btn';qrDownload.textContent='QR 일괄 다운로드';
+   const qrDownload=document.createElement('button');qrDownload.type='button';qrDownload.className='btn';qrDownload.textContent='QR 일괄 다운로드';qrDownload.dataset.companyQrDownload='';
    qrDownload.addEventListener('click',async()=>{
     const headerCells=[...table.querySelectorAll('thead tr:last-child>th')].map(clean),column=name=>headerCells.indexOf(name),keyIndex=column('연계키'),companyIndex=column('참가기업'),boothIndex=column('부스번호');
     try{
      if(!window.JSZip||typeof window.qrcode!=='function')throw new Error('QR 도구를 불러오지 못했습니다.');
-     if(!rows.length)throw new Error('다운로드할 참가기업이 없습니다.');
-     const zip=new window.JSZip(),event=document.querySelector('#event-picker')?.value||'G-FAIR KOREA 2027';
-     rows.forEach((row,index)=>{
-      const value=i=>row.cells[i]?.textContent.trim()||'',id=value(keyIndex)||`COMPANY-${index+1}`,company=value(companyIndex)||id,booth=value(boothIndex)||`BOOTH-${index+1}`;
-      const qr=window.qrcode(0,'M');qr.addData(`GFAIR-DEMO|${event}|${id}|${booth}`);qr.make();
-      const dataUrl=qr.createDataURL(8,4),base64=dataUrl.slice(dataUrl.indexOf(',')+1),safe=value=>value.replace(/[\\/:*?"<>|]/g,'-').replace(/\s+/g,'_');
-      zip.file(`${String(index+1).padStart(3,'0')}_${safe(company)}_${safe(booth)}.gif`,base64,{base64:true});
-     });
-     const blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='G-FAIR_참가기업_부스QR이미지_검토용.zip';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-     const notice=document.getElementById('toast');if(notice){notice.textContent=`부스별 QR 이미지 ${rows.length}개를 ZIP으로 다운로드했습니다. 목업 QR이며 실제 인증에는 사용할 수 없습니다.`;notice.hidden=false;setTimeout(()=>notice.hidden=true,4000)}
+     const members=window.GFAIR_COMPANY_QR_ROWS?.()||[];if(!members.length)throw new Error('다운로드할 참가기업이 없습니다.');
+     const zip=new window.JSZip(),event=(document.querySelector('#event-picker')?.value||'2026').match(/20\d{2}/)?.[0]||'2026';
+     members.forEach(({id,company,booth},index)=>{const base64=GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+event+'|'+id+'|'+booth).split(',')[1],safe=GFAIR_DOWNLOAD_NAMES.safe;zip.file(String(index+1).padStart(3,'0')+'_'+safe(company)+'_'+safe(booth)+'.png',base64,{base64:true});});
+     const blob=await zip.generateAsync({type:'blob'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=GFAIR_DOWNLOAD_NAMES.qrZip(event,'참가기업',false);link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+     const notice=document.getElementById('toast');if(notice){notice.textContent=`부스별 QR 이미지 ${members.length}개를 ZIP으로 다운로드했습니다. 목업 QR이며 실제 인증에는 사용할 수 없습니다.`;notice.hidden=false;setTimeout(()=>notice.hidden=true,4000)}
     }catch(error){const notice=document.getElementById('toast');if(notice){notice.textContent=error.message||'QR 이미지 파일을 생성하지 못했습니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3000)}}
    });
    tools.append(qrDownload);

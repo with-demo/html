@@ -164,7 +164,7 @@
    item.id='M'+String(n).padStart(4,'0');item.pw='D'+item.year.slice(-2)+String(n).padStart(3,'0');message('현재 연도의 임시 계정을 발급했습니다.');return;
   }
   if(a==='staff-template'&&staffAllowed()){
-   const blob=await GFAIRWorkbook.write([staffFields,[state.staffYear,state.company,'DEMO-STAFF-NEW','정하린']]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='하위담당자_'+state.company+'_'+state.staffYear+'양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('선택 행사·소속이 기입된 담당자 양식을 다운로드했습니다.');return;
+   const blob=await GFAIRWorkbook.write([staffFields,[state.staffYear,state.company,'DEMO-STAFF-NEW','정하린']]),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=GFAIR_DOWNLOAD_NAMES.template(state.staffYear,'담당자');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('선택 행사·소속이 기입된 담당자 양식을 다운로드했습니다.');return;
   }
   if(a==='staff-upload-open'&&staffAllowed()){
    state.staffUpload=null;
@@ -181,7 +181,7 @@
   if(a==='admin-create'&&isAdmin()){adminMode(true);location.hash='BAS-18';return;}
   if(a==='template'&&isAdmin()){
    const rows=[fields,['2027','구매상담','DEMO-UPLOAD-01','업로드 용역사','대표','사업장','담당자']];
-   const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='운영용역사_등록양식.xlsx';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('검토용 XLSX 양식을 다운로드했습니다. 행을 수정해 업로드해 주세요.');return;
+   const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=GFAIR_DOWNLOAD_NAMES.template((document.querySelector('#event-picker')?.value||'2026').match(/20\d{2}/)?.[0]||'2026','운영용역사');link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('검토용 XLSX 양식을 다운로드했습니다. 행을 수정해 업로드해 주세요.');return;
   }
   if(a==='upload-open'&&isAdmin()){state.upload=null;modal('운영용역사 엑셀 일괄 업로드',`<form data-management-form="upload"><p>제공된 XLSX 양식의 열 이름을 유지해 주세요. 연도·상담 구분·기업코드·기업명은 필수입니다.</p>${field('엑셀 파일', '<input type="file" name="file" accept=".xlsx" required>')}<button class="btn primary" type="submit">파일 검증</button></form><div data-management-upload-result></div>`);return;}
   if(a==='upload-confirm'&&isAdmin()&&state.upload?.length){
