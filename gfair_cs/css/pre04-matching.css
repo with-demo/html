@@ -1,0 +1,24 @@
+#dialog-content:has(.pre04-popup-results){width:min(1000px,calc(100vw - 40px));max-width:100%}
+#dialog-content .pre04-buyer-context{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;padding:18px;margin:0 0 20px;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;font-size:15px}
+#dialog-content .pre04-link-icon{width:24px;height:24px;flex:none}
+#dialog-content .pre04-popup-filters{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;border:1px solid #ddd;border-radius:0;overflow:visible}
+#dialog-content .pre04-popup-filters>.field{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:stretch;gap:0;margin:0;border-bottom:1px solid #ddd}
+#dialog-content .pre04-popup-filters>.field>span{display:flex;align-items:center;padding:16px;background:#f5f5f5;border-right:1px solid #ddd;font-size:13px}
+#dialog-content .pre04-popup-filters .matching-multi{margin:12px 16px;min-width:0}
+#dialog-content .pre04-popup-filters .matching-multi summary{min-height:36px;padding:6px 10px;border-radius:4px;font-size:13px}
+#dialog-content .pre04-popup-filters .matching-multi[open] summary{background:#fff;color:#222}
+#dialog-content .pre04-popup-filters .popup-action-row{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;padding:12px 16px;margin:0}
+#dialog-content .pre04-popup-filters .btn{min-width:80px;min-height:36px;padding:6px 18px}
+#dialog-content .matching-options{width:min(340px,calc(100vw - 96px));max-width:calc(100vw - 96px);box-sizing:border-box}
+#dialog-content .matching-options .matching-search{width:100%;box-sizing:border-box}
+#dialog-content .pre04-candidate-count{display:flex;justify-content:space-between;gap:12px;margin:20px 0 10px;font-size:13px}
+#dialog-content .pre04-current-interpreter{background:#f3f3f3}
+#dialog-content .pre04-popup-pagination{display:flex;justify-content:center;gap:6px;margin-top:16px}
+#dialog-content .pre04-popup-pagination .btn:disabled{opacity:.5}
+@media(max-width:680px){#dialog-content .pre04-popup-filters{grid-template-columns:1fr}#dialog-content .pre04-popup-filters>.field{grid-template-columns:80px minmax(0,1fr)}#dialog-content .pre04-buyer-context{gap:8px;justify-content:flex-start}}
+
+#dialog:has(.pre04-popup-results){width:min(1000px,calc(100vw - 32px))}
+#dialog-content .pre04-candidates th,#dialog-content .pre04-candidates td{padding:10px 16px}
+#dialog-content .pre04-candidates .btn{min-height:32px;padding:6px 14px}
+
+#dialog.standard-popup:has(.pre04-popup-results){width:min(1000px,calc(100vw - 32px))}

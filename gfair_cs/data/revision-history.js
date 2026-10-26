@@ -1,5 +1,11 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.23","fromVersion":"v0.22","date":"2026.10.26","accountName":"with","summary":"행사정보 인원 선택과 매칭 팝업 검색·현재 담당자·페이지 보강","changes":["목록과 같은 복수 검색 형식, 현재 담당자 고정, 10명 단위 표시.","화면·Description 및 매칭·변경 팝업 ID 통일."]},
+{"screenId":"PRE-04-p32","version":"v0.2","fromVersion":"v0.1","date":"2026.10.26","accountName":"with","summary":"상단 매칭 정보·복수 검색·담당자 고정 및 10명 페이지","changes":["목록과 같은 복수 검색 형식, 현재 담당자 고정, 10명 단위 표시.","화면·Description 및 매칭·변경 팝업 ID 통일."]},
+{"screenId":"BAS-03","version":"v1.28","fromVersion":"v1.27","date":"2026.10.26","accountName":"with","summary":"현재 행사 해외바이어 예시 20명으로 보강","changes":["기존 인원을 유지하고 가상 예시의 이름·생년월일·국가·언어를 기본정보에서 연결."]},
+{"screenId":"BAS-07","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"with","summary":"현재 행사 참가 통역원 예시 20명으로 보강","changes":["기존 인원을 유지하고 가상 예시의 이름·생년월일·국가·언어를 기본정보에서 연결."]},
+{"screenId":"PRE-01","version":"v3.18","fromVersion":"v3.17","date":"2026.10.26","accountName":"with","summary":"기본정보에서 추가한 해외바이어 행사정보 연결","changes":["기존 인원을 유지하고 가상 예시의 이름·생년월일·국가·언어를 기본정보에서 연결."]},
+{"screenId":"EVT-02","version":"v1.11","fromVersion":"v1.10","date":"2026.10.26","accountName":"with","summary":"기본정보 참가 통역원 추가 예시 연결","changes":["기존 인원을 유지하고 가상 예시의 이름·생년월일·국가·언어를 기본정보에서 연결."]},
 {"screenId":"EVT-01","version":"v1.10","fromVersion":"v1.9","date":"2026.10.26","accountName":"with","summary":"검색 범위 및 선택 엑셀·선택/전체 QR 다운로드 정리","changes":["이름/기업·언어 셀렉트 제공, 선택 엑셀 및 선택·전체 PNG ZIP 다운로드.","QR 팝업 문구 제거, 공통 파일명 규칙 및 Description·안내 동기화."]},
 {"screenId":"EVT-02","version":"v1.10","fromVersion":"v1.9","date":"2026.10.26","accountName":"with","summary":"검색 범위 및 선택 엑셀·선택/전체 QR 다운로드 정리","changes":["이름/기업·언어 셀렉트 제공, 선택 엑셀 및 선택·전체 PNG ZIP 다운로드.","QR 팝업 문구 제거, 공통 파일명 규칙 및 Description·안내 동기화."]},
 {"screenId":"EVT-03","version":"v0.7","fromVersion":"v0.6","date":"2026.10.26","accountName":"with","summary":"ID·QR 추가 및 기본정보 행 배치 정리","changes":["ID·QR 및 이름·생년월일을 쌍으로 표시, 나머지 항목과 메모는 전체 행으로 표시.","통역원 초청기관 제거, 관련 Description 동기화."]},
