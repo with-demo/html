@@ -1,4 +1,6 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"operator-basic-phone","title":"대표연락처 형식","trigger":"대표연락처가 입력되어 있으나 전화번호 형식에 맞지 않을 때 수정 실행","message":"대표연락처를 올바르게 입력해 주세요.","type":"인라인 오류","confirm":"수정을 중단하고 현재 입력값 유지","cancel":"","screens":["BAS-17"],"source":"include/management-ui.js"},
+{"key":"operator-basic-email","title":"대표이메일 형식","trigger":"대표이메일이 입력되어 있으나 이메일 형식에 맞지 않을 때 수정 실행","message":"대표이메일을 올바르게 입력해 주세요.","type":"인라인 오류","confirm":"수정을 중단하고 현재 입력값 유지","cancel":"","screens":["BAS-17"],"source":"include/management-ui.js"},
 {"key":"operator-basic-required","title":"운영용역사 기본정보 필수값","type":"인라인 오류","trigger":"기업명이 공백이거나 행사연도·구분·사용여부가 유효하지 않은 상태에서 수정 실행","message":"필수 항목을 확인해 주세요.","confirm":"수정을 중단하고 현재 입력값 유지","cancel":"","screens":["BAS-17"],"source":"include/management-ui.js"},
 {"key":"operator-basic-company-duplicate","title":"운영용역사 기업명 중복","type":"인라인 오류","trigger":"다른 운영용역사와 같은 기업명으로 수정 실행","message":"같은 기업명이 이미 등록되어 있습니다.","confirm":"수정을 중단하고 현재 입력값 유지","cancel":"","screens":["BAS-17"],"source":"include/management-ui.js"},
 {"key":"operator-basic-assignment-duplicate","title":"운영용역사 행사 배정 중복","type":"인라인 오류","trigger":"같은 기업에 동일 행사연도·구분 배정이 이미 있는 상태에서 수정 실행","message":"같은 행사연도·구분에 이미 등록된 운영용역사입니다.","confirm":"수정을 중단하고 현재 입력값 유지","cancel":"","screens":["BAS-17"],"source":"include/management-ui.js"},

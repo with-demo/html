@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-17","version":"v1.23","fromVersion":"v1.22","date":"2026.10.26","accountName":"mjha","summary":"대표연락처·대표이메일 수정 및 사용여부 마지막 단독 행 배치","changes":["대표연락처·대표이메일을 선택 입력으로 수정하고 저장 후 아래 대표담당자 행과 동기화.","기업명·대표담당자명, 대표연락처·대표이메일을 각각 한 행에 배치하고 사용여부는 마지막 전체 너비 행으로 변경.","연락처·이메일 형식 검증과 Description·알럿 정의 동기화."]},
 {"screenId":"BAS-17","version":"v1.22","fromVersion":"v1.21","date":"2026.10.26","accountName":"mjha","summary":"기본정보에 대표담당자명·대표연락처·대표이메일 조회 항목 추가","changes":["아래 담당자 정보 대표 행과 같은 대표담당자 정보를 기본정보에도 중복 표시.","대표 정보는 조회 전용이며 기존 기본정보 4개 항목만 수정 가능.","대표이메일은 짝이 없는 마지막 항목으로 전체 너비 표시하고 Description 동기화."]},
 {"screenId":"BAS-17","version":"v1.21","fromVersion":"v1.20","date":"2026.10.26","accountName":"mjha","summary":"기본정보 목록·수정 버튼을 담당자 정보 위로 이동","changes":["기본정보 바로 아래 우측에 목록·수정 버튼 배치.","담당자 정보 영역과 작업 범위를 구분하고 관련 Description 위치 설명 일치."]},
 {"screenId":"BAS-17","version":"v1.20","fromVersion":"v1.19","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 기본정보 수정 입력 및 하단 수정 버튼 추가","changes":["행사연도·구분·기업명·사용여부만 편집 가능한 입력 폼으로 전환.","하단 목록·수정 버튼과 필수값·기업명 중복·행사 배정 중복 검증 추가.","담당자 정보·발급 계정은 조회 상태로 유지하고 관련 Description·알럿 정의 일치."]},
