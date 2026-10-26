@@ -1,0 +1,23 @@
+{
+  "screenId": "COMMON-PLANNING",
+  "version": "v0.1",
+  "date": "2026-10-27",
+  "actor": "with",
+  "flow": "상단 기획비고 → 행별 지우기 → 확인창 → 서버 원본 planningNote만 비움 → 표·Description 재조회",
+  "permission": "GitHub 저장소 공동작업자",
+  "messages": [
+    {
+      "type": "컨펌",
+      "title": "기획비고를 지울까요?",
+      "message": "해당 Description의 기획비고도 함께 지워집니다. 설명 본문과 댓글은 유지됩니다.",
+      "confirm": "지우기: 해당 비고만 빈 값으로 저장",
+      "cancel": "취소: 변경 없이 닫기"
+    },
+    {
+      "type": "안내",
+      "condition": "수정 충돌",
+      "message": "다른 사용자가 변경했습니다. 최신 내용을 확인해 주세요.",
+      "result": "변경 중단 후 최신 목록 재조회"
+    }
+  ]
+}

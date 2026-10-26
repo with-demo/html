@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COMMON-PLANNING","version":"v0.1","date":"2026.10.27","accountName":"with","summary":"상단 기획비고 지우기를 원본 Description에 동기화","changes":["공동작업자용 지우기·확인 및 취소 제공.","기획비고만 비우고 본문·핀·댓글 유지, 수정 충돌 방지."]},
 {"screenId":"EVT-01","version":"v1.12","fromVersion":"v1.11","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.13","fromVersion":"v1.12","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
 {"screenId":"EVT-03","version":"v0.9","fromVersion":"v0.8","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
