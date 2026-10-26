@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.34","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 승인 요청 강조 및 태그 다중 검색 추가","changes":["관리자·수출상담 운영용역사 승인 요청 일지를 최상단 정렬하고 행·일지 번호·상태를 흑백 명도로 강조.","태그 검색창·체크박스 다중 선택 드롭다운 추가. 선택 태그 간 OR, 다른 검색 조건과 AND로 결합.","실제 일지 해시태그를 옵션으로 제공하고 예시 태그 데이터 추가. 통역원 검색 UI 유지, 목록 Description 작성 보류 유지."]},
 {"screenId":"JNL-14","version":"v0.33","date":"2026.10.26","accountName":"shyuwith","summary":"관리자·수출용역사 작성 중 일지를 본인 작성분으로 제한","changes":["관리자·수출상담 운영용역사는 타인의 작성 중 일지를 목록에서 제외.","승인 요청·승인 완료·반려 목록과 본인의 작성 중 일지는 유지. 목록 Description 신규 작성은 보류 유지."]},
 {"screenId":"JNL-16","version":"v0.27","date":"2026.10.26","accountName":"shyuwith","summary":"타인 작성 중 일지의 검수 상세 진입 방지","changes":["역할 전환 등으로 타인 초안에 진입하면 조회 불가 안내와 목록 버튼만 표시.","본인 초안은 목록·임시 저장·등록, 제출된 일지는 기존 검수 동작 유지."]},
 {"screenId":"BAS-15","version":"v2.26","fromVersion":"v2.25","summary":"운영용역사 검색·목록 항목 및 기업명 상세 이동 개편","changes":["상담구분 명칭을 구분으로 변경하고 검색 범위를 전체·기업·담당자로 구성.","목록을 연도·구분·기업·담당자 이름·사용여부·하위 담당자수로 구성하고 기업명만 상세 이동.","기존 Description 검색 5개 항목과 목록 설명을 실제 동작에 맞춰 반영."],"date":"2026.10.26","accountName":"mjha"},

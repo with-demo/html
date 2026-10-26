@@ -73,7 +73,7 @@
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
    observer.disconnect();
-   ordered.forEach(({row},i)=>{row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
+   ordered.forEach(({row},i)=>{row.classList.toggle('journal-approval-priority',prioritize&&priority(row)===0);row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
    pagination.replaceChildren();
    const add=(label,target,disabled=false,current=false)=>{const button=document.createElement('button');button.type='button';button.className='btn';button.textContent=label;button.disabled=disabled;button.setAttribute('aria-label',({'<<':'첫 페이지','<':'이전 페이지','>':'다음 페이지','>>':'마지막 페이지'})[label]||label+' 페이지');if(current)button.setAttribute('aria-current','page');button.addEventListener('click',()=>{page=target;paint();});pagination.append(button);};
    add('<<',1,page===1);add('<',page-1,page===1);

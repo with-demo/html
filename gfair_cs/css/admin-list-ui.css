@@ -1,4 +1,7 @@
 /* 관리자 화면의 위치 안내와 목록 도구. 열람자·상세 폼에는 목록 도구를 추가하지 않는다. */
+.admin-list-panel tr.journal-approval-priority>td{background:#f4f4f4}
+.admin-list-panel tr.journal-approval-priority [data-action="j-detail"]{font-weight:700}
+.admin-list-panel tr.journal-approval-priority .badge{background:#444;color:#fff;font-weight:700}
 #content.admin-list-layout .pagehead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:start}
 #content.admin-list-layout .pagehead>div:first-child{display:contents}
 #content.admin-list-layout .pagehead .breadcrumb{grid-column:2;grid-row:1;justify-content:flex-end;align-self:center;margin:0;text-align:right;flex-wrap:wrap}
