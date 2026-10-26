@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-17","version":"v1.26","fromVersion":"v1.25","date":"2026.10.26","accountName":"mjha","summary":"수정 불가 아이디 회색 배경 통일","changes":["아이디 읽기 전용 입력칸을 관리자·담당자 상세와 같은 회색 배경(#f5f5f5)과 글자색(#555)으로 표시.","기존 읽기 전용 동작 및 Description·비고 삭제 상태 유지."]},
 {"screenId":"BAS-17","version":"v1.25","fromVersion":"v1.24","date":"2026.10.26","accountName":"mjha","summary":"최신 BAS-19 등록 기준으로 상세 화면·Description 전체 정비","changes":["아이디 조회 전용 단독 행 추가, 담당자 이름 수정 및 연락처 필수 입력 등 등록 기준 반영.","아이디 → 행사연도/구분 → 기업명/담당자 이름 → 담당자 연락처/담당자 이메일 → 사용여부 단독 행 배치.","항목별 Description·하위 담당자 목록·검색·PW·목록/수정·알럿 정의 전면 동기화.","사용자 요청으로 BAS-17의 기획비고 전체 삭제, 변경 안내 추가하지 않음."]},
 {"screenId":"BAS-19","version":"v1.13","fromVersion":"v1.12","date":"2026.10.26","accountName":"mjha","summary":"중복확인 안내 문구 변경 시 영역 핀 소실 수정","changes":["폼·입력명으로 연결된 핀은 안내 문구가 변경되어도 연결 유지.","중복확인 버튼과 아이디 입력 묶음의 안정적인 선택 경로 제공.","기존 06번 설명과 위치·댓글 보존."]},
 {"screenId":"BAS-19","version":"v1.12","fromVersion":"v1.11","date":"2026.10.26","accountName":"mjha","summary":"공통 영역 핀의 클릭 대상 연결 정확도 수정","changes":["본문·팝업 내부에서 선택 경로의 유일성과 클릭 대상 일치를 저장 전에 검증.","입력칸 자체의 상대 좌표로 저장하며 본문 밖의 유사 구조로 핀이 이동하는 현상 수정.","기존 설명·댓글·저장 위치 데이터 유지."]},
