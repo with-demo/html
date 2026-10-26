@@ -1,0 +1,150 @@
+{
+  "versions": [
+    {
+      "screenId": "BAS-03",
+      "version": "v1.30",
+      "fromVersion": "v1.29",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-05",
+      "version": "v1.24",
+      "fromVersion": "v1.23",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-07",
+      "version": "v1.26",
+      "fromVersion": "v1.25",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-03-p01",
+      "version": "v0.5",
+      "fromVersion": "v0.4",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-05-p01",
+      "version": "v0.3",
+      "fromVersion": "v0.2",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-07-p01",
+      "version": "v0.3",
+      "fromVersion": "v0.2",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-11",
+      "version": "v0.19",
+      "fromVersion": "v0.18",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    },
+    {
+      "screenId": "BAS-12",
+      "version": "v0.15",
+      "fromVersion": "v0.14",
+      "date": "2026.10.26",
+      "accountName": "with",
+      "summary": "다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강",
+      "changes": [
+        "파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.",
+        "기존 기획비고·설명 ID·핀 유지."
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "screen": "BAS-03",
+      "id": "bas03-list-template-20261023",
+      "category": "해외바이어",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_YYYYMMDD.xlsx\n- 대상구분 : 해외바이어\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-05",
+      "id": "bas05-list-template-20261023",
+      "category": "국내바이어",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_YYYYMMDD.xlsx\n- 대상구분 : 국내바이어\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-07",
+      "id": "bas07-list-template-20261023",
+      "category": "통역원",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_YYYYMMDD.xlsx\n- 대상구분 : 통역원\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-03-p01",
+      "id": "bas03-p01-template-20261023",
+      "category": "해외바이어",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_등록양식_YYYYMMDD.xlsx\n- 대상구분 : 해외바이어\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-05-p01",
+      "id": "bas05-p01-template-20261023",
+      "category": "국내바이어",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_등록양식_YYYYMMDD.xlsx\n- 대상구분 : 국내바이어\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-07-p01",
+      "id": "bas07-p01-template-20261023",
+      "category": "통역원",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_등록양식_YYYYMMDD.xlsx\n- 대상구분 : 통역원\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-11",
+      "id": "download-rule-20261026-bas-11-excel",
+      "category": "참가이력",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_YYYYMMDD.xlsx\n- 대상구분 : 참가이력\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    },
+    {
+      "screen": "BAS-12",
+      "id": "download-rule-20261026-bas-12-template",
+      "category": "참가자",
+      "policy": "- 파일명 : G-FAIR_행사연도_대상구분_등록양식_YYYYMMDD.xlsx\n- 대상구분 : 참가자\n- 다운로드일은 한국 시간 기준 YYYYMMDD"
+    }
+  ]
+}

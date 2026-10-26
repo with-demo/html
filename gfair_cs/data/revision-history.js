@@ -1,5 +1,13 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.30","fromVersion":"v1.29","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-05","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-07","version":"v1.26","fromVersion":"v1.25","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-03-p01","version":"v0.5","fromVersion":"v0.4","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-05-p01","version":"v0.3","fromVersion":"v0.2","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-07-p01","version":"v0.3","fromVersion":"v0.2","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-11","version":"v0.19","fromVersion":"v0.18","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
+{"screenId":"BAS-12","version":"v0.15","fromVersion":"v0.14","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
 {"screenId":"BAS-11","version":"v0.18","fromVersion":"v0.17","date":"2026.10.26","accountName":"with","summary":"엑셀 다운로드 파일명 공통 규칙 적용","changes":["이력 목록·참가자 등록 양식의 파일명 및 버튼 기본정책 반영."]},
 {"screenId":"BAS-12","version":"v0.14","fromVersion":"v0.13","date":"2026.10.26","accountName":"with","summary":"엑셀 다운로드 파일명 공통 규칙 적용","changes":["이력 목록·참가자 등록 양식의 파일명 및 버튼 기본정책 반영."]},
 {"screenId":"EVT-01","version":"v1.11","fromVersion":"v1.10","date":"2026.10.26","accountName":"with","summary":"화면 개요·Description 초기화 및 QR 다운로드 정리","changes":["현재 화면 기준 개요·영역 설명·안내 재작성.","조회 상세는 정보 출처 개요와 QR 다운로드 버튼 설명만 제공.","다운로드 파일명은 기본정책에 표시, 기획비고 추가 없음."]},
