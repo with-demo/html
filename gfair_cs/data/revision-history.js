@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.21","fromVersion":"v1.20","date":"2026.10.26","accountName":"mjha","summary":"기본정보관리 공통 문구 기준 Description 8개 항목 재작성","changes":["BAS-16 검색필터·이름, BAS-03 엑셀 버튼, BAS-17 PW 설명 재사용.","사용여부·키워드 셀렉·키워드 인풋·검색/초기화·엑셀 다운로드·일괄업로드·이름·보기 버튼 순서로 표시.","기존 댓글·기획비고 보존, 각 컨트롤에 핀 재연결."]},
 {"screenId":"COM-07","version":"v1.20","fromVersion":"v1.19","date":"2026.10.26","accountName":"mjha","summary":"담당자 목록 열 순서·연락처·이메일·발급ID·PW 반영","changes":["목록을 이름·소속·연락처·이메일·발급ID·PW·사용여부 순서로 표시.","PW 기본 마스킹 및 보기/숨기기 제공.","엑셀은 PW를 제외한 화면 항목 순서로 내려받고 관련 Description 동기화."]},
 {"screenId":"COM-08","version":"v0.12","fromVersion":"v0.11","date":"2026.10.26","accountName":"mjha","summary":"중복확인 02번 설명 등록 전용 노출 적용","changes":["등록에서는 기존 02번 핀·설명을 표시하고 상세에서는 숨김.","기존 설명 내용·댓글·저장 위치와 나머지 항목 번호 유지."]},
 {"screenId":"BAS-17","version":"v1.28","fromVersion":"v1.27","date":"2026.10.26","accountName":"mjha","summary":"담당자 사용유무 필터 및 이름 검색 적용","changes":["사용유무 전체/사용/미사용과 이름 포함 검색을 함께 적용.","검색 버튼·Enter로 적용하고 초기화 시 전체/빈 검색어로 복원.","대표담당자 고정 노출 유지 및 관련 Description 동기화."]},
