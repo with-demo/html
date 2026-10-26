@@ -119,3 +119,5 @@
 #app .journal-rejection-history[open]>summary::after{content:'⌃'}
 #app .journal-history-reason{margin-top:12px;padding:12px;background:#f6f6f6;border-top:1px solid #e3e3e3}
 #app .journal-history-reason>p{margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
+#app .journal-previous-rejections{margin-top:16px;border:1px solid #ddd;padding:12px;background:#fff}
+#app .journal-previous-rejections>summary{cursor:pointer}

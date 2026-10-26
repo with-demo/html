@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.21","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 전체 처리 이력을 최근·이전 반려 사유로 간소화","changes":["통역원 반려 상세에서는 최근 사유를 바로 표시하고 전체 처리 이력은 미표시.","여러 번 반려된 경우에만 이전 반려 사유 보기를 접힌 상태로 제공.","관리자·수출상담 운영용역사의 전체 처리 이력 유지 및 Description 반영."]},
 {"screenId":"JNL-16","version":"v0.20","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 반려 상세에 처리 이력·최근 반려 사유 표시","changes":["반려 상태에서 처리 이력의 당시 반려 사유를 아코디언으로 조회.","검수 의견에는 가장 최근 반려 사유를 읽기 전용 표시. 원문 편집·승인 요청·목록·저장 유지.","07·08번 Description에 통역원 반려 상태 표시·조회 권한 추가."]},
 {"screenId":"JNL-16","version":"v0.19","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 작성 중·반려 상세에 개별 승인 요청 추가","changes":["좌측 하단 승인 요청으로 기존 일지를 승인 요청 상태로 제출·재제출.","우측 저장은 현재 상태를 유지하고 수정 내용만 보관. 승인 요청·승인 완료 상세에서는 요청 버튼 미표시.","목록 체크박스 일괄 승인 요청 동작 유지 및 관련 Description 추가."]},
 {"screenId":"JNL-05","version":"v0.48","date":"2026.10.26","accountName":"shyuwith","summary":"신규 등록 상담 시간 미선택 초기화","changes":["신규 등록 진입 시 상세 화면에서 남은 시작·종료 시간을 초기화.","상담 시간은 QR 자동 입력 대상에서 제외하고 작성자가 직접 입력. 상세 저장값 유지."]},
