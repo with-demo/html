@@ -1,6 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-19","version":"v1.5","fromVersion":"v1.4","date":"2026.10.26","accountName":"mjha","summary":"담당자 이메일을 관리자 등록과 동일한 분할 입력 폼으로 변경","changes":["이메일 아이디·도메인 입력 및 도메인 선택/직접입력 제공.","선택 입력을 유지하고 입력 시 이메일 형식 검증 적용."]},
+{"screenId":"JNL-14","version":"v0.30","date":"2026.10.26","accountName":"shyuwith","summary":"반려 2회 후 재제출 예시 일지 추가","changes":["GF-000487: 다온리빙·박서연 일지를 승인 요청 상태로 추가.","상세에서 서로 다른 반려 2건과 각각의 사유를 펼쳐볼 수 있도록 예시 이력 구성."]},
+{"screenId":"JNL-16","version":"v0.14","date":"2026.10.26","accountName":"shyuwith","summary":"반려 2회 누적 이력 사례 제공","changes":["JNL-14의 GF-000487 상세에서 반려 이력 2건 개별 조회 가능.","검수 의견은 빈 값 유지하며 기존 사용자별 권한과 화면 구성 유지."]},
 {"screenId":"BAS-19","version":"v1.4","fromVersion":"v1.3","date":"2026.10.26","accountName":"mjha","summary":"관리자 등록 폼과 동일한 행 구성으로 운영용역사 등록 항목 정리","changes":["행사관리 연도 선택, 구매·수출 구분, 기업명, 담당자 이름·연락처·이메일, 사용여부 순으로 구성.","필수 항목 별표 및 검증 적용, 연락처 분할 입력과 선택 이메일 제공."]},
 {"screenId":"JNL-16","version":"v0.13","date":"2026.10.26","accountName":"shyuwith","summary":"처리 이력 좌측 라벨을 공통 한 칸으로 병합","changes":["관리자·수출상담 운영용역사 처리 이력의 처리 상태 라벨은 한 칸으로 표시.","우측 상태 이력을 누적 표시하고 반려 이력 클릭 시 해당 사유만 펼침. 통역원 화면 유지."]},
 {"screenId":"JNL-16","version":"v0.12","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 반려 사유 초기화 및 이력별 조회","changes":["관리자·수출상담 운영용역사 검수 의견에 과거 사유를 자동 입력하지 않고 반려 성공 후 빈 값 유지.","각 반려 이력에 당시 사유를 보관하고 반려 처리 상태 클릭 시 하단 펼침 조회.","07·08·11 Description과 승인·반려 결과 정의 반영. 통역원 상세 화면 유지."]},
