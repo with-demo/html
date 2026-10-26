@@ -3518,3 +3518,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['COM-07']){const s=all.find(s=>s.id===id);s.ui.filters=['사용여부','키워드 검색'];s.ui.columns=['이름','아이디','소속','사용여부','등록일'];s.ui.actions=['검색','초기화','엑셀 다운로드','엑셀 일괄업로드','등록'];}const s=all.find(s=>s.id==='COM-08');s.summary='BAS-18과 동일한 항목으로 담당자 계정을 등록·수정합니다.';s.ui.fields=[['이름','필수'],['아이디','필수 / 중복확인'],['소속','선택'],['비밀번호','필수 / 영문·숫자 포함 8~20자리'],['비밀번호 확인','필수 / 동일값'],['전화번호','선택'],['휴대전화번호','선택'],['이메일','선택'],['사용여부','사용·미사용']];s.ui.actions=['중복확인','목록','등록'];})();
 
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-18','COM-08']){const s=all.find(s=>s.id===id);s.ui.fields=[['아이디','전체 너비 / 중복확인'],['비밀번호','필수'],['비밀번호 확인','필수'],['이름','필수'],['소속','선택'],['전화번호','선택'],['휴대전화번호','선택'],['이메일','전체 너비 / 선택'],['사용여부','전체 너비 / 사용·미사용']];}})();
+
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-19');s.ui.fields=[...s.ui.fields.filter(f=>f[0]==='아이디'),...s.ui.fields.filter(f=>f[0]!=='아이디')];})();
