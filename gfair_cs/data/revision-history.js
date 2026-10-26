@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-17","version":"v1.21","fromVersion":"v1.20","date":"2026.10.26","accountName":"mjha","summary":"기본정보 목록·수정 버튼을 담당자 정보 위로 이동","changes":["기본정보 바로 아래 우측에 목록·수정 버튼 배치.","담당자 정보 영역과 작업 범위를 구분하고 관련 Description 위치 설명 일치."]},
 {"screenId":"BAS-17","version":"v1.20","fromVersion":"v1.19","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 기본정보 수정 입력 및 하단 수정 버튼 추가","changes":["행사연도·구분·기업명·사용여부만 편집 가능한 입력 폼으로 전환.","하단 목록·수정 버튼과 필수값·기업명 중복·행사 배정 중복 검증 추가.","담당자 정보·발급 계정은 조회 상태로 유지하고 관련 Description·알럿 정의 일치."]},
 {"screenId":"BAS-15","version":"v2.28","fromVersion":"v2.27","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 목록 헤더를 기업명·대표담당자로 변경","changes":["목록의 기업을 기업명, 담당자 이름을 대표담당자로 변경.","검색 셀렉트 옵션과 기업명 상세 이동·표시 데이터는 유지하고 관련 Description 일치."]},
 {"screenId":"BAS-15","version":"v2.27","fromVersion":"v2.26","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},

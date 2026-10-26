@@ -50,3 +50,5 @@
 #app #content [data-admin-id-result]{flex-basis:100%;font-size:12px;line-height:1.5}
 
 #app #content .admin-password-guide{display:block;flex-basis:100%;width:100%;font-size:12px;line-height:1.5;color:#666}
+
+#content .operator-basic-actions{display:flex;justify-content:flex-end;gap:8px;margin:24px 0 32px;flex-wrap:wrap;}

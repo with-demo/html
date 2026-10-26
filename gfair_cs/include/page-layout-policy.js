@@ -25,6 +25,11 @@
     else{panel.before(h);if(header!==panel)header.remove();}
    }
   });
+  if(route==='BAS-17'&&main.querySelector('.operator-basic-actions')){
+   main.querySelectorAll(':scope>.page-bottom-actions').forEach(bar=>bar.remove());
+   main.querySelectorAll('.head-actions a.btn[href="#BAS-15"]').forEach(link=>link.remove());
+   return;
+  }
   let bar=main.querySelector(':scope>.page-bottom-actions');
   const candidates=[...new Set([...main.querySelectorAll(sources+(!detail?',.panelhead':''))].flatMap(group=>[...group.querySelectorAll('button,a.btn,input[type=submit]')]))].filter(b=>!b.closest('.tablewrap,table,dialog,.page-bottom-actions')&&!b.matches('[hidden]'));
   const footer='.formfooter,.notice-bottom-actions,.group-detail-actions,.group-access-footer,form>.actions';
