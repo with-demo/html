@@ -24,3 +24,5 @@
 #app #content .buyer-password button{min-width:56px}
 @media(max-width:1200px){#app #content .overseas-buyer-basic{grid-template-columns:130px minmax(0,1fr)}#app #content .overseas-buyer-basic .buyer-memo{grid-column:2}}
 @media(max-width:600px){#app #content .overseas-buyer-basic{grid-template-columns:100px minmax(0,1fr)}#app #content .overseas-buyer-basic>dt,#app #content .overseas-buyer-basic>dd{padding:10px}#app #content .buyer-phone input,#app #content .buyer-phone select{width:calc((100% - 34px)/3);padding:7px 4px}#app #content .buyer-email{flex-wrap:wrap}#app #content .buyer-email select{flex-basis:100%;width:100%}}
+
+#app #content .event-participant-detail .event-field-wide-label{grid-column:1}#app #content .event-participant-detail .event-field-wide{grid-column:2/-1;white-space:pre-wrap}#app #content .event-detail-qr{border:0;background:transparent;padding:0;cursor:pointer}#app #content .event-detail-qr img{width:96px;height:96px;display:block}

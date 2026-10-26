@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.10","fromVersion":"v1.9","date":"2026.10.26","accountName":"with","summary":"검색 범위 및 선택 엑셀·선택/전체 QR 다운로드 정리","changes":["이름/기업·언어 셀렉트 제공, 선택 엑셀 및 선택·전체 PNG ZIP 다운로드.","QR 팝업 문구 제거, 공통 파일명 규칙 및 Description·안내 동기화."]},
+{"screenId":"EVT-02","version":"v1.10","fromVersion":"v1.9","date":"2026.10.26","accountName":"with","summary":"검색 범위 및 선택 엑셀·선택/전체 QR 다운로드 정리","changes":["이름/기업·언어 셀렉트 제공, 선택 엑셀 및 선택·전체 PNG ZIP 다운로드.","QR 팝업 문구 제거, 공통 파일명 규칙 및 Description·안내 동기화."]},
+{"screenId":"EVT-03","version":"v0.7","fromVersion":"v0.6","date":"2026.10.26","accountName":"with","summary":"ID·QR 추가 및 기본정보 행 배치 정리","changes":["ID·QR 및 이름·생년월일을 쌍으로 표시, 나머지 항목과 메모는 전체 행으로 표시.","통역원 초청기관 제거, 관련 Description 동기화."]},
+{"screenId":"EVT-04","version":"v0.7","fromVersion":"v0.6","date":"2026.10.26","accountName":"with","summary":"ID·QR 추가 및 기본정보 행 배치 정리","changes":["ID·QR 및 이름·생년월일을 쌍으로 표시, 나머지 항목과 메모는 전체 행으로 표시.","통역원 초청기관 제거, 관련 Description 동기화."]},
 {"screenId":"PRE-04","version":"v0.22","fromVersion":"v0.21","date":"2026.10.26","accountName":"mjha","summary":"통역원 매칭 목록·검색 팝업 구성","changes":["해외바이어·통역원·국가·매칭여부 검색과 기본 미지정 목록 구성.","언어·이름 검색으로 통역원 매칭 및 변경, 상세 이동 제거.","목록·팝업 Description·안내 동기화."]},
 {"screenId":"PRE-04-p32","version":"v0.1","date":"2026.10.26","accountName":"mjha","summary":"통역원 매칭·변경 검색 팝업","changes":["언어별·통역원명 필터 및 이름·언어·매칭 버튼 제공."]},
 {"screenId":"BAS-17","version":"v1.29","fromVersion":"v1.28","date":"2026.10.26","accountName":"mjha","summary":"담당자 검색필터를 COM-07과 동일하게 구성","changes":["사용여부 전체/사용/미사용과 키워드 범위 전체/이름/아이디/소속 제공.","키워드 검색·Enter·초기화 동작 및 Description 동기화.","대표담당자 첫 행 고정 유지."]},

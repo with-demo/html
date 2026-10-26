@@ -1,0 +1,726 @@
+[
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-search-select",
+    "spec": {
+      "format": "description-spec-v1",
+      "type": "셀렉트",
+      "defaultValue": "바이어명",
+      "required": "N",
+      "planningNote": "",
+      "item": "검색필터 - 키워드검색 셀렉",
+      "detail": "- 옵션: 바이어명, 소속기업\n- 기본값: 바이어명\n- 선택한 항목만 키워드 검색 범위로 적용\n- 셀렉트 변경만으로 목록을 다시 조회하지 않고 검색 시 적용"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] select[name=\"scope\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-keyword",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "검색필터 - 키워드검색 인풋",
+      "type": "인풋",
+      "defaultValue": "빈 값",
+      "required": "N",
+      "detail": "- 선택한 바이어명 또는 소속기업 항목에 검색어를 포함하는 대상 조회\n- 앞뒤 공백을 제거하고 대소문자 구분 없이 검색\n- 빈 값 또는 공백만 입력하면 키워드 조건 미적용\n- 입력 중에는 목록을 변경하지 않고 검색 실행 시 적용",
+      "planningNote": "",
+      "placeholder": "검색어를 입력해 주세요"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] input[name=\"query\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-actions",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 검색·Enter 시 선택한 검색 범위와 키워드를 적용하고 목록 첫 페이지로 이동\n- 초기화 시 검색 범위를 바이어명으로 복원하고 키워드·체크 선택을 비운 뒤 현재 행사 참가 대상 전체 조회\n- 검색 시 체크 선택 해제\n- 결과가 없으면 참가 대상이 없거나 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] .search-actions",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-f1",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 체크박스",
+      "type": "체크박스",
+      "defaultValue": "미선택",
+      "required": "N",
+      "detail": "- 행별 대상을 선택·해제\n- 헤더 체크박스는 현재 페이지 대상만 전체 선택·해제\n- 선택 엑셀 다운로드·선택 QR다운로드에 공통 적용\n- 전체 QR다운로드는 체크 선택과 무관\n- 검색·초기화·메뉴 이동·행사 변경 시 선택 해제",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-all]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-scope",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 엑셀 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 회원의 기본정보를 XLSX 파일로 다운로드\n- 항목: 바이어명·생년월일·소속기업·초청기관·연락처·이메일·ID·메모\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 코드·비밀번호·이력 제외\n- 파일명: G-FAIR_행사연도_국내바이어_선택_YYYYMMDD.xlsx (다운로드일은 한국 시간)",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr-download",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 QR다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 회원의 QR을 PNG 이미지로 생성하여 ZIP으로 다운로드\n- 사전 QR발급 클릭 없이 다운로드 가능\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- ZIP: G-FAIR_행사연도_국내바이어_선택QR코드.zip\n- 내부 이미지: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD)\n- 동일 이름·생년월일 중복 시 ID를 덧붙이고 미등록 생년월일은 생년월일미등록으로 구분",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr-bulk",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[전체 QR다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 현재 행사 참가 대상 전체의 QR PNG를 ZIP으로 다운로드\n- 검색 조건·체크 선택·페이지와 무관하게 전체 참가 대상 포함\n- 별도 발급 확인 팝업 없이 다운로드 시 QR 생성\n- 대상이 없으면 다운로드할 대상이 없습니다. 안내\n- ZIP: G-FAIR_행사연도_국내바이어_전체QR코드.zip\n- 내부 이미지: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD) (중복 시 ID 추가)",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-all\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - [QR발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 해당 행의 참가자 QR을 PNG 이미지로 생성하여 팝업에 표시\n- 팝업 본문에는 QR 이미지와 QR 다운로드 버튼만 표시\n- 검토용 안내 문구 및 이름·ID 조합 문구 표시하지 않음\n- 개별 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD)\n- X·Esc는 팝업 닫기",
+      "planningNote": "",
+      "destination": "EVT-01-p08 QR 발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"qr\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-overview",
+    "spec": {
+      "format": "screen-overview-v1",
+      "overview": "기본정보관리의 현재 행사 참가 국내바이어를 검색 범위와 키워드로 조회합니다. 선택 회원정보 엑셀 및 선택·전체 QR PNG ZIP 다운로드를 제공하며 코드·비밀번호·과거 이력은 제외합니다."
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-03",
+    "id": "event-evt-01-20261026-basic-detail",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가자 기본정보",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- 기본정보관리에서 저장한 정보를 읽기 전용으로 조회\n- 순서: ID·QR코드 / 바이어명·생년월일 / 소속기업 / 초청기관 / 연락처 / 이메일 / 메모\n- ID·QR코드 및 이름·생년월일은 한 행에 두 쌍, 나머지는 각 항목을 전체 너비 한 행으로 표시\n- 좁은 화면에서는 한 쌍씩 표시\n- ID는 현재 행사 발급 ID, QR 클릭 시 QR 발급 팝업 표시\n- 고유코드·비밀번호·행사참가이력 제외\n- 대상이 없거나 참가 조건에서 제외되면 목록에서 다시 선택하도록 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content .event-participant-detail",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-search-select",
+    "spec": {
+      "format": "description-spec-v1",
+      "type": "셀렉트",
+      "defaultValue": "통역원명",
+      "required": "N",
+      "planningNote": "",
+      "item": "검색필터 - 키워드검색 셀렉",
+      "detail": "- 옵션: 통역원명, 언어\n- 기본값: 통역원명\n- 선택한 항목만 키워드 검색 범위로 적용\n- 셀렉트 변경만으로 목록을 다시 조회하지 않고 검색 시 적용"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] select[name=\"scope\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-keyword",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "검색필터 - 키워드검색 인풋",
+      "type": "인풋",
+      "defaultValue": "빈 값",
+      "required": "N",
+      "detail": "- 선택한 통역원명 또는 언어 항목에 검색어를 포함하는 대상 조회\n- 앞뒤 공백을 제거하고 대소문자 구분 없이 검색\n- 빈 값 또는 공백만 입력하면 키워드 조건 미적용\n- 입력 중에는 목록을 변경하지 않고 검색 실행 시 적용",
+      "planningNote": "",
+      "placeholder": "검색어를 입력해 주세요"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] input[name=\"query\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-actions",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 검색·Enter 시 선택한 검색 범위와 키워드를 적용하고 목록 첫 페이지로 이동\n- 초기화 시 검색 범위를 통역원명으로 복원하고 키워드·체크 선택을 비운 뒤 현재 행사 참가 대상 전체 조회\n- 검색 시 체크 선택 해제\n- 결과가 없으면 참가 대상이 없거나 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] .search-actions",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-f1",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 체크박스",
+      "type": "체크박스",
+      "defaultValue": "미선택",
+      "required": "N",
+      "detail": "- 행별 대상을 선택·해제\n- 헤더 체크박스는 현재 페이지 대상만 전체 선택·해제\n- 선택 엑셀 다운로드·선택 QR다운로드에 공통 적용\n- 전체 QR다운로드는 체크 선택과 무관\n- 검색·초기화·메뉴 이동·행사 변경 시 선택 해제",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-all]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-scope",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 엑셀 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 회원의 기본정보를 XLSX 파일로 다운로드\n- 항목: 통역원명·생년월일·언어·연락처·이메일·ID·메모\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 코드·비밀번호·이력 제외\n- 파일명: G-FAIR_행사연도_통역원_선택_YYYYMMDD.xlsx (다운로드일은 한국 시간)",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr-download",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 QR다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 회원의 QR을 PNG 이미지로 생성하여 ZIP으로 다운로드\n- 사전 QR발급 클릭 없이 다운로드 가능\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- ZIP: G-FAIR_행사연도_통역원_선택QR코드.zip\n- 내부 이미지: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD)\n- 동일 이름·생년월일 중복 시 ID를 덧붙이고 미등록 생년월일은 생년월일미등록으로 구분",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr-bulk",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[전체 QR다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 현재 행사 참가 대상 전체의 QR PNG를 ZIP으로 다운로드\n- 검색 조건·체크 선택·페이지와 무관하게 전체 참가 대상 포함\n- 별도 발급 확인 팝업 없이 다운로드 시 QR 생성\n- 대상이 없으면 다운로드할 대상이 없습니다. 안내\n- ZIP: G-FAIR_행사연도_통역원_전체QR코드.zip\n- 내부 이미지: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD) (중복 시 ID 추가)",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-all\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - [QR발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 해당 행의 참가자 QR을 PNG 이미지로 생성하여 팝업에 표시\n- 팝업 본문에는 QR 이미지와 QR 다운로드 버튼만 표시\n- 검토용 안내 문구 및 이름·ID 조합 문구 표시하지 않음\n- 개별 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD)\n- X·Esc는 팝업 닫기",
+      "planningNote": "",
+      "destination": "EVT-02-p08 QR 발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"qr\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-overview",
+    "spec": {
+      "format": "screen-overview-v1",
+      "overview": "기본정보관리의 현재 행사 참가 통역원를 검색 범위와 키워드로 조회합니다. 선택 회원정보 엑셀 및 선택·전체 QR PNG ZIP 다운로드를 제공하며 코드·비밀번호·과거 이력은 제외합니다."
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-04",
+    "id": "event-evt-02-20261026-basic-detail",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가자 기본정보",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- 기본정보관리에서 저장한 정보를 읽기 전용으로 조회\n- 순서: ID·QR코드 / 통역원명·생년월일 / 언어 / 연락처 / 이메일 / 메모\n- ID·QR코드 및 이름·생년월일은 한 행에 두 쌍, 나머지는 각 항목을 전체 너비 한 행으로 표시\n- 좁은 화면에서는 한 쌍씩 표시\n- ID는 현재 행사 발급 ID, QR 클릭 시 QR 발급 팝업 표시\n- 통역원 초청기관 미노출\n- 고유코드·비밀번호·행사참가이력 제외\n- 대상이 없거나 참가 조건에서 제외되면 목록에서 다시 선택하도록 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content .event-participant-detail",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-selection-required",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-selection-required",
+      "title": "선택 대상 없음",
+      "type": "인라인 안내",
+      "trigger": "선택 없이 선택 엑셀 다운로드·선택 QR다운로드 클릭",
+      "message": "대상을 선택해 주세요.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-selected-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-selected-export",
+      "title": "선택 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "선택 목록 XLSX 생성 성공",
+      "message": "선택한 {N}명의 정보를 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-qr-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-qr-export",
+      "title": "선택 QR 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "선택한 회원의 QR PNG ZIP 생성 성공",
+      "message": "선택한 {N}명의 QR을 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-qr-all-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-qr-all-export",
+      "title": "전체 QR 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "현재 행사 참가 대상 전체 QR PNG ZIP 생성 성공",
+      "message": "전체 {N}명의 QR을 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-empty-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-empty-export",
+      "title": "다운로드 대상 없음",
+      "type": "인라인 안내",
+      "trigger": "현재 행사 참가 대상이 없는 상태에서 전체 QR다운로드 클릭",
+      "message": "다운로드할 대상이 없습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-message-evt-01-event-export-error",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-export-error",
+      "title": "다운로드 실패",
+      "type": "인라인 안내",
+      "trigger": "QR 또는 엑셀 생성 중 오류 발생",
+      "message": "{오류 메시지} / 다운로드에 실패했습니다.",
+      "confirm": "현재 화면 유지, 오류를 확인하고 재시도",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-selection-required",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-selection-required",
+      "title": "선택 대상 없음",
+      "type": "인라인 안내",
+      "trigger": "선택 없이 선택 엑셀 다운로드·선택 QR다운로드 클릭",
+      "message": "대상을 선택해 주세요.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-selected-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-selected-export",
+      "title": "선택 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "선택 목록 XLSX 생성 성공",
+      "message": "선택한 {N}명의 정보를 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-qr-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-qr-export",
+      "title": "선택 QR 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "선택한 회원의 QR PNG ZIP 생성 성공",
+      "message": "선택한 {N}명의 QR을 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-qr-all-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-qr-all-export",
+      "title": "전체 QR 다운로드 완료",
+      "type": "인라인 안내",
+      "trigger": "현재 행사 참가 대상 전체 QR PNG ZIP 생성 성공",
+      "message": "전체 {N}명의 QR을 다운로드했습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-empty-export",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-empty-export",
+      "title": "다운로드 대상 없음",
+      "type": "인라인 안내",
+      "trigger": "현재 행사 참가 대상이 없는 상태에서 전체 QR다운로드 클릭",
+      "message": "다운로드할 대상이 없습니다.",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-message-evt-02-event-export-error",
+    "spec": {
+      "format": "screen-message-v1",
+      "key": "event-export-error",
+      "title": "다운로드 실패",
+      "type": "인라인 안내",
+      "trigger": "QR 또는 엑셀 생성 중 오류 발생",
+      "message": "{오류 메시지} / 다운로드에 실패했습니다.",
+      "confirm": "현재 화면 유지, 오류를 확인하고 재시도",
+      "cancel": "",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "source": "include/event-participants.js"
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-01-p08",
+    "id": "event-qr-popup-evt-01-p08-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "QR 이미지 및 [QR 다운로드] 버튼",
+      "type": "기타",
+      "defaultValue": "QR 표시",
+      "required": "N",
+      "detail": "- 선택한 회원의 현재 행사 발급 ID를 기준으로 QR PNG 이미지 표시\n- 본문은 QR 이미지와 QR 다운로드 버튼으로 구성\n- 이름·ID 조합 문구 및 검토용 안내 문구 미노출\n- 다운로드 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD, 미등록이면 생년월일미등록)\n- X·Esc로 닫고 이전 화면 유지",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content .event-qr-image",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02-p08",
+    "id": "event-qr-popup-evt-02-p08-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "QR 이미지 및 [QR 다운로드] 버튼",
+      "type": "기타",
+      "defaultValue": "QR 표시",
+      "required": "N",
+      "detail": "- 선택한 회원의 현재 행사 발급 ID를 기준으로 QR PNG 이미지 표시\n- 본문은 QR 이미지와 QR 다운로드 버튼으로 구성\n- 이름·ID 조합 문구 및 검토용 안내 문구 미노출\n- 다운로드 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD, 미등록이면 생년월일미등록)\n- X·Esc로 닫고 이전 화면 유지",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content .event-qr-image",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-03-p08",
+    "id": "event-qr-popup-evt-03-p08-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "QR 이미지 및 [QR 다운로드] 버튼",
+      "type": "기타",
+      "defaultValue": "QR 표시",
+      "required": "N",
+      "detail": "- 선택한 회원의 현재 행사 발급 ID를 기준으로 QR PNG 이미지 표시\n- 본문은 QR 이미지와 QR 다운로드 버튼으로 구성\n- 이름·ID 조합 문구 및 검토용 안내 문구 미노출\n- 다운로드 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD, 미등록이면 생년월일미등록)\n- X·Esc로 닫고 이전 화면 유지",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content .event-qr-image",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-04-p08",
+    "id": "event-qr-popup-evt-04-p08-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "QR 이미지 및 [QR 다운로드] 버튼",
+      "type": "기타",
+      "defaultValue": "QR 표시",
+      "required": "N",
+      "detail": "- 선택한 회원의 현재 행사 발급 ID를 기준으로 QR PNG 이미지 표시\n- 본문은 QR 이미지와 QR 다운로드 버튼으로 구성\n- 이름·ID 조합 문구 및 검토용 안내 문구 미노출\n- 다운로드 파일명: 이름_생년월일_qr코드.png (생년월일 YYYYMMDD, 미등록이면 생년월일미등록)\n- X·Esc로 닫고 이전 화면 유지",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content .event-qr-image",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  }
+]
