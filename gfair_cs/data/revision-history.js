@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.11","fromVersion":"v1.10","date":"2026.10.26","accountName":"mjha","summary":"영역 설명 번호 건너뜀 및 선택 위치 불안정 수정","changes":["영역 설명 번호에서 화면 개요·알럿/컨펌을 제외하여 다음 설명이 06으로 이어지도록 수정.","새 영역 선택을 본문으로 제한하고 등록 폼 입력 name 기반 연결로 핀 위치 안정화.","기존 설명 ID·내용·댓글·핀 위치 데이터 유지."]},
 {"screenId":"BAS-18","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"mjha","summary":"등록정보 상세를 아이디·비밀번호, 이름·소속 순서로 변경","changes":["기존 관리자 상세의 첫 행을 아이디/비밀번호, 다음 행을 이름/소속으로 변경.","등록 화면과 담당자 화면, 기존 검증·저장 동작은 유지.","사용자 요청에 따라 Description 수정 제외."]},
 {"screenId":"BAS-19","version":"v1.10","fromVersion":"v1.9","date":"2026.10.26","accountName":"mjha","summary":"등록 아이디 단독 행을 최상단으로 이동","changes":["아이디 → 행사연도/구분 → 기업명/담당자 이름 → 담당자 연락처/이메일 → 사용여부 순서로 변경.","중복확인·비밀번호 자동 생성 및 기존 입력 검증 유지."]},
 {"screenId":"BAS-18","version":"v1.23","fromVersion":"v1.22","date":"2026.10.26","accountName":"mjha","summary":"등록 폼 아이디 우선 순서 및 단독 행 배치 변경","changes":["아이디 단독 행 → 비밀번호/비밀번호 확인 → 이름/소속 → 전화번호/휴대전화번호 → 이메일 단독 행 → 사용여부 단독 행 순서로 변경.","기존 중복확인·입력 검증·등록 동작 및 상세 수정 배치 유지.","관련 Description 위치 설명 동기화."]},
