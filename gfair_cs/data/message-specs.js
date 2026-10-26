@@ -1,4 +1,20 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"jnl05-role-register-result","title":"수출상담일지 사용자별 등록 결과","trigger":"JNL-05 필수 입력 완료 후 통역원 승인 요청 또는 관리자·수출상담 운영용역사 등록 실행","message":"검토용 일지를 승인 요청 상태로 등록했습니다. / 검토용 일지를 승인 완료 상태로 등록했습니다.","confirm":"통역원은 승인 요청, 두 검수 사용자는 승인 완료로 저장한 뒤 JNL-14 이동","cancel":"","screens":["JNL-05"],"type":"토스트","source":"js/app.js"},
+{"key":"admin-password-rule","screens":["BAS-18"],"type":"인라인 오류","title":"등록 비밀번호 규칙","trigger":"등록 시 비밀번호가 영문·숫자 포함 8~20자리 규칙을 충족하지 않거나 공백 포함","message":"영문·숫자 포함 8~20자리로 입력해 주세요. (특수문자 사용 가능, 공백 불가)","confirm":"등록 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"jnl16-review-result","title":"수출상담일지 상세 승인·반려 처리","trigger":"관리자 또는 수출상담 운영용역사가 승인 요청 일지의 승인·반려 클릭","message":"검토용 일지를 승인 완료 상태로 변경했습니다. / 검토용 일지를 반려 상태로 변경했습니다.","confirm":"목록 상태와 상세 처리 이력을 갱신하고 승인·반려 버튼을 비활성화. 반려 시 처리 이력별 사유를 보관하고 검수 의견 입력란을 비움","cancel":"","screens":["JNL-16"],"type":"토스트","source":"js/app.js"},
+{"key":"jnl16-reject-reason-required","title":"상세 반려 사유 필수","trigger":"반려 사유가 비어 있거나 공백만 입력한 상태에서 반려 클릭","message":"반려 사유를 입력해 주세요.","confirm":"입력란에 포커스하고 상태를 유지","cancel":"","screens":["JNL-16"],"type":"토스트","source":"js/app.js"},
+{"key":"jnl14-bulk-request","title":"상담일지 일괄 승인 요청","trigger":"통역원이 작성 중·반려 일지를 선택하고 승인 요청 클릭","message":"선택한 N건을 승인 요청하시겠습니까?","confirm":"승인 요청: 선택 일지를 승인 요청 상태로 변경하고 목록 갱신","cancel":"취소·닫기: 상태 변경 없이 목록 유지","screens":["JNL-14"],"type":"컨펌","source":"include/jnl14-bulk.js"},
+{"key":"jnl14-bulk-approve","title":"상담일지 일괄 승인","trigger":"관리자 또는 수출상담 운영용역사가 승인 요청 상태의 일지를 선택하고 승인 클릭","message":"선택한 N건을 승인하시겠습니까?","confirm":"승인: 선택 일지를 승인 완료 상태로 변경하고 목록 갱신","cancel":"취소·닫기: 상태 변경 없이 목록 유지","screens":["JNL-14"],"type":"컨펌","source":"include/jnl14-bulk.js"},
+{"key":"jnl14-bulk-reject","title":"공통 사유로 상담일지 일괄 반려","trigger":"관리자 또는 수출상담 운영용역사가 승인 요청 상태의 일지를 선택하고 반려 클릭","message":"선택한 N건을 반려하시겠습니까? / 공통 반려 사유 필수 입력","confirm":"반려: 동일한 사유를 선택한 모든 일지에 저장하고 반려 상태로 변경","cancel":"취소·닫기: 입력한 사유와 상태 변경을 적용하지 않음","screens":["JNL-14"],"type":"컨펌","source":"include/jnl14-bulk.js"},
+{"key":"jnl14-reject-empty","title":"공통 반려 사유 미입력","trigger":"공통 반려 사유가 없거나 공백만 입력하고 반려 실행","message":"반려 사유를 입력해 주세요.","confirm":"팝업 유지·사유 입력란에 포커스, 일지 상태 유지","cancel":"","screens":["JNL-14"],"type":"인라인 오류","source":"include/jnl14-bulk.js"},
+{"key":"admin-id-check-empty","title":"중복확인 아이디 미입력","trigger":"등록 아이디가 빈 값인 상태에서 중복확인 클릭","message":"아이디를 입력해 주세요.","confirm":"아이디 입력란 옆 안내 / 입력 화면 유지","screens":["BAS-18"],"type":"인라인 오류","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-id-check-result","title":"아이디 중복확인 결과","trigger":"등록 화면에서 중복확인 클릭","message":"이미 등록된 아이디입니다. / 사용 가능한 아이디입니다.","confirm":"아이디 입력란 옆 결과 표시 / 사용 가능하면 확인 상태 저장","screens":["BAS-18"],"type":"인라인 오류","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-id-unchecked","title":"아이디 중복확인 필요","trigger":"중복확인 미완료 또는 확인 후 아이디 변경 상태로 등록 클릭","message":"아이디 중복확인을 진행해 주세요.","confirm":"등록 중단 후 현재 입력 화면 유지","screens":["BAS-18"],"type":"인라인 오류","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-password-confirm","title":"비밀번호 확인 불일치","trigger":"등록 시 비밀번호와 비밀번호 확인 값 불일치","message":"비밀번호와 비밀번호 확인이 일치하지 않습니다.","confirm":"등록 중단 후 현재 입력 화면 유지","screens":["BAS-18"],"type":"인라인 오류","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-contact-phone","title":"관리자 전화번호 형식","message":"전화번호는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.","trigger":"전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-contact-mobile","title":"관리자 휴대전화번호 형식","message":"휴대전화번호를 4자리씩 입력해 주세요.","trigger":"휴대전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-contact-email","title":"관리자 이메일 형식","message":"이메일 아이디와 도메인을 올바르게 입력해 주세요.","trigger":"이메일 아이디·도메인 일부 누락 또는 이메일 형식 오류","screens":["BAS-18"],"type":"인라인 오류","confirm":"저장 중단 후 현재 입력 화면 유지","cancel":"","source":"include/management-ui.js"},
+{"key":"admin-password-required","screens":["BAS-18"],"type":"인라인 오류","trigger":"등록 시 비밀번호가 공백이거나 상세에서 공백만 입력하여 비밀번호 변경 시도","message":"비밀번호를 입력해 주세요. / 비밀번호는 공백만 입력할 수 없습니다.","confirm":"저장을 중단하고 현재 입력 화면 유지","cancel":"해당 없음","source":"include/management-ui.js","title":"관리자 비밀번호 입력 확인"},
   {
     "key": "notice-cancel",
     "screens": [
@@ -368,12 +384,11 @@ window.GFAIR_MESSAGE_SPECS=[
   {
     "key": "admin-required",
     "screens": [
-      "BAS-16",
       "BAS-18"
     ],
     "type": "인라인 오류",
-    "trigger": "관리자 ID 또는 이름이 공백",
-    "message": "ID와 이름은 공백만 입력할 수 없습니다.",
+    "trigger": "아이디 또는 이름이 공백",
+    "message": "아이디와 이름은 공백만 입력할 수 없습니다.",
     "confirm": "저장 중단",
     "cancel": "",
     "source": "include/management-ui.js",
@@ -382,16 +397,15 @@ window.GFAIR_MESSAGE_SPECS=[
   {
     "key": "admin-duplicate",
     "screens": [
-      "BAS-16",
       "BAS-18"
     ],
     "type": "인라인 오류",
-    "trigger": "관리자 ID가 기존 계정과 중복",
-    "message": "이미 등록된 관리자 ID입니다.",
+    "trigger": "아이디가 기존 계정과 중복",
+    "message": "이미 등록된 아이디입니다.",
     "confirm": "등록·수정 중단",
     "cancel": "",
     "source": "include/management-ui.js",
-    "title": "관리자 ID 중복"
+    "title": "아이디 중복"
   },
   {
     "key": "survey-delete",

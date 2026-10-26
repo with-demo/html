@@ -68,7 +68,8 @@
   const pagination=document.createElement('nav');pagination.className='admin-list-pagination';pagination.setAttribute('aria-label',title+' 페이지');panel.append(pagination);
   let page=1;
   function paint(){
-   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>collator.compare(b.key,a.key)||a.i-b.i);
+   const prioritize=route==='JNL-14'&&['admin','exportOperator'].includes(root.querySelector('#role-picker')?.value),statusIndex=headers.indexOf('처리 상태'),priority=row=>prioritize&&clean(row.cells[statusIndex]||row)==='승인 요청'?0:1;
+   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
    observer.disconnect();
@@ -79,6 +80,7 @@
    const start=Math.max(1,Math.min(page-2,pages-4)),numbers=[...new Set([1,...Array.from({length:Math.min(5,pages)},(_,i)=>start+i),pages])].sort((a,b)=>a-b);
    numbers.forEach((n,i)=>{if(i&&n>numbers[i-1]+1){const gap=document.createElement('span');gap.textContent='…';pagination.append(gap);}add(String(n),n,false,n===page);});
    add('>',page+1,page===pages);add('>>',pages,page===pages);
+   if(route==='JNL-14')document.dispatchEvent(new Event('jnl14-page-change'));
    observer.observe(root,{childList:true,subtree:true});
   }
   size.addEventListener('change',()=>{page=1;paint();});paint();
@@ -88,7 +90,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const admin=root.querySelector('#role-picker')?.value==='admin';main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;
