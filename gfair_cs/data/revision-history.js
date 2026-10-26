@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.31","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 반려 2회 상태 확인용 일지 추가","changes":["GF-000488 다온리빙·박서연 일지를 현재 반려 상태로 추가.","최신 반려 사유와 이전 반려 사유 보기를 상세에서 확인 가능."]},
+{"screenId":"JNL-16","version":"v0.22","date":"2026.10.26","accountName":"shyuwith","summary":"최근·이전 반려 사유를 확인할 수 있는 2회 반려 사례 추가","changes":["JNL-14의 GF-000488에서 최근 사유와 접힌 이전 반려 사유 보기 제공.","기존 재승인 요청 사례 GF-000487 유지."]},
 {"screenId":"JNL-16","version":"v0.21","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 전체 처리 이력을 최근·이전 반려 사유로 간소화","changes":["통역원 반려 상세에서는 최근 사유를 바로 표시하고 전체 처리 이력은 미표시.","여러 번 반려된 경우에만 이전 반려 사유 보기를 접힌 상태로 제공.","관리자·수출상담 운영용역사의 전체 처리 이력 유지 및 Description 반영."]},
 {"screenId":"JNL-16","version":"v0.20","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 반려 상세에 처리 이력·최근 반려 사유 표시","changes":["반려 상태에서 처리 이력의 당시 반려 사유를 아코디언으로 조회.","검수 의견에는 가장 최근 반려 사유를 읽기 전용 표시. 원문 편집·승인 요청·목록·저장 유지.","07·08번 Description에 통역원 반려 상태 표시·조회 권한 추가."]},
 {"screenId":"JNL-16","version":"v0.19","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 작성 중·반려 상세에 개별 승인 요청 추가","changes":["좌측 하단 승인 요청으로 기존 일지를 승인 요청 상태로 제출·재제출.","우측 저장은 현재 상태를 유지하고 수정 내용만 보관. 승인 요청·승인 완료 상세에서는 요청 버튼 미표시.","목록 체크박스 일괄 승인 요청 동작 유지 및 관련 Description 추가."]},
