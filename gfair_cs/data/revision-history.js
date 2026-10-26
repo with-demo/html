@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.16","date":"2026.10.26","accountName":"shyuwith","summary":"처리 이력 Description 유형을 아코디언 UI로 정정","changes":["Description 유형 선택에 아코디언 UI를 추가하고 07번 처리 이력 유형 정정.","기존 설명과 처리 이력 데이터 유지."]},
 {"screenId":"JNL-16","version":"v0.15","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 처리 이력 날짜·시간 표시 통일","changes":["처리자 · YYYY-MM-DD HH:mm 형식으로 기존 예시·반려 2회 예시와 신규 처리 이력 통일.","관리자·수출상담 운영용역사 처리 이력에 적용하며 통역원 상세 구성 유지."]},
 {"screenId":"BAS-19","version":"v1.5","fromVersion":"v1.4","date":"2026.10.26","accountName":"mjha","summary":"담당자 이메일을 관리자 등록과 동일한 분할 입력 폼으로 변경","changes":["이메일 아이디·도메인 입력 및 도메인 선택/직접입력 제공.","선택 입력을 유지하고 입력 시 이메일 형식 검증 적용."]},
 {"screenId":"JNL-14","version":"v0.30","date":"2026.10.26","accountName":"shyuwith","summary":"반려 2회 후 재제출 예시 일지 추가","changes":["GF-000487: 다온리빙·박서연 일지를 승인 요청 상태로 추가.","상세에서 서로 다른 반려 2건과 각각의 사유를 펼쳐볼 수 있도록 예시 이력 구성."]},

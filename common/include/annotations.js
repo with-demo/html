@@ -26,7 +26,7 @@
  }
  async function change(op,body,control){if(control)control.disabled=true;try{const result=await store.mutate(op,body);message('서버에 저장했습니다.');return result;}catch(error){message(error.message);if(error.message.includes('다른 사용자가'))store.refresh();return null;}finally{if(control)control.disabled=false;}}
  const specLabels={item:'항목',type:'유형',defaultValue:'기본값',placeholder:'플레이스홀더',options:'선택 옵션',required:'필수여부',detail:'기능상세',inputFormat:'입력 형식',inputLimit:'입력 제한',visibility:'표시 조건',enabled:'활성·비활성 조건',permission:'사용 권한',trigger:'실행 시점',result:'처리 결과',destination:'이동·연결 대상',validation:'유효성 검사',errorMessage:'오류 안내 문구',loading:'로딩·중복 실행 처리',emptyState:'데이터 없음 처리',dataSource:'데이터 출처',policy:'기본정책',exception:'예외사항',planningNote:'기획비고'};
- const typeDefaults={'버튼':['해당 없음','활성','비활성'],'단일셀렉트박스':['미선택','전체','첫 번째 항목'],'다중셀렉트박스':['미선택','전체 선택'],'인풋':['빈 값','0'],'텍스트':['해당 없음','빈 값'],'텍스트에리어':['빈 값'],'체크박스':['미선택','선택'],'라디오박스':['미선택','첫 번째 항목'],'날짜':['미선택','오늘'],'파일첨부':['미첨부'],'기타':['해당 없음']};
+ const typeDefaults={'버튼':['해당 없음','활성','비활성'],'단일셀렉트박스':['미선택','전체','첫 번째 항목'],'다중셀렉트박스':['미선택','전체 선택'],'인풋':['빈 값','0'],'텍스트':['해당 없음','빈 값'],'텍스트에리어':['빈 값'],'체크박스':['미선택','선택'],'라디오박스':['미선택','첫 번째 항목'],'날짜':['미선택','오늘'],'파일첨부':['미첨부'],'아코디언 UI':['모두 접힘','모두 펼침'],'기타':['해당 없음']};
  const requiredSpecKeys=['item','type','defaultValue','required','detail'];
  function descriptionBullets(text){
   return text.split(/\n+|\.\s+(?=[가-힣\[])/).map(line=>line.trim().replace(/^[-•]\s*/, '').replace(/\.$/,'').replace(/한다$/,'')).filter(Boolean).map(line=>'- '+line).join('\n');
