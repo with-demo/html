@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-27",
+  "filename": "이름_아이디_qr코드.png",
+  "idSource": "현재 행사 발급 ID",
+  "targets": [
+    {
+      "screen": "EVT-01",
+      "id": "refresh-20261026-evt-01-selected-qr"
+    },
+    {
+      "screen": "EVT-01",
+      "id": "refresh-20261026-evt-01-all-qr"
+    },
+    {
+      "screen": "EVT-02",
+      "id": "refresh-20261026-evt-02-selected-qr"
+    },
+    {
+      "screen": "EVT-02",
+      "id": "refresh-20261026-evt-02-all-qr"
+    },
+    {
+      "screen": "EVT-03",
+      "id": "refresh-20261026-evt-03-qr-download"
+    },
+    {
+      "screen": "EVT-04",
+      "id": "refresh-20261026-evt-04-qr-download"
+    },
+    {
+      "screen": "EVT-01-p08",
+      "id": "refresh-20261026-evt-01-p08-qr-download"
+    },
+    {
+      "screen": "EVT-02-p08",
+      "id": "refresh-20261026-evt-02-p08-qr-download"
+    },
+    {
+      "screen": "EVT-03-p08",
+      "id": "refresh-20261026-evt-03-p08-qr-download"
+    },
+    {
+      "screen": "EVT-04-p08",
+      "id": "refresh-20261026-evt-04-p08-qr-download"
+    },
+    {
+      "screen": "PRE-01",
+      "id": "download-rule-20261026-pre-01-qr"
+    }
+  ]
+}
