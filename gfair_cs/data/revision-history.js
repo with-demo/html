@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.47","date":"2026.10.26","accountName":"shyuwith","summary":"Description 항목 분류 및 사용자별 현재 위치 통일","changes":["기존 기능·정책·기획비고를 유지하며 데이터 출처·실행 시점·처리 결과·검증 항목으로 분류.","관리자·통역원·수출상담 운영용역사 경로를 홈 > 상담일지 > 수출상담일지 > 상담일지 등록으로 통일."]},
+{"screenId":"JNL-16","version":"v0.18","date":"2026.10.26","accountName":"shyuwith","summary":"Description 항목 분류와 처리 이력 정렬·현재 위치 통일","changes":["기존 설명·기획비고를 보존하고 사용자별 편집 조건·검증·데이터·동작을 해당 항목으로 분류.","처리 이력의 처리자·일시 열 시작선을 맞추고 화살표 공간을 별도 확보.","세 사용자 경로를 홈 > 상담일지 > 수출상담일지 > 수출상담일지 상세로 통일."]},
 {"screenId":"JNL-16","version":"v0.17","date":"2026.10.26","accountName":"shyuwith","summary":"07번 처리 이력 Description을 항목별로 재분류","changes":["기능상세는 조회 기능과 구성만 유지하고 표시·활성 조건·권한·실행 시점·처리 결과를 분리.","이력 데이터 출처·반려 사유 보관·날짜 형식·예외사항을 해당 항목에 작성. 화면 동작 유지."]},
 {"screenId":"JNL-16","version":"v0.16","date":"2026.10.26","accountName":"shyuwith","summary":"처리 이력 Description 유형을 아코디언 UI로 정정","changes":["Description 유형 선택에 아코디언 UI를 추가하고 07번 처리 이력 유형 정정.","기존 설명과 처리 이력 데이터 유지."]},
 {"screenId":"JNL-16","version":"v0.15","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 처리 이력 날짜·시간 표시 통일","changes":["처리자 · YYYY-MM-DD HH:mm 형식으로 기존 예시·반려 2회 예시와 신규 처리 이력 통일.","관리자·수출상담 운영용역사 처리 이력에 적용하며 통역원 상세 구성 유지."]},

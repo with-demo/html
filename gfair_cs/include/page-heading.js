@@ -11,6 +11,15 @@
    let breadcrumb=head.querySelector('.breadcrumb');
    if(!breadcrumb){breadcrumb=document.createElement('nav');breadcrumb.className='breadcrumb';title.parentElement.insertBefore(breadcrumb,title);}
    breadcrumb.setAttribute('aria-label','현재 위치');
+   const journalCrumb=route==='JNL-05'?'상담일지 등록':route==='JNL-16'?'수출상담일지 상세':'';
+   if(journalCrumb&&breadcrumb.textContent.replace(/\s/g,'')!==('홈›상담일지›수출상담일지›'+journalCrumb).replace(/\s/g,'')){
+    breadcrumb.replaceChildren();
+    [['홈','#MON-01'],['상담일지'],['수출상담일지','#JNL-14'],[journalCrumb]].forEach(([text,href],index)=>{
+     if(index){const separator=document.createElement('span');separator.textContent='›';separator.setAttribute('aria-hidden','true');breadcrumb.append(separator);}
+     const item=document.createElement(href?'a':'span');if(href)item.href=href;item.textContent=text;breadcrumb.append(item);
+    });
+    breadcrumb.lastElementChild.setAttribute('aria-current','page');
+   }
    if(!breadcrumb.children.length){
     const category=breadcrumb.textContent.trim()||group?.name||'';breadcrumb.replaceChildren();
     const home=document.createElement('a');home.href='#MON-01';home.textContent='홈';breadcrumb.append(home);
