@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.5","fromVersion":"v1.4","date":"2026.10.26","accountName":"mjha","summary":"담당자 이메일을 관리자 등록과 동일한 분할 입력 폼으로 변경","changes":["이메일 아이디·도메인 입력 및 도메인 선택/직접입력 제공.","선택 입력을 유지하고 입력 시 이메일 형식 검증 적용."]},
 {"screenId":"BAS-19","version":"v1.4","fromVersion":"v1.3","date":"2026.10.26","accountName":"mjha","summary":"관리자 등록 폼과 동일한 행 구성으로 운영용역사 등록 항목 정리","changes":["행사관리 연도 선택, 구매·수출 구분, 기업명, 담당자 이름·연락처·이메일, 사용여부 순으로 구성.","필수 항목 별표 및 검증 적용, 연락처 분할 입력과 선택 이메일 제공."]},
 {"screenId":"JNL-16","version":"v0.12","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 반려 사유 초기화 및 이력별 조회","changes":["관리자·수출상담 운영용역사 검수 의견에 과거 사유를 자동 입력하지 않고 반려 성공 후 빈 값 유지.","각 반려 이력에 당시 사유를 보관하고 반려 처리 상태 클릭 시 하단 펼침 조회.","07·08·11 Description과 승인·반려 결과 정의 반영. 통역원 상세 화면 유지."]},
 {"screenId":"JNL-14-p05","version":"v0.1","date":"2026.10.26","accountName":"shyuwith","summary":"일괄 반려 팝업 확인 문구·사유 입력 배치 정리","changes":["선택한 N건 반려 확인 문구를 본문 상단에 배치.","공통 반려 사유는 엑셀 업로드 팝업과 동일한 필드 라벨 스타일로 표시하며 상단 문구와 24px 간격 적용.","기존 플레이스홀더와 반려 사유 필수 검증·취소·반려 동작 유지."]},
