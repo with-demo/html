@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.9","fromVersion":"v1.8","date":"2026.10.26","accountName":"mjha","summary":"등록 기본정보를 요청한 5행 순서로 재배치","changes":["행사연도/구분 → 아이디 단독 행 → 기업명/담당자 이름 → 담당자 연락처/이메일 → 사용여부 단독 행 순서로 배치.","아이디·사용여부를 전체 너비로 표시하고 중복확인·비밀번호 자동 생성 동작 유지.","관련 Description 위치 설명 일치."]},
 {"screenId":"BAS-19","version":"v1.8","fromVersion":"v1.7","date":"2026.10.26","accountName":"mjha","summary":"최고관리자용 계정 ID 입력·중복확인 및 비밀번호 자동 생성","changes":["필수 ID 입력란과 중복확인 버튼 추가, 입력 변경 시 확인 결과 초기화.","관리자·대표담당자·하위 담당자 계정 ID와 중복 검사하고 등록 시 재검증.","비밀번호 입력 없이 자동 생성하며 BAS-17 대표담당자 발급ID·PW에 연결.","Description·알럿 정의 동기화."]},
 {"screenId":"BAS-17","version":"v1.23","fromVersion":"v1.22","date":"2026.10.26","accountName":"mjha","summary":"대표연락처·대표이메일 수정 및 사용여부 마지막 단독 행 배치","changes":["대표연락처·대표이메일을 선택 입력으로 수정하고 저장 후 아래 대표담당자 행과 동기화.","기업명·대표담당자명, 대표연락처·대표이메일을 각각 한 행에 배치하고 사용여부는 마지막 전체 너비 행으로 변경.","연락처·이메일 형식 검증과 Description·알럿 정의 동기화."]},
 {"screenId":"BAS-17","version":"v1.22","fromVersion":"v1.21","date":"2026.10.26","accountName":"mjha","summary":"기본정보에 대표담당자명·대표연락처·대표이메일 조회 항목 추가","changes":["아래 담당자 정보 대표 행과 같은 대표담당자 정보를 기본정보에도 중복 표시.","대표 정보는 조회 전용이며 기존 기본정보 4개 항목만 수정 가능.","대표이메일은 짝이 없는 마지막 항목으로 전체 너비 표시하고 Description 동기화."]},
