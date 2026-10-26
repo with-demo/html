@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.12","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 반려 사유 초기화 및 이력별 조회","changes":["관리자·수출상담 운영용역사 검수 의견에 과거 사유를 자동 입력하지 않고 반려 성공 후 빈 값 유지.","각 반려 이력에 당시 사유를 보관하고 반려 처리 상태 클릭 시 하단 펼침 조회.","07·08·11 Description과 승인·반려 결과 정의 반영. 통역원 상세 화면 유지."]},
 {"screenId":"JNL-14-p05","version":"v0.1","date":"2026.10.26","accountName":"shyuwith","summary":"일괄 반려 팝업 확인 문구·사유 입력 배치 정리","changes":["선택한 N건 반려 확인 문구를 본문 상단에 배치.","공통 반려 사유는 엑셀 업로드 팝업과 동일한 필드 라벨 스타일로 표시하며 상단 문구와 24px 간격 적용.","기존 플레이스홀더와 반려 사유 필수 검증·취소·반려 동작 유지."]},
 {"screenId":"JNL-05","version":"v0.46","date":"2026.10.23","accountName":"shyuwith","summary":"사용자별 승인 요청·등록 버튼 Description 분리","changes":["08번은 통역원 승인 요청, 09번은 관리자·수출상담 운영용역사 등록 버튼으로 분리.","등록 즉시 승인 완료 처리와 검증·표시 조건·처리 결과를 각각 작성하고 해당 버튼에만 번호 연결."]},
 {"screenId":"BAS-15","version":"v2.25","date":"2026.10.23","accountName":"mjha","summary":"담당자·대표자·관리자 예시를 자연스러운 가상 인명으로 변경","changes":["담당자 A 등의 임시 이름을 김도현·박지훈 등 가상 인명으로 변경.","같은 인물의 목록·상세·검색·일지 예시 이름 연결 유지."]},

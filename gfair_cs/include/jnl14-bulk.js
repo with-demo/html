@@ -27,7 +27,7 @@
   const request=action==='jnl14-request-confirm',reject=action==='jnl14-reject-confirm';if(request?c.role!=='interpreter':!reviewer(c.role))return c.toast('처리 권한이 없습니다.');
   const reason=document.getElementById('jnl14-reject-reason')?.value.trim()||'';if(reject&&!reason){document.getElementById('jnl14-reject-error').textContent='반려 사유를 입력해 주세요.';document.getElementById('jnl14-reject-reason').focus();return;}
   const rows=c.rows.filter(j=>pending.includes(j.id)&&eligible(j,c.role));if(rows.length!==pending.length||!rows.length)return c.toast('처리 상태가 변경되었습니다. 목록을 다시 확인해 주세요.');
-  const state=request?'승인 요청':reject?'반려':'승인 완료';for(const j of rows){j.status=state;if(reject)j.reason=reason;else if(request){j.reason='';j.time=new Date().toLocaleString('sv-SE').slice(0,16);}j.history=j.history||[];j.history.unshift([state,(c.role==='admin'?'관리자':c.role==='exportOperator'?'수출상담 운영용역사':'통역원')+' · '+new Date().toLocaleTimeString('ko-KR')]);}
+  const state=request?'승인 요청':reject?'반려':'승인 완료';for(const j of rows){j.status=state;if(reject)j.reason=reason;else if(request){j.reason='';j.time=new Date().toLocaleString('sv-SE').slice(0,16);}j.history=j.history||[];j.history.unshift([state,(c.role==='admin'?'관리자':c.role==='exportOperator'?'수출상담 운영용역사':'통역원')+' · '+new Date().toLocaleTimeString('ko-KR'),reject?reason:'']);}
   document.getElementById('dialog').close();c.render();c.toast(rows.length+'건을 '+state+' 상태로 변경했습니다.');
  });
 })();
