@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.22","fromVersion":"v0.21","date":"2026.10.26","accountName":"mjha","summary":"통역원 매칭 목록·검색 팝업 구성","changes":["해외바이어·통역원·국가·매칭여부 검색과 기본 미지정 목록 구성.","언어·이름 검색으로 통역원 매칭 및 변경, 상세 이동 제거.","목록·팝업 Description·안내 동기화."]},
+{"screenId":"PRE-04-p32","version":"v0.1","date":"2026.10.26","accountName":"mjha","summary":"통역원 매칭·변경 검색 팝업","changes":["언어별·통역원명 필터 및 이름·언어·매칭 버튼 제공."]},
 {"screenId":"BAS-17","version":"v1.29","fromVersion":"v1.28","date":"2026.10.26","accountName":"mjha","summary":"담당자 검색필터를 COM-07과 동일하게 구성","changes":["사용여부 전체/사용/미사용과 키워드 범위 전체/이름/아이디/소속 제공.","키워드 검색·Enter·초기화 동작 및 Description 동기화.","대표담당자 첫 행 고정 유지."]},
 {"screenId":"BAS-06","version":"v0.28","fromVersion":"v0.27","summary":"PW 보기 설명 06번 핀 위치 복원","changes":["여러 연도에 중복 매칭되던 핀을 첫 행 PW 보기 버튼 옆으로 연결."],"date":"2026.10.26","accountName":"mjha"},
 {"screenId":"COM-07-p01","version":"v0.1","summary":"엑셀 일괄 업로드 안내·첨부 문구 정리","changes":["상단 바이어 정보 작성 안내와 XLSX 파일 1개·용량 제한 없음 표시.","예시 계정·실제 권한 안내 문구 제거."],"date":"2026.10.26","accountName":"mjha"},

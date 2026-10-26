@@ -1,0 +1,323 @@
+[
+  {
+    "screen": "PRE-04",
+    "id": "filter-draft-20261022-pre-04-f0",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "해외바이어 검색",
+      "type": "다중셀렉트박스",
+      "defaultValue": "미선택",
+      "options": "현재 행사연도 참가 이력이 있는 해외바이어",
+      "required": "N",
+      "detail": "- 여러 항목 선택 시 선택한 값 중 하나라도 일치하는 대상을 조회\n- 미선택 시 해당 조건을 적용하지 않음\n- 다른 검색 조건과 AND 조건으로 결합\n- 선택창 내부 검색은 선택 대상을 찾는 용도이며 실제 목록 조회는 검색 실행 시 적용",
+      "placeholder": "",
+      "inputFormat": "",
+      "inputLimit": "",
+      "visibility": "",
+      "enabled": "",
+      "permission": "",
+      "trigger": "",
+      "result": "",
+      "destination": "",
+      "validation": "",
+      "errorMessage": "",
+      "loading": "",
+      "emptyState": "",
+      "dataSource": "BAS-03 해외바이어 기본정보",
+      "policy": "- 선택 항목은 중복 적용하지 않음",
+      "exception": ""
+    },
+    "anchor": {
+      "selector": "#content [data-pre04-search] .field:has([name=\"preBuyers\"])",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "filter-draft-20261022-pre-04-f1",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "통역원 검색",
+      "type": "다중셀렉트박스",
+      "defaultValue": "미선택",
+      "options": "현재 행사 참가 통역원",
+      "required": "N",
+      "detail": "- 여러 항목 선택 시 선택한 값 중 하나라도 일치하는 대상을 조회\n- 미선택 시 해당 조건을 적용하지 않음\n- 다른 검색 조건과 AND 조건으로 결합\n- 선택창 내부 검색은 선택 대상을 찾는 용도이며 실제 목록 조회는 검색 실행 시 적용",
+      "placeholder": "",
+      "inputFormat": "",
+      "inputLimit": "",
+      "visibility": "",
+      "enabled": "",
+      "permission": "",
+      "trigger": "",
+      "result": "",
+      "destination": "",
+      "validation": "",
+      "errorMessage": "",
+      "loading": "",
+      "emptyState": "",
+      "dataSource": "BAS-07 통역원 기본정보",
+      "policy": "- 선택 항목은 중복 적용하지 않음",
+      "exception": ""
+    },
+    "anchor": {
+      "selector": "#content [data-pre04-search] .field:has([name=\"preInterpreters\"])",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "filter-draft-20261022-pre-04-f2",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "국가 검색",
+      "type": "다중셀렉트박스",
+      "defaultValue": "미선택",
+      "options": "전달받은 국가 기준코드 전체 250개",
+      "required": "N",
+      "detail": "- 여러 항목 선택 시 선택한 값 중 하나라도 일치하는 대상을 조회\n- 미선택 시 해당 조건을 적용하지 않음\n- 다른 검색 조건과 AND 조건으로 결합\n- 선택창 내부 검색은 선택 대상을 찾는 용도이며 실제 목록 조회는 검색 실행 시 적용",
+      "placeholder": "",
+      "inputFormat": "",
+      "inputLimit": "",
+      "visibility": "",
+      "enabled": "",
+      "permission": "",
+      "trigger": "",
+      "result": "",
+      "destination": "",
+      "validation": "",
+      "errorMessage": "",
+      "loading": "",
+      "emptyState": "",
+      "dataSource": "전달받은 국가코드 자료",
+      "policy": "- 선택 항목은 중복 적용하지 않음",
+      "exception": ""
+    },
+    "anchor": {
+      "selector": "#content [data-pre04-search] .field:has([name=\"preCountries\"])",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "filter-draft-20261022-pre-04-f3",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "매칭여부 검색",
+      "type": "라디오박스",
+      "defaultValue": "전체",
+      "options": "전체 / 매칭 / 미매칭",
+      "required": "N",
+      "detail": "- 목록에 저장된 매칭 여부와 일치하는 대상만 조회\n- 전체 선택 시 매칭 여부 조건을 적용하지 않음\n- 다른 검색 조건과 AND 조건으로 결합\n- 매칭 여부 선택만으로 목록을 변경하지 않으며 검색 실행 시 적용",
+      "placeholder": "",
+      "inputFormat": "",
+      "inputLimit": "",
+      "visibility": "",
+      "enabled": "",
+      "permission": "",
+      "trigger": "",
+      "result": "",
+      "destination": "",
+      "validation": "",
+      "errorMessage": "",
+      "loading": "",
+      "emptyState": "",
+      "dataSource": "",
+      "policy": "- 상태값은 검색필터·목록·상세 화면에서 동일한 코드와 명칭을 사용",
+      "exception": ""
+    },
+    "anchor": {
+      "selector": "#content [data-pre04-search] .search-condition:has([name=\"status\"])",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "filter-draft-20261022-pre-04-actions",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 검색 실행 시 해외바이어·통역원·국가·매칭여부를 AND 조건으로 함께 적용하고 목록 첫 페이지로 이동\n- 각 다중선택 조건 안에서는 선택값을 OR 조건으로 적용\n- 초기화 시 다중선택 해제 및 매칭여부 전체로 복원\n- 선택창 내부 검색은 옵션 탐색용이며 목록은 검색 실행 시 변경\n- 결과가 없으면 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-pre04-search] .search-actions",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "pre04-matching-list-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "통역원 매칭 목록",
+      "type": "기타",
+      "defaultValue": "미지정 / 미매칭",
+      "required": "N",
+      "detail": "- 해외 바이어명·국가·담당 통역원·언어·매칭상태 순서로 표시\n- 최초 목록은 담당 통역원 미지정, 언어 —, 미매칭 상태\n- 매칭된 대상은 담당 통역원명과 해당 통역원의 등록 언어 표시\n- 이름·행 클릭으로 상세페이지 이동하지 않음",
+      "planningNote": "",
+      "dataSource": "BAS-03 해외바이어 기본정보의 현재 행사연도 참가 이력"
+    },
+    "anchor": {
+      "selector": "#content .pre04-list table",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04",
+    "id": "pre04-matching-open-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[통역원 매칭], [통역원 변경] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 미지정 행은 통역원 매칭, 매칭된 행은 통역원 변경 버튼 표시\n- 선택한 해외바이어를 대상으로 같은 통역원 검색 팝업 표시\n- 변경 팝업에서 현재 담당 통역원을 표시하며 같은 통역원의 매칭 버튼은 비활성\n- 별도 상세페이지는 제공하지 않음",
+      "planningNote": "",
+      "destination": "PRE-04-p32 통역원 매칭·변경 팝업"
+    },
+    "anchor": {
+      "selector": "#content .pre04-list tbody tr:first-child [data-pre04-action=\"open\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04-p32",
+    "id": "pre04-popup-language-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "언어별 검색",
+      "type": "단일셀렉트박스",
+      "defaultValue": "전체",
+      "required": "N",
+      "detail": "- 전달받은 언어 기준코드 전체 104개와 전체 옵션 제공\n- 선택한 언어가 통역원의 등록 언어 중 하나와 일치하면 조회\n- 통역원명 조건과 AND 적용\n- 검색 실행 시 적용, 초기화 시 전체로 복원",
+      "planningNote": "",
+      "options": "전체 / 전달받은 언어 기준코드 전체 104개"
+    },
+    "anchor": {
+      "selector": "#dialog-content [name=\"language\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04-p32",
+    "id": "pre04-popup-name-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "통역원명 검색",
+      "type": "인풋",
+      "defaultValue": "빈 값",
+      "required": "N",
+      "detail": "- 통역원명 포함 검색, 앞뒤 공백 제거\n- 빈 값은 이름 조건을 적용하지 않음\n- 언어별 조건과 AND 적용, 입력 중에는 목록을 변경하지 않음",
+      "planningNote": "",
+      "placeholder": "통역원명을 입력해 주세요"
+    },
+    "anchor": {
+      "selector": "#dialog-content [name=\"query\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04-p32",
+    "id": "pre04-popup-search-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 언어별·통역원명 조건을 함께 적용\n- 통역원명 입력 후 Enter도 동일하게 검색\n- 초기화 시 언어별 전체·통역원명 빈 값으로 복원\n- 결과가 없으면 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content [data-pre04-popup-search] .popup-action-row",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04-p32",
+    "id": "pre04-popup-list-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "통역원 목록",
+      "type": "기타",
+      "defaultValue": "현재 행사 참가 통역원",
+      "required": "N",
+      "detail": "- 현재 행사에 참가로 표시된 통역원만 조회\n- 이름·언어·매칭 버튼 표시\n- 변경 모드에서는 현재 담당 통역원에 현재 담당 라벨 표시\n- X·Esc로 닫으면 매칭을 변경하지 않음",
+      "planningNote": "",
+      "dataSource": "BAS-07 참가 여부 및 참가연도"
+    },
+    "anchor": {
+      "selector": "#dialog-content .pre04-candidates",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "PRE-04-p32",
+    "id": "pre04-popup-match-20261026",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[매칭] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 클릭한 행의 통역원을 선택한 해외바이어의 담당자로 지정하고 팝업 닫기\n- 기존 매칭이 있으면 선택한 통역원으로 교체\n- 목록의 담당 통역원·언어·매칭상태 버튼을 즉시 반영\n- 현재 담당 통역원의 매칭 버튼은 비활성\n- 다른 바이어의 매칭에는 영향을 주지 않음\n- 현재 탭 검토용 데이터에만 반영",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#dialog-content .pre04-candidates tbody tr:first-child [data-pre04-action=\"match\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  }
+]

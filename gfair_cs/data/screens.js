@@ -3533,3 +3533,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.staffFilters=['사용유무','이름 검색'];})();
 
 (()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['EVT-01','EVT-02']){const s=all.find(s=>s.id===id),buyer=id==='EVT-01';s.summary='기본정보관리에서 참가로 표시되고 현재 행사 참가연도가 일치하는 대상만 조회합니다.';s.ui={...s.ui,filters:['키워드 검색'],columns:[buyer?'바이어명':'통역원명',buyer?'소속기업':'언어','발급 ID','QR발급'],actions:[]};}for(const id of ['EVT-03','EVT-04']){const s=all.find(s=>s.id===id);s.summary='기본정보관리에서 저장한 참가자 기본정보를 조회합니다.';s.ui={...s.ui,actions:[]};}})();
+
+(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),s=all.find(s=>s.id==='PRE-04');s.title='통역원 매칭';s.summary='해외 바이어별 담당 통역원을 매칭하거나 변경합니다.';s.ui={...s.ui,filters:['해외바이어','통역원','국가','매칭여부'],columns:['해외 바이어명','국가','담당 통역원','언어','매칭상태'],actions:[],rows:(s.ui.rows||[]).map(r=>[r[0],r[1],'미지정','—','미매칭'])};const p=all.find(s=>s.id==='PRE-05');p.summary='통역원 매칭 검색 팝업으로 연결합니다. 별도 상세페이지는 제공하지 않습니다.';})();

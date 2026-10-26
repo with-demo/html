@@ -1,4 +1,7 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"pre04-match-saved","title":"통역원 매칭 완료","type":"인라인 안내","trigger":"팝업 매칭 버튼 클릭 후 대상 검증 성공","message":"통역원 매칭을 반영했습니다. 현재 탭에만 반영됩니다.","confirm":"팝업 닫고 담당 통역원·언어·매칭상태 갱신","cancel":"","screens":["PRE-04","PRE-04-p32"],"source":"include/pre04-matching.js"},
+{"key":"pre04-match-missing","title":"매칭 대상 없음","type":"인라인 안내","trigger":"팝업 열기 시 대상 바이어가 없음","message":"매칭할 해외 바이어가 없습니다.","confirm":"매칭 중단 후 현재 화면 유지","cancel":"","screens":["PRE-04","PRE-04-p32"],"source":"include/pre04-matching.js"},
+{"key":"pre04-match-stale","title":"매칭 대상 재확인","type":"인라인 안내","trigger":"매칭 직전 행사 또는 바이어·통역원 참가 대상 변경","message":"매칭 대상을 다시 선택해 주세요.","confirm":"매칭 중단 후 다시 검색","cancel":"","screens":["PRE-04","PRE-04-p32"],"source":"include/pre04-matching.js"},
 {"key":"event-selection-required","title":"선택 대상 없음","type":"인라인 안내","trigger":"선택 없이 선택 다운로드·QR선택 다운로드·QR일괄발급 클릭","message":"대상을 선택해 주세요.","confirm":"현재 화면 유지","cancel":"","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},
 {"key":"event-qr-required","title":"QR 미발급","type":"인라인 안내","trigger":"QR선택 다운로드 대상에 미발급 QR 포함","message":"선택한 대상의 QR을 먼저 발급해 주세요.","confirm":"다운로드 중단 후 현재 화면 유지","cancel":"","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},
 {"key":"event-qr-bulk-confirm","title":"QR 일괄발급","type":"컨펌","trigger":"대상을 선택하고 QR일괄발급 클릭","message":"선택한 {N}명의 QR을 발급하시겠습니까?","confirm":"발급: 기발급 QR 유지·미발급 대상 발급 후 팝업 닫기","cancel":"취소·X·Esc: 변경 없이 닫기","screens":["EVT-01","EVT-02"],"source":"include/event-participants.js"},

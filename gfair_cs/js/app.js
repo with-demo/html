@@ -547,4 +547,8 @@ const splitJournalRender=render;render=function(){const alias={'JNL-BUY':'JNL-13
 const eventParticipants=window.GFAIR_EVENT_PARTICIPANTS.create({source:id=>({screen:map.get(id),rows:rows(map.get(id))}),year:()=>event,role:()=>role,nav,toast,refresh:()=>render(),modal});
 const eventParticipantList=list;list=function(s){return ['EVT-01','EVT-02'].includes(s.id)?head(s)+eventParticipants.list(s.id):eventParticipantList(s)};
 const eventParticipantForm=form;form=function(s){return ['EVT-03','EVT-04'].includes(s.id)?head({...s,ui:{...s.ui,actions:[]}})+eventParticipants.detail(s.id):eventParticipantForm(s)};
+
+const pre04Matching=window.GFAIR_PRE04_MATCHING.create({source:id=>rows(map.get(id)),year:()=>event,role:()=>role,refresh:()=>render(),toast,modal,multi(label,key,options,selected){const previous=filter[key];filter[key]=selected;const html=matchingMulti(label,key,options);if(previous===undefined)delete filter[key];else filter[key]=previous;return html;},matched(buyer,person){const rr=rows(map.get('PRE-04')),old=rr.find(r=>r[0]===buyer.name);if(old){old[2]=person.name;old[3]=person.languages.join(', ');old[5]='매칭';}else rr.push([buyer.name,buyer.country,person.name,person.languages.join(', '),'기간 미등록','매칭','미확인']);lists['PRE-04']=rr;}});
+const pre04BaseList=list;list=function(s){return s.id==='PRE-04'?head(s)+pre04Matching.list():pre04BaseList(s)};
+openPreMatching=()=>pre04Matching.openFirst();delete target['PRE-04'];
 render();})();
