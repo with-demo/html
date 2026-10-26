@@ -1,0 +1,731 @@
+{
+  "date": "2026-10-26",
+  "versions": {
+    "COM-07": "v1.15",
+    "COM-08": "v0.6"
+  },
+  "updates": [
+    {
+      "screen": "COM-07",
+      "id": "filter-draft-20261022-com-07-year",
+      "patch": {
+        "item": "사용여부 검색",
+        "type": "라디오박스",
+        "defaultValue": "전체",
+        "options": "전체 / 사용 / 미사용",
+        "detail": "- BAS-16과 동일한 사용여부 필터\n- 검색 시 키워드와 함께 적용\n- 별도 행사연도 필터는 제거하고 상단 현재 행사 기준으로 조회",
+        "trigger": "검색 선택 시",
+        "exception": "",
+        "policy": "- 본인 회사의 현재 행사 배정 담당자만 조회"
+      },
+      "selector": "#content [data-management-form=\"admin-search\"]",
+      "notice": "[변경사항 있음 · 2026-10-26] 행사연도 필터를 BAS-16과 같은 사용여부·키워드 검색 구성으로 변경."
+    },
+    {
+      "screen": "COM-07",
+      "id": "2d7ce0af-cdaa-43f7-aea8-70de5c630e15",
+      "patch": {
+        "overview": "BAS-16과 같은 항목으로 본인 회사의 현재 행사 담당자를 조회하고 BAS-18과 같은 등록 폼을 통해 등록·수정합니다.\n엑셀 다운로드·일괄업로드는 COM-07에 제공합니다.\n본 화면의 담당자 등록 비밀번호는 BAS-18과 동일하게 직접 입력하며 자동 발급 대상과 구분합니다."
+      },
+      "notice": "[변경사항 있음 · 2026-10-26] 담당자 목록·등록을 관리자 화면 항목과 동일하게 변경하고 COM-07 엑셀 기능 추가."
+    }
+  ],
+  "newNotes": [
+    {
+      "screen": "COM-07",
+      "id": "com07-people-list-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 목록",
+        "type": "영역",
+        "detail": "- BAS-16과 동일한 이름·아이디·소속·사용여부·등록일 열 표시\n- 사용여부: 전체/사용/미사용, 키워드 범위: 전체/이름/아이디/소속\n- 상단 현재 행사와 본인 회사에 배정된 담당자만 조회\n- 이름 선택 시 COM-08에서 해당 담당자 수정, 등록 선택 시 COM-08 신규 등록",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .people-list",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "com07-people-keyword-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "키워드 검색",
+        "type": "영역",
+        "detail": "- 범위: 전체/이름/아이디/소속\n- 검색 선택 시 사용여부와 키워드를 함께 적용\n- 초기화 시 전체/빈 검색어로 복원",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content [data-management-form=\"admin-search\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "com07-people-excel-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "엑셀 다운로드 / 엑셀 일괄업로드",
+        "type": "영역",
+        "detail": "- 현재 사용여부·키워드 검색 결과 전체를 이름·아이디·소속·사용여부·등록일 XLSX로 다운로드\n- 엑셀 일괄업로드 선택 시 COM-07-p01 팝업 표시\n- 등록 양식 다운로드 → 파일 선택 → 파일 검증 → 정상 미리보기 → 일괄등록\n- 양식 열: 이름/아이디/소속/비밀번호/비밀번호 확인/전화번호/휴대전화번호/이메일/사용여부\n- 필수값·기존/파일 내 아이디 중복·비밀번호 규칙/확인·연락처·이메일·사용여부 검증\n- 오류가 한 건이라도 있으면 전체 등록 중단, 오류 수정 후 재검증\n- 확인 직전 아이디 중복 재검사, 다른 회사나 행사에는 등록하지 않음\n- 비밀번호는 목록 다운로드와 검증 미리보기에 표시하지 않음\n- 팝업 닫기/화면 이동 시 검증 결과 폐기, 현재 탭에만 반영",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .people-list .panelhead",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "com08-person-editor-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 기본정보",
+        "type": "영역",
+        "detail": "- BAS-18 등록 화면과 동일한 이름·아이디·소속·비밀번호·비밀번호 확인·전화번호·휴대전화번호·이메일·사용여부 항목과 배치 사용\n- 이름·아이디·비밀번호·비밀번호 확인은 신규 등록 시 필수\n- 아이디 중복확인 후 등록, 확인 후 아이디 변경 시 재확인\n- 비밀번호는 영문·숫자 포함 8~20자리, 확인값 일치\n- 전화번호·휴대전화번호·이메일은 선택 입력, 입력 시 형식 검증\n- 기존 담당자는 아이디 조회 전용, 비밀번호는 변경 시에만 입력\n- 소속은 선택 입력, 내부 회사·행사 연결은 현재 로그인 운영용역사와 현재 행사에 고정\n- 목록은 COM-07 이동, 등록/저장은 현재 탭 예시 데이터에 반영",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "com08-person-id-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "아이디 / 중복확인",
+        "type": "영역",
+        "detail": "- 신규 등록 시 아이디 필수, 기존 관리자·대표/하위 담당자 ID와 중복 검사\n- 빈 값/중복은 실패, 사용 가능 시 확인 완료\n- 아이디 변경 시 확인 결과 초기화\n- 기존 담당자 수정 시 아이디는 변경 불가",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#content .field:has([name=\"id\"])",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07-p01",
+      "id": "com07-people-import-popup-20261026",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "담당자 엑셀 일괄업로드",
+        "type": "영역",
+        "detail": "- 현재 사용여부·키워드 검색 결과 전체를 이름·아이디·소속·사용여부·등록일 XLSX로 다운로드\n- 엑셀 일괄업로드 선택 시 COM-07-p01 팝업 표시\n- 등록 양식 다운로드 → 파일 선택 → 파일 검증 → 정상 미리보기 → 일괄등록\n- 양식 열: 이름/아이디/소속/비밀번호/비밀번호 확인/전화번호/휴대전화번호/이메일/사용여부\n- 필수값·기존/파일 내 아이디 중복·비밀번호 규칙/확인·연락처·이메일·사용여부 검증\n- 오류가 한 건이라도 있으면 전체 등록 중단, 오류 수정 후 재검증\n- 확인 직전 아이디 중복 재검사, 다른 회사나 행사에는 등록하지 않음\n- 비밀번호는 목록 다운로드와 검증 미리보기에 표시하지 않음\n- 팝업 닫기/화면 이동 시 검증 결과 폐기, 현재 탭에만 반영",
+        "planningNote": ""
+      },
+      "anchor": {
+        "selector": "#dialog-content",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "people-msg-people-exported-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "people-exported",
+        "title": "엑셀 다운로드",
+        "message": "현재 검색 결과를 엑셀로 다운로드했습니다.",
+        "trigger": "COM-07에서 엑셀 다운로드 완료",
+        "type": "인라인 안내",
+        "confirm": "현재 화면 유지",
+        "cancel": "",
+        "screens": [
+          "COM-07"
+        ],
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content .people-list",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "people-msg-people-import-invalid-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "people-import-invalid",
+        "title": "엑셀 오류",
+        "message": "오류를 수정한 뒤 다시 검증해 주세요. 아직 등록하지 않았습니다.",
+        "trigger": "파일 검증 시 오류 행이 한 건 이상",
+        "type": "인라인 안내",
+        "confirm": "현재 화면 유지",
+        "cancel": "",
+        "screens": [
+          "COM-07"
+        ],
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content .people-list",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "people-msg-people-import-stale-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "people-import-stale",
+        "title": "아이디 재검증",
+        "message": "아이디 목록이 변경되었습니다. 파일을 다시 검증해 주세요.",
+        "trigger": "일괄등록 직전 기존 아이디와 중복 발생",
+        "type": "인라인 안내",
+        "confirm": "현재 화면 유지",
+        "cancel": "",
+        "screens": [
+          "COM-07"
+        ],
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content .people-list",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-07",
+      "id": "people-msg-people-import-created-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "people-import-created",
+        "title": "일괄등록 완료",
+        "message": "{N}명의 담당자를 등록했습니다. 현재 탭에만 반영됩니다.",
+        "trigger": "파일 검증과 최종 ID 중복 검사 통과 후 일괄등록",
+        "type": "인라인 안내",
+        "confirm": "팝업 닫고 목록 갱신",
+        "cancel": "",
+        "screens": [
+          "COM-07"
+        ],
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content .people-list",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-person-saved-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "person-saved",
+        "title": "담당자 저장 완료",
+        "message": "담당자 정보를 저장했습니다. 현재 탭에만 반영됩니다.",
+        "trigger": "COM-08 등록·수정 성공",
+        "type": "인라인 안내",
+        "confirm": "COM-07 이동",
+        "cancel": "",
+        "screens": [
+          "COM-08"
+        ],
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-password-rule-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-password-rule",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "title": "등록 비밀번호 규칙",
+        "trigger": "등록 시 비밀번호가 영문·숫자 포함 8~20자리 규칙을 충족하지 않거나 공백 포함",
+        "message": "영문·숫자 포함 8~20자리로 입력해 주세요. (특수문자 사용 가능, 공백 불가)",
+        "confirm": "등록 중단 후 현재 입력 화면 유지",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-id-check-empty-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-id-check-empty",
+        "title": "중복확인 아이디 미입력",
+        "trigger": "등록 아이디가 빈 값인 상태에서 중복확인 클릭",
+        "message": "아이디를 입력해 주세요.",
+        "confirm": "아이디 입력란 옆 안내 / 입력 화면 유지",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-id-check-result-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-id-check-result",
+        "title": "아이디 중복확인 결과",
+        "trigger": "등록 화면에서 중복확인 클릭",
+        "message": "이미 등록된 아이디입니다. / 사용 가능한 아이디입니다.",
+        "confirm": "아이디 입력란 옆 결과 표시 / 사용 가능하면 확인 상태 저장",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-id-unchecked-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-id-unchecked",
+        "title": "아이디 중복확인 필요",
+        "trigger": "중복확인 미완료 또는 확인 후 아이디 변경 상태로 등록 클릭",
+        "message": "아이디 중복확인을 진행해 주세요.",
+        "confirm": "등록 중단 후 현재 입력 화면 유지",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-password-confirm-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-password-confirm",
+        "title": "비밀번호 확인 불일치",
+        "trigger": "등록 시 비밀번호와 비밀번호 확인 값 불일치",
+        "message": "비밀번호와 비밀번호 확인이 일치하지 않습니다.",
+        "confirm": "등록 중단 후 현재 입력 화면 유지",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-contact-phone-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-contact-phone",
+        "title": "관리자 전화번호 형식",
+        "message": "전화번호는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.",
+        "trigger": "전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "confirm": "저장 중단 후 현재 입력 화면 유지",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-contact-mobile-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-contact-mobile",
+        "title": "관리자 휴대전화번호 형식",
+        "message": "휴대전화번호를 4자리씩 입력해 주세요.",
+        "trigger": "휴대전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "confirm": "저장 중단 후 현재 입력 화면 유지",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-contact-email-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-contact-email",
+        "title": "관리자 이메일 형식",
+        "message": "이메일 아이디와 도메인을 올바르게 입력해 주세요.",
+        "trigger": "이메일 아이디·도메인 일부 누락 또는 이메일 형식 오류",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "confirm": "저장 중단 후 현재 입력 화면 유지",
+        "cancel": "",
+        "source": "include/management-ui.js"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-password-required-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-password-required",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "trigger": "등록 시 비밀번호가 공백이거나 상세에서 공백만 입력하여 비밀번호 변경 시도",
+        "message": "비밀번호를 입력해 주세요. / 비밀번호는 공백만 입력할 수 없습니다.",
+        "confirm": "저장을 중단하고 현재 입력 화면 유지",
+        "cancel": "해당 없음",
+        "source": "include/management-ui.js",
+        "title": "관리자 비밀번호 입력 확인"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-required-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-required",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "trigger": "아이디 또는 이름이 공백",
+        "message": "아이디와 이름은 공백만 입력할 수 없습니다.",
+        "confirm": "저장 중단",
+        "cancel": "",
+        "source": "include/management-ui.js",
+        "title": "관리자 필수 항목 누락"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "screen": "COM-08",
+      "id": "people-msg-com08-admin-duplicate-20261026",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "com08-admin-duplicate",
+        "screens": [
+          "COM-08"
+        ],
+        "type": "인라인 오류",
+        "trigger": "아이디가 기존 계정과 중복",
+        "message": "이미 등록된 아이디입니다.",
+        "confirm": "등록·수정 중단",
+        "cancel": "",
+        "source": "include/management-ui.js",
+        "title": "아이디 중복"
+      },
+      "anchor": {
+        "selector": "#content [data-management-form^=\"person-\"]",
+        "sample": "",
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "messages": [
+    {
+      "key": "people-exported",
+      "title": "엑셀 다운로드",
+      "message": "현재 검색 결과를 엑셀로 다운로드했습니다.",
+      "trigger": "COM-07에서 엑셀 다운로드 완료",
+      "type": "인라인 안내",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "COM-07"
+      ],
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "people-import-invalid",
+      "title": "엑셀 오류",
+      "message": "오류를 수정한 뒤 다시 검증해 주세요. 아직 등록하지 않았습니다.",
+      "trigger": "파일 검증 시 오류 행이 한 건 이상",
+      "type": "인라인 안내",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "COM-07"
+      ],
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "people-import-stale",
+      "title": "아이디 재검증",
+      "message": "아이디 목록이 변경되었습니다. 파일을 다시 검증해 주세요.",
+      "trigger": "일괄등록 직전 기존 아이디와 중복 발생",
+      "type": "인라인 안내",
+      "confirm": "현재 화면 유지",
+      "cancel": "",
+      "screens": [
+        "COM-07"
+      ],
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "people-import-created",
+      "title": "일괄등록 완료",
+      "message": "{N}명의 담당자를 등록했습니다. 현재 탭에만 반영됩니다.",
+      "trigger": "파일 검증과 최종 ID 중복 검사 통과 후 일괄등록",
+      "type": "인라인 안내",
+      "confirm": "팝업 닫고 목록 갱신",
+      "cancel": "",
+      "screens": [
+        "COM-07"
+      ],
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "person-saved",
+      "title": "담당자 저장 완료",
+      "message": "담당자 정보를 저장했습니다. 현재 탭에만 반영됩니다.",
+      "trigger": "COM-08 등록·수정 성공",
+      "type": "인라인 안내",
+      "confirm": "COM-07 이동",
+      "cancel": "",
+      "screens": [
+        "COM-08"
+      ],
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-password-rule",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "title": "등록 비밀번호 규칙",
+      "trigger": "등록 시 비밀번호가 영문·숫자 포함 8~20자리 규칙을 충족하지 않거나 공백 포함",
+      "message": "영문·숫자 포함 8~20자리로 입력해 주세요. (특수문자 사용 가능, 공백 불가)",
+      "confirm": "등록 중단 후 현재 입력 화면 유지",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-id-check-empty",
+      "title": "중복확인 아이디 미입력",
+      "trigger": "등록 아이디가 빈 값인 상태에서 중복확인 클릭",
+      "message": "아이디를 입력해 주세요.",
+      "confirm": "아이디 입력란 옆 안내 / 입력 화면 유지",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-id-check-result",
+      "title": "아이디 중복확인 결과",
+      "trigger": "등록 화면에서 중복확인 클릭",
+      "message": "이미 등록된 아이디입니다. / 사용 가능한 아이디입니다.",
+      "confirm": "아이디 입력란 옆 결과 표시 / 사용 가능하면 확인 상태 저장",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-id-unchecked",
+      "title": "아이디 중복확인 필요",
+      "trigger": "중복확인 미완료 또는 확인 후 아이디 변경 상태로 등록 클릭",
+      "message": "아이디 중복확인을 진행해 주세요.",
+      "confirm": "등록 중단 후 현재 입력 화면 유지",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-password-confirm",
+      "title": "비밀번호 확인 불일치",
+      "trigger": "등록 시 비밀번호와 비밀번호 확인 값 불일치",
+      "message": "비밀번호와 비밀번호 확인이 일치하지 않습니다.",
+      "confirm": "등록 중단 후 현재 입력 화면 유지",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-contact-phone",
+      "title": "관리자 전화번호 형식",
+      "message": "전화번호는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.",
+      "trigger": "전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "confirm": "저장 중단 후 현재 입력 화면 유지",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-contact-mobile",
+      "title": "관리자 휴대전화번호 형식",
+      "message": "휴대전화번호를 4자리씩 입력해 주세요.",
+      "trigger": "휴대전화번호를 일부만 입력하거나 가운데·마지막 번호 자릿수 오류",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "confirm": "저장 중단 후 현재 입력 화면 유지",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-contact-email",
+      "title": "관리자 이메일 형식",
+      "message": "이메일 아이디와 도메인을 올바르게 입력해 주세요.",
+      "trigger": "이메일 아이디·도메인 일부 누락 또는 이메일 형식 오류",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "confirm": "저장 중단 후 현재 입력 화면 유지",
+      "cancel": "",
+      "source": "include/management-ui.js"
+    },
+    {
+      "key": "com08-admin-password-required",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "trigger": "등록 시 비밀번호가 공백이거나 상세에서 공백만 입력하여 비밀번호 변경 시도",
+      "message": "비밀번호를 입력해 주세요. / 비밀번호는 공백만 입력할 수 없습니다.",
+      "confirm": "저장을 중단하고 현재 입력 화면 유지",
+      "cancel": "해당 없음",
+      "source": "include/management-ui.js",
+      "title": "관리자 비밀번호 입력 확인"
+    },
+    {
+      "key": "com08-admin-required",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "trigger": "아이디 또는 이름이 공백",
+      "message": "아이디와 이름은 공백만 입력할 수 없습니다.",
+      "confirm": "저장 중단",
+      "cancel": "",
+      "source": "include/management-ui.js",
+      "title": "관리자 필수 항목 누락"
+    },
+    {
+      "key": "com08-admin-duplicate",
+      "screens": [
+        "COM-08"
+      ],
+      "type": "인라인 오류",
+      "trigger": "아이디가 기존 계정과 중복",
+      "message": "이미 등록된 아이디입니다.",
+      "confirm": "등록·수정 중단",
+      "cancel": "",
+      "source": "include/management-ui.js",
+      "title": "아이디 중복"
+    }
+  ]
+}

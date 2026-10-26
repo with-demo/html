@@ -6,7 +6,8 @@
  const adminDate=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.');
  const admins=[{id:'DEMO-ADMIN-01',name:'윤서진',org:'운영기관',status:'사용',date:'2026.10.19'},{id:'DEMO-ADMIN-02',name:'임수현',org:'운영기관',status:'사용',date:'2026.10.18'},{id:'DEMO-ADMIN-03',name:'오지훈',org:'운영기관',status:'미사용',date:'2026.10.17'}];
  admins.forEach((a,i)=>Object.assign(a,{phone:'031-000-000'+i,mobile:'010-0000-000'+i,email:'admin'+(i+1)+'@example.com',passwordSet:true}));
- const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',type:'전체',query:'',status:'전체',staffYear:'2027',staffQuery:'',assignmentType:'',operatorDraft:null,shown:new Set(),notice:'',upload:null,staffUpload:null};
+ const state={screen:'BAS-15',role:'admin',event:'2026',company:'OP-A',admin:'DEMO-ADMIN-01',year:'전체',type:'전체',query:'',status:'전체',staffYear:'2027',staffQuery:'',assignmentType:'',operatorDraft:null,shown:new Set(),notice:'',upload:null,staffUpload:null,staffId:null,peopleUpload:null};
+ staff.forEach(member=>Object.assign(member,{org:companies.find(c=>c.id===member.company)?.name||'미등록',status:'사용',date:'2026.10.19',phone:'',mobile:'',email:''}));
  const accountIdTaken=id=>[...admins,...assignments,...staff].some(account=>account.id===id);
  const generatedOperatorPassword=()=>{const bytes=crypto.getRandomValues(new Uint8Array(14)),alphabet='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';return 'A1'+Array.from(bytes,b=>alphabet[b%alphabet.length]).join('')};
  const fields=['연도','상담 구분','기업코드','기업명','대표자','주소','담당자명'];
@@ -61,32 +62,31 @@
   return note()+'<h2 class="page-section-title">기본정보</h2>'+operatorBasicForm(c,assignment)+'<div class="page-bottom-actions operator-basic-actions" aria-label="기본정보 작업"><a href="#BAS-15" class="btn">목록</a><button type="submit" form="operator-basic-form" class="btn primary">수정</button></div><div class="page-information-heading"><h2 class="page-section-title">담당자 정보</h2><span>하위 담당자 '+children.length+'명</span></div><section class="panel page-information-body operator-staff"><form data-management-form="operator-staff-search" data-keyword-only class="filters">'+field('키워드 검색','<input type="search" name="query" value="'+E(state.staffQuery)+'" aria-label="담당자 키워드 검색" placeholder="이름·연락처·이메일·발급ID 검색">')+'<div class="row"><button class="btn primary" type="submit">검색</button>'+button('operator-staff-reset','초기화')+'</div></form>'+table(['이름','연락처','이메일','발급ID','PW'],representative+rows+(query&&!children.length?'<tr><td colspan="5"><div class="empty">검색 조건에 맞는 하위 담당자가 없습니다.</div></td></tr>':''))+'</section>';
  }
  function staffSection(c,history){const staffRows=[...new Set(history.filter(a=>a.year===state.staffYear).flatMap(assignedStaff))];return `<section class="panel pad"><div class="panelhead"><h2>하위 담당자</h2><span>${state.staffYear}년 · ${staffRows.length}명</span></div><div class="management-form">${field('행사 연도',`<select data-management-staff-year>${options([...new Set(history.map(a=>a.year))],state.staffYear)}</select>`)}${!isAdmin()?'<a class="btn primary" href="#COM-08">담당자 등록</a>':''}${button('staff-template','담당자 엑셀 양식 다운로드')}${button('staff-upload-open','담당자 엑셀 일괄 업로드','','true')}</div>${table(['담당자코드','이름','발급 ID','임시 PW','행사 연도','계정 상태'],staffRows.map(s=>{const key='staff|'+s.id;return `<tr><td>${E(s.code)}</td><td>${E(s.name)}</td><td>${E(s.id)}</td><td><span class="management-password">${state.shown.has(key)?E(s.pw):'••••••'}</span>${button('toggle-password',state.shown.has(key)?'숨기기':'보기',`data-key="${E(key)}" aria-pressed="${state.shown.has(key)}"`)}</td><td>${s.year}</td><td>발급 완료</td></tr>`}).join(''))}</section>`;}
- function staffRegistration(company,history){
- const allowedYears=[...new Set(history.map(a=>a.year))];if(!allowedYears.length)return '<div class="empty">등록 가능한 배정 행사가 없습니다.</div>';
- if(!allowedYears.includes(state.staffYear))state.staffYear=allowedYears[0];
- return '<form data-management-form="staff-create" class="panel detail-form-panel"><div class="panelhead"><h2>하위 담당자 등록</h2></div><div class="management-form formgrid">'+field('소속 회사','<input value="'+E(company.name)+'" readonly>')+field('행사 연도 *','<select name="year" required>'+options(allowedYears,state.staffYear)+'</select>')+input('code','담당자코드 *','',true)+input('name','이름 *','',true)+'</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#COM-07" class="btn">취소</a><button type="submit" class="btn primary">등록</button></div></form>';
+
+ function staffRegistration(company,history){if(!history.some(a=>a.year===state.staffYear))return '<div class="empty">등록 가능한 배정 행사가 없습니다.</div>';return adminEditor(!state.staffId,true);}
+ function personRows(staffMode=false){const source=staffMode?staff.filter(member=>staffInYear(member,ownCompany(),state.staffYear)):admins;const scope=window.GFAIR_SEARCH_SCOPE?.('query')||'전체';return source.filter(a=>(state.status==='전체'||(a.status||'사용')===state.status)&&(!state.query||String(({'아이디':a.id,'이름':a.name,'소속':a.org}[scope]||[a.id,a.name,a.org].join(' '))).includes(state.query)));}
+ function peopleList(staffMode=false){
+  const rr=personRows(staffMode),title=staffMode?'담당자':'구매·수출 상담시스템 관리자';
+  return note()+'<div class="management-actions">'+button(staffMode?'staff-create-open':'admin-create',staffMode?'등록':'관리자 등록','','true')+'</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용여부</legend><div class="management-type-options">'+['전체','사용','미사용'].map(value=>'<label><input type="radio" name="status" value="'+value+'"'+(state.status===value?' checked':'')+'>'+value+'</label>').join('')+'</div></fieldset>'+field('통합검색','<input name="query" value="'+E(state.query)+'" placeholder="이름, ID, 소속을 검색하세요.">')+'<div class="row"><button type="submit" class="btn primary">검색</button>'+button('reset','초기화')+'</div></form><section class="panel people-list"><div class="panelhead"><h2>'+title+' '+rr.length+'명</h2>'+(staffMode?'<div class="row">'+button('people-export','엑셀 다운로드')+button('people-upload-open','엑셀 일괄 업로드')+'</div>':'')+'</div>'+table(['이름','아이디','소속','사용여부','등록일'],rr.map(a=>'<tr><td class="management-name"><button type="button" class="list-name-link" '+(staffMode?'data-management-staff-id':'data-management-admin')+'="'+E(a.id)+'" aria-label="'+E(a.name)+' 상세">'+E(a.name)+'</button></td><td>'+E(a.id)+'</td><td>'+E(a.org||'미등록')+'</td><td><span class="badge">'+E(a.status||'사용')+'</span></td><td>'+E(a.date||'미등록')+'</td></tr>').join(''))+'</section>';
  }
- function adminList(){
-  const rr=admins.filter(a=>(state.status==='전체'||a.status===state.status)&&(!state.query||({'아이디':a.id,'이름':a.name,'소속':a.org}[window.GFAIR_SEARCH_SCOPE?.('query')]||[a.id,a.name,a.org].join(' ')).includes(state.query)));
-  return `${note()}<div class="management-actions">${button('admin-create','관리자 등록','','true')}</div><form data-management-form="admin-search" class="panel filters"><fieldset class="management-type-filter"><legend>사용여부</legend><div class="management-type-options">${['전체','사용','미사용'].map(s=>`<label><input type="radio" name="status" value="${s}"${state.status===s?' checked':''}>${s}</label>`).join('')}</div></fieldset>${field('통합검색',`<input name="query" value="${E(state.query)}" placeholder="이름, ID, 소속을 검색하세요.">`)}<div class="row"><button type="submit" class="btn primary">검색</button>${button('reset','초기화')}</div></form><section class="panel"><div class="panelhead"><h2>구매·수출 상담시스템 관리자 ${rr.length}명</h2></div>${table(['이름','아이디','소속','사용여부','등록일'],rr.map(a=>`<tr><td class="management-name"><button type="button" class="list-name-link" data-management-admin="${E(a.id)}" aria-label="${E(a.name)} 상세">${E(a.name)}</button></td><td>${E(a.id)}</td><td>${E(a.org)}</td><td><span class="badge">${a.status}</span></td><td>${a.date}</td></tr>`).join(''))}</section>`;
- }
+ function adminList(){return peopleList(false);}
  const adminPasswordPattern=/^(?=.*[A-Za-z])(?=.*[0-9])[\x21-\x7E]{8,20}$/;
  const adminPasswordGuide='영문·숫자 포함 8~20자리로 입력해 주세요. (특수문자 사용 가능, 공백 불가)';
  const adminPhonePrefixes=['02','031','032','033','041','042','043','044','051','052','053','054','055','061','062','063','064','070','050'];
  const adminMobilePrefixes=['010','011','016','017','018','019'];
  const adminMailDomains=['naver.com','gmail.com','daum.net','hanmail.net','nate.com','outlook.com','hotmail.com'];
  function adminContactField(key,label,value){const parts=String(value||'').split('-'),prefixes=key==='phone'?adminPhonePrefixes:adminMobilePrefixes,prefix=parts[0]||prefixes[0];return field(label,'<div class="buyer-phone admin-phone"><select name="'+key+'Prefix" aria-label="'+label+' 앞자리">'+options([...new Set([...prefixes,prefix])],prefix)+'</select><span aria-hidden="true">-</span><input name="'+key+'Middle" value="'+E(parts[1]||'')+'" inputmode="numeric" maxlength="4" aria-label="'+label+' 가운데 번호"><span aria-hidden="true">-</span><input name="'+key+'Last" value="'+E(parts[2]||'')+'" inputmode="numeric" maxlength="4" aria-label="'+label+' 마지막 4자리"></div>');}
- function adminEditor(create=new URLSearchParams(location.search).get('adminMode')==='create'){
- const a=create?{id:'',name:'',org:'',status:'사용',date:adminDate(),phone:'',mobile:'',email:''}:admins.find(a=>a.id===state.admin);if(!a)return '<div class="empty">관리자를 찾을 수 없습니다.</div>';
+ function adminEditor(create=new URLSearchParams(location.search).get('adminMode')==='create',staffMode=false){
+ const a=create?{id:'',name:'',org:'',status:'사용',date:adminDate(),phone:'',mobile:'',email:''}:staffMode?staff.find(a=>a.id===state.staffId&&staffInYear(a,ownCompany(),state.staffYear)):admins.find(a=>a.id===state.admin);if(!a)return '<div class="empty">관리자를 찾을 수 없습니다.</div>';
  const [emailLocal='',emailDomain='']=String(a.email||'').split('@'),preset=adminMailDomains.includes(emailDomain);
  const idField=field('아이디 *','<div class="admin-id-check"><input name="id" value="'+E(a.id)+'" required autocomplete="off" '+(create?'':'readonly aria-readonly="true"')+'>'+(create?'<button type="button" class="btn" data-admin-id-check>중복확인</button>':'')+'</div>'+(create?'<span data-admin-id-result role="status" aria-live="polite"></span>':''));
  const orgField=create?input('org','소속',a.org).replace('class="field"','class="field wide"'):input('org','소속',a.org);
  const email=field('이메일','<div class="buyer-email admin-email"><input name="emailLocal" value="'+E(emailLocal)+'" maxlength="64" aria-label="이메일 아이디"><span aria-hidden="true">@</span><input name="emailDomain" value="'+E(emailDomain)+'" maxlength="253" aria-label="이메일 도메인"'+(preset?' readonly':'')+'><select name="emailPreset" aria-label="이메일 도메인 선택">'+options(adminMailDomains,preset?emailDomain:'')+'<option value=""'+(!preset?' selected':'')+'>직접입력</option></select></div>');
- return note()+'<form data-management-form="'+(create?'admin-create':'admin-save')+'" class="panel detail-form-panel"><div class="panelhead"><h2>관리자 기본정보</h2></div><div class="detail-rows form-rows">'+input('name','이름 *',a.name,true)+idField+orgField+field('비밀번호'+(create?' *':''),'<input type="password" name="password" value="" autocomplete="new-password" '+(create?'required minlength="8" maxlength="20" pattern="'+E(adminPasswordPattern.source)+'" aria-describedby="admin-password-guide" title="'+E(adminPasswordGuide)+'"':'placeholder="변경 시에만 입력해 주세요"')+'>'+(create?'<small id="admin-password-guide" class="admin-password-guide">'+adminPasswordGuide+'</small>':''))+(create?field('비밀번호 확인 *','<input type="password" name="passwordConfirm" value="" required maxlength="20" autocomplete="new-password">'):'')+adminContactField('phone','전화번호',a.phone)+adminContactField('mobile','휴대전화번호',a.mobile)+email+'<fieldset class="field wide admin-use-field"><legend>사용여부</legend>'+['사용','미사용'].map(status=>'<label><input type="radio" name="status" value="'+status+'"'+(status===a.status?' checked':'')+'>'+status+'</label>').join('')+'</fieldset></div><p data-management-error role="alert"></p><div class="formfooter"><a href="#BAS-16" class="btn">목록</a><button class="btn primary" type="submit">'+(create?'등록':'저장')+'</button></div></form>';
+ return note()+'<form data-management-form="'+(staffMode?(create?'person-create':'person-save'):(create?'admin-create':'admin-save'))+'" class="panel detail-form-panel"><div class="panelhead"><h2>'+(staffMode?'담당자':'관리자')+' 기본정보</h2></div><div class="detail-rows form-rows">'+input('name','이름 *',a.name,true)+idField+orgField+field('비밀번호'+(create?' *':''),'<input type="password" name="password" value="" autocomplete="new-password" '+(create?'required minlength="8" maxlength="20" pattern="'+E(adminPasswordPattern.source)+'" aria-describedby="admin-password-guide" title="'+E(adminPasswordGuide)+'"':'placeholder="변경 시에만 입력해 주세요"')+'>'+(create?'<small id="admin-password-guide" class="admin-password-guide">'+adminPasswordGuide+'</small>':''))+(create?field('비밀번호 확인 *','<input type="password" name="passwordConfirm" value="" required maxlength="20" autocomplete="new-password">'):'')+adminContactField('phone','전화번호',a.phone)+adminContactField('mobile','휴대전화번호',a.mobile)+email+'<fieldset class="field wide admin-use-field"><legend>사용여부</legend>'+['사용','미사용'].map(status=>'<label><input type="radio" name="status" value="'+status+'"'+(status===a.status?' checked':'')+'>'+status+'</label>').join('')+'</fieldset></div><p data-management-error role="alert"></p><div class="formfooter"><a href="#'+(staffMode?'COM-07':'BAS-16')+'" class="btn">목록</a><button class="btn primary" type="submit">'+(create?'등록':'저장')+'</button></div></form>';
  }
- document.addEventListener('click',event=>{const button=event.target.closest('[data-admin-id-check]');if(!button)return;event.preventDefault();const form=button.closest('form'),id=form.elements.id.value.trim(),result=form.querySelector('[data-admin-id-result]'),exists=form.dataset.managementForm==='operator-create'?accountIdTaken(id):admins.some(a=>a.id===id);delete form.dataset.checkedAdminId;result.textContent=!id?'아이디를 입력해 주세요.':exists?'이미 등록된 아이디입니다.':'사용 가능한 아이디입니다.';if(id&&!exists)form.dataset.checkedAdminId=id;});
- document.addEventListener('change',event=>{const select=event.target;if(!select.matches('[data-management-form^="admin-"] [name=emailPreset], [data-management-form="operator-create"] [name=emailPreset]'))return;const domain=select.form.elements.emailDomain;domain.readOnly=!!select.value;if(select.value)domain.value=select.value;select.form.elements.emailLocal.setCustomValidity('');});
- document.addEventListener('input',event=>{const input=event.target;if(!input.closest('[data-management-form^="admin-"], [data-management-form="operator-create"]'))return;input.setCustomValidity?.('');if(input.name==='id'){delete input.form.dataset.checkedAdminId;const result=input.form.querySelector('[data-admin-id-result]');if(result)result.textContent='';}if(['password','passwordConfirm'].includes(input.name))input.form.elements.passwordConfirm?.setCustomValidity('');if(/^(phone|mobile)(Middle|Last)$/.test(input.name))input.value=input.value.replace(/\D/g,'').slice(0,4);if(['emailLocal','emailDomain'].includes(input.name))input.form.elements.emailLocal.setCustomValidity('');});
+ document.addEventListener('click',event=>{const button=event.target.closest('[data-admin-id-check]');if(!button)return;event.preventDefault();const form=button.closest('form'),id=form.elements.id.value.trim(),result=form.querySelector('[data-admin-id-result]'),exists=['operator-create','person-create'].includes(form.dataset.managementForm)?accountIdTaken(id):admins.some(a=>a.id===id);delete form.dataset.checkedAdminId;result.textContent=!id?'아이디를 입력해 주세요.':exists?'이미 등록된 아이디입니다.':'사용 가능한 아이디입니다.';if(id&&!exists)form.dataset.checkedAdminId=id;});
+ document.addEventListener('change',event=>{const select=event.target;if(!select.matches('[data-management-form^="admin-"] [name=emailPreset], [data-management-form^="person-"] [name=emailPreset], [data-management-form="operator-create"] [name=emailPreset]'))return;const domain=select.form.elements.emailDomain;domain.readOnly=!!select.value;if(select.value)domain.value=select.value;select.form.elements.emailLocal.setCustomValidity('');});
+ document.addEventListener('input',event=>{const input=event.target;if(!input.closest('[data-management-form^="admin-"], [data-management-form^="person-"], [data-management-form="operator-create"]'))return;input.setCustomValidity?.('');if(input.name==='id'){delete input.form.dataset.checkedAdminId;const result=input.form.querySelector('[data-admin-id-result]');if(result)result.textContent='';}if(['password','passwordConfirm'].includes(input.name))input.form.elements.passwordConfirm?.setCustomValidity('');if(/^(phone|mobile)(Middle|Last)$/.test(input.name))input.value=input.value.replace(/\D/g,'').slice(0,4);if(['emailLocal','emailDomain'].includes(input.name))input.form.elements.emailLocal.setCustomValidity('');});
 
  function adminDetail(){return adminEditor();}
  function adminMode(create){const url=new URL(location.href);if(create)url.searchParams.set('adminMode','create');else url.searchParams.delete('adminMode');history.replaceState(null,'',url.pathname+url.search+url.hash);}
@@ -97,7 +97,7 @@
   if(state.screen==='COM-08')return staffRegistration(c,history);
   if(state.screen==='COM-06')return `${note()}<section class="panel detail-form-panel"><div class="panelhead"><h2>내 계정 정보</h2><span>${E(c.id)}</span></div><dl class="detail-rows">${[['사용구분',state.role==='buyOperator'?'구매상담 운영용역사':'수출상담 운영용역사'],['계정 구분','대표 담당자'],['소속 기업',c.name],['담당 상담',state.role==='buyOperator'?'구매상담':'수출상담'],['선택 행사','G-FAIR KOREA '+state.event]].map(([k,v])=>`<dt>${E(k)}</dt><dd>${E(v)}</dd>`).join('')}</dl><div class="formfooter"><a href="#COM-07" class="btn primary">담당자 관리</a></div></section>`;
   if(!history.some(a=>a.year===state.staffYear))state.staffYear=history[0]?.year||'';
-  return `${note()}<div class="management-actions"><a href="#COM-06" class="btn">내정보</a></div><section class="panel pad"><h2>${E(c.name)}</h2><p style="margin-top:12px">${state.role==='buyOperator'?'구매상담':'수출상담'} 운영용역사 대표 담당자 · 자기 회사의 배정 행사만 관리합니다.</p></section>${staffSection(c,history)}`;
+  return peopleList(true);
  }
  function render(){
   if(['COM-06','COM-07','COM-08'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
@@ -121,10 +121,31 @@
   if(!good.length&&!errors.length)throw Error('등록할 담당자가 없습니다.');
   return {good,errors};
  }
+
+ const peopleAllowed=()=>state.screen==='COM-07'&&staffAllowed();
+ async function peopleDownload(rows,name){const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ async function peopleAction(a){
+  if(!peopleAllowed())return;
+  const staffMode=state.screen==='COM-07',title=staffMode?'담당자':'관리자';
+  if(a==='people-export'){await peopleDownload([['이름','아이디','소속','사용여부','등록일'],...personRows(staffMode).map(r=>[r.name,r.id,r.org||'미등록',r.status||'사용',r.date||'미등록'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
+  if(a==='people-template'){await peopleDownload([GFAIRPeopleExcel.headers,['예시 이름','DEMO-NEW-ACCOUNT','예시 소속','Demo1234','Demo1234','031-000-0000','010-0000-0000','demo@example.com','사용']],title+'_등록양식.xlsx');return;}
+  if(a==='people-upload-open'){
+   state.peopleUpload=null;modal(title+' 엑셀 일괄 업로드','<p>등록 양식을 내려받아 입력 후 업로드해 주세요. 오류가 있으면 전체 등록을 중단합니다.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div><p class="small">예시 계정만 현재 탭에 반영합니다. 실제 계정·권한은 변경되지 않습니다.</p>');return;
+  }
+  if(a==='people-import-confirm'){
+   const upload=state.peopleUpload;
+   if(!upload||upload.screen!==state.screen||upload.company!==ownCompany()||upload.year!==state.staffYear)return;
+   if(upload.rows.some(r=>accountIdTaken(r.id))){state.peopleUpload=null;const area=document.querySelector('[data-people-upload-result]');if(area)area.textContent='아이디 목록이 변경되었습니다. 파일을 다시 검증해 주세요.';return;}
+   for(const row of upload.rows){const {password,...data}=row;if(staffMode)staff.push({...data,company:ownCompany(),year:state.staffYear,code:row.id,pw:password,date:adminDate()});else admins.push({...data,passwordSet:true,date:adminDate()});}
+   const count=upload.rows.length;state.peopleUpload=null;close();message(count+'명의 '+title+'를 등록했습니다. 현재 탭에만 반영됩니다.');
+  }
+ }
+
  async function action(b){
   const a=b.dataset.managementAction;
-  if(a==='close'){close();return;}
-  if(a==='reset'){if(['BAS-15','BAS-16'].includes(state.screen))window.GFAIR_RESET_SEARCH_SCOPE?.();state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
+  if(a.startsWith('people-')){await peopleAction(a);return;}
+  if(a==='close'){state.peopleUpload=null;close();return;}
+  if(a==='reset'){if(['BAS-15','BAS-16','COM-07'].includes(state.screen))window.GFAIR_RESET_SEARCH_SCOPE?.();state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
   if(a==='operator-staff-reset'){state.staffQuery='';message('');return;}
   if(a==='toggle-password'&&allowed(state.company)){const k=b.dataset.key;state.shown.has(k)?state.shown.delete(k):state.shown.add(k);paint();return;}
   if(a==='issue'&&isAdmin()){
@@ -145,6 +166,7 @@
    upload.rows.forEach(r=>{const n=staff.length+1;staff.push({company:upload.company,year:upload.year,code:r.code,name:r.name,id:'DEMO-S'+String(n).padStart(4,'0'),pw:'D'+upload.year.slice(-2)+String(n).padStart(3,'0')})});
    const n=upload.rows.length;state.staffUpload=null;close();message(n+'명의 담당자를 등록하고 계정을 일괄 발급했습니다.');return;
   }
+  if(a==='staff-create-open'&&staffAllowed()){state.staffId=null;state.notice='';location.hash='COM-08';return;}
   if(a==='operator-create'&&isAdmin()){state.notice='';location.hash='BAS-19';return;}
   if(a==='admin-create'&&isAdmin()){adminMode(true);location.hash='BAS-18';return;}
   if(a==='template'&&isAdmin()){
@@ -157,14 +179,27 @@
    const n=state.upload.length;state.upload=null;close();state.year='전체';state.query='';message(n+'건을 목록에 반영했습니다. 기업 상세에서 연도별 계정을 발급할 수 있습니다.');
   }
  }
- document.addEventListener('click',ev=>{if(ev.target.closest('a[href="#BAS-16"]'))adminMode(false);const b=ev.target.closest('[data-management-action]');if(b){if(!document.querySelector('[data-management-root]'))return;ev.preventDefault();ev.stopImmediatePropagation();action(b).catch(e=>message(e.message));return;}const companyName=ev.target.closest('button[data-management-company]');if(companyName){ev.preventDefault();ev.stopImmediatePropagation();openRow(companyName);return;}const adminName=ev.target.closest('button[data-management-admin]');if(adminName){ev.preventDefault();ev.stopImmediatePropagation();openRow(adminName);return;}const row=ev.target.closest('[data-management-company],[data-management-admin]');if(!row||ev.target.closest('button,a,input,select,textarea'))return;openRow(row);},true);
+ document.addEventListener('click',ev=>{if(ev.target.closest('a[href="#BAS-16"]'))adminMode(false);const b=ev.target.closest('[data-management-action]');if(b){if(!document.querySelector('[data-management-root]'))return;ev.preventDefault();ev.stopImmediatePropagation();action(b).catch(e=>message(e.message));return;}const member=ev.target.closest('[data-management-staff-id]');if(member&&staffAllowed()){ev.preventDefault();state.staffId=member.dataset.managementStaffId;state.notice='';location.hash='COM-08';return;}const companyName=ev.target.closest('button[data-management-company]');if(companyName){ev.preventDefault();ev.stopImmediatePropagation();openRow(companyName);return;}const adminName=ev.target.closest('button[data-management-admin]');if(adminName){ev.preventDefault();ev.stopImmediatePropagation();openRow(adminName);return;}const row=ev.target.closest('[data-management-company],[data-management-admin]');if(!row||ev.target.closest('button,a,input,select,textarea'))return;openRow(row);},true);
  function openRow(row){state.notice='';state.shown.clear();if(row.dataset.managementCompany){if(!allowed(row.dataset.managementCompany))return;state.company=row.dataset.managementCompany;state.staffYear=row.dataset.managementYear;state.assignmentType=row.dataset.managementType||'';state.staffQuery='';state.operatorDraft=null;location.hash='BAS-17'}else{if(!isAdmin())return;state.admin=row.dataset.managementAdmin;adminMode(false);location.hash='BAS-18'}}
  document.addEventListener('keydown',ev=>{const row=ev.target.closest('[data-management-company],[data-management-admin]');if(row&&ev.target===row&&['Enter',' '].includes(ev.key)){ev.preventDefault();openRow(row)}});
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-management-staff-year]')){state.staffYear=ev.target.value;paint()}});
  document.addEventListener('submit',async ev=>{
   const f=ev.target;if(!f.matches('[data-management-form]'))return;ev.preventDefault();ev.stopImmediatePropagation();if(!f.reportValidity())return;
   const fd=new FormData(f),v=k=>String(fd.get(k)||'').trim(),type=f.dataset.managementForm;
-  const fail=text=>{const err=document.querySelector('[data-management-error]');if(err)err.textContent=text;else message(text)};
+  const fail=text=>{const err=f.querySelector('[data-management-error]')||document.querySelector('#dialog[open] [data-management-error]')||document.querySelector('[data-management-error]');if(err)err.textContent=text;else message(text)};
+
+  if(type==='people-upload'){
+   state.peopleUpload=null;if(!peopleAllowed())return;
+   const area=f.parentElement.querySelector('[data-people-upload-result]');area.innerHTML='';
+   try{
+    const file=fd.get('file');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
+    const checked=GFAIRPeopleExcel.validate(await GFAIRWorkbook.read(file),[...admins,...assignments,...staff].map(a=>a.id));
+    if(checked.errors.length){area.innerHTML=table(['엑셀 행','오류 사유'],checked.errors.map(e=>'<tr><td>'+e.line+'</td><td>'+E(e.error)+'</td></tr>').join(''))+'<p>오류를 수정한 뒤 다시 검증해 주세요. 아직 등록하지 않았습니다.</p>';return;}
+    state.peopleUpload={screen:state.screen,company:ownCompany(),year:state.staffYear,rows:checked.good};
+    area.innerHTML='<p>정상 '+checked.good.length+'건 · 오류 0건</p>'+table(['이름','아이디','소속','사용여부'],checked.good.map(r=>'<tr><td>'+E(r.name)+'</td><td>'+E(r.id)+'</td><td>'+E(r.org)+'</td><td>'+E(r.status)+'</td></tr>').join(''))+button('people-import-confirm','일괄등록','','true');
+   }catch(error){fail(error.message);}
+   return;
+  }
   if(type==='operator-save'){
    if(!isAdmin()||state.screen!=='BAS-17')return;
    const c=companies.find(c=>c.id===state.company),assignment=assignments.find(a=>a.company===state.company&&a.year===state.staffYear&&(!state.assignmentType||a.type===state.assignmentType));
@@ -209,28 +244,24 @@
    }catch(e){fail(e.message)}
    return;
   }
-  if(type==='staff-create'){
- const year=v('year'),code=v('code'),name=v('name'),company=ownCompany();
- if(!['buyOperator','exportOperator'].includes(state.role)||!company||!assignments.some(a=>a.company===company&&a.year===year&&allowedAssignment(a)))return fail('본인 회사에 배정된 행사만 등록할 수 있습니다.');
- if(!code||!name)return fail('담당자코드와 이름을 입력해 주세요.');
- if(staff.some(item=>staffInYear(item,company,year)&&item.code===code))return fail('같은 행사에 이미 등록된 담당자코드입니다.');
- const n=staff.length+1;staff.push({company,year,code,name,id:'DEMO-S'+String(n).padStart(4,'0'),pw:'D'+year.slice(-2)+String(n).padStart(3,'0')});state.staffYear=year;state.notice=name+' 담당자를 등록했습니다.';location.hash='COM-07';return;
- }
-  if(!isAdmin())return;
-  if(['admin-create','admin-save'].includes(type)){
+  const staffMode=['person-create','person-save'].includes(type);if(staffMode?!staffAllowed():!isAdmin())return;
+  if(['admin-create','admin-save','person-create','person-save'].includes(type)){
+   const creating=type.endsWith('create');
    const error=f.querySelector('[data-management-error]');if(error)error.textContent='';
    const contacts={};for(const key of ['phone','mobile']){const middle=v(key+'Middle'),last=v(key+'Last'),validMiddle=key==='phone'?/^\d{3,4}$/:/^\d{4}$/;if((middle||last)&&(!validMiddle.test(middle)||!/^\d{4}$/.test(last))){const text=key==='phone'?'전화번호는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.':'휴대전화번호를 4자리씩 입력해 주세요.';const target=!validMiddle.test(middle)?f.elements[key+'Middle']:f.elements[key+'Last'];target.setCustomValidity(text);target.reportValidity();return fail(text);}contacts[key]=middle&&last?v(key+'Prefix')+'-'+middle+'-'+last:'';}
    const local=v('emailLocal'),domain=v('emailDomain'),emailProbe=document.createElement('input');emailProbe.type='email';emailProbe.value=local+'@'+domain;if((local||domain)&&(!local||!domain||!emailProbe.checkValidity())){const text='이메일 아이디와 도메인을 올바르게 입력해 주세요.';f.elements.emailLocal.setCustomValidity(text);f.elements.emailLocal.reportValidity();return fail(text);}contacts.email=local&&domain?local+'@'+domain:'';
 
    if(!v('id')||!v('name'))return fail('아이디와 이름은 공백만 입력할 수 없습니다.');
-   if(type==='admin-create'&&f.dataset.checkedAdminId!==v('id'))return fail('아이디 중복확인을 진행해 주세요.');
-   if(type==='admin-create'&&fd.get('password')!==fd.get('passwordConfirm'))return fail('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
-   if(type==='admin-create'&&!v('password'))return fail('비밀번호를 입력해 주세요.');
-   if(type==='admin-create'&&!adminPasswordPattern.test(String(fd.get('password')||'')))return fail(adminPasswordGuide);
+   if(creating&&f.dataset.checkedAdminId!==v('id'))return fail('아이디 중복확인을 진행해 주세요.');
+   if(creating&&fd.get('password')!==fd.get('passwordConfirm'))return fail('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+   if(creating&&!v('password'))return fail('비밀번호를 입력해 주세요.');
+   if(creating&&!adminPasswordPattern.test(String(fd.get('password')||'')))return fail(adminPasswordGuide);
    if(fd.get('password')&&!v('password'))return fail('비밀번호는 공백만 입력할 수 없습니다.');
-   if(type==='admin-save'&&v('id')!==state.admin)return fail('기존 아이디는 변경할 수 없습니다.');
-   if(admins.some(a=>a.id===v('id')&&(type==='admin-create'||a.id!==state.admin)))return fail('이미 등록된 아이디입니다.');
-   if(type==='admin-create'){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:adminDate(),...contacts,passwordSet:true});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
+   if(!creating&&v('id')!==(staffMode?state.staffId:state.admin))return fail('기존 아이디는 변경할 수 없습니다.');
+   if((staffMode?staff:admins).some(a=>a.id===v('id')&&(creating||a.id!==(staffMode?state.staffId:state.admin))))return fail('이미 등록된 아이디입니다.');
+   if(creating&&staffMode&&accountIdTaken(v('id')))return fail('이미 등록된 아이디입니다.');
+   if(staffMode){const data={id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',...contacts};if(creating)staff.push({...data,company:ownCompany(),year:state.staffYear,code:v('id'),pw:String(fd.get('password')),date:adminDate()});else Object.assign(staff.find(a=>a.id===state.staffId&&staffInYear(a,ownCompany(),state.staffYear)),data,...(fd.get('password')?[{pw:String(fd.get('password'))}]:[]));state.notice='담당자 정보를 저장했습니다. 현재 탭에만 반영됩니다.';state.staffId=null;location.hash='COM-07';return;}
+   if(creating){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:adminDate(),...contacts,passwordSet:true});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
    else{Object.assign(admins.find(a=>a.id===state.admin),{name:v('name'),org:v('org')||'미등록',status:v('status'),...contacts,...(v('password')?{passwordSet:true}:{})})}
    f.elements.password.value='';state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';let notice=document.querySelector('[data-management-root]>.notice');if(!notice){notice=document.createElement('p');notice.className='notice';notice.setAttribute('role','status');f.before(notice);}notice.textContent=state.notice;return;
   }
@@ -251,7 +282,7 @@
    }catch(e){fail(e.message)}
   }
  },true);
- window.addEventListener('hashchange',()=>{state.shown.clear();state.operatorDraft=null;if(location.hash!=='#BAS-18')adminMode(false)});
- window.GFAIR_MANAGEMENT={render(screen,role,event){if(['COM-06','COM-07','COM-08'].includes(screen)){if(state.event!==event||!['COM-06','COM-07','COM-08'].includes(state.screen))state.staffYear=event;state.company=role==='exportOperator'?'OP-B':'OP-A'}if(state.role!==role){state.operatorDraft=null;state.shown.clear();state.query='';state.year='전체';state.type='전체';state.notice='';state.company=role==='exportOperator'?'OP-B':'OP-A'}if(screen==='BAS-17'&&state.screen!=='BAS-17')state.staffQuery='';state.screen=screen;state.role=role;state.event=event;return render()}};
+ window.addEventListener('hashchange',()=>{state.shown.clear();state.operatorDraft=null;state.peopleUpload=null;if(location.hash!=='#BAS-18')adminMode(false)});
+ window.GFAIR_MANAGEMENT={render(screen,role,event){if(['COM-06','COM-07','COM-08'].includes(screen)){if(state.event!==event||!['COM-06','COM-07','COM-08'].includes(state.screen))state.staffYear=event;state.company=role==='exportOperator'?'OP-B':'OP-A'}if(state.role!==role){state.operatorDraft=null;state.shown.clear();state.query='';state.year='전체';state.type='전체';state.notice='';state.company=role==='exportOperator'?'OP-B':'OP-A'}if(screen==='COM-08'&&state.screen!=='COM-07'&&state.screen!=='COM-08')state.staffId=null;if(screen==='BAS-17'&&state.screen!=='BAS-17')state.staffQuery='';state.screen=screen;state.role=role;state.event=event;return render()}};
  window.dispatchEvent(new Event('management-ui-ready'));
 })();

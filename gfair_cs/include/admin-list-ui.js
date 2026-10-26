@@ -1,9 +1,9 @@
 // 관리자 목록의 표시 방식만 통일하고 기존 행·버튼의 이벤트는 유지한다.
 (()=>{'use strict';
  const root=document.getElementById('app');if(!root)return;
- const excluded=new Set(['COM-04','COM-05','COM-06','COM-07','BAS-17','BAS-18','NTC-07']);
+ const excluded=new Set(['COM-04','COM-05','COM-06','BAS-17','BAS-18','NTC-07']);
  const routes=new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).filter(s=>s.kind==='list'&&!excluded.has(s.id)).map(s=>s.id));
- ['EVT-01','EVT-02','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
+ ['COM-07','EVT-01','EVT-02','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
  const prepared=new WeakSet(),collator=new Intl.Collator('ko',{numeric:true,sensitivity:'base'});
  const clean=el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.ui-spec-badge,[data-list-row-trigger]').forEach(e=>e.remove());return copy.textContent.trim().replace(/\s+/g,' ');};
  function enhance(table,main,route){
@@ -90,7 +90,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;

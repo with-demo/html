@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.15","fromVersion":"v1.14","date":"2026.10.26","accountName":"mjha","summary":"담당자 목록을 BAS-16과 동일하게 구성하고 엑셀 기능 추가","changes":["사용여부·키워드 검색 및 이름·아이디·소속·사용여부·등록일 목록 공통화.","검색 결과 XLSX 다운로드 및 양식·검증·미리보기·일괄등록 추가.","Description·알럿 정의 동기화."]},
+{"screenId":"COM-08","version":"v0.6","fromVersion":"v0.5","date":"2026.10.26","accountName":"mjha","summary":"담당자 등록·수정 항목을 BAS-18과 동일하게 구성","changes":["이름·아이디·소속·비밀번호/확인·전화번호·휴대전화번호·이메일·사용여부를 관리자 폼과 공통 구성.","ID 중복확인·비밀번호·연락처 검증과 담당자 저장·목록 이동 연결."]},
 {"screenId":"BAS-19","version":"v1.9","fromVersion":"v1.8","date":"2026.10.26","accountName":"mjha","summary":"등록 기본정보를 요청한 5행 순서로 재배치","changes":["행사연도/구분 → 아이디 단독 행 → 기업명/담당자 이름 → 담당자 연락처/이메일 → 사용여부 단독 행 순서로 배치.","아이디·사용여부를 전체 너비로 표시하고 중복확인·비밀번호 자동 생성 동작 유지.","관련 Description 위치 설명 일치."]},
 {"screenId":"BAS-19","version":"v1.8","fromVersion":"v1.7","date":"2026.10.26","accountName":"mjha","summary":"최고관리자용 계정 ID 입력·중복확인 및 비밀번호 자동 생성","changes":["필수 ID 입력란과 중복확인 버튼 추가, 입력 변경 시 확인 결과 초기화.","관리자·대표담당자·하위 담당자 계정 ID와 중복 검사하고 등록 시 재검증.","비밀번호 입력 없이 자동 생성하며 BAS-17 대표담당자 발급ID·PW에 연결.","Description·알럿 정의 동기화."]},
 {"screenId":"BAS-17","version":"v1.23","fromVersion":"v1.22","date":"2026.10.26","accountName":"mjha","summary":"대표연락처·대표이메일 수정 및 사용여부 마지막 단독 행 배치","changes":["대표연락처·대표이메일을 선택 입력으로 수정하고 저장 후 아래 대표담당자 행과 동기화.","기업명·대표담당자명, 대표연락처·대표이메일을 각각 한 행에 배치하고 사용여부는 마지막 전체 너비 행으로 변경.","연락처·이메일 형식 검증과 Description·알럿 정의 동기화."]},
