@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.33","date":"2026.10.26","accountName":"shyuwith","summary":"관리자·수출용역사 작성 중 일지를 본인 작성분으로 제한","changes":["관리자·수출상담 운영용역사는 타인의 작성 중 일지를 목록에서 제외.","승인 요청·승인 완료·반려 목록과 본인의 작성 중 일지는 유지. 목록 Description 신규 작성은 보류 유지."]},
+{"screenId":"JNL-16","version":"v0.27","date":"2026.10.26","accountName":"shyuwith","summary":"타인 작성 중 일지의 검수 상세 진입 방지","changes":["역할 전환 등으로 타인 초안에 진입하면 조회 불가 안내와 목록 버튼만 표시.","본인 초안은 목록·임시 저장·등록, 제출된 일지는 기존 검수 동작 유지."]},
 {"screenId":"BAS-19","version":"v1.6","fromVersion":"v1.5","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 등록 5개 항목 Description 초안 적용","changes":["BAS-18의 설명 형식을 참고하여 행사연도·구분·담당자 연락처·담당자 이메일·사용여부 설명과 연결 핀 추가.","기업명·담당자 이름은 설명 작성 대상에서 제외.","실제 필수 여부·기본값·선택 옵션·입력 검증에 맞춰 작성하며 신규 초안 안내는 기획비고에서 제외."]},
 {"screenId":"JNL-16","version":"v0.26","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 본인 작성 중 상세의 임시 저장·등록 버튼 분리","changes":["관리자·수출상담 운영용역사 본인 작성 중 일지는 목록·임시 저장·등록을 우측 하단에 표시.","임시 저장은 작성 중 유지, 등록은 필수 항목 검증 후 승인 완료 처리.","임시 저장·등록 신규 Description 번호 추가. 승인 요청 일지 검수 버튼 유지."]},
 {"screenId":"JNL-14","version":"v0.32","date":"2026.10.26","accountName":"shyuwith","summary":"관리자·수출상담 운영용역사 본인 작성 중 예시 추가","changes":["GF-DRAFT-ADMIN 윤서진, GF-DRAFT-EXPORT-OPERATOR 김정우 예시에서 본인 작성 중 상세 버튼 확인 가능.","목록 조회·검색 정책 변경 없음."]},
