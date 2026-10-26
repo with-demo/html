@@ -1,7 +1,7 @@
 (()=>{'use strict';
  const modal=document.getElementById('dialog');if(!modal)return;
  const route=()=>decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/popup-description-example.css?v=popup-standard-20261023',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/popup-description-example.css?v=jnl14-reject-layout-20261026',document.currentScript.src);document.head.append(css);
  // Append new types; never reorder slots. IDs remain stable across browsers.
  const types=[/^(?!하위).*엑셀.*업로드/,/하위.*업로드/,/삭제/,/승인/,/반려/,/발송/,/QR 일괄/,/QR 발급/,/QR.*확인/,/임시 계정 발급/,/재발급/,/설문 미리보기/,/그룹 정보 및 메뉴 권한/,/로그아웃/,/통역 요청 수락/,/긴급/,/인증/,/출석|출결/,/보정/,/상태 변경/,/동기화/,/저장/,/첨부|촬영/,/검증/,/호출/,/처리 이력/,/운영 담당자 문의/,/내정보/,/개별 설문 응답/,/주관식 응답/,/작업 확인/,/매칭/,/QR/,/업로드/,/처리/,/비활성화/,/활성화/];
  function popupId(title){const slot=types.findIndex(pattern=>pattern.test(title));if(slot<0)console.warn('공통 팝업 유형을 등록해 주세요:',title);return route().replace(/-p\d+$/,'')+'-p'+String(slot<0?99:slot+1).padStart(2,'0');}

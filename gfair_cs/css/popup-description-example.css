@@ -1,4 +1,8 @@
 /* Review tools are outside the white popup, within the dialog top layer. */
+/* JNL-14-p05: 확인 문구는 본문 상단, 입력 라벨은 업로드 팝업과 같은 field 스타일. */
+#dialog .jnl14-reject-layout>p:first-child{margin:0;text-align:left}
+#dialog .jnl14-reject-layout>.field{margin-top:24px}
+#dialog .jnl14-reject-layout #jnl14-reject-error:empty{display:none}
 #dialog.standard-popup{background:transparent;box-shadow:none;border:0;border-radius:0;padding:0;max-height:calc(100dvh - 32px);overflow:auto}
 #dialog.standard-popup>#dialog-content{background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 12px 30px #0003;overflow:hidden}
 .popup-review-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;padding:2px}
