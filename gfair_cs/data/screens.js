@@ -3510,3 +3510,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.fields.push(['대표담당자명','담당자 정보 대표 행과 동일 / 조회 전용'],['대표연락처','대표 담당자 연락처 / 미등록 시 미등록'],['대표이메일','대표 담당자 이메일 / 미등록 시 미등록']);})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.fields=[['행사연도','행사관리 연도 또는 현재 배정 연도'],['구분','구매상담·수출상담'],['기업명','필수 입력'],['대표담당자명','조회 전용'],['대표연락처','연락처 입력·수정 / 선택 입력'],['대표이메일','이메일 입력·수정 / 선택 입력'],['사용여부','마지막 전체 너비 단독 행 / 사용·미사용']];})();
+
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-19');s.ui.fields.push(['ID','최고관리자용 계정 / 필수 / 중복확인 후 등록']);s.ui.actions=['ID 중복확인','목록','등록'];})();
