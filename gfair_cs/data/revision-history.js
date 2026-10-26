@@ -1,5 +1,15 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.12","fromVersion":"v1.11","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-02","version":"v1.13","fromVersion":"v1.12","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-03","version":"v0.9","fromVersion":"v0.8","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-04","version":"v0.9","fromVersion":"v0.8","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-01-p08","version":"v0.2","fromVersion":"v0.1","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-02-p08","version":"v0.2","fromVersion":"v0.1","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-03-p08","version":"v0.2","fromVersion":"v0.1","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"EVT-04-p08","version":"v0.2","fromVersion":"v0.1","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"PRE-01","version":"v3.20","fromVersion":"v3.19","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
+{"screenId":"BAS-09","version":"v0.25","fromVersion":"v0.24","date":"2026.10.27","accountName":"with","summary":"QR PNG 하단에 다운로드 파일명 표시","changes":["개별 및 ZIP QR 이미지에 실제 파일명 인쇄.","긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."]},
 {"screenId":"BAS-03","version":"v1.30","fromVersion":"v1.29","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
 {"screenId":"BAS-05","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},
 {"screenId":"BAS-07","version":"v1.26","fromVersion":"v1.25","date":"2026.10.26","accountName":"with","summary":"다운로드 기본정책에 대상구분·한국 시간 날짜 기준 보강","changes":["파일명 규칙과 함께 실제 대상구분 및 다운로드일 YYYYMMDD 기준 표시.","기존 기획비고·설명 ID·핀 유지."]},

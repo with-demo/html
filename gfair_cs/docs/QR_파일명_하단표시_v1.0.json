@@ -1,0 +1,183 @@
+{
+  "versions": [
+    {
+      "screenId": "EVT-01",
+      "version": "v1.12",
+      "fromVersion": "v1.11",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-02",
+      "version": "v1.13",
+      "fromVersion": "v1.12",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-03",
+      "version": "v0.9",
+      "fromVersion": "v0.8",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-04",
+      "version": "v0.9",
+      "fromVersion": "v0.8",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-01-p08",
+      "version": "v0.2",
+      "fromVersion": "v0.1",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-02-p08",
+      "version": "v0.2",
+      "fromVersion": "v0.1",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-03-p08",
+      "version": "v0.2",
+      "fromVersion": "v0.1",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "EVT-04-p08",
+      "version": "v0.2",
+      "fromVersion": "v0.1",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "PRE-01",
+      "version": "v3.20",
+      "fromVersion": "v3.19",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    },
+    {
+      "screenId": "BAS-09",
+      "version": "v0.25",
+      "fromVersion": "v0.24",
+      "date": "2026.10.27",
+      "accountName": "with",
+      "summary": "QR PNG 하단에 다운로드 파일명 표시",
+      "changes": [
+        "개별 및 ZIP QR 이미지에 실제 파일명 인쇄.",
+        "긴 파일명 줄바꿈, QR 및 흰 여백 유지, 관련 Description 동기화."
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "screen": "EVT-03-p08",
+      "id": "refresh-20261026-evt-03-p08-qr-download"
+    },
+    {
+      "screen": "EVT-01-p08",
+      "id": "refresh-20261026-evt-01-p08-qr-download"
+    },
+    {
+      "screen": "BAS-09",
+      "id": "download-rule-20261026-bas-09-qr"
+    },
+    {
+      "screen": "PRE-01",
+      "id": "download-rule-20261026-pre-01-qr"
+    },
+    {
+      "screen": "EVT-04",
+      "id": "refresh-20261026-evt-04-qr-download"
+    },
+    {
+      "screen": "EVT-02-p08",
+      "id": "refresh-20261026-evt-02-p08-qr-download"
+    },
+    {
+      "screen": "EVT-02",
+      "id": "refresh-20261026-evt-02-selected-qr"
+    },
+    {
+      "screen": "EVT-02",
+      "id": "refresh-20261026-evt-02-all-qr"
+    },
+    {
+      "screen": "EVT-02",
+      "id": "refresh-20261026-evt-02-qr"
+    },
+    {
+      "screen": "EVT-04-p08",
+      "id": "refresh-20261026-evt-04-p08-qr-download"
+    },
+    {
+      "screen": "EVT-01",
+      "id": "refresh-20261026-evt-01-selected-qr"
+    },
+    {
+      "screen": "EVT-01",
+      "id": "refresh-20261026-evt-01-all-qr"
+    },
+    {
+      "screen": "EVT-01",
+      "id": "refresh-20261026-evt-01-qr"
+    },
+    {
+      "screen": "EVT-03",
+      "id": "refresh-20261026-evt-03-qr-download"
+    }
+  ],
+  "policy": "QR 이미지 하단 여백에 실제 PNG 파일명 표시. 12px, 긴 파일명 줄바꿈, QR quiet zone 유지."
+}
