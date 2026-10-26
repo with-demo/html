@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-18","version":"v1.23","fromVersion":"v1.22","date":"2026.10.26","accountName":"mjha","summary":"등록 폼 아이디 우선 순서 및 단독 행 배치 변경","changes":["아이디 단독 행 → 비밀번호/비밀번호 확인 → 이름/소속 → 전화번호/휴대전화번호 → 이메일 단독 행 → 사용여부 단독 행 순서로 변경.","기존 중복확인·입력 검증·등록 동작 및 상세 수정 배치 유지.","관련 Description 위치 설명 동기화."]},
+{"screenId":"COM-08","version":"v0.8","fromVersion":"v0.7","date":"2026.10.26","accountName":"mjha","summary":"등록 폼 아이디 우선 순서 및 단독 행 배치 변경","changes":["아이디 단독 행 → 비밀번호/비밀번호 확인 → 이름/소속 → 전화번호/휴대전화번호 → 이메일 단독 행 → 사용여부 단독 행 순서로 변경.","기존 중복확인·입력 검증·등록 동작 및 상세 수정 배치 유지.","관련 Description 위치 설명 동기화."]},
 {"screenId":"COM-07","version":"v1.17","fromVersion":"v1.16","date":"2026.10.26","accountName":"mjha","summary":"담당자 이름 링크의 중복 밑줄 제거","changes":["이름 셀의 밑줄과 링크 밑줄이 겹치지 않도록 링크 밑줄 한 줄만 표시.","이름 선택·상세 이동 및 Description·알럿 동작 유지."]},
 {"screenId":"COM-07","version":"v1.16","fromVersion":"v1.15","date":"2026.10.26","accountName":"mjha","summary":"Description 표시 오류 수정 및 구매·수출 하위 담당자 예시 추가","changes":["구매·수출 용역사 각각 2026·2027 행사별 하위 담당자 5명과 가상 연락처·이메일·사용여부 예시 구성.","관련 Description의 기본값·필수여부 누락을 보완하여 JSON 원문 노출 오류 수정."]},
 {"screenId":"COM-08","version":"v0.7","fromVersion":"v0.6","date":"2026.10.26","accountName":"mjha","summary":"Description 필수 형식 누락 보완","changes":["구매·수출 용역사 각각 2026·2027 행사별 하위 담당자 5명과 가상 연락처·이메일·사용여부 예시 구성.","관련 Description의 기본값·필수여부 누락을 보완하여 JSON 원문 노출 오류 수정."]},
