@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-19","version":"v1.12","fromVersion":"v1.11","date":"2026.10.26","accountName":"mjha","summary":"공통 영역 핀의 클릭 대상 연결 정확도 수정","changes":["본문·팝업 내부에서 선택 경로의 유일성과 클릭 대상 일치를 저장 전에 검증.","입력칸 자체의 상대 좌표로 저장하며 본문 밖의 유사 구조로 핀이 이동하는 현상 수정.","기존 설명·댓글·저장 위치 데이터 유지."]},
 {"screenId":"BAS-17","version":"v1.24","fromVersion":"v1.23","date":"2026.10.26","accountName":"mjha","summary":"대표 연락처·이메일 등록폼 통일 및 사용여부 행 정렬","changes":["대표연락처는 앞자리/가운데/마지막 번호, 대표이메일은 아이디/@/도메인/선택으로 구성.","사용여부를 마지막 전체 너비 행으로 정렬하고 대표·하위 담당자 연락처와 이메일 예시 입력.","관련 Description과 형식 검증 정의 동기화."]},
 {"screenId":"COM-08","version":"v0.9","fromVersion":"v0.8","date":"2026.10.26","accountName":"mjha","summary":"상세 첫 두 행 순서 및 팀명 소속 예시 변경","changes":["상세는 아이디/비밀번호, 이름/소속 순으로 배치.","하위 담당자 소속 예시를 운영팀·전산팀·상담지원팀 등 팀명으로 변경.","등록 순서 및 기존 저장·검증 유지."]},
 {"screenId":"BAS-19","version":"v1.11","fromVersion":"v1.10","date":"2026.10.26","accountName":"mjha","summary":"영역 설명 번호 건너뜀 및 선택 위치 불안정 수정","changes":["영역 설명 번호에서 화면 개요·알럿/컨펌을 제외하여 다음 설명이 06으로 이어지도록 수정.","새 영역 선택을 본문으로 제한하고 등록 폼 입력 name 기반 연결로 핀 위치 안정화.","기존 설명 ID·내용·댓글·핀 위치 데이터 유지."]},

@@ -73,7 +73,8 @@
  function selectionTarget(clicked,scope){
   if(!(clicked instanceof Element)||!scope?.contains(clicked))return null;
   const button=clicked.closest('button,a');if(button&&scope.contains(button))return button;
-  const field=clicked.closest('.field');if(field&&scope.contains(field))return field;
+  const control=clicked.closest('input,select,textarea');if(control&&scope.contains(control))return control;
+  const field=clicked.closest('.field,.write-form-row');if(field&&scope.contains(field))return field;
   const target=clicked.closest('input,select,textarea,th,td,dt,dd,dl,label,h1,h2,h3,p,.dialogbody,.dialoghead,section,article');
   return target&&target!==scope&&scope.contains(target)?target:null;
  }
@@ -81,15 +82,15 @@
  function selectorFor(target){
   const root=selectionScope(),form=target.closest('form[data-management-form]');
   if(form&&root?.contains(form)){
-   const name=target.matches('.field')?target.querySelector('[name]')?.name:target.getAttribute('name');
+   const name=target.matches('.field,.write-form-row')?target.querySelector('[name]')?.name:target.getAttribute('name');
    if(name){const base='#'+root.id+' form[data-management-form="'+CSS.escape(form.dataset.managementForm)+'"]';
-    const selector=base+(target.matches('.field')?' .field:has([name="'+CSS.escape(name)+'"])':' [name="'+CSS.escape(name)+'"]');
-    if(root.querySelectorAll(selector).length===1)return selector;
+    const selector=base+(target.matches('.field,.write-form-row')?' .field:has([name="'+CSS.escape(name)+'"])':' [name="'+CSS.escape(name)+'"]');
+    if(root.querySelectorAll(selector).length===1&&root.querySelector(selector)===target)return selector;
    }
   }
-  const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}return parts.join(' > ');}
+  const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}if(el===root)parts.unshift('#'+CSS.escape(root.id));return parts.join(' > ');}
  function find(record){try{
-  const anchor=record.anchor,el=(window.MOCKUP_DESCRIPTION_CONTEXT?document.getElementById('dialog-content'):app).querySelector(anchor.selector);if(!el)return null;
+  const anchor=record.anchor,scope=selectionScope();if(!scope)return null;const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return null;const el=matches[0];
   // An explicit unique element ID survives changing timestamps, counters and text.
   if(/^#[\w-]+$/.test(anchor.selector)&&el.id===anchor.selector.slice(1))return el;
   const stableText=value=>value.replace(/\d+(?:[.,:/-]\d+)*/g,'#').replace(/\s+/g,' ').trim();
@@ -160,6 +161,6 @@
   if(pending){pendingPlanningTarget=null;const card=document.getElementById('annotation-'+pending.id);card.tabIndex=-1;card.focus({preventScroll:true});card.scrollIntoView({block:'nearest'});const target=find(pending);if(target)target.scrollIntoView({block:'center'});}
  }
  function schedule(){if(queued)return;queued=true;requestAnimationFrame(render);}
- document.addEventListener('click',event=>{if(!picking||!canEdit()||route()==='screens')return;const scope=selectionScope();if(!scope?.contains(event.target)||event.target.closest('[data-popup-description],.annotation-pin,.ui-spec-pin'))return;const target=selectionTarget(event.target,scope);if(!target)return;event.preventDefault();event.stopImmediatePropagation();const rect=target.getBoundingClientRect();edit(null,{selector:selectorFor(target),sample:target.textContent.replace(/\s+/g,' ').trim().slice(0,60),x:Math.max(0,Math.min(1,(event.clientX-rect.left)/(rect.width||1))),y:Math.max(0,Math.min(1,(event.clientY-rect.top)/(rect.height||1)))});},true);
+ document.addEventListener('click',event=>{if(!picking||!canEdit()||route()==='screens')return;const scope=selectionScope();if(!scope?.contains(event.target)||event.target.closest('[data-popup-description],.annotation-pin,.ui-spec-pin'))return;const target=selectionTarget(event.target,scope);if(!target)return;event.preventDefault();event.stopImmediatePropagation();const selector=selectorFor(target);if(!selector||scope.querySelectorAll(selector).length!==1||scope.querySelector(selector)!==target){message('선택한 영역을 정확히 연결하지 못했습니다. 입력칸이나 항목명을 다시 선택해 주세요.');return;}const rect=target.getBoundingClientRect();edit(null,{selector,sample:target.textContent.replace(/\s+/g,' ').trim().slice(0,60),x:Math.max(0,Math.min(1,(event.clientX-rect.left)/(rect.width||1))),y:Math.max(0,Math.min(1,(event.clientY-rect.top)/(rect.height||1)))});},true);
  new MutationObserver(()=>requestAnimationFrame(pins)).observe(app,{childList:true,subtree:true});new ResizeObserver(()=>requestAnimationFrame(pins)).observe(app);window.addEventListener('description-context-changed',()=>{dragging=null;picking=false;selected=null;dialog.close();schedule();});window.addEventListener('annotation-render',schedule);window.addEventListener('annotation-sync',event=>{view=event.detail;schedule();});window.addEventListener('collaboration-updated',()=>{if(!canEdit()){dragging=null;picking=false;dialog.close();}schedule();});window.addEventListener('hashchange',()=>{dragging=null;picking=false;selected=null;dialog.close();schedule();});window.addEventListener('scroll',pins,true);window.addEventListener('resize',pins);document.addEventListener('keydown',event=>{if(event.key==='Escape'){dragging=null;picking=false;schedule();}});schedule();
 })();
