@@ -1,6 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-19","version":"v1.6","fromVersion":"v1.5","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 등록 5개 항목 Description 초안 적용","changes":["BAS-18의 설명 형식을 참고하여 행사연도·구분·담당자 연락처·담당자 이메일·사용여부 설명과 연결 핀 추가.","기업명·담당자 이름은 설명 작성 대상에서 제외.","실제 필수 여부·기본값·선택 옵션·입력 검증에 맞춰 작성하며 신규 초안 안내는 기획비고에서 제외."]},
+{"screenId":"JNL-16","version":"v0.26","date":"2026.10.26","accountName":"shyuwith","summary":"검수 사용자 본인 작성 중 상세의 임시 저장·등록 버튼 분리","changes":["관리자·수출상담 운영용역사 본인 작성 중 일지는 목록·임시 저장·등록을 우측 하단에 표시.","임시 저장은 작성 중 유지, 등록은 필수 항목 검증 후 승인 완료 처리.","임시 저장·등록 신규 Description 번호 추가. 승인 요청 일지 검수 버튼 유지."]},
+{"screenId":"JNL-14","version":"v0.32","date":"2026.10.26","accountName":"shyuwith","summary":"관리자·수출상담 운영용역사 본인 작성 중 예시 추가","changes":["GF-DRAFT-ADMIN 윤서진, GF-DRAFT-EXPORT-OPERATOR 김정우 예시에서 본인 작성 중 상세 버튼 확인 가능.","목록 조회·검색 정책 변경 없음."]},
 {"screenId":"JNL-16","version":"v0.25","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 최근 반려 사유를 일반 텍스트로 표시","changes":["통역원 반려 상세의 검수 의견에서 텍스트에리어 테두리·크기 조절 UI를 제거하고 일반 텍스트로 조회.","검수 사용자 입력란과 통역원 원문 편집·승인 요청 유지. 08번 Description에 사용자별 UI 유형 반영."]},
 {"screenId":"JNL-16","version":"v0.24","date":"2026.10.26","accountName":"shyuwith","summary":"통역원 이전 반려 사유 표시 기준을 1건 이상으로 정정","changes":["현재 반려 상태이며 반려 이력이 1건 이상이면 이전 반려 사유 보기 표시.","아코디언에서 저장된 반려 사유 전체 조회. 08·13번 설명의 표시 기준과 조회 범위 정정. 제목 좌측·화살표 우측 배치로 펼침·접힘 표시."]},
 {"screenId":"JNL-16","version":"v0.23","date":"2026.10.26","accountName":"shyuwith","summary":"이전 반려 사유 보기를 신규 13번 Description으로 분리","changes":["07번은 관리자·수출상담 운영용역사 처리 이력 설명으로 정리.","13번은 통역원 반려 상태·반려 2회 이상 표시 조건과 읽기 전용 사유 펼침 동작으로 별도 작성.","이전 반려 사유 보기 영역에 13번 라벨 연결. 기존 화면 동작 유지."]},
