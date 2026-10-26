@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.28","fromVersion":"v2.27","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 목록 헤더를 기업명·대표담당자로 변경","changes":["목록의 기업을 기업명, 담당자 이름을 대표담당자로 변경.","검색 셀렉트 옵션과 기업명 상세 이동·표시 데이터는 유지하고 관련 Description 일치."]},
 {"screenId":"BAS-15","version":"v2.27","fromVersion":"v2.26","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
 {"screenId":"BAS-17","version":"v1.19","fromVersion":"v1.18","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 가상 기업명 및 대표담당자 라벨 적용","changes":["운영용역사 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경.","첫 행 라벨을 대표담당자로 변경하고 관련 Description 반영."]},
 {"screenId":"COM-06","version":"v1.14","fromVersion":"v1.13","date":"2026.10.26","accountName":"mjha","summary":"운영용역사 예시 기업명을 자연스러운 가상 기업명으로 변경","changes":["운영용역사 공통 기업명을 ㈜한울컨벤션·㈜이음글로벌·㈜다온엠앤씨로 변경하고 연결 화면에서 같은 이름 사용."]},
