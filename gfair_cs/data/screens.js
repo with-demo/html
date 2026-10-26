@@ -3520,3 +3520,6 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-18','COM-08']){const s=all.find(s=>s.id===id);s.ui.fields=[['아이디','전체 너비 / 중복확인'],['비밀번호','필수'],['비밀번호 확인','필수'],['이름','필수'],['소속','선택'],['전화번호','선택'],['휴대전화번호','선택'],['이메일','전체 너비 / 선택'],['사용여부','전체 너비 / 사용·미사용']];}})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-19');s.ui.fields=[...s.ui.fields.filter(f=>f[0]==='아이디'),...s.ui.fields.filter(f=>f[0]!=='아이디')];})();
+
+// 상세 연락처 등록폼 및 담당자 팀명 소속 구성
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);all.find(s=>s.id==='BAS-17').ui.fields=[['행사연도','필수'],['구분','필수'],['기업명','필수'],['대표담당자명','조회 전용'],['대표연락처','앞자리 선택/가운데/마지막 번호'],['대표이메일','아이디/@/도메인/도메인 선택'],['사용여부','마지막 전체 너비 단독 행']];all.find(s=>s.id==='COM-08').ui.detailFields=[['아이디','조회 전용'],['비밀번호','변경 시 입력'],['이름','필수'],['소속','운영팀·전산팀 등 팀명']];})();
