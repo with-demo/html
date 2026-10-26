@@ -3529,3 +3529,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens);s.find(x=>x.id==='BAS-17').ui.staffColumns=['이름','소속','연락처','이메일','발급ID','PW','사용여부'];s.find(x=>x.id==='COM-08').ui.fields=[['아이디','전체 너비 / 중복확인·상세 읽기 전용'],['이름','필수'],['소속','팀명'],['전화번호','선택'],['휴대전화번호','선택'],['이메일','단독 행'],['사용여부','단독 행']];})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='COM-08');s.ui.fields=[['아이디','전체 너비 / 등록 중복확인·상세 읽기 전용'],['이름','필수'],['소속','팀명'],['연락처','전체 너비 / 앞자리 선택·가운데·마지막'],['이메일','전체 너비 / 선택'],['사용여부','전체 너비']];})();
+
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-17');s.ui.staffFilters=['사용유무','이름 검색'];})();

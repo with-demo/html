@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-17","version":"v1.28","fromVersion":"v1.27","date":"2026.10.26","accountName":"mjha","summary":"담당자 사용유무 필터 및 이름 검색 적용","changes":["사용유무 전체/사용/미사용과 이름 포함 검색을 함께 적용.","검색 버튼·Enter로 적용하고 초기화 시 전체/빈 검색어로 복원.","대표담당자 고정 노출 유지 및 관련 Description 동기화."]},
 {"screenId":"COM-08","version":"v0.11","fromVersion":"v0.10","summary":"연락처 통합 및 Description 초안 전면 정리·기획비고 삭제","date":"2026.10.26","accountName":"mjha","changes":["전화번호·휴대전화번호를 앞자리/가운데/마지막 연락처 한 항목으로 통합.","등록·상세·엑셀의 연락처 저장 및 형식 검증 동기화.","COM-08 Description과 알럿 초안 정리, 사용자 요청에 따라 기획비고 전체 삭제 및 변경 안내 미추가."]},
 {"screenId":"COM-07","version":"v1.19","fromVersion":"v1.18","summary":"담당자 엑셀 양식 전화·휴대전화번호를 연락처로 통합","date":"2026.10.26","accountName":"mjha","changes":["전화번호·휴대전화번호를 앞자리/가운데/마지막 연락처 한 항목으로 통합.","등록·상세·엑셀의 연락처 저장 및 형식 검증 동기화.","COM-08 Description과 알럿 초안 정리, 사용자 요청에 따라 기획비고 전체 삭제 및 변경 안내 미추가."]},
 {"screenId":"BAS-17","version":"v1.27","fromVersion":"v1.26","date":"2026.10.26","accountName":"mjha","summary":"담당자 정보에 COM-07 소속·사용여부 연결","changes":["COM-07 담당자 데이터의 소속·사용여부를 BAS-17에서 함께 조회.","담당자 등록 시 임의 비밀번호 자동 발급, 상세 수정 시 기존 비밀번호 유지.","엑셀 양식의 비밀번호·확인 열 제거 및 관련 Description·알럿 동기화."]},
