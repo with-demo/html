@@ -108,6 +108,10 @@
 #app .journal-review-actor{margin-left:auto;color:#666}
 #app .journal-review-section .journal-control>textarea{resize:vertical}
 #app .journal-rejection-history{width:100%}
+#app .journal-control.journal-history-list{display:block;padding:0}
+#app .journal-history-entry{padding:12px}
+#app .journal-history-entry+.journal-history-entry{border-top:1px solid #e3e3e3}
+#app .journal-history-state{display:flex;align-items:center;gap:12px}
 #app .journal-rejection-history>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none}
 #app .journal-rejection-history>summary::-webkit-details-marker{display:none}
 #app .journal-rejection-history>summary::after{content:'⌄';margin-left:8px}
