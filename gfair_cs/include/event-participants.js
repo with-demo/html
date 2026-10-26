@@ -1,0 +1,44 @@
+// 행사정보는 기본정보관리의 참가 대상만 읽으며 계정 비밀번호와 과거 이력은 투영하지 않는다.
+(()=>{'use strict';
+ const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const config={'EVT-01':{source:'BAS-05',detail:'EVT-03',profile:'BAS-06',name:'바이어명',other:'소속기업',title:'국내 바이어'},'EVT-02':{source:'BAS-07',detail:'EVT-04',profile:'BAS-08',name:'통역원명',other:'언어',title:'통역원'}};
+ const present=row=>['참가','참가확정','신규'].includes(String(row.at(-1)||'').replace(/\s/g,''));
+ const eligible=(rows,year)=>rows.filter(row=>present(row)&&(String(row[3]).match(/20\d{2}/g)||[]).includes(String(year)));
+ function create(ctx){
+  const state={route:'',year:'',query:'',selected:new Set(),person:null},issued=new Set();let pending=null;
+  const cfg=()=>config[state.route],idKey=person=>ctx.year()+'|'+state.route+'|'+person.key;
+  function people(){const c=cfg(),source=ctx.source(c.source);return eligible(source.rows,ctx.year()).map(row=>{const p=window.GFAIR_OVERSEAS_BUYER_DETAIL.eventView(row,source.rows,c.profile,ctx.year());return {key:row[0],name:p.name,other:c.source==='BAS-05'?p.organization:p.languages,id:p.accountId,profile:p};});}
+  function results(){const q=state.query.trim().toLocaleLowerCase();return people().filter(p=>!q||[p.name,p.other,p.id].join(' ').toLocaleLowerCase().includes(q));}
+  function enter(route){if(state.route!==route||state.year!==ctx.year()){state.route=route;state.year=ctx.year();state.query='';state.selected.clear();state.person=null;}const allowed=new Set(people().map(p=>p.key));for(const key of state.selected)if(!allowed.has(key))state.selected.delete(key);}
+  function list(route){enter(route);const c=cfg(),rr=results(),btn=(action,label)=>'<button type="button" class="btn" data-event-action="'+action+'">'+label+'</button>';
+   return '<form data-event-search class="panel filters" data-keyword-only><label class="field"><span>키워드 검색</span><input type="search" name="query" value="'+E(state.query)+'" placeholder="검색어를 입력해 주세요" aria-label="키워드 검색"></label><div class="row"><button class="btn primary" type="submit">검색</button>'+btn('reset','초기화')+'</div></form><section class="panel event-participant-list"><div class="panelhead"><h2>참가 '+c.title+' '+rr.length+'명</h2><div class="row event-participant-tools">'+btn('download','선택 다운로드')+btn('qr-download','QR선택 다운로드')+btn('qr-bulk','QR일괄발급')+'</div></div><div class="tablewrap"><table><thead><tr><th scope="col"><input type="checkbox" data-event-all aria-label="현재 페이지 전체 선택"></th>'+[c.name,c.other,'발급 ID','QR발급'].map(t=>'<th scope="col">'+t+'</th>').join('')+'</tr></thead><tbody>'+(rr.length?rr.map(p=>'<tr><td><input type="checkbox" data-event-check="'+E(p.key)+'" aria-label="'+E(p.name)+' 선택"'+(state.selected.has(p.key)?' checked':'')+'></td><td><button type="button" class="list-name-link" data-event-action="detail" data-person="'+E(p.key)+'">'+E(p.name)+'</button></td><td>'+E(p.other||'미등록')+'</td><td>'+E(p.id||'미발급')+'</td><td><button type="button" class="btn" data-event-action="qr" data-person="'+E(p.key)+'" aria-label="'+E(p.name)+' QR발급">QR발급</button></td></tr>').join(''):'<tr><td colspan="5"><div class="empty">참가 대상이 없거나 검색 결과가 없습니다.</div></td></tr>')+'</tbody></table></div></section>';
+  }
+  function detail(route){const owner=route==='EVT-03'?'EVT-01':'EVT-02';if(state.route!==owner||state.year!==ctx.year())enter(owner);const p=people().find(p=>p.key===state.person);if(!p)return '<section class="panel pad"><div class="empty">조회할 참가자를 목록에서 선택해 주세요.</div></section><div class="formfooter"><a class="btn" href="#'+owner+'">목록</a></div>';const c=cfg(),f=p.profile,pair=(label,value)=>'<dt>'+label+'</dt><dd>'+E(value||'미등록')+'</dd>';
+   return '<section class="overseas-buyer-section event-participant-detail"><h2>기본정보</h2><dl class="overseas-buyer-basic">'+pair(c.name,p.name)+pair('생년월일',f.birthDate)+pair(c.other,p.other)+pair('초청기관',f.invitationType)+pair('연락처',f.phone)+pair('이메일',f.email)+pair('메모',f.memo)+'</dl></section><div class="formfooter"><a class="btn" href="#'+owner+'">목록</a></div>';
+  }
+  function chosen(){const keys=state.selected;return results().filter(p=>keys.has(p.key));}
+  function selectedOrWarn(){const rr=chosen();if(!rr.length)ctx.toast('대상을 선택해 주세요.');return rr;}
+  function qrFor(p){if(!p.id)throw Error('발급 ID를 확인해 주세요.');if(typeof window.qrcode!=='function')throw Error('QR 도구를 불러오지 못했습니다.');const qr=window.qrcode(0,'M');qr.addData('GFAIR-DEMO|'+ctx.year()+'|'+(cfg().source==='BAS-05'?'BUYER':'INTERPRETER')+'|'+p.id);qr.make();return qr.createDataURL(8,4);}
+  const download=(blob,name)=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  function openModal(title,body){ctx.modal(title,body);document.querySelector('#dialog-content > .dialogactions')?.remove();}
+  function showQr(p){const data=qrFor(p);issued.add(idKey(p));openModal('QR 발급 · '+p.name,'<p>'+E(p.name)+' · '+E(p.id)+'</p><img class="event-qr-image" src="'+data+'" alt="'+E(p.name)+' 검토용 QR"><p class="small">화면 검토용 QR입니다. 실제 출입·인증에는 사용할 수 없습니다.</p><div class="dialogactions"><a class="btn" href="'+data+'" download="'+E(p.id)+'_QR.gif">QR 다운로드</a></div>');}
+  document.addEventListener('submit',ev=>{if(!ev.target.matches('[data-event-search]'))return;ev.preventDefault();ev.stopImmediatePropagation();state.query=String(new FormData(ev.target).get('query')||'').trim();state.selected.clear();ctx.refresh();},true);
+  document.addEventListener('change',ev=>{const field=ev.target;if(field.matches('[data-event-check]')){field.checked?state.selected.add(field.dataset.eventCheck):state.selected.delete(field.dataset.eventCheck);syncAll();}else if(field.matches('[data-event-all]')){document.querySelectorAll('.event-participant-list tbody tr:not([hidden]) [data-event-check]').forEach(box=>{box.checked=field.checked;box.checked?state.selected.add(box.dataset.eventCheck):state.selected.delete(box.dataset.eventCheck)});syncAll();}},true);
+  function syncAll(){const all=document.querySelector('[data-event-all]');if(!all)return;const boxes=[...document.querySelectorAll('.event-participant-list tbody tr:not([hidden]) [data-event-check]')],count=boxes.filter(b=>b.checked).length;all.checked=boxes.length>0&&count===boxes.length;all.indeterminate=count>0&&count<boxes.length;}
+  document.addEventListener('click',async ev=>{const b=ev.target.closest('[data-event-action]');if(!b)return;ev.preventDefault();ev.stopImmediatePropagation();try{const action=b.dataset.eventAction;
+   if(action==='reset'){state.query='';state.selected.clear();ctx.refresh();return;}
+   if(action==='detail'){state.person=b.dataset.person;ctx.nav(cfg().detail);return;}
+   if(action==='qr'){const p=people().find(p=>p.key===b.dataset.person);if(p)showQr(p);return;}
+   if(action==='qr-confirm'){const rr=chosen();if(!pending||pending.route!==state.route||pending.year!==ctx.year()||pending.keys.join('|')!==rr.map(p=>p.key).join('|')){ctx.toast('선택 대상이 변경되었습니다. 다시 선택해 주세요.');return;}rr.forEach(p=>qrFor(p));rr.forEach(p=>issued.add(idKey(p)));pending=null;document.getElementById('dialog').close();ctx.toast('선택한 '+rr.length+'명의 QR을 발급했습니다. 검토용 상태입니다.');return;}
+   const rr=selectedOrWarn();if(!rr.length)return;
+   if(action==='download'){download(await GFAIRWorkbook.write([[cfg().name,cfg().other,'발급 ID'],...rr.map(p=>[p.name,p.other,p.id])]),'G-FAIR_'+ctx.year()+'_'+cfg().title+'_선택목록.xlsx');ctx.toast('선택한 '+rr.length+'명의 정보를 다운로드했습니다.');}
+   if(action==='qr-bulk'){pending={route:state.route,year:ctx.year(),keys:rr.map(p=>p.key)};openModal('QR 일괄발급','<p>선택한 '+rr.length+'명의 QR을 발급하시겠습니까?</p><p class="small">기발급 QR은 유지합니다. 실제 출입·인증과 연결되지 않는 검토용 QR입니다.</p><div class="dialogactions"><button type="button" class="btn" data-action="close">취소</button><button type="button" class="btn primary" data-event-action="qr-confirm">발급</button></div>');}
+   if(action==='qr-download'){if(rr.some(p=>!issued.has(idKey(p))))return ctx.toast('선택한 대상의 QR을 먼저 발급해 주세요.');if(!window.JSZip)throw Error('QR 도구를 불러오지 못했습니다.');const zip=new JSZip();for(const p of rr)zip.file(p.id+'_QR.gif',qrFor(p).split(',')[1],{base64:true});download(await zip.generateAsync({type:'blob'}),'G-FAIR_'+ctx.year()+'_'+cfg().title+'_선택QR.zip');ctx.toast('선택한 '+rr.length+'명의 QR을 다운로드했습니다.');}
+  }catch(error){ctx.toast(error.message||'다운로드에 실패했습니다.');}},true);
+  document.addEventListener('click',ev=>{if(ev.target.closest('.event-participant-list .admin-list-pagination'))requestAnimationFrame(syncAll);});
+  document.addEventListener('change',ev=>{if(ev.target.closest('.event-participant-list .admin-list-tools select'))requestAnimationFrame(syncAll);});
+  window.addEventListener('hashchange',()=>{state.selected.clear();pending=null;});
+  return {list,detail};
+ }
+ window.GFAIR_EVENT_PARTICIPANTS={create,eligible};
+})();

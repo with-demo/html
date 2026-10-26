@@ -3,7 +3,7 @@
  const app=document.getElementById('app');if(!app)return;
  const sources='.head-actions,.formfooter,.notice-bottom-actions,.group-detail-actions,.group-access-footer,.management-actions,.workflow-page-nav,.workflow-page-body>.dialogactions,form>.actions';
  const operation=/^(목록(?:으로|으로 돌아가기)?|목록 보기|저장|임시\s?저장|취소|신규 행사|새 일지)$|(?:등록|수정|삭제|제출)$/;
- const tool=/다운로드|동기화|업로드|새로고침|엑셀|출력/;
+ const tool=/다운로드|동기화|업로드|새로고침|엑셀|출력|QR일괄발급/;
  let scheduled=false;
  function apply(){
   scheduled=false;const main=app.querySelector('#content');if(!main)return;

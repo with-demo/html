@@ -1,0 +1,498 @@
+[
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-f0",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가 대상 조회",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- BAS-05 기본정보관리에서 참가로 표시된 대상 중 상단 현재 행사연도가 참가연도에 포함된 대상만 조회\n- 참가 확정·신규는 기본정보의 참가 표시와 같은 기준으로 취급, 참가 미정은 제외\n- 행사 변경 시 대상·발급 ID를 해당 행사 기준으로 다시 조회하고 키워드·선택값 초기화\n- 코드·비밀번호·과거 행사 이력은 목록·다운로드에 포함하지 않음",
+      "planningNote": "",
+      "dataSource": "BAS-05 기본정보관리 및 행사별 발급 ID"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-keyword",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "키워드 검색",
+      "type": "인풋",
+      "defaultValue": "빈 값",
+      "required": "N",
+      "detail": "- 바이어명·소속기업·발급 ID 중 하나라도 검색어를 포함하면 조회\n- 검색 범위 셀렉트 없이 키워드 입력란만 제공\n- 빈 값 또는 공백만 입력한 경우 키워드 조건을 적용하지 않음\n- 입력 중에는 목록을 변경하지 않고 검색 실행 시 적용",
+      "planningNote": "",
+      "placeholder": "검색어를 입력해 주세요"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] input[name=\"query\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-actions",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 검색 실행 시 키워드를 적용하고 목록 첫 페이지로 이동\n- 키워드 입력 후 Enter 입력 시 [검색] 버튼과 동일하게 처리\n- 초기화 시 키워드·체크 선택을 비운 뒤 현재 행사 참가 대상 전체를 조회\n- 검색 후 체크 선택 해제, 결과가 없으면 참가 대상이 없거나 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] .search-actions",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-f1",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 체크박스",
+      "type": "체크박스",
+      "defaultValue": "미선택",
+      "required": "N",
+      "detail": "- 행별 대상을 선택·해제\n- 헤더 체크박스는 현재 페이지의 대상만 전체 선택·해제\n- 선택한 대상은 선택 다운로드·QR선택 다운로드·QR일괄발급에 공통 적용\n- 검색·초기화·메뉴 이동·행사 변경 시 선택 해제",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-all]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "filter-draft-20261022-evt-01-scope",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 다운로드 항목 : 바이어명·소속기업·발급 ID\n- 체크한 대상만 XLSX 파일로 다운로드\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 코드·비밀번호·이력은 포함하지 않음",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr-download",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[QR선택 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 대상의 기발급 QR 이미지를 ZIP 파일로 다운로드\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 미발급 대상이 포함되면 선택한 대상의 QR을 먼저 발급해 주세요. 안내 후 전체 다운로드 중단\n- 파일명은 발급 ID 기준이며 비밀번호·과거 이력은 포함하지 않음",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr-bulk",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[QR일괄발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 대상의 QR을 일괄발급\n- 선택 대상이 없으면 대상을 선택해 주세요. 안내\n- 확인 팝업에 대상 수 표시, 발급 선택 시 처리하고 취소·X·Esc는 변경 없이 닫기\n- 기발급 QR은 유지하며 행사와 대상별로 분리\n- 검토용 QR이며 실제 인증·출입과 연동하지 않음",
+      "planningNote": "",
+      "destination": "EVT-01-p07 QR 일괄발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-bulk\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-name",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - 바이어명",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- 등록된 데이터중 이름이 노출",
+      "planningNote": "",
+      "trigger": "클릭 시",
+      "result": "해당 상세페이지로 이동",
+      "destination": "EVT-03 상세"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"detail\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-qr",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - [QR발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 해당 행의 참가자 QR을 발급하고 이미지·발급 ID를 팝업에 표시\n- 기발급 QR은 같은 QR을 다시 표시\n- 팝업의 QR 다운로드로 해당 이미지 다운로드\n- 코드·비밀번호·이력은 표시하지 않음",
+      "planningNote": "",
+      "destination": "EVT-01-p08 QR 발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"qr\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-01",
+    "id": "event-evt-01-20261026-overview",
+    "spec": {
+      "format": "screen-overview-v1",
+      "overview": "BAS-05 기본정보관리의 현재 행사 참가 대상만 조회합니다. 선택 다운로드·QR발급을 제공하며 코드·비밀번호·과거 이력은 노출하지 않습니다."
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-03",
+    "id": "event-evt-01-20261026-basic-detail",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가자 기본정보",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- BAS-05에서 관리한 바이어명·생년월일·소속기업·초청기관·연락처·이메일·메모를 읽기 전용으로 조회\n- 기본정보에서 저장한 연락처·이메일·메모와 같은 데이터 사용\n- 고유코드·비밀번호·행사참가이력은 표시하지 않음\n- 조회할 대상이 없거나 참가 조건에서 제외되면 목록에서 다시 선택하도록 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content .event-participant-detail",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-03",
+    "id": "event-evt-01-20261026-detail-back",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[목록] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 현재 행사 국내 바이어 목록으로 이동",
+      "planningNote": "",
+      "destination": "EVT-01"
+    },
+    "anchor": {
+      "selector": "#content a[href=\"#EVT-01\"]:last-child",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-f0",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가 대상 조회",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- BAS-07 기본정보관리에서 참가로 표시된 대상 중 상단 현재 행사연도가 참가연도에 포함된 대상만 조회\n- 참가 확정·신규는 기본정보의 참가 표시와 같은 기준으로 취급, 참가 미정은 제외\n- 행사 변경 시 대상·발급 ID를 해당 행사 기준으로 다시 조회하고 키워드·선택값 초기화\n- 코드·비밀번호·과거 행사 이력은 목록·다운로드에 포함하지 않음",
+      "planningNote": "",
+      "dataSource": "BAS-07 기본정보관리 및 행사별 발급 ID"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-keyword",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "키워드 검색",
+      "type": "인풋",
+      "defaultValue": "빈 값",
+      "required": "N",
+      "detail": "- 통역원명·언어·발급 ID 중 하나라도 검색어를 포함하면 조회\n- 검색 범위 셀렉트 없이 키워드 입력란만 제공\n- 빈 값 또는 공백만 입력한 경우 키워드 조건을 적용하지 않음\n- 입력 중에는 목록을 변경하지 않고 검색 실행 시 적용",
+      "planningNote": "",
+      "placeholder": "검색어를 입력해 주세요"
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] input[name=\"query\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-actions",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[검색], [초기화] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 검색 실행 시 키워드를 적용하고 목록 첫 페이지로 이동\n- 키워드 입력 후 Enter 입력 시 [검색] 버튼과 동일하게 처리\n- 초기화 시 키워드·체크 선택을 비운 뒤 현재 행사 참가 대상 전체를 조회\n- 검색 후 체크 선택 해제, 결과가 없으면 참가 대상이 없거나 검색 결과가 없습니다. 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-search] .search-actions",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-f1",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 체크박스",
+      "type": "체크박스",
+      "defaultValue": "미선택",
+      "required": "N",
+      "detail": "- 행별 대상을 선택·해제\n- 헤더 체크박스는 현재 페이지의 대상만 전체 선택·해제\n- 선택한 대상은 선택 다운로드·QR선택 다운로드·QR일괄발급에 공통 적용\n- 검색·초기화·메뉴 이동·행사 변경 시 선택 해제",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-all]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "filter-draft-20261022-evt-02-scope",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[선택 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 다운로드 항목 : 통역원명·언어·발급 ID\n- 체크한 대상만 XLSX 파일로 다운로드\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 코드·비밀번호·이력은 포함하지 않음",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr-download",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[QR선택 다운로드] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 대상의 기발급 QR 이미지를 ZIP 파일로 다운로드\n- 선택한 대상이 없으면 대상을 선택해 주세요. 안내\n- 미발급 대상이 포함되면 선택한 대상의 QR을 먼저 발급해 주세요. 안내 후 전체 다운로드 중단\n- 파일명은 발급 ID 기준이며 비밀번호·과거 이력은 포함하지 않음",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-download\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr-bulk",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[QR일괄발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 체크한 대상의 QR을 일괄발급\n- 선택 대상이 없으면 대상을 선택해 주세요. 안내\n- 확인 팝업에 대상 수 표시, 발급 선택 시 처리하고 취소·X·Esc는 변경 없이 닫기\n- 기발급 QR은 유지하며 행사와 대상별로 분리\n- 검토용 QR이며 실제 인증·출입과 연동하지 않음",
+      "planningNote": "",
+      "destination": "EVT-02-p07 QR 일괄발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content [data-event-action=\"qr-bulk\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-name",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - 통역원명",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- 등록된 데이터중 이름이 노출",
+      "planningNote": "",
+      "trigger": "클릭 시",
+      "result": "해당 상세페이지로 이동",
+      "destination": "EVT-04 상세"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"detail\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-qr",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "목록 - [QR발급] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 해당 행의 참가자 QR을 발급하고 이미지·발급 ID를 팝업에 표시\n- 기발급 QR은 같은 QR을 다시 표시\n- 팝업의 QR 다운로드로 해당 이미지 다운로드\n- 코드·비밀번호·이력은 표시하지 않음",
+      "planningNote": "",
+      "destination": "EVT-02-p08 QR 발급 팝업"
+    },
+    "anchor": {
+      "selector": "#content .event-participant-list tbody tr:first-child [data-event-action=\"qr\"]",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-02",
+    "id": "event-evt-02-20261026-overview",
+    "spec": {
+      "format": "screen-overview-v1",
+      "overview": "BAS-07 기본정보관리의 현재 행사 참가 대상만 조회합니다. 선택 다운로드·QR발급을 제공하며 코드·비밀번호·과거 이력은 노출하지 않습니다."
+    },
+    "anchor": {}
+  },
+  {
+    "screen": "EVT-04",
+    "id": "event-evt-02-20261026-basic-detail",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "참가자 기본정보",
+      "type": "기타",
+      "defaultValue": "해당 없음",
+      "required": "N",
+      "detail": "- BAS-07에서 관리한 통역원명·생년월일·언어·초청기관·연락처·이메일·메모를 읽기 전용으로 조회\n- 기본정보에서 저장한 연락처·이메일·메모와 같은 데이터 사용\n- 고유코드·비밀번호·행사참가이력은 표시하지 않음\n- 조회할 대상이 없거나 참가 조건에서 제외되면 목록에서 다시 선택하도록 안내",
+      "planningNote": ""
+    },
+    "anchor": {
+      "selector": "#content .event-participant-detail",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  {
+    "screen": "EVT-04",
+    "id": "event-evt-02-20261026-detail-back",
+    "spec": {
+      "format": "description-spec-v1",
+      "item": "[목록] 버튼",
+      "type": "버튼",
+      "defaultValue": "활성",
+      "required": "N",
+      "detail": "- 현재 행사 통역원 목록으로 이동",
+      "planningNote": "",
+      "destination": "EVT-02"
+    },
+    "anchor": {
+      "selector": "#content a[href=\"#EVT-02\"]:last-child",
+      "sample": "",
+      "x": 0,
+      "y": 0,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  }
+]
