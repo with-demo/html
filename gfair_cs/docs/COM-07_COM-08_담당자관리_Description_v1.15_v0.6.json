@@ -37,9 +37,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "담당자 목록",
-        "type": "영역",
+        "type": "기타",
         "detail": "- BAS-16과 동일한 이름·아이디·소속·사용여부·등록일 열 표시\n- 사용여부: 전체/사용/미사용, 키워드 범위: 전체/이름/아이디/소속\n- 상단 현재 행사와 본인 회사에 배정된 담당자만 조회\n- 이름 선택 시 COM-08에서 해당 담당자 수정, 등록 선택 시 COM-08 신규 등록",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#content .people-list",
@@ -54,9 +56,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "키워드 검색",
-        "type": "영역",
+        "type": "기타",
         "detail": "- 범위: 전체/이름/아이디/소속\n- 검색 선택 시 사용여부와 키워드를 함께 적용\n- 초기화 시 전체/빈 검색어로 복원",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#content [data-management-form=\"admin-search\"]",
@@ -71,9 +75,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "엑셀 다운로드 / 엑셀 일괄업로드",
-        "type": "영역",
+        "type": "기타",
         "detail": "- 현재 사용여부·키워드 검색 결과 전체를 이름·아이디·소속·사용여부·등록일 XLSX로 다운로드\n- 엑셀 일괄업로드 선택 시 COM-07-p01 팝업 표시\n- 등록 양식 다운로드 → 파일 선택 → 파일 검증 → 정상 미리보기 → 일괄등록\n- 양식 열: 이름/아이디/소속/비밀번호/비밀번호 확인/전화번호/휴대전화번호/이메일/사용여부\n- 필수값·기존/파일 내 아이디 중복·비밀번호 규칙/확인·연락처·이메일·사용여부 검증\n- 오류가 한 건이라도 있으면 전체 등록 중단, 오류 수정 후 재검증\n- 확인 직전 아이디 중복 재검사, 다른 회사나 행사에는 등록하지 않음\n- 비밀번호는 목록 다운로드와 검증 미리보기에 표시하지 않음\n- 팝업 닫기/화면 이동 시 검증 결과 폐기, 현재 탭에만 반영",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#content .people-list .panelhead",
@@ -88,9 +94,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "담당자 기본정보",
-        "type": "영역",
+        "type": "기타",
         "detail": "- BAS-18 등록 화면과 동일한 이름·아이디·소속·비밀번호·비밀번호 확인·전화번호·휴대전화번호·이메일·사용여부 항목과 배치 사용\n- 이름·아이디·비밀번호·비밀번호 확인은 신규 등록 시 필수\n- 아이디 중복확인 후 등록, 확인 후 아이디 변경 시 재확인\n- 비밀번호는 영문·숫자 포함 8~20자리, 확인값 일치\n- 전화번호·휴대전화번호·이메일은 선택 입력, 입력 시 형식 검증\n- 기존 담당자는 아이디 조회 전용, 비밀번호는 변경 시에만 입력\n- 소속은 선택 입력, 내부 회사·행사 연결은 현재 로그인 운영용역사와 현재 행사에 고정\n- 목록은 COM-07 이동, 등록/저장은 현재 탭 예시 데이터에 반영",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#content [data-management-form^=\"person-\"]",
@@ -105,9 +113,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "아이디 / 중복확인",
-        "type": "영역",
+        "type": "기타",
         "detail": "- 신규 등록 시 아이디 필수, 기존 관리자·대표/하위 담당자 ID와 중복 검사\n- 빈 값/중복은 실패, 사용 가능 시 확인 완료\n- 아이디 변경 시 확인 결과 초기화\n- 기존 담당자 수정 시 아이디는 변경 불가",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#content .field:has([name=\"id\"])",
@@ -122,9 +132,11 @@
       "spec": {
         "format": "description-spec-v1",
         "item": "담당자 엑셀 일괄업로드",
-        "type": "영역",
+        "type": "기타",
         "detail": "- 현재 사용여부·키워드 검색 결과 전체를 이름·아이디·소속·사용여부·등록일 XLSX로 다운로드\n- 엑셀 일괄업로드 선택 시 COM-07-p01 팝업 표시\n- 등록 양식 다운로드 → 파일 선택 → 파일 검증 → 정상 미리보기 → 일괄등록\n- 양식 열: 이름/아이디/소속/비밀번호/비밀번호 확인/전화번호/휴대전화번호/이메일/사용여부\n- 필수값·기존/파일 내 아이디 중복·비밀번호 규칙/확인·연락처·이메일·사용여부 검증\n- 오류가 한 건이라도 있으면 전체 등록 중단, 오류 수정 후 재검증\n- 확인 직전 아이디 중복 재검사, 다른 회사나 행사에는 등록하지 않음\n- 비밀번호는 목록 다운로드와 검증 미리보기에 표시하지 않음\n- 팝업 닫기/화면 이동 시 검증 결과 폐기, 현재 탭에만 반영",
-        "planningNote": ""
+        "planningNote": "",
+        "defaultValue": "해당 없음",
+        "required": "N"
       },
       "anchor": {
         "selector": "#dialog-content",
