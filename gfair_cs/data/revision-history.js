@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-06","version":"v0.28","fromVersion":"v0.27","summary":"PW 보기 설명 06번 핀 위치 복원","changes":["여러 연도에 중복 매칭되던 핀을 첫 행 PW 보기 버튼 옆으로 연결."],"date":"2026.10.26","accountName":"mjha"},
+{"screenId":"COM-07-p01","version":"v0.1","summary":"엑셀 일괄 업로드 안내·첨부 문구 정리","changes":["상단 바이어 정보 작성 안내와 XLSX 파일 1개·용량 제한 없음 표시.","예시 계정·실제 권한 안내 문구 제거."],"date":"2026.10.26","accountName":"mjha"},
+{"screenId":"COMMON-HEADER","version":"v0.1","summary":"일반 사용자 공통 헤더 행사 선택 숨김","changes":["운영용역사·국내바이어·통역원에게 행사 셀렉트 미노출, 관리자 기존 화면별 노출 유지."],"date":"2026.10.26","accountName":"mjha"},
 {"screenId":"EVT-01","version":"v1.9","fromVersion":"v1.8","date":"2026.10.26","accountName":"mjha","summary":"기본정보 참가 대상 연결 및 행사정보 목록·상세 재구성","changes":["현재 행사연도와 기본정보 참가 상태를 함께 적용.","키워드 검색과 선택 다운로드·QR선택 다운로드·QR일괄발급 제공.","기본정보에서 같은 발급 ID·연락처·이메일을 조회하고 코드·비밀번호·이력 제외."]},
 {"screenId":"EVT-02","version":"v1.9","fromVersion":"v1.8","date":"2026.10.26","accountName":"mjha","summary":"기본정보 참가 대상 연결 및 행사정보 목록·상세 재구성","changes":["현재 행사연도와 기본정보 참가 상태를 함께 적용.","키워드 검색과 선택 다운로드·QR선택 다운로드·QR일괄발급 제공.","기본정보에서 같은 발급 ID·연락처·이메일을 조회하고 코드·비밀번호·이력 제외."]},
 {"screenId":"EVT-03","version":"v0.6","fromVersion":"v0.5","date":"2026.10.26","accountName":"mjha","summary":"기본정보 참가 대상 연결 및 행사정보 목록·상세 재구성","changes":["현재 행사연도와 기본정보 참가 상태를 함께 적용.","키워드 검색과 선택 다운로드·QR선택 다운로드·QR일괄발급 제공.","기본정보에서 같은 발급 ID·연락처·이메일을 조회하고 코드·비밀번호·이력 제외."]},

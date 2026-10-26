@@ -140,7 +140,7 @@
   if(a==='people-export'){await peopleDownload([['이름','소속','연락처','이메일','발급ID','사용여부'],...personRows(staffMode).map(r=>[r.name,r.org||'미등록',r.phone||'미등록',r.email||'미등록',r.id,r.status||'사용'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
   if(a==='people-template'){await peopleDownload([GFAIRPeopleExcel.headers,['예시 이름','DEMO-NEW-ACCOUNT','운영팀','010-0000-0000','demo@example.com','사용']],title+'_등록양식.xlsx');return;}
   if(a==='people-upload-open'){
-   state.peopleUpload=null;modal(title+' 엑셀 일괄 업로드','<p>등록 양식을 내려받아 입력 후 업로드해 주세요. 오류가 있으면 전체 등록을 중단합니다.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div><p class="small">예시 계정만 현재 탭에 반영합니다. 실제 계정·권한은 변경되지 않습니다.</p>');return;
+   state.peopleUpload=null;modal(title+' 엑셀 일괄 업로드','<p>엑셀 양식을 다운로드하여 바이어 정보를 입력한 뒤 작성한 파일을 첨부해 주세요.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
   }
   if(a==='people-import-confirm'){
    const upload=state.peopleUpload;
