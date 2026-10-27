@@ -1,5 +1,7 @@
 /* 오프라인 수출상담일지 XLSX 업로드 목업. 중복 판정·최종 양식은 발주처 협의 대상. */
 (()=>{'use strict';
+ // 기능 사용 여부 확정 전에는 목록 진입 버튼만 숨긴다. 재개 시 true로 변경.
+ const showUploadButton=false;
  const columns=['행사연도','참가기업','부스 번호','해외 바이어','작성자','상담 시작일시','상담 종료일시','상담 상세','비고','수출 상담액','계약 추진액','거래 가능성','현장 계약 여부','샘플 전달','MOU 체결','MOU 예정','해시태그'];
  const required=columns.filter(x=>!['비고','해시태그'].includes(x));
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -36,7 +38,7 @@
    return {j,line,errors};
   });
  }
- window.GFAIR_JOURNAL_UPLOAD={bind(c){context=c;if(!allowed(c))return;const tools=document.querySelector('#content .panelhead .row');if(tools&&!tools.querySelector('[data-journal-upload]')){const b=document.createElement('button');b.type='button';b.className='btn primary';b.dataset.journalUpload='';b.textContent='엑셀 일괄 업로드';tools.append(b);}}};
+ window.GFAIR_JOURNAL_UPLOAD={bind(c){context=c;if(!showUploadButton||!allowed(c))return;const tools=document.querySelector('#content .panelhead .row');if(tools&&!tools.querySelector('[data-journal-upload]')){const b=document.createElement('button');b.type='button';b.className='btn primary';b.dataset.journalUpload='';b.textContent='엑셀 일괄 업로드';tools.append(b);}}};
  document.addEventListener('change',e=>{if(e.target.matches('[data-journal-upload-form] input[type=file]')){checked=null;host.querySelector('[data-journal-upload-result]').replaceChildren();}});
  document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-journal-upload],[data-journal-template],[data-journal-import]');if(!b||!allowed(context)||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();

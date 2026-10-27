@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14","version":"v0.40","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 일괄 업로드 버튼 임시 숨김","changes":["관리자·수출상담 운영용역사의 목록 상단 엑셀 일괄 업로드 진입 버튼 숨김.","추후 재개할 수 있도록 팝업·양식 다운로드·검증 기능 및 Description 유지."]},
 {"screenId":"JNL-14","version":"v0.39","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 다운로드 파일명 대상구분을 수출상담일지로 변경","changes":["목록 다운로드 파일명: G-FAIR_행사연도_수출상담일지_YYYYMMDD.xlsx.","14번 Description의 파일명 대상구분 변경."]},
 {"screenId":"JNL-14-p01","version":"v0.4","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 등록양식 파일명 대상구분을 수출상담일지로 변경","changes":["양식 파일명: G-FAIR_행사연도_수출상담일지_등록양식_YYYYMMDD.xlsx.","01번 Description의 파일명 대상구분 변경."]},
 {"screenId":"JNL-14-p01","version":"v0.3","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 양식 다운로드와 파일 검증 Description 분리","changes":["통역원 엑셀 업로드 팝업의 설명 형식에 맞춰 01 엑셀양식 다운로드·02 파일 검증으로 분리.","기능·표시 조건·처리 결과·유효성 검사·기본정책·기획비고를 구분하고 기존 정책 보존.","화면 번호를 다운로드·파일 검증 버튼에 연결."]},
