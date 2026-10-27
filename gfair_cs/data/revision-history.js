@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.49","date":"2026.10.27","accountName":"shyuwith","summary":"05번 성과 Description을 금액 입력·라디오 선택으로 분리","changes":["기존 설명만 05 수출 상담액·계약 추진액 숫자 인풋, 06 상담성과 라디오 선택으로 분리.","해시태그 07, 임시 저장 08, 승인 요청 09, 등록 10으로 후속 번호 이동.","내용·필수 조건·정책·기획비고 보존 및 실제 입력 영역에 번호 연결. JNL-16 설명 유지."]},
 {"screenId":"EVT-01","version":"v1.13","date":"2026.10.27","accountName":"with","summary":"회원 QR 이미지 파일명을 이름·아이디 기준으로 변경","changes":["ZIP 내부·개별 QR PNG 및 하단 표기: 이름_아이디_qr코드.png","현재 행사 발급 ID 사용, 관련 Description 파일명 규칙 동기화."]},
 {"screenId":"EVT-02","version":"v1.14","date":"2026.10.27","accountName":"with","summary":"회원 QR 이미지 파일명을 이름·아이디 기준으로 변경","changes":["ZIP 내부·개별 QR PNG 및 하단 표기: 이름_아이디_qr코드.png","현재 행사 발급 ID 사용, 관련 Description 파일명 규칙 동기화."]},
 {"screenId":"EVT-03","version":"v0.10","date":"2026.10.27","accountName":"with","summary":"회원 QR 이미지 파일명을 이름·아이디 기준으로 변경","changes":["ZIP 내부·개별 QR PNG 및 하단 표기: 이름_아이디_qr코드.png","현재 행사 발급 ID 사용, 관련 Description 파일명 규칙 동기화."]},
