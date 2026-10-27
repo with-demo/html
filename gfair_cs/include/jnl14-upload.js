@@ -54,5 +54,5 @@
   const s=session,file=form.querySelector('input[type=file]').files[0],output=host.querySelector('[data-journal-upload-result]'),button=form.querySelector('button');checked=null;busy=true;button.disabled=true;form.querySelector('input').disabled=true;output.textContent='파일을 검증하고 있습니다.';
   try{if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');const data=await GFAIRWorkbook.read(file,{strictRowLimit:true});if(!live(s))return;checked=inspect(data,s);output.innerHTML=result(checked);}catch(error){if(live(s))output.textContent=error.message;}finally{if(live(s))busy=false;button.disabled=false;form.querySelector('input').disabled=false;}
  },true);
- dialog.addEventListener('close',()=>{session=null;checked=null;});
+ dialog.addEventListener('close',()=>{if(!dialog.open){session=null;checked=null;}});
 })();
