@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.51","date":"2026.10.27","accountName":"shyuwith","summary":"셀러 명함 이미지 첨부 정책 적용","changes":["JPG·JPEG·PNG, 파일당 10MB 이하, 최대 2개 선택 첨부 안내·검사 적용.","두 이미지 미리보기 및 기업 변경 시 수동 첨부 유지. 미첨부 등록 허용.","03번 Description 허용 형식·용량·개수 정책 확정 반영."]},
 {"screenId":"JNL-05","version":"v0.50","date":"2026.10.27","accountName":"shyuwith","summary":"셀러 명함을 선택 첨부로 변경","changes":["등록 화면 셀러 명함의 별표와 파일 필수 검사 제거.","참가기업 변경 시에도 명함 파일 필수 조건을 다시 설정하지 않도록 수정.","명함 미첨부 등록값을 빈 값으로 유지. 03번 Description 필수여부·검증 내용 수정."]},
 {"screenId":"JNL-14-p04","version":"v0.1","date":"2026.10.27","accountName":"shyuwith","summary":"일괄 승인·승인 요청 팝업 Description 작성","changes":["공유 화면 ID의 사용자별 승인·승인 요청 권한과 상태 전환 구분.","01 선택 건수·02 승인/승인 요청·03 취소/닫기 설명 및 화면 번호 연결.","검증·처리 결과·표시 조건·기본정책 분리. 기존 선택 건·승인 동작 유지."]},
 {"screenId":"JNL-14-p05","version":"v0.3","date":"2026.10.27","accountName":"shyuwith","summary":"선택 건수 확인 01번 라벨 연결 복구","changes":["안내 문구·오류 안내 칸을 동시에 선택하던 연결을 첫 안내 문구로 한정.","기존 Description 본문·번호·댓글 및 반려 기능 유지."]},

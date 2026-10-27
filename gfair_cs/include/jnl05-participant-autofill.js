@@ -144,8 +144,9 @@
     const upload = card?.querySelector('.journal-upload');
     if (upload) {
       manualCardState.set(form, {
-        image: upload.querySelector('.imagepreview')?.cloneNode(true),
-        name: upload.querySelector('.journal-card-name')?.cloneNode(true),
+        previews: [...upload.querySelectorAll('.journal-card-preview')].map(node => node.cloneNode(true)),
+        image: upload.querySelector('.journal-card-preview') ? null : upload.querySelector('.imagepreview')?.cloneNode(true),
+        name: upload.querySelector('.journal-card-preview') ? null : upload.querySelector('.journal-card-name')?.cloneNode(true),
         value: upload.querySelector('[name="sellerCard"]')?.value || ''
       });
     }
@@ -191,7 +192,8 @@
       setLockedValue(form, 'contactPhone', meta.contactPhone || '');
       const upload = form.querySelector('.journal-upload'), state = manualCardState.get(form);
       if (upload && state) {
-        upload.querySelectorAll('.imagepreview,.journal-card-name').forEach(node => node.remove());
+        upload.querySelectorAll('.journal-card-preview,.imagepreview,.journal-card-name').forEach(node => node.remove());
+        (state.previews || []).slice().reverse().forEach(node => upload.insertBefore(node.cloneNode(true), upload.firstChild));
         if (state.image) upload.insertBefore(state.image.cloneNode(true), upload.firstChild);
         if (state.name) upload.insertBefore(state.name.cloneNode(true), upload.firstChild);
         const file = upload.querySelector('#draft-image');

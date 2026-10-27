@@ -125,3 +125,5 @@
 #app .journal-previous-rejections>summary::after{content:'⌄';flex:0 0 16px;text-align:center}
 #app .journal-previous-rejections[open]>summary::after{content:'⌃'}
 #app .journal-rejection-text{margin:0;width:100%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+
+#app .journal-card-preview{display:flex;flex-direction:column;gap:4px;max-width:180px}#app .journal-card-preview small{overflow-wrap:anywhere}#app .journal-upload>.hint{flex-basis:100%}
