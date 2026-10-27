@@ -1,5 +1,6 @@
 // 현재 구현된 보조 화면의 정식 ID와 진입 정보를 관리한다.
 window.GFAIR_SCREEN_REGISTRY=[
+{"id":"JNL-14-p01","title":"수출상담일지 엑셀 일괄 업로드","parent":"JNL-14","summary":"엑셀 양식을 다운로드하고 오프라인 상담일지를 검증·일괄 등록합니다.","kind":"popup","source":"JNL-14","selector":"[data-journal-upload]"},
   {
     "id": "SET-07",
     "title": "만족도설문 관리",
