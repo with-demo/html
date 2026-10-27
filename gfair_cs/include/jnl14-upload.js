@@ -42,7 +42,7 @@
   const b=e.target.closest('[data-journal-upload],[data-journal-template],[data-journal-import]');if(!b||!allowed(context)||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();
   if(b.hasAttribute('data-journal-upload')){open();return;}
   if(!session||!live(session)||busy)return;
-  if(b.hasAttribute('data-journal-template')){b.disabled=true;try{context.download(await GFAIRWorkbook.write([columns]),'G-FAIR_'+session.year+'_수출상담일지 목록_등록양식_'+GFAIR_DOWNLOAD_NAMES.date()+'.xlsx');}catch{context.toast('엑셀 양식 생성에 실패했습니다.');}finally{b.disabled=false;}return;}
+  if(b.hasAttribute('data-journal-template')){b.disabled=true;try{context.download(await GFAIRWorkbook.write([columns]),'G-FAIR_'+session.year+'_수출상담일지_등록양식_'+GFAIR_DOWNLOAD_NAMES.date()+'.xlsx');}catch{context.toast('엑셀 양식 생성에 실패했습니다.');}finally{b.disabled=false;}return;}
   if(!checked||checked.some(r=>r.errors.length))return;
   const existing=new Set(session.journals.filter(j=>j.type==='수출').map(key));if(checked.some(r=>existing.has(key(r.j)))){checked=null;host.querySelector('[data-journal-upload-result]').textContent='등록된 상담일지가 변경되었습니다. 파일을 다시 검증해 주세요.';return;}
   busy=true;b.disabled=true;const stamp=new Date().toLocaleString('sv-SE',{timeZone:'Asia/Seoul'}).slice(0,16),count=checked.length;
