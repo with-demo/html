@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14-p01","version":"v0.2","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 업로드 파일 용량 제한 해제","changes":["안내를 XLSX 파일 1개 · 용량 제한 없음으로 변경.","수출상담일지 업로드의 10MB 파일 크기 검사 해제. 기존 행 수 및 데이터 검증 유지."]},
 {"screenId":"JNL-14-p01","version":"v0.1","date":"2026.10.27","accountName":"shyuwith","summary":"수출상담일지 엑셀 일괄 업로드 팝업 신규 작성","changes":["기본정보관리 업로드 팝업과 같은 양식 다운로드·파일 검증 UI 적용.","검증 결과와 오류 사유, 정상 파일의 일괄 등록 제공. 목록 15번·팝업 01번 Description 서버 저장.","최종 양식·중복 키·업로드 후 상태·명함 연결 방식은 기획비고에 협의 필요로 표시."]},
 {"screenId":"JNL-14","version":"v0.38","date":"2026.10.27","accountName":"shyuwith","summary":"오프라인 수출상담일지 엑셀 양식 다운로드·일괄 업로드 추가","changes":["관리자·수출상담 운영용역사 목록 상단에 엑셀 일괄 업로드 버튼과 JNL-14-p01 팝업 추가.","양식 다운로드·파일 선택·파일 검증·오류 행 표시·일괄 등록 구현.","필수값 누락·파일 내/기등록 중복·날짜 순서·금액·선택값 검증. 오류 존재 시 등록 차단.","중복 판정 키·최종 엑셀 양식 및 업로드 후 상태는 협의 필요. 검토용 등록은 승인 요청으로 표시."]},
 {"screenId":"JNL-14","version":"v0.37","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 다운로드 파일명에 행사연도·대상구분·다운로드일 적용","changes":["파일명을 G-FAIR_행사연도_수출상담일지 목록_YYYYMMDD.xlsx 형식으로 변경.","선택한 행사연도와 한국 시간 기준 다운로드일 사용. 기존 다운로드 데이터·컬럼 유지."]},
