@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-16","version":"v0.30","date":"2026.10.27","accountName":"shyuwith","summary":"통역원 상세 임시 저장 버튼을 흰색 보조 버튼으로 통일","changes":["작성 중·반려 상세의 임시 저장을 등록 화면과 같은 흰색 배경·회색 테두리로 표시.","승인 요청 강조 및 버튼 배치·상태 유지 동작 보존."]},
 {"screenId":"JNL-16","version":"v0.29","date":"2026.10.27","accountName":"shyuwith","summary":"통역원 작성 중·반려 상세 저장 버튼을 임시 저장으로 통일","changes":["통역원 편집 가능한 상세는 좌측 승인 요청·우측 목록·임시 저장으로 표시.","임시 저장 시 작성 중·반려의 현재 상태 유지. 10번 Description 문구·정책 수정.","관리자·수출상담 운영용역사 버튼 구성 유지."]},
 {"screenId":"JNL-16","version":"v0.28","date":"2026.10.27","accountName":"shyuwith","summary":"금액 입력 05·라디오 선택 06으로 기존 Description 분리","changes":["기존 상담성과 설명과 사용자별 편집 조건을 05 금액 인풋·06 라디오 선택으로 분리.","해시태그부터 후속 번호를 하나씩 이동하고 화면 라벨·본문 검수 의견 참조 번호 일치.","기존 기본값·필수 여부·정책·기획비고 보존, 기능 내용 추가 없음."]},
 {"screenId":"JNL-05","version":"v0.49","date":"2026.10.27","accountName":"shyuwith","summary":"05번 성과 Description을 금액 입력·라디오 선택으로 분리","changes":["기존 설명만 05 수출 상담액·계약 추진액 숫자 인풋, 06 상담성과 라디오 선택으로 분리.","해시태그 07, 임시 저장 08, 승인 요청 09, 등록 10으로 후속 번호 이동.","내용·필수 조건·정책·기획비고 보존 및 실제 입력 영역에 번호 연결. JNL-16 설명 유지."]},
