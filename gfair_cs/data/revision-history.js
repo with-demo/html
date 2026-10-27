@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-14-p05","version":"v0.3","date":"2026.10.27","accountName":"shyuwith","summary":"선택 건수 확인 01번 라벨 연결 복구","changes":["안내 문구·오류 안내 칸을 동시에 선택하던 연결을 첫 안내 문구로 한정.","기존 Description 본문·번호·댓글 및 반려 기능 유지."]},
 {"screenId":"JNL-14","version":"v0.40","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 일괄 업로드 버튼 임시 숨김","changes":["관리자·수출상담 운영용역사의 목록 상단 엑셀 일괄 업로드 진입 버튼 숨김.","추후 재개할 수 있도록 팝업·양식 다운로드·검증 기능 및 Description 유지."]},
 {"screenId":"JNL-14","version":"v0.39","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 다운로드 파일명 대상구분을 수출상담일지로 변경","changes":["목록 다운로드 파일명: G-FAIR_행사연도_수출상담일지_YYYYMMDD.xlsx.","14번 Description의 파일명 대상구분 변경."]},
 {"screenId":"JNL-14-p01","version":"v0.4","date":"2026.10.27","accountName":"shyuwith","summary":"엑셀 등록양식 파일명 대상구분을 수출상담일지로 변경","changes":["양식 파일명: G-FAIR_행사연도_수출상담일지_등록양식_YYYYMMDD.xlsx.","01번 Description의 파일명 대상구분 변경."]},
