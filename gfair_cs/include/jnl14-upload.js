@@ -39,7 +39,7 @@
  window.GFAIR_JOURNAL_UPLOAD={bind(c){context=c;if(!allowed(c))return;const tools=document.querySelector('#content .panelhead .row');if(tools&&!tools.querySelector('[data-journal-upload]')){const b=document.createElement('button');b.type='button';b.className='btn primary';b.dataset.journalUpload='';b.textContent='엑셀 일괄 업로드';tools.append(b);}}};
  document.addEventListener('change',e=>{if(e.target.matches('[data-journal-upload-form] input[type=file]')){checked=null;host.querySelector('[data-journal-upload-result]').replaceChildren();}});
  document.addEventListener('click',async e=>{
-  const b=e.target.closest('[data-journal-upload],[data-journal-template],[data-journal-import]');if(!b||!allowed(context))return;e.preventDefault();e.stopImmediatePropagation();
+  const b=e.target.closest('[data-journal-upload],[data-journal-template],[data-journal-import]');if(!b||!allowed(context)||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();
   if(b.hasAttribute('data-journal-upload')){open();return;}
   if(!session||!live(session)||busy)return;
   if(b.hasAttribute('data-journal-template')){b.disabled=true;try{context.download(await GFAIRWorkbook.write([columns]),'G-FAIR_'+session.year+'_수출상담일지 목록_등록양식_'+GFAIR_DOWNLOAD_NAMES.date()+'.xlsx');}catch{context.toast('엑셀 양식 생성에 실패했습니다.');}finally{b.disabled=false;}return;}
