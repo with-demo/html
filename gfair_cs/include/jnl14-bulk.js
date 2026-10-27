@@ -14,7 +14,7 @@
  document.addEventListener('jnl14-page-change',()=>{document.querySelectorAll('#content [data-jnl14-row]').forEach(el=>el.checked=false);update();});
  document.addEventListener('change',event=>{if(!context||context.current!=='JNL-14')return;if(event.target.matches('[data-jnl14-all]'))document.querySelectorAll('[data-jnl14-row]:not(:disabled)').forEach(el=>el.checked=onPage(el)&&event.target.checked);if(event.target.matches('[data-jnl14-all],[data-jnl14-row]'))update();});
  document.addEventListener('click',event=>{
-  const button=event.target.closest('[data-action]');if(!button||!context||context.current!=='JNL-14')return;const action=button.dataset.action;if(!action.startsWith('jnl14-'))return;event.preventDefault();event.stopImmediatePropagation();
+  const button=event.target.closest('[data-action]');if(!button||!context||context.current!=='JNL-14')return;const action=button.dataset.action;if(!action.startsWith('jnl14-')||document.body.classList.contains('annotation-picking'))return;event.preventDefault();event.stopImmediatePropagation();
   const c=context;
   if(['jnl14-request','jnl14-approve','jnl14-reject'].includes(action)){
    const ids=selected(),rows=c.rows.filter(j=>ids.includes(j.id)&&eligible(j,c.role));if(!rows.length)return c.toast('처리할 상담일지를 선택해 주세요.');pending=rows.map(j=>j.id);
