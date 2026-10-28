@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v0.1","date":"2026.10.28","accountName":"shyuwith","summary":"해외 바이어 상세 기본 정보와 방한 정보 분리","changes":["BAS-04의 동일 프로필·현재 행사 발급ID·QR을 읽기 전용으로 표시.","기본 정보 9개 항목 및 기존 방한 정보 분리, 기존 상태 변경 동작 유지.","PRE-01은 현재 행사연도 참가 대상만 표시. Description 유지."]},
 {"screenId":"PRE-01","version":"v3.25","date":"2026.10.28","accountName":"shyuwith","summary":"국가 필터를 검색 가능한 다중 선택으로 변경","changes":["국가 코드 목록과 현재 바이어 국가를 검색창·체크박스 다중 선택으로 제공.","선택 국가는 OR, 바이어·상태·키워드 조건은 AND 적용. Description 유지."]},
 {"screenId":"PRE-01","version":"v3.24","date":"2026.10.28","accountName":"shyuwith","summary":"키워드 검색 범위를 담당통역원으로 조정","changes":["검색 범위 전체·담당통역원으로 변경, 발급ID 검색 제외.","기존 필터와 Description 유지."]},
 {"screenId":"PRE-01","version":"v3.23","date":"2026.10.28","accountName":"shyuwith","summary":"키워드 검색 행 추가","changes":["기존 조건 아래 마지막 전체 행에 전체·담당통역원·발급ID 키워드 검색 추가.","기존 필터와 AND 결합, 검색·Enter 적용 및 초기화 제공. Description 유지."]},
