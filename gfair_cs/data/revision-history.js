@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v0.6","date":"2026.10.28","accountName":"shyuwith","summary":"방한 이력 표를 공통 레이아웃으로 정리","changes":["별도 현재 이동상태 박스 제거.","흰색 데이터 셀·회색 헤더·얇은 구분선 적용, 현재 위치는 행의 배지로 유지.","스캔 이력 내용 및 Description 유지."]},
 {"screenId":"PRE-02","version":"v0.5","date":"2026.10.28","accountName":"shyuwith","summary":"방한 정보를 단계별 QR 스캔 이력으로 구성","changes":["6개 이동 단계별 QR 스캔 일자·시간·처리 상태 표시.","목록과 동일한 현재 이동상태를 상단과 해당 행에 강조, 이후 단계는 미스캔 표시.","기본 정보·목록 버튼·Description 유지. 스캔 일시는 검토용 예시."]},
 {"screenId":"PRE-02","version":"v0.4","date":"2026.10.28","accountName":"shyuwith","summary":"상세 하단 버튼을 목록 하나로 정리","changes":["하단 상태 변경·QR 확인·상태 이력 버튼 제거, 우측 하단 목록만 표시.","기본 정보 공통 레이아웃·방한 정보·Description 유지."]},
 {"screenId":"PRE-02","version":"v0.3","date":"2026.10.28","accountName":"shyuwith","summary":"QR 다운로드 버튼을 이미지 옆으로 배치","changes":["QR 이미지와 다운로드 버튼을 가로 배치하고 중앙 정렬.","기본정보·방한정보 및 Description 유지."]},
