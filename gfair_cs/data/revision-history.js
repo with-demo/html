@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-05-p01","version":"v0.4","date":"2026.10.28","accountName":"with","summary":"국내바이어 엑셀 검증 결과를 오류 건수·사유 알림으로 변경","changes":["검증 결과 표 미노출, 오류 발생 시 전체 반영 중단 및 건수·사유 알림","정상 검증 후 목록에 반영 버튼 제공, 다른 업로드 화면 유지"]},
 {"screenId":"BAS-09","version":"v0.36","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 목록 예시를 총 20건으로 확장","changes":["기존 3개 기업 유지, 가상 기업 17개와 카테고리 예시 추가.","3개 초과 카테고리 표시 및 10건 보기 2페이지 검토 가능. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.35","date":"2026.10.28","accountName":"shyuwith","summary":"메인 카테고리 컬럼과 최대 3개 표시 적용","changes":["참가기업 다음에 메인 카테고리 컬럼 추가.","중복 제거 후 최대 3개 표시, 초과분은 그 외 N건 표기. 전체 카테고리 검색 유지.","Description 유지."]},
 {"screenId":"PRE-02","version":"v0.7","date":"2026.10.28","accountName":"shyuwith","summary":"방한 단계 표의 자동 건수 표시 제거","changes":["PRE-02 방한 이동 단계 표만 총 건수·페이지 표시 자동 생성에서 제외.","다른 화면 목록·Description 유지."]},

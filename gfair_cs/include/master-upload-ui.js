@@ -32,10 +32,11 @@
  function table(headers,rows){return `<div class="tablewrap"><table><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
  function setStatus(row,s,status){const i=s.ui.columns.indexOf('참가상태');if(i>=0)row[i]=status;}
  function renderValidation(id,entries,errors){
-  const result=content.querySelector('[data-master-upload-result]'),counts={'신규':0,'참가 확정':0,'참가 미정':0};entries.forEach(x=>counts[x.status]++);
+  const result=content.querySelector('[data-master-upload-result]');if(id==='BAS-05'){const bad=entries.filter(x=>!x.valid),reasons=new Map();bad.forEach(x=>reasons.set(x.note,(reasons.get(x.note)||0)+1));result.innerHTML='';if(errors.length||bad.length){validated=null;window.alert('파일 검증에 실패했습니다.\n총 '+entries.length+'건 중 오류 '+bad.length+'건\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').concat(errors).join('\n')+'\n오류를 수정한 파일을 다시 첨부해 주세요.');return;}validated={id,entries};result.innerHTML='<div class="popup-action-row"><button type="button" class="btn primary" data-master-apply>목록에 반영</button></div>';window.alert('총 '+entries.length+'건의 파일 검증이 완료되었습니다.\n목록에 반영 버튼을 눌러 주세요.');return;}const counts={'신규':0,'참가 확정':0,'참가 미정':0};entries.forEach(x=>counts[x.status]++);
   result.innerHTML=`<div class="notice" style="margin-top:16px">검증 결과 · 신규 ${counts['신규']}건 · 참가 확정 ${counts['참가 확정']}건 · 참가 미정 ${counts['참가 미정']}건</div>${errors.length?`<p class="small">${errors.map(esc).join(' · ')}</p>`:''}${table(['이름','생년월일','참가연도','참가 상태','비고'],entries.map(x=>[x.name||'미입력',x.dob||'미확인',x.year||'미확인',x.status,x.note||'']))}<p class="small">현재 탭의 목록에만 반영됩니다. 기존 동일 인물은 한 건으로 유지하고 참가연도를 누적 표시합니다.</p>${entries.some(x=>x.valid)?'<button type="button" class="btn primary" data-master-apply>목록에 반영</button>':''}`;
   validated={id,entries};
  }
+ document.addEventListener('change',ev=>{if(ev.target.matches('[data-master-upload-form="BAS-05"] input[type="file"]')){validated=null;const result=content.querySelector('[data-master-upload-result]');if(result)result.innerHTML='';}});
  document.addEventListener('submit',async ev=>{
   const form=ev.target;if(!form.matches('[data-master-upload-form]'))return;
   ev.preventDefault();ev.stopImmediatePropagation();validated=null;const id=form.dataset.masterUploadForm,file=new FormData(form).get('file'),result=content.querySelector('[data-master-upload-result]');if(!file)return;
@@ -50,7 +51,7 @@
    const old=people.get(id)||new Map();
    parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=participantStatus(years);});
    renderValidation(id,parsed,[]);
-  }catch(error){validated=null;result.innerHTML=`<div class="notice danger" style="margin-top:16px">${esc(error.message||'파일을 확인할 수 없습니다.')}</div>`;}
+  }catch(error){validated=null;if(id==='BAS-05'){result.innerHTML='';window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));return;}result.innerHTML=`<div class="notice danger" style="margin-top:16px">${esc(error.message||'파일을 확인할 수 없습니다.')}</div>`;}
  },true);
  document.addEventListener('click',ev=>{
   if(ev.target.closest('[data-master-apply]')){
