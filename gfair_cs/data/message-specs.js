@@ -1,4 +1,5 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"survey-question-settings-invalid","title":"설문 문항 설정 오류","type":"토스트","trigger":"설문 저장 시 최대 선택 개수 또는 표시 조건 연결이 유효하지 않음","message":"최대 선택 개수와 표시 조건의 연결 문항·보기를 확인해 주세요.","confirm":"저장 중단, 입력 유지","cancel":"","screens":["SET-11","SET-12"],"source":"js/app.js"},
 {"key":"member-upload-result","title":"회원 엑셀 검증·즉시 반영 결과","type":"알럿","trigger":"파일 검증 완료","message":"파일 검증 결과\n총 {N}건 · 반영 {G}건 · 오류 {B}건\n{오류 사유별 건수 또는 정상 건을 목록에 바로 반영했습니다.}","confirm":"전체 정상은 팝업 닫고 목록 갱신 / 오류 존재 시 팝업 유지","cancel":"","screens":["BAS-03-p01","BAS-05-p01","BAS-07-p01","COM-07-p01"],"source":"include/member-upload.js"},
 {"key":"member-upload-file-error","title":"회원 엑셀 읽기·양식 오류","type":"알럿","trigger":"파일 읽기·양식 검증 실패","message":"파일 검증에 실패했습니다.\n사유: {오류사유}","confirm":"목록 미반영, 팝업 유지","cancel":"","screens":["BAS-03-p01","BAS-05-p01","BAS-07-p01","COM-07-p01"],"source":"include/member-upload.js"},
 {"key":"pre01-qr-exported","title":"전체 QR 다운로드 완료","type":"인라인 안내","trigger":"현재 행사 해외바이어 QR PNG ZIP 생성 성공","message":"전체 {N}명의 QR을 다운로드했습니다.","confirm":"현재 화면 유지","cancel":"","screens":["PRE-01"],"source":"js/app.js"},

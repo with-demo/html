@@ -257,10 +257,10 @@ window.GFAIR_SCREEN_REGISTRY=[
 
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-02');s.summary='FAQ 질문을 선택해 답변과 첨부파일을 펼쳐 확인합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
-(()=>{for(const s of GFAIR_SCREENS.flatMap(g=>g.screens)){if(s.id==='SET-08')s.summary='그룹 기본정보와 메뉴 접근 권한을 함께 설정하고 등록합니다.';if(s.id==='SET-09')s.summary='선택한 그룹의 메뉴 접근 권한을 팝업에서 변경합니다.';if(['SET-08','SET-09'].includes(s.id)&&window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;}})();
+(()=>{for(const s of GFAIR_SCREENS.flatMap(g=>g.screens)){if(s.id==='SET-08')s.summary='그룹명과 사용여부만 등록합니다. 메뉴 접근 권한은 등록 후 별도로 설정합니다.';if(s.id==='SET-09')s.summary='선택한 그룹의 메뉴 접근 권한을 팝업에서 변경합니다.';if(['SET-08','SET-09'].includes(s.id)&&window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;}})();
 
 (()=>{for(const group of GFAIR_SCREENS)group.screens=group.screens.filter(s=>s.id!=='BAS-20');const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-18');s.title='관리자 등록·상세';s.summary='관리자를 등록하거나 기본정보를 수정하며 기존 관리자 ID는 변경하지 않습니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 기본정보·메뉴 권한';s.summary='그룹의 기본정보와 메뉴 접근 권한을 함께 확인하고 수정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
-(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 등록·상세·메뉴 권한';s.summary='그룹 기본정보와 메뉴 접근 권한을 등록하거나 수정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
+(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 등록·상세';s.summary='그룹명과 사용여부만 등록·수정합니다. 메뉴 접근 권한은 목록의 메뉴권한 팝업에서 설정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();

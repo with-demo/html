@@ -1,5 +1,13 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-01","version":"v0.24","date":"2026.10.28","accountName":"with","summary":"권한표 기준 체크 및 그룹정보·메뉴권한 분리","changes":["사이트맵 O·△ 체크/X 해제, 기존 업무 범위 유지","등록은 그룹명·사용여부만, 메뉴권한 팝업은 권한만 편집","메뉴 트리 여백 축소 및 관련 Description 동기화"]},
+{"screenId":"SET-02","version":"v0.16","date":"2026.10.28","accountName":"with","summary":"권한표 기준 체크 및 그룹정보·메뉴권한 분리","changes":["사이트맵 O·△ 체크/X 해제, 기존 업무 범위 유지","등록은 그룹명·사용여부만, 메뉴권한 팝업은 권한만 편집","메뉴 트리 여백 축소 및 관련 Description 동기화"]},
+{"screenId":"SET-01-p13","version":"v0.1","date":"2026.10.28","accountName":"with","summary":"권한표 기준 체크 및 그룹정보·메뉴권한 분리","changes":["사이트맵 O·△ 체크/X 해제, 기존 업무 범위 유지","등록은 그룹명·사용여부만, 메뉴권한 팝업은 권한만 편집","메뉴 트리 여백 축소 및 관련 Description 동기화"]},
+{"screenId":"SET-05","version":"v0.22","date":"2026.10.28","accountName":"with","summary":"국내·해외 바이어 HWP v3 설문 예시 2종 반영","changes":["국내 32·해외 29개 세부 문항으로 기존 예시 교체","복수응답 최대 선택 개수·앞선 보기의 표시 조건 설정 추가","원문 미확정 항목 유지, 예시 응답 미생성 및 Description 동기화"]},
+{"screenId":"SET-06","version":"v0.18","date":"2026.10.28","accountName":"with","summary":"국내·해외 바이어 HWP v3 설문 예시 2종 반영","changes":["국내 32·해외 29개 세부 문항으로 기존 예시 교체","복수응답 최대 선택 개수·앞선 보기의 표시 조건 설정 추가","원문 미확정 항목 유지, 예시 응답 미생성 및 Description 동기화"]},
+{"screenId":"SET-11","version":"v0.5","date":"2026.10.28","accountName":"with","summary":"국내·해외 바이어 HWP v3 설문 예시 2종 반영","changes":["국내 32·해외 29개 세부 문항으로 기존 예시 교체","복수응답 최대 선택 개수·앞선 보기의 표시 조건 설정 추가","원문 미확정 항목 유지, 예시 응답 미생성 및 Description 동기화"]},
+{"screenId":"SET-12","version":"v0.5","date":"2026.10.28","accountName":"with","summary":"국내·해외 바이어 HWP v3 설문 예시 2종 반영","changes":["국내 32·해외 29개 세부 문항으로 기존 예시 교체","복수응답 최대 선택 개수·앞선 보기의 표시 조건 설정 추가","원문 미확정 항목 유지, 예시 응답 미생성 및 Description 동기화"]},
+{"screenId":"SET-13","version":"v0.3","date":"2026.10.28","accountName":"with","summary":"국내·해외 바이어 HWP v3 설문 예시 2종 반영","changes":["국내 32·해외 29개 세부 문항으로 기존 예시 교체","복수응답 최대 선택 개수·앞선 보기의 표시 조건 설정 추가","원문 미확정 항목 유지, 예시 응답 미생성 및 Description 동기화"]},
 {"screenId":"BAS-09","version":"v0.44","date":"2026.10.28","accountName":"shyuwith","summary":"사용자가 이동한 핀 위치 유지","changes":["번호 연결 시 서버에 저장된 이동 좌표를 기본 좌표보다 우선 적용.","BAS-09·BAS-10·PRE-01 공통 원인 수정. 설명·번호·댓글·저장된 좌표 유지."]},
 {"screenId":"BAS-03","version":"v1.33","date":"2026.10.28","accountName":"with","summary":"엑셀 검증 알럿 통일 및 정상 행 즉시 반영","changes":["검증 결과 표·별도 반영 버튼 제거","정상 행 즉시 반영 및 오류 건수·사유 알럿 안내","관련 Description·메시지 정의 동기화"]},
 {"screenId":"BAS-03-p01","version":"v0.8","date":"2026.10.28","accountName":"with","summary":"엑셀 검증 알럿 통일 및 정상 행 즉시 반영","changes":["검증 결과 표·별도 반영 버튼 제거","정상 행 즉시 반영 및 오류 건수·사유 알럿 안내","관련 Description·메시지 정의 동기화"]},

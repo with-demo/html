@@ -17,3 +17,22 @@
 .group-detail-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
 
 .group-create-permissions{margin-top:24px;padding-top:20px;border-top:1px solid #ddd}.group-create-permissions h3{font-size:14px;margin-bottom:16px}.group-create-permissions .group-access-scroll{max-height:none}.group-access-scroll th,.group-access-scroll td{font-size:13px}
+
+.group-access-dialog .group-access-heading{padding:12px 16px}
+.group-access-dialog .group-access-body{padding:10px 16px}
+.group-access-dialog .group-permission-title{font-size:14px;margin:0 0 8px}
+.group-access-dialog .group-access-all{margin-bottom:8px;font-size:13px}
+.group-access-dialog .group-access-scroll{max-height:64vh}
+.group-access-dialog .group-access-scroll th,.group-access-dialog .group-access-scroll td{padding:5px 10px;line-height:1.35}
+.group-access-dialog .group-access-scroll tbody td:first-child{padding-left:22px}
+.group-access-dialog .group-access-scroll th:last-child,.group-access-dialog .group-access-scroll td:last-child{width:82px}
+.group-access-dialog .group-access-footer{padding:10px 16px}
+
+.survey-intro,.survey-outro{white-space:pre-line}.survey-question-rule{margin:6px 0;color:#555}
+
+#dialog.standard-popup.group-access-dialog .group-access-heading{padding:10px 16px}
+#dialog.standard-popup.group-access-dialog .group-access-scroll{max-height:calc(100dvh - 245px)}
+#dialog.standard-popup.group-access-dialog .group-access-scroll th,#dialog.standard-popup.group-access-dialog .group-access-scroll td{padding:4px 10px;line-height:16px;height:auto}
+#dialog.standard-popup.group-access-dialog .group-access-scroll tbody td:first-child{padding-left:22px}
+#dialog.standard-popup.group-access-dialog .group-access-scroll input[type=checkbox]{display:block;width:15px;height:15px;margin:0 auto;min-height:0}
+#dialog.standard-popup.group-access-dialog .group-access-footer{margin:10px 16px 14px}
