@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.43","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 드롭다운을 키워드 검색으로 통합","changes":["참가기업 단일 선택 필터 제거, 전체·참가기업·사업자 번호·부스번호·담당자 검색 범위 적용.","메인 카테고리와 키워드 조건 AND 검색. 관련 설명·번호 라벨 갱신, 제거한 필터 설명은 이력 보존 후 화면 제외."]},{"screenId":"PRE-01","version":"v3.26","date":"2026.10.28","accountName":"shyuwith","summary":"바이어명 필터를 키워드 검색으로 통합","changes":["국가·이동상태·키워드 검색 순서 적용, 바이어명 다중 선택 제거.","키워드 범위 전체·바이어명·담당 통역원 적용.","국가·키워드·검색/초기화 설명과 번호 연결 갱신."]},
 {"screenId":"BAS-09","version":"v0.42","date":"2026.10.28","accountName":"shyuwith","summary":"운영용역사와 조회 사용자별 도구 구성 조정","changes":["관리자·구매상담 운영용역사·수출상담 운영용역사에 동일한 체크박스·동기화·QR 도구 제공.","통역원·국내바이어는 체크박스 열만 제거하고 개별 QR·보기 개수·페이지 이동 유지.","관련 설명의 표시 조건·사용 권한 갱신, 컬럼 순서 변화에도 번호 연결 유지."]},
 {"screenId":"BAS-09","version":"v0.41","date":"2026.10.28","accountName":"shyuwith","summary":"QR 다운로드 설명을 국내 바이어 형식으로 통일","changes":["선택·전체 QR다운로드의 파일명·ZIP 내부 이미지·대상구분·부스번호 안내를 EVT-01 설명 형태로 정리.","기존 기능·검증·예외·기획비고 유지. 공동작업 서버에 직접 저장."]},
 {"screenId":"BAS-09","version":"v0.40","date":"2026.10.28","accountName":"shyuwith","summary":"QR ZIP 내부 파일명을 개별 QR과 통일","changes":["선택·전체 ZIP 내부 PNG를 기업명_부스번호_qr코드.png로 변경, 순번 접두어 제거.","현재 06 선택 QR 및 전체 QR다운로드 Description의 파일명 정책만 수정.","ZIP 파일명·다른 설명·수기 변경 내용 유지."]},
