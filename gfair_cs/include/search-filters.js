@@ -19,7 +19,7 @@ let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textCon
 if(location.hash.slice(1)==='BAS-03')labels=['바이어코드','바이어명'];if(location.hash.slice(1)==='BAS-07')labels=['통역원코드','통역원명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','소속기업'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];
-if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];
+if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];if(location.hash.slice(1)==='BAS-09')labels=['참가기업','사업자번호','부스번호','담당자'];
 [...new Set(['전체',...labels].filter(Boolean))].forEach(t=>select.add(new Option(t,t)));select.value=scopes.get(key(form,input))||'전체';select.addEventListener('change',()=>scopes.set(key(form,input),select.value));
 input.placeholder=form.dataset.searchPlaceholder||'검색어를 입력해 주세요';if(form.hasAttribute('data-keyword-only'))controls.append(input);else controls.append(select,input);field.append(controls);keywords.push(field);});
 [...form.querySelectorAll(':scope>.row')].filter(e=>!e.children.length).forEach(e=>e.remove());keywords.forEach(f=>form.append(f));form.append(actions);

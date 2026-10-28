@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.28","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 검색 필터를 범위 선택과 키워드 입력으로 통일","changes":["검색 범위: 전체·참가기업·사업자번호·부스번호·담당자.","검색 클릭·Enter로 선택 범위에 적용하고 초기화 시 전체·빈 검색어로 복원.","사업자번호는 하이픈·공백을 제외하고 비교. Description은 사용자 요청에 따라 유지."]},
 {"screenId":"BAS-09","version":"v0.27","date":"2026.10.28","accountName":"shyuwith","summary":"행별 QR발급 이미지의 파일명 형식 변경","changes":["개별 QR PNG의 하단 표기와 다운로드 파일명을 기업명_부스번호_qr코드.png로 적용.","Description 내용과 선택·전체 QR ZIP 구성은 유지."]},
 {"screenId":"BAS-09","version":"v0.26","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 목록 컬럼과 QR 도구 구성 변경","changes":["체크박스·참가기업·사업자번호·부스번호·담당자·연락처·QR발급으로 목록 컬럼 변경.","상단 우측에 10건씩 보기·동기화 하기·선택 QR다운로드·전체 QR다운로드 배치.","기존 상세 이동 및 동기화 안내 유지, 선택/전체 QR ZIP 다운로드·행별 QR 팝업 연결.","사용자 요청에 따라 Description 내용은 변경하지 않음."]},
 {"screenId":"BAS-05","version":"v1.25","date":"2026.10.28","accountName":"with","summary":"국내바이어 소속기업·초청기관 직접 입력 및 저장 연계","changes":["소속기업 선택 입력, 초청기관 인풋 및 예시값 ㈜한울컨벤션 적용","상세 저장 후 목록·행사정보 최신 소속기업 반영, 관련 Description 수정"]},
