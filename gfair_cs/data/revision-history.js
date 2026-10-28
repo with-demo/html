@@ -1,6 +1,11 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-10","version":"v0.27","date":"2026.10.28","accountName":"shyuwith","summary":"20개 참가기업 상세 정보 보완","changes":["다온리빙과 추가 17개 기업의 기본정보·담당자·카테고리별 제품 내용 구성.","기업별 가상 로고와 브로슈어 다운로드 제공. 목록 정보와 상세 일치.","플러프랩스·브리즈펫케어 기존 내용 및 Description 유지."]},
+{"screenId":"COM-07","version":"v1.22","date":"2026.10.28","accountName":"with","summary":"용역사·담당자 임시 PW를 공통 무작위 7자리 규칙으로 통일","changes":["예시 데이터 및 단건·엑셀·계정발급 모두 영문 대문자 1자 + 숫자 6자리","바이어·통역원과 동일한 기존 정책 적용 및 Description 보강"]},
+{"screenId":"COM-08","version":"v0.13","date":"2026.10.28","accountName":"with","summary":"용역사·담당자 임시 PW를 공통 무작위 7자리 규칙으로 통일","changes":["예시 데이터 및 단건·엑셀·계정발급 모두 영문 대문자 1자 + 숫자 6자리","바이어·통역원과 동일한 기존 정책 적용 및 Description 보강"]},
+{"screenId":"COM-07-p01","version":"v0.2","date":"2026.10.28","accountName":"with","summary":"용역사·담당자 임시 PW를 공통 무작위 7자리 규칙으로 통일","changes":["예시 데이터 및 단건·엑셀·계정발급 모두 영문 대문자 1자 + 숫자 6자리","바이어·통역원과 동일한 기존 정책 적용 및 Description 보강"]},
+{"screenId":"BAS-17","version":"v1.30","date":"2026.10.28","accountName":"with","summary":"용역사·담당자 임시 PW를 공통 무작위 7자리 규칙으로 통일","changes":["예시 데이터 및 단건·엑셀·계정발급 모두 영문 대문자 1자 + 숫자 6자리","바이어·통역원과 동일한 기존 정책 적용 및 Description 보강"]},
+{"screenId":"BAS-19","version":"v1.14","date":"2026.10.28","accountName":"with","summary":"용역사·담당자 임시 PW를 공통 무작위 7자리 규칙으로 통일","changes":["예시 데이터 및 단건·엑셀·계정발급 모두 영문 대문자 1자 + 숫자 6자리","바이어·통역원과 동일한 기존 정책 적용 및 Description 보강"]},
 {"screenId":"BAS-05-p01","version":"v0.4","date":"2026.10.28","accountName":"with","summary":"국내바이어 엑셀 검증 결과를 오류 건수·사유 알림으로 변경","changes":["검증 결과 표 미노출, 오류 발생 시 전체 반영 중단 및 건수·사유 알림","정상 검증 후 목록에 반영 버튼 제공, 다른 업로드 화면 유지"]},
 {"screenId":"BAS-09","version":"v0.36","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 목록 예시를 총 20건으로 확장","changes":["기존 3개 기업 유지, 가상 기업 17개와 카테고리 예시 추가.","3개 초과 카테고리 표시 및 10건 보기 2페이지 검토 가능. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.35","date":"2026.10.28","accountName":"shyuwith","summary":"메인 카테고리 컬럼과 최대 3개 표시 적용","changes":["참가기업 다음에 메인 카테고리 컬럼 추가.","중복 제거 후 최대 3개 표시, 초과분은 그 외 N건 표기. 전체 카테고리 검색 유지.","Description 유지."]},
