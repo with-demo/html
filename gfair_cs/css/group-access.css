@@ -31,7 +31,7 @@
 .survey-intro,.survey-outro{white-space:pre-line}.survey-question-rule{margin:6px 0;color:#555}
 
 #dialog.standard-popup.group-access-dialog .group-access-heading{padding:10px 16px}
-#dialog.standard-popup.group-access-dialog .group-access-scroll{max-height:calc(100dvh - 245px)}
+#dialog.standard-popup.group-access-dialog .group-access-scroll{max-height:calc(100dvh - 285px)}
 #dialog.standard-popup.group-access-dialog .group-access-scroll th,#dialog.standard-popup.group-access-dialog .group-access-scroll td{padding:4px 10px;line-height:16px;height:auto}
 #dialog.standard-popup.group-access-dialog .group-access-scroll tbody td:first-child{padding-left:22px}
 #dialog.standard-popup.group-access-dialog .group-access-scroll input[type=checkbox]{display:block;width:15px;height:15px;margin:0 auto;min-height:0}
