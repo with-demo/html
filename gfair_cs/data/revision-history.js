@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-10","version":"v0.32","date":"2026.10.28","accountName":"shyuwith","summary":"기업 관리 빈값 관련 Description 이전 내용 복원","changes":["직전 수정한 기업 관리 연계·담당자 정보 설명의 표시 조건·정책·비고만 이전 버전 복원.","화면의 영역 유지 및 - 표시 동작은 변경하지 않음."]},
 {"screenId":"BAS-10","version":"v0.31","date":"2026.10.28","accountName":"shyuwith","summary":"기업 관리 정보가 없어도 영역과 항목 유지","changes":["기업 관리 정보가 없으면 기업 기본정보·담당자 영역을 숨기지 않고 빈 값에 - 표시.","기업 번호·홈페이지·로고·주요 제품명·담당자명·연락처·이메일에 동일 적용.","기업 관리 연계 정보·담당자 Description 미노출 조건 수정. 제품 정보 조건 유지."]},
 {"screenId":"SET-01","version":"v0.24","date":"2026.10.28","accountName":"with","summary":"권한표 기준 체크 및 그룹정보·메뉴권한 분리","changes":["사이트맵 O·△ 체크/X 해제, 기존 업무 범위 유지","등록은 그룹명·사용여부만, 메뉴권한 팝업은 권한만 편집","메뉴 트리 여백 축소 및 관련 Description 동기화"]},
 {"screenId":"SET-02","version":"v0.16","date":"2026.10.28","accountName":"with","summary":"권한표 기준 체크 및 그룹정보·메뉴권한 분리","changes":["사이트맵 O·△ 체크/X 해제, 기존 업무 범위 유지","등록은 그룹명·사용여부만, 메뉴권한 팝업은 권한만 편집","메뉴 트리 여백 축소 및 관련 Description 동기화"]},
