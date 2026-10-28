@@ -293,7 +293,7 @@ filters=function(s){
  if(s.id!=='PRE-04')return matchingFilters(s);
  const rr=rows(s),buyers=[...new Set([...rows(map.get('BAS-03')).map(r=>r[1]),...rr.map(r=>r[0])])],interpreters=[...new Set([...rows(map.get('BAS-07')).map(r=>r[1]),...rr.map(r=>r[2])])].filter(v=>v!=='미지정'),languages=[...new Set(rr.map(r=>r[3]))];return `<form id="filter-form" class="panel filters matching-filters">${matchingMulti('해외 바이어','f0',buyers)}${matchingMulti('통역원','f1',interpreters)}${matchingMulti('통역원 언어','f2',languages)}${F('매칭 여부',`<select name="f3">${O(['전체','매칭','미매칭'],filter.f3||'전체')}</select>`)}<div class="row"><button type="submit" class="btn primary">검색</button>${B('reset','초기화')}</div></form>`
 };
-function pre01KeywordMatches(r){const q=String(filter.preKeyword||'').trim().toLocaleLowerCase();if(!q)return true;const scope=window.GFAIR_SEARCH_SCOPE?.('preKeyword')||'전체',master=rows(map.get('BAS-03')),person=master.find(p=>p[1]===r[0]),id=person?GFAIR_OVERSEAS_BUYER_DETAIL.eventView(person,master,'BAS-04',event).accountId:'';const values=scope==='담당통역원'?[r[5]]:scope==='발급ID'?[id]:[r[5],id];return values.some(v=>String(v||'').toLocaleLowerCase().includes(q));}
+function pre01KeywordMatches(r){const q=String(filter.preKeyword||'').trim().toLocaleLowerCase();return !q||String(r[5]||'').toLocaleLowerCase().includes(q);}
 const matchingFiltered=filtered;
 filtered=function(s){
  if(s.id==='PRE-01'){
