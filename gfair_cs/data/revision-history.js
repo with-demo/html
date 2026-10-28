@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.34","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 필터명과 키워드 범위 정리","changes":["참가기업 선택 옵션·선택값에서 부스번호 제거, 기업명만 표시·검색.","키워드 범위는 전체·사업자번호·부스번호·담당자로 변경.","Description 유지."]},
 {"screenId":"BAS-10","version":"v0.26","date":"2026.10.28","accountName":"shyuwith","summary":"제품 2종의 국문 요약 반영","changes":["첨부 화면의 트리트먼트·페이셜 클렌저 국문 제품요약설명 적용.","기존 제품 목록·Description 유지."]},
 {"screenId":"BAS-09","version":"v0.33","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 펼침 목록 UI 정리","changes":["펼침 목록을 얇은 사각 테두리·간결한 행 간격·선택 강조로 변경.","검색창과 단일 선택 유지. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.32","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 선택 폼을 공통 검색 UI로 정리","changes":["왼쪽 기본 삼각형 제거, 오른쪽 화살표·36px 높이·13px 문구·공통 테두리 적용.","검색 가능한 단일 선택과 드롭다운 잘림 방지 유지. Description 유지."]},
