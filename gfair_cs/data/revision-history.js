@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-10","version":"v0.20","date":"2026.10.28","accountName":"shyuwith","summary":"첨부 화면의 지정 텍스트 적용 및 기업명 우선 배치","changes":["첫 상세 예시의 기업·부스·담당자·제품 정보를 사용자 첨부 화면의 지정 텍스트로 변경.","로고·브로슈어는 제공된 파일명 텍스트 표시. 기업명 다음 QR코드 배치.","Description 유지."]},
 {"screenId":"BAS-10","version":"v0.19","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 상세 기본 정보에 QR 다운로드 추가","changes":["기본 정보 상단에 96px QR 이미지와 QR 다운로드 버튼 배치.","목록과 동일한 기업·부스 QR 및 기업명_부스번호_qr코드.png 파일명 사용.","Description 유지."]},
 {"screenId":"BAS-10","version":"v0.18","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 상세 제품 정보 추가 및 참가이력 제외","changes":["제품 관리 연동 영역: 메인 카테고리·제품명·제품요약설명 조회 표 추가.","기본 정보·담당자 정보·제품 정보만 표시. 참가이력 제외.","누락 값은 - 표시. Description 내용 유지."]},
 {"screenId":"BAS-10","version":"v0.17","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 상세를 어드민 연동 조회 화면으로 재구성","changes":["기본 정보: 기업명·사업자 번호·부스 번호는 참가신청 관리 정보 참조.","당해연도 승인된 오프라인 참가기업에 기업 관리의 기업 번호·홈페이지·로고·주요 제품명·국문 소개·브로슈어 연결.","담당자 정보: 기업 관리의 담당자 명·휴대폰 번호·이메일 참조. 없는 값은 항목을 유지하고 - 표시.","모든 사용자 조회 전용, 수정·저장 버튼 없이 목록만 제공. Description 내용은 유지."]},
