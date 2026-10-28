@@ -29,7 +29,7 @@
   const qr=GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|'+(r[0]||'')+'|'+(r[3]||''),qrName);
   const basic=[
    ['기업명',value(r[1])],
-   ['QR코드','<div style="display:flex;align-items:center;gap:16px;white-space:normal"><img src="'+qr+'" alt="'+E(r[1]||'참가기업')+' 부스 QR코드" style="width:96px;height:auto;display:block"><a class="btn" href="'+qr+'" download="'+E(qrName)+'">QR 다운로드</a></div>'],
+   ['QR코드','<div style="display:flex;align-items:center;gap:16px;white-space:normal"><img src="'+qr+'" alt="'+E(r[1]||'참가기업')+' 부스 QR코드" style="width:96px;height:auto;display:block"><a class="btn" data-company-detail-qr href="'+qr+'" download="'+E(qrName)+'">QR 다운로드</a></div>'],
    ['부스 번호',value(r[3])],['사업자 번호',value(r[2])],
    ['기업 번호',value(profile?.companyNumber)],
    ['기업 홈페이지',website?'<a href="'+E(website)+'" target="_blank" rel="noopener noreferrer">'+E(profile.homepage)+'</a>':'-'],
@@ -38,12 +38,12 @@
    ['주요 제품명',value(profile?.mainProducts)],['기업 소개',value(profile?.introductionKo)],
   ];
   const contact=[['담당자 명',value(profile?.contact?.name)],['담당자 연락처',value(profile?.contact?.mobile)],['담당자 이메일',value(profile?.contact?.email)]];
-  const section=(title,pairs)=>'<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2>'+title+'</h2></div><dl class="detail-rows company-linked-grid">'+pairs.map(([label,content])=>{const half=label!=='주요 제품명'&&label!=='기업 소개';return '<dt>'+label+'</dt><dd class="'+(half?'company-half':'company-wide')+'" style="white-space:pre-wrap;overflow-wrap:anywhere">'+content+'</dd>';}).join('')+'</dl></section>';
-  const items=products[r[0]]||[];
-  const productRows=(items.length?items:[{}]).map(item=>'<tr><td>'+value(item.category)+'</td><td style="text-align:left">'+value(item.name)+'</td><td style="text-align:left;white-space:pre-wrap;overflow-wrap:anywhere">'+value(item.summary)+'</td></tr>').join('');
-  const productSection='<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2>제품 정보</h2></div><div class="tablewrap"><table class="company-product-list"><thead><tr><th>메인 카테고리</th><th>제품명</th><th>제품요약설명</th></tr></thead><tbody>'+productRows+'</tbody></table></div></section>';
+  const section=(title,pairs)=>'<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2'+(title==='담당자 정보'?' id="company-contact-title"':'')+'>'+title+'</h2></div><dl class="detail-rows company-linked-grid">'+pairs.map(([label,content])=>{const half=label!=='주요 제품명'&&label!=='기업 소개';return '<dt'+(label==='기업명'?' id="company-application-info"':label==='기업 번호'?' id="company-profile-info"':'')+'>'+label+'</dt><dd class="'+(half?'company-half':'company-wide')+'" style="white-space:pre-wrap;overflow-wrap:anywhere">'+content+'</dd>';}).join('')+'</dl></section>';
+  const items=approvedOfflineYears.includes(String(year))?(products[r[0]]||[]):[];
+  const productRows=items.map(item=>'<tr><td>'+value(item.category)+'</td><td style="text-align:left">'+value(item.name)+'</td><td style="text-align:left;white-space:pre-wrap;overflow-wrap:anywhere">'+value(item.summary)+'</td></tr>').join('');
+  const productSection='<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2 id="company-products-title">제품 정보</h2></div><div class="tablewrap"><table class="company-product-list"><thead><tr><th>메인 카테고리</th><th>제품명</th><th>제품요약설명</th></tr></thead><tbody>'+productRows+'</tbody></table></div></section>';
   const style='<style>#app #content .company-linked-grid{grid-template-columns:140px minmax(0,1fr) 140px minmax(0,1fr)}#app #content .company-linked-grid .company-wide{grid-column:2/-1}@media(max-width:650px){#app #content .company-linked-grid{grid-template-columns:120px minmax(0,1fr)}#app #content .company-linked-grid dd{grid-column:2}}</style>';
-  return style+head+section('기본 정보',basic)+section('담당자 정보',contact)+productSection+'<div class="formfooter">'+back+'</div>';
+  return style+head+section('기본 정보',profile?basic:basic.slice(0,4))+(profile?section('담당자 정보',contact):'')+(items.length?productSection:'')+'<div class="formfooter">'+back+'</div>';
  }
  window.GFAIR_COMPANY_LINKED_DETAIL={render};
 })();
