@@ -15,7 +15,7 @@ test('출결 유형별 항목과 실제처럼 보이는 예시 명칭',()=>{
  const {api}=attendance(),html=api.render('admin','2026'),domestic=html.split('data-attendance-group="domestic"')[1].split('</section>')[0],overseas=html.split('data-attendance-group="overseas"')[1].split('</section>')[0],interpreter=html.split('data-attendance-group="interpreter"')[1].split('</section>')[0];
  assert(domestic.includes('소속'));assert(domestic.includes('출석일시'));assert(domestic.includes('김민준'));assert(domestic.includes('한빛리테일'));
  assert(overseas.includes('국가'));assert(overseas.includes('영국'));assert(overseas.includes('Emily Carter'));assert(!overseas.includes('소속 검색'));
- assert(interpreter.includes('언어'));assert(interpreter.includes('영어 / 일본어'));assert(!interpreter.includes('출석일시'));assert(!interpreter.includes('<time'));
+ assert(interpreter.includes('<th scope="col">출석일시</th>'));assert(!interpreter.includes('<th scope="col">언어</th>'));assert(!interpreter.includes('<td>영어 / 일본어</td>'));assert(interpreter.includes('<time'));assert(!html.includes('data-attendance-status'));
  assert(!html.includes('국내바이어 01'));assert(!html.includes('해외바이어 01'));assert(!html.includes('data-attendance-last'));
 });
 test('기존 역할 범위 유지',()=>{const {api}=attendance(),buy=api.render('buyOperator','2026'),exp=api.render('exportOperator','2026');assert(buy.includes('data-attendance-group="domestic"'));assert(!buy.includes('data-attendance-group="overseas"'));assert(!exp.includes('data-attendance-group="domestic"'));assert(exp.includes('data-attendance-group="interpreter"'));});
