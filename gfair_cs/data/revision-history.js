@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.41","date":"2026.10.28","accountName":"shyuwith","summary":"QR 다운로드 설명을 국내 바이어 형식으로 통일","changes":["선택·전체 QR다운로드의 파일명·ZIP 내부 이미지·대상구분·부스번호 안내를 EVT-01 설명 형태로 정리.","기존 기능·검증·예외·기획비고 유지. 공동작업 서버에 직접 저장."]},
 {"screenId":"BAS-09","version":"v0.40","date":"2026.10.28","accountName":"shyuwith","summary":"QR ZIP 내부 파일명을 개별 QR과 통일","changes":["선택·전체 ZIP 내부 PNG를 기업명_부스번호_qr코드.png로 변경, 순번 접두어 제거.","현재 06 선택 QR 및 전체 QR다운로드 Description의 파일명 정책만 수정.","ZIP 파일명·다른 설명·수기 변경 내용 유지."]},
 {"screenId":"BAS-09","version":"v0.39","date":"2026.10.28","accountName":"shyuwith","summary":"모든 조회 사용자에게 보기 개수·페이지 이동 제공","changes":["관리자 외 사용자도 10·30·50건 보기 및 페이지 이동 제공.","동기화와 기존 관리자용 다운로드 도구는 관리자에게만 유지.","06 표시 조건·권한과 07 관리자 전용 동기화 Description 갱신."]},
 {"screenId":"BAS-10","version":"v0.30","date":"2026.10.28","accountName":"shyuwith","summary":"데이터 출처별 상세 Description 작성","changes":["참가신청 정보·기업 관리 정보·QR·담당자·제품·목록의 01~06 설명과 개요 작성.","각 출처와 조회 전용 권한·연계 조건·미노출 기준을 구분.","원천 기업정보가 없으면 기업 관리 항목·담당자 영역, 제품정보가 없으면 제품 영역 미노출. 개별 빈 값은 - 유지.","공동작업 서버 설명을 화면 번호 라벨과 연결."]},
