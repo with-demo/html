@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.33","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 펼침 목록 UI 정리","changes":["펼침 목록을 얇은 사각 테두리·간결한 행 간격·선택 강조로 변경.","검색창과 단일 선택 유지. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.32","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 선택 폼을 공통 검색 UI로 정리","changes":["왼쪽 기본 삼각형 제거, 오른쪽 화살표·36px 높이·13px 문구·공통 테두리 적용.","검색 가능한 단일 선택과 드롭다운 잘림 방지 유지. Description 유지."]},
 {"screenId":"BAS-10","version":"v0.25","date":"2026.10.28","accountName":"shyuwith","summary":"기업별 복수 제품을 목록으로 표시","changes":["플러프랩스 제품 3종을 제품별 한 행으로 표시.","메인 카테고리·제품명·제품요약설명 컬럼 유지, 미제공 요약은 - 표시.","목록의 기업별 단일 행 및 Description 유지."]},
 {"screenId":"BAS-09","version":"v0.31","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 검색 드롭다운 잘림 수정","changes":["검색필터 패널의 overflow 숨김을 해제하고 드롭다운 표시 순서를 조정.","검색·선택 동작과 Description 유지."]},
