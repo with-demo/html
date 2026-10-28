@@ -62,10 +62,10 @@ window.GFAIR_SCREEN_REGISTRY=[
   },
   {
     "id": "COM-09",
-    "title": "내정보 조회",
+    "title": "내정보",
     "parent": "MON-01",
-    "summary": "내정보 조회 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "workflow",
+    "summary": "유형별 기본정보를 새 창에서 조회하며 메모·참가이력은 제외합니다. 관리자는 비밀번호 변경 입력을 제공합니다.",
+    "kind": "window",
     "match": "내정보",
     "selector": "[data-action=my-info]",
     "contains": false
