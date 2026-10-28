@@ -9,7 +9,7 @@
  let validated=null,validationEpoch=0;
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
  const people=new Map(['BAS-03','BAS-05','BAS-07'].map(id=>{const source=page(id),yearIndex=source.ui.columns.indexOf('참가연도');return [id,new Map(source.ui.rows.map((r,index)=>[key(r[1],source.ui.birthDates?.[r[0]]||''),{index,years:String(r[yearIndex]||'').match(/20\d{2}/g)||[]}]))];}));
- const currentYear=()=>String(document.querySelector('#event-picker')?.value||'2026').match(/20\d{2}/)?.[0]||'2026';
+ const currentYear=()=>{try{return GFAIRMemberUpload.ongoingYear();}catch{return '';}};
  const participantStatus=years=>years.has(currentYear())?(years.has(String(Number(currentYear())-1))?'참가 확정':'신규'):'참가 미정';
  function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','참가','미참가'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','참가','미참가'].map(v=>new Option(v,v)));}
  if(app){new MutationObserver(syncButtons).observe(app,{childList:true,subtree:true});syncButtons();}
@@ -17,7 +17,7 @@
  function templateColumns(s){return GFAIRMemberUpload.headers(s.id)}
  function openUpload(id){
   validated=null;validationEpoch++;const name=labels[id];
-  const guide='<p>엑셀 양식을 다운로드하여 '+(id==='BAS-07'?'통역원':'바이어')+' 정보를 입력한 뒤 작성한 파일을 첨부해 주세요. 등록정보 시트만 읽고 [예시] 행과 코드값 참고 시트는 등록하지 않습니다. 참가연도는 현재 선택한 행사연도로 적용합니다.</p><div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
+  const guide='<p>'+esc(GFAIRMemberUpload.uploadGuide).replace(/\n/g,'<br>')+'</p><div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
   content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody">${guide}<form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
   dialog.showModal();
  }
@@ -36,7 +36,7 @@
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-master-upload-form] input[type="file"]')){validated=null;validationEpoch++;const result=content.querySelector('[data-master-upload-result]');if(result)result.innerHTML='';const submit=ev.target.form?.querySelector('button[type="submit"]');if(submit)submit.disabled=false;}});
  document.addEventListener('submit',async ev=>{
   const form=ev.target;if(!form.matches('[data-master-upload-form]'))return;
-  ev.preventDefault();ev.stopImmediatePropagation();validated=null;const epoch=++validationEpoch,year=currentYear();const id=form.dataset.masterUploadForm,file=new FormData(form).get('file'),result=content.querySelector('[data-master-upload-result]');if(!file)return;const submit=form.querySelector?.('button[type="submit"]');if(submit)submit.disabled=true;
+  ev.preventDefault();ev.stopImmediatePropagation();validated=null;const epoch=++validationEpoch,year=currentYear();const id=form.dataset.masterUploadForm,file=new FormData(form).get('file'),result=content.querySelector('[data-master-upload-result]');if(!file)return;if(!year){window.alert('현재 진행중인 행사 정보를 확인해 주세요.');return;}const submit=form.querySelector?.('button[type="submit"]');if(submit)submit.disabled=true;
   try{
    if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
    const s=page(id),rows=await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true}),checked=GFAIRMemberUpload.validate(id,rows,{countryCodes:window.GFAIR_COUNTRY_CODES,languageCodes:window.GFAIR_LANGUAGE_CODES,year:currentYear()}),parsed=checked.entries;

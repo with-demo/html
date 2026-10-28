@@ -141,7 +141,7 @@
   if(a==='people-export'){await peopleDownload([['이름','소속','연락처','이메일','발급ID','사용여부'],...personRows(staffMode).map(r=>[r.name,r.org||'미등록',r.phone||'미등록',r.email||'미등록',r.id,r.status||'사용'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
   if(a==='people-template'){await GFAIRMemberUpload.downloadTemplate('COM-07',state.staffYear);return;}
   if(a==='people-upload-open'){
-   state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;modal(title+' 엑셀 일괄 업로드','<p>엑셀 양식을 다운로드하여 담당자 정보를 입력한 뒤 작성한 파일을 첨부해 주세요. 등록정보 시트만 읽으며 [예시] 행은 등록하지 않습니다. 아이디·이름·연락처는 필수, 사용여부는 Y/N이며 빈 값은 Y로 처리합니다.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
+   state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;modal(title+' 엑셀 일괄 업로드','<p>'+E(GFAIRMemberUpload.uploadGuide).replace(/\n/g,'<br>')+'</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
   }
 
  }
@@ -196,8 +196,10 @@
   if(type==='people-upload'){
    state.peopleUpload=null;if(!peopleAllowed())return;
    const area=f.parentElement.querySelector('[data-people-upload-result]');area.innerHTML='';
-   const epoch=state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1,context={screen:state.screen,company:ownCompany(),year:state.staffYear};
-   const active=()=>epoch===state.peopleUploadEpoch&&context.screen===state.screen&&context.company===ownCompany()&&context.year===state.staffYear&&f.isConnected&&document.getElementById('dialog').open&&peopleAllowed();
+   let uploadYear;try{uploadYear=GFAIRMemberUpload.ongoingYear();}catch(error){window.alert(error.message);return;}
+   const sameEvent=()=>{try{return uploadYear===GFAIRMemberUpload.ongoingYear();}catch{return false;}};
+   const epoch=state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1,context={screen:state.screen,company:ownCompany(),year:uploadYear,viewYear:state.staffYear};
+   const active=()=>epoch===state.peopleUploadEpoch&&context.screen===state.screen&&context.company===ownCompany()&&context.viewYear===state.staffYear&&sameEvent()&&f.isConnected&&document.getElementById('dialog').open&&peopleAllowed();
    const submit=f.querySelector('button[type="submit"]');submit.disabled=true;
    try{
     const file=fd.get('file');if(!file||!file.name)throw Error('파일을 먼저 선택해 주세요.');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
