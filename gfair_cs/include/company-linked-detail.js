@@ -6,14 +6,21 @@
  const products={'기업-fluff':[{category:'Beauty',name:'미드나잇 릴렉싱 바디워시',summary:'천연 유래 계면활성제와 특허 펩타이드, 로즈우드·로즈마리 향을 담은 프리미엄 펫 바디워시'}]};
  // 사용자가 제공한 제품 목록 순서·제품명·국문 요약을 표시한다.
  products['기업-fluff'].unshift({category:'Beauty',name:'펫 페이셜 클렌저',summary:'바질·캐롯시드로 반려동물의 섬세한 얼굴 피부를 관리하는 프리미엄 펫 페이셜 클렌저'},{category:'Beauty',name:'미드나잇 릴렉싱 트리트먼트',summary:'천연 유래 계면활성제와 펩타이드 특허 성분, 로즈우드·로즈마리 향을 담은 펫 트리트먼트'});
- products['기업-02']=[{category:'Pet Care',name:'저자극 펫 샴푸',summary:'반려동물의 피부와 털을 부드럽게 세정하는 데일리 샴푸입니다.'},{category:'Pet Care',name:'데일리 케어 미스트',summary:'산책 후 간편하게 사용하는 반려동물용 케어 미스트입니다.'}];
+ products['기업-02']=[{category:'Beauty',name:'저자극 펫 샴푸',summary:'반려동물의 피부와 털을 부드럽게 세정하는 데일리 샴푸입니다.'},{category:'Beauty',name:'데일리 케어 미스트',summary:'산책 후 간편하게 사용하는 반려동물용 케어 미스트입니다.'}];
  const directory={
   '기업-fluff':{companyNumber:'070-8095-1468',homepage:'https://www.fluff.co.kr/',logo:{name:'플러프 로고.png',url:'assets/company/fluff-logo.png'},mainProducts:'미드나잇 릴렉싱 바디워시 미드나잇 릴렉싱 트리트먼트 펫 페이셜 클렌저',introductionKo:'주식회사 플러프랩스는 프리미엄 펫 스킨케어 브랜드 ‘플러프(FLUFF)’를 운영하며, 반려동물의 피부 건강과 보호자가 함께하는 일상의 가치를 높이는 제품을 선보이고 있습니다. 천연 유래 성분과 기능성 원료를 활용한 바디워시, 트리트먼트, 페이셜 클렌저 등 전문 스킨케어 제품부터 반려동물과 함께하는 공간을 고려한 펫 프렌들리 캔들까지 다양한 제품을 전개하고 있습니다. 국내 온라인 유통과 호텔·리조트 어메니티 사업을 기반으로 일본 세이부 백화점 입점 및 글로벌 유통 네트워크를 확대하고 있으며, 미국과 유럽 시장으로의 진출을 적극 추진하고 있습니다. 플러프랩스는 제품의 안전성과 전문성, 감각적인 디자인을 바탕으로 반려동물과 보호자 모두를 위한 글로벌 프리미엄 펫 라이프케어 브랜드로 성장하고자 합니다.',brochure:{name:'플러프_제품카탈로그.pdf',url:'assets/company/fluff-brochure.pdf'},contact:{name:'문가은',mobile:'010-3244-9399',email:'MOON@FLUFF.CO.KR'}},
   '기업-02':{companyNumber:'070-0000-0002',homepage:'https://breezepetcare.example',logo:{name:'브리즈펫케어_로고.svg',url:'assets/company/breeze-logo.svg'},mainProducts:'저자극 펫 샴푸, 데일리 케어 미스트',introductionKo:'브리즈펫케어는 반려동물의 일상적인 위생과 피부 관리를 위한 펫 케어 제품을 기획하는 기업입니다. 저자극 샴푸와 데일리 케어 미스트 등 보호자가 편리하게 사용할 수 있는 제품을 선보입니다. 화면 검토를 위한 가상 기업 소개입니다.',brochure:{name:'브리즈펫케어_브로슈어.html',url:'assets/company/breeze-brochure.html'},contact:{name:'박지훈',mobile:'000-0000-0002',email:'contact@breezepetcare.example'}},
  };
+ function fillDemo(r){
+  if(directory[r[0]]||!(r[0]==='기업-01'||/^기업-DEMO-\d{2}$/.test(r[0])))return;
+  const index=r[0]==='기업-01'?0:Number(r[0].slice(-2)),slug='sample-'+String(index).padStart(2,'0'),name=r[1],category=window.GFAIR_COMPANY_FILTER.categoriesFor(r),types={Food:['간편 건강 스낵','균형 잡힌 원료로 만든 간편 식품입니다.'],Kitchen:['다용도 주방 세정제','주방 표면과 조리도구 관리에 사용하는 세정 제품입니다.'],Leisure:['휴대용 피크닉 매트','야외 활동 시 간편하게 펼쳐 사용하는 휴대용 매트입니다.'],Beauty:['데일리 보습 크림','매일 사용하는 보습 케어 제품입니다.'],Fashion:['리사이클 데일리백','재활용 소재를 활용한 일상용 가방입니다.'],Houseware:['친환경 생활 세정제','생활 공간을 편리하게 관리하는 세정 제품입니다.'],Smart:['스마트 환경 센서','실내 환경을 확인할 수 있는 센서 제품입니다.'],Tech:['다목적 산업용 세정제','설비와 부품의 오염을 관리하는 산업용 제품입니다.']};
+  products[r[0]]=category.map(c=>({category:c,name:name+' '+types[c][0],summary:types[c][1]}));
+  directory[r[0]]={companyNumber:'070-0000-'+String(index+100).padStart(4,'0'),homepage:'https://'+slug+'.example',logo:{name:name+'_로고.svg',url:'assets/company/'+slug+'-logo.svg'},brochure:{name:name+'_브로슈어.html',url:'assets/company/'+slug+'-brochure.html'},mainProducts:products[r[0]].map(p=>p.name).join(' / '),introductionKo:name+'는 '+category.join('·')+' 분야의 제품을 기획하고 공급하는 참가기업입니다. 실용성과 편의성을 고려한 제품을 선보이며 국내외 유통 협력과 수출 상담을 추진합니다. 본 내용은 화면 검토용 가상 기업 소개입니다.',contact:{name:r[4],mobile:r[5],email:'contact@'+slug+'.example'}};
+ }
  function render(row,year,head,back){
   const r=[...(row||[])],sample=applications[r[0]];
   if(sample){r[1]=sample.name;r[2]=sample.businessNumber;r[3]=sample.booth;}
+  fillDemo(r);
   const approvedOfflineYears=String(r[6]||'').match(/20\d{2}/g)||[],profile=approvedOfflineYears.includes(String(year))?directory[r[0]]:null;
   const value=v=>v===undefined||v===null||String(v).trim()===''?'-':E(v);
   const safeUrl=url=>{if(typeof url!=='string'||!url.trim())return '';try{const u=new URL(url,location.href);return ['http:','https:'].includes(u.protocol)?u.href:'';}catch{return '';}};

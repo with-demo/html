@@ -14,5 +14,5 @@
  document.addEventListener('change',e=>{if(e.target.matches('.company-filter [name=companyCategory]')){const f=e.target.form,id=f.elements.companyId.value;if(id&&!source.some(r=>r[0]===id&&matches(r,{companyCategory:e.target.value}))){f.elements.companyId.value='';f.querySelector('.company-picker summary').textContent='전체';}f.querySelector('[aria-label="참가기업 검색"]').value='';update(f);}});
  document.addEventListener('click',e=>{const b=e.target.closest('[data-company-option]');if(!b)return;const f=b.closest('form');f.elements.companyId.value=b.dataset.companyOption;f.querySelector('.company-picker summary').textContent=b.textContent;f.querySelector('details').open=false;update(f);});
  function categoryLabel(row){const values=[...new Set(catalog[row[0]]||[])];return values.length?values.slice(0,3).map(E).join(' / ')+(values.length>3?' <span style="white-space:nowrap">그 외 '+(values.length-3)+'건</span>':''):'-';}
- window.GFAIR_COMPANY_FILTER={render,matches,categoryLabel};
+ window.GFAIR_COMPANY_FILTER={render,matches,categoryLabel,categoriesFor:row=>[...new Set(catalog[row[0]]||[])]};
 })();
