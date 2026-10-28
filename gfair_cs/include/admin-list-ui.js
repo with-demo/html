@@ -43,7 +43,7 @@
   [10,30,50].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
   tools.prepend(size);
   if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
-  if(route==='BAS-09'){
+  if(route==='BAS-09'&&root.querySelector('#role-picker')?.value==='admin'){
    const sync=document.createElement('button');sync.type='button';sync.className='btn';sync.textContent='동기화 하기';sync.dataset.companySync='';sync.addEventListener('click',()=>{const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 정보를 확인했습니다. 실제 G-FAIR ADMIN 동기화는 시스템 연계 후 제공됩니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}});tools.append(sync);
    const selectedQr=document.createElement('button');selectedQr.type='button';selectedQr.className='btn';selectedQr.textContent='선택 QR다운로드';selectedQr.dataset.companyQrSelected='';tools.append(selectedQr);
    const allQr=document.createElement('button');allQr.type='button';allQr.className='btn';allQr.textContent='전체 QR다운로드';allQr.dataset.companyQrAll='';allQr.dataset.companyQrDownload='';tools.append(allQr);
@@ -74,7 +74,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='BAS-09'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;
