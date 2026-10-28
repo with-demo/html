@@ -20,7 +20,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
  new MutationObserver(alignLists).observe(app,{childList:true,subtree:true});alignLists();
 })();
 
-(()=>{const script=document.createElement("script");script.src=new URL("attendance-dashboard.js?v=clean-copy-20261021",document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement("script");script.src=new URL("attendance-dashboard.js?v=dashboard-live-20261028",document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=name-links-20261022',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
 

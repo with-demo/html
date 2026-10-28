@@ -508,8 +508,10 @@ const journalStatusRows=jRows;
 jRows=function(s){let rr=journalStatusRows(s);if(['admin','buyOperator','exportOperator'].includes(role))return rr.filter(j=>j.status!=='임시 저장');return rr.filter(j=>j.writer===(role==='buyer'?'김민준':'박서연')&&j.type===(role==='buyer'?'구매':'수출'));};
 
 
+window.addEventListener('gfair-live-refresh',event=>{if(current==='MON-01'&&event.detail.screen==='MON-01')render();});
+setInterval(()=>{if(current==='MON-01'&&!document.hidden&&window.GFAIR_DASHBOARD_LIVE.state==='connected')render();},30000);
 let monitoringUpdatedAt=new Date();
-function monitoringUpdateControl(){const stamp=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'2-digit',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(monitoringUpdatedAt).replaceAll('-','.');return `<div class="monitoring-update"><span class="monitoring-update-time" title="한국 시간 기준"><i data-lucide="refresh-cw" aria-hidden="true"></i><time data-monitoring-updated datetime="${monitoringUpdatedAt.toISOString()}">${E(stamp)} 기준</time></span>${B('refresh','새로고침')}</div>`}
+function monitoringUpdateControl(){if(current==='MON-01')return window.GFAIR_DASHBOARD_LIVE.markup('MON-01');const stamp=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'2-digit',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(monitoringUpdatedAt).replaceAll('-','.');return `<div class="monitoring-update"><span class="monitoring-update-time" title="한국 시간 기준"><i data-lucide="refresh-cw" aria-hidden="true"></i><time data-monitoring-updated datetime="${monitoringUpdatedAt.toISOString()}">${E(stamp)} 기준</time></span>${B('refresh','새로고침')}</div>`}
 root.addEventListener('click',ev=>{if(['MON-01','MON-02','MON-03'].includes(current)&&ev.target.closest('[data-action="refresh"]'))monitoringUpdatedAt=new Date()},true);
 
 window.addEventListener("attendance-dashboard-ready",()=>{if(location.hash==="#MON-08"||!location.hash&&document.body.dataset.screen==="MON-08")render();});

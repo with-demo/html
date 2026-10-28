@@ -33,7 +33,7 @@
   let bar=main.querySelector(':scope>.page-bottom-actions');
   const candidates=[...new Set([...main.querySelectorAll(sources+(!detail?',.panelhead':''))].flatMap(group=>[...group.querySelectorAll('button,a.btn,input[type=submit]')]))].filter(b=>!b.closest('.tablewrap,table,dialog,.page-bottom-actions')&&!b.matches('[hidden]'));
   const footer='.formfooter,.notice-bottom-actions,.group-detail-actions,.group-access-footer,form>.actions';
-  const moves=candidates.filter(b=>b.closest(footer)||(operation.test((b.textContent||b.value||'').trim())||!detail&&b.closest('.head-actions,.panelhead'))&&!tool.test(b.textContent)).sort((a,b)=>Number(!!b.closest(footer))-Number(!!a.closest(footer)));
+  const moves=candidates.filter(b=>!b.matches('[data-dashboard-refresh]')).filter(b=>b.closest(footer)||(operation.test((b.textContent||b.value||'').trim())||!detail&&b.closest('.head-actions,.panelhead'))&&!tool.test(b.textContent)).sort((a,b)=>Number(!!b.closest(footer))-Number(!!a.closest(footer)));
   if(!bar&&moves.length){bar=document.createElement('div');bar.className='page-bottom-actions';bar.setAttribute('aria-label','페이지 작업');main.append(bar)}
   if(!bar)return;
   // 페이지 작업은 문구별 하나만 남기고 원래 하단 폼 버튼을 우선한다.
