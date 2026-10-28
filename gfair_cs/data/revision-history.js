@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-10","version":"v0.21","date":"2026.10.28","accountName":"shyuwith","summary":"로고·브로슈어 다운로드 및 상세 표 배치 변경","changes":["로고 PNG와 브로슈어 PDF 원본 다운로드 연결.","로고·브로슈어 같은 행, 주요 제품명·국문 소개 각각 전체 행 배치.","Description 유지."]},{"screenId":"BAS-09","version":"v0.29","date":"2026.10.28","accountName":"shyuwith","summary":"플러프랩스 참가기업 예시 추가","changes":["플러프랩스 주식회사·사업자번호·M-24·담당자·연락처 추가, 해당 상세·QR 연결.","기존 기업 예시 및 Description 유지."]},
 {"screenId":"BAS-10","version":"v0.20","date":"2026.10.28","accountName":"shyuwith","summary":"첨부 화면의 지정 텍스트 적용 및 기업명 우선 배치","changes":["첫 상세 예시의 기업·부스·담당자·제품 정보를 사용자 첨부 화면의 지정 텍스트로 변경.","로고·브로슈어는 제공된 파일명 텍스트 표시. 기업명 다음 QR코드 배치.","Description 유지."]},
 {"screenId":"BAS-10","version":"v0.19","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 상세 기본 정보에 QR 다운로드 추가","changes":["기본 정보 상단에 96px QR 이미지와 QR 다운로드 버튼 배치.","목록과 동일한 기업·부스 QR 및 기업명_부스번호_qr코드.png 파일명 사용.","Description 유지."]},
 {"screenId":"BAS-10","version":"v0.18","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 상세 제품 정보 추가 및 참가이력 제외","changes":["제품 관리 연동 영역: 메인 카테고리·제품명·제품요약설명 조회 표 추가.","기본 정보·담당자 정보·제품 정보만 표시. 참가이력 제외.","누락 값은 - 표시. Description 내용 유지."]},
