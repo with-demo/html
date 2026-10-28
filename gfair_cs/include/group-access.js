@@ -4,7 +4,7 @@
  const entries=()=>tree().flatMap(g=>g.items.flatMap(i=>i[2].length?i[2]:[i]));
  const groups=Object.entries({admin:'관리자',buyOperator:'구매상담 운영용역사',exportOperator:'수출상담 운영용역사',buyer:'국내 바이어',interpreter:'통역원'}).map(([id,name])=>({id,name,active:true,date:'2026.10.20',menus:new Set(entries().filter(item=>window.GFAIR_NAV.allowed(item,id)).map(item=>item[0]))}));
  let query='',status='전체',notice='',selectedGroup='admin';
- const admin=()=>document.getElementById('role-picker')?.value==='admin';
+ let activeRole=null;const admin=()=>(activeRole??document.getElementById('role-picker')?.value)==='admin';
  const button=(action,text,attrs='')=>`<button type="button" class="btn" data-group-action="${action}" ${attrs}>${E(text)}</button>`;
  function render(){
   if(!admin())return '<div class="empty">관리자만 이용할 수 있습니다.</div>';
@@ -48,5 +48,5 @@
  },true);
  const root=document.getElementById('app');if(root)new MutationObserver(syncChecks).observe(root,{childList:true,subtree:true});
  window.addEventListener('hashchange',()=>{if(location.hash!=='#SET-02')groupMode(false);});
- window.GFAIR_GROUP_ACCESS={render};window.dispatchEvent(new Event('group-access-ready'));
+ window.GFAIR_GROUP_ACCESS={render(role){if(role)activeRole=role;return render();}};window.dispatchEvent(new Event('group-access-ready'));
 })();
