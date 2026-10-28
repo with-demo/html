@@ -118,7 +118,7 @@
  function close(){document.getElementById('dialog').close();}
 
  const staffFields=['행사 연도','기업코드','담당자코드','담당자명'];
- document.addEventListener('change',event=>{if(event.target.matches('[data-management-form="people-upload"] input[type="file"]')){state.peopleUpload=null;const result=document.querySelector('[data-people-upload-result]');if(result)result.innerHTML='';}});
+ document.addEventListener('change',event=>{if(event.target.matches('[data-management-form="people-upload"] input[type="file"]')){state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;const result=document.querySelector('[data-people-upload-result]');if(result)result.innerHTML='';}});
  function staffAllowed(){return ((state.screen==='BAS-17'&&isAdmin())||(['COM-07','COM-08'].includes(state.screen)&&['buyOperator','exportOperator'].includes(state.role)))&&allowed(state.company)&&assignments.some(a=>a.company===state.company&&a.year===state.staffYear&&allowedAssignment(a));}
  function validateStaffRows(rows,company,year,existing){
   const header=rows[0]||[];
@@ -141,15 +141,9 @@
   if(a==='people-export'){await peopleDownload([['이름','소속','연락처','이메일','발급ID','사용여부'],...personRows(staffMode).map(r=>[r.name,r.org||'미등록',r.phone||'미등록',r.email||'미등록',r.id,r.status||'사용'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
   if(a==='people-template'){await GFAIRMemberUpload.downloadTemplate('COM-07',state.staffYear);return;}
   if(a==='people-upload-open'){
-   state.peopleUpload=null;modal(title+' 엑셀 일괄 업로드','<p>엑셀 양식을 다운로드하여 담당자 정보를 입력한 뒤 작성한 파일을 첨부해 주세요. 등록정보 시트만 읽으며 [예시] 행은 등록하지 않습니다. 아이디·이름·연락처는 필수, 사용여부는 Y/N이며 빈 값은 Y로 처리합니다.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
+   state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;modal(title+' 엑셀 일괄 업로드','<p>엑셀 양식을 다운로드하여 담당자 정보를 입력한 뒤 작성한 파일을 첨부해 주세요. 등록정보 시트만 읽으며 [예시] 행은 등록하지 않습니다. 아이디·이름·연락처는 필수, 사용여부는 Y/N이며 빈 값은 Y로 처리합니다.</p>'+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
   }
-  if(a==='people-import-confirm'){
-   const upload=state.peopleUpload;
-   if(!upload||upload.screen!==state.screen||upload.company!==ownCompany()||upload.year!==state.staffYear)return;
-   if(upload.rows.some(r=>accountIdTaken(r.id))){state.peopleUpload=null;const area=document.querySelector('[data-people-upload-result]');if(area)area.textContent='아이디 목록이 변경되었습니다. 파일을 다시 검증해 주세요.';return;}
-   for(const row of upload.rows){const {password,...data}=row;if(staffMode)staff.push({...data,company:ownCompany(),year:state.staffYear,code:row.id,pw:generatedOperatorPassword(),date:adminDate()});else admins.push({...data,passwordSet:true,date:adminDate()});}
-   const count=upload.rows.length;state.peopleUpload=null;close();message(count+'명의 '+title+'를 등록했습니다. 현재 탭에만 반영됩니다.');
-  }
+
  }
 
  async function action(b){
@@ -202,13 +196,18 @@
   if(type==='people-upload'){
    state.peopleUpload=null;if(!peopleAllowed())return;
    const area=f.parentElement.querySelector('[data-people-upload-result]');area.innerHTML='';
+   const epoch=state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1,context={screen:state.screen,company:ownCompany(),year:state.staffYear};
+   const active=()=>epoch===state.peopleUploadEpoch&&context.screen===state.screen&&context.company===ownCompany()&&context.year===state.staffYear&&f.isConnected&&document.getElementById('dialog').open&&peopleAllowed();
+   const submit=f.querySelector('button[type="submit"]');submit.disabled=true;
    try{
-    const file=fd.get('file');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
-    const checked=GFAIRPeopleExcel.validate(await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true}),[...admins,...assignments,...staff].map(a=>a.id));
-    if(checked.errors.length){area.innerHTML=table(['엑셀 행','오류 사유'],checked.errors.map(e=>'<tr><td>'+e.line+'</td><td>'+E(e.error)+'</td></tr>').join(''))+'<p>오류를 수정한 뒤 다시 검증해 주세요. 아직 등록하지 않았습니다.</p>';return;}
-    state.peopleUpload={screen:state.screen,company:ownCompany(),year:state.staffYear,rows:checked.good};
-    area.innerHTML='<p>정상 '+checked.good.length+'건 · 오류 0건</p>'+table(['이름','아이디','소속','사용여부'],checked.good.map(r=>'<tr><td>'+E(r.name)+'</td><td>'+E(r.id)+'</td><td>'+E(r.org)+'</td><td>'+E(r.status)+'</td></tr>').join(''))+button('people-import-confirm','일괄등록','','true');
-   }catch(error){fail(error.message);}
+    const file=fd.get('file');if(!file||!file.name)throw Error('파일을 먼저 선택해 주세요.');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
+    const data=await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true});if(!active())return;
+    const checked=GFAIRPeopleExcel.validate(data,[...admins,...assignments,...staff].map(a=>a.id));
+    for(const row of checked.good){const {password,...person}=row;staff.push({...person,company:context.company,year:context.year,code:row.id,pw:generatedOperatorPassword(),date:adminDate()});}
+    f.reset();if(!checked.errors.length)close();paint();
+    window.alert(GFAIRMemberUpload.summary(checked.entries,checked.good.length));
+   }catch(error){if(active())window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));}
+   finally{if(f.isConnected)submit.disabled=false;}
    return;
   }
   if(type==='operator-save'){

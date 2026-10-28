@@ -45,7 +45,8 @@
   if(!entries.length)throw Error('등록할 데이터가 없습니다. 예시 행 아래에 실제 정보를 입력해 주세요.');
   return {entries,good:entries.filter(x=>x.valid).map(x=>x.data),errors:entries.filter(x=>!x.valid).map(x=>({line:x.line,error:x.note}))};
  }
- const api={schemas,headers,validate,validPhone,validEmail,dob};
+ function summary(entries,applied=entries.filter(x=>x.valid).length){const bad=entries.filter(x=>!x.valid),reasons=new Map();bad.forEach(x=>{for(const reason of x.errors||[x.note])reasons.set(reason,(reasons.get(reason)||0)+1);});return '파일 검증 결과\n총 '+entries.length+'건 · 반영 '+applied+'건 · 오류 '+bad.length+'건'+(bad.length?'\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').join('\n')+'\n오류 행은 반영하지 않았습니다. 오류 행만 수정하여 다시 첨부해 주세요.':'\n정상 건을 목록에 바로 반영했습니다.');}
+ const api={schemas,headers,validate,summary,validPhone,validEmail,dob};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else{
   const base=new URL('../assets/templates/',document.currentScript.src);api.downloadTemplate=async(id,year)=>{const schema=schemas[id],response=await fetch(new URL(schema.file,base));if(!response.ok)throw Error('등록양식을 불러오지 못했습니다.');const url=URL.createObjectURL(await response.blob()),a=document.createElement('a');a.href=url;a.download=GFAIR_DOWNLOAD_NAMES.template(year,schema.type);a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};window.GFAIRMemberUpload=api;

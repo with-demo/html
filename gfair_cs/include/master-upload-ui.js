@@ -32,27 +32,22 @@
  function normalizeDob(value){const dob=String(value??'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(dob))return '';const d=new Date(dob+'T00:00:00Z');return !Number.isNaN(d.valueOf())&&d.toISOString().slice(0,10)===dob?dob:''}
  function table(headers,rows){return `<div class="tablewrap"><table><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
  function setStatus(row,s,status){const i=s.ui.columns.indexOf('참가상태');if(i>=0)row[i]=status;}
- function renderValidation(id,entries,errors){
-  const result=content.querySelector('[data-master-upload-result]');if(id==='BAS-05'){const bad=entries.filter(x=>!x.valid),reasons=new Map();bad.forEach(x=>reasons.set(x.note,(reasons.get(x.note)||0)+1));result.innerHTML='';if(errors.length||bad.length){validated=null;window.alert('파일 검증에 실패했습니다.\n총 '+entries.length+'건 중 오류 '+bad.length+'건\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').concat(errors).join('\n')+'\n오류를 수정한 파일을 다시 첨부해 주세요.');return;}validated={id,entries,year:currentYear()};result.innerHTML='<div class="popup-action-row"><button type="button" class="btn primary" data-master-apply>목록에 반영</button></div>';window.alert('총 '+entries.length+'건의 파일 검증이 완료되었습니다.\n목록에 반영 버튼을 눌러 주세요.');return;}const counts={'신규':0,'참가 확정':0,'참가 미정':0};entries.forEach(x=>counts[x.status]++);
-  result.innerHTML=`<div class="notice" style="margin-top:16px">검증 결과 · 신규 ${counts['신규']}건 · 참가 확정 ${counts['참가 확정']}건 · 참가 미정 ${counts['참가 미정']}건</div>${errors.length?`<p class="small">${errors.map(esc).join(' · ')}</p>`:''}${table(['이름','생년월일','참가연도','참가 상태','비고'],entries.map(x=>[x.name||'미입력',x.dob||'미확인',x.year||'미확인',x.status,x.note||'']))}<p class="small">현재 탭의 목록에만 반영됩니다. 기존 동일 인물은 한 건으로 유지하고 참가연도를 누적 표시합니다.</p>${entries.some(x=>x.valid)?'<button type="button" class="btn primary" data-master-apply>목록에 반영</button>':''}`;
-  validated={id,entries,year:currentYear()};
- }
+ function renderValidation(id,entries,errors){const result=content.querySelector('[data-master-upload-result]');result.innerHTML='';if(errors.length){window.alert('파일 검증에 실패했습니다.\n사유: '+errors.join(' / '));return;}validated={id,entries,year:currentYear()};const good=entries.filter(x=>x.valid).length;if(good)applyValidated();else validated=null;window.alert(GFAIRMemberUpload.summary(entries,good));}
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-master-upload-form] input[type="file"]')){validated=null;validationEpoch++;const result=content.querySelector('[data-master-upload-result]');if(result)result.innerHTML='';}});
  document.addEventListener('submit',async ev=>{
   const form=ev.target;if(!form.matches('[data-master-upload-form]'))return;
-  ev.preventDefault();ev.stopImmediatePropagation();validated=null;const epoch=++validationEpoch,year=currentYear();const id=form.dataset.masterUploadForm,file=new FormData(form).get('file'),result=content.querySelector('[data-master-upload-result]');if(!file)return;
+  ev.preventDefault();ev.stopImmediatePropagation();validated=null;const epoch=++validationEpoch,year=currentYear();const id=form.dataset.masterUploadForm,file=new FormData(form).get('file'),result=content.querySelector('[data-master-upload-result]');if(!file)return;const submit=form.querySelector?.('button[type="submit"]');if(submit)submit.disabled=true;
   try{
    if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
    const s=page(id),rows=await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true}),checked=GFAIRMemberUpload.validate(id,rows,{countryCodes:window.GFAIR_COUNTRY_CODES,languageCodes:window.GFAIR_LANGUAGE_CODES,year:currentYear()}),parsed=checked.entries;
-   if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form))return;
+   if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form)||dialog.open===false)return;
    const byIdentity=new Map();parsed.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!byIdentity.has(k))byIdentity.set(k,[]);byIdentity.get(k).push(x)});
    const old=people.get(id)||new Map();
    parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=participantStatus(years);});
    renderValidation(id,parsed,[]);
-  }catch(error){validated=null;if(id==='BAS-05'){result.innerHTML='';window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));return;}result.innerHTML=`<div class="notice danger" style="margin-top:16px">${esc(error.message||'파일을 확인할 수 없습니다.')}</div>`;}
+  }catch(error){validated=null;if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form))return;result.innerHTML='';window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));}finally{if(submit&&epoch===validationEpoch)submit.disabled=false;}
  },true);
- document.addEventListener('click',ev=>{
-  if(ev.target.closest('[data-master-apply]')){
+ function applyValidated(){
    if(!validated||validated.id!==screen()||validated.year!==currentYear())return;const id=validated.id,s=page(id),state=people.get(id)||new Map(),entries=validated.entries,groups=new Map();
    entries.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x)});
    const activeYear=currentYear(),previousYear=String(Number(activeYear)-1);
@@ -66,8 +61,7 @@
     window.GFAIR_OVERSEAS_BUYER_DETAIL.importProfile(row,s.ui.rows,{'BAS-03':'BAS-04','BAS-05':'BAS-06','BAS-07':'BAS-08'}[id],data,activeYear);
    });
    state.forEach(person=>{const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));});
-   people.set(id,state);dialog.close();validated=null;
+   people.set(id,state);validated=null;const uploadForm=content.querySelector('[data-master-upload-form]');uploadForm?.reset();if(entries.every(x=>x.valid))dialog.close();
    const toast=document.getElementById('toast');if(toast){toast.textContent='참가자 목록을 갱신했습니다. 서버에는 저장되지 않았습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}
-  }
- },true);
+ }
 })();
