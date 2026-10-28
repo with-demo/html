@@ -43,7 +43,7 @@
   const productRows=items.map(item=>'<tr><td>'+value(item.category)+'</td><td style="text-align:left">'+value(item.name)+'</td><td style="text-align:left;white-space:pre-wrap;overflow-wrap:anywhere">'+value(item.summary)+'</td></tr>').join('');
   const productSection='<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2 id="company-products-title">제품 정보</h2></div><div class="tablewrap"><table class="company-product-list"><thead><tr><th>메인 카테고리</th><th>제품명</th><th>제품요약설명</th></tr></thead><tbody>'+productRows+'</tbody></table></div></section>';
   const style='<style>#app #content .company-linked-grid{grid-template-columns:140px minmax(0,1fr) 140px minmax(0,1fr)}#app #content .company-linked-grid .company-wide{grid-column:2/-1}@media(max-width:650px){#app #content .company-linked-grid{grid-template-columns:120px minmax(0,1fr)}#app #content .company-linked-grid dd{grid-column:2}}</style>';
-  return style+head+section('기본 정보',profile?basic:basic.slice(0,4))+(profile?section('담당자 정보',contact):'')+(items.length?productSection:'')+'<div class="formfooter">'+back+'</div>';
+  return style+head+section('기본 정보',basic)+section('담당자 정보',contact)+(items.length?productSection:'')+'<div class="formfooter">'+back+'</div>';
  }
  window.GFAIR_COMPANY_LINKED_DETAIL={render};
 })();
