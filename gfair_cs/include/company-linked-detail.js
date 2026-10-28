@@ -13,7 +13,10 @@
   const value=v=>v===undefined||v===null||String(v).trim()===''?'-':E(v);
   const safeUrl=url=>{if(typeof url!=='string'||!url.trim())return '';try{const u=new URL(url,location.href);return ['http:','https:'].includes(u.protocol)?u.href:'';}catch{return '';}};
   const website=safeUrl(profile?.homepage),logo=safeUrl(profile?.logo?.url),brochure=safeUrl(profile?.brochure?.url);
+  const qrName=GFAIR_DOWNLOAD_NAMES.safe(r[1]||'참가기업')+'_'+GFAIR_DOWNLOAD_NAMES.safe(r[3]||'미지정')+'_qr코드.png';
+  const qr=GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|'+(r[0]||'')+'|'+(r[3]||''),qrName);
   const basic=[
+   ['QR코드','<div style="display:flex;align-items:center;gap:16px;white-space:normal"><img src="'+qr+'" alt="'+E(r[1]||'참가기업')+' 부스 QR코드" style="width:96px;height:auto;display:block"><a class="btn" href="'+qr+'" download="'+E(qrName)+'">QR 다운로드</a></div>'],
    ['기업명',value(r[1])],['사업자 번호',value(r[2])],['부스 번호',value(r[3])],
    ['기업 번호',value(profile?.companyNumber)],
    ['기업 홈페이지',website?'<a href="'+E(website)+'" target="_blank" rel="noopener noreferrer">'+E(profile.homepage)+'</a>':'-'],
