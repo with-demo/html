@@ -28,7 +28,7 @@
    ['주요 제품명',value(profile?.mainProducts)],['기업 소개(국문)',value(profile?.introductionKo)],
   ];
   const contact=[['담당자 명',value(profile?.contact?.name)],['담당자 연락처',value(profile?.contact?.mobile)],['담당자 이메일',value(profile?.contact?.email)]];
-  const section=(title,pairs)=>'<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2>'+title+'</h2></div><dl class="detail-rows company-linked-grid">'+pairs.map(([label,content])=>{const half=label==='기업 로고 이미지'||label==='기업 브로슈어';return '<dt>'+label+'</dt><dd class="'+(half?'company-half':'company-wide')+'" style="white-space:pre-wrap;overflow-wrap:anywhere">'+content+'</dd>';}).join('')+'</dl></section>';
+  const section=(title,pairs)=>'<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2>'+title+'</h2></div><dl class="detail-rows company-linked-grid">'+pairs.map(([label,content])=>{const half=label!=='주요 제품명'&&label!=='기업 소개(국문)';return '<dt>'+label+'</dt><dd class="'+(half?'company-half':'company-wide')+'" style="white-space:pre-wrap;overflow-wrap:anywhere">'+content+'</dd>';}).join('')+'</dl></section>';
   const items=products[r[0]]||[];
   const productRows=(items.length?items:[{}]).map(item=>'<tr><td>'+value(item.category)+'</td><td style="text-align:left">'+value(item.name)+'</td><td style="text-align:left;white-space:pre-wrap;overflow-wrap:anywhere">'+value(item.summary)+'</td></tr>').join('');
   const productSection='<section class="panel detail-form-panel company-linked-section"><div class="panelhead"><h2>제품 정보</h2></div><div class="tablewrap"><table><thead><tr><th>메인 카테고리</th><th>제품명</th><th>제품요약설명</th></tr></thead><tbody>'+productRows+'</tbody></table></div></section>';
