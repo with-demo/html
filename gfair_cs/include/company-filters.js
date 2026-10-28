@@ -3,6 +3,8 @@
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const categories=['전체','Food','Kitchen','Leisure','Beauty','Fashion','Houseware','Smart','Tech'];
  const catalog={'기업-fluff':['Beauty'],'기업-01':['Houseware'],'기업-02':['Beauty']};
+ const demoCategories=[['Houseware','Tech','Kitchen','Smart','Leisure'],['Food'],['Kitchen','Houseware'],['Leisure','Fashion'],['Beauty','Fashion','Houseware','Tech'],['Fashion'],['Houseware'],['Smart','Tech'],['Tech'],['Food','Kitchen'],['Beauty'],['Leisure'],['Kitchen','Smart','Tech','Houseware'],['Fashion','Beauty'],['Houseware','Leisure'],['Smart'],['Tech','Houseware','Kitchen','Food','Smart','Leisure']];
+ demoCategories.forEach((values,i)=>catalog['기업-DEMO-'+String(i+1).padStart(2,'0')]=values);
  let source=[];
  const matches=(r,f)=> (!f.companyCategory||f.companyCategory==='전체'||(catalog[r[0]]||[]).includes(f.companyCategory))&&(!f.companyId||r[0]===f.companyId);
  function options(category,selected,query=''){const q=query.trim().toLocaleLowerCase();return [['','전체'],...source.filter(r=>matches(r,{companyCategory:category})).map(r=>[r[0],r[1]])].filter(([id,label])=>!id||label.toLocaleLowerCase().includes(q)).map(([id,label])=>'<button type="button" role="option" aria-selected="'+(id===selected)+'" data-company-option="'+E(id)+'">'+E(label)+'</button>').join('')||'<p>검색 결과가 없습니다.</p>';}

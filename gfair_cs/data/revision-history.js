@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.36","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 목록 예시를 총 20건으로 확장","changes":["기존 3개 기업 유지, 가상 기업 17개와 카테고리 예시 추가.","3개 초과 카테고리 표시 및 10건 보기 2페이지 검토 가능. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.35","date":"2026.10.28","accountName":"shyuwith","summary":"메인 카테고리 컬럼과 최대 3개 표시 적용","changes":["참가기업 다음에 메인 카테고리 컬럼 추가.","중복 제거 후 최대 3개 표시, 초과분은 그 외 N건 표기. 전체 카테고리 검색 유지.","Description 유지."]},
 {"screenId":"PRE-02","version":"v0.7","date":"2026.10.28","accountName":"shyuwith","summary":"방한 단계 표의 자동 건수 표시 제거","changes":["PRE-02 방한 이동 단계 표만 총 건수·페이지 표시 자동 생성에서 제외.","다른 화면 목록·Description 유지."]},
 {"screenId":"PRE-02","version":"v0.6","date":"2026.10.28","accountName":"shyuwith","summary":"방한 이력 표를 공통 레이아웃으로 정리","changes":["별도 현재 이동상태 박스 제거.","흰색 데이터 셀·회색 헤더·얇은 구분선 적용, 현재 위치는 행의 배지로 유지.","스캔 이력 내용 및 Description 유지."]},
