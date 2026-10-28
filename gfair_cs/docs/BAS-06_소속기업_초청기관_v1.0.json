@@ -1,0 +1,30 @@
+{
+  "screen": "BAS-06",
+  "date": "2026-10-28",
+  "description": {
+    "format": "description-spec-v1",
+    "item": "바이어명, 생년월일, 소속기업, 초청기관",
+    "type": "텍스트 / 인풋",
+    "defaultValue": "엑셀 등록값",
+    "placeholder": "",
+    "options": "",
+    "required": "N",
+    "detail": "- 바이어명·생년월일은 등록값을 텍스트로 표시하며 수정 불가\n- 소속기업·초청기관은 인풋박스로 표시하며 직접 입력·수정 가능\n- 소속기업은 선택 입력으로 미입력 상태에서도 저장 가능\n- 초청기관 예시값 : ㈜한울컨벤션\n- [저장] 시 입력값을 반영하고 국내바이어 목록·행사정보 조회에 최신값 제공",
+    "inputFormat": "",
+    "inputLimit": "",
+    "visibility": "",
+    "enabled": "",
+    "permission": "",
+    "trigger": "",
+    "result": "",
+    "destination": "",
+    "validation": "",
+    "errorMessage": "",
+    "loading": "",
+    "emptyState": "",
+    "dataSource": "국내바이어 엑셀 업로드 데이터",
+    "policy": "- 소속기업·초청기관을 변경해도 과거 연도별 참가이력의 초청기관은 유지",
+    "exception": "",
+    "planningNote": "- 초청기관 관리할것인지 확인 필요\n- 엑셀 양식 결정이후 나타나는 형태가 변경될 수 있어서 마지막에 체크필요\\n[변경사항 있음 · 2026-10-28] 소속기업 선택 입력 및 초청기관 직접 입력·수정으로 변경."
+  }
+}

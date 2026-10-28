@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-05","version":"v1.25","date":"2026.10.28","accountName":"with","summary":"국내바이어 소속기업·초청기관 직접 입력 및 저장 연계","changes":["소속기업 선택 입력, 초청기관 인풋 및 예시값 ㈜한울컨벤션 적용","상세 저장 후 목록·행사정보 최신 소속기업 반영, 관련 Description 수정"]},
+{"screenId":"BAS-06","version":"v0.29","date":"2026.10.28","accountName":"with","summary":"국내바이어 소속기업·초청기관 직접 입력 및 저장 연계","changes":["소속기업 선택 입력, 초청기관 인풋 및 예시값 ㈜한울컨벤션 적용","상세 저장 후 목록·행사정보 최신 소속기업 반영, 관련 Description 수정"]},
 {"screenId":"PRE-01","version":"v3.22","date":"2026.10.28","accountName":"shyuwith","summary":"해외 바이어 목록 컬럼 및 선택 다운로드·QR 도구 통일","changes":["체크박스·바이어명·국가·이동상태·담당통역원·발급ID·QR발급 컬럼으로 변경.","목록 우측 상단에 10건씩 보기·선택 엑셀 다운로드·선택 QR다운로드·전체 QR다운로드 배치.","발급 ID는 기본정보관리의 현재 행사 계정 참조. 바이어명 클릭 시 PRE-02 상세 이동.","기존 필터·방한 현황 집계·이동상태 갱신 유지. 선택 다운로드와 행별 QR 팝업 연결."]},
 {"screenId":"JNL-05","version":"v0.51","date":"2026.10.27","accountName":"shyuwith","summary":"셀러 명함 이미지 첨부 정책 적용","changes":["JPG·JPEG·PNG, 파일당 10MB 이하, 최대 2개 선택 첨부 안내·검사 적용.","두 이미지 미리보기 및 기업 변경 시 수동 첨부 유지. 미첨부 등록 허용.","03번 Description 허용 형식·용량·개수 정책 확정 반영."]},
 {"screenId":"JNL-05","version":"v0.50","date":"2026.10.27","accountName":"shyuwith","summary":"셀러 명함을 선택 첨부로 변경","changes":["등록 화면 셀러 명함의 별표와 파일 필수 검사 제거.","참가기업 변경 시에도 명함 파일 필수 조건을 다시 설정하지 않도록 수정.","명함 미첨부 등록값을 빈 값으로 유지. 03번 Description 필수여부·검증 내용 수정."]},
