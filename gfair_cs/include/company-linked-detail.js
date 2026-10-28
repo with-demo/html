@@ -21,7 +21,7 @@
   const basic=[
    ['기업명',value(r[1])],
    ['QR코드','<div style="display:flex;align-items:center;gap:16px;white-space:normal"><img src="'+qr+'" alt="'+E(r[1]||'참가기업')+' 부스 QR코드" style="width:96px;height:auto;display:block"><a class="btn" href="'+qr+'" download="'+E(qrName)+'">QR 다운로드</a></div>'],
-   ['사업자 번호',value(r[2])],['부스 번호',value(r[3])],
+   ['부스 번호',value(r[3])],['사업자 번호',value(r[2])],
    ['기업 번호',value(profile?.companyNumber)],
    ['기업 홈페이지',website?'<a href="'+E(website)+'" target="_blank" rel="noopener noreferrer">'+E(profile.homepage)+'</a>':'-'],
    ['기업 로고 이미지',logo?'<a href="'+E(logo)+'" download="'+E(profile.logo.name)+'">'+E(profile.logo.name)+'</a>':value(profile?.logo?.name)],

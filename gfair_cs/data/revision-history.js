@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.30","date":"2026.10.28","accountName":"shyuwith","summary":"카테고리·참가기업 검색 필터 추가","changes":["메인 카테고리 단일 선택과 검색 가능한 참가기업 단일 선택을 첫 행에 배치.","키워드 검색은 마지막 전체 행 유지. 카테고리에 맞는 기업 옵션 및 AND 검색 적용.","Description 유지."]},{"screenId":"BAS-10","version":"v0.24","date":"2026.10.28","accountName":"shyuwith","summary":"부스 번호와 사업자 번호 위치 교환","changes":["기본 정보의 사업자 번호·부스 번호 순서 교환. Description 유지."]},
 {"screenId":"BAS-10","version":"v0.23","date":"2026.10.28","accountName":"shyuwith","summary":"브리즈펫케어 상세 더미 정보 추가","changes":["기본 정보·담당자·제품 2종과 다운로드 가능한 가상 로고·브로슈어 추가.","현재 행사에서도 상세 예시를 조회하도록 참가연도 추가. Description 유지."]},
 {"screenId":"BAS-10","version":"v0.22","date":"2026.10.28","accountName":"shyuwith","summary":"상세 표의 전체 행 적용 범위 조정","changes":["주요 제품명·기업 소개(국문)만 전체 행 유지.","기본 정보의 나머지 항목과 담당자 정보는 2열 배치. 파일 다운로드·Description 유지."]},
 {"screenId":"BAS-10","version":"v0.21","date":"2026.10.28","accountName":"shyuwith","summary":"로고·브로슈어 다운로드 및 상세 표 배치 변경","changes":["로고 PNG와 브로슈어 PDF 원본 다운로드 연결.","로고·브로슈어 같은 행, 주요 제품명·국문 소개 각각 전체 행 배치.","Description 유지."]},{"screenId":"BAS-09","version":"v0.29","date":"2026.10.28","accountName":"shyuwith","summary":"플러프랩스 참가기업 예시 추가","changes":["플러프랩스 주식회사·사업자번호·M-24·담당자·연락처 추가, 해당 상세·QR 연결.","기존 기업 예시 및 Description 유지."]},
