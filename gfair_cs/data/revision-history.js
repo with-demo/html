@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.31","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 검색 드롭다운 잘림 수정","changes":["검색필터 패널의 overflow 숨김을 해제하고 드롭다운 표시 순서를 조정.","검색·선택 동작과 Description 유지."]},
 {"screenId":"BAS-09","version":"v0.30","date":"2026.10.28","accountName":"shyuwith","summary":"카테고리·참가기업 검색 필터 추가","changes":["메인 카테고리 단일 선택과 검색 가능한 참가기업 단일 선택을 첫 행에 배치.","키워드 검색은 마지막 전체 행 유지. 카테고리에 맞는 기업 옵션 및 AND 검색 적용.","Description 유지."]},{"screenId":"BAS-10","version":"v0.24","date":"2026.10.28","accountName":"shyuwith","summary":"부스 번호와 사업자 번호 위치 교환","changes":["기본 정보의 사업자 번호·부스 번호 순서 교환. Description 유지."]},
 {"screenId":"BAS-10","version":"v0.23","date":"2026.10.28","accountName":"shyuwith","summary":"브리즈펫케어 상세 더미 정보 추가","changes":["기본 정보·담당자·제품 2종과 다운로드 가능한 가상 로고·브로슈어 추가.","현재 행사에서도 상세 예시를 조회하도록 참가연도 추가. Description 유지."]},
 {"screenId":"BAS-10","version":"v0.22","date":"2026.10.28","accountName":"shyuwith","summary":"상세 표의 전체 행 적용 범위 조정","changes":["주요 제품명·기업 소개(국문)만 전체 행 유지.","기본 정보의 나머지 항목과 담당자 정보는 2열 배치. 파일 다운로드·Description 유지."]},
