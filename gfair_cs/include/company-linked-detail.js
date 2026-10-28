@@ -4,9 +4,10 @@
  // 사용자가 제공한 화면의 지정 텍스트를 상세 목업 예시로 표시한다. 실제 원천 시스템에는 쓰지 않는다.
  const applications={'기업-fluff':{name:'플러프랩스 주식회사',businessNumber:'274-81-04038',booth:'M-24'}};
  const products={'기업-fluff':[{category:'Beauty',name:'미드나잇 릴렉싱 바디워시',summary:'천연 유래 계면활성제와 특허 펩타이드, 로즈우드·로즈마리 향을 담은 프리미엄 펫 바디워시'}]};
+ products['기업-02']=[{category:'Pet Care',name:'저자극 펫 샴푸',summary:'반려동물의 피부와 털을 부드럽게 세정하는 데일리 샴푸입니다.'},{category:'Pet Care',name:'데일리 케어 미스트',summary:'산책 후 간편하게 사용하는 반려동물용 케어 미스트입니다.'}];
  const directory={
   '기업-fluff':{companyNumber:'070-8095-1468',homepage:'https://www.fluff.co.kr/',logo:{name:'플러프 로고.png',url:'assets/company/fluff-logo.png'},mainProducts:'미드나잇 릴렉싱 바디워시 미드나잇 릴렉싱 트리트먼트 펫 페이셜 클렌저',introductionKo:'주식회사 플러프랩스는 프리미엄 펫 스킨케어 브랜드 ‘플러프(FLUFF)’를 운영하며, 반려동물의 피부 건강과 보호자가 함께하는 일상의 가치를 높이는 제품을 선보이고 있습니다. 천연 유래 성분과 기능성 원료를 활용한 바디워시, 트리트먼트, 페이셜 클렌저 등 전문 스킨케어 제품부터 반려동물과 함께하는 공간을 고려한 펫 프렌들리 캔들까지 다양한 제품을 전개하고 있습니다. 국내 온라인 유통과 호텔·리조트 어메니티 사업을 기반으로 일본 세이부 백화점 입점 및 글로벌 유통 네트워크를 확대하고 있으며, 미국과 유럽 시장으로의 진출을 적극 추진하고 있습니다. 플러프랩스는 제품의 안전성과 전문성, 감각적인 디자인을 바탕으로 반려동물과 보호자 모두를 위한 글로벌 프리미엄 펫 라이프케어 브랜드로 성장하고자 합니다.',brochure:{name:'플러프_제품카탈로그.pdf',url:'assets/company/fluff-brochure.pdf'},contact:{name:'문가은',mobile:'010-3244-9399',email:'MOON@FLUFF.CO.KR'}},
-  // 기업-02는 기업 관리 정보가 없는 사례: 항목명은 유지하고 값만 '-'로 표시한다.
+  '기업-02':{companyNumber:'070-0000-0002',homepage:'https://breezepetcare.example',logo:{name:'브리즈펫케어_로고.svg',url:'assets/company/breeze-logo.svg'},mainProducts:'저자극 펫 샴푸, 데일리 케어 미스트',introductionKo:'브리즈펫케어는 반려동물의 일상적인 위생과 피부 관리를 위한 펫 케어 제품을 기획하는 기업입니다. 저자극 샴푸와 데일리 케어 미스트 등 보호자가 편리하게 사용할 수 있는 제품을 선보입니다. 화면 검토를 위한 가상 기업 소개입니다.',brochure:{name:'브리즈펫케어_브로슈어.html',url:'assets/company/breeze-brochure.html'},contact:{name:'박지훈',mobile:'000-0000-0002',email:'contact@breezepetcare.example'}},
  };
  function render(row,year,head,back){
   const r=[...(row||[])],sample=applications[r[0]];
