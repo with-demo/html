@@ -976,7 +976,7 @@ window.GFAIR_SCREENS=[
       },
       {
         "id": "PRE-02",
-        "title": "방한정보 상세·상태 변경",
+        "title": "해외 바이어 상세",
         "role": "관리자·담당 통역원",
         "kind": "form",
         "refs": "제안서 p.34 / SFR-011 / 협상 5",
