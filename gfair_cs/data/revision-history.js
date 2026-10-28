@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.38","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 목록 Description 13개 작성 및 번호 연결","changes":["당해연도 오프라인 참가신청 승인 기업 조회 범위와 원천 연동 개요 작성.","필터·보기 개수·동기화·QR 다운로드·체크박스·목록·카테고리 설명을 기능·조건·검증·정책으로 분류.","국내바이어·통역원 목록과 유사하게 01~13 번호를 각 화면 요소에 연결. 기존 댓글·비고 보존."]},
 {"screenId":"BAS-09","version":"v0.37","date":"2026.10.28","accountName":"shyuwith","summary":"상단 검색필터 순서 변경","changes":["참가기업·메인 카테고리 순서로 교환. 마지막 행 키워드 검색 및 Description 유지."]},
 {"screenId":"BAS-03","version":"v1.31","date":"2026.10.28","accountName":"with","summary":"해외바이어 로그인 ID/PW 미사용 정책 반영","changes":["해외바이어 계정 생성·표시 제거, 고유코드·참가이력·매칭·QR 유지","해외바이어 QR 파일명 이름_바이어코드_qr코드.png 및 관련 정책·Description 동기화"]},
 {"screenId":"BAS-04","version":"v0.33","date":"2026.10.28","accountName":"with","summary":"해외바이어 로그인 ID/PW 미사용 정책 반영","changes":["해외바이어 계정 생성·표시 제거, 고유코드·참가이력·매칭·QR 유지","해외바이어 QR 파일명 이름_바이어코드_qr코드.png 및 관련 정책·Description 동기화"]},
