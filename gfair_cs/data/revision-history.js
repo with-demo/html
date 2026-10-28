@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v3.25","date":"2026.10.28","accountName":"shyuwith","summary":"국가 필터를 검색 가능한 다중 선택으로 변경","changes":["국가 코드 목록과 현재 바이어 국가를 검색창·체크박스 다중 선택으로 제공.","선택 국가는 OR, 바이어·상태·키워드 조건은 AND 적용. Description 유지."]},
 {"screenId":"PRE-01","version":"v3.24","date":"2026.10.28","accountName":"shyuwith","summary":"키워드 검색 범위를 담당통역원으로 조정","changes":["검색 범위 전체·담당통역원으로 변경, 발급ID 검색 제외.","기존 필터와 Description 유지."]},
 {"screenId":"PRE-01","version":"v3.23","date":"2026.10.28","accountName":"shyuwith","summary":"키워드 검색 행 추가","changes":["기존 조건 아래 마지막 전체 행에 전체·담당통역원·발급ID 키워드 검색 추가.","기존 필터와 AND 결합, 검색·Enter 적용 및 초기화 제공. Description 유지."]},
 {"screenId":"BAS-09","version":"v0.34","date":"2026.10.28","accountName":"shyuwith","summary":"참가기업 필터명과 키워드 범위 정리","changes":["참가기업 선택 옵션·선택값에서 부스번호 제거, 기업명만 표시·검색.","키워드 범위는 전체·사업자번호·부스번호·담당자로 변경.","Description 유지."]},

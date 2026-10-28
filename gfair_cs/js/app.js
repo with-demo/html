@@ -288,7 +288,7 @@ const matchingFilters=filters;
 filters=function(s){
  if(s.id==='PRE-01'){
   const rr=rows(s),buyers=[...new Set(rr.map(r=>r[0]))];
-  return `<form id="filter-form" class="panel filters matching-filters">${matchingMulti('바이어명','f0',buyers,'바이어명 검색')}${F('국가',I('f1','text',filter.f1||'','placeholder="국가 입력"'))}${F('이동상태',`<select name="f2">${O(filterOpts('이동상태'),filter.f2||'전체')}</select>`)}${F('키워드 검색',I('preKeyword','search',filter.preKeyword||'','aria-label="키워드 검색"'))}<div class="row"><button type="submit" class="btn primary">검색</button>${B('reset','초기화')}</div></form>`;
+  return `<form id="filter-form" class="panel filters matching-filters">${matchingMulti('바이어명','f0',buyers,'바이어명 검색')}${matchingMulti('국가','f1',[...new Set([...(window.GFAIR_COUNTRY_CODES||[]).map(c=>c.name),...rr.map(r=>r[1])])],'국가 검색')}${F('이동상태',`<select name="f2">${O(filterOpts('이동상태'),filter.f2||'전체')}</select>`)}${F('키워드 검색',I('preKeyword','search',filter.preKeyword||'','aria-label="키워드 검색"'))}<div class="row"><button type="submit" class="btn primary">검색</button>${B('reset','초기화')}</div></form>`;
  }
  if(s.id!=='PRE-04')return matchingFilters(s);
  const rr=rows(s),buyers=[...new Set([...rows(map.get('BAS-03')).map(r=>r[1]),...rr.map(r=>r[0])])],interpreters=[...new Set([...rows(map.get('BAS-07')).map(r=>r[1]),...rr.map(r=>r[2])])].filter(v=>v!=='미지정'),languages=[...new Set(rr.map(r=>r[3]))];return `<form id="filter-form" class="panel filters matching-filters">${matchingMulti('해외 바이어','f0',buyers)}${matchingMulti('통역원','f1',interpreters)}${matchingMulti('통역원 언어','f2',languages)}${F('매칭 여부',`<select name="f3">${O(['전체','매칭','미매칭'],filter.f3||'전체')}</select>`)}<div class="row"><button type="submit" class="btn primary">검색</button>${B('reset','초기화')}</div></form>`
@@ -297,8 +297,8 @@ function pre01KeywordMatches(r){const q=String(filter.preKeyword||'').trim().toL
 const matchingFiltered=filtered;
 filtered=function(s){
  if(s.id==='PRE-01'){
-  const buyers=Array.isArray(filter.f0)?filter.f0:filter.f0?[filter.f0]:[],country=String(filter.f1||'').trim().toLocaleLowerCase(),status=filter.f2||'전체';
-  return rows(s).map((r,i)=>({r,i})).filter(({r})=>(!buyers.length||buyers.includes(r[0]))&&(!country||String(r[1]).toLocaleLowerCase().includes(country))&&(status==='전체'||r[4]===status)&&pre01KeywordMatches(r));
+  const buyers=Array.isArray(filter.f0)?filter.f0:filter.f0?[filter.f0]:[],countries=Array.isArray(filter.f1)?filter.f1:filter.f1?[filter.f1]:[],status=filter.f2||'전체';
+  return rows(s).map((r,i)=>({r,i})).filter(({r})=>(!buyers.length||buyers.includes(r[0]))&&(!countries.length||countries.includes(r[1]))&&(status==='전체'||r[4]===status)&&pre01KeywordMatches(r));
  }
  if(s.id!=='PRE-04')return matchingFiltered(s);
  const chosen=key=>Array.isArray(filter[key])?filter[key]:filter[key]?[filter[key]]:[];return rows(s).map((r,i)=>({r,i})).filter(({r})=>(!chosen('f0').length||chosen('f0').includes(r[0]))&&(!chosen('f1').length||chosen('f1').includes(r[2]))&&(!chosen('f2').length||chosen('f2').includes(r[3]))&&(!filter.f3||filter.f3==='전체'||(filter.f3==='미매칭'?r[2]==='미지정':r[2]!=='미지정')))
