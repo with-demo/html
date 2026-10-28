@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.37","date":"2026.10.28","accountName":"shyuwith","summary":"상단 검색필터 순서 변경","changes":["참가기업·메인 카테고리 순서로 교환. 마지막 행 키워드 검색 및 Description 유지."]},
 {"screenId":"BAS-10","version":"v0.29","date":"2026.10.28","accountName":"shyuwith","summary":"기업 소개 항목명 변경","changes":["기업 소개(국문)을 기업 소개로 변경. 전체 행 배치·내용·Description 유지."]},
 {"screenId":"BAS-10","version":"v0.28","date":"2026.10.28","accountName":"shyuwith","summary":"제품 정보의 건수·페이지 문구 제거","changes":["BAS-10 제품 정보 표만 자동 건수·페이지 표시에서 제외.","다른 화면의 목록 표시와 Description 유지."]},
 {"screenId":"BAS-10","version":"v0.27","date":"2026.10.28","accountName":"shyuwith","summary":"20개 참가기업 상세 정보 보완","changes":["다온리빙과 추가 17개 기업의 기본정보·담당자·카테고리별 제품 내용 구성.","기업별 가상 로고와 브로슈어 다운로드 제공. 목록 정보와 상세 일치.","플러프랩스·브리즈펫케어 기존 내용 및 Description 유지."]},
