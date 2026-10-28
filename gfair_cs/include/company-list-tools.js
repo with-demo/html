@@ -7,7 +7,7 @@
  function sync(){const boxes=[...document.querySelectorAll('#content tbody tr:not([hidden]) [data-company-select]')],all=document.querySelector('[data-company-all]');if(all){const checked=boxes.filter(b=>b.checked).length;all.checked=boxes.length>0&&checked===boxes.length;all.indeterminate=checked>0&&checked<boxes.length;}}
  const png=(p,filename)=>GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year()+'|'+p.id+'|'+p.booth,filename);
  const individualFile=p=>GFAIR_DOWNLOAD_NAMES.safe(p.company)+'_'+GFAIR_DOWNLOAD_NAMES.safe(p.booth)+'_qr코드.png';
- const file=(p,index)=>String(index+1).padStart(3,'0')+'_'+GFAIR_DOWNLOAD_NAMES.safe(p.company)+'_'+GFAIR_DOWNLOAD_NAMES.safe(p.booth)+'.png';
+ const file=p=>individualFile(p);
  document.addEventListener('company-page-change',sync);
  document.addEventListener('change',e=>{if(!active())return;if(e.target.matches('[data-company-all]'))document.querySelectorAll('#content tbody tr:not([hidden]) [data-company-select]').forEach(b=>b.checked=e.target.checked);if(e.target.matches('[data-company-all],[data-company-select]'))sync();});
  document.addEventListener('click',async e=>{const b=e.target.closest('[data-company-qr],[data-company-qr-selected],[data-company-qr-all]');if(!b||!active()||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();try{

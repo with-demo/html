@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.40","date":"2026.10.28","accountName":"shyuwith","summary":"QR ZIP 내부 파일명을 개별 QR과 통일","changes":["선택·전체 ZIP 내부 PNG를 기업명_부스번호_qr코드.png로 변경, 순번 접두어 제거.","현재 06 선택 QR 및 전체 QR다운로드 Description의 파일명 정책만 수정.","ZIP 파일명·다른 설명·수기 변경 내용 유지."]},
 {"screenId":"BAS-09","version":"v0.39","date":"2026.10.28","accountName":"shyuwith","summary":"모든 조회 사용자에게 보기 개수·페이지 이동 제공","changes":["관리자 외 사용자도 10·30·50건 보기 및 페이지 이동 제공.","동기화와 기존 관리자용 다운로드 도구는 관리자에게만 유지.","06 표시 조건·권한과 07 관리자 전용 동기화 Description 갱신."]},
 {"screenId":"BAS-10","version":"v0.30","date":"2026.10.28","accountName":"shyuwith","summary":"데이터 출처별 상세 Description 작성","changes":["참가신청 정보·기업 관리 정보·QR·담당자·제품·목록의 01~06 설명과 개요 작성.","각 출처와 조회 전용 권한·연계 조건·미노출 기준을 구분.","원천 기업정보가 없으면 기업 관리 항목·담당자 영역, 제품정보가 없으면 제품 영역 미노출. 개별 빈 값은 - 유지.","공동작업 서버 설명을 화면 번호 라벨과 연결."]},
 {"screenId":"MON-01","version":"v0.18","date":"2026.10.28","accountName":"with","summary":"대시보드 연결 상태·소형 업데이트 아이콘 및 출결 항목 수정","changes":["최종 갱신 시각 대신 초록/빨강/주황 연결 상태 표시","출결 국내바이어 이름·소속·출석일시 / 해외바이어 이름·국가·출석일시 / 통역원 이름·언어","실제 명칭처럼 예시 데이터를 정리하고 검색 문구·Description 동기화"]},
