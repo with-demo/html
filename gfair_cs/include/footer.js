@@ -24,13 +24,13 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=name-links-20261022',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=pre04-matching-20261026',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=provided-templates-20261028',base).href;document.head.append(script);})();
+(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=pre04-matching-20261026',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=upload-guide-center-20261028',base).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=resource-actions-20261022',document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('../css/agency-filters.css?v=agency-multi-20261020',document.currentScript.src).href;document.head.append(link);})();
 
-(()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=provided-templates-20261028',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=upload-guide-center-20261028',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=groups-surveys-20261028',document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=bas10-no-summary-20261028",document.currentScript.src).href;document.head.append(script);})();

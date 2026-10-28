@@ -8,7 +8,8 @@
  };
  const trim=v=>String(v??'').trim(),header=v=>trim(v).replace(/\s*\((필수|선택)\)\s*$/,'').replace(/\s*\*$/,'').replace('생년월일(yyyy-mm-dd)','생년월일').replace('사용여부(Y/N)','사용여부');
  const fixedNames={"BAS-03":"G-FAIR_등록양식_해외 바이어.xlsx","BAS-05":"G-FAIR_등록양식_국내 바이어.xlsx","BAS-07":"G-FAIR_등록양식_통역원.xlsx","COM-07":"G-FAIR_등록양식_용역사 담당자.xlsx"};
- const uploadGuide='엑셀 양식을 다운로드하여 양식에 맞춰 정보를 입력한 후, 작성한 파일을 첨부해 주세요.\n등록정보 시트의 데이터만 등록되며, 참가연도는 현재 진행중인 행사연도로 적용됩니다.';
+ const uploadGuide='엑셀양식을 다운로드하여 정보를 입력한 후, 작성한 파일을 첨부해 주세요.\n※  참가연도는 현재 진행중인 행사연도로 적용됩니다.';
+ const uploadGuideHtml='<p class="member-upload-guide" style="text-align:center">엑셀양식을 다운로드하여 정보를 입력한 후, 작성한 파일을 첨부해 주세요.<br><span style="color:#757575">※&nbsp; 참가연도는 현재 진행중인 행사연도로 적용됩니다.</span></p>';
  const headers=id=>schemas[id].fields.map(([,label,required])=>label+' ('+(required?'필수':'선택')+')');
  const validPhone=v=>/^\+?[0-9][0-9 ()-]*$/.test(v)&&v.replace(/\D/g,'').length>=7&&v.replace(/\D/g,'').length<=15;
  const validEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -50,7 +51,7 @@
  function summary(entries,applied=entries.filter(x=>x.valid).length){const bad=entries.filter(x=>!x.valid),reasons=new Map();bad.forEach(x=>{for(const reason of x.errors||[x.note])reasons.set(reason,(reasons.get(reason)||0)+1);});return '파일 검증 결과\n총 '+entries.length+'건 · 반영 '+applied+'건 · 오류 '+bad.length+'건'+(bad.length?'\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').join('\n')+'\n오류 행은 반영하지 않았습니다. 오류 행만 수정하여 다시 첨부해 주세요.':'\n정상 건을 목록에 바로 반영했습니다.');}
  function ongoingYear(){const list=(typeof window!=='undefined'?window.GFAIR_SCREENS||[]:[]).flatMap(g=>g.screens).find(s=>s.id==='BAS-01'),ui=list?.ui,yearIndex=ui?.columns.indexOf('연도'),statusIndex=ui?.columns.indexOf('상태'),years=[...new Set((ui?.rows||[]).filter(row=>['진행','진행중','진행 중'].includes(String(row[statusIndex]).trim())).map(row=>String(row[yearIndex])))];if(years.length!==1||!/^20\d{2}$/.test(years[0]))throw Error('현재 진행중인 행사 정보를 확인해 주세요.');return years[0];}
  const validInternationalPhone=v=>/^\+[1-9][0-9 ()-]*$/.test(v)&&validPhone(v);
- const api={schemas,headers,validate,summary,validPhone,validInternationalPhone,validEmail,dob,fixedNames,uploadGuide,ongoingYear};
+ const api={schemas,headers,validate,summary,validPhone,validInternationalPhone,validEmail,dob,fixedNames,uploadGuide,uploadGuideHtml,ongoingYear};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else{
   const base=new URL('../assets/templates/',document.currentScript.src);api.downloadTemplate=async(id,year)=>{const schema=schemas[id],response=await fetch(new URL(schema.file+'?v=provided-20261028',base));if(!response.ok)throw Error('등록양식을 불러오지 못했습니다.');const url=URL.createObjectURL(await response.blob()),a=document.createElement('a');a.href=url;a.download=fixedNames[id];a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};window.GFAIRMemberUpload=api;

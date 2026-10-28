@@ -17,7 +17,7 @@
  function templateColumns(s){return GFAIRMemberUpload.headers(s.id)}
  function openUpload(id){
   validated=null;validationEpoch++;const name=labels[id];
-  const guide='<p>'+esc(GFAIRMemberUpload.uploadGuide).replace(/\n/g,'<br>')+'</p><div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
+  const guide=GFAIRMemberUpload.uploadGuideHtml+'<div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
   content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody">${guide}<form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
   dialog.showModal();
  }

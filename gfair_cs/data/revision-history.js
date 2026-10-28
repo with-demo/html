@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03-p01","version":"v0.10","date":"2026.10.28","accountName":"with","summary":"업로드 안내문구 간소화·가운데 정렬","changes":["공통 안내문구 2줄로 변경 및 가운데 정렬","※ 참가연도 안내를 연한 회색으로 표시","사용자 요청에 따라 Description 수정 제외"]},
+{"screenId":"BAS-05-p01","version":"v0.8","date":"2026.10.28","accountName":"with","summary":"업로드 안내문구 간소화·가운데 정렬","changes":["공통 안내문구 2줄로 변경 및 가운데 정렬","※ 참가연도 안내를 연한 회색으로 표시","사용자 요청에 따라 Description 수정 제외"]},
+{"screenId":"BAS-07-p01","version":"v0.7","date":"2026.10.28","accountName":"with","summary":"업로드 안내문구 간소화·가운데 정렬","changes":["공통 안내문구 2줄로 변경 및 가운데 정렬","※ 참가연도 안내를 연한 회색으로 표시","사용자 요청에 따라 Description 수정 제외"]},
+{"screenId":"COM-07-p01","version":"v0.7","date":"2026.10.28","accountName":"with","summary":"업로드 안내문구 간소화·가운데 정렬","changes":["공통 안내문구 2줄로 변경 및 가운데 정렬","※ 참가연도 안내를 연한 회색으로 표시","사용자 요청에 따라 Description 수정 제외"]},
 {"screenId":"BAS-03","version":"v1.34","date":"2026.10.28","accountName":"with","summary":"제공 등록양식 고정명·안내문구 및 진행 행사연도 적용","changes":["사용자 제공 원본 4종으로 등록양식 교체 및 원본 파일명 고정","일괄 업로드 안내문구 교체, 참가연도는 진행 상태의 행사 기준","새 열 이름에 검증 호환, Description·알럿 동기화"]},
 {"screenId":"BAS-05","version":"v1.28","date":"2026.10.28","accountName":"with","summary":"제공 등록양식 고정명·안내문구 및 진행 행사연도 적용","changes":["사용자 제공 원본 4종으로 등록양식 교체 및 원본 파일명 고정","일괄 업로드 안내문구 교체, 참가연도는 진행 상태의 행사 기준","새 열 이름에 검증 호환, Description·알럿 동기화"]},
 {"screenId":"BAS-07","version":"v1.29","date":"2026.10.28","accountName":"with","summary":"제공 등록양식 고정명·안내문구 및 진행 행사연도 적용","changes":["사용자 제공 원본 4종으로 등록양식 교체 및 원본 파일명 고정","일괄 업로드 안내문구 교체, 참가연도는 진행 상태의 행사 기준","새 열 이름에 검증 호환, Description·알럿 동기화"]},
