@@ -3,3 +3,12 @@
 /* MON-01 승인 요청 목록은 통계·차트와 독립된 하단 행에 배치한다. */
 .overview-pending-grid{margin-top:20px}
 .overview-pending-card>.overview-pending{margin-top:0}
+
+/* 대타이틀과 전체 보기 버튼은 카드 바깥 상단에 배치한다. */
+.overview-module,.overview-pending-card{min-width:0}
+.overview-module>.overview-module-title{margin:0 0 12px;font-size:16px;font-weight:700}
+.overview-pending .overview-module-heading{margin-bottom:12px;min-height:36px;gap:12px;flex-wrap:wrap}
+.overview-pending .overview-module-title{margin:0;font-size:16px;font-weight:700}
+.overview-pending .overview-view-all{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 14px;border:1px solid #bbb;border-radius:4px;background:#fff;color:#333;font-size:13px;text-decoration:none;white-space:nowrap}
+.overview-pending .overview-view-all:hover{background:#eee;border-color:#888}
+.overview-pending-body{padding:16px}
