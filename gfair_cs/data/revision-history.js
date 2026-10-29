@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-02","version":"v0.17","date":"2026.10.29","accountName":"shyuwith","summary":"그룹 등록·상세에 기본정보관리 표 레이아웃 적용","changes":["그룹 기본정보 제목을 표 바깥으로 분리하고 그룹명·사용여부를 회색 항목명과 흰색 입력 셀로 정렬.","등록·상세 기본값과 필수·중복 검사, 하단 목록·등록·저장 동작 유지.","최신 사이트의 그룹 기본정보와 메뉴권한 팝업 분리 구성 유지."]},
 {"screenId":"SET-01","version":"v0.25","date":"2026.10.28","accountName":"with","summary":"만족도설문관리 권한 통합·관리자 전용","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
 {"screenId":"SET-01-p13","version":"v0.2","date":"2026.10.28","accountName":"with","summary":"만족도설문관리 단일 권한 및 타 그룹 비활성","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
 {"screenId":"BAS-15","version":"v2.30","date":"2026.10.28","accountName":"with","summary":"대표담당자 선택·일괄 계정발송 및 체크박스 추가","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
