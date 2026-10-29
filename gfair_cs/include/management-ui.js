@@ -172,7 +172,7 @@
  async function peopleAction(a){
   if(!peopleAllowed())return;
   const staffMode=state.screen==='COM-07',title=staffMode?'담당자':'관리자';
-  if(a==='people-export'){await peopleDownload([['이름','소속','연락처','이메일','발급ID','사용여부'],...personRows(staffMode).map(r=>[r.name,r.org||'미등록',r.phone||'미등록',r.email||'미등록',r.id,r.status||'사용'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
+  if(a==='people-export'){await peopleDownload([['이름','소속','연락처','이메일','아이디','비밀번호','사용여부'],...personRows(staffMode).map(r=>[r.name,r.org||'',r.phone||'',r.email||'',r.id,r.pw||'',r.status||'사용'])],title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
   if(a==='people-template'){await GFAIRMemberUpload.downloadTemplate('COM-07',state.staffYear);return;}
   if(a==='people-upload-open'){
    state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;modal(title+' 엑셀 일괄 업로드',GFAIRMemberUpload.uploadGuideHtml+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
