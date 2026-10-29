@@ -46,12 +46,13 @@
   for(const indices of seen.values())if(indices.length>1)for(const index of indices)entries[index].errors.push(id==='COM-07'?'파일 내 아이디 중복':'파일 내 이름·생년월일 중복');
   for(const entry of entries){entry.valid=entry.errors.length===0;entry.note=entry.errors.join(' / ');}
   if(!entries.length)throw Error('등록할 데이터가 없습니다. 예시 행 아래에 실제 정보를 입력해 주세요.');
-  return {entries,good:entries.filter(x=>x.valid).map(x=>x.data),errors:entries.filter(x=>!x.valid).map(x=>({line:x.line,error:x.note}))};
+  return {entries,good:entries.every(x=>x.valid)?entries.map(x=>x.data):[],errors:entries.filter(x=>!x.valid).map(x=>({line:x.line,error:x.note}))};
  }
- function summary(entries,applied=entries.filter(x=>x.valid).length){const bad=entries.filter(x=>!x.valid),reasons=new Map();bad.forEach(x=>{for(const reason of x.errors||[x.note])reasons.set(reason,(reasons.get(reason)||0)+1);});return '파일 검증 결과\n총 '+entries.length+'건 · 반영 '+applied+'건 · 오류 '+bad.length+'건'+(bad.length?'\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').join('\n')+'\n오류 행은 반영하지 않았습니다. 오류 행만 수정하여 다시 첨부해 주세요.':'\n정상 건을 목록에 바로 반영했습니다.');}
+ function summary(entries,applied=entries.length){const bad=entries.filter(x=>!x.valid);if(!bad.length)return '파일 검증 결과\n총 '+entries.length+'건 · 반영 '+applied+'건\n정상 건을 목록에 바로 반영했습니다.';const reasons=new Map();for(const entry of bad)for(const reason of new Set(entry.errors?.length?entry.errors:[entry.note||'입력 오류']))reasons.set(reason,(reasons.get(reason)||0)+1);return '파일 검증에 실패했습니다.\n총 '+entries.length+'건 · 오류 '+bad.length+'건\n'+[...reasons].map(([reason,count])=>reason+' '+count+'건').join('\n');}
+ function fileError(error){return '파일 검증에 실패했습니다.\n사유 : '+(error?.message||String(error||'파일을 확인할 수 없습니다.'));}
  function ongoingYear(){const list=(typeof window!=='undefined'?window.GFAIR_SCREENS||[]:[]).flatMap(g=>g.screens).find(s=>s.id==='BAS-01'),ui=list?.ui,yearIndex=ui?.columns.indexOf('연도'),statusIndex=ui?.columns.indexOf('상태'),years=[...new Set((ui?.rows||[]).filter(row=>['진행','진행중','진행 중'].includes(String(row[statusIndex]).trim())).map(row=>String(row[yearIndex])))];if(years.length!==1||!/^20\d{2}$/.test(years[0]))throw Error('현재 진행중인 행사 정보를 확인해 주세요.');return years[0];}
  const validInternationalPhone=v=>/^\+[1-9][0-9 ()-]*$/.test(v)&&validPhone(v);
- const api={schemas,headers,validate,summary,validPhone,validInternationalPhone,validEmail,dob,fixedNames,uploadGuide,uploadGuideHtml,ongoingYear};
+ const api={schemas,headers,validate,summary,fileError,validPhone,validInternationalPhone,validEmail,dob,fixedNames,uploadGuide,uploadGuideHtml,ongoingYear};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else{
   const base=new URL('../assets/templates/',document.currentScript.src);api.downloadTemplate=async(id,year)=>{const schema=schemas[id],response=await fetch(new URL(schema.file+'?v=provided-20261028',base));if(!response.ok)throw Error('등록양식을 불러오지 못했습니다.');const url=URL.createObjectURL(await response.blob()),a=document.createElement('a');a.href=url;a.download=fixedNames[id];a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};window.GFAIRMemberUpload=api;
