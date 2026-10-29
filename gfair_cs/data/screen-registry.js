@@ -1,5 +1,6 @@
 // 현재 구현된 보조 화면의 정식 ID와 진입 정보를 관리한다.
 window.GFAIR_SCREEN_REGISTRY=[
+{"id":"PRE-02-p01","title":"바이어 이동상태 변경","parent":"PRE-02","source":"PRE-02","summary":"수출상담 운영용역사가 이동상태·실제 발생일시·변경 사유를 입력하는 팝업입니다.","kind":"popup","selector":"[data-pre02-action=\"edit\"]"},
 {"id":"JNL-14-p01","title":"수출상담일지 엑셀 일괄 업로드","parent":"JNL-14","summary":"엑셀 양식을 다운로드하고 오프라인 상담일지를 검증·일괄 등록합니다.","kind":"popup","source":"JNL-14","selector":"[data-journal-upload]"},
   {
     "id": "SET-07",
