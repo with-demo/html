@@ -52,3 +52,7 @@
 #app #content .admin-password-guide{display:block;flex-basis:100%;width:100%;font-size:12px;line-height:1.5;color:#666}
 
 #content .operator-basic-actions{display:flex;justify-content:flex-end;gap:8px;margin:24px 0 32px;flex-wrap:wrap;}
+
+/* BAS-17: 목록 건수와 다운로드를 표 바로 위 같은 행에 배치 */
+[data-management-root] .operator-staff-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0 16px 20px;font-size:13px}
+[data-management-root] .operator-staff-toolbar .btn{flex-shrink:0}
