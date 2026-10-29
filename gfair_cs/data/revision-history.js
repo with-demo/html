@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},
+{"screenId":"MON-02","version":"v0.21","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},
+{"screenId":"MON-03","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},
 {"screenId":"MON-01","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"그레이스케일 와이어프레임 표현 적용","changes":["카드 그림자 제거, 모서리 라운딩 최소화 및 얇은 회색 선으로 정보 영역 구분.","대타이틀 22px와 기존 레이아웃·목록 동작 유지."]},
 {"screenId":"MON-02","version":"v0.20","date":"2026.10.29","accountName":"shyuwith","summary":"그레이스케일 와이어프레임 표현 적용","changes":["카드 그림자 제거, 모서리 라운딩 최소화 및 얇은 회색 선으로 정보 영역 구분.","대타이틀 22px와 기존 레이아웃·목록 동작 유지."]},
 {"screenId":"MON-03","version":"v0.21","date":"2026.10.29","accountName":"shyuwith","summary":"그레이스케일 와이어프레임 표현 적용","changes":["카드 그림자 제거, 모서리 라운딩 최소화 및 얇은 회색 선으로 정보 영역 구분.","대타이틀 22px와 기존 레이아웃·목록 동작 유지."]},
