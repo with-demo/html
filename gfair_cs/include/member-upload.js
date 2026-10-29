@@ -4,7 +4,7 @@
   'BAS-03':{file:'overseas-buyer.xlsx',type:'해외바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['country','바이어국가(코드)',true],['invitation','초청기관'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] James Whitmore','1990-01-01','GB','KBC','+44-20-7946-0123','james@example.com','예시 행은 등록되지 않습니다. 실제 데이터는 다음 행부터 입력해 주세요.']},
   'BAS-05':{file:'domestic-buyer.xlsx',type:'국내바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['organization','소속기업'],['invitation','초청기관'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] 김민준','1990-01-01','한빛리테일','㈜한울컨벤션','010-0000-0000','buyer@example.com','예시 행은 등록되지 않습니다. 실제 데이터는 다음 행부터 입력해 주세요.']},
   'BAS-07':{file:'interpreter.xlsx',type:'통역원',fields:[['name','통역원명',true],['dob','생년월일',true],['language1','언어1(코드)',true],['language2','언어2(코드)'],['language3','언어3(코드)'],['language4','언어4(코드)'],['language5','언어5(코드)'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] 박서연','1990-01-01','en','ja','','','','010-0000-0000','interpreter@example.com','언어1은 필수입니다. 예시 행은 등록되지 않습니다.']},
-  'COM-07':{file:'operator-staff.xlsx',type:'담당자',fields:[['id','아이디',true],['name','이름',true],['phone','연락처',true],['org','소속'],['email','이메일'],['status','사용여부']],example:['[예시] operator_staff01','김민준','010-0000-0000','운영팀','staff@example.com','Y']}
+  'COM-07':{file:'operator-staff.xlsx',templateVersion:'provided-staff-20261029',type:'담당자',fields:[['id','아이디',true],['name','이름',true],['phone','연락처',true],['org','소속'],['email','이메일'],['status','사용여부']],example:['[예시] operator_staff01','김민준','010-0000-0000','운영팀','staff@example.com','Y']}
  };
  const trim=v=>String(v??'').trim(),header=v=>trim(v).replace(/\s*\((필수|선택)\)\s*$/,'').replace(/\s*\*$/,'').replace('생년월일(yyyy-mm-dd)','생년월일').replace('사용여부(Y/N)','사용여부');
  const fixedNames={"BAS-03":"G-FAIR_등록양식_해외 바이어.xlsx","BAS-05":"G-FAIR_등록양식_국내 바이어.xlsx","BAS-07":"G-FAIR_등록양식_통역원.xlsx","COM-07":"G-FAIR_등록양식_용역사 담당자.xlsx"};
@@ -55,6 +55,6 @@
  const api={schemas,headers,validate,summary,fileError,validPhone,validInternationalPhone,validEmail,dob,fixedNames,uploadGuide,uploadGuideHtml,ongoingYear};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else{
-  const base=new URL('../assets/templates/',document.currentScript.src);api.downloadTemplate=async(id,year)=>{const schema=schemas[id],response=await fetch(new URL(schema.file+'?v=provided-20261028',base));if(!response.ok)throw Error('등록양식을 불러오지 못했습니다.');const url=URL.createObjectURL(await response.blob()),a=document.createElement('a');a.href=url;a.download=fixedNames[id];a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};window.GFAIRMemberUpload=api;
+  const base=new URL('../assets/templates/',document.currentScript.src);api.downloadTemplate=async(id,year)=>{const schema=schemas[id],response=await fetch(new URL(schema.file+'?v='+(schema.templateVersion||'provided-20261028'),base));if(!response.ok)throw Error('등록양식을 불러오지 못했습니다.');const url=URL.createObjectURL(await response.blob()),a=document.createElement('a');a.href=url;a.download=fixedNames[id];a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};window.GFAIRMemberUpload=api;
  }
 })();

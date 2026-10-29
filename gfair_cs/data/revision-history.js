@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-07","version":"v1.31","date":"2026.10.29","accountName":"with-demo","summary":"사용자 제공 최신 용역사 담당자 등록양식 교체","changes":["공유폴더 원본 XLSX를 바이트 변경 없이 교체","사용여부 예시에 빈칸 시 Y 자동 적용 안내 추가","다운로드 파일명·열 구성·빈 값 Y 처리 및 전체 미반영 검증 정책 유지, 담당자 양식 캐시 갱신"]},
+{"screenId":"COM-07-p01","version":"v0.9","date":"2026.10.29","accountName":"with-demo","summary":"사용자 제공 최신 용역사 담당자 등록양식 교체","changes":["공유폴더 원본 XLSX를 바이트 변경 없이 교체","사용여부 예시에 빈칸 시 Y 자동 적용 안내 추가","다운로드 파일명·열 구성·빈 값 Y 처리 및 전체 미반영 검증 정책 유지, 담당자 양식 캐시 갱신"]},
 {"screenId":"PRE-02","version":"v0.10","date":"2026.10.29","accountName":"shyuwith","summary":"자동 반영 재개 버튼과 수기 유지 안내 제거","changes":["상태 변경만 제공하고 자동 반영 재개 버튼·처리 분기 제거.","수기 유지 표시를 수기 변경으로 정리하고 QR 기록 보존·수기 변경 이력 유지."]},
 {"screenId":"PRE-02","version":"v0.9","summary":"수출상담 운영용역사 방한 이동상태 수기 관리 추가","date":"2026.10.29","accountName":"shyuwith","changes":["수출상담 운영용역사만 상태 변경·자동 반영 재개 처리, 관리자는 조회.","기존 QR 기록 보존, 수기 실제 발생일시·사유·처리자·처리일시 및 변경 이력 표시.","현재 탭·행사·바이어별 목업 상태로 관리하고 목록·단계별 집계 동기화."]},
 {"screenId":"PRE-02-p20","version":"v1.0","release":true,"summary":"바이어 이동상태 변경 팝업 신규 화면 작업 완료","date":"2026.10.29","accountName":"shyuwith","changes":["수출상담 운영용역사만 상태 변경·자동 반영 재개 처리, 관리자는 조회.","기존 QR 기록 보존, 수기 실제 발생일시·사유·처리자·처리일시 및 변경 이력 표시.","현재 탭·행사·바이어별 목업 상태로 관리하고 목록·단계별 집계 동기화."]},
