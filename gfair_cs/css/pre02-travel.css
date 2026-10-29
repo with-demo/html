@@ -7,3 +7,5 @@
 .pre02-status-options{gap:0}.pre02-status-options .pre02-status-option{margin:0;border-radius:0;box-shadow:none}
 
 .pre02-status-options>.popup-action-row{display:contents;margin:0;padding:0}
+
+#dialog .pre02-status-options>.popup-action-row{display:contents!important;margin:0!important;padding:0!important}
