@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v3.36","date":"2026.10.29","accountName":"shyuwith","summary":"통역원 해외바이어 목록을 현황 조회 전용으로 정리","changes":["통역원 목록의 선택 체크박스, 선택 엑셀·선택 QR·전체 QR 다운로드와 QR발급 열 제거.","통역원은 검색·현황·목록·상세 조회만 제공, 도구 실행도 역할별로 차단.","관리자·수출 운영용역사 화면 유지."]},
 {"screenId":"BAS-04","version":"v0.38","date":"2026.10.29","accountName":"with-demo","summary":"연락처 국가번호 셀렉트 및 Description 정리","changes":["프로젝트 기준 국가 250개를 국가명(국가코드) +전화국가번호로 표시, 매핑 정보가 없는 7개 항목은 선택 불가","기존 번호와 동일 국가번호를 공유하는 국가의 선택값 보존, 전화번호 세 칸·저장·엑셀 반영 유지","연락처 Description을 국가 선택·입력·저장·검증 기준으로 간결하게 정리"]},
 {"screenId":"BAS-01","version":"v0.37","date":"2026.10.29","accountName":"with-demo","summary":"검색필터 기본정책에 검색 항목 기준 안내 추가","changes":["선택한 검색 항목을 기준으로 조회하고 전체 선택 시 모든 검색 대상 항목에서 조회한다는 문구를 기존 공백·대소문자 안내 위에 추가","사용자 요청에 따라 비고 별도 표기 없이 기존 내용·댓글·연결 위치 유지"]},
 {"screenId":"BAS-15","version":"v2.34","date":"2026.10.29","accountName":"with-demo","summary":"검색필터 기본정책에 검색 항목 기준 안내 추가","changes":["선택한 검색 항목을 기준으로 조회하고 전체 선택 시 모든 검색 대상 항목에서 조회한다는 문구를 기존 공백·대소문자 안내 위에 추가","사용자 요청에 따라 비고 별도 표기 없이 기존 내용·댓글·연결 위치 유지"]},
