@@ -1,4 +1,6 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"bas17-staff-exported","title":"담당자 엑셀 다운로드 완료","type":"인라인 안내","trigger":"BAS-17 담당자 목록 엑셀 다운로드 완료","message":"현재 검색 결과를 엑셀로 다운로드했습니다.","screens":["BAS-17"],"confirm":"현재 상세와 검색 조건 유지","source":"include/management-ui.js"},
+{"key":"bas17-staff-export-failed","title":"담당자 엑셀 생성 실패","type":"인라인 오류","trigger":"BAS-17 담당자 목록 XLSX 생성 또는 다운로드 중 오류","message":"엑셀 생성에 실패했습니다. 다시 시도해 주세요.","screens":["BAS-17"],"confirm":"현재 상세와 검색 조건 유지 후 재시도","source":"include/management-ui.js"},
 {"key":"pre02-effective-future","title":"실제 발생일시 미래 시각 제한","type":"유효성 검사","trigger":"실제 발생일시가 현재 한국 시각 이후","message":"실제 발생일시는 현재 시각 이후로 입력할 수 없습니다.","screens":["PRE-02-p20"],"confirm":"저장 중단, 발생일시를 현재 또는 과거로 수정","source":"include/pre02-detail.js"},
 {"key":"pre02-change-reason","title":"변경 사유 누락","type":"인라인 오류","trigger":"변경 사유가 빈 값 또는 공백","message":"변경 사유를 입력해 주세요.","screens":["PRE-02-p20"],"confirm":"입력 유지 또는 결과 확인","source":"include/pre02-detail.js"},
 {"key":"pre02-change-conflict","title":"상태 변경 충돌","type":"인라인 오류","trigger":"팝업의 상태 revision과 현재 상태가 다름","message":"상태가 변경되었습니다. 팝업을 다시 열어 최신 상태를 확인해 주세요.","screens":["PRE-02-p20"],"confirm":"입력 유지 또는 결과 확인","source":"include/pre02-detail.js"},
