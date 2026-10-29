@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v0.11","date":"2026.10.29","accountName":"shyuwith","summary":"실제 발생일시 미래 시각 입력·저장 제한","changes":["발생일시 입력의 최대값을 현재 한국 시각으로 제한.","입력·변경·저장 시 현재 시각을 갱신해 미래 시각이면 오류 표시 및 저장 중단."]},
+{"screenId":"PRE-02-p20","version":"v1.1","date":"2026.10.29","accountName":"shyuwith","summary":"실제 발생일시 미래 시각 입력·저장 제한","changes":["발생일시 입력의 최대값을 현재 한국 시각으로 제한.","입력·변경·저장 시 현재 시각을 갱신해 미래 시각이면 오류 표시 및 저장 중단."]},
 {"screenId":"COM-07","version":"v1.31","date":"2026.10.29","accountName":"with-demo","summary":"사용자 제공 최신 용역사 담당자 등록양식 교체","changes":["공유폴더 원본 XLSX를 바이트 변경 없이 교체","사용여부 예시에 빈칸 시 Y 자동 적용 안내 추가","다운로드 파일명·열 구성·빈 값 Y 처리 및 전체 미반영 검증 정책 유지, 담당자 양식 캐시 갱신"]},
 {"screenId":"COM-07-p01","version":"v0.9","date":"2026.10.29","accountName":"with-demo","summary":"사용자 제공 최신 용역사 담당자 등록양식 교체","changes":["공유폴더 원본 XLSX를 바이트 변경 없이 교체","사용여부 예시에 빈칸 시 Y 자동 적용 안내 추가","다운로드 파일명·열 구성·빈 값 Y 처리 및 전체 미반영 검증 정책 유지, 담당자 양식 캐시 갱신"]},
 {"screenId":"PRE-02","version":"v0.10","date":"2026.10.29","accountName":"shyuwith","summary":"자동 반영 재개 버튼과 수기 유지 안내 제거","changes":["상태 변경만 제공하고 자동 반영 재개 버튼·처리 분기 제거.","수기 유지 표시를 수기 변경으로 정리하고 QR 기록 보존·수기 변경 이력 유지."]},
