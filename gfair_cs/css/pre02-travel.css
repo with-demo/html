@@ -3,3 +3,5 @@
 
 /* SET-01 메뉴권한 표와 동일한 조밀한 행·회색 헤더 표현 */
 .pre02-status-tablehead{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;background:#eee;border:1px solid #ddd;border-top:0;color:#777;font-size:13px}.pre02-status-tablehead>span:last-child{width:84px;text-align:center}.pre02-status-option{padding:6px 10px;min-height:30px;font-size:13px;gap:12px}.pre02-status-option>span:last-child{width:84px;text-align:center}.pre02-status-option:disabled{background:#f6f6f6;color:#777}.pre02-status-options{border-top:1px solid #ddd}
+
+.pre02-status-options{gap:0}.pre02-status-options .pre02-status-option{margin:0;border-radius:0;box-shadow:none}
