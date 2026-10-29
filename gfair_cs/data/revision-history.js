@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-07","version":"v1.34","date":"2026.10.30","accountName":"with-demo","summary":"통역원 엑셀 다운로드에서 초청기관 열 제거","changes":["통역원 다운로드의 초청기관 헤더와 값을 함께 제거하고 연락처·이메일·메모 열 정렬 유지.","현재 Description은 이미 초청기관 없이 정의되어 있어 본문·기획비고·댓글·핀 위치 유지."]},
 {"screenId":"COM-06","version":"v1.15","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
 {"screenId":"COM-07","version":"v1.36","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
 {"screenId":"COM-08","version":"v0.16","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
