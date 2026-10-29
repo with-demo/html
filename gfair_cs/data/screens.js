@@ -3544,6 +3544,3 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08');s.rules.push("행사참가이력의 통역 언어는 연도별 저장값을 기본정보와 동일한 언어명(코드) / 언어명(코드) 텍스트로 조회한다. 상세 화면에서는 선택·수정하지 않으며 저장 버튼으로 변경하지 않는다. 미등록 시 미등록으로 표시하고 행사 통역원 상세에는 해당 행사연도의 저장 언어를 표시한다.");})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-04');s.ui.fields=s.ui.fields.map(([label,value])=>[label,label==='연락처'?'국가번호 + 앞자리 + 가운데 + 끝자리 / 숫자 7~15자리':value]);s.rules.push("국가번호·앞자리·가운데·끝자리를 각각 입력한다. 전체 빈 값은 허용하며 일부 입력 시 네 칸 모두 필요하다. 국가번호는 1~3자리, 나머지 각 1~7자리이며 전체 숫자 7~15자리로 검증하고 +국가번호-앞자리-가운데-끝자리로 저장한다.");})();
-
-// 행사 참가 확정과 계정발급은 현재 행사 참가 대상 전체에 적용한다.
-(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens);for(const [id,label]of [['BAS-03','참가확정'],['BAS-05','계정발급'],['BAS-07','계정발급']]){const s=all.find(s=>s.id===id);if(!s.ui.actions.includes(label))s.ui.actions.push(label);}for(const id of ['EVT-01','EVT-02'])all.find(s=>s.id===id).summary='기본정보관리에서 계정발급으로 확정한 현재 행사 참가자만 조회합니다.';})();
