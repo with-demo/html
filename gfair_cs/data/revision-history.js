@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.31","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
+{"screenId":"COM-07","version":"v1.28","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
+{"screenId":"BAS-15-p06","version":"v0.2","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
+{"screenId":"COM-07-p06","version":"v0.2","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
 {"screenId":"BAS-08","version":"v0.28","date":"2026.10.29","accountName":"mjha","summary":"행사참가이력에 연도별 통역 언어 관리 추가","changes":["행사참가이력의 통역 언어는 연도별 최대 5개를 제공 언어 코드표에서 선택·수정하고 저장한다. 동일 연도의 중복 언어는 허용하지 않으며 다른 연도의 언어는 유지한다. 행사 통역원 상세에는 해당 행사연도의 저장 언어를 표시한다.","Description·중복 언어 검증 메시지 동기화"]},
 {"screenId":"SET-01","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"화면 개요·영역 설명 정리 및 설명 추가 모드 버튼 선택 보완","changes":["화면 역할 중심 개요, 검색 조건·버튼 동작 분류와 누락된 목록·등록·페이지 조작 설명 보완.","수정 내용 앞에 (수정) 표시.","설명 추가 모드에서 등록·메뉴권한 버튼이 실제 동작 대신 설명 영역으로 선택되도록 처리."]},
 {"screenId":"SET-01","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"키워드 검색 범위에 그룹명 추가","changes":["키워드 검색 항목을 전체 / 그룹명으로 구성.","두 항목 모두 현재 검색 대상인 그룹명에 적용하며 사용여부 조건과 함께 검색."]},
