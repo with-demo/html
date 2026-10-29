@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v3.30","date":"2026.10.29","accountName":"shyuwith","summary":"방한 현황 카드·상태 변경 팝업의 불필요한 안내문 제거","changes":["현황 카드의 현재 행사 전체 대상·현재 단계 문구 제거.","상태 선택 즉시 변경 안내와 예시 데이터 유지·초기화 안내 제거."]},
+{"screenId":"PRE-01-p20","version":"v1.3","date":"2026.10.29","accountName":"shyuwith","summary":"방한 현황 카드·상태 변경 팝업의 불필요한 안내문 제거","changes":["현황 카드의 현재 행사 전체 대상·현재 단계 문구 제거.","상태 선택 즉시 변경 안내와 예시 데이터 유지·초기화 안내 제거."]},
 {"screenId":"PRE-01","version":"v3.29","date":"2026.10.29","accountName":"shyuwith","summary":"QR 스캔 전 공항 대기 상태 추가 및 19명 단계별 예시 배분","changes":["공항 대기를 00 기본 단계로 추가하고 QR 기록 없이 표시.","19명 예시를 4·3·2·3·2·2·3명으로 배분, 목록·집계·검색·상태 선택 동기화."]},
 {"screenId":"PRE-02","version":"v0.13","date":"2026.10.29","accountName":"shyuwith","summary":"QR 스캔 전 공항 대기 상태 추가 및 19명 단계별 예시 배분","changes":["공항 대기를 00 기본 단계로 추가하고 QR 기록 없이 표시.","19명 예시를 4·3·2·3·2·2·3명으로 배분, 목록·집계·검색·상태 선택 동기화."]},
 {"screenId":"PRE-01-p20","version":"v1.2","date":"2026.10.29","accountName":"shyuwith","summary":"QR 스캔 전 공항 대기 상태 추가 및 19명 단계별 예시 배분","changes":["공항 대기를 00 기본 단계로 추가하고 QR 기록 없이 표시.","19명 예시를 4·3·2·3·2·2·3명으로 배분, 목록·집계·검색·상태 선택 동기화."]},
