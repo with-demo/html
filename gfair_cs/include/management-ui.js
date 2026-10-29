@@ -37,15 +37,13 @@
   if(state.screen==='COM-07'&&staffAllowed())return personRows(true).map(a=>({key:a.id,name:a.name,company:companies.find(c=>c.id===a.company)?.name||'',year:state.staffYear,phone:a.phone||a.mobile||'',id:a.id,pw:a.pw}));
   return [];
  }
- function accountMessage(r){const url=new URL('index.html#COM-01',location.href).href;return '[G-FAIR KOREA '+r.year+']\n사이트 URL: '+url+'\n아이디: '+r.id+'\nPW: '+r.pw;}
  function prepareAccountDelivery(selected){
   const all=accountRecipients(),rows=selected?all.filter(r=>state.accountSelections.has(r.key)):all;
   if(!rows.length){window.alert(selected?'계정을 발송할 대상을 선택해 주세요.':'발송할 대상이 없습니다.');return;}
-  const good=rows.filter(r=>r.id&&r.pw&&GFAIRMemberUpload.validPhone(r.phone)),bad=rows.filter(r=>!good.includes(r));
+  const good=rows.filter(r=>r.id&&r.pw&&GFAIRMemberUpload.validPhone(r.phone));
   if(!good.length){window.alert('발송 가능한 계정이 없습니다. ID·PW 발급 여부와 연락처를 확인해 주세요.');return;}
   state.accountDelivery={screen:state.screen,role:state.role,selected,rows:good};
-  const reason=r=>!r.id||!r.pw?'ID/PW 미발급':'연락처 누락·형식 오류';
-  modal(selected?'선택 계정발송':'일괄 계정발송','<p>총 '+rows.length+'건 중 발송 대상 '+good.length+'건'+(bad.length?' · 제외 '+bad.length+'건':'')+'</p><p>사이트 URL, 발급 ID와 PW를 담당자 연락처로 발송합니다.</p>'+table(['담당자','연락처','발급 ID','문자 내용'],good.map(r=>'<tr><td>'+E(r.name)+'</td><td>'+E(r.phone)+'</td><td>'+E(r.id)+'</td><td><details><summary>내용 보기</summary><pre class="account-message-preview">'+E(accountMessage(r))+'</pre></details></td></tr>').join(''))+(bad.length?'<p class="small">제외: '+bad.map(r=>E(r.name)+' ('+reason(r)+')').join(', ')+'</p>':'')+'<p class="small">검토용 발송 예시이며 실제 문자는 전송되지 않습니다.</p><div class="popup-action-row">'+button('close','취소')+button('account-send-confirm','발송','','true')+'</div>');
+  modal(selected?'선택 계정발송':'일괄 계정발송','<p>총 '+good.length+'건 발송</p>'+table(['담당자','연락처','발급 ID'],good.map(r=>'<tr><td>'+E(r.name)+'</td><td>'+E(r.phone)+'</td><td>'+E(r.id)+'</td></tr>').join(''))+'<div class="popup-action-row">'+button('close','취소')+button('account-send-confirm','발송','','true')+'</div>');
  }
  function confirmAccountDelivery(){
   const draft=state.accountDelivery;if(!draft||draft.screen!==state.screen||draft.role!==state.role)return;
