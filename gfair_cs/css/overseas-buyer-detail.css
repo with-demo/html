@@ -28,3 +28,5 @@
 #app #content .event-participant-detail .event-field-wide-label{grid-column:1}#app #content .event-participant-detail .event-field-wide{grid-column:2/-1;white-space:pre-wrap}#app #content .event-detail-qr{border:0;background:transparent;padding:0;cursor:pointer}#app #content .event-detail-qr img{width:96px;height:auto;display:block}
 
 #app #content .event-detail-qr-download{margin-top:8px;width:max-content;display:flex}
+
+#app #content .history-language-inputs{display:grid;grid-template-columns:repeat(2,minmax(130px,1fr));gap:6px;min-width:270px} #app #content .history-language-inputs select{width:100%;min-width:0;padding:7px;min-height:36px} #app #content .history-language-inputs select:last-child{grid-column:1/-1}
