@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-01","version":"v1.9","date":"2026.10.29","accountName":"shyuwith","summary":"아이디 Description을 로그인 ID 입력 기준으로 수정","changes":["기능상세·데이터 출처를 발급·전달받은 로그인 ID 입력으로 명확화.","고유식별코드는 내부 식별·이력 연결값이며 로그인 ID로 사용하지 않음을 구분.","계정 발급 규칙 나열 정리, 변경 문장 앞에 (수정) 표시, 기존 검증·플레이스홀더 유지."]},
 {"screenId":"BAS-03","version":"v1.36","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
 {"screenId":"BAS-05","version":"v1.30","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
 {"screenId":"BAS-07","version":"v1.31","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
