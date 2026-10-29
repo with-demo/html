@@ -7,7 +7,7 @@
  function create(ctx){
   const state={route:'',year:'',query:'',scope:'',selected:new Set(),person:null};
   const cfg=()=>config[state.route];
-  function people(){const c=cfg(),source=ctx.source(c.source);return eligible(source.rows,ctx.year()).map(row=>{const p=window.GFAIR_OVERSEAS_BUYER_DETAIL.eventView(row,source.rows,c.profile,ctx.year());return {key:row[0],name:p.name,other:c.source==='BAS-05'?p.organization:p.languages,id:p.accountId,profile:p};});}
+  function people(){const c=cfg(),source=ctx.source(c.source);return eligible(source.rows,ctx.year()).map(row=>{const p=window.GFAIR_PARTICIPANT_ISSUANCE.profile(c.source,row[0],ctx.year())||window.GFAIR_OVERSEAS_BUYER_DETAIL.eventView(row,source.rows,c.profile,ctx.year());return {key:row[0],name:p.name,other:c.source==='BAS-05'?p.organization:p.languages,id:p.accountId,profile:p};});}
   function results(){const q=state.query.trim().toLocaleLowerCase();return people().filter(p=>!q||(state.scope===cfg().other?p.other:p.name).toLocaleLowerCase().includes(q));}
   function enter(route){if(state.route!==route||state.year!==ctx.year()){state.route=route;state.year=ctx.year();state.query='';state.scope=config[route].name;state.selected.clear();state.person=null;}const allowed=new Set(people().map(p=>p.key));for(const key of state.selected)if(!allowed.has(key))state.selected.delete(key);}
   function list(route){enter(route);const c=cfg(),rr=results(),btn=(action,label)=>'<button type="button" class="btn" data-event-action="'+action+'">'+label+'</button>';
