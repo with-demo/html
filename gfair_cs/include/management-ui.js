@@ -37,19 +37,23 @@
   if(state.screen==='COM-07'&&staffAllowed())return personRows(true).map(a=>({key:a.id,name:a.name,company:companies.find(c=>c.id===a.company)?.name||'',year:state.staffYear,phone:a.phone||a.mobile||'',id:a.id,pw:a.pw}));
   return [];
  }
+ function accountDeliveryConfirmation(rows){
+  const names=rows.slice(0,10).map(r=>r.name).join(', '),others=rows.length>10?' 외 '+(rows.length-10)+'명':'';
+  return names+others+'\n총 '+rows.length+'명에게 계정정보를 발송하시겠습니까?';
+ }
  function prepareAccountDelivery(selected){
   const all=accountRecipients(),rows=selected?all.filter(r=>state.accountSelections.has(r.key)):all;
   if(!rows.length){window.alert(selected?'계정을 발송할 대상을 선택해 주세요.':'발송할 대상이 없습니다.');return;}
   const good=rows.filter(r=>r.id&&r.pw&&GFAIRMemberUpload.validPhone(r.phone));
   if(!good.length){window.alert('발송 가능한 계정이 없습니다. ID·PW 발급 여부와 연락처를 확인해 주세요.');return;}
   state.accountDelivery={screen:state.screen,role:state.role,selected,rows:good};
-  modal(selected?'선택 계정발송':'일괄 계정발송','<p>총 '+good.length+'건 발송</p>'+table(['담당자','연락처','발급 ID'],good.map(r=>'<tr><td>'+E(r.name)+'</td><td>'+E(r.phone)+'</td><td>'+E(r.id)+'</td></tr>').join(''))+'<div class="popup-action-row">'+button('close','취소')+button('account-send-confirm','발송','','true')+'</div>');
+  if(window.confirm(accountDeliveryConfirmation(good)))confirmAccountDelivery();else state.accountDelivery=null;
  }
  function confirmAccountDelivery(){
   const draft=state.accountDelivery;if(!draft||draft.screen!==state.screen||draft.role!==state.role)return;
   const current=new Map(accountRecipients().map(r=>[r.key,r]));
-  if(draft.rows.some(r=>{const now=current.get(r.key);return !now||now.id!==r.id||now.pw!==r.pw||now.phone!==r.phone;})){state.accountDelivery=null;close();window.alert('대상 정보가 변경되었습니다. 발송 대상을 다시 확인해 주세요.');return;}
-  const count=draft.rows.length;state.accountDelivery=null;state.accountSelections.clear();close();message(count+'건의 계정 문자발송 예시를 완료했습니다. 실제 문자는 전송되지 않았습니다.');
+  if(draft.rows.some(r=>{const now=current.get(r.key);return !now||now.id!==r.id||now.pw!==r.pw||now.phone!==r.phone;})){state.accountDelivery=null;window.alert('대상 정보가 변경되었습니다. 발송 대상을 다시 확인해 주세요.');return;}
+  const count=draft.rows.length;state.accountDelivery=null;state.accountSelections.clear();message(count+'건의 계정 문자발송 예시를 완료했습니다. 실제 문자는 전송되지 않았습니다.');
  }
  function syncAccountChecks(){const all=document.querySelector('[data-account-all]');if(!all)return;const boxes=[...document.querySelectorAll('[data-account-row]')].filter(box=>box.getClientRects().length);all.checked=boxes.length>0&&boxes.every(box=>box.checked);all.indeterminate=boxes.some(box=>box.checked)&&!all.checked;}
  document.addEventListener('change',event=>{const input=event.target;if(input.matches('[data-account-row]')){input.checked?state.accountSelections.add(input.dataset.accountRow):state.accountSelections.delete(input.dataset.accountRow);syncAccountChecks();}else if(input.matches('[data-account-all]')){document.querySelectorAll('[data-account-row]').forEach(box=>{if(!box.getClientRects().length)return;box.checked=input.checked;input.checked?state.accountSelections.add(box.dataset.accountRow):state.accountSelections.delete(box.dataset.accountRow);});syncAccountChecks();}});
@@ -179,7 +183,6 @@
  async function action(b){
   const a=b.dataset.managementAction;
   if(a==='account-send-selected'||a==='account-send-all'){prepareAccountDelivery(a==='account-send-selected');return;}
-  if(a==='account-send-confirm'){confirmAccountDelivery();return;}
   if(a.startsWith('people-')){await peopleAction(a);return;}
   if(a==='close'){state.peopleUpload=null;state.accountDelivery=null;close();return;}
   if(a==='reset'){if(['BAS-15','BAS-16','COM-07'].includes(state.screen))window.GFAIR_RESET_SEARCH_SCOPE?.();state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
