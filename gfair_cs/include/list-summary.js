@@ -7,7 +7,7 @@ function sync(){observer.disconnect();try{root.querySelectorAll('#content .table
  const saved=foot?.textContent.match(/총\s*([\d,]+)건\s*·\s*(\d+)\/(\d+)page/);
  const total=saved?saved[1]:String(rows.length),page=saved?saved[2]:'1',pages=saved?saved[3]:'1';
  let summary=wrap.previousElementSibling;if(!summary?.matches('.list-count-summary')){summary=document.createElement('div');summary.className='list-count-summary';summary.style.cssText='padding:16px 20px;font-size:13px';wrap.before(summary);}
- const html='총 <strong>'+total+'</strong>건 · '+page+'/'+pages+'page';if(summary.innerHTML!==html)summary.innerHTML=html;
+ const html='총 <strong>'+total+'</strong>건 · '+page+'/'+pages+'page';const value=summary.querySelector('.list-count-value')||summary;if(value.innerHTML!==html)value.innerHTML=html;
  if(foot){[...foot.children].filter(el=>!el.querySelector('button,a,select')).forEach(el=>el.hidden=true);if(!foot.querySelector('button,a,select'))foot.hidden=true;}
  const header=panel.querySelector(':scope>.panelhead');if(header){header.querySelectorAll(':scope>span').forEach(el=>{if(/^\s*(?:총\s*)?\d+(?:건|명)/.test(el.textContent)&&!el.querySelector('button,a,select'))el.hidden=true;});const h=header.querySelector('h2');if(h&&/\d+(?:건|명)\s*$/.test(h.textContent))h.textContent=h.textContent.replace(/\s*\d+(?:건|명)\s*$/,'');}
  });}finally{observer.observe(root,{childList:true,subtree:true});}}
