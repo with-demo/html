@@ -29,6 +29,5 @@
 
 #app #content .event-detail-qr-download{margin-top:8px;width:max-content;display:flex}
 
-#app #content .history-language-inputs{display:grid;grid-template-columns:repeat(2,minmax(130px,1fr));gap:6px;min-width:270px} #app #content .history-language-inputs select{width:100%;min-width:0;padding:7px;min-height:36px} #app #content .history-language-inputs select:last-child{grid-column:1/-1}
 
 #app #content .buyer-phone-international{gap:5px}#app #content .buyer-phone-international input{flex:1 1 0;width:0;min-width:0;padding:7px 5px}#app #content .buyer-phone-international input[name="phoneCountry"]{flex:.8 1 0}@media(max-width:600px){#app #content .buyer-phone-international{flex-wrap:wrap}#app #content .buyer-phone-international input{flex:1 1 45px;width:45px}}
