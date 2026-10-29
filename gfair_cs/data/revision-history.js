@@ -1,6 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-17","version":"v1.34","date":"2026.10.29","accountName":"with-demo","summary":"담당자 엑셀 다운로드 버튼을 목록 건수 행으로 이동","changes":["엑셀 다운로드를 총 건수와 같은 행의 우측에 배치하여 표 바로 위로 이동","기존 다운로드 항목·검색 조건·Description 버튼 연결 유지"]},
+{"screenId":"JNL-14","version":"v0.42","date":"2026.10.29","accountName":"shyuwith","summary":"검색필터 01번 화면 핀 표시 위치 수정","changes":["01번 설명은 유지하고 검색필터 전체 영역 왼쪽 위에 번호 핀 표시.","기존 설명 순서와 나머지 핀 연결 유지."]},
 {"screenId":"PRE-01","version":"v3.35","date":"2026.10.29","accountName":"shyuwith","summary":"국가 다중셀렉트 Description을 사용자 첨부 기준으로 정리","changes":["항목명을 검색필터 - 국가로 변경하고 기본값 전체 선택 적용.","선택 옵션·태그 개별 해제·OR 조회·미선택 전체 조회·초기화 정책과 데이터 출처 수정.","BAS-09·JNL-14는 국가 다중셀렉트 항목이 없어 변경하지 않음."]},
 {"screenId":"BAS-03-p01","version":"v0.12","date":"2026.10.29","accountName":"with-demo","summary":"Description 알럿·컨펌 정의 백업 후 초기화","changes":["기본 및 서버 저장 메시지 정의 백업 후 제거","입력폼의 자동 검증 설명 생성 중지. 실제 화면 알럿·컨펌·입력 검증 및 일반 영역 설명 유지","알럿/컨펌 탭과 메시지 추가 기능은 유지하여 새 정의 작성 가능"]},
 {"screenId":"BAS-04","version":"v0.37","date":"2026.10.29","accountName":"with-demo","summary":"Description 알럿·컨펌 정의 백업 후 초기화","changes":["기본 및 서버 저장 메시지 정의 백업 후 제거","입력폼의 자동 검증 설명 생성 중지. 실제 화면 알럿·컨펌·입력 검증 및 일반 영역 설명 유지","알럿/컨펌 탭과 메시지 추가 기능은 유지하여 새 정의 작성 가능"]},
