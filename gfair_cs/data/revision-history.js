@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-09","version":"v0.45","date":"2026.10.29","accountName":"shyuwith","summary":"BAS-01 공통 검색필터 Description을 01번으로 추가","changes":["BAS-01 01번 검색필터 설명 원문을 동일하게 등록.","검색필터 전체 영역에 01번 연결, 기존 설명·댓글·순서 유지하며 번호를 한 칸씩 이동.","검색 UI와 실제 검색 동작은 변경하지 않음."]},
+{"screenId":"PRE-01","version":"v3.34","date":"2026.10.29","accountName":"shyuwith","summary":"BAS-01 공통 검색필터 Description을 01번으로 추가","changes":["BAS-01 01번 검색필터 설명 원문을 동일하게 등록.","검색필터 전체 영역에 01번 연결, 기존 설명·댓글·순서 유지하며 번호를 한 칸씩 이동.","검색 UI와 실제 검색 동작은 변경하지 않음."]},
+{"screenId":"JNL-14","version":"v0.41","date":"2026.10.29","accountName":"shyuwith","summary":"BAS-01 공통 검색필터 Description을 01번으로 추가","changes":["BAS-01 01번 검색필터 설명 원문을 동일하게 등록.","검색필터 전체 영역에 01번 연결, 기존 설명·댓글·순서 유지하며 번호를 한 칸씩 이동.","검색 UI와 실제 검색 동작은 변경하지 않음."]},
 {"screenId":"BAS-17","version":"v1.32","date":"2026.10.29","accountName":"with-demo","summary":"담당자 목록 엑셀 다운로드 추가","changes":["담당자 목록 위에 엑셀 다운로드 버튼 추가","현재 용역사·행사와 검색 조건에 맞는 하위 담당자 및 첫 행 대표담당자 다운로드","담당자 관리와 동일한 이름·소속·연락처·이메일·아이디·비밀번호·사용여부 제공, 관련 Description 및 결과 안내 정의 추가"]},
 {"screenId":"COM-01","version":"v1.9","date":"2026.10.29","accountName":"shyuwith","summary":"아이디 Description을 로그인 ID 입력 기준으로 수정","changes":["기능상세·데이터 출처를 발급·전달받은 로그인 ID 입력으로 명확화.","고유식별코드는 내부 식별·이력 연결값이며 로그인 ID로 사용하지 않음을 구분.","계정 발급 규칙 나열 정리, 변경 문장 앞에 (수정) 표시, 기존 검증·플레이스홀더 유지."]},
 {"screenId":"BAS-03","version":"v1.36","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
