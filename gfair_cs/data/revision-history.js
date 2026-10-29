@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.36","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
+{"screenId":"BAS-05","version":"v1.30","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
+{"screenId":"BAS-07","version":"v1.31","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["코드·이름·생년월일·국가/소속기업/통역언어·참가연도·올해참가여부·초청기관·연락처·이메일·메모 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
+{"screenId":"COM-07","version":"v1.32","date":"2026.10.29","accountName":"with-demo","summary":"회원 목록 엑셀 다운로드 항목 및 순서 변경","changes":["이름·소속·연락처·이메일·아이디·비밀번호·사용여부 제공","기존 검색 결과 전체 및 조회 권한 범위 유지, 관련 Description 동기화"]},
 {"screenId":"COM-01","version":"v1.8","date":"2026.10.29","accountName":"shyuwith","summary":"Description을 기본정보관리와 동일한 기존 카드 폼으로 복원","changes":["COM-01 전용 개요·번호 탭과 가로 항목 표 제거.","01~05 설명 원문·번호 연결·기획비고는 유지하고 공통 세로 카드 형식으로 표시."]},
 {"screenId":"COM-01","version":"v1.7","date":"2026.10.29","accountName":"shyuwith","summary":"개발 전달용 로그인 Description 초안 작성","changes":["공통 로그인·반응형 화면, 아이디, 비밀번호, 로그인 버튼, 계정 문의의 01~05 설명을 공동작업 서버에 등록.","개요 요약·사용자별 권한 표, 요소별 탭과 항목 정보·버튼 동작 표 적용.","현재 목업 동작과 개발 적용 초안 구분, 미확정 인증·권한·문의처 정책은 기획비고에 표시."]},
 {"screenId":"COM-01","version":"v1.6","date":"2026.10.29","accountName":"shyuwith","summary":"계정 문의 전화번호 링크 제거","changes":["전화번호를 하이퍼링크 없는 일반 텍스트로 표시."]},
