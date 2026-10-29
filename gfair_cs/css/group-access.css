@@ -36,3 +36,5 @@
 #dialog.standard-popup.group-access-dialog .group-access-scroll tbody td:first-child{padding-left:22px}
 #dialog.standard-popup.group-access-dialog .group-access-scroll input[type=checkbox]{display:block;width:15px;height:15px;margin:0 auto;min-height:0}
 #dialog.standard-popup.group-access-dialog .group-access-footer{margin:10px 16px 14px}
+
+.group-information .row>label{display:inline-flex;align-items:center;gap:6px;margin:0;white-space:nowrap}
