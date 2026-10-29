@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v0.9","summary":"수출상담 운영용역사 방한 이동상태 수기 관리 추가","date":"2026.10.29","accountName":"shyuwith","changes":["수출상담 운영용역사만 상태 변경·자동 반영 재개 처리, 관리자는 조회.","기존 QR 기록 보존, 수기 실제 발생일시·사유·처리자·처리일시 및 변경 이력 표시.","현재 탭·행사·바이어별 목업 상태로 관리하고 목록·단계별 집계 동기화."]},
+{"screenId":"PRE-02-p20","version":"v1.0","release":true,"summary":"바이어 이동상태 변경 팝업 신규 화면 작업 완료","date":"2026.10.29","accountName":"shyuwith","changes":["수출상담 운영용역사만 상태 변경·자동 반영 재개 처리, 관리자는 조회.","기존 QR 기록 보존, 수기 실제 발생일시·사유·처리자·처리일시 및 변경 이력 표시.","현재 탭·행사·바이어별 목업 상태로 관리하고 목록·단계별 집계 동기화."]},
 {"screenId":"BAS-08","version":"v0.29","date":"2026.10.29","accountName":"with-demo","summary":"참가이력 통역 언어를 셀렉트에서 조회용 텍스트로 변경","changes":["연도별 저장 언어를 기본정보와 동일한 언어명(코드) / 구분 텍스트로 표시","언어 선택·저장 및 관련 중복 검증 제거, 기존 연도별 저장값 유지","Description·기획비고·개정이력 동기화"]},
 {"screenId":"BAS-03","version":"v1.35","date":"2026.10.29","accountName":"with-demo","summary":"엑셀 입력 오류 시 전체 미반영 및 검증 결과 문구 통일","changes":["정상·오류 혼합 파일도 전체 미반영","성공·입력 오류·파일 읽기 및 양식 오류 결과를 사용자 지정 문구로 분리","Description·기획비고·알럿 정의 동기화"]},
 {"screenId":"BAS-05","version":"v1.29","date":"2026.10.29","accountName":"with-demo","summary":"엑셀 입력 오류 시 전체 미반영 및 검증 결과 문구 통일","changes":["정상·오류 혼합 파일도 전체 미반영","성공·입력 오류·파일 읽기 및 양식 오류 결과를 사용자 지정 문구로 분리","Description·기획비고·알럿 정의 동기화"]},

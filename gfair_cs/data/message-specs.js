@@ -1,4 +1,7 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"pre02-change-reason","title":"변경 사유 누락","type":"인라인 오류","trigger":"변경 사유가 빈 값 또는 공백","message":"변경 사유를 입력해 주세요.","screens":["PRE-02-p20"],"confirm":"입력 유지 또는 결과 확인","source":"include/pre02-detail.js"},
+{"key":"pre02-change-conflict","title":"상태 변경 충돌","type":"인라인 오류","trigger":"팝업의 상태 revision과 현재 상태가 다름","message":"상태가 변경되었습니다. 팝업을 다시 열어 최신 상태를 확인해 주세요.","screens":["PRE-02-p20"],"confirm":"입력 유지 또는 결과 확인","source":"include/pre02-detail.js"},
+{"key":"pre02-manual-complete","title":"수기 변경 완료","type":"토스트","trigger":"상태 변경 완료","message":"이동상태를 수기 변경했습니다. QR 기록은 유지됩니다.","screens":["PRE-02","PRE-02-p20"],"confirm":"입력 유지 또는 결과 확인","source":"include/pre02-detail.js"},
 {"key":"member-upload-input-error","title":"회원 엑셀 입력 오류","type":"알럿","trigger":"정상 양식 내 입력 오류가 한 건 이상 존재","message":"파일 검증에 실패했습니다.\n총 {N}건 · 오류 {M}건\n{사유별 건수 안내}","confirm":"전체 미반영, 팝업 유지 후 전체 파일 수정·재검증","cancel":"","screens":["BAS-03-p01","BAS-05-p01","BAS-07-p01","COM-07-p01"],"source":"include/member-upload.js"},
 {"key":"overseas-contact-parts-missing","title":"연락처 일부 누락","type":"필드 오류","trigger":"연락처 일부만 입력하고 저장 시","message":"국가번호와 앞자리·가운데·끝자리를 모두 입력해 주세요.","confirm":"저장 중단, 누락 입력란으로 이동","cancel":"","screens":["BAS-04"],"source":"include/overseas-buyer-detail.js"},
 {"key":"account-selection-empty","title":"발송 대상 미선택","type":"알럿","trigger":"선택 계정발송 클릭 시 선택 없음","message":"계정을 발송할 대상을 선택해 주세요.","screens":["BAS-15","COM-07"],"confirm":"안내 후 현재 화면 유지","cancel":"","source":"include/management-ui.js"},
