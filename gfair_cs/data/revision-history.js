@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
+{"screenId":"MON-02","version":"v0.16","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
+{"screenId":"MON-03","version":"v0.17","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
 {"screenId":"MON-01","version":"v0.21","date":"2026.10.29","accountName":"shyuwith","summary":"운영용역사 대시보드에도 승인 요청 목록 분리 적용","changes":["구매·수출 운영용역사 대시보드에서도 승인 요청 목록을 통계·차트 아래 독립 패널로 표시.","담당 상담 유형의 데이터와 목록 이동 기능 유지."]},
 {"screenId":"MON-02","version":"v0.15","date":"2026.10.29","accountName":"shyuwith","summary":"운영용역사 대시보드에도 승인 요청 목록 분리 적용","changes":["구매·수출 운영용역사 대시보드에서도 승인 요청 목록을 통계·차트 아래 독립 패널로 표시.","담당 상담 유형의 데이터와 목록 이동 기능 유지."]},
 {"screenId":"MON-03","version":"v0.16","date":"2026.10.29","accountName":"shyuwith","summary":"운영용역사 대시보드에도 승인 요청 목록 분리 적용","changes":["구매·수출 운영용역사 대시보드에서도 승인 요청 목록을 통계·차트 아래 독립 패널로 표시.","담당 상담 유형의 데이터와 목록 이동 기능 유지."]},
