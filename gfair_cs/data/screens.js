@@ -3542,3 +3542,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const screens=window.GFAIR_SCREENS.flatMap(g=>g.screens);Object.assign(screens.find(s=>s.id==="SET-01"),{title:"그룹권한관리",summary:"그룹명·사용여부 및 그룹별 메뉴 접근 권한을 관리한다.",rules:["공유 사이트맵의 메뉴노출 및 권한을 초기 체크 기준으로 사용한다. O·△는 허용, X는 미허용이며 기존 담당 범위는 유지한다.","등록·상세에서는 그룹명과 사용여부만 편집하며 신규 그룹의 메뉴는 미선택이다.","목록의 메뉴권한 버튼에서 기본정보 없이 메뉴 접근 권한만 편집한다."]});Object.assign(screens.find(s=>s.id==="SET-02"),{title:"그룹 등록·상세",summary:"그룹명과 사용여부만 등록·수정한다. 메뉴 권한은 목록의 전용 팝업에서 설정한다.",rules:["그룹명 필수·중복 검사, 사용여부 기본 사용.","메뉴 접근 권한은 이 화면에 표시하지 않는다."]});})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08');s.rules.push("행사참가이력의 통역 언어는 연도별 최대 5개를 제공 언어 코드표에서 선택·수정하고 저장한다. 동일 연도의 중복 언어는 허용하지 않으며 다른 연도의 언어는 유지한다. 행사 통역원 상세에는 해당 행사연도의 저장 언어를 표시한다.");})();
+
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-04');s.ui.fields=s.ui.fields.map(([label,value])=>[label,label==='연락처'?'국가번호 + 앞자리 + 가운데 + 끝자리 / 숫자 7~15자리':value]);s.rules.push("국가번호·앞자리·가운데·끝자리를 각각 입력한다. 전체 빈 값은 허용하며 일부 입력 시 네 칸 모두 필요하다. 국가번호는 1~3자리, 나머지 각 1~7자리이며 전체 숫자 7~15자리로 검증하고 +국가번호-앞자리-가운데-끝자리로 저장한다.");})();

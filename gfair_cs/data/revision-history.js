@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-04","version":"v0.36","date":"2026.10.29","accountName":"with-demo","summary":"국가번호 포함 연락처를 네 개 입력란으로 분리","changes":["국가번호·앞자리·가운데·끝자리 분리 입력","해외번호 가변 길이·숫자 7~15자리 검증 및 기존·엑셀 번호 복원","Description·기획비고·검증 메시지·설명 핀 동기화"]},
 {"screenId":"MON-01","version":"v0.31","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 미리보기 구매 5열·수출 6열로 정리","changes":["참가기업·해외 바이어(수출)·상담액·계약 추진액·작성자·제출일자로 열 구성 통일.","참가기업명으로 해당 일지 상세 이동, 제출일자는 날짜·시간을 한 줄로 표시.","상태·별도 상세 열 제거, 최대 5건·제목 건수·더보기 + 유지. Description 유지."]},
 {"screenId":"MON-02","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 미리보기 구매 5열·수출 6열로 정리","changes":["참가기업·해외 바이어(수출)·상담액·계약 추진액·작성자·제출일자로 열 구성 통일.","참가기업명으로 해당 일지 상세 이동, 제출일자는 날짜·시간을 한 줄로 표시.","상태·별도 상세 열 제거, 최대 5건·제목 건수·더보기 + 유지. Description 유지."]},
 {"screenId":"MON-03","version":"v0.28","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 미리보기 구매 5열·수출 6열로 정리","changes":["참가기업·해외 바이어(수출)·상담액·계약 추진액·작성자·제출일자로 열 구성 통일.","참가기업명으로 해당 일지 상세 이동, 제출일자는 날짜·시간을 한 줄로 표시.","상태·별도 상세 열 제거, 최대 5건·제목 건수·더보기 + 유지. Description 유지."]},
