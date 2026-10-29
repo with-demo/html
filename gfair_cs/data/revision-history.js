@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.23","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 최대 5건 미리보기 및 페이지 문구 제거","changes":["구매·수출 승인 요청 목록은 각각 최대 5건 표시.","제목은 전체 승인 요청 건수를 표시하고 전체 보기로 전체 목록 이동.","대시보드 미리보기의 총 N건·현재/전체page 표시 제거.","관리자·구매 및 수출 운영용역사에 동일 적용."]},
+{"screenId":"MON-02","version":"v0.17","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 최대 5건 미리보기 및 페이지 문구 제거","changes":["구매·수출 승인 요청 목록은 각각 최대 5건 표시.","제목은 전체 승인 요청 건수를 표시하고 전체 보기로 전체 목록 이동.","대시보드 미리보기의 총 N건·현재/전체page 표시 제거.","관리자·구매 및 수출 운영용역사에 동일 적용."]},
+{"screenId":"MON-03","version":"v0.18","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 최대 5건 미리보기 및 페이지 문구 제거","changes":["구매·수출 승인 요청 목록은 각각 최대 5건 표시.","제목은 전체 승인 요청 건수를 표시하고 전체 보기로 전체 목록 이동.","대시보드 미리보기의 총 N건·현재/전체page 표시 제거.","관리자·구매 및 수출 운영용역사에 동일 적용."]},
 {"screenId":"MON-01","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
 {"screenId":"MON-02","version":"v0.16","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
 {"screenId":"MON-03","version":"v0.17","date":"2026.10.29","accountName":"shyuwith","summary":"대시보드의 불필요한 목록 버튼 제거","changes":["하위 화면 자동 생성 규칙에서 통합·구매·수출 대시보드를 제외하여 하단 목록 버튼 제거.","승인 요청 목록의 전체 보기 및 상세 이동 유지."]},
