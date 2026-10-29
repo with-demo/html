@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.28","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
+{"screenId":"MON-02","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
+{"screenId":"MON-03","version":"v0.23","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
 {"screenId":"MON-01","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},
 {"screenId":"MON-02","version":"v0.21","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},
 {"screenId":"MON-03","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 목록 버튼명을 더보기 +로 변경","changes":["구매·수출 승인 요청 목록의 전체 보기 버튼명을 더보기 +로 변경.","역할별 목록 이동과 최대 5건 표시 유지."]},

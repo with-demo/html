@@ -64,3 +64,29 @@
 #content .overview-pending th{background:#f0f0f0;border-color:#ddd}
 #content .overview-pending .overview-view-all{border-radius:2px;border-color:#bbb;box-shadow:none}
 #content .overview-pending .badge{border-radius:2px;background:#eee;color:#444}
+
+/* 출결 대시보드(MON-08)와 동일한 콘텐츠 폭·간격·카드·표 기준 적용. */
+#content:has(.overview-kpis)>.pagehead,#content:has(.overview-kpis)>.toolbar,#content:has(.overview-kpis)>.overview-kpis,#content:has(.overview-kpis)>.overview-grid{width:100%;max-width:1600px;margin-left:auto;margin-right:auto}
+#content .overview-grid,#content .overview-kpis{gap:22px}
+#content .overview-kpis .kpi{padding:24px 16px 0;text-align:center;background:#f2f2f2;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;box-shadow:none}
+#content .overview-kpis .kpi-label{color:#333;font-weight:600;margin-bottom:12px}
+#content .overview-kpis .kpi-value{font-size:34px;line-height:1.25}
+#content .overview-kpis .overview-money{font-size:24px}
+#content .overview-kpis .kpi-note{margin:18px -16px 0;padding:12px 16px;background:#fff;border-top:1px solid #ddd;font-size:12px;color:#777}
+#content .overview-module>.overview-area{padding:0;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;background:#fff}
+#content .overview-module .overview-area>.overview-two,#content .overview-module .overview-area>.overview-three{margin:16px;gap:16px}
+#content .overview-module .overview-area>.overview-two:first-child{margin:0;gap:0;background:#f2f2f2;border-bottom:1px solid #ddd;padding:0}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile{padding:24px 16px 18px;text-align:center;border:0;border-radius:0;background:transparent}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile+ .overview-tile{border-left:1px solid #ddd}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile>strong{font-size:34px;line-height:1.25}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile h3{font-size:14px;font-weight:600;color:#333;margin-bottom:12px}
+#content .overview-module .overview-area>.overview-two:last-child{margin-bottom:16px}
+#content .overview-chart{border:1px solid #ddd;border-radius:4px;padding:16px;background:#fff}
+#content .overview-three .overview-tile{border:1px solid #ddd;border-radius:4px;background:#f5f5f5}
+#content .overview-pending-body{padding:0;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;background:#fff}
+#content .overview-pending table{border-top:0}
+#content .overview-pending th{padding:13px 8px;font-size:12px;background:#f5f5f5;border-bottom:1px solid #e7e7e7}
+#content .overview-pending td{padding:13px 8px;border-bottom:1px solid #e7e7e7;font-size:13px}
+#content .overview-pending .overview-note{margin:0;padding:14px 16px;font-size:12px}
+@media(max-width:1050px){#content .overview-grid,#content .overview-kpis{gap:12px}}
+@media(max-width:600px){#content .overview-module .overview-area>.overview-two:first-child>.overview-tile+ .overview-tile{border-left:0;border-top:1px solid #ddd}#content .overview-kpis .kpi-value{font-size:28px}#content .overview-kpis .overview-money{font-size:21px}#content .overview-module .overview-area>.overview-two,#content .overview-module .overview-area>.overview-three{margin:12px;gap:12px}}
