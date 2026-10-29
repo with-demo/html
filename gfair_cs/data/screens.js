@@ -5,11 +5,11 @@ window.GFAIR_SCREENS=[
     "screens": [
       {
         "id": "COM-01",
-        "title": "관리자 로그인",
+        "title": "로그인",
         "role": "관리자",
         "kind": "form",
         "refs": "제안서 p.23·39 / SFR-012 / 협상 3",
-        "summary": "관리자 계정으로 로그인하고 권한별 첫 화면으로 이동한다.",
+        "summary": "시스템 사용자 계정으로 로그인하고 권한별 첫 화면으로 이동한다.",
         "ui": {
           "fields": [
             [
