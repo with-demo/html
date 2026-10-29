@@ -240,10 +240,11 @@
     const file=fd.get('file');if(!file||!file.name)throw Error('파일을 먼저 선택해 주세요.');if(!/\.xlsx$/i.test(file.name))throw Error('XLSX 파일을 선택해 주세요.');
     const data=await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true});if(!active())return;
     const checked=GFAIRPeopleExcel.validate(data,[...admins,...assignments,...staff].map(a=>a.id));
-    for(const row of checked.good){const {password,...person}=row;staff.push({...person,company:context.company,year:context.year,code:row.id,pw:generatedOperatorPassword(),date:adminDate()});}
+    if(checked.errors.length){window.alert(GFAIRMemberUpload.summary(checked.entries,0));return;}
+    const added=checked.good.map(row=>{const {password,...person}=row;return {...person,company:context.company,year:context.year,code:row.id,pw:generatedOperatorPassword(),date:adminDate()};});staff.push(...added);
     f.reset();if(!checked.errors.length)close();paint();
     window.alert(GFAIRMemberUpload.summary(checked.entries,checked.good.length));
-   }catch(error){if(active())window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));}
+   }catch(error){if(active())window.alert(GFAIRMemberUpload.fileError(error));}
    finally{if(f.isConnected)submit.disabled=false;}
    return;
   }

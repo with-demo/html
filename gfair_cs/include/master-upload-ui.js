@@ -32,7 +32,7 @@
  function normalizeDob(value){const dob=String(value??'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(dob))return '';const d=new Date(dob+'T00:00:00Z');return !Number.isNaN(d.valueOf())&&d.toISOString().slice(0,10)===dob?dob:''}
  function table(headers,rows){return `<div class="tablewrap"><table><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
  function setStatus(row,s,status){const i=s.ui.columns.indexOf('참가상태');if(i>=0)row[i]=status;}
- function renderValidation(id,entries,errors){const result=content.querySelector('[data-master-upload-result]');result.innerHTML='';if(errors.length){window.alert('파일 검증에 실패했습니다.\n사유: '+errors.join(' / '));return;}validated={id,entries,year:currentYear()};const good=entries.filter(x=>x.valid).length;if(good)applyValidated();else validated=null;window.alert(GFAIRMemberUpload.summary(entries,good));}
+ function renderValidation(id,entries,errors){const result=content.querySelector('[data-master-upload-result]');result.innerHTML='';validated=null;if(errors.length){window.alert(GFAIRMemberUpload.fileError(errors.join(' / ')));return;}if(entries.some(x=>!x.valid)){window.alert(GFAIRMemberUpload.summary(entries,0));return;}validated={id,entries,year:currentYear()};applyValidated();window.alert(GFAIRMemberUpload.summary(entries,entries.length));}
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-master-upload-form] input[type="file"]')){validated=null;validationEpoch++;const result=content.querySelector('[data-master-upload-result]');if(result)result.innerHTML='';const submit=ev.target.form?.querySelector('button[type="submit"]');if(submit)submit.disabled=false;}});
  document.addEventListener('submit',async ev=>{
   const form=ev.target;if(!form.matches('[data-master-upload-form]'))return;
@@ -45,10 +45,10 @@
    const old=people.get(id)||new Map();
    parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=participantStatus(years);});
    renderValidation(id,parsed,[]);
-  }catch(error){validated=null;if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form))return;result.innerHTML='';window.alert('파일 검증에 실패했습니다.\n사유: '+(error.message||'파일을 확인할 수 없습니다.'));}finally{if(submit&&epoch===validationEpoch)submit.disabled=false;}
+  }catch(error){validated=null;if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form))return;result.innerHTML='';window.alert(GFAIRMemberUpload.fileError(error));}finally{if(submit&&epoch===validationEpoch)submit.disabled=false;}
  },true);
  function applyValidated(){
-   if(!validated||validated.id!==screen()||validated.year!==currentYear())return;const id=validated.id,s=page(id),state=people.get(id)||new Map(),entries=validated.entries,groups=new Map();
+   if(!validated||validated.id!==screen()||validated.year!==currentYear())return;if(validated.entries.some(x=>!x.valid)){validated=null;return;}const id=validated.id,s=page(id),state=people.get(id)||new Map(),entries=validated.entries,groups=new Map();
    entries.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x)});
    const activeYear=currentYear(),previousYear=String(Number(activeYear)-1);
    if(entries.every(x=>x.valid))state.forEach((person,k)=>{if(person.years.includes(previousYear)&&!groups.has(k)){person.years=person.years.filter(year=>year!==activeYear);const row=s.ui.rows[person.index];if(row){row[s.ui.columns.indexOf('참가연도')]=person.years.slice().sort().reverse().join(', ');setStatus(row,s,participantStatus(new Set(person.years)));}}});
