@@ -4,6 +4,7 @@
  const excluded=new Set(['COM-04','COM-05','COM-06','BAS-17','BAS-18','NTC-07']);
  const routes=new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).filter(s=>s.kind==='list'&&!excluded.has(s.id)).map(s=>s.id));
  ['COM-07','EVT-01','EVT-02','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
+ const pre01Pages=new Map();
  const prepared=new WeakSet(),collator=new Intl.Collator('ko',{numeric:true,sensitivity:'base'});
  const clean=el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.ui-spec-badge,[data-list-row-trigger]').forEach(e=>e.remove());return copy.textContent.trim().replace(/\s+/g,' ');};
  function enhance(table,main,route){
@@ -50,11 +51,15 @@
   }
   panel.querySelectorAll(':scope>.tablefoot').forEach(el=>el.hidden=true);
   const pagination=document.createElement('nav');pagination.className='admin-list-pagination';pagination.setAttribute('aria-label',title+' 페이지');panel.append(pagination);
-  let page=1;
+  const stateKey=route==='PRE-01'?panel.dataset.pre01Scope:null,saved=stateKey?pre01Pages.get(stateKey):null;
+  if(saved)size.value=String(saved.size);
+  let page=saved?.page||1;
   function paint(){
    const prioritize=route==='JNL-14'&&['admin','exportOperator'].includes(root.querySelector('#role-picker')?.value),statusIndex=headers.indexOf('처리 상태'),priority=row=>prioritize&&clean(row.cells[statusIndex]||row)==='승인 요청'?0:1;
-   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)})).sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
+   const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)}));
+   if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
+   if(stateKey)pre01Pages.set(stateKey,{page,size:perPage});
    count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
    observer.disconnect();
    ordered.forEach(({row},i)=>{row.classList.toggle('journal-approval-priority',prioritize&&priority(row)===0);row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});

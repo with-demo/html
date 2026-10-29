@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v3.32","date":"2026.10.29","accountName":"shyuwith","summary":"상태 변경 시 행 위치와 현재 페이지 유지","changes":["PRE-01의 상태 변경일시 자동 정렬 제외, 기존 바이어 순서 유지.","동일 조회 조건에서 상태 변경 후 페이지·페이지당 표시 개수 유지, 관리자·수출 운영용역사 공통 적용."]},
 {"screenId":"PRE-01","version":"v3.31","date":"2026.10.29","accountName":"shyuwith","summary":"관리자·수출 운영용역사 방한 단계 카드 클릭 필터 연결","changes":["단계 카드 선택 시 이동상태 검색 조건과 목록 즉시 동기화.","총 해외 바이어 카드 선택 시 이동상태 전체로 해제, 국가·키워드 조건 유지."]},
 {"screenId":"PRE-01","version":"v3.30","date":"2026.10.29","accountName":"shyuwith","summary":"방한 현황 카드·상태 변경 팝업의 불필요한 안내문 제거","changes":["현황 카드의 현재 행사 전체 대상·현재 단계 문구 제거.","상태 선택 즉시 변경 안내와 예시 데이터 유지·초기화 안내 제거."]},
 {"screenId":"PRE-01-p20","version":"v1.3","date":"2026.10.29","accountName":"shyuwith","summary":"방한 현황 카드·상태 변경 팝업의 불필요한 안내문 제거","changes":["현황 카드의 현재 행사 전체 대상·현재 단계 문구 제거.","상태 선택 즉시 변경 안내와 예시 데이터 유지·초기화 안내 제거."]},
