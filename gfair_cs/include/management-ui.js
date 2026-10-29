@@ -170,11 +170,12 @@
  }
 
  const peopleAllowed=()=>state.screen==='COM-07'&&staffAllowed();
+ const staffDownloadName=year=>'G-FAIR_'+GFAIR_DOWNLOAD_NAMES.safe(year)+'_용역사 담당자_'+GFAIR_DOWNLOAD_NAMES.date()+'.xlsx';
  async function peopleDownload(rows,name){const blob=await GFAIRWorkbook.write(rows),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  async function peopleAction(a){
   if(!peopleAllowed())return;
   const staffMode=state.screen==='COM-07',title=staffMode?'담당자':'관리자';
-  if(a==='people-export'){await peopleDownload(staffWorkbookRows(personRows(staffMode)),title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
+  if(a==='people-export'){await peopleDownload(staffWorkbookRows(personRows(staffMode)),staffMode?staffDownloadName(state.staffYear):title+'_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');return;}
   if(a==='people-template'){await GFAIRMemberUpload.downloadTemplate('COM-07',state.staffYear);return;}
   if(a==='people-upload-open'){
    state.peopleUpload=null;state.peopleUploadEpoch=(state.peopleUploadEpoch||0)+1;modal(title+' 엑셀 일괄 업로드',GFAIRMemberUpload.uploadGuideHtml+button('people-template','등록 양식 다운로드')+'<form data-management-form="people-upload">'+field('엑셀 파일','<input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small>')+'<button type="submit" class="btn primary">파일 검증</button></form><div data-people-upload-result></div>');return;
@@ -188,7 +189,7 @@
   if(a.startsWith('people-')){await peopleAction(a);return;}
   if(a==='close'){state.peopleUpload=null;state.accountDelivery=null;close();return;}
   if(a==='reset'){if(['BAS-15','BAS-16','COM-07'].includes(state.screen))window.GFAIR_RESET_SEARCH_SCOPE?.();state.query='';state.year='전체';state.type='전체';state.status='전체';message('');return;}
-  if(a==='operator-staff-export'){if(state.screen!=='BAS-17'||!isAdmin()||!allowed(state.company))return;const c=companies.find(c=>c.id===state.company),assignment=selectedOperatorAssignment(state.company);if(!c||!assignment)return;const representative={name:c.contact,org:c.org||'운영팀',phone:c.phone,email:c.email,id:assignment.id,pw:assignment.pw,status:c.status};try{await peopleDownload(staffWorkbookRows([representative,...operatorStaffRows(assignment)]),'담당자_목록.xlsx');message('현재 검색 결과를 엑셀로 다운로드했습니다.');}catch{message('엑셀 생성에 실패했습니다. 다시 시도해 주세요.');}return;}
+  if(a==='operator-staff-export'){if(state.screen!=='BAS-17'||!isAdmin()||!allowed(state.company))return;const c=companies.find(c=>c.id===state.company),assignment=selectedOperatorAssignment(state.company);if(!c||!assignment)return;const representative={name:c.contact,org:c.org||'운영팀',phone:c.phone,email:c.email,id:assignment.id,pw:assignment.pw,status:c.status};try{await peopleDownload(staffWorkbookRows([representative,...operatorStaffRows(assignment)]),staffDownloadName(assignment.year));message('현재 검색 결과를 엑셀로 다운로드했습니다.');}catch{message('엑셀 생성에 실패했습니다. 다시 시도해 주세요.');}return;}
   if(a==='operator-staff-reset'){window.GFAIR_RESET_SEARCH_SCOPE?.();state.staffScope='전체';state.staffQuery='';state.staffStatus='전체';message('');return;}
   if(a==='toggle-password'&&allowed(state.company)){const k=b.dataset.key;state.shown.has(k)?state.shown.delete(k):state.shown.add(k);paint();return;}
   if(a==='issue'&&isAdmin()){
