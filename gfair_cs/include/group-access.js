@@ -25,6 +25,7 @@
 
  function syncChecks(){const form=document.querySelector('form:has([data-group-all])');if(!form)return;const menus=[...form.querySelectorAll('[name="menus"]')].filter(box=>!box.disabled);const set=(box,items)=>{box.checked=items.length>0&&items.every(i=>i.checked);box.indeterminate=items.some(i=>i.checked)&&!box.checked;};set(form.querySelector('[data-group-all]'),menus);form.querySelectorAll('[data-group-section]').forEach(box=>set(box,menus.filter(i=>i.dataset.section===box.dataset.groupSection)));}
  document.addEventListener('click',event=>{
+  if(document.body.classList.contains('annotation-picking'))return;
   const node=event.target.closest('[data-group-action]'),row=event.target.closest('[data-group-id]');if(!node&&!row)return;
   if(!admin())return;if(!node&&event.target.closest('button,a,input,select'))return;
   event.preventDefault();event.stopImmediatePropagation();

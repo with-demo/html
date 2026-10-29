@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-01","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"화면 개요·영역 설명 정리 및 설명 추가 모드 버튼 선택 보완","changes":["화면 역할 중심 개요, 검색 조건·버튼 동작 분류와 누락된 목록·등록·페이지 조작 설명 보완.","수정 내용 앞에 (수정) 표시.","설명 추가 모드에서 등록·메뉴권한 버튼이 실제 동작 대신 설명 영역으로 선택되도록 처리."]},
 {"screenId":"SET-01","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"키워드 검색 범위에 그룹명 추가","changes":["키워드 검색 항목을 전체 / 그룹명으로 구성.","두 항목 모두 현재 검색 대상인 그룹명에 적용하며 사용여부 조건과 함께 검색."]},
 {"screenId":"SET-02","version":"v0.19","date":"2026.10.29","accountName":"shyuwith","summary":"사용여부 필수 별표 및 필수 선택 속성 추가","changes":["사용여부 항목명 옆에 붉은색 필수 별표 표시.","라디오 그룹에 required 속성 적용, 기본 사용 선택과 기존 02번 설명 유지."]},
 {"screenId":"SET-02","version":"v0.18","date":"2026.10.29","accountName":"shyuwith","summary":"사용여부 02번 Description 번호표 연결 복구","changes":["표 구조 변경으로 끊어진 02번 번호표를 사용여부 라디오 영역에 연결.","기존 설명 내용과 번호는 유지."]},
