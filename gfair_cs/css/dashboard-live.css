@@ -115,3 +115,13 @@
 #content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:not(:first-child),#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-three{margin:0 16px 16px}
 #content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:nth-child(2){margin-top:16px}
 }
+
+/* 승인 요청 미리보기: 구매 5열·수출 6열, 제출일자 한 줄 표시. */
+#content .dashboard-journal-preview{table-layout:fixed}
+#content .dashboard-journal-preview.preview-buy{min-width:580px}
+#content .dashboard-journal-preview.preview-export{min-width:680px}
+#content .dashboard-journal-preview .dashboard-submitted-at,#content .dashboard-journal-preview .dashboard-submitted-at time{white-space:nowrap;font-variant-numeric:tabular-nums}
+#content .dashboard-journal-preview td small{display:block}
+#content .dashboard-company-link{appearance:none;background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+#content .dashboard-company-link:focus-visible{outline:2px solid #555;outline-offset:3px}
+#content .dashboard-journal-preview th{white-space:nowrap}
