@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v3.35","date":"2026.10.29","accountName":"shyuwith","summary":"국가 다중셀렉트 Description을 사용자 첨부 기준으로 정리","changes":["항목명을 검색필터 - 국가로 변경하고 기본값 전체 선택 적용.","선택 옵션·태그 개별 해제·OR 조회·미선택 전체 조회·초기화 정책과 데이터 출처 수정.","BAS-09·JNL-14는 국가 다중셀렉트 항목이 없어 변경하지 않음."]},
 {"screenId":"BAS-03-p01","version":"v0.12","date":"2026.10.29","accountName":"with-demo","summary":"Description 알럿·컨펌 정의 백업 후 초기화","changes":["기본 및 서버 저장 메시지 정의 백업 후 제거","입력폼의 자동 검증 설명 생성 중지. 실제 화면 알럿·컨펌·입력 검증 및 일반 영역 설명 유지","알럿/컨펌 탭과 메시지 추가 기능은 유지하여 새 정의 작성 가능"]},
 {"screenId":"BAS-04","version":"v0.37","date":"2026.10.29","accountName":"with-demo","summary":"Description 알럿·컨펌 정의 백업 후 초기화","changes":["기본 및 서버 저장 메시지 정의 백업 후 제거","입력폼의 자동 검증 설명 생성 중지. 실제 화면 알럿·컨펌·입력 검증 및 일반 영역 설명 유지","알럿/컨펌 탭과 메시지 추가 기능은 유지하여 새 정의 작성 가능"]},
 {"screenId":"BAS-05-p01","version":"v0.10","date":"2026.10.29","accountName":"with-demo","summary":"Description 알럿·컨펌 정의 백업 후 초기화","changes":["기본 및 서버 저장 메시지 정의 백업 후 제거","입력폼의 자동 검증 설명 생성 중지. 실제 화면 알럿·컨펌·입력 검증 및 일반 영역 설명 유지","알럿/컨펌 탭과 메시지 추가 기능은 유지하여 새 정의 작성 가능"]},
