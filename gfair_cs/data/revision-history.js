@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-08","version":"v0.17","date":"2026.10.30","accountName":"mjha","summary":"등록·상세 연락처 및 사용여부 필수 표시","changes":["등록·상세 연락처 및 사용여부 필수 표시"]},
+{"screenId":"COM-07","version":"v1.32","date":"2026.10.30","accountName":"mjha","summary":"최신 담당자 등록양식 교체 및 사용여부 Y/N 필수 적용","changes":["최신 담당자 등록양식 교체 및 사용여부 Y/N 필수 적용"]},
+{"screenId":"COM-07-p01","version":"v0.10","date":"2026.10.30","accountName":"mjha","summary":"사용여부 누락 오류 처리 및 최신 등록양식 연결","changes":["사용여부 누락 오류 처리 및 최신 등록양식 연결"]},
 {"screenId":"COM-06","version":"v1.15","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
 {"screenId":"COM-07","version":"v1.36","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
 {"screenId":"COM-08","version":"v0.16","date":"2026.10.29","accountName":"with-demo","summary":"상세로 이동하는 목록 이름·제목 굵게 표시","changes":["상세 화면으로 이동하는 이름·명칭·제목 링크에 글꼴 굵기 700 공통 적용","기존 이동·키보드 동작과 일반 데이터·조작 버튼의 표시 유지"]},
