@@ -139,6 +139,25 @@
   form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const text=JSON.stringify({format:'screen-overview-v1',overview:input.value.trim()});const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
   dialog.append(form);dialog.showModal();input.focus();
  }
+ 
+ // COM-01: 요소별 탭과 개요·사용자별 권한을 제공한다. 설명 원문·수정·댓글은 공동작업 서버가 기준이다.
+ let loginDescriptionTab='overview';
+ function loginDescriptionLayout(section){
+  if(route()!=='COM-01'||!records().length)return;
+  const items=records().map(r=>({record:r,spec:readSpec(r.text)})).filter(x=>x.spec);
+  const nav=element('div',undefined,'com01-description-tabs');nav.setAttribute('role','tablist');nav.setAttribute('aria-label','로그인 요소 설명');
+  const overview=element('div',undefined,'com01-description-overview');overview.setAttribute('role','tabpanel');overview.id='com01-description-overview';
+  const table=(headers,rows)=>{const wrap=element('div',undefined,'com01-description-tablewrap'),t=element('table'),thead=element('thead'),tr=element('tr'),body=element('tbody');headers.forEach(h=>{const th=element('th',h);th.scope='col';tr.append(th);});thead.append(tr);rows.forEach(row=>{const line=element('tr');row.forEach(value=>line.append(element('td',String(value??''))));body.append(line);});t.append(thead,body);wrap.append(t);return wrap;};
+  items.forEach(({record:r,spec:s})=>{const card=section.querySelector('#annotation-'+r.id),dl=card?.querySelector('.annotation-spec');if(!dl)return;const info=table(['요소 유형','기본값','필수여부','상세 설명','정책 설명'],[[s.type,s.defaultValue,s.required,s.detail,s.policy||'해당 없음']]);info.classList.add('com01-description-item-info');dl.before(info);for(const dt of [...dl.querySelectorAll('dt')])if(['유형','기본값','필수여부','기능상세','기본정책'].includes(dt.textContent)){dt.nextElementSibling?.remove();dt.remove();}if(s.type==='버튼'){card.append(element('h3','버튼 동작'),table(['버튼명','노출조건','이동 페이지','성공·실패 결과'],[[s.item,'모든 사용자 공통',s.destination,s.result]]));}});
+  overview.append(element('h3','요소 요약'),table(['번호','항목명','요소 유형','설명','기본값','필수여부'],items.map(({record:r,spec:s})=>[String(r.number).padStart(2,'0'),s.item,s.type,s.detail.split('\n')[0].replace(/^-\s*/,''),s.defaultValue,s.required])));
+  overview.append(element('h3','사용자별 권한'),table(['사용자','화면 접근','로그인','로그인 후 권한'],['관리자','구매상담 운영용역사','수출상담 운영용역사','국내바이어','해외바이어','통역원'].map(role=>[role,'로그인 전 접근 가능','발급된 유효 계정으로 요청','서버에서 계정별 메뉴·데이터 권한 확인'])));
+  overview.append(element('p','개발 적용 초안 · 역할별 최초 화면과 해외바이어 이용 범위 등 미확정 사항은 각 항목의 기획비고 확인.','annotation-guide'));
+  const tabs=[{id:'overview',label:'개요',pane:overview},...items.map(({record:r})=>({id:r.id,label:String(r.number).padStart(2,'0'),pane:section.querySelector('#annotation-'+r.id)}))].filter(t=>t.pane);
+  if(!tabs.some(t=>t.id===loginDescriptionTab))loginDescriptionTab='overview';
+  tabs.forEach(t=>{const active=t.id===loginDescriptionTab,b=button(t.label,()=>{loginDescriptionTab=t.id;selected=t.id==='overview'?null:t.id;render();});b.setAttribute('role','tab');b.setAttribute('aria-selected',String(active));b.id='com01-description-tab-'+t.id;b.setAttribute('aria-controls',t.id==='overview'?overview.id:t.pane.id);t.pane.setAttribute('role','tabpanel');t.pane.setAttribute('aria-labelledby',b.id);t.pane.hidden=!active;nav.append(b);});
+  const first=section.querySelector('.annotation-card');if(first){first.before(nav,overview);}
+ }
+
  function render(){
   queued=false;const panel=document.querySelector('.ui-spec-panel'),toolbar=document.querySelector('.ui-spec-actions');if(!panel||!toolbar)return;
   if(!toolbar.querySelector('[data-planning-notes]')){const planningButton=button('기획비고',showPlanningNotes);planningButton.dataset.planningNotes='';toolbar.insertBefore(planningButton,toolbar.querySelector('[data-spec=numbers]')||toolbar.querySelector('[data-spec=close]'));}
@@ -154,7 +173,7 @@
   if(!records().length&&!picking){if(store.loading||(!store.loaded&&!store.error))section.append(element('p','디스크립션을 불러오는 중입니다.','annotation-guide'));else if(!store.error)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));}
   records().forEach(record=>{
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
-   head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
+   head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;if(route()==='COM-01')loginDescriptionTab=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});target.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});}else message('연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
    const positionButton=head.firstElementChild;positionButton.classList.add('annotation-position-number');positionButton.title=String(record.number).padStart(2,'0')+'번 위치 보기';positionButton.setAttribute('aria-label',positionButton.title);
    if(canEdit())head.append(button('수정',()=>edit(record)),button('삭제',()=>{dialog.replaceChildren(element('h2','설명을 삭제할까요?'),element('p','이 설명에 달린 댓글도 화면에서 함께 제외됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
    card.append(head,descriptionBody(record.text),element('small',record.author+' · '+format(record.created)+(record.updated?' · 수정 '+format(record.updated)+' / '+record.updatedBy:'')));
@@ -164,6 +183,7 @@
    });
    if(record.comments.length)card.append(comments);section.append(card);
   });
+  loginDescriptionLayout(section);
   const version=panel.querySelector('.ui-spec-version');if(version)version.after(section);else panel.prepend(section);panel.scrollTop=scrollTop;if(focusId){const input=document.getElementById(focusId)?.querySelector(focusSelector);input?.focus({preventScroll:true});if(input&&selection)input.setSelectionRange(...selection);}pins();
   if(pending){pendingPlanningTarget=null;const card=document.getElementById('annotation-'+pending.id);card.tabIndex=-1;card.focus({preventScroll:true});card.scrollIntoView({block:'nearest'});const target=find(pending);if(target)target.scrollIntoView({block:'center'});}
  }
