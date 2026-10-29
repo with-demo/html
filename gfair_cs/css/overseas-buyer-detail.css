@@ -31,3 +31,6 @@
 
 
 #app #content .buyer-phone-international{gap:5px}#app #content .buyer-phone-international input{flex:1 1 0;width:0;min-width:0;padding:7px 5px}#app #content .buyer-phone-international input[name="phoneCountry"]{flex:.8 1 0}@media(max-width:600px){#app #content .buyer-phone-international{flex-wrap:wrap}#app #content .buyer-phone-international input{flex:1 1 45px;width:45px}}
+
+#app #content .buyer-phone-international{flex-wrap:wrap}#app #content .buyer-phone-international select[name="phoneCountry"]{flex:1 0 100%;width:100%;min-width:0;max-width:100%;padding:7px 5px}#app #content .buyer-phone-international select+span{display:none}#app #content .buyer-phone-international input{min-width:45px}
+@media(max-width:600px){#app #content .buyer-phone-international select[name="phoneCountry"]{flex-basis:100%;width:100%;min-width:0}}
