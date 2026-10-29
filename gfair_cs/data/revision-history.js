@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.31","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
+{"screenId":"MON-02","version":"v0.25","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
+{"screenId":"MON-03","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
 {"screenId":"MON-01","version":"v0.30","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},
 {"screenId":"MON-02","version":"v0.24","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},
 {"screenId":"MON-03","version":"v0.25","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},

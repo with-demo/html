@@ -101,5 +101,5 @@
 @media(max-width:600px){#content .overview-kpis .kpi{padding:16px;min-height:118px}}
 
 /* 상단 요약 카드: 중앙 정렬, 하단 설명은 회색 텍스트. */
-#content .overview-kpis .kpi{text-align:center}
+#content .overview-kpis .kpi{text-align:center;border-radius:8px}
 #content .overview-kpis .kpi-note{color:#777;text-align:center}
