@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.29","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
+{"screenId":"MON-02","version":"v0.23","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
+{"screenId":"MON-03","version":"v0.24","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
 {"screenId":"MON-01","version":"v0.28","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
 {"screenId":"MON-02","version":"v0.22","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
 {"screenId":"MON-03","version":"v0.23","date":"2026.10.29","accountName":"shyuwith","summary":"출결 대시보드 기준으로 통합 대시보드 레이아웃 통일","changes":["콘텐츠 최대 폭 1600px·22px 간격·회색 요약부·흰색 본문·8px 카드 모서리를 출결 대시보드 기준으로 통일.","승인 요청 표의 헤더·행 높이·구분선도 출결 목록과 맞춤.","카드 밖 22px 대타이틀, 더보기 +, 최대 5건 및 그레이스케일 유지.","사용자 요청에 따라 Description은 기존 01번만 유지."]},
