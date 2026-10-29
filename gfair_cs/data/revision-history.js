@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-01","version":"v0.38","date":"2026.10.29","accountName":"with-demo","summary":"목록 행사명을 박람회 명칭으로 변경","changes":["목록 열과 연결된 키워드 검색 항목을 박람회 명칭으로 통일","기존 상세 이동·검색 동작 유지. Description의 동기화 항목은 이미 박람회 명칭으로 정의되어 일치 확인"]},
 {"screenId":"BAS-17","version":"v1.35","date":"2026.10.29","accountName":"with-demo","summary":"용역사 담당자 엑셀 파일명 정책 통일","changes":["다운로드 파일명을 G-FAIR_행사연도_용역사 담당자_YYYYMMDD.xlsx로 적용","다운로드일은 한국 시간 기준, 선택한 행사연도 사용","엑셀 다운로드 Description 기본정책 3줄 변경, 기존 기획비고 유지"]},
 {"screenId":"COM-07","version":"v1.35","date":"2026.10.29","accountName":"with-demo","summary":"용역사 담당자 엑셀 파일명 정책 통일","changes":["다운로드 파일명을 G-FAIR_행사연도_용역사 담당자_YYYYMMDD.xlsx로 적용","다운로드일은 한국 시간 기준, 선택한 행사연도 사용","엑셀 다운로드 Description 기본정책 3줄 변경, 기존 기획비고 유지"]},
 {"screenId":"PRE-01","version":"v3.36","date":"2026.10.29","accountName":"shyuwith","summary":"통역원 해외바이어 목록을 현황 조회 전용으로 정리","changes":["통역원 목록의 선택 체크박스, 선택 엑셀·선택 QR·전체 QR 다운로드와 QR발급 열 제거.","통역원은 검색·현황·목록·상세 조회만 제공, 도구 실행도 역할별로 차단.","관리자·수출 운영용역사 화면 유지."]},

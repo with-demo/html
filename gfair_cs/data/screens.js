@@ -53,7 +53,7 @@ window.GFAIR_SCREENS=[
         "ui": {
           "columns": [
             "연도",
-            "행사명",
+            "박람회 명칭",
             "행사기간",
             "상태"
           ],
