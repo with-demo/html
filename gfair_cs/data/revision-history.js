@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-01","version":"v1.3","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 제목 하단 안내 문구 제거","changes":["사용자 계정으로 접속해 주세요 문구 제거."]},
 {"screenId":"COM-01","version":"v1.2","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 버튼·하단 문구 정리","changes":["검토용 로그인을 로그인으로 변경.","화면 검토·전체 화면 목록 및 예시 인증 안내 문구 제거."]},
 {"screenId":"COM-01","version":"v1.1","date":"2026.10.29","accountName":"shyuwith","summary":"모바일·태블릿 로그인 반응형 레이아웃 보완","changes":["960px 이하에서 브랜드·로그인 폼을 세로 배치하고 작은 화면 여백·글자 크기 조정.","입력창·로그인 버튼 최소 높이 44px, 모바일 입력 글자 16px 적용.","고정 높이 없이 세로 스크롤로 모든 내용 접근, 로그인 영역 가로 넘침 방지."]},
 {"screenId":"COM-01","version":"v1.0","date":"2026.10.29","accountName":"shyuwith","summary":"공통 로그인 페이지 명칭으로 변경","changes":["관리자 로그인을 로그인으로 변경.","관리자 배지 제거 및 사용자 계정 안내 문구로 변경."]},
