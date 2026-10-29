@@ -33,3 +33,5 @@
 @media(max-height:600px) and (min-width:961px){.login-form{align-items:flex-start}.login-brand{gap:20px}.login-brand h1{margin:20px 0 16px}}
 
 .login-account-help{margin:28px 0 0;text-align:center;color:#777;font-size:12px;line-height:1.7;overflow-wrap:anywhere}.login-account-help span{white-space:nowrap}
+
+.login-account-help a{color:inherit;white-space:nowrap;text-decoration:underline;text-underline-offset:2px;display:inline-block;padding:5px 0}
