@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.32","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},
+{"screenId":"MON-02","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},
+{"screenId":"MON-03","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},
 {"screenId":"MON-01","version":"v0.31","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
 {"screenId":"MON-02","version":"v0.25","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
 {"screenId":"MON-03","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 모서리를 다른 바깥 카드와 동일한 8px로 통일","changes":["상단 요약 카드의 모서리 반경을 4px에서 8px로 변경.","중앙 정렬·회색 설명 및 기존 화면 구성 유지."]},
