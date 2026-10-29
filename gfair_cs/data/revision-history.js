@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01-p20","version":"v1.1","date":"2026.10.29","accountName":"shyuwith","summary":"상태 선택 목록을 메뉴권한 팝업의 표 UI 형태로 통일","changes":["회색 헤더·얇은 행 구분선·조밀한 행 높이 적용.","상태 선택 즉시 변경 동작 유지."]},
 {"screenId":"PRE-01","version":"v3.28","date":"2026.10.29","accountName":"shyuwith","summary":"관리자·수출 운영용역사 목록에 상태 변경일시 추가","changes":["이동상태 옆에 현재 상태의 QR 스캔 또는 수기 변경일시 표시.","미등록 상태는 - 표시, 선택 엑셀에도 동일 항목 적용."]},
 {"screenId":"PRE-01","version":"v3.27","date":"2026.10.29","accountName":"shyuwith","summary":"상태 변경을 목록으로 이동하고 선택 즉시 변경 방식 적용","changes":["수출 운영용역사 목록에만 이동상태 옆 상태 변경 버튼 제공.","상태 선택 팝업에서 클릭 즉시 변경, 담당자와 처리 시각 자동 기록.","상세 변경 버튼·이력 표 제거, 수기 확인 배지와 처리자 괄호 표기."]},
 {"screenId":"PRE-02","version":"v0.12","date":"2026.10.29","accountName":"shyuwith","summary":"상태 변경을 목록으로 이동하고 선택 즉시 변경 방식 적용","changes":["수출 운영용역사 목록에만 이동상태 옆 상태 변경 버튼 제공.","상태 선택 팝업에서 클릭 즉시 변경, 담당자와 처리 시각 자동 기록.","상세 변경 버튼·이력 표 제거, 수기 확인 배지와 처리자 괄호 표기."]},
