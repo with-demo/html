@@ -12,3 +12,116 @@
 .overview-pending .overview-view-all{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 14px;border:1px solid #bbb;border-radius:4px;background:#fff;color:#333;font-size:13px;text-decoration:none;white-space:nowrap}
 .overview-pending .overview-view-all:hover{background:#eee;border-color:#888}
 .overview-pending-body{padding:16px}
+
+/* 기획팀 대시보드 레퍼런스: 카드 위 제목, 흰 카드와 여백으로 정보 위계 정리. */
+#content:has(.overview-kpis){background:#f3f4f5}
+#content .overview-kpis{gap:16px;margin-bottom:32px}
+#content .overview-kpis .kpi{background:#fff;border:1px solid #e1e2e4;border-radius:12px;padding:22px 24px;min-height:132px;box-shadow:0 3px 12px rgba(0,0,0,.035)}
+#content .overview-kpis .kpi-label{font-size:13px;color:#666;margin-bottom:12px}
+#content .overview-kpis .kpi-value{font-size:30px;line-height:1.35;font-weight:700;color:#222}
+#content .overview-kpis .overview-money{font-size:24px}
+#content .overview-kpis .kpi-note{font-size:12px;color:#777;margin-top:10px}
+#content .overview-grid{gap:24px}
+#content .overview-module>.overview-module-title,#content .overview-pending .overview-module-title{font-size:22px;font-weight:700;line-height:1.4;color:#222;margin:0}
+#content .overview-module>.overview-module-title{margin-bottom:16px}
+#content .overview-module>.overview-module-title::before{display:none}
+#content .overview-module>.overview-area{padding:24px;border:1px solid #e1e2e4;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.035)}
+#content .overview-two,#content .overview-three{gap:16px;margin-bottom:16px}
+#content .overview-module .overview-area>.overview-two:last-child{margin-bottom:0}
+#content .overview-tile{background:#f5f5f5;border:1px solid #ececec;border-radius:8px;padding:18px}
+#content .overview-chart{background:#fff;border:1px solid #e4e4e4;border-radius:8px;padding:20px}
+#content .overview-tile h3,#content .overview-chart h3{font-size:13px;color:#555;line-height:1.5;margin-bottom:14px}
+#content .overview-tile>strong{font-size:28px}
+#content .overview-three .overview-tile>strong{font-size:24px}
+#content .overview-donut{width:130px;height:130px}
+#content .overview-donut>span{width:88px;height:88px;background:#fff;font-size:25px}
+#content .overview-donut small{font-size:12px;color:#777}
+#content .overview-status{gap:20px}
+#content .overview-legend,#content .overview-travel{font-size:13px;line-height:1.6}
+#content .overview-bars{min-height:170px;gap:8px}
+#content .overview-bars b,#content .overview-bars small{font-size:11px}
+#content .overview-pending-grid{margin-top:36px}
+#content .overview-pending .overview-module-heading{min-height:38px;margin-bottom:16px}
+#content .overview-pending .overview-module-title>span{font-size:14px;color:#777;font-weight:400}
+#content .overview-pending-body{padding:0 20px 16px;border:1px solid #e1e2e4;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.035)}
+#content .overview-pending .tablewrap{border:0;border-radius:0;box-shadow:none}
+#content .overview-pending table{width:100%;font-size:13px;border-collapse:collapse;border-top:2px solid #444}
+#content .overview-pending th{background:#f0f1f2;color:#333;font-size:13px;font-weight:600;padding:14px 10px;border-bottom:1px solid #d9dadd}
+#content .overview-pending td{padding:16px 10px;border-bottom:1px solid #e4e4e4;line-height:1.6}
+#content .overview-pending td small{font-size:11px;color:#777}
+#content .overview-pending .overview-note{padding:0 0 0;margin-top:14px;font-size:12px;color:#777}
+#content .overview-pending .overview-view-all{min-height:38px;padding:8px 16px;border-color:#d2d3d5;border-radius:6px;font-size:13px;background:#fff}
+@media(max-width:1500px){#content .overview-status{gap:12px}#content .overview-donut{width:110px;height:110px}#content .overview-donut>span{width:74px;height:74px}#content .overview-chart{padding:16px}}
+@media(max-width:1000px){#content .overview-module>.overview-area{padding:20px}#content .overview-kpis .kpi-value{font-size:26px}#content .overview-kpis .overview-money{font-size:21px}}
+@media(max-width:600px){#content .overview-grid{gap:20px}#content .overview-kpis{gap:12px;margin-bottom:24px}#content .overview-kpis .kpi{padding:16px;min-height:118px}#content .overview-module>.overview-module-title,#content .overview-pending .overview-module-title{font-size:20px}#content .overview-module>.overview-area{padding:16px}#content .overview-pending-grid{margin-top:28px}#content .overview-pending-body{padding:0 12px 12px}#content .overview-pending .overview-module-heading{gap:8px}#content .overview-pending .overview-module-title{flex:1;min-width:180px}}
+
+/* 사용자 지정: 그레이스케일 와이어프레임. 장식보다 영역·정보 위계를 우선한다. */
+#content:has(.overview-kpis){background:#f7f7f7}
+#content .overview-kpis .kpi,#content .overview-module>.overview-area,#content .overview-pending-body{box-shadow:none;border-color:#d8d8d8;border-radius:4px}
+#content .overview-tile,#content .overview-chart{border-radius:2px;box-shadow:none;border-color:#ddd}
+#content .overview-tile{background:#f5f5f5}
+#content .overview-chart{background:#fff}
+#content .overview-pending th{background:#f0f0f0;border-color:#ddd}
+#content .overview-pending .overview-view-all{border-radius:2px;border-color:#bbb;box-shadow:none}
+#content .overview-pending .badge{border-radius:2px;background:#eee;color:#444}
+
+/* 출결 대시보드(MON-08)와 동일한 콘텐츠 폭·간격·카드·표 기준 적용. */
+#content:has(.overview-kpis)>.pagehead,#content:has(.overview-kpis)>.toolbar,#content:has(.overview-kpis)>.overview-kpis,#content:has(.overview-kpis)>.overview-grid{width:100%;max-width:1600px;margin-left:auto;margin-right:auto}
+#content .overview-grid,#content .overview-kpis{gap:22px}
+#content .overview-kpis .kpi{padding:24px 16px 0;text-align:center;background:#f2f2f2;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;box-shadow:none}
+#content .overview-kpis .kpi-label{color:#333;font-weight:600;margin-bottom:12px}
+#content .overview-kpis .kpi-value{font-size:34px;line-height:1.25}
+#content .overview-kpis .overview-money{font-size:24px}
+#content .overview-kpis .kpi-note{margin:18px -16px 0;padding:12px 16px;background:#fff;border-top:1px solid #ddd;font-size:12px;color:#777}
+#content .overview-module>.overview-area{padding:0;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;background:#fff}
+#content .overview-module .overview-area>.overview-two,#content .overview-module .overview-area>.overview-three{margin:16px;gap:16px}
+#content .overview-module .overview-area>.overview-two:first-child{margin:0;gap:0;background:#f2f2f2;border-bottom:1px solid #ddd;padding:0}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile{padding:24px 16px 18px;text-align:center;border:0;border-radius:0;background:transparent}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile+ .overview-tile{border-left:1px solid #ddd}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile>strong{font-size:34px;line-height:1.25}
+#content .overview-module .overview-area>.overview-two:first-child>.overview-tile h3{font-size:14px;font-weight:600;color:#333;margin-bottom:12px}
+#content .overview-module .overview-area>.overview-two:last-child{margin-bottom:16px}
+#content .overview-chart{border:1px solid #ddd;border-radius:4px;padding:16px;background:#fff}
+#content .overview-three .overview-tile{border:1px solid #ddd;border-radius:4px;background:#f5f5f5}
+#content .overview-pending-body{padding:0;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;background:#fff}
+#content .overview-pending table{border-top:0}
+#content .overview-pending th{padding:13px 8px;font-size:12px;background:#f5f5f5;border-bottom:1px solid #e7e7e7}
+#content .overview-pending td{padding:13px 8px;border-bottom:1px solid #e7e7e7;font-size:13px}
+#content .overview-pending .overview-note{margin:0;padding:14px 16px;font-size:12px}
+@media(max-width:1050px){#content .overview-grid,#content .overview-kpis{gap:12px}}
+@media(max-width:600px){#content .overview-module .overview-area>.overview-two:first-child>.overview-tile+ .overview-tile{border-left:0;border-top:1px solid #ddd}#content .overview-kpis .kpi-value{font-size:28px}#content .overview-kpis .overview-money{font-size:21px}#content .overview-module .overview-area>.overview-two,#content .overview-module .overview-area>.overview-three{margin:12px;gap:12px}}
+
+/* 사용자 지정: 상단 5개 요약 카드만 출결 스타일 적용 전 형태로 복원. */
+#content .overview-kpis .kpi{padding:22px 24px;min-height:132px;text-align:left;background:#fff;border:1px solid #d8d8d8;border-radius:4px;overflow:visible;box-shadow:none}
+#content .overview-kpis .kpi-label{font-size:13px;color:#666;font-weight:400;margin-bottom:12px}
+#content .overview-kpis .kpi-value{font-size:30px;line-height:1.35;font-weight:700;color:#222}
+#content .overview-kpis .overview-money{font-size:24px}
+#content .overview-kpis .kpi-note{margin:10px 0 0;padding:0;background:transparent;border:0;font-size:12px;color:#777}
+@media(max-width:1000px){#content .overview-kpis .kpi-value{font-size:26px}#content .overview-kpis .overview-money{font-size:21px}}
+@media(max-width:600px){#content .overview-kpis .kpi{padding:16px;min-height:118px}}
+
+/* 상단 요약 카드: 중앙 정렬, 하단 설명은 회색 텍스트. */
+#content .overview-kpis .kpi{text-align:center;border-radius:8px}
+#content .overview-kpis .kpi-note{color:#777;text-align:center}
+
+/* 더보기 버튼은 일반 버튼과 동일한 모서리 반경 사용. */
+#content .overview-pending .overview-view-all{border-radius:7px}
+
+/* 두 상담 대시보드는 콘텐츠에 따라 함께 늘어나는 행 높이를 공유한다. */
+@media(min-width:1201px){
+#content .overview-grid:not(.overview-single):has(>.overview-module){grid-template-rows:auto repeat(4,auto);row-gap:0;align-items:stretch}
+#content .overview-grid:not(.overview-single)>.overview-module{display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:0}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area{display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:not(:first-child),#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-three{margin:0 16px 16px}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:nth-child(2){margin-top:16px}
+}
+
+/* 승인 요청 미리보기: 구매 5열·수출 6열, 제출일자 한 줄 표시. */
+#content .dashboard-journal-preview{table-layout:fixed}
+#content .dashboard-journal-preview.preview-buy{min-width:580px}
+#content .dashboard-journal-preview.preview-export{min-width:680px}
+#content .dashboard-journal-preview .dashboard-submitted-at,#content .dashboard-journal-preview .dashboard-submitted-at time{white-space:nowrap;font-variant-numeric:tabular-nums}
+#content .dashboard-journal-preview td small{display:block}
+#content .dashboard-company-link{appearance:none;background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+#content .dashboard-company-link:focus-visible{outline:2px solid #555;outline-offset:3px}
+#content .dashboard-journal-preview th{white-space:nowrap}
