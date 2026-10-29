@@ -15,7 +15,7 @@ inputs.slice(1).forEach(input=>{const field=input.closest('.field');if(field&&fi
 const keywords=[];
 inputs.slice(0,1).forEach(input=>{const field=input.closest('.field')||input.parentElement;if(field===form)return;field.classList.add('search-keyword');const caption=field.querySelector(':scope>span');const title=caption?.textContent.trim()||'키워드';if(caption)caption.textContent=form.dataset.searchLabel||'키워드 검색';
 const controls=document.createElement('div');controls.className='search-keyword-controls';const select=document.createElement('select');select.setAttribute('aria-label','키워드 검색 범위');
-let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textContent.trim()).filter(t=>/제목|내용|기업|바이어|이름|소속|관리자 ID|담당자|행사명|국가/.test(t));if(location.hash.includes('NTC-01'))labels=['제목','내용','작성자'];if((location.hash.slice(1)||document.body.dataset.screen)==='BAS-01')labels=['행사명','전시관구분'];
+let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textContent.trim()).filter(t=>/제목|내용|기업|바이어|이름|소속|관리자 ID|담당자|행사명|국가/.test(t));if(location.hash.includes('NTC-01'))labels=['제목','내용','작성자'];if((location.hash.slice(1)||document.body.dataset.screen)==='BAS-01')labels=['박람회 명칭','전시관구분'];
 if(location.hash.slice(1)==='BAS-03')labels=['바이어코드','바이어명'];if(location.hash.slice(1)==='BAS-07')labels=['통역원코드','통역원명'];
 if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
 if(location.hash.slice(1)==='PRE-01')labels=['바이어명','담당 통역원'];
