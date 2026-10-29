@@ -41,7 +41,7 @@ const badge=v=>`<span class="badge ${/대기|승인 요청|준비|미확인|미�
 const O=(a,v)=>a.map(t=>`<option ${v===t?'selected':''}>${E(t)}</option>`).join('');
 const I=(n,t='text',v='',x='')=>`<input name="${E(n)}" type="${t}" value="${E(v)}" ${x}>`;
 const F=(label,control,required=false,wide=false)=>`<label class="field ${wide?'wide':''}"><span>${E(label)}${required?'<em>필수</em>':''}</span>${control}</label>`;
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(timer);timer=setTimeout(()=>el.hidden=true,4500)}
+function toast(msg){if(/(?:저장|수정|변경|반영|적용|등록|다운로드|갱신|새로고침|발급|완료)했습니다[.!]?|현재 탭에만 반영됩니다/.test(String(msg)))return;const el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(timer);timer=setTimeout(()=>el.hidden=true,4500)}
 function nav(id){if(!map.has(id)&&id!=='screens')return toast('해당 화면을 찾을 수 없습니다.');if(location.hash==='#'+id)render();else location.hash=id}
 function journalSubmittedAt(){const parts=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());const value=type=>parts.find(p=>p.type===type).value;return `${value('year')}-${value('month')}-${value('day')} ${value('hour')}:${value('minute')}`}
 function log(action,target){logs.unshift({time:new Date().toLocaleString('ko-KR'),action,target})}

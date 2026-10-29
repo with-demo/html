@@ -149,7 +149,7 @@
   if(['COM-06','COM-07','COM-08'].includes(state.screen))return ['buyOperator','exportOperator'].includes(state.role)?`<div data-management-root>${operatorAccount()}</div>`:'<div class="empty">운영용역사 대표 담당자용 화면입니다.</div>';
   if(!isAdmin())return '<div class="empty">이용 권한이 없습니다.</div>';return `<div data-management-root>${state.screen==='BAS-15'?operatorList():state.screen==='BAS-17'?operatorDetail():state.screen==='BAS-19'?operatorRegistration():state.screen==='BAS-16'?adminList():adminDetail()}</div>`;}
  function paint(){const r=document.querySelector('[data-management-root]');if(r)r.outerHTML=render();}
- function message(text){state.notice=text;paint();}
+ function message(text){state.notice=/(?:저장|수정|변경|반영|적용|등록|다운로드|갱신|새로고침|발급|완료)했습니다[.!]?|현재 탭에만 반영됩니다/.test(String(text))?'':text;paint();}
  function modal(title,body){const d=document.getElementById('dialog');document.getElementById('dialog-content').innerHTML=`<div class="dialoghead"><h2>${title}</h2>${button('close','닫기')}</div><div class="dialogbody">${body}<p data-management-error role="alert"></p></div>`;d.showModal();}
  function close(){document.getElementById('dialog').close();}
 
@@ -284,7 +284,7 @@
    if(accountIdTaken(accountId))return fail('이미 등록된 아이디입니다.');
    if(f.dataset.checkedAdminId!==accountId)return fail('아이디 중복확인을 진행해 주세요.');
    const id='OP-'+String.fromCharCode(65+companies.length),company={id,name:companyName,representative:name,address:'미등록',contact:name,email:local&&domain?local+'@'+domain:'',phone:[v('phonePrefix'),v('phoneMiddle'),v('phoneLast')].join('-'),status:v('status')};
-   companies.push(company);assignments.push({year,company:id,type:operatorType,id:accountId,pw:generatedOperatorPassword()});state.year='전체';state.type='전체';state.query='';state.company=id;state.staffYear=year;state.notice='운영용역사 정보와 최고관리자용 계정을 등록했습니다. 비밀번호가 자동 생성되었습니다. 현재 탭에만 반영됩니다.';location.hash='BAS-15';return;
+   companies.push(company);assignments.push({year,company:id,type:operatorType,id:accountId,pw:generatedOperatorPassword()});state.year='전체';state.type='전체';state.query='';state.company=id;state.staffYear=year;state.notice='';location.hash='BAS-15';return;
   }
   if(type==='staff-upload'){
    state.staffUpload=null;const result=document.querySelector('[data-management-upload-result]');result.innerHTML='';
@@ -315,10 +315,10 @@
    if((staffMode?staff:admins).some(a=>a.id===v('id')&&(creating||a.id!==(staffMode?state.staffId:state.admin))))return fail('이미 등록된 아이디입니다.');
    if(creating&&staffMode&&accountIdTaken(v('id')))return fail('이미 등록된 아이디입니다.');
    if(staffMode&&!['사용','미사용'].includes(v('status')))return fail('사용여부를 선택해 주세요.');
-   if(staffMode){const data={id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status'),...contacts};if(creating)staff.push({...data,company:ownCompany(),year:state.staffYear,code:v('id'),pw:generatedOperatorPassword(),date:adminDate()});else Object.assign(staff.find(a=>a.id===state.staffId&&staffInYear(a,ownCompany(),state.staffYear)),data);state.notice='담당자 정보를 저장했습니다. 현재 탭에만 반영됩니다.';state.staffId=null;location.hash='COM-07';return;}
-   if(creating){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:adminDate(),...contacts,passwordSet:true});state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';adminMode(false);location.hash='BAS-16';return;}
+   if(staffMode){const data={id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status'),...contacts};if(creating)staff.push({...data,company:ownCompany(),year:state.staffYear,code:v('id'),pw:generatedOperatorPassword(),date:adminDate()});else Object.assign(staff.find(a=>a.id===state.staffId&&staffInYear(a,ownCompany(),state.staffYear)),data);state.notice='';state.staffId=null;location.hash='COM-07';return;}
+   if(creating){admins.push({id:v('id'),name:v('name'),org:v('org')||'미등록',status:v('status')||'사용',date:adminDate(),...contacts,passwordSet:true});state.notice='';adminMode(false);location.hash='BAS-16';return;}
    else{Object.assign(admins.find(a=>a.id===state.admin),{name:v('name'),org:v('org')||'미등록',status:v('status'),...contacts,...(v('password')?{passwordSet:true}:{})})}
-   f.elements.password.value='';state.notice='관리자 정보를 저장했습니다. 실제 계정·권한은 변경되지 않습니다.';let notice=document.querySelector('[data-management-root]>.notice');if(!notice){notice=document.createElement('p');notice.className='notice';notice.setAttribute('role','status');f.before(notice);}notice.textContent=state.notice;return;
+   f.elements.password.value='';state.notice='';document.querySelector('[data-management-root]>.notice')?.remove();return;
   }
   if(type==='upload'){
    state.upload=null;const result=document.querySelector('[data-management-upload-result]');result.innerHTML='';

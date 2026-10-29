@@ -39,11 +39,11 @@
   const form=event.target;if(!form.matches('[data-group-form]'))return;event.preventDefault();event.stopImmediatePropagation();if(!admin())return;
   const data=new FormData(form),group=groups.find(g=>g.id===form.dataset.id);
   if(form.dataset.groupForm==='search'){query=String(data.get('query')||'').trim();status=data.get('status');paint();return;}
-  if(form.dataset.groupForm==='permissions'&&group){group.menus=new Set(data.getAll('menus').filter(menu=>menu!=='SET-07'||group.id==='admin'));notice=group.name+'의 메뉴 접근 권한을 저장했습니다.';}
+  if(form.dataset.groupForm==='permissions'&&group){group.menus=new Set(data.getAll('menus').filter(menu=>menu!=='SET-07'||group.id==='admin'));notice='';}
   else if(form.dataset.groupForm==='edit'){
    if(!form.reportValidity())return;const name=String(data.get('name')||'').trim();
    if(!name||groups.some(g=>g!==group&&g.name===name)){form.querySelector('[data-group-error]').textContent=!name?'그룹명을 입력해 주세요.':'같은 이름의 그룹이 있습니다.';return;}
-   if(group){Object.assign(group,{name,active:data.get('active')==='true'});if(form.querySelector('[data-group-all]'))group.menus=new Set(data.getAll('menus'));}else groups.push({id:'GROUP-'+Date.now(),name,active:data.get('active')==='true',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.'),menus:new Set()});notice='그룹 정보를 저장했습니다.';
+   if(group){Object.assign(group,{name,active:data.get('active')==='true'});if(form.querySelector('[data-group-all]'))group.menus=new Set(data.getAll('menus'));}else groups.push({id:'GROUP-'+Date.now(),name,active:data.get('active')==='true',date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()).replaceAll('-','.'),menus:new Set()});notice='';
   }
   if(form.closest('dialog')){close();paint();}else{groupMode(false);location.hash='SET-01';}
  },true);

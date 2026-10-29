@@ -1,5 +1,15 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.36","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"BAS-17","version":"v1.37","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"BAS-18","version":"v1.27","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"BAS-19","version":"v1.17","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"BAS-16","version":"v2.27","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"COM-06","version":"v1.16","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"COM-07","version":"v1.33","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"COM-08","version":"v0.18","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"SET-01","version":"v0.30","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
+{"screenId":"SET-02","version":"v0.21","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
 {"screenId":"COM-08","version":"v0.17","date":"2026.10.30","accountName":"mjha","summary":"등록·상세 연락처 및 사용여부 필수 표시","changes":["등록·상세 연락처 및 사용여부 필수 표시"]},
 {"screenId":"COM-07","version":"v1.32","date":"2026.10.30","accountName":"mjha","summary":"최신 담당자 등록양식 교체 및 사용여부 Y/N 필수 적용","changes":["최신 담당자 등록양식 교체 및 사용여부 Y/N 필수 적용"]},
 {"screenId":"COM-07-p01","version":"v0.10","date":"2026.10.30","accountName":"mjha","summary":"사용여부 누락 오류 처리 및 최신 등록양식 연결","changes":["사용여부 누락 오류 처리 및 최신 등록양식 연결"]},
