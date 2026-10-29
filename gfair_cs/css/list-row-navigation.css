@@ -5,3 +5,6 @@
 #app #content .tablewrap .list-name-link{display:inline;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:inherit;cursor:pointer}
 #app #content .tablewrap .list-name-link:hover{color:#555}
 #content [data-list-row-trigger][hidden]{display:none!important}
+
+/* 상세로 이동하는 목록 이름·제목은 굵게 표시한다. */
+#app #content .tablewrap tbody :is(a[href],button.btn.ghost,.list-name-link,.list-clickable-text):not([data-action="sur-use"]):not([data-action="remove-image"]):not([data-action="close"]){font-weight:700}
