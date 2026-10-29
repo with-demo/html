@@ -276,14 +276,14 @@ window.GFAIR_SCREENS=[
               "영국",
               "Whitmore Living",
               "2026",
-              "참가 미정"
+              "참가 확정"
             ],
             [
               "F20270001",
               "Emily Carter",
               "미국",
               "Carter Home & Lifestyle",
-              "2026, 2027",
+              "2026",
               "참가 확정"
             ],
             [
@@ -291,8 +291,8 @@ window.GFAIR_SCREENS=[
               "田中 浩",
               "일본",
               "Tanaka Lifestyle Trading",
-              "2027",
-              "신규"
+              "2026",
+              "참가 확정"
             ]
           ]
         },
@@ -395,14 +395,14 @@ window.GFAIR_SCREENS=[
               "K20270001",
               "김민준",
               "한빛리테일",
-              "2027",
-              "신규"
+              "2026",
+              "참가 확정"
             ],
             [
               "K20270002",
               "이서준",
               "온유커머스",
-              "2026, 2027",
+              "2026",
               "참가 확정"
             ],
             [
@@ -410,7 +410,7 @@ window.GFAIR_SCREENS=[
               "박지은",
               "온유코스메틱",
               "2026",
-              "참가 미정"
+              "참가 확정"
             ]
           ]
         },
@@ -509,22 +509,22 @@ window.GFAIR_SCREENS=[
               "I20270001",
               "박서연",
               "영어",
-              "2026, 2027",
+              "2026",
               "참가 확정"
             ],
             [
               "I20270002",
               "이준호",
               "언어 ",
-              "2027",
-              "신규"
+              "2026",
+              "참가 확정"
             ],
             [
               "I20260001",
               "김하린",
               "언어 미등록",
               "2026",
-              "참가 미정"
+              "참가 확정"
             ]
           ]
         },
@@ -3470,10 +3470,10 @@ GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='COM-07').summary='본인 회
 (()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens),detail=all.find(s=>s.id==='BAS-04'),source=all.find(s=>s.id==='BAS-03');Object.assign(detail,{title:'해외 바이어 관리 상세',summary:'업로드된 바이어 기본정보와 직접 입력 정보, 연도별 참가이력을 확인하고 관리합니다.',ui:{fields:[['바이어 코드','해외바이어 고유식별코드 / 자동채번 / 텍스트'],['바이어명','엑셀 연계 / 텍스트'],['바이어국가','제공 국가 코드표 / 텍스트'],['초청기관유형','KBC / 텍스트'],['연락처','앞자리 선택 - 4자리 - 4자리'],['이메일','아이디 @ 도메인 / 도메인 선택·직접입력'],['메모','전체 너비 textarea']],actions:['목록','저장']},rules:['해외바이어는 로그인 ID/PW 없이 바이어 고유코드로 참가이력·매칭·QR을 연결한다.','엑셀에서 연계된 기본정보는 텍스트로 표시하며 연락처·이메일·메모는 직접 입력한다.','참가이력 예시는 2027년(현재), 2026년, 2024년을 제공한다.','해외바이어 로그인 ID/PW는 생성·입력·발급하지 않는다.','행사참가이력은 연도·초청기관으로 구성하고 2027·2026년 KBC, 2024년 GBC를 표시한다.'],check:'실제 서버의 고유코드 자동채번·QR·상담일지 연계는 별도 구현한다.'});const sample=source.ui.rows[0];sample[1]='James Whitmore';sample[2]='영국';sample[4]='2026, 2024';})();
 
 // BAS-03 목록 표시 열은 원본 연계 배열과 분리하여 관리한다.
-(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-03');s.ui.listColumns=['바이어코드','바이어명','국가','참가연도','참가상태'];s.ui.rows[1][4]='2027, 2026, 2025, 2023, 2022';s.rules.push('목록의 참가연도는 최신순으로 최대 3개만 표시하고 초과 이력은 그 외 N건으로 표시한다. 검색은 생략된 연도까지 전체 원본 이력에 적용한다.');})();
+(()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-03');s.ui.listColumns=['바이어코드','바이어명','국가','참가연도','참가상태'];s.ui.rows[1][4]='2026, 2025, 2023, 2022';s.rules.push('목록의 참가연도는 최신순으로 최대 3개만 표시하고 초과 이력은 그 외 N건으로 표시한다. 검색은 생략된 연도까지 전체 원본 이력에 적용한다.');})();
 
 // BAS-06·BAS-08: 기본정보와 행사참가이력 (사용자 요청 2026-10-22).
-(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens),domestic=all.find(s=>s.id==='BAS-05'),interpreters=all.find(s=>s.id==='BAS-07');const domesticNames=['김민준','이서준','박지은'],companies=['한빛리테일','온유커머스','다온유통'];domestic.ui.rows.forEach((r,i)=>{if(domesticNames[i]){r[1]=domesticNames[i];r[2]=companies[i];}});domestic.ui.rows[0][3]='2027, 2026, 2024';const interpreterNames=['박서연','이준호','김하린'],languages=['영어, 일본어, 중국어, 프랑스어, 독일어','영어','일본어, 중국어'];interpreters.ui.rows.forEach((r,i)=>{if(interpreterNames[i]){r[1]=interpreterNames[i];r[2]=languages[i];}});interpreters.ui.rows[0][3]='2027, 2026, 2024';
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens),domestic=all.find(s=>s.id==='BAS-05'),interpreters=all.find(s=>s.id==='BAS-07');const domesticNames=['김민준','이서준','박지은'],companies=['한빛리테일','온유커머스','다온유통'];domestic.ui.rows.forEach((r,i)=>{if(domesticNames[i]){r[1]=domesticNames[i];r[2]=companies[i];}});domestic.ui.rows[0][3]='2026, 2024';const interpreterNames=['박서연','이준호','김하린'],languages=['영어, 일본어, 중국어, 프랑스어, 독일어','영어','일본어, 중국어'];interpreters.ui.rows.forEach((r,i)=>{if(interpreterNames[i]){r[1]=interpreterNames[i];r[2]=languages[i];}});interpreters.ui.rows[0][3]='2026, 2024';
 for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세',[['바이어 코드','K+연도 4자리+4자리 일련번호 / 텍스트'],['바이어명','엑셀 연계 / 텍스트'],['소속기업','엑셀 연계 / 텍스트'],['초청기관유형','KBC / 텍스트']],'GK'],['BAS-08','통역원 관리 상세',[['통역원 코드','I+연도 4자리+4자리 일련번호 / 텍스트'],['통역원명','엑셀 연계 / 텍스트'],['통역원 언어','제공 언어 코드표 / 1~5지망 순서 / 텍스트']],'GI']]){const detail=all.find(s=>s.id===id);Object.assign(detail,{title,summary:'엑셀로 연계된 기본정보, 직접 입력하는 연락처·이메일·메모와 연도별 행사참가이력을 관리합니다.',ui:{fields:[...fields,['연락처','앞자리 선택 - 4자리 - 4자리'],['이메일','아이디 @ 도메인 / 도메인 선택·직접입력'],['메모','전체 너비 textarea']],actions:['목록','저장']},rules:['기본정보의 코드·명칭 등 엑셀 연계 항목은 텍스트로 표시하고 연락처·이메일·메모는 직접 입력한다.','행사별 임시계정 ID는 '+prefix+'+연도 뒤 2자리+4자리 번호로 구성한다.','예시 비밀번호는 영문 대문자 1자+숫자 6자리로 생성하고 기본 마스킹·보기·숨기기를 제공한다.',id==='BAS-08'?'통역원 언어는 제공 코드표의 이름·코드를 사용하고 엑셀 1~5지망 순서와 빈 지망 위치를 보존한다.':'행사참가이력에 연도·초청기관유형·ID·PW를 표시한다.'],check:'실제 서버의 자동채번·계정 발급·엑셀 저장 연계는 별도 구현한다.'});}})();
 
 // 세 상세 화면 기본정보: 코드·초청기관유형 / 이름·국가(기업·언어).
