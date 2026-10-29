@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.20","date":"2026.10.29","accountName":"shyuwith","summary":"승인 요청 구매·수출상담일지 목록을 통계·차트 묶음에서 분리","changes":["상단 구매·수출 통계·차트와 하단 승인 요청 목록을 독립된 행과 패널로 분리.","구매는 좌측, 수출은 우측에 두고 좁은 화면은 한 열로 전환.","전체 보기·상세 이동과 건수·목록 데이터 유지."]},
 {"screenId":"BAS-15","version":"v2.31","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
 {"screenId":"COM-07","version":"v1.28","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
 {"screenId":"BAS-15-p06","version":"v0.2","date":"2026.10.29","accountName":"with-demo","summary":"계정발송 팝업 간소화 및 문자 내용 Description 안내","changes":["표 위 총 N건 발송 및 담당자·연락처·발급 ID 3열만 표시","문자 내용 보기·제외 사유·보조 문구 삭제","문자 발송 양식 예시를 Description에 정의, 검증·발송 확인 동작 유지"]},
