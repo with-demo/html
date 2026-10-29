@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.30","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},
+{"screenId":"MON-02","version":"v0.24","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},
+{"screenId":"MON-03","version":"v0.25","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 중앙 정렬 및 하단 설명 회색 처리","changes":["상단 요약 카드 5개의 항목명·수치·하단 설명을 중앙 정렬.","하단 설명은 회색(#777)으로 표시하고 흰색 배경·구분선 없는 구성 유지."]},
 {"screenId":"MON-01","version":"v0.29","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
 {"screenId":"MON-02","version":"v0.23","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
 {"screenId":"MON-03","version":"v0.24","date":"2026.10.29","accountName":"shyuwith","summary":"상단 요약 카드 5개를 이전 흰색·왼쪽 정렬 형태로 복원","changes":["상단 요약 카드의 회색 중앙 정렬·하단 분리형 설명을 이전 흰색 배경·왼쪽 정렬로 복원.","나머지 대시보드 레이아웃 및 기존 Description 유지."]},
