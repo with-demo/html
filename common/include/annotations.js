@@ -139,6 +139,7 @@
   form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const text=JSON.stringify({format:'screen-overview-v1',overview:input.value.trim()});const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
   dialog.append(form);dialog.showModal();input.focus();
  }
+ 
  function render(){
   queued=false;const panel=document.querySelector('.ui-spec-panel'),toolbar=document.querySelector('.ui-spec-actions');if(!panel||!toolbar)return;
   if(!toolbar.querySelector('[data-planning-notes]')){const planningButton=button('기획비고',showPlanningNotes);planningButton.dataset.planningNotes='';toolbar.insertBefore(planningButton,toolbar.querySelector('[data-spec=numbers]')||toolbar.querySelector('[data-spec=close]'));}
