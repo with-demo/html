@@ -1,4 +1,5 @@
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"interpreter-history-language-duplicate","title":"참가이력 통역 언어 중복","type":"필드 오류","trigger":"BAS-08 저장 시 같은 연도의 언어 중복 선택","message":"같은 연도의 통역 언어는 중복 선택할 수 없습니다.","confirm":"저장 중단, 해당 언어 선택란으로 이동","cancel":"","screens":["BAS-08"],"source":"include/overseas-buyer-detail.js"},
 {"key":"account-selection-empty","title":"발송 대상 미선택","type":"알럿","trigger":"선택 계정발송 클릭 시 선택 없음","message":"계정을 발송할 대상을 선택해 주세요.","screens":["BAS-15","COM-07"],"confirm":"안내 후 현재 화면 유지","cancel":"","source":"include/management-ui.js"},
 {"key":"account-result-empty","title":"발송 대상 없음","type":"알럿","trigger":"일괄 계정발송 시 조회 결과 없음","message":"발송할 대상이 없습니다.","screens":["BAS-15","COM-07"],"confirm":"안내 후 현재 화면 유지","cancel":"","source":"include/management-ui.js"},
 {"key":"account-ready-empty","title":"발송 가능한 계정 없음","type":"알럿","trigger":"대상 모두 계정 미발급 또는 유효 연락처 없음","message":"발송 가능한 계정이 없습니다. ID·PW 발급 여부와 연락처를 확인해 주세요.","screens":["BAS-15","COM-07"],"confirm":"안내 후 현재 화면 유지","cancel":"","source":"include/management-ui.js"},

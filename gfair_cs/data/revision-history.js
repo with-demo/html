@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-08","version":"v0.28","date":"2026.10.29","accountName":"mjha","summary":"행사참가이력에 연도별 통역 언어 관리 추가","changes":["행사참가이력의 통역 언어는 연도별 최대 5개를 제공 언어 코드표에서 선택·수정하고 저장한다. 동일 연도의 중복 언어는 허용하지 않으며 다른 연도의 언어는 유지한다. 행사 통역원 상세에는 해당 행사연도의 저장 언어를 표시한다.","Description·중복 언어 검증 메시지 동기화"]},
 {"screenId":"SET-01","version":"v0.25","date":"2026.10.28","accountName":"with","summary":"만족도설문관리 권한 통합·관리자 전용","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
 {"screenId":"SET-01-p13","version":"v0.2","date":"2026.10.28","accountName":"with","summary":"만족도설문관리 단일 권한 및 타 그룹 비활성","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
 {"screenId":"BAS-15","version":"v2.30","date":"2026.10.28","accountName":"with","summary":"대표담당자 선택·일괄 계정발송 및 체크박스 추가","changes":["화면·Description·안내 메시지 동기화","실제 SMS 전송·비밀번호 변경은 연결되지 않은 검토용 목업"]},
@@ -1951,3 +1952,4 @@ window.GFAIR_REVISION_HISTORY=[
     "summary": "공지사항 신규 화면 작업 완료"
   }
 ];
+
