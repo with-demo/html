@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-01","version":"v1.5","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 하단 계정 문의 연락처 추가","changes":["로그인 버튼 아래에 작은 회색 중앙 정렬 계정 문의 문구 표시.","운영사무국 02-000-0000 예시 번호로 배치, 실제 연락처 확인 후 교체 필요."]},
 {"screenId":"COM-01","version":"v1.4","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 입력 플레이스홀더 변경","changes":["아이디를 입력해주세요. / 비밀번호를 입력해주세요. 문구 적용."]},
 {"screenId":"COM-01","version":"v1.3","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 제목 하단 안내 문구 제거","changes":["사용자 계정으로 접속해 주세요 문구 제거."]},
 {"screenId":"COM-01","version":"v1.2","date":"2026.10.29","accountName":"shyuwith","summary":"로그인 버튼·하단 문구 정리","changes":["검토용 로그인을 로그인으로 변경.","화면 검토·전체 화면 목록 및 예시 인증 안내 문구 제거."]},
