@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"MON-01","version":"v0.30","date":"2026.10.29","accountName":"shyuwith","summary":"구매·수출 대시보드의 내부 행과 전체 높이 일치","changes":["좌우 배치 시 요약·출결 및 방한·성과·차트의 행 높이를 공유하도록 적용.","긴 내용 기준으로 함께 늘어나며 한 열·단일 상담 화면은 기존 자연 높이 유지.","Description 유지."]},
 {"screenId":"MON-01","version":"v0.32","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},
 {"screenId":"MON-02","version":"v0.26","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},
 {"screenId":"MON-03","version":"v0.27","date":"2026.10.29","accountName":"shyuwith","summary":"더보기 + 버튼 radius를 일반 버튼과 같은 7px로 통일","changes":["구매·수출 승인 요청 목록의 더보기 + 버튼 모서리 반경을 7px로 변경."]},

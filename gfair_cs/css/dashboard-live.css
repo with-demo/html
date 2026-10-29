@@ -106,3 +106,12 @@
 
 /* 더보기 버튼은 일반 버튼과 동일한 모서리 반경 사용. */
 #content .overview-pending .overview-view-all{border-radius:7px}
+
+/* 두 상담 대시보드는 콘텐츠에 따라 함께 늘어나는 행 높이를 공유한다. */
+@media(min-width:1201px){
+#content .overview-grid:not(.overview-single):has(>.overview-module){grid-template-rows:auto repeat(4,auto);row-gap:0;align-items:stretch}
+#content .overview-grid:not(.overview-single)>.overview-module{display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:0}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area{display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:not(:first-child),#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-three{margin:0 16px 16px}
+#content .overview-grid:not(.overview-single)>.overview-module>.overview-area>.overview-two:nth-child(2){margin-top:16px}
+}
