@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-01","version":"v1.1","date":"2026.10.29","accountName":"shyuwith","summary":"모바일·태블릿 로그인 반응형 레이아웃 보완","changes":["960px 이하에서 브랜드·로그인 폼을 세로 배치하고 작은 화면 여백·글자 크기 조정.","입력창·로그인 버튼 최소 높이 44px, 모바일 입력 글자 16px 적용.","고정 높이 없이 세로 스크롤로 모든 내용 접근, 로그인 영역 가로 넘침 방지."]},
 {"screenId":"COM-01","version":"v1.0","date":"2026.10.29","accountName":"shyuwith","summary":"공통 로그인 페이지 명칭으로 변경","changes":["관리자 로그인을 로그인으로 변경.","관리자 배지 제거 및 사용자 계정 안내 문구로 변경."]},
 {"screenId":"PRE-01","version":"v3.33","date":"2026.10.29","accountName":"shyuwith","summary":"방한 현황 새로고침을 공통 연결 상태·아이콘 UI로 통일","changes":["Last updated 시각 문구와 새로고침 텍스트 제거.","통합·출결 대시보드와 동일한 연결됨 표시 및 업데이트 아이콘 사용."]},
 {"screenId":"PRE-01","version":"v3.32","date":"2026.10.29","accountName":"shyuwith","summary":"상태 변경 시 행 위치와 현재 페이지 유지","changes":["PRE-01의 상태 변경일시 자동 정렬 제외, 기존 바이어 순서 유지.","동일 조회 조건에서 상태 변경 후 페이지·페이지당 표시 개수 유지, 관리자·수출 운영용역사 공통 적용."]},

@@ -1,0 +1,33 @@
+/* COM-01 공통 로그인: 작은 화면과 가로 회전에서도 내용 흐름을 유지한다. */
+.login-page{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);min-height:calc(100svh - var(--sb-toolbar-height,0px));width:100%}
+.login-page>*,.login-form>div,.login-form form{min-width:0;max-width:100%}
+.login-brand{padding:clamp(32px,5vw,70px);gap:32px;overflow-wrap:anywhere}
+.login-brand h1{font-size:clamp(26px,3.2vw,43px)}
+.login-form{padding:clamp(28px,4vw,60px) clamp(24px,4vw,45px)}
+.login-form>div{max-width:390px}
+.login-form .notice{overflow-wrap:anywhere;line-height:1.7}
+.login-form input,.login-form button[type=submit]{width:100%;min-height:44px}
+@media(max-width:960px){
+ .login-page{display:flex;flex-direction:column;min-height:0}
+ .login-brand{padding:24px 28px;gap:20px}
+ .login-brand .brand{font-size:32px}
+ .login-brand h1{font-size:24px;margin:0 0 12px;line-height:1.4}
+ .login-brand p{max-width:none;font-size:13px;line-height:1.7}
+ .login-brand footer{display:none}
+ .login-form{padding:32px 24px;align-items:flex-start}
+ .login-form>div{max-width:440px}
+ .login-form .login-grid{margin:28px 0;padding-top:20px}
+ .login-form .notice{margin:24px 0 0}
+}
+@media(max-width:480px){
+ .login-brand{padding:20px;gap:16px}
+ .login-brand .brand{font-size:28px}
+ .login-brand h1{font-size:22px;margin-bottom:10px}
+ .login-form{padding:24px 20px 32px}
+ .login-form h1{font-size:24px}
+ .login-form input{font-size:16px}
+ .login-form .field{margin:18px 0}
+ .login-form .subtitle{font-size:13px;line-height:1.6}
+ .login-form .notice{padding:12px;font-size:12px}
+}
+@media(max-height:600px) and (min-width:961px){.login-form{align-items:flex-start}.login-brand{gap:20px}.login-brand h1{margin:20px 0 16px}}
