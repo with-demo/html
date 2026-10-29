@@ -1,7 +1,7 @@
 // 사용구분과 화면 유형에 관계없이 데이터 목록의 건수 표시를 통일한다.
 (()=>{'use strict';const root=document.getElementById('app');if(!root)return;
 function sync(){observer.disconnect();try{root.querySelectorAll('#content .tablewrap>table').forEach(table=>{
- if((location.hash==='#BAS-10'&&table.matches('.company-product-list'))||(location.hash==='#PRE-02'&&table.matches('.pre02-travel-list'))||table.closest('.admin-list-panel,.notice-panel,form')||!table.tHead||!table.tBodies.length)return;
+ if((location.hash==='#BAS-10'&&table.matches('.company-product-list'))||(location.hash==='#PRE-02'&&table.matches('.pre02-travel-list'))||table.closest('.admin-list-panel,.notice-panel,form,.overview-pending')||!table.tHead||!table.tBodies.length)return;
  const wrap=table.closest('.tablewrap'),panel=wrap.parentElement,rows=[...table.tBodies].flatMap(body=>[...body.rows]).filter(row=>row.cells.length>1&&!row.querySelector('.empty'));
  const foot=wrap.nextElementSibling?.matches('.tablefoot')?wrap.nextElementSibling:null;
  const saved=foot?.textContent.match(/총\s*([\d,]+)건\s*·\s*(\d+)\/(\d+)page/);

@@ -33,7 +33,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 (()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=upload-guide-center-20261028',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=groups-surveys-20261028',document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=bas10-no-summary-20261028",document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=dashboard-preview-20261029",document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=filter-cell-alignment-20261023",base).href;js.src=new URL("search-filters.js?v=set01-group-scope-20261029",base).href;document.head.append(css,js);})();
 
