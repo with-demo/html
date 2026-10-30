@@ -61,16 +61,7 @@ window.GFAIR_SCREEN_REGISTRY=[
     "selector": "[data-action=sur-text-results]",
     "contains": false
   },
-  {
-    "id": "COM-09",
-    "title": "내정보",
-    "parent": "MON-01",
-    "summary": "유형별 기본정보를 새 창에서 조회하며 메모·참가이력은 제외합니다. 관리자는 비밀번호 변경 입력을 제공합니다.",
-    "kind": "window",
-    "match": "내정보",
-    "selector": "[data-action=my-info]",
-    "contains": false
-  },
+  
   {
     "id": "SET-16",
     "title": "설문 응답 결과 상세",
@@ -265,3 +256,5 @@ window.GFAIR_SCREEN_REGISTRY=[
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 기본정보·메뉴 권한';s.summary='그룹의 기본정보와 메뉴 접근 권한을 함께 확인하고 수정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 등록·상세';s.summary='그룹명과 사용여부만 등록·수정합니다. 메뉴 접근 권한은 목록의 메뉴권한 팝업에서 설정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
+
+(()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),info=all.find(s=>s.id==='COM-06'),alerts=all.find(s=>s.id==='NTC-07');if(info)Object.assign(info,{title:'내정보',kind:'detail',role:'전체 사용자',summary:'기본정보관리에 등록된 본인의 계정·기본정보를 조회하며 관리자는 비밀번호를 변경합니다.',ui:{fields:[],actions:[]}});if(alerts)Object.assign(alerts,{title:'알림',summary:'현재 행사에서 본인에게 전달된 알림 내역과 확인 여부를 조회합니다.'});if(window.GFAIR_SCREEN_OVERVIEWS){GFAIR_SCREEN_OVERVIEWS['COM-06']=info.summary;GFAIR_SCREEN_OVERVIEWS['NTC-07']=alerts.summary;}})();

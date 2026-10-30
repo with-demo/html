@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-06","version":"v1.17","summary":"내정보를 조회 전용 일반 페이지로 전환","changes":["내정보 진입을 COM-06으로 통일하고 COM-09 구주소 호환 이동.","기본정보 원천 데이터의 역할별 정보를 입력창 없는 조회 표로 표시.","관리자만 페이지 내에서 현재·새 비밀번호·확인을 입력하고 8~20자 영문·숫자·공백 제한 검증."],"date":"2026.10.30","accountName":"shyuwith"},
+{"screenId":"NTC-07","version":"v0.14","summary":"행사 기간 중심의 개인 알림 목록 구성","changes":["현재 행사 수신기간·확인 여부 검색, 최신순 목록·건수·페이지 구성.","알림 제목 열기 시 확인 처리, 관련 화면 이동·모두 확인 및 상단 미확인 건수 연결.","본인 역할·행사별 목업 데이터 분리, 모바일에서 카드형 목록 제공."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-15","version":"v2.36","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
 {"screenId":"BAS-17","version":"v1.37","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
 {"screenId":"BAS-18","version":"v1.27","date":"2026.10.30","accountName":"mjha","summary":"동작 완료 후 부가 안내 숨김","changes":["저장·수정·등록 등 완료 안내와 현재 탭 반영 배너 숨김","필수 입력·오류 안내 및 저장·이동 동작 유지"]},
