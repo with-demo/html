@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.16","summary":"통역원 수출상담일지 승인·반려 알림 추가","changes":["통역원 본인 작성 수출상담일지의 승인·반려 결과 알림 예시 및 목록 연결 추가."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"NTC-07","version":"v0.15","summary":"알림 목록 단순화 및 사용자별 알림 예시 정리","changes":["제목·알림 내용·수신일시·바로가기 4열 목록, 아코디언·확인 여부·모두 확인 제거.","새 알림 수는 알림 페이지 진입 시 해제.","국내바이어 승인·반려, 통역원 매칭 관련 알림·행사 공통 안내 예시로 정리."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.41","date":"2026.10.30","accountName":"mjha","summary":"행사별 참여여부·미참여 처리 및 용역사 계정발급 분리","changes":["기본정보는 기본정보·참여여부·이력 관리, 업로드 회원은 현재 행사 신규/참가","선택 미참여 처리 시 해당 행사만 제외하고 회원·이력 보존","국내바이어·통역원 계정은 행사정보의 담당 용역사가 발급, 해외바이어는 QR만 사용"]},
 {"screenId":"BAS-04","version":"v0.39","date":"2026.10.30","accountName":"mjha","summary":"행사별 참여여부·미참여 처리 및 용역사 계정발급 분리","changes":["기본정보는 기본정보·참여여부·이력 관리, 업로드 회원은 현재 행사 신규/참가","선택 미참여 처리 시 해당 행사만 제외하고 회원·이력 보존","국내바이어·통역원 계정은 행사정보의 담당 용역사가 발급, 해외바이어는 QR만 사용"]},
