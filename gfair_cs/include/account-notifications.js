@@ -35,7 +35,7 @@
  function dismissCard(card){card?.remove();if(pendingAlerts.length)paintCard(pendingAlerts.shift());paintQueue();if(!document.querySelector('.account-realtime-alert')&&!pendingAlerts.length)document.querySelector('.account-alert-stack')?.remove();}
  function clearOverlays(){document.querySelector('.account-alert-stack')?.remove();pendingAlerts.length=0;demoCursor=0;}
  document.addEventListener('click',e=>{if(e.target.closest('[data-alert-overlay-stack-demo]')){if(document.body.classList.contains('annotation-picking'))return;e.preventDefault();clearOverlays();for(let i=0;i<2;i++)showOverlay();return;}if(e.target.closest('[data-alert-overlay-demo]')){if(document.body.classList.contains('annotation-picking'))return;e.preventDefault();showOverlay();}const close=e.target.closest('[data-alert-overlay-close]');if(close){e.preventDefault();dismissCard(close.closest('.account-realtime-alert'));}else if(e.target.closest('[data-alert-overlay-link]'))clearOverlays();});
- function syncDemo(){const isDemo=recipient(ctx?.role())&&location.hash==='#NTC-07'&&!!document.querySelector('[data-alert-overlay-demo]');if(isDemo&&!demoActive){demoActive=true;showOverlay();}else if(!isDemo){demoActive=false;clearOverlays();}}
+ function syncDemo(){const isDemo=recipient(ctx?.role())&&location.hash==='#NTC-07'&&!!document.querySelector('[data-alert-overlay-demo]');if(isDemo&&!demoActive){demoActive=true;showOverlay();showOverlay();}else if(!isDemo){demoActive=false;clearOverlays();}}
  new MutationObserver(syncDemo).observe(document.getElementById('app'),{childList:true,subtree:true});window.addEventListener('hashchange',syncDemo);syncDemo();
 
  window.GFAIR_ACCOUNT_NOTIFICATIONS={relativeTime,render,unread,bind(next){ctx=next;syncBadges();}};
