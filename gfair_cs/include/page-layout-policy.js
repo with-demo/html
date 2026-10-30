@@ -12,7 +12,8 @@
   if(['COM-01','COM-06','NTC-07','screens'].includes(route))return;
   const shortNames={'목록으로':'목록','목록 보기':'목록','목록으로 돌아가기':'목록','상세보기':'상세','상세 보기':'상세','자료실 등록':'등록','FAQ 등록':'등록','공지 등록':'등록','관리자 등록':'등록','그룹 등록':'등록','등록하기':'등록','저장하기':'저장','수정하기':'수정','삭제하기':'삭제'};
   main.querySelectorAll('button.btn,a.btn').forEach(b=>{const name=shortNames[b.textContent.trim()];if(name&&b.childElementCount===0)b.textContent=name});
-  const detail=meta&& !['list','matrix','dashboard'].includes(meta.kind)||!!main.querySelector('.event-information,.notice-board[data-notice-view="detail"],.notice-board[data-notice-view="editor"],.workflow-page-body,form:not(.filters):not(#filter-form):not(#journal-filter):not([role=search])');
+  const surveyList=['SET-05','SET-07'].includes(route)&&!!main.querySelector('table.survey-action-list');
+  const detail=!surveyList&&(meta&& !['list','matrix','dashboard'].includes(meta.kind)||!!main.querySelector('.event-information,.notice-board[data-notice-view="detail"],.notice-board[data-notice-view="editor"],.workflow-page-body,form:not(.filters):not(#filter-form):not(#journal-filter):not([role=search])'));
   if(detail)main.querySelectorAll('section>h2,section>h3,.panel>.panelhead>h2,form>.panelhead>h2,.journal-section-head>h2').forEach(h=>{
    if(h.closest('.filters,.survey-paper,.tablewrap'))return;
    if(!h.classList.contains('page-section-title'))h.classList.add('page-section-title');

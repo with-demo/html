@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.28","date":"2026.10.30","accountName":"shyuwith","summary":"설문 목록을 공통 radius 카드 레이아웃으로 통일","changes":["목록을 상세 폼으로 오인하던 분류 수정.","SET-06과 동일한 목록 카드·테두리·공통 radius 12px 적용."]},
 {"screenId":"SET-11","version":"v0.14","date":"2026.10.30","accountName":"shyuwith","summary":"설문 기본정보 필수 표시·등록 초기값 및 대상 인원 자동 집계","changes":["등록은 진행 행사연도·사용만 기본 선택, 나머지 기본정보는 빈 값.","기본정보 전체 필수 표시·공백 검사 적용.","조사 대상 인원 입력 제거, 참가 정보로 응답률 분모 자동 집계."]},
 {"screenId":"SET-12","version":"v0.14","date":"2026.10.30","accountName":"shyuwith","summary":"설문 기본정보 필수 표시·등록 초기값 및 대상 인원 자동 집계","changes":["등록은 진행 행사연도·사용만 기본 선택, 나머지 기본정보는 빈 값.","기본정보 전체 필수 표시·공백 검사 적용.","조사 대상 인원 입력 제거, 참가 정보로 응답률 분모 자동 집계."]},
 {"screenId":"SET-06","version":"v0.24","date":"2026.10.30","accountName":"shyuwith","summary":"설문 기본정보 필수 표시·등록 초기값 및 대상 인원 자동 집계","changes":["등록은 진행 행사연도·사용만 기본 선택, 나머지 기본정보는 빈 값.","기본정보 전체 필수 표시·공백 검사 적용.","조사 대상 인원 입력 제거, 참가 정보로 응답률 분모 자동 집계."]},
