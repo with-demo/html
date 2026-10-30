@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.30","summary":"알림 디스크립션 영역·사용자별 분리 및 번호 복구","changes":["01 새 알림 수 / 02 검색필터 / 03 공통 목록 / 03-1 통역원 / 03-2 국내바이어 / 04 우측 팝업으로 설명 분리.","공통 정책은 목록에, 사용자별 발송시점·제목·내용·이동대상은 하위 설명에 배치.","종·검색·목록·팝업의 안정적인 번호 연결로 1번 표시 복구."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.45","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
 {"screenId":"BAS-05","version":"v1.39","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
 {"screenId":"BAS-07","version":"v1.38","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
