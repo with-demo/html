@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.35","date":"2026.10.30","accountName":"shyuwith","summary":"설문제목 글꼴과 목록 열 너비 정렬","changes":["설문제목을 응답관리와 동일한 13px로 통일.","8개 열을 콘텐츠 길이에 맞는 고정 비율로 배치."]},
 {"screenId":"SET-05","version":"v0.34","date":"2026.10.30","accountName":"shyuwith","summary":"설문관리 목록 No. 컬럼 제거","changes":["연도부터 시작하는 8열 목록으로 정리하고 제목 열 스타일 유지."]},
 {"screenId":"SET-05","version":"v0.33","date":"2026.10.30","accountName":"shyuwith","summary":"목록 사용여부를 조회 텍스트로 변경","changes":["목록 사용·미사용 직접 전환 제거, 설문 수정 페이지에서 변경 후 저장."]},
 {"screenId":"SET-05","version":"v0.32","date":"2026.10.30","accountName":"shyuwith","summary":"중복 연도 검색 제거 및 상단 행사 기준 조회","changes":["대상·사용여부·키워드 검색 필터 구성.","상단 선택 행사의 연도로 조회하고 초기화 시 행사 선택 유지."]},

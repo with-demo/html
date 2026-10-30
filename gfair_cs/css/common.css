@@ -107,12 +107,12 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 @media(max-width:600px){#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:130px minmax(0,1fr)}}
 
 /* 설문관리 목록은 응답관리와 같은 공통 셀·버튼 간격을 사용한다. */
-#app table.survey-action-list{table-layout:auto}
+#app table.survey-action-list{table-layout:fixed}
 #app table.survey-action-list td:last-child .row{justify-content:center;flex-wrap:nowrap;gap:8px}
 #app table.survey-action-list td:nth-child(3) .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
 
 /* 좁은 검토 화면에서도 항목·작업 버튼은 한 줄을 유지하고 표를 가로 스크롤한다. */
 #app table.survey-action-list{min-width:1280px}
 #app table.survey-action-list td:not(:nth-child(3)),#app table.survey-action-list .btn{white-space:nowrap}
-#app table.survey-action-list td:nth-child(3){min-width:280px}
+#app #content table.survey-action-list td:nth-child(3) .btn{font-size:13px;line-height:1.55;font-family:inherit}
 #app table.survey-action-list td:nth-child(3) .btn{white-space:normal}
