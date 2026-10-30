@@ -127,3 +127,5 @@
 #content .dashboard-journal-preview th{white-space:nowrap}
 
 .travel-overview-title-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.travel-overview-title-row h2{margin:0}.travel-own-toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:400;white-space:nowrap;cursor:pointer;color:#333}.travel-own-toggle input{width:16px;min-height:16px;height:16px;margin:0;accent-color:#444}@media(max-width:600px){.travel-overview-title-row{gap:10px}}
+
+.travel-own-button{font-size:13px;font-weight:400;border:1px solid #aaa;background:#fff;color:#333;min-height:36px}.travel-own-button.is-selected{background:#444!important;border-color:#444!important;color:#fff!important}.travel-own-button:focus-visible{outline:2px solid #444;outline-offset:3px}
