@@ -92,3 +92,6 @@
 /* 참가자 이력 검색의 시작·종료 연도. */
 #app #content .participant-year-range{display:flex;align-items:center;gap:8px;width:100%;min-width:0}#app #content .participant-year-range>select{flex:1 1 0;width:0;min-width:0}#app #content .participant-year-range>span{flex:none}
 #app #content .unified-search .search-condition-controls>.participant-year-range{width:360px;max-width:100%;flex:0 1 360px}
+
+/* 설문 등록·수정: 문항별 접기·펼치기 */
+details.survey-question-editor{padding:0;overflow:hidden}details.survey-question-editor>summary{padding:14px 18px;background:#f8f8f8;cursor:pointer;font-weight:600;overflow-wrap:anywhere}.survey-question-body{padding:18px}@media(max-width:600px){.survey-question-body{padding:14px}}

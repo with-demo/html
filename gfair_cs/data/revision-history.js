@@ -3,6 +3,8 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-04","version":"v0.48","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
 {"screenId":"BAS-06","version":"v0.41","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
 {"screenId":"BAS-08","version":"v0.36","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
+{"screenId":"SET-11","version":"v0.13","date":"2026.10.30","accountName":"shyuwith","summary":"문항별 접기·펼치기 및 보기 삭제 버튼 적용","changes":["문항을 개별 아코디언으로 표시하고 보기 삭제를 테두리 버튼으로 변경.","이전 상세 HTML 복원으로 종료일이 누락되는 현상 수정."]},
+{"screenId":"SET-12","version":"v0.13","date":"2026.10.30","accountName":"shyuwith","summary":"문항별 접기·펼치기 및 보기 삭제 버튼 적용","changes":["문항을 개별 아코디언으로 표시하고 보기 삭제를 테두리 버튼으로 변경.","이전 상세 HTML 복원으로 종료일이 누락되는 현상 수정."]},
 {"screenId":"BAS-04","version":"v0.47","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
 {"screenId":"BAS-06","version":"v0.40","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
 {"screenId":"BAS-08","version":"v0.35","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
