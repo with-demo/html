@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05-p12","version":"v0.1","date":"2026.10.30","accountName":"shyuwith","summary":"설문 미리보기 안내문 사각 영역으로 구분","changes":["제목 아래 조사 안내문에 회색 테두리·연한 배경·내부 여백 적용.","국내·해외 설문에 동일한 그레이스케일 박스 구성 적용."]},
 {"screenId":"BAS-03","version":"v1.47","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
 {"screenId":"BAS-05","version":"v1.41","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
 {"screenId":"BAS-07","version":"v1.40","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
