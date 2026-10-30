@@ -3,6 +3,8 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-03","version":"v1.47","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
 {"screenId":"BAS-05","version":"v1.41","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
 {"screenId":"BAS-07","version":"v1.40","date":"2026.10.30","accountName":"mjha","summary":"미참여 컨펌에 선택 회원 이름 표시","changes":["10명 이하 이름 전체, 11명 이상 앞 10명 및 외 나머지 인원수 표시","총 N명을 미참여로 변경하는 확인 문구 적용"]},
+{"screenId":"PRE-02","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보 연락처 옆 담당 통역원 추가","changes":["연락처·담당 통역원을 같은 행에 표시.","현재 행사 매칭 정보 연계, 담당자 없음은 미지정 표시."]},
+{"screenId":"NTC-07","version":"v0.32","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 알림을 해당 상담일지·바이어 상세로 연결","changes":["승인·반려는 원본 일지 ID로 JNL-16 상세 연결.","도착·매칭 변경·취소는 해당 바이어 PRE-02 상세 연결.","목록·우측 팝업 바로가기 통일."]},
 {"screenId":"BAS-03","version":"v1.46","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
 {"screenId":"BAS-05","version":"v1.40","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
 {"screenId":"BAS-07","version":"v1.39","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},

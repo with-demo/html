@@ -578,6 +578,13 @@ const eventParticipantForm=form;form=function(s){return ['EVT-03','EVT-04'].incl
 window.GFAIR_ACCOUNT_NOTIFICATIONS.bind({role:()=>role,year:()=>event,current:()=>current,refresh:()=>render()});
 const ownTravelFiltered=filtered;filtered=function(s){const rr=ownTravelFiltered(s);return s.id==='PRE-01'?rr.filter(({r})=>isOwnTravelBuyer(r)):rr;};
 root.addEventListener('change',e=>{if(e.target.matches('[data-travel-own]')&&current==='PRE-01'&&role==='interpreter'){filter.ownBuyerOnly=e.target.checked;render();}});
+// 알림에 연결된 원본 일지·바이어를 선택한 뒤 상세로 이동한다.
+document.addEventListener('click',e=>{
+ const link=e.target.closest('[data-alert-journal],[data-alert-buyer]');if(!link||role!=='interpreter'||document.body.classList.contains('annotation-picking'))return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(link.dataset.alertJournal){const journal=journals.find(j=>j.id===link.dataset.alertJournal&&j.type==='수출'&&j.writer==='박서연');if(!journal)return toast('해당 상담일지를 확인할 수 없습니다.');selected=journal.id;loadExportJournal(journal);exportJournalMode=['임시 저장','작성 중','반려'].includes(journal.status)?'detail':'view';nav('JNL-16');}
+ else{const index=rows(map.get('PRE-01')).findIndex(r=>r[0]===link.dataset.alertBuyer);if(index<0)return toast('해당 바이어 정보를 확인할 수 없습니다.');selectedRow=index;nav('PRE-02');}
+},true);
 document.addEventListener('click',e=>{const link=e.target.closest('[data-alert-own-buyers]');if(!link||role!=='interpreter')return;e.preventDefault();e.stopImmediatePropagation();if(current==='PRE-01')filter.ownBuyerOnly=link.dataset.alertOwnBuyers==='1';else pendingOwnTravel=link.dataset.alertOwnBuyers==='1';document.querySelector('.account-realtime-alert')?.remove();nav('PRE-01');},true);
 const pre01Roster=window.GFAIR_PRE01_LIST.create({getRole:()=>role,actor:'김정우',refresh:()=>{travelUpdated=new Date();render();},active:()=>current==='PRE-01',master:()=>rows(map.get('BAS-03')),all:()=>rows(map.get('PRE-01')).map((r,i)=>({r,i})),year:()=>event,scope:()=>JSON.stringify([current,role,event,filter]),toast,modal,download,detail:i=>{selectedRow=i;nav('PRE-02');}});
 const pre04Matching=window.GFAIR_PRE04_MATCHING.create({source:id=>rows(map.get(id)),year:()=>event,role:()=>role,refresh:()=>render(),toast,modal,multi(label,key,options,selected){const previous=filter[key];filter[key]=selected;const html=matchingMulti(label,key,options);if(previous===undefined)delete filter[key];else filter[key]=previous;return html;},matched(buyer,person){const rr=rows(map.get('PRE-04')),old=rr.find(r=>r[0]===buyer.name);if(old){old[2]=person.name;old[3]=person.languages.join(', ');old[5]='매칭';}else rr.push([buyer.name,buyer.country,person.name,person.languages.join(', '),'기간 미등록','매칭','미확인']);lists['PRE-04']=rr;}});
