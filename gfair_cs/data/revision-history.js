@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05-p03","version":"v0.1","date":"2026.10.30","accountName":"shyuwith","summary":"설문 삭제 확인 팝업 버튼·안내 간격 정리","changes":["본문 삭제 확인 버튼을 제거하고 취소·확인 2개로 통일.","회색 안내문을 괄호로 감싸고 본문과 12px 간격 적용."]},
 {"screenId":"SET-11","version":"v0.19","date":"2026.10.30","accountName":"shyuwith","summary":"선택형 문항 변경 시 빈 보기 2개로 통일","changes":["단일응답형·복수응답형·척도형은 유형 변경 시 빈 보기 2개 표시.","척도형 기본 응답 자동입력 제거, 부가정보 입력 옵션 동일 제공.","다른 문항의 값과 펼침 상태 유지."]},
 {"screenId":"SET-12","version":"v0.19","date":"2026.10.30","accountName":"shyuwith","summary":"선택형 문항 변경 시 빈 보기 2개로 통일","changes":["단일응답형·복수응답형·척도형은 유형 변경 시 빈 보기 2개 표시.","척도형 기본 응답 자동입력 제거, 부가정보 입력 옵션 동일 제공.","다른 문항의 값과 펼침 상태 유지."]},
 {"screenId":"SET-11","version":"v0.18","date":"2026.10.30","accountName":"shyuwith","summary":"설문정보 전체 열기·전체 닫기 추가","changes":["설문정보 우측 상단에 전체 열기·전체 닫기 텍스트 버튼 및 그룹추가 배치.","최초 진입 시 전체 펼침, 이후 전체·개별 조절 시 입력값 유지."]},
