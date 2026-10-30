@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.25","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 만족도 조사 목록 및 자료 수급 예정 표시","changes":["기존 국내·해외 바이어 설문을 유지하고 통역원 설문 대기 행 추가.","통역원 미리보기는 자료 수급 예정 표시, 임의 문항·응답은 생성하지 않음."]},
+{"screenId":"SET-06","version":"v0.21","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 만족도 조사 목록 및 자료 수급 예정 표시","changes":["기존 국내·해외 바이어 설문을 유지하고 통역원 설문 대기 행 추가.","통역원 미리보기는 자료 수급 예정 표시, 임의 문항·응답은 생성하지 않음."]},
 {"screenId":"NTC-07","version":"v0.31","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보관리 톤에 맞춰 알림 디스크립션 간소화","changes":["기능상세·기본정책 중심으로 중복 설명 정리.","상황별 발송 시점·제목·내용·바로가기 대상과 기존 번호 유지."]},
 {"screenId":"NTC-07","version":"v0.30","summary":"알림 디스크립션 영역·사용자별 분리 및 번호 복구","changes":["01 새 알림 수 / 02 검색필터 / 03 공통 목록 / 03-1 통역원 / 03-2 국내바이어 / 04 우측 팝업으로 설명 분리.","공통 정책은 목록에, 사용자별 발송시점·제목·내용·이동대상은 하위 설명에 배치.","종·검색·목록·팝업의 안정적인 번호 연결로 1번 표시 복구."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.45","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
