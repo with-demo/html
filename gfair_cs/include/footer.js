@@ -33,7 +33,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 (()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=upload-atomic-20261029',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=groups-surveys-20261028',document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=bas17-export-position-20261029",document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=account-pages-final-20261030",document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=filter-cell-alignment-20261023",base).href;js.src=new URL("search-filters.js?v=bas01-fair-name-20261029",base).href;document.head.append(css,js);})();
 
