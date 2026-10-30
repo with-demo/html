@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.46","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
+{"screenId":"BAS-05","version":"v1.40","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
+{"screenId":"BAS-07","version":"v1.39","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
 {"screenId":"BAS-04","version":"v0.48","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
 {"screenId":"BAS-06","version":"v0.41","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
 {"screenId":"BAS-08","version":"v0.36","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 중간 버튼 영역 배경 통일","changes":["작업 버튼 영역의 흰색 배경·상단 구분선을 제거하여 본문 배경과 통일","기존 버튼 위치와 동작 유지"]},
