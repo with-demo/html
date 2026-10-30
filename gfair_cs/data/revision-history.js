@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-04","version":"v0.47","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
+{"screenId":"BAS-06","version":"v0.40","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
+{"screenId":"BAS-08","version":"v0.35","date":"2026.10.30","accountName":"mjha","summary":"회원 상세 상단 목록 버튼 제거","changes":["제목 영역의 중복 목록 버튼 제거","수정 불가 참가이력 위의 목록·저장 버튼 위치 유지"]},
 {"screenId":"BAS-03","version":"v1.45","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
 {"screenId":"BAS-05","version":"v1.39","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
 {"screenId":"BAS-07","version":"v1.38","date":"2026.10.30","accountName":"mjha","summary":"참가연도 검색을 단일 연도 선택으로 변경","changes":["참가연도 From~To를 전체 또는 단일 연도 선택으로 변경","선택 연도 참가이력 포함 회원 검색, 초기화 시 전체"]},
