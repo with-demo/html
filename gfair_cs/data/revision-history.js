@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.25","summary":"알림 3개·대기 1건 미리보기 진입 추가","changes":["한 번 클릭으로 팝업 3개 및 대기 1건을 확인하는 검토 버튼 제공."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-04","version":"v0.46","date":"2026.10.30","accountName":"mjha","summary":"상세 작업 버튼 이동 및 행사참가이력 삭제","changes":["목록·저장 버튼을 행사참가이력 위로 이동","이력 행별 삭제 확인 후 데이터 보존·화면 미노출 및 해당 행사 미참여 처리"]},
 {"screenId":"BAS-06","version":"v0.39","date":"2026.10.30","accountName":"mjha","summary":"상세 작업 버튼 이동 및 행사참가이력 삭제","changes":["목록·저장 버튼을 행사참가이력 위로 이동","이력 행별 삭제 확인 후 데이터 보존·화면 미노출 및 해당 행사 미참여 처리"]},
 {"screenId":"BAS-08","version":"v0.34","date":"2026.10.30","accountName":"mjha","summary":"상세 작업 버튼 이동 및 행사참가이력 삭제","changes":["목록·저장 버튼을 행사참가이력 위로 이동","이력 행별 삭제 확인 후 데이터 보존·화면 미노출 및 해당 행사 미참여 처리"]},
