@@ -21,12 +21,12 @@
 #app table>thead>tr>th,#app table>thead>tr>td,#app table>tbody>tr>td,#app table>tbody>tr>th{text-align:center}
 #app table>tbody>tr>.list-text-left{text-align:left}
 /* 조작 버튼이 많은 목록은 제목 열의 공간을 우선 확보한다. */
-#app table.survey-action-list{table-layout:fixed;min-width:0;font-size:12px}
-#app table.survey-action-list th,#app table.survey-action-list td{min-width:0;padding:12px 8px}
-#app table.survey-action-list .btn{font-size:12px;white-space:nowrap;min-height:32px;padding:5px 8px}
-#app table.survey-action-list .row{flex-wrap:nowrap;justify-content:center;gap:6px}
-#app table.survey-action-list td:nth-child(4) .btn{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;text-align:left}
-#app table.survey-action-list td:not(:nth-child(4)){white-space:nowrap}
+
+
+
+
+
+
 /* 목록 데이터·상태 13px, 목록 내 버튼 12px */
 #app .tablewrap table,#app table.survey-action-list{font-size:13px}
 #app .tablewrap tbody .badge{font-size:13px}
@@ -105,3 +105,8 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 #app #content #survey-editor .survey-basic .required-asterisk{display:inline-block;white-space:nowrap}
 @media(max-width:1000px){#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:150px minmax(0,1fr)}}
 @media(max-width:600px){#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:130px minmax(0,1fr)}}
+
+/* 설문관리 목록은 응답관리와 같은 공통 셀·버튼 간격을 사용한다. */
+#app table.survey-action-list{table-layout:auto}
+#app table.survey-action-list td:last-child .row{justify-content:center;flex-wrap:nowrap;gap:8px}
+#app table.survey-action-list td:nth-child(4) .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}

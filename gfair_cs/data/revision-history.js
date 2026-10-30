@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.30","date":"2026.10.30","accountName":"shyuwith","summary":"설문 목록 간격·정렬을 응답관리 공통 구성으로 통일","changes":["전용 압축 폰트·셀·버튼 간격 제거, 공통 헤더·행 높이 사용.","고정 열 너비를 제거하고 콘텐츠에 맞춰 열 배치.","목록 카드·페이지 이동·작업 버튼은 기존 공통 구성 유지."]},
 {"screenId":"SET-11","version":"v0.20","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보 항목명·필수 표시 잘림 방지","changes":["설문 기본정보 라벨 너비 확대 및 자연스러운 줄바꿈 적용.","예상 소요시간(분) 등 긴 항목명과 필수 표시를 셀 안에 표시."]},
 {"screenId":"SET-12","version":"v0.20","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보 항목명·필수 표시 잘림 방지","changes":["설문 기본정보 라벨 너비 확대 및 자연스러운 줄바꿈 적용.","예상 소요시간(분) 등 긴 항목명과 필수 표시를 셀 안에 표시."]},
 {"screenId":"SET-05-p03","version":"v0.1","date":"2026.10.30","accountName":"shyuwith","summary":"설문 삭제 확인 팝업 버튼·안내 간격 정리","changes":["본문 삭제 확인 버튼을 제거하고 취소·확인 2개로 통일.","회색 안내문을 괄호로 감싸고 본문과 12px 간격 적용."]},
