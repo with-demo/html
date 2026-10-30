@@ -3544,3 +3544,6 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-08');s.rules.push("행사참가이력의 통역 언어는 연도별 저장값을 기본정보와 동일한 언어명(코드) / 언어명(코드) 텍스트로 조회한다. 상세 화면에서는 선택·수정하지 않으며 저장 버튼으로 변경하지 않는다. 미등록 시 미등록으로 표시하고 행사 통역원 상세에는 해당 행사연도의 저장 언어를 표시한다.");})();
 
 (()=>{const s=window.GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='BAS-04');s.ui.fields=s.ui.fields.map(([label,value])=>[label,label==='연락처'?'국가번호 + 앞자리 + 가운데 + 끝자리 / 숫자 7~15자리':value]);s.rules.push("국가번호·앞자리·가운데·끝자리를 각각 입력한다. 전체 빈 값은 허용하며 일부 입력 시 네 칸 모두 필요하다. 국가번호는 1~3자리, 나머지 각 1~7자리이며 전체 숫자 7~15자리로 검증하고 +국가번호-앞자리-가운데-끝자리로 저장한다.");})();
+
+// 2026-10-30 회원 참여여부·계정발급 분리 정책.
+(()=>{for(const s of window.GFAIR_SCREENS.flatMap(g=>g.screens)){if(['BAS-03','BAS-05','BAS-07'].includes(s.id)){s.rules=(s.rules||[]).filter(v=>!(/2026.*2027|참가 미정/.test(v)));s.rules.push('정상 엑셀 업로드 회원은 현재 진행 행사에 신규/참가로 반영하며 업로드에 없는 회원은 변경하지 않는다.','참여여부는 행사연도별로 관리하고 새 행사연도는 미참여로 시작한다.','선택 미참여 처리는 해당 행사만 제외하며 회원 기본정보·고유코드·과거 이력은 유지한다.','국내바이어·통역원 ID/PW 발급은 행사정보의 담당 용역사에서만 진행한다. 해외바이어는 계정 없이 QR만 사용한다.');}if(['BAS-04','BAS-06','BAS-08'].includes(s.id))s.rules.push('현재 행사 참여여부를 참가/미참여로 저장하며 행사정보 목록에 함께 반영한다. 기본정보 상세의 행사이력에는 ID/PW를 표시하지 않는다.');}})();

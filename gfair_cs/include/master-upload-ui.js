@@ -10,8 +10,8 @@
  const key=(name,dob)=>name.trim().toLocaleLowerCase()+'|'+dob;
  const people=new Map(['BAS-03','BAS-05','BAS-07'].map(id=>{const source=page(id),yearIndex=source.ui.columns.indexOf('참가연도');return [id,new Map(source.ui.rows.map((r,index)=>[key(r[1],source.ui.birthDates?.[r[0]]||''),{index,years:String(r[yearIndex]||'').match(/20\d{2}/g)||[]}]))];}));
  const currentYear=()=>{try{return GFAIRMemberUpload.ongoingYear();}catch{return '';}};
- const participantStatus=years=>years.has(currentYear())?(years.has(String(Number(currentYear())-1))?'참가 확정':'신규'):'참가 미정';
- function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','참가','미참가'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','참가','미참가'].map(v=>new Option(v,v)));}
+ const participantStatus=years=>years.has(currentYear())?([...years].some(y=>Number(y)<Number(currentYear()))?'참가 확정':'신규'):'참가 미정';
+ function syncButtons(){if(!targets.has(screen()))return;app?.querySelectorAll('.pagehead [data-action="action"]').forEach(button=>{if(button.dataset.label==='엑셀 양식 다운로드')button.classList.remove('primary');if(button.dataset.label==='엑셀 일괄 업로드')button.classList.add('primary');});const field=[...(app?.querySelectorAll('.filters .field')||[])].find(x=>x.querySelector('span')?.textContent.trim()==='참가 상태'),select=field?.querySelector('select');if(select&&!['전체','참가','미참여'].every((v,i)=>select.options[i]?.value===v))select.replaceChildren(...['전체','참가','미참여'].map(v=>new Option(v,v)));}
  if(app){new MutationObserver(syncButtons).observe(app,{childList:true,subtree:true});syncButtons();}
  function page(id){return (window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id===id)}
  function templateColumns(s){return GFAIRMemberUpload.headers(s.id)}
@@ -51,17 +51,16 @@
    if(!validated||validated.id!==screen()||validated.year!==currentYear())return;if(validated.entries.some(x=>!x.valid)){validated=null;return;}const id=validated.id,s=page(id),state=people.get(id)||new Map(),entries=validated.entries,groups=new Map();
    entries.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x)});
    const activeYear=currentYear(),previousYear=String(Number(activeYear)-1);
-   if(entries.every(x=>x.valid))state.forEach((person,k)=>{if(person.years.includes(previousYear)&&!groups.has(k)){person.years=person.years.filter(year=>year!==activeYear);const row=s.ui.rows[person.index];if(row){row[s.ui.columns.indexOf('참가연도')]=person.years.slice().sort().reverse().join(', ');setStatus(row,s,participantStatus(new Set(person.years)));}}});
    groups.forEach((items,k)=>{
     const prior=state.get(k),years=new Set([...(prior?.years||[]),...items.map(x=>x.year)]),latest=items.at(-1),data=latest.data,row=prior?s.ui.rows[prior.index].slice():s.ui.columns.map(()=>''),prefix={'BAS-03':'F','BAS-05':'K','BAS-07':'I'}[id];
     if(!prior){const sequence=Math.max(0,...s.ui.rows.filter(r=>new RegExp('^'+prefix+activeYear+'\\d{4}$').test(r[0])).map(r=>Number(r[0].slice(-4))))+1;row[0]=prefix+activeYear+String(sequence).padStart(4,'0');}
     row[1]=data.name;if(id==='BAS-03')row[2]=data.country;if(id==='BAS-05')row[2]=data.organization;if(id==='BAS-07')row[2]=data.languages.join(' / ');
     row[s.ui.columns.indexOf('참가연도')]=[...years].sort().reverse().join(', ');setStatus(row,s,participantStatus(years));
     let index=prior?.index??s.ui.rows.length;if(prior)s.ui.rows[index]=row;else s.ui.rows.push(row);state.set(k,{index,years:[...years]});s.ui.birthDates??={};s.ui.birthDates[row[0]]=data.dob;
+    window.GFAIR_PARTICIPATION.set(id,row,activeYear,true);
     window.GFAIR_OVERSEAS_BUYER_DETAIL.importProfile(row,s.ui.rows,{'BAS-03':'BAS-04','BAS-05':'BAS-06','BAS-07':'BAS-08'}[id],data,activeYear);
    });
    state.forEach(person=>{const row=s.ui.rows[person.index];if(row)setStatus(row,s,participantStatus(new Set(person.years)));});
    people.set(id,state);validated=null;const uploadForm=content.querySelector('[data-master-upload-form]');uploadForm?.reset();if(entries.every(x=>x.valid))dialog.close();
-   const toast=document.getElementById('toast');if(toast){toast.textContent='참가자 목록을 갱신했습니다. 서버에는 저장되지 않았습니다.';toast.hidden=false;setTimeout(()=>toast.hidden=true,2800)}
  }
 })();
