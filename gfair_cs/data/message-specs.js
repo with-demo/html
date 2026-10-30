@@ -6,15 +6,15 @@ window.GFAIR_MESSAGE_SPECS=[
     "title": "미참여 처리",
     "type": "컨펌",
     "trigger": "참가 회원을 선택하고 [선택 미참여 처리] 클릭",
-    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까? 회원 기본정보와 참가이력은 유지됩니다.",
-    "buttons": "취소 / 미참여 처리",
+    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까?",
+    "buttons": "확인 / 취소",
     "confirm": "현재 행사만 미참여로 변경. 기본정보 목록 유지 및 행사정보 목록 제외.",
     "cancel": "변경 없이 닫기",
     "planningNote": "",
     "screens": [
       "BAS-03"
     ],
-    "source": "include/participant-lifecycle.js"
+    "source": "js/app.js (브라우저 기본 confirm)"
   },
   {
     "format": "screen-message-v1",
@@ -22,15 +22,15 @@ window.GFAIR_MESSAGE_SPECS=[
     "title": "미참여 처리",
     "type": "컨펌",
     "trigger": "참가 회원을 선택하고 [선택 미참여 처리] 클릭",
-    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까? 회원 기본정보와 참가이력은 유지됩니다.",
-    "buttons": "취소 / 미참여 처리",
+    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까?",
+    "buttons": "확인 / 취소",
     "confirm": "현재 행사만 미참여로 변경. 기본정보 목록 유지 및 행사정보 목록 제외.",
     "cancel": "변경 없이 닫기",
     "planningNote": "",
     "screens": [
       "BAS-05"
     ],
-    "source": "include/participant-lifecycle.js"
+    "source": "js/app.js (브라우저 기본 confirm)"
   },
   {
     "format": "screen-message-v1",
@@ -38,15 +38,15 @@ window.GFAIR_MESSAGE_SPECS=[
     "title": "미참여 처리",
     "type": "컨펌",
     "trigger": "참가 회원을 선택하고 [선택 미참여 처리] 클릭",
-    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까? 회원 기본정보와 참가이력은 유지됩니다.",
-    "buttons": "취소 / 미참여 처리",
+    "message": "{행사연도}년 행사에서 선택한 {N}명을 미참여로 변경하시겠습니까?",
+    "buttons": "확인 / 취소",
     "confirm": "현재 행사만 미참여로 변경. 기본정보 목록 유지 및 행사정보 목록 제외.",
     "cancel": "변경 없이 닫기",
     "planningNote": "",
     "screens": [
       "BAS-07"
     ],
-    "source": "include/participant-lifecycle.js"
+    "source": "js/app.js (브라우저 기본 confirm)"
   },
   {
     "format": "screen-message-v1",
