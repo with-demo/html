@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.26","date":"2026.10.30","accountName":"shyuwith","summary":"설문 시작일을 행사 마지막 날로 통일하고 종료 기한 제거","changes":["조사기간은 2026-10-31 ~ 형식으로 표시.","저장된 설문의 문항·응답은 유지하고 조사기간만 정책에 맞게 반영."]},
+{"screenId":"SET-06","version":"v0.22","date":"2026.10.30","accountName":"shyuwith","summary":"설문 시작일을 행사 마지막 날로 통일하고 종료 기한 제거","changes":["조사기간은 2026-10-31 ~ 형식으로 표시.","저장된 설문의 문항·응답은 유지하고 조사기간만 정책에 맞게 반영."]},
 {"screenId":"SET-05","version":"v0.25","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 만족도 조사 목록 및 자료 수급 예정 표시","changes":["기존 국내·해외 바이어 설문을 유지하고 통역원 설문 대기 행 추가.","통역원 미리보기는 자료 수급 예정 표시, 임의 문항·응답은 생성하지 않음."]},
 {"screenId":"SET-06","version":"v0.21","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 만족도 조사 목록 및 자료 수급 예정 표시","changes":["기존 국내·해외 바이어 설문을 유지하고 통역원 설문 대기 행 추가.","통역원 미리보기는 자료 수급 예정 표시, 임의 문항·응답은 생성하지 않음."]},
 {"screenId":"NTC-07","version":"v0.31","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보관리 톤에 맞춰 알림 디스크립션 간소화","changes":["기능상세·기본정책 중심으로 중복 설명 정리.","상황별 발송 시점·제목·내용·바로가기 대상과 기존 번호 유지."]},
