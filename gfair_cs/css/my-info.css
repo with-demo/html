@@ -12,3 +12,5 @@
 #app #content .account-admin-fields .account-password-rule{font-size:12px!important;line-height:1.5;color:#666}
 
 .account-contact-fields .account-contact-name{grid-column:span 3}.account-contact-fields input{width:100%;max-width:400px;font-size:13px}@media(max-width:700px){.account-contact-fields .account-contact-name{grid-column:auto}}
+
+.account-info-fields.account-contact-fields dd:last-child:nth-child(4n+2){grid-column:auto}
