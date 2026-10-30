@@ -110,3 +110,9 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 #app table.survey-action-list{table-layout:auto}
 #app table.survey-action-list td:last-child .row{justify-content:center;flex-wrap:nowrap;gap:8px}
 #app table.survey-action-list td:nth-child(4) .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
+
+/* 좁은 검토 화면에서도 항목·작업 버튼은 한 줄을 유지하고 표를 가로 스크롤한다. */
+#app table.survey-action-list{min-width:1280px}
+#app table.survey-action-list td:not(:nth-child(4)),#app table.survey-action-list .btn{white-space:nowrap}
+#app table.survey-action-list td:nth-child(4){min-width:280px}
+#app table.survey-action-list td:nth-child(4) .btn{white-space:normal}
