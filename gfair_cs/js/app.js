@@ -376,6 +376,8 @@ for(const pending of surveySeed().filter(q=>q.materialPending))if(!surveyStore.s
 const surveyOpenDate=year=>String(rows(map.get('BAS-01')).find(r=>String(r[0])===String(year))?.[2]||'').match(/20\d{2}-\d{2}-\d{2}/g)?.at(-1)||'';
 
 const surveyMaterialPending=q=>!!q?.materialPending&&!q.groups.some(g=>g.questions?.length);
+// 과거 무기한 정책으로 저장된 설문만 연말 종료일로 보완한다. 신규 등록 초안·기존 종료일은 유지한다.
+for(const q of surveyStore)if(q.start&&!q.end&&/^20\d{2}$/.test(String(q.year)))q.end=q.year+'-12-31';
 for(const survey of surveyStore)for(const response of survey.responses){response.name=exampleLabel(response.name);response.helper=exampleLabel(response.helper);}
 
 function surveyPersist(){try{localStorage.setItem('gfair-surveys-source-v3-20261028',JSON.stringify(surveyStore));return true}catch{toast('이 기기의 저장 공간을 사용할 수 없습니다.');return false}}
