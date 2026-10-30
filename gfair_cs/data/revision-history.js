@@ -1,6 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-04","version":"v0.45","date":"2026.10.30","accountName":"mjha","summary":"해외바이어 국가 선택·수정 제공","changes":["국가코드 기준 250개 국가를 국가명(코드) 셀렉트로 제공","국가 수정 저장 및 목록·국가 검색·엑셀 반영"]},
+{"screenId":"NTC-07","version":"v0.23","summary":"수신 시각 기준 알림 팝업 상대시간 표시","changes":["방금·분 전·시간 전·일 전으로 자동 갱신, 정확한 수신시각은 time 요소에 제공.","알림 목록의 절대 수신일시는 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.44","date":"2026.10.30","accountName":"mjha","summary":"바이어 목록 엑셀 다운로드 항목 개편","changes":["최신 기본정보·기업정보·복수 관심분야를 지정 순서로 다운로드","행사참가연도·올해참가여부 제공, 국내 참가여부 마지막 한 열만 제공","기존 검색 결과 전체 및 조회 권한 범위 유지"]},
 {"screenId":"BAS-05","version":"v1.38","date":"2026.10.30","accountName":"mjha","summary":"바이어 목록 엑셀 다운로드 항목 개편","changes":["최신 기본정보·기업정보·복수 관심분야를 지정 순서로 다운로드","행사참가연도·올해참가여부 제공, 국내 참가여부 마지막 한 열만 제공","기존 검색 결과 전체 및 조회 권한 범위 유지"]},
 {"screenId":"NTC-08","version":"v0.14","summary":"통역원 본인·담당 바이어별 만족도 조사 탭 구성","changes":["통역원 본인 및 실제 담당 해외 바이어별 탭과 응답·제출 상태 분리.","행사 마지막 날부터 참여 가능, 종료 기한 없음.","박서연에게 James Whitmore·Emily Carter 2명 매칭하여 방한 목록·대리 설문 동일 적용."],"date":"2026.10.30","accountName":"shyuwith"},
