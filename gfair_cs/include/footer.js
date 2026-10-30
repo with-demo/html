@@ -1,11 +1,11 @@
 window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C) G-FAIR KOREA 구매 및 수출 상담시스템 ALL RIGHTS RESERVED.</span></footer>';
 (()=>{const projectBase=document.currentScript.src,shared=new URL('../../common/',projectBase);const config=document.createElement('script');config.src=new URL('config.js?v=clean-copy-20261021',shared).href;config.onload=()=>{const data=document.createElement('script');data.src=new URL('include/collaboration.js?v=shared-description-restored-20261023',shared).href;data.onload=()=>{const script=document.createElement('script');script.onload=()=>{const seeds=document.createElement('script');seeds.src=new URL('../data/message-specs.js?v=account-pages-20261030',projectBase).href;seeds.onload=()=>{const tabs=document.createElement('script');tabs.src=new URL('include/message-specs.js?v=message-reset-20261029',shared).href;document.head.append(tabs);};document.head.append(seeds);};script.src=new URL('include/annotations.js?v=jnl14-filter-pin-20261029',shared).href;document.head.append(script);};document.head.append(data);};document.head.append(config);})();
 (()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/group-access.css?v=table-form-20261029',base).href;script.src=new URL('group-access.js?v=description-picking-20261029',base).href;document.head.append(css,script);})();
-(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=jnl14-priority-tags-20261026',base).href;script.src=new URL('admin-list-ui.js?v=pre01-stable-page-20261029',base).href;document.head.append(css,script);})();
+(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=jnl14-priority-tags-20261026',base).href;script.src=new URL('admin-list-ui.js?v=page-sizes-20261030',base).href;document.head.append(css,script);})();
 
 // 공동작업 Description 패널을 직접 불러온다.
 (()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=number-toggle-20261023-2',document.currentScript.src).href;document.head.append(script);})();
-(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=complete-ids-20261022',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=page-sizes-20261030',document.currentScript.src).href;document.head.append(script);})();
 
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.
 (()=>{

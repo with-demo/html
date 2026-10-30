@@ -41,7 +41,7 @@
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));
   if(index<0)index=headers.findIndex(t=>/연도|번호|코드|ID/.test(t));if(index<0)index=0;
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');
-  [10,30,50].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
+  [20,50,100,200].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
   tools.prepend(size);
   if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
   if(route==='BAS-09'&&['admin','buyOperator','exportOperator'].includes(root.querySelector('#role-picker')?.value)){
@@ -52,7 +52,7 @@
   panel.querySelectorAll(':scope>.tablefoot').forEach(el=>el.hidden=true);
   const pagination=document.createElement('nav');pagination.className='admin-list-pagination';pagination.setAttribute('aria-label',title+' 페이지');panel.append(pagination);
   const stateKey=route==='PRE-01'?panel.dataset.pre01Scope:null,saved=stateKey?pre01Pages.get(stateKey):null;
-  if(saved)size.value=String(saved.size);
+  if(saved)size.value=String([20,50,100,200].includes(saved.size)?saved.size:20);
   let page=saved?.page||1;
   function paint(){
    const prioritize=route==='JNL-14'&&['admin','exportOperator'].includes(root.querySelector('#role-picker')?.value),statusIndex=headers.indexOf('처리 상태'),priority=row=>prioritize&&clean(row.cells[statusIndex]||row)==='승인 요청'?0:1;
