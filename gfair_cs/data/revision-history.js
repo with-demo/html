@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.32","date":"2026.10.30","accountName":"shyuwith","summary":"통역원 알림을 해당 상담일지·바이어 상세로 연결","changes":["승인·반려는 원본 일지 ID로 JNL-16 상세 연결.","도착·매칭 변경·취소는 해당 바이어 PRE-02 상세 연결.","목록·우측 팝업 바로가기 통일."]},
 {"screenId":"BAS-03","version":"v1.46","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
 {"screenId":"BAS-05","version":"v1.40","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
 {"screenId":"BAS-07","version":"v1.39","date":"2026.10.30","accountName":"mjha","summary":"선택 미참여 처리 기본 컨펌 적용","changes":["레이어 확인창을 브라우저 기본 컨펌으로 변경","행사연도·선택 인원만 포함한 확인 문구로 축약"]},
