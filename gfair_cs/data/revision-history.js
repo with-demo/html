@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-08","version":"v0.14","summary":"통역원 본인·담당 바이어별 만족도 조사 탭 구성","changes":["통역원 본인 및 실제 담당 해외 바이어별 탭과 응답·제출 상태 분리.","행사 마지막 날부터 참여 가능, 종료 기한 없음.","박서연에게 James Whitmore·Emily Carter 2명 매칭하여 방한 목록·대리 설문 동일 적용."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"NTC-07","version":"v0.22","summary":"만족도 조사 알림을 행사 마지막 날 기준으로 변경","changes":["행사 종료일 기준 설문 안내 수신일시로 최신순 상단 표시.","마지막 날부터 기한 없이 참여, 통역원 본인·담당 해외 바이어 대리 설문 정책 기록."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-04","version":"v0.44","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
 {"screenId":"BAS-06","version":"v0.38","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
