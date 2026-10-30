@@ -1,17 +1,19 @@
 /* 본인 대상 알림을 행사·사용자별로 분리한 화면 검토용 데이터. 실제 발송·서버 저장은 연결하지 않는다. */
 (()=>{'use strict';
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),stores=new Map();let ctx=null;
+ const recipient=role=>['buyer','interpreter'].includes(role);
  function period(year){const s=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id==='BAS-01'),r=s?.ui?.rows?.find(r=>String(r[0])===String(year)),dates=String(r?.[2]||'').match(/20\d{2}-\d{2}-\d{2}/g)||[];return {from:dates[0]||year+'-10-29',to:dates[1]||year+'-10-31'};}
  function state(role,year){const key=role+'|'+year;if(!stores.has(key)){
-  const common=[['운영 공지','행사장 운영 안내','상담 시작 전 행사장 위치와 운영 시간을 확인해 주세요.','NTC-01','10-30 08:30',false],['설문','만족도 조사 안내','조사 기간과 참여 대상을 확인해 주세요.','NTC-08','10-29 17:00',true]];
+  const common=[['설문','만족도 조사 안내','조사 기간과 참여 대상을 확인해 주세요.','NTC-08','10-29 17:00',true]];
   const personal=role==='interpreter'?[['상담일지','수출상담일지 승인 완료','작성한 수출상담일지가 승인되었습니다.','JNL-14','10-30 11:30',false],['상담일지','수출상담일지 반려','반려 사유를 확인하고 수출상담일지를 보완해 주세요.','JNL-14','10-30 11:20',false],['매칭','담당 바이어 배정 안내','담당 해외 바이어와 배정 일정을 확인해 주세요.','PRE-04','10-30 09:10',false],['매칭','담당 바이어 매칭 변경','변경된 담당 바이어와 매칭 정보를 확인해 주세요.','PRE-04','10-30 10:20',false],['매칭','담당 바이어 매칭 취소','기존 담당 바이어의 매칭이 취소되었습니다.','PRE-04','10-30 10:30',false],['긴급 매칭','긴급 매칭 안내','긴급 배정된 바이어와 매칭 정보를 확인해 주세요.','PRE-04','10-30 11:00',false]]:role==='buyer'?[['상담일지','구매상담일지 승인 완료','제출한 구매상담일지가 승인되었습니다.','JNL-13','10-30 10:20',false],['상담일지','구매상담일지 반려','반려 사유를 확인하고 상담일지를 보완해 주세요.','JNL-13','10-30 09:20',false]]:[];
-  const entries=[...personal,...common.filter(r=>r[0]!=='설문'||['buyer','interpreter'].includes(role))].map((r,i)=>({id:key+'-'+i,type:r[0],title:r[1],body:r[2],target:r[3],at:year+'-'+r[4],read:r[5]}));
+  const entries=(recipient(role)?[...personal,...common.filter(r=>r[0]!=='설문'||['buyer','interpreter'].includes(role))]:[]).map((r,i)=>({id:key+'-'+i,type:r[0],title:r[1],body:r[2],target:r[3],at:year+'-'+r[4],read:r[5]}));
   stores.set(key,{entries,criteria:{...period(year),scope:'전체',keyword:''},page:1,size:20,order:'newest',expanded:null,error:''});
  }return stores.get(key);}
  function unread(role,year){return state(role,year).entries.filter(r=>!r.read).length;}
  function syncBadges(){if(!ctx)return;const n=unread(ctx.role(),ctx.year());document.querySelectorAll('.account-count').forEach(el=>{el.textContent=String(n);el.hidden=n===0;el.setAttribute('aria-label','새 알림 '+n+'건');});}
  const targetLabels={'NTC-01':'공지사항','NTC-08':'만족도 조사','PRE-04':'통역원 매칭','JNL-13':'구매상담일지 목록','JNL-14':'수출상담일지 목록'};
  function render(role,year){
+ if(!recipient(role))return '<section class="panel pad"><div class="empty">해당 사용자는 알림 수신 대상이 아닙니다.</div></section>';
  const s=state(role,year),c=s.criteria;for(const r of s.entries)r.read=true;
  const keyword=String(c.keyword||'').trim().toLocaleLowerCase(),matches=r=>!keyword||(c.scope==='제목'?[r.title]:c.scope==='내용'?[r.body]:[r.title,r.body]).some(v=>String(v).toLocaleLowerCase().includes(keyword));
  const rr=s.entries.filter(r=>(!c.from||r.at.slice(0,10)>=c.from)&&(!c.to||r.at.slice(0,10)<=c.to)&&matches(r)).sort((a,b)=>s.order==='newest'?b.at.localeCompare(a.at):a.at.localeCompare(b.at)),pages=Math.max(1,Math.ceil(rr.length/s.size));s.page=Math.min(s.page,pages);
@@ -23,9 +25,9 @@
 
  // 로그인 중 수신 화면의 목업. 서버 수신·세션 인증은 연동 전이며 NTC-07에서만 자동 시연한다.
  let demoActive=false;
- function showOverlay(){document.querySelector('.account-realtime-alert')?.remove();const buyer=ctx?.role()==='buyer',card=document.createElement('aside');card.className='account-realtime-alert';card.setAttribute('aria-label','새 알림 팝업');card.innerHTML='<div class="account-realtime-head"><strong>새 알림</strong><span>방금</span><button type="button" class="account-realtime-close" data-alert-overlay-close aria-label="알림 팝업 닫기">×</button></div><div role="status" aria-live="polite" aria-atomic="true"><h2>'+(buyer?'구매상담일지 반려':'담당 바이어 행사장 도착')+'</h2><p>'+(buyer?'작성한 구매상담일지가 반려되었습니다. 반려 사유를 확인하고 보완해 주세요.':'James Whitmore 바이어가 행사장에 도착했습니다.')+'</p></div><div class="account-realtime-actions"><a class="btn" href="#NTC-07" data-alert-overlay-link>알림 목록</a><a class="btn primary" href="#'+(buyer?'JNL-13':'PRE-01')+'" data-alert-overlay-link>바로가기</a></div>';document.body.append(card);}
+ function showOverlay(){document.querySelector('.account-realtime-alert')?.remove();if(!recipient(ctx?.role()))return;const buyer=ctx?.role()==='buyer',card=document.createElement('aside');card.className='account-realtime-alert';card.setAttribute('aria-label','새 알림 팝업');card.innerHTML='<div class="account-realtime-head"><strong>새 알림</strong><span>방금</span><button type="button" class="account-realtime-close" data-alert-overlay-close aria-label="알림 팝업 닫기">×</button></div><div role="status" aria-live="polite" aria-atomic="true"><h2>'+(buyer?'구매상담일지 반려':'담당 바이어 행사장 도착')+'</h2><p>'+(buyer?'작성한 구매상담일지가 반려되었습니다. 반려 사유를 확인하고 보완해 주세요.':'James Whitmore 바이어가 행사장에 도착했습니다.')+'</p></div><div class="account-realtime-actions"><a class="btn" href="#NTC-07" data-alert-overlay-link>알림 목록</a><a class="btn primary" href="#'+(buyer?'JNL-13':'PRE-01')+'" data-alert-overlay-link>바로가기</a></div>';document.body.append(card);}
  document.addEventListener('click',e=>{if(e.target.closest('[data-alert-overlay-demo]')){e.preventDefault();showOverlay();}if(e.target.closest('[data-alert-overlay-close],[data-alert-overlay-link]'))document.querySelector('.account-realtime-alert')?.remove();});
- function syncDemo(){const isDemo=location.hash==='#NTC-07'&&!!document.querySelector('[data-alert-overlay-demo]');if(isDemo&&!demoActive){demoActive=true;showOverlay();}else if(location.hash!=='#NTC-07'){demoActive=false;document.querySelector('.account-realtime-alert')?.remove();}}
+ function syncDemo(){const isDemo=recipient(ctx?.role())&&location.hash==='#NTC-07'&&!!document.querySelector('[data-alert-overlay-demo]');if(isDemo&&!demoActive){demoActive=true;showOverlay();}else if(!isDemo){demoActive=false;document.querySelector('.account-realtime-alert')?.remove();}}
  new MutationObserver(syncDemo).observe(document.getElementById('app'),{childList:true,subtree:true});window.addEventListener('hashchange',syncDemo);syncDemo();
 
  window.GFAIR_ACCOUNT_NOTIFICATIONS={render,unread,bind(next){ctx=next;syncBadges();}};
