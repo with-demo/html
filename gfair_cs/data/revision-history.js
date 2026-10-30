@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"설문 하단 버튼을 목록·미리보기·저장으로 통일","changes":["취소 버튼을 목록으로 변경.","중복된 목록 이동을 제거하고 편집 폼 하단 한 묶음으로 표시."]},
+{"screenId":"SET-12","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"설문 하단 버튼을 목록·미리보기·저장으로 통일","changes":["취소 버튼을 목록으로 변경.","중복된 목록 이동을 제거하고 편집 폼 하단 한 묶음으로 표시."]},
 {"screenId":"SET-05","version":"v0.29","date":"2026.10.30","accountName":"shyuwith","summary":"기존 설문의 빈 종료일 보완 및 조사기간 표시 복구","changes":["과거 무기한 설정으로 저장된 설문의 종료일을 해당 연도 12월 31일로 보완.","저장된 종료일 및 신규 등록의 빈 초기값은 유지."]},
 {"screenId":"SET-05","version":"v0.28","date":"2026.10.30","accountName":"shyuwith","summary":"설문 목록을 공통 radius 카드 레이아웃으로 통일","changes":["목록을 상세 폼으로 오인하던 분류 수정.","SET-06과 동일한 목록 카드·테두리·공통 radius 12px 적용."]},
 {"screenId":"SET-11","version":"v0.14","date":"2026.10.30","accountName":"shyuwith","summary":"설문 기본정보 필수 표시·등록 초기값 및 대상 인원 자동 집계","changes":["등록은 진행 행사연도·사용만 기본 선택, 나머지 기본정보는 빈 값.","기본정보 전체 필수 표시·공백 검사 적용.","조사 대상 인원 입력 제거, 참가 정보로 응답률 분모 자동 집계."]},

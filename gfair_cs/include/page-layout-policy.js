@@ -26,6 +26,11 @@
     else{panel.before(h);if(header!==panel)header.remove();}
    }
   });
+  // 설문 편집 작업은 폼 하단의 목록·미리보기·저장 한 묶음만 사용한다.
+  if(['SET-11','SET-12'].includes(route)&&main.querySelector('#survey-editor .survey-editor-footer')){
+   main.querySelectorAll('.workflow-page-nav,:scope>.page-bottom-actions').forEach(node=>node.remove());
+   return;
+  }
   if(route==='BAS-17'&&main.querySelector('.operator-basic-actions')){
    main.querySelectorAll(':scope>.page-bottom-actions').forEach(bar=>bar.remove());
    main.querySelectorAll('.head-actions a.btn[href="#BAS-15"]').forEach(link=>link.remove());
