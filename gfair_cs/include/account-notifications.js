@@ -35,7 +35,7 @@
  function dismissCard(card){card?.remove();if(pendingAlerts.length)paintCard(pendingAlerts.shift());paintQueue();if(!document.querySelector('.account-realtime-alert')&&!pendingAlerts.length)document.querySelector('.account-alert-stack')?.remove();}
  function clearOverlays(){document.querySelector('.account-alert-stack')?.remove();pendingAlerts.length=0;demoCursor=0;}
  document.addEventListener('click',e=>{const close=e.target.closest('[data-alert-overlay-close]');if(close){e.preventDefault();dismissCard(close.closest('.account-realtime-alert'));}else if(e.target.closest('[data-alert-overlay-link]'))clearOverlays();});
- function syncDemo(){const isDemo=recipient(ctx?.role())&&location.hash==='#NTC-07'&&!!document.querySelector('.account-notifications');if(isDemo&&!demoActive){demoActive=true;showOverlay();showOverlay();}else if(!isDemo){demoActive=false;clearOverlays();}}
+ function syncDemo(){const isDemo=recipient(ctx?.role())&&location.hash==='#NTC-07'&&!!document.querySelector('.account-notifications');if(isDemo&&!demoActive){demoActive=true;showOverlay();showOverlay();showOverlay();}else if(!isDemo){demoActive=false;clearOverlays();}}
  new MutationObserver(syncDemo).observe(document.getElementById('app'),{childList:true,subtree:true});window.addEventListener('hashchange',syncDemo);syncDemo();
 
  window.GFAIR_ACCOUNT_NOTIFICATIONS={relativeTime,render,unread,bind(next){ctx=next;syncBadges();}};
