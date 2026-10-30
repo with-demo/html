@@ -47,3 +47,5 @@
 #app #content .buyer-interest-selects{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;min-width:0}
 #app #content .buyer-interest-selects select{width:100%;min-width:0}
 @media(max-width:600px){#app #content .buyer-interest-selects{grid-template-columns:1fr}#app #content .buyer-choice-group>input{max-width:none}}
+
+#app #content .buyer-interest-rows{display:grid;gap:12px;width:100%;min-width:0}#app #content .buyer-interest-rows .buyer-interest-selects{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}#app #content .buyer-interest-rows [data-interest-remove][hidden]{display:none}#app #content .buyer-interest-rows .buyer-interest-selects:not(:has([data-interest-remove]:not([hidden]))){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media(max-width:600px){#app #content .buyer-interest-rows .buyer-interest-selects,#app #content .buyer-interest-rows .buyer-interest-selects:not(:has([data-interest-remove]:not([hidden]))){grid-template-columns:1fr}#app #content .buyer-interest-rows [data-interest-remove]{justify-self:end}}

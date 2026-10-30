@@ -217,3 +217,66 @@ GFAIR_MESSAGE_SPECS.push(...[
     "source": "include/buyer-profile-fields.js"
   }
 ]);
+
+GFAIR_MESSAGE_SPECS.push(...[
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-interest-BAS-04-duplicate",
+    "title": "관심분야 중복",
+    "type": "브라우저 입력 검증",
+    "trigger": "다른 행과 동일한 메인·서브 조합 선택",
+    "message": "이미 선택한 관심분야입니다.",
+    "confirm": "해당 행의 중복 서브 선택만 초기화, 다른 선택 행은 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-04"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-interest-BAS-04-incomplete",
+    "title": "관심분야 서브 미선택",
+    "type": "브라우저 입력 검증",
+    "trigger": "메인만 선택한 행이 있는 상태로 저장",
+    "message": "브라우저 기본 필수 선택 안내",
+    "confirm": "저장 중단 및 해당 서브 선택에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-04"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-interest-BAS-06-duplicate",
+    "title": "관심분야 중복",
+    "type": "브라우저 입력 검증",
+    "trigger": "다른 행과 동일한 메인·서브 조합 선택",
+    "message": "이미 선택한 관심분야입니다.",
+    "confirm": "해당 행의 중복 서브 선택만 초기화, 다른 선택 행은 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-06"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-interest-BAS-06-incomplete",
+    "title": "관심분야 서브 미선택",
+    "type": "브라우저 입력 검증",
+    "trigger": "메인만 선택한 행이 있는 상태로 저장",
+    "message": "브라우저 기본 필수 선택 안내",
+    "confirm": "저장 중단 및 해당 서브 선택에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-06"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  }
+]);

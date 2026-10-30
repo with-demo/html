@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-04","version":"v0.42","date":"2026.10.30","accountName":"mjha","summary":"상세 행 배치와 전달 카테고리 기반 복수 관심분야 반영","changes":["바이어코드·기업코드를 독립 행으로 분리하고 지정된 기본정보·기업정보 순서 적용","홈페이지·주소·기업소개를 각각 전체 너비로 배치, 기업소개 명칭 적용","사용자 캡처 8개 메인·62개 서브 카테고리 적용","관심분야 선택 완료 시 자동 행 추가, 복수 저장·개별 제거·중복 검사 제공","해외 기업명 ABC market·기업코드 QA123456·초청기관 GBC_바르샤바 예시 반영"]},
+{"screenId":"BAS-06","version":"v0.36","date":"2026.10.30","accountName":"mjha","summary":"상세 행 배치와 전달 카테고리 기반 복수 관심분야 반영","changes":["바이어코드·기업코드를 독립 행으로 분리하고 지정된 기본정보·기업정보 순서 적용","홈페이지·주소·기업소개를 각각 전체 너비로 배치, 기업소개 명칭 적용","사용자 캡처 8개 메인·62개 서브 카테고리 적용","관심분야 선택 완료 시 자동 행 추가, 복수 저장·개별 제거·중복 검사 제공","해외 기업명 ABC market·기업코드 QA123456·초청기관 GBC_바르샤바 예시 반영"]},
 {"screenId":"BAS-03","version":"v1.43","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
 {"screenId":"BAS-05","version":"v1.37","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
 {"screenId":"EVT-01","version":"v1.19","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
