@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.17","date":"2026.10.30","accountName":"shyuwith","summary":"문항 수정 시 다른 문항의 접힘 상태 유지","changes":["그룹·문항의 펼침 상태를 편집 대상별로 별도 관리.","문항 유형 변경·보기 추가 등 재표시 시 다른 문항 입력값·펼침 상태 유지."]},
+{"screenId":"SET-12","version":"v0.17","date":"2026.10.30","accountName":"shyuwith","summary":"문항 수정 시 다른 문항의 접힘 상태 유지","changes":["그룹·문항의 펼침 상태를 편집 대상별로 별도 관리.","문항 유형 변경·보기 추가 등 재표시 시 다른 문항 입력값·펼침 상태 유지."]},
 {"screenId":"SET-11","version":"v0.16","date":"2026.10.30","accountName":"shyuwith","summary":"중복 목록 이동 제거 및 최소 설문 구성 검증","changes":["공통 헤더에서 생성되던 목록 링크 제거, 하단 목록·미리보기·저장만 표시.","최소 한 그룹 및 그룹별 한 문항을 저장 시 검증."]},
 {"screenId":"SET-12","version":"v0.16","date":"2026.10.30","accountName":"shyuwith","summary":"중복 목록 이동 제거 및 최소 설문 구성 검증","changes":["공통 헤더에서 생성되던 목록 링크 제거, 하단 목록·미리보기·저장만 표시.","최소 한 그룹 및 그룹별 한 문항을 저장 시 검증."]},
 {"screenId":"SET-11","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"설문 하단 버튼을 목록·미리보기·저장으로 통일","changes":["취소 버튼을 목록으로 변경.","중복된 목록 이동을 제거하고 편집 폼 하단 한 묶음으로 표시."]},
