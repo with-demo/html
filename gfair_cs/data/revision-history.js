@@ -3,6 +3,8 @@ window.GFAIR_REVISION_HISTORY=[
 {"screenId":"BAS-04","version":"v0.44","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
 {"screenId":"BAS-06","version":"v0.38","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
 {"screenId":"BAS-08","version":"v0.33","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
+{"screenId":"PRE-01","version":"v1.39","summary":"내 담당 바이어만 보기 선택 버튼으로 변경","changes":["체크박스를 토글 버튼으로 전환, 선택 시 짙은 회색 채움·흰색 글자 및 aria-pressed 적용.","다시 클릭하면 전체 보기 복귀, 현황·목록 동시 필터 유지."],"date":"2026.10.30","accountName":"shyuwith"},
+{"screenId":"NTC-07","version":"v0.21","summary":"확정 알림 문구와 실제 예시값 반영","changes":["기업명·바이어명·행사명을 포함한 승인·반려·매칭·설문 예시 문구 적용.","긴급 매칭 배정 안내 문구로 통일, 행사장 도착 목록 예시 추가.","매칭 관련 바로가기를 통역원 담당 바이어 목록으로 연결."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-04","version":"v0.43","date":"2026.10.30","accountName":"mjha","summary":"기본정보 고정값을 읽기 전용 입력칸으로 표시","changes":["바이어코드·바이어명·생년월일 및 해외 국가 값을 readonly INPUT으로 전환","기존 수정 가능 항목·저장 동작과 참가이력 표 유지"]},
 {"screenId":"BAS-06","version":"v0.37","date":"2026.10.30","accountName":"mjha","summary":"기본정보 고정값을 읽기 전용 입력칸으로 표시","changes":["바이어코드·바이어명·생년월일 및 해외 국가 값을 readonly INPUT으로 전환","기존 수정 가능 항목·저장 동작과 참가이력 표 유지"]},
 {"screenId":"NTC-07","version":"v0.20","summary":"비수신 사용자 알림 페이지 빈 목록 표시","changes":["관리자·용역사도 알림 페이지 진입 가능, 검색 영역·표 유지 및 내역이 없습니다 표시.","비수신 사용자 알림 미리보기·팝업은 미노출."],"date":"2026.10.30","accountName":"shyuwith"},
