@@ -8,3 +8,5 @@
 
 /* 관리자 관리와 동일한 입력·안내문 규격, 비밀번호 입력 시작선 통일 */
 .account-admin-fields dd{justify-content:flex-start}.account-admin-fields input{font-size:13px;line-height:1.5;height:36px;min-height:36px;padding:7px 12px}.account-admin-fields .account-password-rule{font-size:12px;line-height:1.5;color:#666;margin:8px 0 0}
+
+#app #content .account-admin-fields .account-password-rule{font-size:12px!important;line-height:1.5;color:#666}
