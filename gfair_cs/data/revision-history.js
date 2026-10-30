@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.18","summary":"로그인 중 우측 하단 알림 팝업 목업 추가","changes":["NTC-07 진입 시 알림 카드 시연, 미리보기·닫기·바로가기 제공.","상담일지 작성 포커스를 이동하지 않는 화면 위 고정 카드 구성.","실제 알림은 로그인 세션 중 수신 시 표시하는 정책으로 변경, 서버 수신 연동은 별도."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.43","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
 {"screenId":"BAS-05","version":"v1.37","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
 {"screenId":"EVT-01","version":"v1.19","date":"2026.10.30","accountName":"mjha","summary":"바이어 상세 참여여부 제거에 따른 복원 안내 정리","changes":["미참여 처리 Description의 참가 복원 경로를 엑셀 재업로드 기준으로 정리","목록 구성과 기존 미참여 처리 동작 유지"]},
