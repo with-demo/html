@@ -30,6 +30,7 @@
    main.querySelectorAll('.head-actions a.btn[href="#BAS-15"]').forEach(link=>link.remove());
    return;
   }
+  if(['BAS-04','BAS-06','BAS-08'].includes(route)&&main.querySelector('#overseas-buyer-detail-form .formfooter'))return;
   let bar=main.querySelector(':scope>.page-bottom-actions');
   const candidates=[...new Set([...main.querySelectorAll(sources+(!detail?',.panelhead':''))].flatMap(group=>[...group.querySelectorAll('button,a.btn,input[type=submit]')]))].filter(b=>!b.closest('.tablewrap,table,dialog,.page-bottom-actions')&&!b.matches('[hidden]'));
   const footer='.formfooter,.notice-bottom-actions,.group-detail-actions,.group-access-footer,form>.actions';
