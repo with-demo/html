@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-06","version":"v1.20","summary":"전체 사용자 내정보 페이지 이동 통일","changes":["모든 사용자 내정보 링크·구버전 버튼 클릭을 COM-06 현재 페이지 이동으로 통합.","팝업 진입 파라미터 제거 및 관련 스크립트 캐시 갱신."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.19","summary":"관리자 기본정보 표에 비밀번호 변경 버튼 통합","changes":["별도 비밀번호 관리 영역 제거, 기본정보 표 비밀번호 행에 변경 버튼 배치.","기존 관리자 전용 비밀번호 변경 팝업과 검증 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.18","summary":"역할별 내정보 수정 범위 구분","changes":["구매·수출 운영용역사 담당자 이름·연락처·이메일 수정 및 기본정보관리 데이터 연결.","관리자 비밀번호 변경을 팝업으로 제공, 통역원·국내바이어 조회 전용 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.17","summary":"내정보를 조회 전용 일반 페이지로 전환","changes":["내정보 진입을 COM-06으로 통일하고 COM-09 구주소 호환 이동.","기본정보 원천 데이터의 역할별 정보를 입력창 없는 조회 표로 표시.","관리자만 페이지 내에서 현재·새 비밀번호·확인을 입력하고 8~20자 영문·숫자·공백 제한 검증."],"date":"2026.10.30","accountName":"shyuwith"},
