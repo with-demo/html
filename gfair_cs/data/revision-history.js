@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-06","version":"v1.24","summary":"행사 연도별 임시 로그인 ID 연계","changes":["통역원·국내바이어 행사별 ID를 기본정보관리와 동일 데이터로 공유.","박서연 2026년 ID GI263997 적용, 용역사는 해당 연도 계정만 조회."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.23","summary":"비밀번호 안내문·입력창 규격 및 정렬 통일","changes":["관리자 관리 기준의 12px 안내문과 1.5 줄높이 적용.","비밀번호·확인 입력창 36px 높이 및 상단 정렬 통일."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.22","summary":"로그인 ID 단독 행 및 비밀번호 2열 배치","changes":["로그인 ID를 한 행 전체에 표시.","다음 행에 비밀번호와 비밀번호 확인을 나란히 배치."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.21","summary":"관리자 내정보 비밀번호 직접 입력 및 항목 순서 정리","changes":["로그인 ID·비밀번호 인접 배치, 이름·소속·전화·휴대전화·이메일 순서로 조회 표 구성.","비밀번호 변경 팝업을 제거하고 선택 입력·비밀번호 확인·하단 저장 및 불일치 얼럿 적용."],"date":"2026.10.30","accountName":"shyuwith"},
