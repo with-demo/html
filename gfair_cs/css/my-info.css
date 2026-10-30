@@ -10,3 +10,5 @@
 .account-admin-fields dd{justify-content:flex-start}.account-admin-fields input{font-size:13px;line-height:1.5;height:36px;min-height:36px;padding:7px 12px}.account-admin-fields .account-password-rule{font-size:12px;line-height:1.5;color:#666;margin:8px 0 0}
 
 #app #content .account-admin-fields .account-password-rule{font-size:12px!important;line-height:1.5;color:#666}
+
+.account-contact-fields .account-contact-name{grid-column:span 3}.account-contact-fields input{width:100%;max-width:400px;font-size:13px}@media(max-width:700px){.account-contact-fields .account-contact-name{grid-column:auto}}

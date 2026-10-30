@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-06","version":"v1.26","summary":"용역사 담당자 정보 행 배치 조정","changes":["구매·수출 운영용역사의 담당자 이름을 단독 행으로 배치.","다음 행에 담당자 연락처·이메일 2열 배치."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.25","summary":"탭 간 행사별 ID 표시 갱신","changes":["공유 임시 ID 갱신과 화면 재진입 시 내정보·국내 바이어·통역원 상세 값 재조회.","김민준 2026년 국내바이어 관리 상세·내정보 ID 동일 표시 확인."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.24","summary":"행사 연도별 임시 로그인 ID 연계","changes":["통역원·국내바이어 행사별 ID를 기본정보관리와 동일 데이터로 공유.","박서연 2026년 ID GI263997 적용, 용역사는 해당 연도 계정만 조회."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.23","summary":"비밀번호 안내문·입력창 규격 및 정렬 통일","changes":["관리자 관리 기준의 12px 안내문과 1.5 줄높이 적용.","비밀번호·확인 입력창 36px 높이 및 상단 정렬 통일."],"date":"2026.10.30","accountName":"shyuwith"},
