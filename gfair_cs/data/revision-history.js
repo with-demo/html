@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"COM-06","version":"v1.21","summary":"관리자 내정보 비밀번호 직접 입력 및 항목 순서 정리","changes":["로그인 ID·비밀번호 인접 배치, 이름·소속·전화·휴대전화·이메일 순서로 조회 표 구성.","비밀번호 변경 팝업을 제거하고 선택 입력·비밀번호 확인·하단 저장 및 불일치 얼럿 적용."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.20","summary":"전체 사용자 내정보 페이지 이동 통일","changes":["모든 사용자 내정보 링크·구버전 버튼 클릭을 COM-06 현재 페이지 이동으로 통합.","팝업 진입 파라미터 제거 및 관련 스크립트 캐시 갱신."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.19","summary":"관리자 기본정보 표에 비밀번호 변경 버튼 통합","changes":["별도 비밀번호 관리 영역 제거, 기본정보 표 비밀번호 행에 변경 버튼 배치.","기존 관리자 전용 비밀번호 변경 팝업과 검증 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"COM-06","version":"v1.18","summary":"역할별 내정보 수정 범위 구분","changes":["구매·수출 운영용역사 담당자 이름·연락처·이메일 수정 및 기본정보관리 데이터 연결.","관리자 비밀번호 변경을 팝업으로 제공, 통역원·국내바이어 조회 전용 유지."],"date":"2026.10.30","accountName":"shyuwith"},
