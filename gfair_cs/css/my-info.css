@@ -1,16 +1,16 @@
-.my-info-popup{min-width:0;background:#fff}
-.my-info-window>.ui-spec-toolbar{display:none!important}
-.my-info-page{max-width:900px;margin:auto;padding:24px;color:#222}
-.my-info-page>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;border-bottom:1px solid #ddd;padding-bottom:16px}
-.my-info-page h1{font-size:24px;margin:0}.my-info-page h2{font-size:16px;margin:20px 0 10px}.my-info-page header span{font-size:13px;color:#666}
-.my-info-fields{display:grid;grid-template-columns:120px minmax(0,1fr) 120px minmax(0,1fr);border-top:1px solid #ddd;border-left:1px solid #ddd}
-.my-info-fields dt,.my-info-fields dd{margin:0;padding:12px 14px;border-right:1px solid #ddd;border-bottom:1px solid #ddd;overflow-wrap:anywhere;font-size:14px}
-.my-info-fields dt{background:#f4f4f4}.my-info-fields dd:last-child:nth-child(4n+2){grid-column:span 3}
-.my-info-password{display:grid;grid-template-columns:1fr 1fr;gap:16px}.my-info-password label{display:grid;gap:8px;font-size:14px}
-.my-info-actions{display:flex;justify-content:flex-end;gap:8px;margin:20px 0}.my-info-page>.small{color:#777;margin-top:24px}
-[data-my-info-result]{font-size:13px;color:#555}.account-message-preview{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;min-width:200px}
-@media(max-width:640px){.my-info-page{padding:16px}.my-info-fields{grid-template-columns:100px minmax(0,1fr)}.my-info-fields dd:last-child:nth-child(4n+2){grid-column:auto}.my-info-password{grid-template-columns:1fr}}
-
+.account-info-page{max-width:1100px}.account-info-section{margin:0 0 30px}.account-info-section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px}.account-info-section-head h2{margin:0;font-size:15px}.account-info-fields,.account-password-fields{display:grid;grid-template-columns:140px minmax(0,1fr) 140px minmax(0,1fr);margin:0;border-top:1px solid #ddd;border-left:1px solid #ddd;background:#fff}.account-info-fields dt,.account-info-fields dd,.account-password-fields dt,.account-password-fields dd{margin:0;padding:13px 16px;border-right:1px solid #ddd;border-bottom:1px solid #ddd;overflow-wrap:anywhere;font-size:13px;min-width:0}.account-info-fields dt,.account-password-fields dt{background:#f4f4f4;display:flex;align-items:center}.account-info-fields dd:last-child:nth-child(4n+2){grid-column:span 3}.account-password-fields{grid-template-columns:160px minmax(0,1fr)}.account-password-fields input{max-width:400px;font-size:13px}.account-required{color:#c62828}.account-password-rule,.account-info-muted{font-size:12px;color:#777;line-height:1.7;margin:12px 0}.account-info-empty{padding:24px;background:#fff;border:1px solid #ddd;font-size:13px}[data-my-info-result]{font-size:13px;line-height:1.7;margin:12px 0;color:#444}.account-info-section .formfooter{background:transparent;border:0;padding:16px 0}.account-message-preview{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;min-width:200px}
 [data-account-row],[data-account-all]{width:16px;min-height:16px;accent-color:#444}.operator-list th:first-child,.operator-list td:first-child{width:44px;text-align:center}
+@media(max-width:700px){.account-info-fields{grid-template-columns:110px minmax(0,1fr)}.account-info-fields dd:last-child:nth-child(4n+2){grid-column:auto}.account-info-fields dt,.account-info-fields dd,.account-password-fields dt,.account-password-fields dd{padding:11px 12px}.account-password-fields{grid-template-columns:120px minmax(0,1fr)}.account-password-fields input{font-size:16px;width:100%}.account-info-section-head{flex-wrap:wrap}}
 
-.my-info-window .ui-spec-panel{display:none!important}.my-info-window .ui-spec-layout{display:block}
+.account-password-dialog{width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #ccc;border-radius:4px;padding:24px;color:#222;background:#fff}.account-password-dialog::backdrop{background:rgba(0,0,0,.4)}.account-password-dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.account-password-dialog-head h2{font-size:18px;margin:0}.account-password-dialog .formfooter{display:flex;justify-content:center;gap:8px;margin-top:20px}.account-info-page input{max-width:100%;box-sizing:border-box}
+
+.account-admin-fields .account-wide-value{grid-column:span 3}.account-admin-fields input{width:100%;max-width:400px}.account-admin-fields .account-password-rule{margin:8px 0 0}.account-admin-actions{display:flex;justify-content:flex-end}.account-admin-fields dd{display:flex;flex-direction:column;justify-content:center}@media(max-width:700px){.account-admin-fields .account-wide-value{grid-column:auto}}
+
+/* 관리자 관리와 동일한 입력·안내문 규격, 비밀번호 입력 시작선 통일 */
+.account-admin-fields dd{justify-content:flex-start}.account-admin-fields input{font-size:13px;line-height:1.5;height:36px;min-height:36px;padding:7px 12px}.account-admin-fields .account-password-rule{font-size:12px;line-height:1.5;color:#666;margin:8px 0 0}
+
+#app #content .account-admin-fields .account-password-rule{font-size:12px!important;line-height:1.5;color:#666}
+
+.account-contact-fields .account-contact-name{grid-column:span 3}.account-contact-fields input{width:100%;max-width:400px;font-size:13px}@media(max-width:700px){.account-contact-fields .account-contact-name{grid-column:auto}}
+
+.account-info-fields.account-contact-fields dd:last-child:nth-child(4n+2){grid-column:auto}

@@ -9,7 +9,7 @@
   scheduled=false;const main=app.querySelector('#content');if(!main)return;
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
   const meta=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id===route);
-  if(['COM-01','screens'].includes(route))return;
+  if(['COM-01','COM-06','NTC-07','screens'].includes(route))return;
   const shortNames={'목록으로':'목록','목록 보기':'목록','목록으로 돌아가기':'목록','상세보기':'상세','상세 보기':'상세','자료실 등록':'등록','FAQ 등록':'등록','공지 등록':'등록','관리자 등록':'등록','그룹 등록':'등록','등록하기':'등록','저장하기':'저장','수정하기':'수정','삭제하기':'삭제'};
   main.querySelectorAll('button.btn,a.btn').forEach(b=>{const name=shortNames[b.textContent.trim()];if(name&&b.childElementCount===0)b.textContent=name});
   const detail=meta&& !['list','matrix','dashboard'].includes(meta.kind)||!!main.querySelector('.event-information,.notice-board[data-notice-view="detail"],.notice-board[data-notice-view="editor"],.workflow-page-body,form:not(.filters):not(#filter-form):not(#journal-filter):not([role=search])');
