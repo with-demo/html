@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.16","date":"2026.10.30","accountName":"shyuwith","summary":"중복 목록 이동 제거 및 최소 설문 구성 검증","changes":["공통 헤더에서 생성되던 목록 링크 제거, 하단 목록·미리보기·저장만 표시.","최소 한 그룹 및 그룹별 한 문항을 저장 시 검증."]},
+{"screenId":"SET-12","version":"v0.16","date":"2026.10.30","accountName":"shyuwith","summary":"중복 목록 이동 제거 및 최소 설문 구성 검증","changes":["공통 헤더에서 생성되던 목록 링크 제거, 하단 목록·미리보기·저장만 표시.","최소 한 그룹 및 그룹별 한 문항을 저장 시 검증."]},
 {"screenId":"SET-11","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"설문 하단 버튼을 목록·미리보기·저장으로 통일","changes":["취소 버튼을 목록으로 변경.","중복된 목록 이동을 제거하고 편집 폼 하단 한 묶음으로 표시."]},
 {"screenId":"SET-12","version":"v0.15","date":"2026.10.30","accountName":"shyuwith","summary":"설문 하단 버튼을 목록·미리보기·저장으로 통일","changes":["취소 버튼을 목록으로 변경.","중복된 목록 이동을 제거하고 편집 폼 하단 한 묶음으로 표시."]},
 {"screenId":"SET-05","version":"v0.29","date":"2026.10.30","accountName":"shyuwith","summary":"기존 설문의 빈 종료일 보완 및 조사기간 표시 복구","changes":["과거 무기한 설정으로 저장된 설문의 종료일을 해당 연도 12월 31일로 보완.","저장된 종료일 및 신규 등록의 빈 초기값은 유지."]},
