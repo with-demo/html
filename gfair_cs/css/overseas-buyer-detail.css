@@ -51,3 +51,6 @@
 #app #content .buyer-interest-rows{display:grid;gap:12px;width:100%;min-width:0}#app #content .buyer-interest-rows .buyer-interest-selects{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}#app #content .buyer-interest-rows [data-interest-remove][hidden]{display:none}#app #content .buyer-interest-rows .buyer-interest-selects:not(:has([data-interest-remove]:not([hidden]))){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media(max-width:600px){#app #content .buyer-interest-rows .buyer-interest-selects,#app #content .buyer-interest-rows .buyer-interest-selects:not(:has([data-interest-remove]:not([hidden]))){grid-template-columns:1fr}#app #content .buyer-interest-rows [data-interest-remove]{justify-self:end}}
 
 #app #content [data-buyer-company-form] input[readonly]{background:#f3f3f3;color:#555;cursor:default}
+
+/* 회원 상세의 중간 작업 영역은 본문 배경과 동일하게 표시한다. */
+#app #content #overseas-buyer-detail-form>.formfooter{background:transparent;border:0;box-shadow:none;padding:18px 0}
