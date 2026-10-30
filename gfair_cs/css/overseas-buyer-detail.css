@@ -34,3 +34,16 @@
 
 #app #content .buyer-phone-international{flex-wrap:wrap}#app #content .buyer-phone-international select[name="phoneCountry"]{flex:1 0 100%;width:100%;min-width:0;max-width:100%;padding:7px 5px}#app #content .buyer-phone-international select+span{display:none}#app #content .buyer-phone-international input{min-width:45px}
 @media(max-width:600px){#app #content .buyer-phone-international select[name="phoneCountry"]{flex-basis:100%;width:100%;min-width:0}}
+
+/* 바이어 상세의 기본정보·기업정보·관심분야 분리 */
+#app #content [data-buyer-company-form] .buyer-wide-label{grid-column:1}
+#app #content [data-buyer-company-form] .buyer-wide-value{grid-column:2/-1}
+#app #content [data-buyer-company-form] dd>input,#app #content [data-buyer-company-form] dd>select,#app #content [data-buyer-company-form] textarea{width:100%;min-width:0}
+#app #content [data-buyer-company-form] textarea{min-height:110px}
+#app #content .buyer-choice-group{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;width:100%}
+#app #content .buyer-choice-group label{display:inline-flex;align-items:center;gap:5px;font-size:13px}
+#app #content .buyer-choice-group input[type=checkbox]{width:16px;height:16px;min-height:0}
+#app #content .buyer-choice-group>input{flex:1 1 220px;max-width:360px;min-width:140px}
+#app #content .buyer-interest-selects{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;min-width:0}
+#app #content .buyer-interest-selects select{width:100%;min-width:0}
+@media(max-width:600px){#app #content .buyer-interest-selects{grid-template-columns:1fr}#app #content .buyer-choice-group>input{max-width:none}}

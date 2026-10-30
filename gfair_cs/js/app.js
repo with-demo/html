@@ -410,6 +410,7 @@ list=function(s){if(!['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','BAS-20','COM
 parentRoutes['COM-08']='COM-07';parentRoutes['BAS-17']='BAS-15';parentRoutes['BAS-18']='BAS-16';parentRoutes['BAS-19']='BAS-15';parentRoutes['BAS-20']='BAS-16';
 window.addEventListener('storage',e=>{if(e.key==='gfair-participant-event-account-ids-v1'&&current==='COM-06'&&['buyer','interpreter'].includes(role))render();});
 window.addEventListener('focus',()=>{if(current==='COM-06'&&['buyer','interpreter'].includes(role))render();});
+window.addEventListener('buyer-profile-saved',()=>{if(['BAS-04','BAS-06'].includes(current))render();});
 window.addEventListener('management-ui-ready',()=>{if(['BAS-15','BAS-16','BAS-17','BAS-18','BAS-19','BAS-20','COM-06','COM-07','COM-08','COM-09'].includes(current))render()});
 // 운영사는 담당 상담 범위만 조회·검수한다. 기존 관리자/작성자 흐름은 유지한다.
 const workflowDashboard=dash;

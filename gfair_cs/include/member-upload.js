@@ -1,8 +1,8 @@
 // 회원 등록양식·검증의 단일 기준. 참고 시트와 [예시] 행은 등록하지 않는다.
 (()=>{'use strict';
  const schemas={
-  'BAS-03':{file:'overseas-buyer.xlsx',type:'해외바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['country','바이어국가(코드)',true],['invitation','초청기관'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] James Whitmore','1990-01-01','GB','KBC','+44-20-7946-0123','james@example.com','예시 행은 등록되지 않습니다. 실제 데이터는 다음 행부터 입력해 주세요.']},
-  'BAS-05':{file:'domestic-buyer.xlsx',type:'국내바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['organization','소속기업'],['invitation','초청기관'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] 김민준','1990-01-01','한빛리테일','㈜한울컨벤션','010-0000-0000','buyer@example.com','예시 행은 등록되지 않습니다. 실제 데이터는 다음 행부터 입력해 주세요.']},
+  'BAS-03':{file:'overseas-buyer.xlsx',templateVersion:'buyer-company-20261030',type:'해외바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['country','국가',true],['phone','연락처'],['email','이메일'],['invitation','초청기관'],['companyName','기업명',true],['companyCode','기업코드',true],['position','직위']],example:['[예시] James Whitmore','1990-01-01','GB','7700900123','james@example.com','GBC_벵갈루루','ABC MARKET','QA12345678','CEO']},
+  'BAS-05':{file:'domestic-buyer.xlsx',templateVersion:'buyer-company-20261030',type:'국내바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['phone','연락처'],['email','이메일'],['invitation','초청기관'],['organization','기업명'],['position','직위']],example:['[예시] 김민준','1990-01-01','010-0000-0000','buyer@example.com','㈜한울컨벤션','한빛리테일','대표']},
   'BAS-07':{file:'interpreter.xlsx',type:'통역원',fields:[['name','통역원명',true],['dob','생년월일',true],['language1','언어1(코드)',true],['language2','언어2(코드)'],['language3','언어3(코드)'],['language4','언어4(코드)'],['language5','언어5(코드)'],['phone','연락처'],['email','이메일'],['memo','메모']],example:['[예시] 박서연','1990-01-01','en','ja','','','','010-0000-0000','interpreter@example.com','언어1은 필수입니다. 예시 행은 등록되지 않습니다.']},
   'COM-07':{file:'operator-staff.xlsx',templateVersion:'provided-staff-20261030',type:'담당자',fields:[['id','아이디',true],['name','이름',true],['phone','연락처',true],['org','소속'],['email','이메일'],['status','사용여부',true]],example:['[예시] operator_staff01','김민준','010-0000-0000','운영팀','staff@example.com','Y']}
  };
@@ -32,7 +32,7 @@
     if(list.some(code=>!languages.has(code)))errors.push('언어 코드 오류 (언어코드표의 소문자 코드 사용)');
     if(new Set(list).size!==list.length)errors.push('언어 코드 중복');
    }
-   if(data.phone&&!(id==='BAS-03'?validInternationalPhone(data.phone):validPhone(data.phone)))errors.push(id==='BAS-03'?'연락처 형식 오류 (+국가번호 포함, 숫자 7~15자리)':'연락처 형식 오류 (숫자 7~15자리, +·공백·하이픈·괄호 허용)');
+   if(data.phone&&!validPhone(data.phone))errors.push('연락처 형식 오류 (숫자 7~15자리, +·공백·하이픈·괄호 허용)');
    if(data.email&&!validEmail(data.email))errors.push('이메일 형식 오류');
    if(id==='COM-07'){
     if(data.id&&existing.has(data.id))errors.push('이미 등록된 아이디');

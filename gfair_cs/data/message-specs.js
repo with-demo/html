@@ -139,3 +139,81 @@ GFAIR_MESSAGE_SPECS.push(
 );
 
 GFAIR_MESSAGE_SPECS=GFAIR_MESSAGE_SPECS.filter(r=>r.key!=='com06-password-same');GFAIR_MESSAGE_SPECS.forEach(r=>{if(r.key==='com06-password-format')r.type='브라우저 알럿';});
+
+GFAIR_MESSAGE_SPECS.push(...[
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-company-BAS-04-phone",
+    "title": "연락처 형식 오류",
+    "type": "브라우저 입력 검증",
+    "trigger": "연락처를 입력했으나 숫자 7~15자리 또는 허용 구분자 규칙 위반",
+    "message": "연락처 형식을 확인해 주세요.",
+    "confirm": "저장 중단 후 해당 입력에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-04"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-company-BAS-04-other",
+    "title": "기타 상세 미입력",
+    "type": "브라우저 입력 검증",
+    "trigger": "기타 체크 후 상세 INPUT을 공백으로 저장",
+    "message": "{항목명}을 입력해 주세요.",
+    "confirm": "저장 중단 후 해당 입력에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-04"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-company-BAS-06-phone",
+    "title": "연락처 형식 오류",
+    "type": "브라우저 입력 검증",
+    "trigger": "연락처를 입력했으나 숫자 7~15자리 또는 허용 구분자 규칙 위반",
+    "message": "연락처 형식을 확인해 주세요.",
+    "confirm": "저장 중단 후 해당 입력에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-06"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-company-BAS-06-other",
+    "title": "기타 상세 미입력",
+    "type": "브라우저 입력 검증",
+    "trigger": "기타 체크 후 상세 INPUT을 공백으로 저장",
+    "message": "{항목명}을 입력해 주세요.",
+    "confirm": "저장 중단 후 해당 입력에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-06"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  },
+  {
+    "format": "screen-message-v1",
+    "key": "buyer-company-BAS-04-required",
+    "title": "기업명·기업코드 필수 입력",
+    "type": "브라우저 입력 검증",
+    "trigger": "해외바이어 기업명 또는 기업코드 미입력·공백 입력 후 저장",
+    "message": "기업명을 입력해 주세요. / 기업코드를 입력해 주세요.",
+    "confirm": "저장 중단 후 해당 입력에 오류 표시, 입력값 유지",
+    "cancel": "",
+    "planningNote": "",
+    "screens": [
+      "BAS-04"
+    ],
+    "source": "include/buyer-profile-fields.js"
+  }
+]);
