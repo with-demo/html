@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.44","date":"2026.10.30","accountName":"mjha","summary":"바이어 목록 엑셀 다운로드 항목 개편","changes":["최신 기본정보·기업정보·복수 관심분야를 지정 순서로 다운로드","행사참가연도·올해참가여부 제공, 국내 참가여부 마지막 한 열만 제공","기존 검색 결과 전체 및 조회 권한 범위 유지"]},
+{"screenId":"BAS-05","version":"v1.38","date":"2026.10.30","accountName":"mjha","summary":"바이어 목록 엑셀 다운로드 항목 개편","changes":["최신 기본정보·기업정보·복수 관심분야를 지정 순서로 다운로드","행사참가연도·올해참가여부 제공, 국내 참가여부 마지막 한 열만 제공","기존 검색 결과 전체 및 조회 권한 범위 유지"]},
 {"screenId":"BAS-04","version":"v0.44","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
 {"screenId":"BAS-06","version":"v0.38","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
 {"screenId":"BAS-08","version":"v0.33","date":"2026.10.30","accountName":"mjha","summary":"이메일 도메인 선택 형식 통일","changes":["이메일 아이디 @ 도메인 입력과 도메인 선택 표시","도메인 선택 시 자동 입력·읽기 전용, 직접 입력 선택 시 수정 가능"]},
