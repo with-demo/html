@@ -116,3 +116,6 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 #app table.survey-action-list td:not(:nth-child(3)),#app table.survey-action-list .btn{white-space:nowrap}
 #app #content table.survey-action-list td:nth-child(3) .btn{font-size:13px;line-height:1.55;font-family:inherit}
 #app table.survey-action-list td:nth-child(3) .btn{white-space:normal}
+
+#survey-date-filter .survey-response-period{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+#survey-date-filter .survey-response-period input{width:180px;max-width:100%}
