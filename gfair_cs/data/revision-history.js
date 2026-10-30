@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.20","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보 항목명·필수 표시 잘림 방지","changes":["설문 기본정보 라벨 너비 확대 및 자연스러운 줄바꿈 적용.","예상 소요시간(분) 등 긴 항목명과 필수 표시를 셀 안에 표시."]},
+{"screenId":"SET-12","version":"v0.20","date":"2026.10.30","accountName":"shyuwith","summary":"기본정보 항목명·필수 표시 잘림 방지","changes":["설문 기본정보 라벨 너비 확대 및 자연스러운 줄바꿈 적용.","예상 소요시간(분) 등 긴 항목명과 필수 표시를 셀 안에 표시."]},
 {"screenId":"SET-05-p03","version":"v0.1","date":"2026.10.30","accountName":"shyuwith","summary":"설문 삭제 확인 팝업 버튼·안내 간격 정리","changes":["본문 삭제 확인 버튼을 제거하고 취소·확인 2개로 통일.","회색 안내문을 괄호로 감싸고 본문과 12px 간격 적용."]},
 {"screenId":"SET-11","version":"v0.19","date":"2026.10.30","accountName":"shyuwith","summary":"선택형 문항 변경 시 빈 보기 2개로 통일","changes":["단일응답형·복수응답형·척도형은 유형 변경 시 빈 보기 2개 표시.","척도형 기본 응답 자동입력 제거, 부가정보 입력 옵션 동일 제공.","다른 문항의 값과 펼침 상태 유지."]},
 {"screenId":"SET-12","version":"v0.19","date":"2026.10.30","accountName":"shyuwith","summary":"선택형 문항 변경 시 빈 보기 2개로 통일","changes":["단일응답형·복수응답형·척도형은 유형 변경 시 빈 보기 2개 표시.","척도형 기본 응답 자동입력 제거, 부가정보 입력 옵션 동일 제공.","다른 문항의 값과 펼침 상태 유지."]},

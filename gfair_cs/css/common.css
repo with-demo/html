@@ -98,3 +98,10 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 /* 설문 미리보기: 조사 안내문을 문항과 구분하는 사각 영역 */
 .survey-paper>.survey-intro{border:1px solid #c9c9c9;background:#fafafa;padding:18px 20px;border-radius:0;overflow-wrap:anywhere}.survey-paper>.survey-intro:empty{display:none}@media(max-width:600px){.survey-paper>.survey-intro{padding:14px}}
+
+/* 설문 기본정보: 항목명과 필수 표시가 셀 안에서 잘리지 않도록 배치 */
+#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:160px minmax(0,1fr)}
+#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row>span:first-child{display:block;align-content:center;min-width:0;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;overflow:visible;line-height:1.6}
+#app #content #survey-editor .survey-basic .required-asterisk{display:inline-block;white-space:nowrap}
+@media(max-width:1000px){#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:150px minmax(0,1fr)}}
+@media(max-width:600px){#app #content #survey-editor .survey-basic.write-form-rows>.write-form-row{grid-template-columns:130px minmax(0,1fr)}}
