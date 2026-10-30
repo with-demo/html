@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.28","summary":"실제 화면 본문의 검토용 미리보기 제거","changes":["알림 팝업 미리보기 버튼·대기 상태 미리보기 버튼 및 검토용 안내 문구 제거.","수신 팝업·대기 표시와 실제 목록 UI는 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"NTC-07","version":"v0.27","summary":"대기 알림 표시를 기본 미리보기로 제공","changes":["NTC-07 진입 시 팝업 1건 및 대기 1건 상태를 자동 시연하여 대기 문구 확인 가능.","운영 정책은 실제 대기 알림이 존재하는 경우에만 건수 표시."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"NTC-07","version":"v0.26","summary":"알림 팝업 1개 표시 및 초과 수신 대기","changes":["동시 팝업을 1개로 제한하고 추가 수신은 대기 처리.","현재 팝업 닫기 시 다음 알림 순차 표시, 대기 건수와 내역 유지.","미리보기 버튼을 1개·대기 1건 구성으로 변경."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"NTC-07","version":"v0.25","summary":"알림 3개·대기 1건 미리보기 진입 추가","changes":["한 번 클릭으로 팝업 3개 및 대기 1건을 확인하는 검토 버튼 제공."],"date":"2026.10.30","accountName":"shyuwith"},
