@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"NTC-07","version":"v0.24","summary":"알림 팝업 최대 3개 및 초과 수신 대기","changes":["최대 3개의 알림 카드 표시, 4번째부터 대기 건수 표시.","닫으면 대기 알림을 순서대로 표시, 수신 기준 상대시간 유지.","미리보기 반복 클릭으로 누적·대기 동작 확인."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-04","version":"v0.45","date":"2026.10.30","accountName":"mjha","summary":"해외바이어 국가 선택·수정 제공","changes":["국가코드 기준 250개 국가를 국가명(코드) 셀렉트로 제공","국가 수정 저장 및 목록·국가 검색·엑셀 반영"]},
 {"screenId":"NTC-07","version":"v0.23","summary":"수신 시각 기준 알림 팝업 상대시간 표시","changes":["방금·분 전·시간 전·일 전으로 자동 갱신, 정확한 수신시각은 time 요소에 제공.","알림 목록의 절대 수신일시는 유지."],"date":"2026.10.30","accountName":"shyuwith"},
 {"screenId":"BAS-03","version":"v1.44","date":"2026.10.30","accountName":"mjha","summary":"바이어 목록 엑셀 다운로드 항목 개편","changes":["최신 기본정보·기업정보·복수 관심분야를 지정 순서로 다운로드","행사참가연도·올해참가여부 제공, 국내 참가여부 마지막 한 열만 제공","기존 검색 결과 전체 및 조회 권한 범위 유지"]},
