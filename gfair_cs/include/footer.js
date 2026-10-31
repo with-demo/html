@@ -22,7 +22,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("attendance-dashboard.js?v=attendance-time-20261028",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=detail-left-admin-order-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
+(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=participant-examples-revert-align-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=detail-left-admin-order-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=detail-left-admin-order-20261031',base).href;document.head.append(script);})();
 
