@@ -1,0 +1,172 @@
+{
+  "policy": "관련 항목만 변경; 그 외 원문·기획비고·ID·댓글·핀 위치 보존",
+  "updates": [
+    {
+      "screen": "BAS-15",
+      "id": "8dd47b22-6b6c-47ba-85af-210ba0d785e5",
+      "number": 3,
+      "revision": 6,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"연도/구분/기업명/대표담당자/사용여부/하위담당자\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/연도/구분/기업명(사용상태 원)/대표담당자/하위담당자수\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\\n- 사용상태는 기업명 바로 앞 원으로 표시: 사용은 초록색, 미사용은 회색\\n- 행사관리의 최신 진행 행사연도만 사용, 그 외 연도는 미사용으로 자동 변경\\n- 사용상태는 수동 변경하지 않으며 이전 연도 정보는 조회용으로 유지\\n- 예시 데이터는 2026년 진행, 2025·2024년 미사용 기준\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 사용여부 열을 제거하고 기업명 앞 상태 원·진행 행사연도 기준 자동 처리로 변경.\"}",
+      "anchor": {
+        "selector": "#content > div:nth-of-type(2) > section:nth-of-type(1)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 10,
+        "offsetY": 12
+      }
+    },
+    {
+      "screen": "BAS-15",
+      "id": "accounts-send-selected-20261028-BAS-15",
+      "number": 2,
+      "revision": 14,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"[선택 계정발송], [일괄 계정발송] 버튼\",\"type\":\"버튼\",\"defaultValue\":\"활성\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 조회된 대상중 선택된 대상 혹은 전체에게 계정발급 안내 문자 발송\\n- 문자발송 전 컨펌창 노출 후 확인시 최종 발송\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"클릭 시\",\"result\":\"- 컨펌창 노출후 문자발송\",\"destination\":\"\",\"validation\":\"상태값 미사용 / 선택 없음 / 조회 대상 없음일 경우 안내 후 발송 중단\",\"errorMessage\":\"미사용 상태의 계정은 발송할 수 없습니다. / 계정을 발송할 대상을 선택해 주세요. / 계정 발송 대상이 없습니다.\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"<문자 발송 양식>\\n[G-FAIR KOREA {행사연도}]\\n사이트 URL: {사이트 주소}\\n아이디: {아이디}\\nPW: {비밀번호}\\n\\n<컨펌창 문구 : 10명 이하는 이름 전부, 11명 이상은 앞 10명 이름과 외 나머지 인원수명 표시>\\n{OOO}, {OOO}, {OOO}, {...} 외 {M}명\\n총 {N}명에게 계정정보를 발송하시겠습니까?\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"[선택 계정발송], [일괄 계정발송] 버튼\",\"type\":\"버튼\",\"defaultValue\":\"활성\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 조회된 대상중 선택된 대상 혹은 전체에게 계정발급 안내 문자 발송\\n- 문자발송 전 컨펌창 노출 후 확인시 최종 발송\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"클릭 시\",\"result\":\"- 컨펌창 노출후 문자발송\",\"destination\":\"\",\"validation\":\"진행 행사연도가 아니어서 자동 산정된 사용상태가 미사용 / 선택 없음 / 조회 대상 없음일 경우 안내 후 발송 중단\",\"errorMessage\":\"미사용 상태의 계정은 발송할 수 없습니다. / 계정을 발송할 대상을 선택해 주세요. / 계정 발송 대상이 없습니다.\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"<문자 발송 양식>\\n[G-FAIR KOREA {행사연도}]\\n사이트 URL: {사이트 주소}\\n아이디: {아이디}\\nPW: {비밀번호}\\n\\n<컨펌창 문구 : 10명 이하는 이름 전부, 11명 이상은 앞 10명 이름과 외 나머지 인원수명 표시>\\n{OOO}, {OOO}, {OOO}, {...} 외 {M}명\\n총 {N}명에게 계정정보를 발송하시겠습니까?\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 행사연도에 따라 자동 산정된 미사용 계정의 발송 제한 적용.\"}",
+      "anchor": {
+        "selector": "#content [data-management-action=\"account-send-selected\"]",
+        "x": 0,
+        "y": 0,
+        "offsetX": 2,
+        "offsetY": 4
+      }
+    },
+    {
+      "screen": "BAS-17",
+      "id": "bas-17-operator-basic-20261026",
+      "number": 1,
+      "revision": 13,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 기본정보\",\"type\":\"기타\",\"defaultValue\":\"등록된 기본정보\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- BAS-15에서 등록된 운영용역사 기본정보 표시\\n- 아이디는 조회 전용이며, 나머지 기본정보는 수정 가능\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 상세 진입 시 저장된 최신 정보를 표시한다.\\n- 수정한 정보는 [저장] 클릭 시 반영한다.\\n- 수정 시 필수값 및 입력 형식에 대한 유효성 검증을 수행한다.\\n- 아이디는 최초 등록 후 변경할 수 없다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 기본정보\",\"type\":\"기타\",\"defaultValue\":\"등록된 기본정보\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- BAS-15에서 등록된 운영용역사 기본정보 표시\\n- 아이디는 조회 전용이며, 나머지 기본정보는 수정 가능\\n- 기본정보의 사용여부 입력은 제공하지 않으며 사용상태는 행사관리의 진행 연도 기준 자동 산정\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 상세 진입 시 저장된 최신 정보를 표시한다.\\n- 수정한 정보는 [저장] 클릭 시 반영한다.\\n- 수정 시 필수값 및 입력 형식에 대한 유효성 검증을 수행한다.\\n- 아이디는 최초 등록 후 변경할 수 없다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 기본정보의 수동 사용여부 입력·필수 검증 제거.\"}",
+      "anchor": {
+        "selector": "#content [data-management-root] > h2.page-section-title",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 2,
+        "offsetY": 39
+      }
+    },
+    {
+      "screen": "BAS-03",
+      "id": "bas03-list-participation-years-20261023",
+      "number": 7,
+      "revision": 13,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사연도 기준 참가 상태 표시\\n- 참가: 초록색 원 / 미참가: 회색 원\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- [행사관리] 동기화로 새로운 행사연도가 적용되면 최초 1회에 한해 참가 상태를 '미참가'로 일괄 변경한다.\\n- 동일 행사연도 재동기화 시 기존 참가 상태를 유지한다.\\n- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 명단에 포함된 바이어(신규·기존) / 미참가: 기존 등록 바이어 중 최신 업로드 명단에 포함되지 않은 바이어\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사연도 기준 참가 상태 표시\\n- 참가: 초록색 원 / 미참가: 회색 원\\n- 상태 원은 별도 열 없이 체크박스 다음 코드 텍스트 바로 앞에 같은 셀로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- [행사관리] 동기화로 새로운 행사연도가 적용되면 최초 1회에 한해 참가 상태를 '미참가'로 일괄 변경한다.\\n- 동일 행사연도 재동기화 시 기존 참가 상태를 유지한다.\\n- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 명단에 포함된 바이어(신규·기존) / 미참가: 기존 등록 바이어 중 최신 업로드 명단에 포함되지 않은 바이어\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 참가상태 원을 코드 텍스트 바로 앞으로 이동.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(5)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": -365,
+        "offsetY": 77
+      },
+      "nextAnchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(2)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": -365,
+        "offsetY": 77
+      }
+    },
+    {
+      "screen": "BAS-03",
+      "id": "bas03-list-participation-dot-20261023",
+      "number": 6,
+      "revision": 21,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"참가상태/바이어코드/바이어명/국가/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-03-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/국가/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-03-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -66,
+        "offsetY": -22
+      }
+    },
+    {
+      "screen": "BAS-05",
+      "id": "bas05-list-participation-years-20261023",
+      "number": 6,
+      "revision": 10,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사 기준 참가: 초록색 원 / 미참여: 회색 원\\n- 기본정보관리는 회원 기본정보·현재 행사 참여여부·참가이력 관리\\n- 참여여부는 회원·행사연도별로 분리하며 새 행사연도에는 전년도 참가를 승계하지 않고 미참여로 시작\\n- 정상 업로드한 모든 회원은 진행 행사연도에 신규/참가로 반영, 업로드에 없는 기존 회원은 변경하지 않음\\n- 미참여 처리는 현재 행사만 제외하며 회원 기본정보·고유코드·과거 참가이력 보존\\n- 국내바이어·통역원 계정은 행사정보에서 담당 용역사가 명시적으로 발급, 기본정보 조회·업로드로 자동 발급하지 않음\\n- 해외바이어는 계정 없이 행사연도+고유코드 QR만 사용\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 데이터에 포함된 바이어 / 미참가: 기존 등록 바이어 중 최신 업로드 데이터에 포함되지 않은 바이어\\n- 미참가로 변경된 바이어도 목록에서 삭제하지 않고 이력을 유지한다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-30] 행사별 참여여부 관리·미참여 제외와 용역사 계정발급으로 분리.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사 기준 참가: 초록색 원 / 미참여: 회색 원\\n- 기본정보관리는 회원 기본정보·현재 행사 참여여부·참가이력 관리\\n- 참여여부는 회원·행사연도별로 분리하며 새 행사연도에는 전년도 참가를 승계하지 않고 미참여로 시작\\n- 정상 업로드한 모든 회원은 진행 행사연도에 신규/참가로 반영, 업로드에 없는 기존 회원은 변경하지 않음\\n- 미참여 처리는 현재 행사만 제외하며 회원 기본정보·고유코드·과거 참가이력 보존\\n- 국내바이어·통역원 계정은 행사정보에서 담당 용역사가 명시적으로 발급, 기본정보 조회·업로드로 자동 발급하지 않음\\n- 해외바이어는 계정 없이 행사연도+고유코드 QR만 사용\\n- 상태 원은 별도 열 없이 체크박스 다음 코드 텍스트 바로 앞에 같은 셀로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 데이터에 포함된 바이어 / 미참가: 기존 등록 바이어 중 최신 업로드 데이터에 포함되지 않은 바이어\\n- 미참가로 변경된 바이어도 목록에서 삭제하지 않고 이력을 유지한다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-30] 행사별 참여여부 관리·미참여 제외와 용역사 계정발급으로 분리.\\n[변경사항 있음 · 2026-10-31] 참가상태 원을 코드 텍스트 바로 앞으로 이동.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(2)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 12,
+        "offsetY": 73
+      },
+      "nextAnchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(2)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 12,
+        "offsetY": 73
+      }
+    },
+    {
+      "screen": "BAS-05",
+      "id": "bas05-list-participation-dot-20261023",
+      "number": 5,
+      "revision": 6,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"참가상태/바이어코드/바이어명/소속기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/소속기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -23,
+        "offsetY": -14
+      }
+    },
+    {
+      "screen": "BAS-07",
+      "id": "bas07-list-participation-years-20261023",
+      "number": 7,
+      "revision": 9,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"통역 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사 기준 참가: 초록색 원 / 미참여: 회색 원\\n- 기본정보관리는 회원 기본정보·현재 행사 참여여부·참가이력 관리\\n- 참여여부는 회원·행사연도별로 분리하며 새 행사연도에는 전년도 참가를 승계하지 않고 미참여로 시작\\n- 정상 업로드한 모든 회원은 진행 행사연도에 신규/참가로 반영, 업로드에 없는 기존 회원은 변경하지 않음\\n- 미참여 처리는 현재 행사만 제외하며 회원 기본정보·고유코드·과거 참가이력 보존\\n- 국내바이어·통역원 계정은 행사정보에서 담당 용역사가 명시적으로 발급, 기본정보 조회·업로드로 자동 발급하지 않음\\n- 해외바이어는 계정 없이 행사연도+고유코드 QR만 사용\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 데이터에 포함된 바이어 / 미참가: 기존 등록 바이어 중 최신 업로드 데이터에 포함되지 않은 바이어\\n- 미참가로 변경된 바이어도 목록에서 삭제하지 않고 이력을 유지한다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-30] 행사별 참여여부 관리·미참여 제외와 용역사 계정발급으로 분리.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"통역 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사 기준 참가: 초록색 원 / 미참여: 회색 원\\n- 기본정보관리는 회원 기본정보·현재 행사 참여여부·참가이력 관리\\n- 참여여부는 회원·행사연도별로 분리하며 새 행사연도에는 전년도 참가를 승계하지 않고 미참여로 시작\\n- 정상 업로드한 모든 회원은 진행 행사연도에 신규/참가로 반영, 업로드에 없는 기존 회원은 변경하지 않음\\n- 미참여 처리는 현재 행사만 제외하며 회원 기본정보·고유코드·과거 참가이력 보존\\n- 국내바이어·통역원 계정은 행사정보에서 담당 용역사가 명시적으로 발급, 기본정보 조회·업로드로 자동 발급하지 않음\\n- 해외바이어는 계정 없이 행사연도+고유코드 QR만 사용\\n- 상태 원은 별도 열 없이 체크박스 다음 코드 텍스트 바로 앞에 같은 셀로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 엑셀 업로드 시 기존 등록정보와 비교하여 참가 상태를 자동 갱신한다.\\n- 참가: 최신 업로드 데이터에 포함된 바이어 / 미참가: 기존 등록 바이어 중 최신 업로드 데이터에 포함되지 않은 바이어\\n- 미참가로 변경된 바이어도 목록에서 삭제하지 않고 이력을 유지한다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-30] 행사별 참여여부 관리·미참여 제외와 용역사 계정발급으로 분리.\\n[변경사항 있음 · 2026-10-31] 참가상태 원을 코드 텍스트 바로 앞으로 이동.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(2)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 10,
+        "offsetY": 12
+      },
+      "nextAnchor": {
+        "selector": "#content .participant-master-table thead th:nth-child(2)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 10,
+        "offsetY": 12
+      }
+    },
+    {
+      "screen": "BAS-07",
+      "id": "bas07-list-participation-dot-20261023",
+      "number": 6,
+      "revision": 5,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"통역원 목록\",\"type\":\"기타\",\"defaultValue\":\"참가상태/통역원코드/통역원명/언어/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 통역원명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-07-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"통역원 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/통역원코드(참가상태 원)/통역원명/언어/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 통역원명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-07-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -22,
+        "offsetY": -20
+      }
+    }
+  ]
+}

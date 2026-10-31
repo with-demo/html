@@ -119,3 +119,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 #survey-date-filter .survey-response-period{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
 #survey-date-filter .survey-response-period input{width:180px;max-width:100%}
+
+/* 상태 원은 코드·기업명과 같은 셀에서 표시한다. */
+.participant-code-state,.operator-list .list-name-link{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.operator-list .list-name-link>.participant-state-dot{margin-right:8px}

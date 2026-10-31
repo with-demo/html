@@ -1,5 +1,6 @@
 // 회원관리 참여여부·계정발급 확인창 정의. 기존 초기화된 정의는 복원하지 않는다.
 window.GFAIR_MESSAGE_SPECS=[
+{"key":"operator-inactive-account-send","screens":["BAS-15"],"title":"미사용 운영용역사 계정발송 제한","trigger":"선택 또는 일괄 계정발송 대상에 진행 행사연도가 아닌 미사용 계정 포함","type":"알럿","message":"미사용 상태의 계정은 발송할 수 없습니다.","confirm":"발송을 중단하고 현재 목록·선택 유지","cancel":""},
   {
     "format": "screen-message-v1",
     "key": "lifecycle-exclude-BAS-03",

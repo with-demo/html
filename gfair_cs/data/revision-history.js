@@ -1,5 +1,11 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.37","date":"2026.10.31","accountName":"with","summary":"운영용역사 사용상태 자동 산정 및 2026년 예시 적용","changes":["행사관리의 최신 진행 연도만 사용, 나머지 연도는 미사용으로 자동 산정.","기업명 앞 초록·회색 원 표시, 수동 사용여부 열 제거, 2026·2025·2024년 예시 적용."]},
+{"screenId":"BAS-17","version":"v1.38","date":"2026.10.31","accountName":"with","summary":"운영용역사 수동 사용여부 항목 제거","changes":["기본정보의 사용여부 입력과 관련 필수 검증 제거. 기존 계정·연락처 검증과 하위담당자 관리 유지."]},
+{"screenId":"BAS-19","version":"v1.18","date":"2026.10.31","accountName":"with","summary":"운영용역사 수동 사용여부 항목 제거","changes":["기본정보의 사용여부 입력과 관련 필수 검증 제거. 기존 계정·연락처 검증과 하위담당자 관리 유지."]},
+{"screenId":"BAS-03","version":"v1.48","date":"2026.10.31","accountName":"with","summary":"참가상태 원을 코드 텍스트 앞에 배치","changes":["독립 상태 열을 제거하고 체크박스 다음 코드 셀 안에서 상태 원과 코드를 함께 표시."]},
+{"screenId":"BAS-05","version":"v1.42","date":"2026.10.31","accountName":"with","summary":"참가상태 원을 코드 텍스트 앞에 배치","changes":["독립 상태 열을 제거하고 체크박스 다음 코드 셀 안에서 상태 원과 코드를 함께 표시."]},
+{"screenId":"BAS-07","version":"v1.41","date":"2026.10.31","accountName":"with","summary":"참가상태 원을 코드 텍스트 앞에 배치","changes":["독립 상태 열을 제거하고 체크박스 다음 코드 셀 안에서 상태 원과 코드를 함께 표시."]},
 {"screenId":"SET-16","version":"v0.6","date":"2026.10.30","accountName":"shyuwith","summary":"응답 조회기간 검색 항목 통합","changes":["응답 시작일·종료일을 응답 기간 한 항목에 시작일 ~ 종료일로 표시.","기존 기간 검색·초기화 동작 유지."]},
 {"screenId":"SET-05","version":"v0.35","date":"2026.10.30","accountName":"shyuwith","summary":"설문제목 글꼴과 목록 열 너비 정렬","changes":["설문제목을 응답관리와 동일한 13px로 통일.","8개 열을 콘텐츠 길이에 맞는 고정 비율로 배치."]},
 {"screenId":"SET-05","version":"v0.34","date":"2026.10.30","accountName":"shyuwith","summary":"설문관리 목록 No. 컬럼 제거","changes":["연도부터 시작하는 8열 목록으로 정리하고 제목 열 스타일 유지."]},
