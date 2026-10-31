@@ -26,3 +26,6 @@ body .annotation-spec .annotation-planning-note,body .annotation-spec .annotatio
 /* Codex additions/edits are red; user-authored edits remain black. */
 .annotation-agent-change{color:#c62828!important}.annotation-normal-text{color:#111!important}
 .annotation-dialog :is(input,textarea,select){color:#111}
+
+/* 기획비고는 사용자 편집·변경 강조 여부와 무관하게 항상 빨간색. */
+body .annotation-planning-note,body .annotation-planning-note *,body .annotation-dialog [name="planningNote"]{color:#c62828!important}
