@@ -64,6 +64,7 @@ function actionButtons(s){return (s.ui.actions||[]).filter(a=>!((s.id==='BAS-01'
 function participantIsPresent(status){return ['참가확정','신규'].includes(String(status||'').replace(/\s/g,''));}
 function table(s,rr){
 if(['BAS-03','BAS-05','BAS-07'].includes(s.id)){
+const latestYear=row=>Math.max(0,...(String(row[s.id==='BAS-03'?4:3]||'').match(/20\d{2}/g)||[]).map(Number));rr=rr.slice().sort((a,b)=>latestYear(b.r)-latestYear(a.r));
 const overseas=s.id==='BAS-03',columns=overseas?['바이어코드','바이어명','국가','참가연도']:s.ui.columns.filter(c=>!/^참가\s?상태$/.test(c));
 const years=value=>{const all=[...new Set(String(value||'').match(/20\d{2}/g)||[])].sort((a,b)=>Number(b)-Number(a));return '<span title="'+E(all.join(', '))+'">'+E(all.slice(0,3).join(', '))+(all.length>3?' <span class="small">그 외 '+(all.length-3)+'건</span>':'')+'</span>'};
 const body=rr.map(({r,i})=>{const present=participantIsPresent(r.at(-1)),state=present?'참가':'미참여',dot='<span class="participant-state-dot'+(present?' is-present':'')+'" role="img" aria-label="'+state+'" title="'+E(state+' · '+r.at(-1))+'"></span>',name=B('row',r[1],overseas?'btn ghost':'list-name-link','data-index="'+i+'" aria-label="'+E(r[1]+' 상세')+'"');return '<tr><td><input type="checkbox" data-master-participant="'+E(r[0])+'" aria-label="'+E(r[1])+' 선택"'+(present?'':' disabled')+'></td><td><span class="participant-code-state">'+dot+E(r[0])+'</span>'+'</td><td>'+name+'</td><td>'+E(r[2])+'</td><td>'+years(r[overseas?4:3])+'</td></tr>';}).join('');

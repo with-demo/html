@@ -66,7 +66,7 @@
   function paint(){
    const prioritize=route==='JNL-14'&&['admin','exportOperator'].includes(root.querySelector('#role-picker')?.value),statusIndex=headers.indexOf('처리 상태'),priority=row=>prioritize&&clean(row.cells[statusIndex]||row)==='승인 요청'?0:1;
    const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)}));
-   if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
+   if(['BAS-03','BAS-05','BAS-07'].includes(route)){const yearIndex=headers.indexOf('참가연도'),latestYear=row=>Math.max(0,...(clean(row.cells[yearIndex]||row).match(/20\d{2}/g)||[]).map(Number));ordered.sort((a,b)=>latestYear(b.row)-latestYear(a.row)||a.i-b.i);}else if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    if(stateKey)pre01Pages.set(stateKey,{page,size:perPage});
    count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
