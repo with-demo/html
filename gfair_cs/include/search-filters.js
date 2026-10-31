@@ -19,7 +19,7 @@ let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textCon
 if(location.hash.slice(1)==='BAS-03')labels=['바이어코드','바이어명'];if(location.hash.slice(1)==='BAS-07')labels=['통역원코드','통역원명'];
 if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
 if(location.hash.slice(1)==='PRE-01')labels=['바이어명','담당 통역원'];
-if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','소속기업'];
+if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','기업'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];
 if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];if(location.hash.slice(1)==='BAS-09')labels=['참가기업','사업자 번호','부스번호','담당자'];
 [...new Set(['전체',...labels].filter(Boolean))].forEach(t=>select.add(new Option(t,t)));select.value=scopes.get(key(form,input))||'전체';select.addEventListener('change',()=>scopes.set(key(form,input),select.value));

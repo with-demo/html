@@ -54,7 +54,7 @@
    const tag=presets[key]?'select':['placeholder','inputLimit','destination','errorMessage'].includes(key)?'input':'textarea';
    const control=field(key,tag,key==='result'&&route()==='NTC-07'?2000:key==='destination'?Math.max(1003,(saved[key]||'').length):key==='policy'||key==='exception'?1000:500);control.placeholder=placeholder;control.parentElement.classList.remove('wide');
    if(presets[key]){control.append(new Option('선택 안 함',''),...presets[key].map(value=>new Option(value,value)),new Option('직접입력','__custom'));const extra=element('input');extra.maxLength=500;extra.setAttribute('aria-label',specLabels[key]+' 직접입력');extra.placeholder=placeholder;extra.value=saved[key]||'';control.parentElement.append(extra);control.value=saved[key]?(presets[key].includes(saved[key])?saved[key]:'__custom'):'';const toggle=()=>{extra.hidden=control.value!=='__custom';extra.required=!extra.hidden;};control.addEventListener('change',toggle);toggle();control.specValue=()=>control.value==='__custom'?extra.value.trim():control.value;}
-   if(key==='inputLimit'){control.placeholder='최대 글자 수 (예: 100)';if(!saved[key]||/^\d+$/.test(saved[key])){control.type='number';control.min='0';control.step='1';}else control.placeholder='기존 입력 제한';}
+   if(key==='inputLimit'){control.type='text';control.placeholder='예: 최대 100자, 0~999, 첨부 10MB 이하';}
    if(key==='options'){control.placeholder='선택 옵션을 한 줄에 하나씩 입력하세요.\n예: 전체\n구매\n수출';control.rows=4;}
    if(key==='destination'){const list=element('datalist');list.id='annotation-related-screens';(window.GFAIR_SCREENS||[]).flatMap(group=>group.screens).forEach(screen=>list.append(new Option('['+screen.id+'] '+screen.title,screen.id)));control.setAttribute('list',list.id);control.parentElement.append(list);}
   });});

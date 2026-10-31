@@ -1,0 +1,18 @@
+[
+  {
+    "screen": "BAS-05",
+    "id": "bas05-list-participation-dot-20261023",
+    "number": 4,
+    "revision": 10,
+    "before": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/(참가상태)바이어코드/바이어명/소속기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\\n- 참가상태는 기업명 바로 앞 원으로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+    "text": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/(참가상태)바이어코드/바이어명/기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\\n- 참가상태는 기업명 바로 앞 원으로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록 항목명 소속기업을 기업으로 변경.\",\"codexHighlights\":{\"planningNote\":[{\"start\":0,\"end\":44,\"text\":\"[변경사항 있음 · 2026-10-31] 목록 항목명 소속기업을 기업으로 변경.\"}]}}",
+    "anchor": {
+      "selector": "#content .participant-master-table thead th:first-child",
+      "sample": "",
+      "x": 0.5,
+      "y": 0.5,
+      "offsetX": -23,
+      "offsetY": -14
+    }
+  }
+]
