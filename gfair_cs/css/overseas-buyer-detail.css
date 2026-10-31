@@ -59,3 +59,8 @@
 #app #content [data-participant-detail] textarea[name="memo"],
 #app #content [data-management-form="operator-create"] textarea[name="memo"],
 #app #content [data-management-form="operator-save"] textarea[name="memo"]{box-sizing:border-box;height:80px;min-height:80px}
+
+#app #content [data-participant-detail="BAS-08"] .buyer-languages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+#app #content [data-participant-detail="BAS-08"] input[readonly]{width:100%;background:#f5f5f5;color:#666}
+#app #content [data-participant-detail="BAS-08"] .buyer-languages select{width:100%;min-width:0}
+@media(max-width:600px){#app #content [data-participant-detail="BAS-08"] .buyer-languages{grid-template-columns:1fr}}
