@@ -43,6 +43,10 @@
   }
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
+  const columnWidths=({'BAS-03':['60px','180px','auto','160px','180px'],'BAS-05':['60px','170px','26%','auto','180px'],'BAS-07':['60px','170px','26%','auto','180px'],'BAS-15':['60px','90px','120px','auto','150px','120px']})[route];
+  if(columnWidths&&headers.length===columnWidths.length){
+   const cols=document.createElement('colgroup');columnWidths.forEach(width=>{const col=document.createElement('col');if(width!=='auto')col.style.width=width;cols.append(col);});table.querySelectorAll(':scope>colgroup').forEach(group=>group.remove());table.prepend(cols);table.classList.add('weighted-master-table');
+  }
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));
   if(index<0)index=headers.findIndex(t=>/연도|번호|코드|ID/.test(t));if(index<0)index=0;
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');

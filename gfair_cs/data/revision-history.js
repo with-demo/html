@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.50","date":"2026.10.31","accountName":"with","summary":"상태 원 간격 및 목록 열 너비 조정","changes":["상태 원과 코드·기업명 텍스트 사이 간격 12px 적용.","체크박스 열 60px 고정, 이름·기업명·언어 등 긴 항목에 가용 너비 배분."]},
+{"screenId":"BAS-05","version":"v1.44","date":"2026.10.31","accountName":"with","summary":"상태 원 간격 및 목록 열 너비 조정","changes":["상태 원과 코드·기업명 텍스트 사이 간격 12px 적용.","체크박스 열 60px 고정, 이름·기업명·언어 등 긴 항목에 가용 너비 배분."]},
+{"screenId":"BAS-07","version":"v1.43","date":"2026.10.31","accountName":"with","summary":"상태 원 간격 및 목록 열 너비 조정","changes":["상태 원과 코드·기업명 텍스트 사이 간격 12px 적용.","체크박스 열 60px 고정, 이름·기업명·언어 등 긴 항목에 가용 너비 배분."]},
+{"screenId":"BAS-15","version":"v2.38","date":"2026.10.31","accountName":"with","summary":"상태 원 간격 및 목록 열 너비 조정","changes":["상태 원과 코드·기업명 텍스트 사이 간격 12px 적용.","체크박스 열 60px 고정, 이름·기업명·언어 등 긴 항목에 가용 너비 배분."]},
 {"screenId":"BAS-03","version":"v1.49","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},
 {"screenId":"BAS-05","version":"v1.43","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},
 {"screenId":"BAS-07","version":"v1.42","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},

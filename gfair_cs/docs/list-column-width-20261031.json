@@ -1,0 +1,68 @@
+{
+  "updates": [
+    {
+      "screen": "BAS-03",
+      "id": "bas03-list-participation-dot-20261023",
+      "number": 6,
+      "revision": 22,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/국가/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-03-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"해외바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/국가/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\\n- 상태 원과 코드·기업명 텍스트의 간격은 12px\\n- 체크박스 열은 60px 고정, 이름·기업명·언어 등 길어질 수 있는 항목에 가용 너비를 우선 배분\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-03-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\\n[변경사항 있음 · 2026-10-31] 상태 원 간격 12px, 체크박스 열 60px 고정 및 긴 항목 너비 확대.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -66,
+        "offsetY": -22
+      }
+    },
+    {
+      "screen": "BAS-05",
+      "id": "bas05-list-participation-dot-20261023",
+      "number": 5,
+      "revision": 7,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/소속기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"국내바이어 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/바이어코드(참가상태 원)/바이어명/소속기업/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 바이어명 클릭시 상세페이지로 이동\\n- 상태 원과 코드·기업명 텍스트의 간격은 12px\\n- 체크박스 열은 60px 고정, 이름·기업명·언어 등 길어질 수 있는 항목에 가용 너비를 우선 배분\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-05-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\\n[변경사항 있음 · 2026-10-31] 상태 원 간격 12px, 체크박스 열 60px 고정 및 긴 항목 너비 확대.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -23,
+        "offsetY": -14
+      }
+    },
+    {
+      "screen": "BAS-07",
+      "id": "bas07-list-participation-dot-20261023",
+      "number": 6,
+      "revision": 6,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"통역원 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/통역원코드(참가상태 원)/통역원명/언어/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 통역원명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-07-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"통역원 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/통역원코드(참가상태 원)/통역원명/언어/참가연도\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 엑셀업로드·수정 페이지에 저장된 정보를 목록에 표시\\n- 통역원명 클릭시 상세페이지로 이동\\n- 상태 원과 코드·기업명 텍스트의 간격은 12px\\n- 체크박스 열은 60px 고정, 이름·기업명·언어 등 길어질 수 있는 항목에 가용 너비를 우선 배분\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"BAS-07-p01에서 업로드된 엑셀 파일\",\"policy\":\"- 목록은 엑셀업로드·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 목록의 상태 원을 코드 셀에 통합.\\n[변경사항 있음 · 2026-10-31] 상태 원 간격 12px, 체크박스 열 60px 고정 및 긴 항목 너비 확대.\"}",
+      "anchor": {
+        "selector": "#content .participant-master-table thead th:first-child",
+        "sample": "",
+        "x": 0.5,
+        "y": 0.5,
+        "offsetX": -22,
+        "offsetY": -20
+      }
+    },
+    {
+      "screen": "BAS-15",
+      "id": "8dd47b22-6b6c-47ba-85af-210ba0d785e5",
+      "number": 3,
+      "revision": 7,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/연도/구분/기업명(사용상태 원)/대표담당자/하위담당자수\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\\n- 사용상태는 기업명 바로 앞 원으로 표시: 사용은 초록색, 미사용은 회색\\n- 행사관리의 최신 진행 행사연도만 사용, 그 외 연도는 미사용으로 자동 변경\\n- 사용상태는 수동 변경하지 않으며 이전 연도 정보는 조회용으로 유지\\n- 예시 데이터는 2026년 진행, 2025·2024년 미사용 기준\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 사용여부 열을 제거하고 기업명 앞 상태 원·진행 행사연도 기준 자동 처리로 변경.\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/연도/구분/기업명(사용상태 원)/대표담당자/하위담당자수\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\\n- 사용상태는 기업명 바로 앞 원으로 표시: 사용은 초록색, 미사용은 회색\\n- 행사관리의 최신 진행 행사연도만 사용, 그 외 연도는 미사용으로 자동 변경\\n- 사용상태는 수동 변경하지 않으며 이전 연도 정보는 조회용으로 유지\\n- 예시 데이터는 2026년 진행, 2025·2024년 미사용 기준\\n- 상태 원과 코드·기업명 텍스트의 간격은 12px\\n- 체크박스 열은 60px 고정, 이름·기업명·언어 등 길어질 수 있는 항목에 가용 너비를 우선 배분\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 사용여부 열을 제거하고 기업명 앞 상태 원·진행 행사연도 기준 자동 처리로 변경.\\n[변경사항 있음 · 2026-10-31] 상태 원 간격 12px, 체크박스 열 60px 고정 및 긴 항목 너비 확대.\"}",
+      "anchor": {
+        "selector": "#content > div:nth-of-type(2) > section:nth-of-type(1)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 10,
+        "offsetY": 12
+      }
+    }
+  ]
+}
