@@ -36,6 +36,11 @@
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
   let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
   count.innerHTML='총 <strong>'+rows.length+'</strong>건 · 1/1page';
+  const exclude=main.querySelector('[data-master-exclude]');
+  if(exclude&&['BAS-03','BAS-05','BAS-07'].includes(route)){
+   const previous=exclude.parentElement,summary=document.createElement('div');summary.className='participant-bulk-summary';header.insertBefore(summary,count);summary.append(count,exclude);
+   if(previous!==summary&&!previous.children.length)previous.remove();
+  }
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
   let index=headers.findIndex(t=>/등록일|작성일|제출 일자|최근 응답|응답일시|발생일|일시|일자|날짜/.test(t));

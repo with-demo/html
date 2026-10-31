@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.49","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},
+{"screenId":"BAS-05","version":"v1.43","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},
+{"screenId":"BAS-07","version":"v1.42","date":"2026.10.31","accountName":"with","summary":"선택 미참여 버튼을 목록 건수·페이지 표시 옆으로 이동","changes":["선택 미참여 처리 버튼명을 선택 미참여로 변경.","목록 상단 건수·페이지 표시 바로 오른쪽으로 배치하고 기존 선택·컨펌·처리 동작 유지."]},
 {"screenId":"BAS-15","version":"v2.37","date":"2026.10.31","accountName":"with","summary":"운영용역사 사용상태 자동 산정 및 2026년 예시 적용","changes":["행사관리의 최신 진행 연도만 사용, 나머지 연도는 미사용으로 자동 산정.","기업명 앞 초록·회색 원 표시, 수동 사용여부 열 제거, 2026·2025·2024년 예시 적용."]},
 {"screenId":"BAS-17","version":"v1.38","date":"2026.10.31","accountName":"with","summary":"운영용역사 수동 사용여부 항목 제거","changes":["기본정보의 사용여부 입력과 관련 필수 검증 제거. 기존 계정·연락처 검증과 하위담당자 관리 유지."]},
 {"screenId":"BAS-19","version":"v1.18","date":"2026.10.31","accountName":"with","summary":"운영용역사 수동 사용여부 항목 제거","changes":["기본정보의 사용여부 입력과 관련 필수 검증 제거. 기존 계정·연락처 검증과 하위담당자 관리 유지."]},
