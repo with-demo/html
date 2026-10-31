@@ -8,3 +8,7 @@
 
 /* 상세로 이동하는 목록 이름·제목은 굵게 표시한다. */
 #app #content .tablewrap tbody :is(a[href],button.btn.ghost,.list-name-link,.list-clickable-text):not([data-action="sur-use"]):not([data-action="remove-image"]):not([data-action="close"]){font-weight:700}
+
+/* 상세 진입용 이름·제목·기업명은 본문 셀과 링크 모두 왼쪽 정렬. */
+:is(#app #content,#dialog-content) table tbody :is(td.list-clickable-text,td:has(a[href]:not(.btn):not([download]),.list-name-link),td:has(button.btn.ghost:not([hidden]):not([data-list-row-trigger]))){text-align:left!important}
+:is(#app #content,#dialog-content) table tbody :is(a[href]:not(.btn):not([download]),button.btn.ghost:not([hidden]):not([data-list-row-trigger]),.list-name-link,.list-clickable-text){text-align:left!important}

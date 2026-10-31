@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-16","version":"v2.29","date":"2026.10.31","accountName":"with","summary":"관리자 목록 항목 순서 및 상세 진입 항목 왼쪽 정렬","changes":["이름 / 소속 / 아이디 / 등록일 / 사용여부 순서로 변경.","전체 목록의 상세 진입 항목 내용 왼쪽 정렬. 사용자 요청에 따라 Description 미수정."]},
 {"screenId":"BAS-06","version":"v0.43","date":"2026.10.31","accountName":"with","summary":"국내바이어 연락처 3칸 입력 복구","changes":["앞자리 선택·가운데 3~4자리·마지막 4자리 입력으로 분리.","기존 단일 연락처 값 분리 표시 및 저장·검증 연결. 관련 설명의 변경 부분만 빨간색 표시."]},
 {"screenId":"BAS-01","version":"v0.42","date":"2026.10.31","accountName":"with","summary":"상단 행사연도 선택 제거","changes":["상단 행사연도 선택 제거. 사용자 요청에 따라 Description·기획비고는 수정하지 않음."]},
 {"screenId":"BAS-02","version":"v0.24","date":"2026.10.31","accountName":"with","summary":"상단 행사연도 선택 제거","changes":["상단 행사연도 선택 제거. 사용자 요청에 따라 Description·기획비고는 수정하지 않음."]},
