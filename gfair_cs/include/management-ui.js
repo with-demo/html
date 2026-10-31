@@ -70,9 +70,10 @@
   return note()+'<div class="management-actions">'+(isAdmin()?button('operator-create','등록','','true'):'')+'</div><form data-management-form="search" class="panel filters">'+field('연도','<select name="year">'+options(['전체',...years()],state.year)+'</select>')+'<fieldset class="management-type-filter"><legend>구분</legend><div class="management-type-options">'+['전체','구매상담','수출상담'].map(t=>'<label><input type="radio" name="type" value="'+t+'"'+(state.type===t?' checked':'')+'>'+t+'</label>').join('')+'</div></fieldset>'+field('키워드 검색','<input name="query" value="'+E(state.query)+'" placeholder="기업·담당자 검색">')+'<div class="row"><button class="btn primary" type="submit">검색</button>'+button('reset','초기화')+'</div></form><section class="panel operator-list"><div class="panelhead"><h2>운영용역사 목록</h2><div class="row">'+accountTools()+'</div></div>'+table([accountAllCheckbox(),'연도','구분','기업명','대표담당자','하위 담당자수'],body)+'</section>';
  }
  const eventYears=()=>[...new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens||[]).find(s=>s.id==='BAS-01')?.ui?.rows?.map(r=>String(r[0]))||[])].sort((a,b)=>Number(b)-Number(a));
+ const registrableEventYears=()=>[...new Set(((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens||[]).find(s=>s.id==='BAS-01')?.ui?.rows||[]).filter(row=>['진행','대기'].includes(row[3])).map(row=>String(row[0])))].sort((a,b)=>Number(b)-Number(a));
  function operatorRegistration(){
   const radio=(name,values)=>'<div class="management-type-options" role="radiogroup" aria-label="'+(name==='type'?'구분':'사용여부')+'">'+values.map((value,i)=>'<label><input type="radio" name="'+name+'" value="'+value+'" required '+(!i?'checked':'')+'>'+value+'</label>').join('')+'</div>';
-  const yearOptions='<option value="">선택하세요</option>'+options(eventYears(),state.event);
+  const yearOptions='<option value="">선택하세요</option>'+options(registrableEventYears(),state.event);
   const phone='<div class="operator-phone"><select name="phonePrefix" aria-label="담당자 연락처 앞자리" required>'+options(['010','011','016','017','018','019','02','031','032','033','041','042','043','044','051','052','053','054','055','061','062','063','064','070'],'010')+'</select><span>-</span><input name="phoneMiddle" type="tel" inputmode="numeric" pattern="[0-9]{3,4}" maxlength="4" aria-label="담당자 연락처 가운데 자리" required><span>-</span><input name="phoneLast" type="tel" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" aria-label="담당자 연락처 마지막 자리" required></div>';
   const accountField=field('아이디 *','<div class="admin-id-check"><input name="id" required autocomplete="off" aria-describedby="operator-id-guide"><button type="button" class="btn" data-admin-id-check>중복확인</button></div><span data-admin-id-result role="status" aria-live="polite"></span><small id="operator-id-guide">운영용역사 최고관리자용 계정 ID입니다. 비밀번호는 등록 시 자동 생성됩니다.</small>').replace('class="field"','class="field wide"');
   return note()+'<form data-management-form="operator-create" class="panel detail-form-panel"><div class="panelhead"><h2>운영용역사 기본정보</h2></div><div class="detail-rows form-rows">'+accountField+field('행사연도 *','<select name="year" required>'+yearOptions+'</select>')+field('구분 *',radio('type',['구매상담','수출상담']))+input('company','기업명 *','',true)+input('name','담당자 이름 *','',true)+field('담당자 연락처 *',phone)+field('담당자 이메일','<div class="buyer-email admin-email"><input name="emailLocal" maxlength="64" aria-label="이메일 아이디"><span aria-hidden="true">@</span><input name="emailDomain" maxlength="253" aria-label="이메일 도메인"><select name="emailPreset" aria-label="이메일 도메인 선택">'+options(adminMailDomains,'')+'<option value="" selected>직접입력</option></select></div>')+'</div><p data-management-error role="alert"></p><div class="formfooter"><a href="#BAS-15" class="btn">목록</a><button type="submit" class="btn primary">등록</button></div></form>';
@@ -80,11 +81,10 @@
  function operatorBasicForm(c,assignment){
   const draft=state.operatorDraft||{year:assignment.year,type:assignment.type,company:c.name,name:c.contact,status:c.status||'사용',phone:c.phone||'',email:c.email||''};
   const radio=(name,values,label)=>'<div class="management-type-options" role="radiogroup" aria-label="'+label+'">'+values.map(value=>'<label><input type="radio" name="'+name+'" value="'+value+'" required'+(draft[name]===value?' checked':'')+'>'+value+'</label>').join('')+'</div>';
-  const availableYears=[...new Set([...eventYears(),assignment.year])].sort((a,b)=>Number(b)-Number(a));
   const parts=draft.phone.split('-'),[emailLocal='',emailDomain='']=draft.email.split('@'),preset=adminMailDomains.includes(emailDomain);
   const phone='<div class="operator-phone"><select name="phonePrefix" required aria-label="담당자 연락처 앞자리">'+options(['010','011','016','017','018','019','02','031','032','033','041','042','043','044','051','052','053','054','055','061','062','063','064','070'],parts[0]||'010')+'</select><span>-</span><input name="phoneMiddle" value="'+E(parts[1]||'')+'" type="tel" inputmode="numeric" pattern="[0-9]{3,4}" maxlength="4" required aria-label="담당자 연락처 가운데 자리"><span>-</span><input name="phoneLast" value="'+E(parts[2]||'')+'" type="tel" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required aria-label="담당자 연락처 마지막 자리"></div>';
   const email='<div class="buyer-email admin-email"><input name="emailLocal" value="'+E(emailLocal)+'" maxlength="64" aria-label="담당자 이메일 아이디"><span aria-hidden="true">@</span><input name="emailDomain" value="'+E(emailDomain)+'" maxlength="253" aria-label="담당자 이메일 도메인"'+(preset?' readonly':'')+'><select name="emailPreset" aria-label="담당자 이메일 도메인 선택">'+options(adminMailDomains,preset?emailDomain:'')+'<option value=""'+(!preset?' selected':'')+'>직접입력</option></select></div>';
-  return '<form id="operator-basic-form" data-management-form="operator-save" class="panel detail-form-panel page-information-body operator-basic"><div class="detail-rows form-rows">'+field('아이디','<input name="id" value="'+E(assignment.id||'')+'" readonly aria-readonly="true"><small>운영용역사 최고관리자용 계정 ID입니다. 기존 아이디는 변경할 수 없습니다.</small>').replace('class="field"','class="field wide"')+field('행사연도 *','<select name="year" required>'+options(availableYears,draft.year)+'</select>')+field('구분 *',radio('type',['구매상담','수출상담'],'구분'))+input('company','기업명 *',draft.company,true)+input('name','담당자 이름 *',draft.name,true)+field('담당자 연락처 *',phone)+field('담당자 이메일',email)
+  return '<form id="operator-basic-form" data-management-form="operator-save" class="panel detail-form-panel page-information-body operator-basic"><div class="detail-rows form-rows">'+field('아이디','<input name="id" value="'+E(assignment.id||'')+'" readonly aria-readonly="true"><small>운영용역사 최고관리자용 계정 ID입니다. 기존 아이디는 변경할 수 없습니다.</small>').replace('class="field"','class="field wide"')+field('행사연도','<input name="year" value="'+E(assignment.year)+'" readonly aria-readonly="true" class="readonly">')+field('구분 *',radio('type',['구매상담','수출상담'],'구분'))+input('company','기업명 *',draft.company,true)+input('name','담당자 이름 *',draft.name,true)+field('담당자 연락처 *',phone)+field('담당자 이메일',email)
 +'</div><p data-management-error role="alert"></p></form>';
  }
  function rememberOperatorDraft(event){
@@ -259,7 +259,7 @@
    if(!isAdmin()||state.screen!=='BAS-17')return;
    const c=companies.find(c=>c.id===state.company),assignment=assignments.find(a=>a.company===state.company&&a.year===state.staffYear&&(!state.assignmentType||a.type===state.assignmentType));
    if(!c||!assignment)return fail('수정할 운영용역사를 찾을 수 없습니다.');
-   const name=v('name'),company=v('company'),year=v('year'),operatorType=v('type'),phone=v('phoneMiddle')||v('phoneLast')?[v('phonePrefix'),v('phoneMiddle'),v('phoneLast')].join('-'):'',email=v('emailLocal')||v('emailDomain')?[v('emailLocal'),v('emailDomain')].join('@'):'';
+   const name=v('name'),company=v('company'),year=assignment.year,operatorType=v('type'),phone=v('phoneMiddle')||v('phoneLast')?[v('phonePrefix'),v('phoneMiddle'),v('phoneLast')].join('-'):'',email=v('emailLocal')||v('emailDomain')?[v('emailLocal'),v('emailDomain')].join('@'):'';
    if(v('id')!==assignment.id)return fail('기존 아이디는 변경할 수 없습니다.');
    if(!name)return fail('필수 항목을 확인해 주세요.');
    if(!phone||!/^0[0-9]{1,2}-?[0-9]{3,4}-?[0-9]{4}$/.test(phone))return fail('담당자 연락처는 가운데 3~4자리, 마지막 4자리로 입력해 주세요.');
@@ -267,10 +267,7 @@
    if(!company||![...eventYears(),assignment.year].includes(year)||!['구매상담','수출상담'].includes(operatorType))return fail('필수 항목을 확인해 주세요.');
    if(companies.some(other=>other.id!==c.id&&other.name===company))return fail('같은 기업명이 이미 등록되어 있습니다.');
    if(assignments.some(other=>other!==assignment&&other.company===c.id&&other.year===year&&other.type===operatorType))return fail('같은 행사연도·구분에 이미 등록된 운영용역사입니다.');
-   const previousYear=assignment.year;
-   // Keep the existing staff association and issued credentials when the year is corrected.
-   if(year!==previousYear)assignment.staffMembers=assignedStaff(assignment);
-   c.name=company;c.contact=name;c.phone=phone;c.email=email;assignment.year=year;assignment.type=operatorType;
+   c.name=company;c.contact=name;c.phone=phone;c.email=email;assignment.type=operatorType;
    state.staffYear=year;state.assignmentType=operatorType;state.operatorDraft=null;state.shown.clear();
    message('운영용역사 기본정보를 수정했습니다. 현재 탭에만 반영됩니다.');return;
   }
@@ -281,7 +278,7 @@
    if((local||domain)&&(!local||!domain||!probe.checkValidity())){const text='이메일 아이디와 도메인을 올바르게 입력해 주세요.';f.elements.emailLocal.setCustomValidity(text);f.elements.emailLocal.reportValidity();return fail(text);}
    const companyName=v('company'),name=v('name'),year=v('year'),operatorType=v('type');
    if(!isAdmin())return;
-   if(!companyName||!name||!eventYears().includes(year)||!['구매상담','수출상담'].includes(operatorType))return fail('필수 항목을 확인해 주세요.');
+   if(!companyName||!name||!registrableEventYears().includes(year)||!['구매상담','수출상담'].includes(operatorType))return fail('필수 항목을 확인해 주세요.');
    if(companies.some(c=>c.name===companyName))return fail('같은 용역사가 이미 등록되어 있습니다.');
    const accountId=v('id');if(!accountId)return fail('아이디를 입력해 주세요.');
    if(accountIdTaken(accountId))return fail('이미 등록된 아이디입니다.');
