@@ -62,6 +62,7 @@ window.GFAIR_SCREENS=[
             "동기화 하기"
           ],
           "rows": [
+            ["2027", "2027 G-FAIR KOREA", "일정 미정", "대기"],
             [
               "2026",
               "2026 G-FAIR KOREA",

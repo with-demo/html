@@ -123,3 +123,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 /* 상태 원은 코드·기업명과 같은 셀에서 표시한다. */
 .participant-code-state,.operator-list .list-name-link{display:inline-flex;align-items:center;gap:0;white-space:nowrap}
 .participant-code-state>.participant-state-dot,.operator-list .list-name-link>.participant-state-dot{margin-right:12px}
+
+/* 행사관리 상태 색상: 종료는 기존 badge 스타일 유지 */
+#app .badge.event-status-badge.is-running{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+#app .badge.event-status-badge.is-waiting{background:#fff3e0;color:#c65d00;border-color:#ffcc80}
