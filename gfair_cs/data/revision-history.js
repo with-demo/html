@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-01","version":"v0.41","date":"2026.10.31","accountName":"with","summary":"2027년 행사기간 및 빈 정보 표시 수정","changes":["2027년 행사기간을 2027-10-01 ~ 2027-10-03으로 변경.","미등록 신청일·부스배치도·전시관 구분을 문구 없이 빈칸으로 표시."]},
+{"screenId":"BAS-02","version":"v0.23","date":"2026.10.31","accountName":"with","summary":"2027년 행사기간 및 빈 정보 표시 수정","changes":["2027년 행사기간을 2027-10-01 ~ 2027-10-03으로 변경.","미등록 신청일·부스배치도·전시관 구분을 문구 없이 빈칸으로 표시."]},
 {"screenId":"BAS-02","version":"v0.22","date":"2026.10.31","accountName":"with","summary":"선택 행사별 상세 상태·예시 정보 표시","changes":["목록에서 선택한 행사명·상태·기간을 상세에 반영.","2027년 대기 예시는 일정 미정·미등록으로 표시하고 2026년 기존 자료 유지."]},
 {"screenId":"BAS-01","version":"v0.40","date":"2026.10.31","accountName":"with","summary":"행사 진행·대기 상태 색상 및 2027년 대기 예시 추가","changes":["진행은 녹색, 대기는 주황색 배지로 표시하고 종료는 기존 스타일 유지.","2027 G-FAIR KOREA를 일정 미정·대기 상태의 예시 데이터로 추가. 2026년 진행 유지."]},
 {"screenId":"BAS-03","version":"v1.50","date":"2026.10.31","accountName":"with","summary":"상태 원 간격 및 목록 열 너비 조정","changes":["상태 원과 코드·기업명 텍스트 사이 간격 12px 적용.","체크박스 열 60px 고정, 이름·기업명·언어 등 긴 항목에 가용 너비 배분."]},

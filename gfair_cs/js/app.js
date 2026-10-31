@@ -233,9 +233,9 @@ form=function(s){
  <section class="event-detail-section" aria-labelledby="event-basic-title"><h2 id="event-basic-title" class="detail-section-title">기본정보</h2>
  <div class="event-detail-grid">${pair('박람회명칭',selectedEvent[1])}${pair('상태',selectedEvent[3])}${pair('행사시작',eventPeriod[0])}${pair('행사종료',eventPeriod[1])}</div></section>
  <section class="event-detail-section" aria-labelledby="event-exhibition-title"><h2 id="event-exhibition-title" class="detail-section-title">전시회 정보</h2>
- <div class="event-detail-grid">${pair('신청시작',knownEvent?'2026-03-16':'미등록')}${pair('신청종료',knownEvent?'2026-10-28':'미등록')}
- <div class="event-detail-label">부스배치도</div><div class="event-value event-detail-wide" aria-label="부스배치도">${knownEvent?`<a class="event-file-download" href="${E(boothPdf)}" download="2026_G-FAIR_KOREA_부스배치도_예시.pdf">2026_G-FAIR_KOREA_부스배치도_예시.pdf</a>`:"미등록"}</div>
- <div class="event-detail-label">전시관 구분</div><div class="event-halls event-detail-wide">${knownEvent?halls.map((text,i)=>text?`${String(i+1).padStart(2,'0')}.${E(text)}`:'').filter(Boolean).join(' / '):'미등록'}</div></div></section>
+ <div class="event-detail-grid">${pair('신청시작',knownEvent?'2026-03-16':'')}${pair('신청종료',knownEvent?'2026-10-28':'')}
+ <div class="event-detail-label">부스배치도</div><div class="event-value event-detail-wide" aria-label="부스배치도">${knownEvent?`<a class="event-file-download" href="${E(boothPdf)}" download="2026_G-FAIR_KOREA_부스배치도_예시.pdf">2026_G-FAIR_KOREA_부스배치도_예시.pdf</a>`:""}</div>
+ <div class="event-detail-label">전시관 구분</div><div class="event-halls event-detail-wide">${knownEvent?halls.map((text,i)=>text?`${String(i+1).padStart(2,'0')}.${E(text)}`:'').filter(Boolean).join(' / '):''}</div></div></section>
  <div class="formfooter event-page-actions">${A('BAS-01','목록')}</div></div>`;
 };
 
