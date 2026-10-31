@@ -30,5 +30,8 @@ body .annotation-spec .annotation-planning-note,body .annotation-spec .annotatio
 /* 기획비고는 사용자 편집·변경 강조 여부와 무관하게 항상 빨간색. */
 body .annotation-planning-note,body .annotation-planning-note *,body .annotation-dialog [name="planningNote"]{color:#c62828!important}
 
-/* 입력한 하이픈·공백·개행·빈 줄을 자동 목록 변환 없이 그대로 표시한다. */
+/* 일반 문장의 공백·개행·빈 줄을 그대로 표시한다. 하이픈 목록은 줄 단위 표시 규칙을 따른다. */
 .annotation-spec dd{white-space:pre-wrap;overflow-wrap:anywhere}
+
+/* 하이픈 목록과 일반 문장을 줄 단위로 구분한다. */
+.annotation-description-line{white-space:pre-wrap;min-height:1.7em}.annotation-description-blank{height:1.7em}.annotation-spec dd>.annotation-summary-list{white-space:normal}
