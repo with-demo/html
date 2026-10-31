@@ -54,3 +54,8 @@
 
 /* 회원 상세의 중간 작업 영역은 본문 배경과 동일하게 표시한다. */
 #app #content #overseas-buyer-detail-form>.formfooter{background:transparent;border:0;box-shadow:none;padding:18px 0}
+
+/* 기본정보관리 메모 입력란 공통 높이 */
+#app #content [data-participant-detail] textarea[name="memo"],
+#app #content [data-management-form="operator-create"] textarea[name="memo"],
+#app #content [data-management-form="operator-save"] textarea[name="memo"]{box-sizing:border-box;height:80px;min-height:80px}
