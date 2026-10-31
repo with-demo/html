@@ -3552,4 +3552,4 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 // 2026년 박서연 통역원 담당 바이어 2명 예시: 방한 목록과 대리 설문에 동일 적용.
 (()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),travel=all.find(s=>s.id==='PRE-01');for(const row of travel?.ui?.rows||[])if(['James Whitmore','Emily Carter'].includes(row[0]))row[5]='박서연';})();
 
-(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-17','BAS-19']){const screen=all.find(s=>s.id===id);screen.ui.fields=screen.ui.fields.filter(f=>f[0]!=='사용여부');}const list=all.find(s=>s.id==='BAS-15');list.ui.columns=['체크박스','연도','구분','기업명 (사용상태 원)','대표담당자','하위 담당자수'];list.rules.push('행사관리의 최신 진행 연도만 사용, 나머지는 미사용으로 자동 산정한다. 사용상태는 기업명 앞 초록·회색 원으로 표시하며 수동 설정하지 않는다.');})();
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens);for(const id of ['BAS-17','BAS-19']){const screen=all.find(s=>s.id===id);screen.ui.fields=screen.ui.fields.filter(f=>f[0]!=='사용여부');}const list=all.find(s=>s.id==='BAS-15');list.ui.columns=['체크박스','연도 (사용상태 원)','구분','기업명','대표담당자','하위 담당자수'];list.rules.push('행사관리의 최신 진행 연도만 사용, 나머지는 미사용으로 자동 산정한다. 사용상태는 연도 앞 초록·회색 원으로 표시하며 수동 설정하지 않는다.');})();

@@ -1,0 +1,42 @@
+{
+  "updates": [
+    {
+      "screen": "BAS-15",
+      "id": "8dd47b22-6b6c-47ba-85af-210ba0d785e5",
+      "number": 3,
+      "revision": 9,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/연도/구분/(사용상태 원)기업명/대표담당자/하위담당자수\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록\",\"type\":\"기타\",\"defaultValue\":\"체크박스/(사용상태 원)연도/구분/기업명/대표담당자/하위담당자수\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 등록·수정 페이지에 저장된 정보를 목록에 표시\\n- 기업명 클릭시 상세페이지로 이동\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 운영용역사 상태 원을 기업명 앞에서 연도 앞으로 이동.\",\"codexHighlights\":{\"defaultValue\":[{\"start\":13,\"end\":19,\"text\":\"연도/구분/\"}],\"planningNote\":[{\"start\":0,\"end\":53,\"text\":\"[변경사항 있음 · 2026-10-31] 운영용역사 상태 원을 기업명 앞에서 연도 앞으로 이동.\"}]}}",
+      "anchor": {
+        "selector": "#content > div:nth-of-type(2) > section:nth-of-type(1)",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 10,
+        "offsetY": 12
+      }
+    },
+    {
+      "screen": "BAS-15",
+      "id": "58df2b2f-962d-4cef-a159-231b2c0ab14e",
+      "number": 4,
+      "revision": 3,
+      "before": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사연도 기준 참가 상태 표시\\n- 참가: 초록색 원 / 미참가: 회색 원 / 대기 : 주황색 원\\n- 상태 원은 별도 기업명 텍스트 바로 앞에 같은 셀로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 운영용역사의 사용 상태는 [행사관리]의 상태값과 동일하게 자동 적용된다.\\n- 운영용역사의 상태가 ‘미사용’ 또는 ‘대기중’인 경우, 하위 담당자의 상태가 ‘사용’이더라도 해당 담당자 계정으로 로그인할 수 없다.\",\"exception\":\"\",\"planningNote\":\"\"}",
+      "text": "{\"format\":\"description-spec-v1\",\"item\":\"운영용역사 목록 - 참가상태\",\"type\":\"기타\",\"defaultValue\":\"해당 없음\",\"placeholder\":\"\",\"options\":\"\",\"required\":\"N\",\"detail\":\"- 현재 행사연도 기준 참가 상태 표시\\n- 참가: 초록색 원 / 미참가: 회색 원 / 대기 : 주황색 원\\n- 상태 원은 연도 텍스트 바로 앞에 같은 셀로 표시\",\"inputFormat\":\"\",\"inputLimit\":\"\",\"visibility\":\"\",\"enabled\":\"\",\"permission\":\"\",\"trigger\":\"\",\"result\":\"\",\"destination\":\"\",\"validation\":\"\",\"errorMessage\":\"\",\"loading\":\"\",\"emptyState\":\"\",\"dataSource\":\"\",\"policy\":\"- 운영용역사의 사용 상태는 [행사관리]의 상태값과 동일하게 자동 적용된다.\\n- 운영용역사의 상태가 ‘미사용’ 또는 ‘대기중’인 경우, 하위 담당자의 상태가 ‘사용’이더라도 해당 담당자 계정으로 로그인할 수 없다.\",\"exception\":\"\",\"planningNote\":\"[변경사항 있음 · 2026-10-31] 운영용역사 상태 원을 기업명 앞에서 연도 앞으로 이동.\",\"codexHighlights\":{\"detail\":[{\"start\":67,\"end\":68,\"text\":\"연\"}],\"planningNote\":[{\"start\":0,\"end\":53,\"text\":\"[변경사항 있음 · 2026-10-31] 운영용역사 상태 원을 기업명 앞에서 연도 앞으로 이동.\"}]}}",
+      "anchor": {
+        "selector": "#content > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(4)",
+        "sample": "㈜한울컨벤션",
+        "x": 0.33146067415730335,
+        "y": 0.43330858698341995
+      },
+      "nextAnchor": {
+        "selector": "#content .operator-list tbody tr:first-child .operator-year-state",
+        "sample": "",
+        "x": 0,
+        "y": 0,
+        "offsetX": 0,
+        "offsetY": -14
+      }
+    }
+  ]
+}

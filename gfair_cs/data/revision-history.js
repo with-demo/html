@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-15","version":"v2.40","date":"2026.10.31","accountName":"with","summary":"운영용역사 상태 원을 연도 앞으로 이동","changes":["기업명 앞 상태 원을 같은 행의 연도 텍스트 바로 앞으로 이동.","상태 산정·간격·기업명 상세 이동 등 기존 동작 유지. 관련 설명의 위치 문구만 변경."]},
 {"screenId":"BAS-03","version":"v1.55","date":"2026.10.31","accountName":"with","summary":"예시 고유코드를 최초 등록연도·일련번호 규칙에 맞춤","changes":["F/K/I + 최초 등록 행사연도 4자리 + 일련번호 4자리로 예시 코드 정리.","생년월일·상세 프로필·행사별 상태·기존 발급 계정 연결을 새 코드로 유지. 로그인 ID는 변경하지 않음.","사용자 요청에 따라 Description·기획비고는 수정하지 않음."]},
 {"screenId":"BAS-04","version":"v0.50","date":"2026.10.31","accountName":"with","summary":"예시 고유코드를 최초 등록연도·일련번호 규칙에 맞춤","changes":["F/K/I + 최초 등록 행사연도 4자리 + 일련번호 4자리로 예시 코드 정리.","생년월일·상세 프로필·행사별 상태·기존 발급 계정 연결을 새 코드로 유지. 로그인 ID는 변경하지 않음.","사용자 요청에 따라 Description·기획비고는 수정하지 않음."]},
 {"screenId":"BAS-05","version":"v1.49","date":"2026.10.31","accountName":"with","summary":"예시 고유코드를 최초 등록연도·일련번호 규칙에 맞춤","changes":["F/K/I + 최초 등록 행사연도 4자리 + 일련번호 4자리로 예시 코드 정리.","생년월일·상세 프로필·행사별 상태·기존 발급 계정 연결을 새 코드로 유지. 로그인 ID는 변경하지 않음.","사용자 요청에 따라 Description·기획비고는 수정하지 않음."]},
