@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-03","version":"v1.53","date":"2026.10.31","accountName":"with","summary":"참가연도 검색 옵션을 행사관리 등록 연도로 연결","changes":["회원 참가이력이 아닌 행사관리에 등록된 전체 연도를 중복 없이 최신순으로 제공.","대기·진행·종료 상태와 관계없이 등록 연도를 노출하며 전체 선택·검색 동작 유지."]},
+{"screenId":"BAS-05","version":"v1.47","date":"2026.10.31","accountName":"with","summary":"참가연도 검색 옵션을 행사관리 등록 연도로 연결","changes":["회원 참가이력이 아닌 행사관리에 등록된 전체 연도를 중복 없이 최신순으로 제공.","대기·진행·종료 상태와 관계없이 등록 연도를 노출하며 전체 선택·검색 동작 유지."]},
+{"screenId":"BAS-07","version":"v1.46","date":"2026.10.31","accountName":"with","summary":"참가연도 검색 옵션을 행사관리 등록 연도로 연결","changes":["회원 참가이력이 아닌 행사관리에 등록된 전체 연도를 중복 없이 최신순으로 제공.","대기·진행·종료 상태와 관계없이 등록 연도를 노출하며 전체 선택·검색 동작 유지."]},
 {"screenId":"BAS-03","version":"v1.52","date":"2026.10.31","accountName":"with","summary":"참가·미참여 예시 혼합 및 공통 정렬 취소","changes":["기존 코드·이름·참가이력을 유지하며 일부 예시를 미참여로 변경.","상세 진입 항목의 강제 왼쪽 정렬을 취소하고 이전 정렬로 복원."]},
 {"screenId":"BAS-05","version":"v1.46","date":"2026.10.31","accountName":"with","summary":"참가·미참여 예시 혼합 및 공통 정렬 취소","changes":["기존 코드·이름·참가이력을 유지하며 일부 예시를 미참여로 변경.","상세 진입 항목의 강제 왼쪽 정렬을 취소하고 이전 정렬로 복원."]},
 {"screenId":"BAS-07","version":"v1.45","date":"2026.10.31","accountName":"with","summary":"참가·미참여 예시 혼합 및 공통 정렬 취소","changes":["기존 코드·이름·참가이력을 유지하며 일부 예시를 미참여로 변경.","상세 진입 항목의 강제 왼쪽 정렬을 취소하고 이전 정렬로 복원."]},
