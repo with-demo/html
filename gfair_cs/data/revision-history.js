@@ -3,6 +3,7 @@ Total output lines: 2402
 
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.25","date":"2026.11.01","accountName":"with","summary":"기획 검토용 새로고침 시 확정 전 화면으로 복원","changes":["확정 상태는 현재 페이지 메모리에서만 유지하고 새로고침 시 확정대기로 초기화.","확정 전 목록·상세 ID/PW와 QR은 미발급 화면으로 표시, 재확정하면 확정 후 화면 반복 검토 가능.","기존 회원정보와 저장된 계정 자체는 변경·삭제하지 않고 표시 상태만 초기화. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.24","date":"2026.11.01","accountName":"with","summary":"참여확정 상태별 QR 표시·목록 버튼 노출 변경","changes":["미확정 QR 열은 미발급 텍스트로 표시하고 QR 다운로드 버튼 미노출.","참여확정 후 선택 미참여·참여자 추가 버튼 미노출 및 변경 차단 유지.","참여확정 후 QR보기 및 선택·전체 QR 다운로드 노출. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.23","date":"2026.11.01","accountName":"with","summary":"안내 안 상태·최종확정 위치 배포 재확인 및 QR보기 명칭 적용","changes":["현재상태·최종확정이 참가 대상 검토 안내 박스 내부에 표시되는지 실제 공개 화면 확인.","국내바이어 목록 QR발급 버튼을 QR보기로 변경. QR 팝업도 QR 보기로 표시하며 기존 팝업 ID와 조회 동작 유지.","관련 Description은 QR 명칭 부분만 수정."]},
 {"screenId":"EVT-01","version":"v1.22","date":"2026.11.01","accountName":"with","summary":"검토 안내 안으로 상태·최종확정 이동 및 이름·총인원 브라우저 컨펌 적용","changes":["참가 대상 검토 안내 제목 오른쪽에 현재상태·최종확정 버튼 배치, 좁은 화면은 줄바꿈.","최종확정 시 이름 10명까지 전체 표시, 11명부터 앞 10명 및 외 나머지 인원·총인원 브라우저 기본 컨펌.","확인은 계정·QR 생성 및 명단 잠금, 취소는 상태 유지. 관련 Description·컨펌 동기화."]},
