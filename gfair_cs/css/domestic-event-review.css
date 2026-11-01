@@ -18,3 +18,5 @@
 #dialog-content [data-domestic-new] .buyer-phone input{flex:1;min-width:0}#dialog-content [data-domestic-new] .buyer-phone select{width:100px;flex:none}#dialog-content [data-domestic-new] .buyer-phone-international select{width:210px;max-width:42%}
 #dialog-content [data-domestic-new] .buyer-email input{flex:1;min-width:0}#dialog-content [data-domestic-new] .buyer-email select{width:150px;max-width:30%}
 @media(max-width:600px){#dialog-content [data-domestic-new] .overseas-buyer-basic{grid-template-columns:100px minmax(0,1fr)}#dialog-content [data-domestic-new] .buyer-phone,#dialog-content [data-domestic-new] .buyer-email{flex-wrap:wrap}#dialog-content [data-domestic-new] .buyer-phone-international select{width:100%;max-width:100%}#dialog-content [data-domestic-new] .buyer-email select{width:100%;max-width:100%}}
+
+.event-basic-qr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.event-basic-qr .event-detail-qr-download{margin:0}#dialog:has([data-event-member-upload]){width:min(700px,calc(100vw - 32px));max-width:700px}

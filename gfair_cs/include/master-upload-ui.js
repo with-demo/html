@@ -42,7 +42,7 @@
    const s=page(id),rows=await GFAIRWorkbook.read(file,{sheetName:'등록정보',unlimitedFileSize:true,unlimitedRows:true}),checked=GFAIRMemberUpload.validate(id,rows,{countryCodes:window.GFAIR_COUNTRY_CODES,languageCodes:window.GFAIR_LANGUAGE_CODES,year:currentYear()}),parsed=checked.entries;
    if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form)||dialog.open===false)return;
    const byIdentity=new Map();parsed.filter(x=>x.valid).forEach(x=>{const k=key(x.name,x.dob);if(!byIdentity.has(k))byIdentity.set(k,[]);byIdentity.get(k).push(x)});
-   const old=people.get(id)||new Map();
+   const old=new Map(s.ui.rows.map((row,index)=>[key(row[1],s.ui.birthDates?.[row[0]]||''),{index,years:String(row[s.ui.columns.indexOf('참가연도')]||'').match(/20\d{2}/g)||[]}]));people.set(id,old);
    parsed.forEach(x=>{if(!x.valid){x.status='참가 미정';return;}const prior=old.get(key(x.name,x.dob)),same=byIdentity.get(key(x.name,x.dob)),years=new Set([...(prior?.years||[]),...same.map(r=>r.year)]);x.status=participantStatus(years);});
    renderValidation(id,parsed,[]);
   }catch(error){validated=null;if(epoch!==validationEpoch||year!==currentYear()||!content.contains(form))return;result.innerHTML='';window.alert(GFAIRMemberUpload.fileError(error));}finally{if(submit&&epoch===validationEpoch)submit.disabled=false;}
