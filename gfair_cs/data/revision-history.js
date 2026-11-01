@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.53","date":"2026.11.02","accountName":"with","summary":"검토 안내 참가 용어 통일","changes":["검토 안내와 최종확정 컨펌의 참여확정·참여자를 참가확정·참가자로 변경. 관련 Description 동기화."]},
+{"screenId":"PRE-01","version":"v1.52","date":"2026.11.02","accountName":"with","summary":"검토 안내 참가 용어 통일","changes":["검토 안내와 최종확정 컨펌의 참여확정·참여자를 참가확정·참가자로 변경. 관련 Description 동기화."]},
+{"screenId":"EVT-02","version":"v1.52","date":"2026.11.02","accountName":"with","summary":"검토 안내 참가 용어 통일","changes":["검토 안내와 최종확정 컨펌의 참여확정·참여자를 참가확정·참가자로 변경. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.52","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
 {"screenId":"PRE-01","version":"v1.51","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
 {"screenId":"EVT-02","version":"v1.51","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
