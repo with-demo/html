@@ -24,8 +24,8 @@ window.GFAIR_DOMESTIC_REVIEW={create(ctx,base){
   let list=html.replace(/<button type="button" class="btn" data-event-action="issue">.*?<\/button>/,'').replace(/<button type="button" class="btn" data-event-action="exclude">.*?<\/button>/,'');
   list=list.replace('<th scope="col">계정발급</th>','').replace(/<td><button type="button" class="btn" data-event-action="issue-one"[^>]*>계정발급<\/button><\/td>/g,'').replace('<th scope="col">소속기업</th>','<th scope="col">기업</th>').replace('<th scope="col">발급 ID</th>','<th scope="col">발급ID</th>').replace('<th scope="col">QR발급</th>','<th scope="col">QR</th>').replace('colspan="6"','colspan="5"').replace('선택 엑셀 다운로드','엑셀 다운로드');
   list=list.replace(/(data-event-action="qr"[^>]*>)(QR발급)(<\/button>)/g,'$1QR보기$3').replace(/aria-label="([^"]*) QR발급"/g,'aria-label="$1 QR보기"');
-  if(!finalized)list=list.replace(/(data-event-action="(?:qr|qr-download|qr-all)"[^>]*?)(>)/g,'$1 disabled$2');
-  const edits=operator()?'<div class="domestic-list-edits">'+button('exclude','선택 미참여',false,finalized)+button('add','참여자 추가',false,finalized)+'</div>':'';
+  if(!finalized)list=list.replace(/<button[^>]*data-event-action="qr"[^>]*>[\s\S]*?<\/button>/g,'미발급').replace(/<button[^>]*data-event-action="(?:qr-download|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');
+  const edits=operator()&&!finalized?'<div class="domestic-list-edits">'+button('exclude','선택 미참여',false,finalized)+button('add','참여자 추가',false,finalized)+'</div>':'';
   list=list.replace('<div class="row event-participant-tools">',edits+'<div class="row event-participant-tools">');
 
   return flow+list;
