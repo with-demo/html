@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
+{"screenId":"PRE-01","version":"v1.54","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
+{"screenId":"EVT-02","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
 {"screenId":"EVT-02","version":"v1.54","date":"2026.11.02","accountName":"with","summary":"통역원 엑셀 다운로드 ID·PW 항목 적용","changes":["통역원코드 대신 현재 행사 발급 ID·PW를 앞 두 열에 표시. 나머지 항목·파일명 유지. 사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"EVT-01","version":"v1.54","date":"2026.11.02","accountName":"with","summary":"참가자 엑셀 항목·ZIP 파일명 변경 및 메모 미노출","changes":["요청한 메뉴별 엑셀 열 순서 적용. ZIP 이미지 이름_아이디_QR코드.png 적용. 행사정보에서 기본정보 메모 미노출. 사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-01","version":"v1.53","date":"2026.11.02","accountName":"with","summary":"참가자 엑셀 항목·ZIP 파일명 변경 및 메모 미노출","changes":["요청한 메뉴별 엑셀 열 순서 적용. ZIP 이미지 이름_아이디_QR코드.png 적용. 행사정보에서 기본정보 메모 미노출. 사용자 요청에 따라 Description·기획비고 미수정."]},
