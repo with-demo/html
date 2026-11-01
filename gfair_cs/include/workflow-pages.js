@@ -17,7 +17,7 @@
  modal.showModal=function(){
   if(modal.dataset.presentation==='popup')return nativeShow();
   const host=document.getElementById('dialog-content'),title=(host.querySelector('h2,h3')?.textContent||'').trim();
-  const action=/삭제|승인|반려|발송|호출|재발급|발급|출석|출결|보정|상태 변경|처리|업로드|첨부|촬영|긴급|로그아웃|인증|검증|확인하시|저장하시/.test(title);
+  const action=/삭제|승인|반려|발송|호출|재발급|발급|출석|출결|보정|상태 변경|처리|업로드|첨부|촬영|긴급|로그아웃|인증|검증|확인하시|저장하시|바이어 제외|통역원 제외/.test(title);
   const page=!action;
   if(!page)return nativeShow();
   const parent=entries.get(route())?.parent||route(),matched=definition(parent,title),id=matched?.id||parent.split('-')[0]+'-'+(100000+parseInt(key(parent+'|'+title),36)),node=document.createElement('section');node.className='panel workflow-page-body';

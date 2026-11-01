@@ -7,3 +7,14 @@
 .pre01-stage-control{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.pre01-stage-control .btn{min-width:52px}.domestic-fields select{width:100%}.domestic-status:empty{display:none}
 
 .participant-review-title-status{display:inline-block;margin-left:12px;font-size:16px;font-weight:500;vertical-align:middle;white-space:nowrap}
+
+[data-domestic-new] .event-new-languages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;width:100%}[data-domestic-new] .buyer-phone,[data-domestic-new] .buyer-email{width:100%}@media(max-width:600px){[data-domestic-new] .event-new-languages{grid-template-columns:1fr}}
+
+#dialog:has([data-domestic-lookup]){width:min(940px,calc(100vw - 32px));max-width:940px}
+#dialog-content [data-domestic-new] .overseas-buyer-basic{display:grid;grid-template-columns:120px minmax(0,1fr) 120px minmax(0,1fr);margin:18px 0 0;border-top:1px solid #ddd;border-left:1px solid #ddd}
+#dialog-content [data-domestic-new] .overseas-buyer-basic>dt,#dialog-content [data-domestic-new] .overseas-buyer-basic>dd{margin:0;padding:12px;min-width:0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;display:flex;align-items:center;font-size:13px}
+#dialog-content [data-domestic-new] dt{background:#f4f4f4}#dialog-content [data-domestic-new] .event-field-wide-label{grid-column:1}#dialog-content [data-domestic-new] .event-field-wide{grid-column:2/-1}
+#dialog-content [data-domestic-new] .buyer-phone,#dialog-content [data-domestic-new] .buyer-email{display:flex;align-items:center;gap:8px;width:100%;min-width:0}
+#dialog-content [data-domestic-new] .buyer-phone input{flex:1;min-width:0}#dialog-content [data-domestic-new] .buyer-phone select{width:100px;flex:none}#dialog-content [data-domestic-new] .buyer-phone-international select{width:210px;max-width:42%}
+#dialog-content [data-domestic-new] .buyer-email input{flex:1;min-width:0}#dialog-content [data-domestic-new] .buyer-email select{width:150px;max-width:30%}
+@media(max-width:600px){#dialog-content [data-domestic-new] .overseas-buyer-basic{grid-template-columns:100px minmax(0,1fr)}#dialog-content [data-domestic-new] .buyer-phone,#dialog-content [data-domestic-new] .buyer-email{flex-wrap:wrap}#dialog-content [data-domestic-new] .buyer-phone-international select{width:100%;max-width:100%}#dialog-content [data-domestic-new] .buyer-email select{width:100%;max-width:100%}}
