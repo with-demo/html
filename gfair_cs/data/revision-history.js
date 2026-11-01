@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.57","date":"2026.11.02","accountName":"with","summary":"해외바이어 엑셀 현재 방한현황·변경일시 반영","changes":["엑셀 마지막 두 열을 현재방한현황·방한상태변경일시로 구성. 관련 Description 동기화, 기획비고 외 검정색 유지."]},
 {"screenId":"PRE-01","version":"v1.56","date":"2026.11.02","accountName":"with","summary":"Description JSON 원문 노출 오류 수정","changes":["기본값·필수여부 등 보조 필드가 생략된 기존 구조화 설명도 항목별로 표시하도록 공통 파서 호환 수정. 설명 본문·기획비고·핀 위치 보존."]},
 {"screenId":"PRE-01","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"해외바이어 Description 오류 정리 및 본문 검정색 적용","changes":["다운로드 항목·메모 미노출·권한·국가 기준자료 설명 정정. 기획비고만 빨간색 유지, 나머지 본문 검정색. 기존 설명 ID·핀·댓글 보존."]},
 {"screenId":"PRE-02","version":"v1.36","date":"2026.11.02","accountName":"with","summary":"해외바이어 Description 오류 정리 및 본문 검정색 적용","changes":["다운로드 항목·메모 미노출·권한·국가 기준자료 설명 정정. 기획비고만 빨간색 유지, 나머지 본문 검정색. 기존 설명 ID·핀·댓글 보존."]},
