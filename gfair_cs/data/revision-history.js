@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.50","date":"2026.11.02","accountName":"with","summary":"관리자 검토현황 11번 라벨 복원","changes":["관리자 제목 옆 상태 영역에 11번 라벨 연결. 참가검토중·참가확정 모두 표시하고 다른 사용구분에서는 미노출.","기존 설명 본문·11번 번호·댓글·다른 핀 위치 유지. 권한·표시조건 Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
 {"screenId":"PRE-02","version":"v1.32","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
 {"screenId":"NTC-07","version":"v1.33","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
