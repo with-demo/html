@@ -5,3 +5,5 @@
 .domestic-review-notice-head{display:flex;justify-content:space-between;align-items:center;gap:16px}.domestic-review-notice-head>strong{font-size:15px}.domestic-review-notice .domestic-status{flex-shrink:0}.domestic-review-notice p{margin-top:14px}@media(max-width:700px){.domestic-review-notice-head{align-items:flex-start;flex-direction:column;gap:12px}.domestic-review-notice .domestic-status{width:100%;justify-content:space-between;gap:12px}}
 
 .pre01-stage-control{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.pre01-stage-control .btn{min-width:52px}.domestic-fields select{width:100%}.domestic-status:empty{display:none}
+
+.participant-review-title-status{display:inline-block;margin-left:12px;font-size:16px;font-weight:500;vertical-align:middle;white-space:nowrap}
