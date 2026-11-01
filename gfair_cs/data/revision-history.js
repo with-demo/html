@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v1.31","date":"2026.11.01","accountName":"with","summary":"기본정보관리 정보 텍스트 조회","changes":["기본정보관리의 기본정보·기업정보·관심분야를 읽기 전용 텍스트로 연결. 통역원은 관리 항목인 기본정보만 표시.","바이어코드·통역원코드 및 참가이력 제외. 기존 행사 계정·QR 및 방한현황 유지."]},
+{"screenId":"EVT-03","version":"v1.31","date":"2026.11.01","accountName":"with","summary":"기본정보관리 정보 텍스트 조회","changes":["기본정보관리의 기본정보·기업정보·관심분야를 읽기 전용 텍스트로 연결. 통역원은 관리 항목인 기본정보만 표시.","바이어코드·통역원코드 및 참가이력 제외. 기존 행사 계정·QR 및 방한현황 유지."]},
+{"screenId":"EVT-04","version":"v1.31","date":"2026.11.01","accountName":"with","summary":"기본정보관리 정보 텍스트 조회","changes":["기본정보관리의 기본정보·기업정보·관심분야를 읽기 전용 텍스트로 연결. 통역원은 관리 항목인 기본정보만 표시.","바이어코드·통역원코드 및 참가이력 제외. 기존 행사 계정·QR 및 방한현황 유지."]},
 {"screenId":"EVT-01","version":"v1.44","date":"2026.11.01","accountName":"with","summary":"국내바이어 키워드 검색 범위 통일","changes":["키워드 검색 선택지를 전체 / 바이어명 / 내용으로 변경. 기본값·초기화는 전체.","내용은 상세 메모, 전체는 바이어명 및 메모 검색. 공통 검색 디자인과 통역원 조건 유지. Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.45","date":"2026.11.01","accountName":"with","summary":"통역 언어 검색 라벨 통일","changes":["검색 항목명과 미선택 선택창 문구를 통역 언어로 통일. 기존 공통 검색 셀 배치 및 다중 선택 유지. Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.44","date":"2026.11.01","accountName":"with","summary":"언어 검색필터 공통 디자인 복원","changes":["언어 라벨 회색 셀·입력 셀 여백 및 240px 선택창 너비를 공통 검색 디자인에 맞춤.","다중 선택 목록 잘림 해결. 좁은 화면의 셀 너비·검색·선택·초기화 유지. Description 동기화."]},
