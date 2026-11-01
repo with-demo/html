@@ -35,13 +35,14 @@
   const rows=[...body.rows].filter(row=>row.cells.length>1||row.cells[0]?.colSpan===1&&!row.querySelector('.empty'));
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
   let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
-  count.innerHTML='총 <strong>'+rows.length+'</strong>건 · 1/1page';
+  count.innerHTML='총 <strong>'+rows.length+'</strong>'+(route==='EVT-01'?'명':'건')+' · 1/1page';
   const exclude=main.querySelector('[data-master-exclude]');
   if(exclude&&['BAS-03','BAS-05','BAS-07'].includes(route)){
    const previous=exclude.parentElement,summary=document.createElement('div');summary.className='participant-bulk-summary';header.insertBefore(summary,count);summary.append(count,exclude);
    if(previous!==summary&&!previous.children.length)previous.remove();
   }
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
+  if(route==='EVT-01'){const edits=header.querySelector('.domestic-list-edits'),left=document.createElement('div');left.className='domestic-list-left';header.prepend(left);left.append(count);if(edits)left.append(edits);}
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
   const columnWidths=({'BAS-03':['60px','180px','auto','160px','180px'],'BAS-05':['60px','170px','26%','auto','180px'],'BAS-07':['60px','170px','26%','auto','180px'],'BAS-15':['60px','90px','120px','auto','150px','120px']})[route];
   if(columnWidths&&headers.length===columnWidths.length){
@@ -69,7 +70,7 @@
    if(['BAS-03','BAS-05','BAS-07'].includes(route)){const yearIndex=headers.indexOf('참가연도'),latestYear=row=>Math.max(0,...(clean(row.cells[yearIndex]||row).match(/20\d{2}/g)||[]).map(Number));ordered.sort((a,b)=>latestYear(b.row)-latestYear(a.row)||a.i-b.i);}else if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    if(stateKey)pre01Pages.set(stateKey,{page,size:perPage});
-   count.innerHTML='총 <strong>'+rows.length+'</strong>건 · '+page+'/'+pages+'page';
+   count.innerHTML='총 <strong>'+rows.length+'</strong>'+(route==='EVT-01'?'명':'건')+' · '+page+'/'+pages+'page';
    observer.disconnect();
    ordered.forEach(({row},i)=>{row.classList.toggle('journal-approval-priority',prioritize&&priority(row)===0);row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
    pagination.replaceChildren();
