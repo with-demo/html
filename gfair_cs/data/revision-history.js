@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-02","version":"v1.47","date":"2026.11.01","accountName":"with","summary":"키워드 검색 범위 전체·통역원명 적용","changes":["키워드 검색 선택지를 전체 / 통역원명으로 변경. 전체 기본값·초기화 및 통역 언어 다중 선택 유지.","관련 Description 동기화."]},
+{"screenId":"PRE-01","version":"v1.46","date":"2026.11.01","accountName":"with","summary":"참가 대상 검토 안내 문구 수정","changes":["해외바이어 안내 문구를 ※ 참가확정이후 방한상태를 관리할 수 있습니다.로 변경.","관련 Description 동기화."]},
 {"screenId":"EVT-03","version":"v1.32","date":"2026.11.01","accountName":"with","summary":"행사 상세 임시 PW 항목 미노출","changes":["모든 역할에서 상세 임시 PW 항목 제거. ID는 전체 행 표시, 기존 ID·QR·기본정보 조회 유지.","관련 Description 동기화."]},
 {"screenId":"EVT-04","version":"v1.32","date":"2026.11.01","accountName":"with","summary":"행사 상세 임시 PW 항목 미노출","changes":["모든 역할에서 상세 임시 PW 항목 제거. ID는 전체 행 표시, 기존 ID·QR·기본정보 조회 유지.","관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.47","date":"2026.11.01","accountName":"with","summary":"키워드 검색 내용 선택지 제거","changes":["키워드 검색 셀렉트의 내용 선택지 제거. 나머지 옵션·전체 통합 검색 범위와 공통 디자인 유지.","관련 Description 동기화."]},
