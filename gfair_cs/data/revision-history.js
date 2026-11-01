@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.59","date":"2026.11.02","accountName":"with","summary":"확정 전 해외바이어 목록 방한현황 대시 표시","changes":["최종확정 전 목록 방한현황은 - 표시. 확정 후 기존 상태와 변경 기능 유지. 사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-01","version":"v1.58","date":"2026.11.02","accountName":"with","summary":"해외바이어 목록 기업명 추가","changes":["바이어명과 국가 사이 기업명 열 추가. 기본정보관리의 동일 바이어 기업명 연계. 사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-01","version":"v1.57","date":"2026.11.02","accountName":"with","summary":"해외바이어 엑셀 현재 방한현황·변경일시 반영","changes":["엑셀 마지막 두 열을 현재방한현황·방한상태변경일시로 구성. 관련 Description 동기화, 기획비고 외 검정색 유지."]},
 {"screenId":"PRE-01","version":"v1.56","date":"2026.11.02","accountName":"with","summary":"Description JSON 원문 노출 오류 수정","changes":["기본값·필수여부 등 보조 필드가 생략된 기존 구조화 설명도 항목별로 표시하도록 공통 파서 호환 수정. 설명 본문·기획비고·핀 위치 보존."]},
