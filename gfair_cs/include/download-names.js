@@ -11,5 +11,5 @@
   paint.font=font;paint.fillStyle='#555';paint.textAlign='center';paint.textBaseline='top';lines.forEach((text,i)=>paint.fillText(text,size/2,size+4+i*16));return canvas.toDataURL('image/png');
  };
 
- window.GFAIR_DOWNLOAD_NAMES={safe,date,png,template:(year,type)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_등록양식_'+date()+'.xlsx',list:(year,type,selected=false)=>'G-FAIR_'+safe(year)+'_'+category(type)+(selected?'_선택':'')+'_'+date()+'.xlsx',qrZip:(year,type,selected)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_'+(selected?'선택':'전체')+'QR코드.zip',qrImage:(name,id)=>safe(name)+'_'+safe(id)+'_qr코드.png'};
+ window.GFAIR_DOWNLOAD_NAMES={safe,date,png,participants:(year,type)=>'G-FAIR_'+safe(year)+'_참가_'+category(type)+'_'+date()+'.xlsx',template:(year,type)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_등록양식_'+date()+'.xlsx',list:(year,type,selected=false)=>'G-FAIR_'+safe(year)+'_'+category(type)+(selected?'_선택':'')+'_'+date()+'.xlsx',qrZip:(year,type,selected)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_'+(selected?'선택':'전체')+'QR코드.zip',qrImage:(name,id)=>safe(name)+'_'+safe(id)+'_qr코드.png'};
 })();

@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.49","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},
+{"screenId":"EVT-02","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},
+{"screenId":"PRE-01","version":"v1.47","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"바이어 추가 Description 작성 및 라벨 재정렬","changes":["바이어 추가 버튼의 팝업·이름 생년월일 확인·신규 등록·권한 및 최종확정 전후 동작 Description 작성.","선택 바이어 제외 다음에 바이어 추가를 05번으로 배치하고 나머지 라벨·Description 순서 동기화. 기존 설명·댓글·핀 위치 유지."]},
 {"screenId":"EVT-02","version":"v1.47","date":"2026.11.01","accountName":"with","summary":"키워드 검색 범위 전체·통역원명 적용","changes":["키워드 검색 선택지를 전체 / 통역원명으로 변경. 전체 기본값·초기화 및 통역 언어 다중 선택 유지.","관련 Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.46","date":"2026.11.01","accountName":"with","summary":"참가 대상 검토 안내 문구 수정","changes":["해외바이어 안내 문구를 ※ 참가확정이후 방한상태를 관리할 수 있습니다.로 변경.","관련 Description 동기화."]},
