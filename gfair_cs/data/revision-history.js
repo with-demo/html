@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.46","date":"2026.11.01","accountName":"with","summary":"구매상담 운영용역사 화면 순서로 라벨·Description 정렬","changes":["참가 검토 안내·최종확정·검색필터·선택 바이어 제외·다운로드·목록·QR보기 순서로 라벨과 Description 동기화.","설명 본문·기획비고·핀 위치·댓글·ID 유지. 확정 후 노출되는 QR 항목도 같은 기준으로 번호 부여."]},
 {"screenId":"EVT-01","version":"v1.45","date":"2026.11.01","accountName":"with","summary":"회원 추가 확인 기준 및 필수 입력·버튼명 변경","changes":["이름+생년월일 정확 일치로 기존 회원 확인. 불일치 시 기본정보관리 필수 항목만 입력받고 연락처·이메일은 동일 등록 폼 사용.","바이어 추가·선택 바이어 제외, 통역원 추가·선택 통역원 제외로 명칭 통일. 중복·개인정보 보호·최종확정 차단 유지. 관련 Description·컨펌 동기화."]},
 {"screenId":"PRE-01","version":"v1.44","date":"2026.11.01","accountName":"with","summary":"회원 추가 확인 기준 및 필수 입력·버튼명 변경","changes":["이름+생년월일 정확 일치로 기존 회원 확인. 불일치 시 기본정보관리 필수 항목만 입력받고 연락처·이메일은 동일 등록 폼 사용.","바이어 추가·선택 바이어 제외, 통역원 추가·선택 통역원 제외로 명칭 통일. 중복·개인정보 보호·최종확정 차단 유지. 관련 Description·컨펌 동기화."]},
 {"screenId":"EVT-02","version":"v1.46","date":"2026.11.01","accountName":"with","summary":"회원 추가 확인 기준 및 필수 입력·버튼명 변경","changes":["이름+생년월일 정확 일치로 기존 회원 확인. 불일치 시 기본정보관리 필수 항목만 입력받고 연락처·이메일은 동일 등록 폼 사용.","바이어 추가·선택 바이어 제외, 통역원 추가·선택 통역원 제외로 명칭 통일. 중복·개인정보 보호·최종확정 차단 유지. 관련 Description·컨펌 동기화."]},
