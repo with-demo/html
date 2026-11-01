@@ -284,3 +284,6 @@ GFAIR_MESSAGE_SPECS.push(...[
     "source": "include/buyer-profile-fields.js"
   }
 ]);
+
+// 국내바이어 최종 참가 확정안의 확인창 정의.
+for(const spec of window.GFAIR_MESSAGE_SPECS||[]){if(spec.key==="lifecycle-issue-EVT-01")Object.assign(spec,{title:"최종 참가 확정 · 계정발급",trigger:"구매상담 운영용역사가 최종 참가 확정 · 계정발급 클릭",message:"{행사연도}년 국내바이어 {N}명을 최종 참가자로 확정하고, 계정 미발급 {M}명의 계정을 발급하시겠습니까? 기존 발급 계정은 유지됩니다.",buttons:"취소 / 최종 확정 · 계정발급",confirm:"현재 명단 전체 최종 확정 및 미발급 계정만 발급. 기존 계정 유지."});if(spec.key==="lifecycle-exclude-EVT-01")Object.assign(spec,{message:"{행사연도}년 행사에서 선택한 {N}명을 제외하시겠습니까? 회원정보와 기존 발급 계정·과거 참가이력은 유지됩니다.",confirm:"현재 행사에서 제외하고 명단을 확정 대기로 변경. 회원정보·기존 계정·과거 이력 유지."});}

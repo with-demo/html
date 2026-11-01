@@ -3,6 +3,7 @@ Total output lines: 2402
 
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.20","date":"2026.11.01","accountName":"with","summary":"국내바이어 참가 명단 검토·회원추가·최종 확정 흐름 제안","changes":["이름·휴대전화번호 정확 일치 확인 후 기존 회원 참가 추가 또는 신규 회원 등록. 전체 회원 POOL 미노출.","선택 미참여 처리 후 현재 명단 전체를 최종 확정하고 미발급 계정만 발급.","명단 추가·제외 시 재확정하며 기존 계정과 회원정보·과거 이력 유지. 해외바이어·통역원은 기존 흐름 유지."]},
 {"screenId":"SET-02","version":"v0.23","date":"2026.11.01","accountName":"with","summary":"등록·상세 진입에 따라 상단 제목 구분","changes":["등록 시 그룹 등록, 상세 진입 시 그룹 상세로 상단 및 브라우저 제목 표시.","관련 화면 개요에 제목 표시 기준 추가."]},
 {"screenId":"SET-01","version":"v0.32","date":"2026.11.01","accountName":"with","summary":"그룹 목록 항목 및 그룹명 검색 변경","changes":["No 삭제 후 그룹명·허용메뉴수·등록일·사용여부·관리 순으로 표시.","키워드 검색을 그룹명 검색으로 변경하고 검색 범위 셀렉트 제거.","관련 Description 문구와 연결 위치만 수정하고 기존 내용 유지."]},
 {"screenId":"BAS-05","version":"v1.50","date":"2026.10.31","accountName":"with","summary":"국내바이어 목록 기업 항목명 변경","changes":["목록 및 검색 범위의 소속기업을 기업으로 변경.","관련 Description은 해당 용어만 변경하고 기존 내용 유지."]},

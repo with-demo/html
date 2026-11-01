@@ -37,7 +37,7 @@
   document.addEventListener('click',ev=>{if(ev.target.closest('.event-participant-list .admin-list-pagination'))requestAnimationFrame(syncAll);});
   document.addEventListener('change',ev=>{if(ev.target.closest('.event-participant-list .admin-list-tools select'))requestAnimationFrame(syncAll);});
   window.addEventListener('hashchange',()=>{state.selected.clear();});
-  return {list,detail};
+  return window.GFAIR_DOMESTIC_REVIEW?window.GFAIR_DOMESTIC_REVIEW.create(ctx,{list,detail}):{list,detail};
  }
  window.GFAIR_EVENT_PARTICIPANTS={create,eligible};
 })();
