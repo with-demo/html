@@ -599,4 +599,7 @@ const pre04Matching=window.GFAIR_PRE04_MATCHING.create({source:id=>rows(map.get(
 window.GFAIR_CURRENT_MATCHING=pre04Matching;
 const pre04BaseList=list;list=function(s){return s.id==='PRE-04'?head(s)+pre04Matching.list():pre04BaseList(s)};
 openPreMatching=()=>pre04Matching.openFirst();delete target['PRE-04'];
+
+// 통역원은 행사정보의 해외바이어 목록·상세를 렌더링하기 전에 차단한다.
+const foreignAccessRender=render;render=function(){const requested=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'MON-01';if(role==='interpreter'&&/^PRE-0[12](?:$|-p)/.test(requested)){current=requested;const s=map.get(requested.replace(/-p\d+$/,''))||map.get('PRE-01');document.title='접근 제한 · G-FAIR KOREA';root.innerHTML=shell(s,head(s)+'<section class="panel pad" data-foreign-access-denied><h2>이 역할에서 이용할 수 없는 메뉴입니다.</h2><p>통역원은 해외바이어 목록 및 상세페이지를 조회할 수 없습니다.</p>'+A('MON-01','이용 가능한 메뉴로')+'</section>');return;}foreignAccessRender();};
 render();})();

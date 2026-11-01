@@ -179,14 +179,14 @@ window.GFAIR_PERMISSION_REFERENCE={
     "buyOperator": "X",
     "buyer": "X",
     "exportOperator": "O",
-    "interpreter": "O"
+    "interpreter": "X"
   },
   "PRE-02": {
     "admin": "O",
     "buyOperator": "X",
     "buyer": "X",
     "exportOperator": "O",
-    "interpreter": "O"
+    "interpreter": "X"
   },
   "EVT-01": {
     "admin": "O",

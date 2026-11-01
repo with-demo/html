@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
+{"screenId":"PRE-02","version":"v1.32","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
+{"screenId":"NTC-07","version":"v1.33","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.49","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.47","date":"2026.11.01","accountName":"with","summary":"행사 참가자 엑셀 파일명에 참가 추가","changes":["G-FAIR_행사연도_참가_회원구분_다운로드일자(YYYYMMDD).xlsx 형식 적용. 다운로드일자는 한국 시간 기준.","기존 엑셀 데이터·대상 및 기본정보관리 다운로드 파일명 유지. 관련 Description 동기화."]},

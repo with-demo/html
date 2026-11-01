@@ -95,7 +95,7 @@ window.GFAIR_MENU=[
           "admin": "O",
           "buyOperator": "X",
           "exportOperator": "O",
-          "interpreter": "O",
+          "interpreter": "X",
           "buyer": "X"
         }
       ],
