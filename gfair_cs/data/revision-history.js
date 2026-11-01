@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.49","date":"2026.11.02","accountName":"with","summary":"국내바이어 기준 공통 동작·Description·라벨 정렬","changes":["참가 검토 안내·최종확정·검색·제외·추가·다운로드·목록·QR보기·관리자 상태의 공통 Description과 라벨 순서를 국내바이어 기준으로 정리.","전체 검색은 기본정보 전체 대상, 전체 QR은 현재 검색 결과 대상. 해외바이어 엑셀은 기본·기업·관심분야와 기존 방한정보 포함.","국가·방한현황·통역언어·QR 전용 및 계정 정책과 통역원 해외바이어 조회 차단 유지."]},
+{"screenId":"EVT-02","version":"v1.49","date":"2026.11.02","accountName":"with","summary":"국내바이어 기준 공통 동작·Description·라벨 정렬","changes":["참가 검토 안내·최종확정·검색·제외·추가·다운로드·목록·QR보기·관리자 상태의 공통 Description과 라벨 순서를 국내바이어 기준으로 정리.","전체 검색은 기본정보 전체 대상, 전체 QR은 현재 검색 결과 대상. 해외바이어 엑셀은 기본·기업·관심분야와 기존 방한정보 포함.","국가·방한현황·통역언어·QR 전용 및 계정 정책과 통역원 해외바이어 조회 차단 유지."]},
 {"screenId":"EVT-01","version":"v1.50","date":"2026.11.02","accountName":"with","summary":"관리자 검토현황 11번 라벨 복원","changes":["관리자 제목 옆 상태 영역에 11번 라벨 연결. 참가검토중·참가확정 모두 표시하고 다른 사용구분에서는 미노출.","기존 설명 본문·11번 번호·댓글·다른 핀 위치 유지. 권한·표시조건 Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.48","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
 {"screenId":"PRE-02","version":"v1.32","date":"2026.11.01","accountName":"with","summary":"통역원 해외바이어 조회 제한","changes":["통역원 행사정보 해외바이어 메뉴 미노출, 목록·상세 직접 URL 및 역할 전환 시 접근 차단.","통역원 알림의 해외바이어 목록·상세 바로가기 미노출. 관리자·수출상담 운영용역사 조회 유지. 관련 Description 동기화."]},
