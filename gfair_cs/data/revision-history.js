@@ -3,6 +3,7 @@ Total output lines: 2402
 
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-02","version":"v0.23","date":"2026.11.01","accountName":"with","summary":"등록·상세 진입에 따라 상단 제목 구분","changes":["등록 시 그룹 등록, 상세 진입 시 그룹 상세로 상단 및 브라우저 제목 표시.","관련 화면 개요에 제목 표시 기준 추가."]},
 {"screenId":"SET-01","version":"v0.32","date":"2026.11.01","accountName":"with","summary":"그룹 목록 항목 및 그룹명 검색 변경","changes":["No 삭제 후 그룹명·허용메뉴수·등록일·사용여부·관리 순으로 표시.","키워드 검색을 그룹명 검색으로 변경하고 검색 범위 셀렉트 제거.","관련 Description 문구와 연결 위치만 수정하고 기존 내용 유지."]},
 {"screenId":"BAS-05","version":"v1.50","date":"2026.10.31","accountName":"with","summary":"국내바이어 목록 기업 항목명 변경","changes":["목록 및 검색 범위의 소속기업을 기업으로 변경.","관련 Description은 해당 용어만 변경하고 기존 내용 유지."]},
 {"screenId":"BAS-15","version":"v2.40","date":"2026.10.31","accountName":"with","summary":"운영용역사 상태 원을 연도 앞으로 이동","changes":["기업명 앞 상태 원을 같은 행의 연도 텍스트 바로 앞으로 이동.","상태 산정·간격·기업명 상세 이동 등 기존 동작 유지. 관련 설명의 위치 문구만 변경."]},
