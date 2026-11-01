@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-02","version":"v1.45","date":"2026.11.01","accountName":"with","summary":"통역 언어 검색 라벨 통일","changes":["검색 항목명과 미선택 선택창 문구를 통역 언어로 통일. 기존 공통 검색 셀 배치 및 다중 선택 유지. Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.44","date":"2026.11.01","accountName":"with","summary":"언어 검색필터 공통 디자인 복원","changes":["언어 라벨 회색 셀·입력 셀 여백 및 240px 선택창 너비를 공통 검색 디자인에 맞춤.","다중 선택 목록 잘림 해결. 좁은 화면의 셀 너비·검색·선택·초기화 유지. Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.43","date":"2026.11.01","accountName":"with","summary":"키워드 검색 범위 변경","changes":["키워드 검색 범위를 전체 / 바이어명 / 내용으로 변경.","내용은 상세 메모 검색, 전체는 바이어명과 메모 검색. 국가·이동상태와 AND 조건 유지. Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.43","date":"2026.11.01","accountName":"with","summary":"언어 검색 복수 선택 적용","changes":["해외바이어 국가와 동일한 검색·체크박스·선택 칩 다중 선택 UI 적용.","선택 언어끼리 OR, 키워드와 AND 검색. 미선택 전체 조회, 초기화 전체 해제. Description 동기화."]},
