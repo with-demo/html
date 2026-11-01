@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.41","date":"2026.11.01","accountName":"with","summary":"참가 대상 검토 안내의 현재상태 문구 제거","changes":["국내바이어·통역원과 동일하게 현재상태 텍스트를 제거하고 최종확정 버튼만 유지.","해외바이어 최종확정 후 기존 방한현황판 표시. 새로고침 시 확정 전 화면으로 복원. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.26","date":"2026.11.01","accountName":"with","summary":"검토 안내의 현재상태 문구 제거","changes":["검토 안내에서 현재상태 문구를 제거하고 최종확정 버튼만 유지."]},
 {"screenId":"PRE-01","version":"v1.40","date":"2026.11.01","accountName":"with","summary":"해외바이어 QR 전용 최종확정 및 방한현황 관리 흐름 적용","changes":["기존 검색 유지, 체크·바이어명·국가·방한현황(변경)·상태변경일시·QR 열로 구성.","수출상담 운영용역사의 QR 전용 최종확정, 참여자 추가·미참여, 확정 후 방한현황 변경 적용.","새로고침 시 확정대기·QR 미발급 화면으로 복원. 관련 Description·컨펌 동기화."]},
 {"screenId":"EVT-02","version":"v1.20","date":"2026.11.01","accountName":"with","summary":"통역원 언어 검색 및 최종 참가 확정 흐름 적용","changes":["원본 언어 104개 검색 조건 추가, 체크·통역원명·언어·발급 ID·QR 열로 구성.","최종확정 시 미발급 GI 계정·QR 생성, 확정 전 참여자 추가·미참여 및 확정 후 변경 차단.","새로고침 시 확정 전 표시로 복원. 관련 Description·컨펌 동기화."]},
