@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-01","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"해외바이어 Description 오류 정리 및 본문 검정색 적용","changes":["다운로드 항목·메모 미노출·권한·국가 기준자료 설명 정정. 기획비고만 빨간색 유지, 나머지 본문 검정색. 기존 설명 ID·핀·댓글 보존."]},
+{"screenId":"PRE-02","version":"v1.36","date":"2026.11.02","accountName":"with","summary":"해외바이어 Description 오류 정리 및 본문 검정색 적용","changes":["다운로드 항목·메모 미노출·권한·국가 기준자료 설명 정정. 기획비고만 빨간색 유지, 나머지 본문 검정색. 기존 설명 ID·핀·댓글 보존."]},
+{"screenId":"PRE-01-p39","version":"v0.12","date":"2026.11.02","accountName":"with","summary":"해외바이어 Description 오류 정리 및 본문 검정색 적용","changes":["다운로드 항목·메모 미노출·권한·국가 기준자료 설명 정정. 기획비고만 빨간색 유지, 나머지 본문 검정색. 기존 설명 ID·핀·댓글 보존."]},
 {"screenId":"EVT-01","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
 {"screenId":"PRE-01","version":"v1.54","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
 {"screenId":"EVT-02","version":"v1.55","date":"2026.11.02","accountName":"with","summary":"참가 검토 안내 대상 명칭 변경","changes":["안내의 참가할 회원을 메뉴에 맞게 참가할 바이어·참가할 통역원으로 변경. 사용자 요청에 따라 개요·Description 미수정."]},
