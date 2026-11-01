@@ -1,5 +1,14 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-01","version":"v1.52","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"PRE-01","version":"v1.51","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"EVT-02","version":"v1.51","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"EVT-03","version":"v1.34","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"PRE-02","version":"v1.34","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"EVT-04","version":"v1.34","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"EVT-01-p39","version":"v1.01","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"PRE-01-p39","version":"v0.11","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
+{"screenId":"EVT-02-p39","version":"v0.11","date":"2026.11.02","accountName":"with","summary":"참가자 Description 오류 점검·정정","changes":["화면과 다른 버튼명·컨펌·업로드 갱신·다운로드 설명, 메뉴별 복사 오류와 중복 문구 정정. 기존 설명 ID·댓글·핀 위치 보존."]},
 {"screenId":"EVT-01","version":"v1.51","date":"2026.11.02","accountName":"with","summary":"추가 팝업을 기본정보관리 엑셀 업로드와 통일","changes":["기본정보관리의 동일 등록양식·등록정보 시트·파일 검증·정상 반영·오류 요약 흐름 사용. 이름+생년월일 기존 회원 갱신 및 신규 추가.","관련 Description·연결 라벨 및 알럿 정의 동기화."]},
 {"screenId":"PRE-01","version":"v1.50","date":"2026.11.02","accountName":"with","summary":"추가 팝업을 기본정보관리 엑셀 업로드와 통일","changes":["기본정보관리의 동일 등록양식·등록정보 시트·파일 검증·정상 반영·오류 요약 흐름 사용. 이름+생년월일 기존 회원 갱신 및 신규 추가.","관련 Description·연결 라벨 및 알럿 정의 동기화."]},
 {"screenId":"EVT-02","version":"v1.50","date":"2026.11.02","accountName":"with","summary":"추가 팝업을 기본정보관리 엑셀 업로드와 통일","changes":["기본정보관리의 동일 등록양식·등록정보 시트·파일 검증·정상 반영·오류 요약 흐름 사용. 이름+생년월일 기존 회원 갱신 및 신규 추가.","관련 Description·연결 라벨 및 알럿 정의 동기화."]},
