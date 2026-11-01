@@ -15,14 +15,14 @@ inputs.slice(1).forEach(input=>{const field=input.closest('.field');if(field&&fi
 const keywords=[];
 inputs.slice(0,1).forEach(input=>{const field=input.closest('.field')||input.parentElement;if(field===form)return;field.classList.add('search-keyword');const caption=field.querySelector(':scope>span');const title=caption?.textContent.trim()||'키워드';if(caption)caption.textContent=form.dataset.searchLabel||'키워드 검색';
 const controls=document.createElement('div');controls.className='search-keyword-controls';const select=document.createElement('select');select.setAttribute('aria-label','키워드 검색 범위');
-let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textContent.trim()).filter(t=>/제목|내용|기업|바이어|이름|소속|관리자 ID|담당자|행사명|국가/.test(t));if(location.hash.includes('NTC-01'))labels=['제목','내용','작성자'];if((location.hash.slice(1)||document.body.dataset.screen)==='BAS-01')labels=['박람회 명칭','전시관구분'];
+let labels=[...app.querySelectorAll('#content table thead th')].map(e=>e.textContent.trim()).filter(t=>/제목|내용|기업|바이어|이름|소속|관리자 ID|담당자|행사명|국가/.test(t));if(location.hash.includes('NTC-01'))labels=['제목','작성자'];if((location.hash.slice(1)||document.body.dataset.screen)==='BAS-01')labels=['박람회 명칭','전시관구분'];
 if(location.hash.slice(1)==='BAS-03')labels=['바이어코드','바이어명'];if(location.hash.slice(1)==='BAS-07')labels=['통역원코드','통역원명'];
 if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
-if(location.hash.slice(1)==='PRE-01')labels=['바이어명','내용'];
+if(location.hash.slice(1)==='PRE-01')labels=['바이어명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','기업'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];
 if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];if(location.hash.slice(1)==='BAS-09')labels=['참가기업','사업자 번호','부스번호','담당자'];
-[...new Set(['전체',...labels].filter(Boolean))].forEach(t=>select.add(new Option(t,t)));select.value=scopes.get(key(form,input))||'전체';select.addEventListener('change',()=>scopes.set(key(form,input),select.value));
+[...new Set(['전체',...labels].filter(t=>t&&t!=='내용'))].forEach(t=>select.add(new Option(t,t)));select.value=[...select.options].some(o=>o.value===scopes.get(key(form,input)))?scopes.get(key(form,input)):'전체';scopes.set(key(form,input),select.value);select.addEventListener('change',()=>scopes.set(key(form,input),select.value));
 input.placeholder=form.dataset.searchPlaceholder||'검색어를 입력해 주세요';if(form.hasAttribute('data-keyword-only'))controls.append(input);else controls.append(select,input);field.append(controls);keywords.push(field);});
 [...form.querySelectorAll(':scope>.row')].filter(e=>!e.children.length).forEach(e=>e.remove());keywords.forEach(f=>form.append(f));form.append(actions);
 [...form.children].filter(e=>e.matches('.field,fieldset')&&!e.classList.contains('search-keyword')).forEach(field=>{field.classList.add('search-condition');const caption=field.querySelector(':scope>legend,:scope>span,:scope>label');if(!caption)return;caption.classList.add('search-condition-caption');const controls=document.createElement('div');controls.className='search-condition-controls';[...field.childNodes].filter(n=>n!==caption).forEach(n=>controls.append(n));field.append(controls);});
