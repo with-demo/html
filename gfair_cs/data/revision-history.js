@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"EVT-02","version":"v1.43","date":"2026.11.01","accountName":"with","summary":"언어 검색 복수 선택 적용","changes":["해외바이어 국가와 동일한 검색·체크박스·선택 칩 다중 선택 UI 적용.","선택 언어끼리 OR, 키워드와 AND 검색. 미선택 전체 조회, 초기화 전체 해제. Description 동기화."]},
 {"screenId":"PRE-01","version":"v1.42","date":"2026.11.01","accountName":"with","summary":"관리자 참가 검토 상태 제목 표시","changes":["관리자 화면에서 참가 대상 검토 안내 영역 전체 미노출. 용역사 안내 및 최종확정 동작 유지.","관리자 화면 제목 옆에 [참가검토중] 또는 [참가확정] 표시. 관련 Description 동기화."]},
 {"screenId":"EVT-01","version":"v1.43","date":"2026.11.01","accountName":"with","summary":"관리자 참가 검토 상태 제목 표시","changes":["관리자 화면에서 참가 대상 검토 안내 영역 전체 미노출. 용역사 안내 및 최종확정 동작 유지.","관리자 화면 제목 옆에 [참가검토중] 또는 [참가확정] 표시. 관련 Description 동기화."]},
 {"screenId":"EVT-02","version":"v1.42","date":"2026.11.01","accountName":"with","summary":"관리자 참가 검토 상태 제목 표시","changes":["관리자 화면에서 참가 대상 검토 안내 영역 전체 미노출. 용역사 안내 및 최종확정 동작 유지.","관리자 화면 제목 옆에 [참가검토중] 또는 [참가확정] 표시. 관련 Description 동기화."]},
