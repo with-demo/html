@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-16","version":"v0.10","date":"2026.11.02","accountName":"shyuwith","summary":"응답결과 제목 하단 중복 안내 제거","changes":["설문명·대상·조회 응답 건수 안내 문구 제거. 통계·이력 조회 기능 유지."]},
 {"screenId":"SET-05","version":"v0.39","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
 {"screenId":"SET-11","version":"v0.24","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
 {"screenId":"SET-12","version":"v0.25","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
