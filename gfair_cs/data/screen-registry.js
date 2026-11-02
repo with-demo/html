@@ -23,9 +23,9 @@ window.GFAIR_SCREEN_REGISTRY=[
   },
   {
     "id": "SET-12",
-    "title": "설문 수정",
+    "title": "설문 상세",
     "parent": "SET-05",
-    "summary": "설문 수정 화면에서 대상 정보와 처리 내용을 확인합니다.",
+    "summary": "등록된 설문의 기본정보와 문항을 조회하고 수정합니다.",
     "kind": "workflow",
     "match": "설문 수정",
     "selector": "[data-action=sur-edit]",

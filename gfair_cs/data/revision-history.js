@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-12","version":"v0.21","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세로 화면명 통일 및 중복 제목 제거","changes":["SET-12 페이지명·화면 선택·현재 위치를 설문 상세로 통일.","본문 안의 설문관리 제목과 중복 경로 제거. 기존 수정·저장 동작 유지."]},
 {"screenId":"SET-13","version":"v0.4","date":"2026.11.02","accountName":"shyuwith","summary":"설문 미리보기 팝업 ID SET-13 통일","changes":["설문 목록·등록·수정의 미리보기 표시 ID와 설명 연결을 SET-13으로 통일.","기존 SET-05-p12의 설명·댓글·수정 이력은 유지하여 SET-13에서 함께 조회.","이전 SET-05-p12 진입 주소는 SET-13 미리보기로 연결."]},
 {"screenId":"PRE-04-p32","version":"v0.13","date":"2026.11.02","accountName":"with","summary":"매칭 후보 목록 긴급알림 체크박스 추가","changes":["매칭 열 옆 긴급 열 및 긴급알림 체크박스 제공. 현재 담당자 행 비활성, 검색·페이지 이동 중 선택 유지.","긴급 선택값을 목업 매칭 콜백에 전달. 실제 알림 발송 연결 없음. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.12","date":"2026.11.02","accountName":"with","summary":"현재 담당 통역원 목록 첫 행 고정","changes":["검색 및 페이지 이동 시 현재 담당자를 목록 첫 행에 고정하고 매칭 버튼 비활성화.","다른 바이어에게 매칭된 통역원은 후보 제외, 현재 담당자 포함 10명 단위 표시. Description·기획비고 미수정."]},
