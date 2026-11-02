@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-13","version":"v0.11","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 안내 문구 통일","changes":["조건부 문항 아래에 ({문항 번호}번 ‘{질문명}’에서 ‘{선택값}’을 선택한 경우 응답) 형식으로 표시. 실제 설문의 기존 안내 형식과 통일."]},
 {"screenId":"BAS-09","version":"v0.50","date":"2026.11.02","accountName":"with","summary":"참가기업 목록 열 순서·QR보기 변경","changes":["체크박스·부스번호·참가기업·메인 카테고리·담당자·연락처·QR 순서로 변경. 목록 사업자번호 열 미노출.","QR 버튼 및 팝업 제목 QR보기 적용. 원본 데이터·상세·선택·다운로드 유지. 화면만 수정."]},
 {"screenId":"SET-16","version":"v0.16","date":"2026.11.02","accountName":"shyuwith","summary":"공공기관·민간기업 혼합 예시 응답 구성","changes":["국내 바이어 60건을 공공기관 30건·민간기업 30건으로 분배.","소속기업유형 문항은 민간기업 응답 30건만 집계하여 조건부 응답 기준 표시. 기존 직접 작성된 응답은 유지."]},
 {"screenId":"SET-13","version":"v0.10","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 상시 표시·비활성 및 별표 제거","changes":["조건부 문항의 별표를 제거하고 조건 안내 문구로 응답 대상 안내.","참여 화면에서 모든 문항을 유지하고 조건 미충족·선행 미응답 문항은 비활성 처리.","비활성 문항 답변 초기화 및 필수 검사 제외. 조건 충족 시 입력 활성화."]},
