@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리."]},
+{"screenId":"SET-12","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리."]},
 {"screenId":"SET-11","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록 기본값 행사관리 연계·설명 정리","changes":["연도와 조사 시작일에 진행 행사 연도와 행사 마지막 날을 기본 표시. 상세 등록값 유지.","기본정보·설문정보·문항구분·표시조건·부가정보·응답 후 수정제한·페이지 작업을 등록/상세 공통 설명으로 작성."]},
 {"screenId":"SET-12","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 공통 디스크립션 정리","changes":["BAS-18 형식에 맞춰 기능상세·기본정책 중심으로 작성하고 등록/상세 차이 구분.","응답이 있는 설문은 조회 전용 및 복사 등록 정책 명시."]},
 {"screenId":"SET-13","version":"v0.11","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 안내 문구 통일","changes":["조건부 문항 아래에 ({문항 번호}번 ‘{질문명}’에서 ‘{선택값}’을 선택한 경우 응답) 형식으로 표시. 실제 설문의 기존 안내 형식과 통일."]},

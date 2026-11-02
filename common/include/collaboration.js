@@ -7,9 +7,12 @@
  let token=sessionStorage.getItem(TOKEN)||'',user=null,records=[],screen='',snapshot='',activeRequest=null,loading=false,githubReady=false;
  const changed=()=>window.dispatchEvent(new Event('collaboration-updated'));
  const current=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
+ // 설문 등록·상세는 화면 ID를 유지하고 SET-11의 Description을 공동 편집한다.
+ // 기존 SET-12 저장 이력은 삭제하지 않는다.
+ const descriptionScreen=id=>PROJECT==='gfair_cs'&&id==='SET-12'?'SET-11':id;
  async function api(op,body,options={}){
-  const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:options.route||current()}));
-  const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body}):undefined});
+  const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:descriptionScreen(options.route||current())}));
+  const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body,...(typeof body.screen==='string'?{screen:descriptionScreen(body.screen)}:{})}):undefined});
   let result;try{result=await response.json();}catch{throw Error('공동작업 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.');}
   if(!response.ok){if(response.status===401){token='';user=null;records=[];sessionStorage.removeItem(TOKEN);changed();if(op==='list'&&!body)return api('list',undefined,options);}throw Error(result.error||'요청을 처리하지 못했습니다.');}return result;
  }
