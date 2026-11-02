@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-06","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 만족도 조사 첫 행 표시","changes":["응답관리 목록에서 국내 바이어 설문을 우선 표시하고 나머지 설문의 기존 순서를 유지. 설문관리 목록 순서와 검색 조건은 유지."]},
 {"screenId":"SET-11","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리. 앵커 변경으로 번호가 화면 밖에 놓인 경우 표시 위치 보정."]},
 {"screenId":"SET-12","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리. 앵커 변경으로 번호가 화면 밖에 놓인 경우 표시 위치 보정."]},
 {"screenId":"SET-11","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록 기본값 행사관리 연계·설명 정리","changes":["연도와 조사 시작일에 진행 행사 연도와 행사 마지막 날을 기본 표시. 상세 등록값 유지.","기본정보·설문정보·문항구분·표시조건·부가정보·응답 후 수정제한·페이지 작업을 등록/상세 공통 설명으로 작성."]},
