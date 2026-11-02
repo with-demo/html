@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-06","version":"v0.33","date":"2026.11.02","accountName":"shyuwith","summary":"대상별 고정 우선순위 제거","changes":["연도 내림차순 유지. 국내 바이어 우선 정렬을 공통 정책·실제 정렬 로직에서 제거.","기본정책·기획비고의 국내 바이어 우선 표시 문구 정리."]},
 {"screenId":"SET-05","version":"v0.40","summary":"설문관리 전체 연도 조회·관리","changes":["상단 행사 선택에 따른 연도 제한 제거. 최신 연도순으로 전체 설문 조회, 대상·사용여부·키워드 검색 유지.","2025~2022 과거 예시는 해당 연도 데이터가 없을 때만 추가하며 기존 설문·응답은 보존."],"date":"2026.11.02","accountName":"shyuwith"},
 {"screenId":"SET-06","version":"v0.32","summary":"응답관리 전체 연도 조회","changes":["전체 연도의 응답현황을 최신 연도순으로 표시. 동일 연도에서는 국내 바이어 우선 표시 유지.","집계는 각 설문의 연도별 참가자 정보를 사용하며 검색 정책 설명 수정."],"date":"2026.11.02","accountName":"shyuwith"},
 {"screenId":"SET-11","version":"v0.30","summary":"행사·기등록 설문 기준 연도 선택 제공","changes":["행사관리·기등록 설문 연도로 연도 선택 항목 구성. 진행 행사 연도·마지막 날 등록 기본값은 유지."],"date":"2026.11.02","accountName":"shyuwith"},
