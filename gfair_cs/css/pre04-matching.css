@@ -22,3 +22,5 @@
 #dialog-content .pre04-candidates .btn{min-height:32px;padding:6px 14px}
 
 #dialog.standard-popup:has(.pre04-popup-results){width:min(1000px,calc(100vw - 32px))}
+
+#dialog-content .pre04-name-input{min-width:0;padding:12px 16px}#dialog-content .pre04-name-input input{width:100%;min-width:0;min-height:36px;font-size:13px}
