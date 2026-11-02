@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.23","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 추가 시 새 그룹 위치로 자동 이동","changes":["그룹 추가 시 설문정보 맨 아래에 새 그룹을 펼쳐 추가하고 해당 위치로 스크롤 이동.","기존 입력값과 그룹·문항의 펼침 상태 유지."]},
+{"screenId":"SET-12","version":"v0.24","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 추가 시 새 그룹 위치로 자동 이동","changes":["그룹 추가 시 설문정보 맨 아래에 새 그룹을 펼쳐 추가하고 해당 위치로 스크롤 이동.","기존 입력값과 그룹·문항의 펼침 상태 유지."]},
 {"screenId":"PRE-04-p32","version":"v0.18","date":"2026.11.02","accountName":"with","summary":"연결 해외바이어 정보를 이름 아래 줄에 표시","changes":["통역원 이름·현재 담당 표시는 첫 줄, 연결 아이콘·해외바이어명은 아래 줄 중앙 정렬.","매칭 동작·Description·기획비고 유지."]},
 {"screenId":"PRE-04","version":"v0.36","date":"2026.11.02","accountName":"with","summary":"1:1 매칭 복원 및 기존 연결 이동 확인","changes":["기존 담당 통역원·바이어 연결이 있는 변경은 확인창에 해제 대상과 신규 매칭 표시. 취소 시 기존 연결 유지.","확인 시 이전 바이어 연결 해제 후 새 바이어에 1:1 배정. 기존 바이어 목록 미매칭 상태 동기화. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.17","date":"2026.11.02","accountName":"with","summary":"1:1 매칭 복원 및 기존 연결 이동 확인","changes":["기존 담당 통역원·바이어 연결이 있는 변경은 확인창에 해제 대상과 신규 매칭 표시. 취소 시 기존 연결 유지.","확인 시 이전 바이어 연결 해제 후 새 바이어에 1:1 배정. 기존 바이어 목록 미매칭 상태 동기화. Description·기획비고 미수정."]},
