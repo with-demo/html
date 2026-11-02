@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.31","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},
+{"screenId":"PRE-04-p32","version":"v0.10","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},
 {"screenId":"SET-05","version":"v0.37","date":"2026.11.02","accountName":"shyuwith","summary":"디스크립션을 검색필터·목록·관리 버튼으로 통합","changes":["01 검색필터, 02 설문관리 목록, 03 복사·삭제 관리 버튼으로 간결화.","기능상세·기본정책 중심으로 재작성하고 번호와 목업 핀 연결 정리.","기존 세부 설명 이력·댓글은 보존하고 통합 항목으로 대체 표시."]},
 {"screenId":"PRE-04","version":"v0.30","date":"2026.11.02","accountName":"with","summary":"매칭된 통역원 후보 제외 및 예시 매칭 추가","changes":["현재 행사에서 매칭된 통역원은 후보 목록에서 제외. 현재 담당자는 상단 정보에서만 표시. 중복 매칭 실행 차단.","기존 매칭 예시에 3건 추가. 10명씩 보기 문구 삭제 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.9","date":"2026.11.02","accountName":"with","summary":"매칭된 통역원 후보 제외 및 예시 매칭 추가","changes":["현재 행사에서 매칭된 통역원은 후보 목록에서 제외. 현재 담당자는 상단 정보에서만 표시. 중복 매칭 실행 차단.","기존 매칭 예시에 3건 추가. 10명씩 보기 문구 삭제 유지. Description·기획비고 미수정."]},
