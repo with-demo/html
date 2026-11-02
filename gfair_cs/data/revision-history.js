@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.21","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록의 중복 제목·경로 제거","changes":["본문 내부 설문관리 제목과 중복 경로를 제거하고 상단 설문 등록 제목·경로만 유지.","기본정보·설문정보·등록 입력 및 하단 작업 버튼 유지."]},
 {"screenId":"PRE-04","version":"v0.34","date":"2026.11.02","accountName":"with","summary":"매칭 목록 기업명 및 국가·키워드 검색 구성","changes":["목록 열: 해외바이어명·기업명·국가·담당통역원·언어·매칭상태.","검색은 국가 전체 행 및 키워드 전체 행. 전체·해외바이어·통역원·기업명 선택. Description·기획비고 미수정."]},
 {"screenId":"PRE-01","version":"v3.42","date":"2026.11.02","accountName":"with","summary":"해외바이어 기업명 키워드 검색 추가","changes":["키워드 검색 선택에 기업명 추가 및 기본정보의 기업명 부분검색 적용. Description·기획비고 미수정."]},
 {"screenId":"PRE-04","version":"v0.33","date":"2026.11.02","accountName":"with","summary":"바이어 국가와 통역 가능 언어에 맞춘 예시 매칭","changes":["영국·미국·캐나다 바이어의 담당자를 영어 가능 통역원 5명으로 1:1 배정. 통역원 원본 보유 언어 유지.","기존 바이어명 내림차순 정렬 유지. Description·기획비고 미수정."]},
