@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록 기본값 행사관리 연계·설명 정리","changes":["연도와 조사 시작일에 진행 행사 연도와 행사 마지막 날을 기본 표시. 상세 등록값 유지.","기본정보·설문정보·문항구분·표시조건·부가정보·응답 후 수정제한·페이지 작업을 등록/상세 공통 설명으로 작성."]},
+{"screenId":"SET-12","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 공통 디스크립션 정리","changes":["BAS-18 형식에 맞춰 기능상세·기본정책 중심으로 작성하고 등록/상세 차이 구분.","응답이 있는 설문은 조회 전용 및 복사 등록 정책 명시."]},
 {"screenId":"SET-13","version":"v0.11","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 안내 문구 통일","changes":["조건부 문항 아래에 ({문항 번호}번 ‘{질문명}’에서 ‘{선택값}’을 선택한 경우 응답) 형식으로 표시. 실제 설문의 기존 안내 형식과 통일."]},
 {"screenId":"BAS-09","version":"v0.50","date":"2026.11.02","accountName":"with","summary":"참가기업 목록 열 순서·QR보기 변경","changes":["체크박스·부스번호·참가기업·메인 카테고리·담당자·연락처·QR 순서로 변경. 목록 사업자번호 열 미노출.","QR 버튼 및 팝업 제목 QR보기 적용. 원본 데이터·상세·선택·다운로드 유지. 화면만 수정."]},
 {"screenId":"SET-16","version":"v0.16","date":"2026.11.02","accountName":"shyuwith","summary":"공공기관·민간기업 혼합 예시 응답 구성","changes":["국내 바이어 60건을 공공기관 30건·민간기업 30건으로 분배.","소속기업유형 문항은 민간기업 응답 30건만 집계하여 조건부 응답 기준 표시. 기존 직접 작성된 응답은 유지."]},
