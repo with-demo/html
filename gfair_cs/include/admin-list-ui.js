@@ -70,7 +70,7 @@
   function paint(){
    const prioritize=route==='JNL-14'&&['admin','exportOperator'].includes(root.querySelector('#role-picker')?.value),statusIndex=headers.indexOf('처리 상태'),priority=row=>route==='SET-06'?(clean(row.cells[headers.indexOf('대상')]||row)==='국내 바이어'?0:1):prioritize&&clean(row.cells[statusIndex]||row)==='승인 요청'?0:1;
    const ordered=rows.map((row,i)=>({row,i,key:clean(row.cells[index]||row)}));
-   if(['BAS-03','BAS-05','BAS-07'].includes(route)){const yearIndex=headers.indexOf('참가연도'),latestYear=row=>Math.max(0,...(clean(row.cells[yearIndex]||row).match(/20\d{2}/g)||[]).map(Number));ordered.sort((a,b)=>latestYear(b.row)-latestYear(a.row)||a.i-b.i);}else if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
+   if(['SET-05','SET-06','SET-07'].includes(route)){const yearIndex=headers.indexOf('연도'),year=row=>Number(clean(row.cells[yearIndex]||row))||0;ordered.sort((a,b)=>year(b.row)-year(a.row)||priority(a.row)-priority(b.row)||a.i-b.i);}else if(['BAS-03','BAS-05','BAS-07'].includes(route)){const yearIndex=headers.indexOf('참가연도'),latestYear=row=>Math.max(0,...(clean(row.cells[yearIndex]||row).match(/20\d{2}/g)||[]).map(Number));ordered.sort((a,b)=>latestYear(b.row)-latestYear(a.row)||a.i-b.i);}else if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    if(stateKey)pre01Pages.set(stateKey,{page,size:perPage});
    count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01','PRE-04'].includes(route)?'명':'건')+' · '+page+'/'+pages+'page';
