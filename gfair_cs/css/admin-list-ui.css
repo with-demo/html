@@ -44,3 +44,7 @@
 /* 최근 일시는 필터와 목록 사이 바깥쪽에 작게 표시한다. */
 #content .event-sync-meta{display:flex;justify-content:flex-end;margin:-12px 0 4px;padding:0 2px;min-height:18px;line-height:18px}
 .admin-list-tools.event-sync-tools{display:flex;align-items:center;gap:10px;width:auto}
+
+/* 참가기업: 설명 패널을 열어도 QR 버튼과 연결 라벨을 확인한다. */
+#content table.company-participant-table th:last-child,#content table.company-participant-table td:last-child{position:sticky;right:0;background:#fff;z-index:1;box-shadow:-1px 0 #eee}
+#content table.company-participant-table thead th:last-child{background:#f7f7f7;z-index:2}

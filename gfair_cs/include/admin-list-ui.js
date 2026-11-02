@@ -12,7 +12,7 @@
  function enhance(table,main,route){
   if(prepared.has(table))return;
   const panel=table.closest('section.panel');if(!panel)return;
-  prepared.add(table);panel.classList.add('admin-list-panel');
+  prepared.add(table);panel.classList.add('admin-list-panel');if(route==='BAS-09')table.classList.add('company-participant-table');
   panel.querySelectorAll('.list-count-summary').forEach(el=>el.remove());
   let header=panel.querySelector(':scope>.panelhead');
   if(!header){header=document.createElement('div');header.className='panelhead';panel.prepend(header);}
