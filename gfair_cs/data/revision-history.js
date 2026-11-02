@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.30","date":"2026.11.02","accountName":"with","summary":"매칭된 통역원 후보 제외 및 예시 매칭 추가","changes":["현재 행사에서 매칭된 통역원은 후보 목록에서 제외. 현재 담당자는 상단 정보에서만 표시. 중복 매칭 실행 차단.","기존 매칭 예시에 3건 추가. 10명씩 보기 문구 삭제 유지. Description·기획비고 미수정."]},
+{"screenId":"PRE-04-p32","version":"v0.9","date":"2026.11.02","accountName":"with","summary":"매칭된 통역원 후보 제외 및 예시 매칭 추가","changes":["현재 행사에서 매칭된 통역원은 후보 목록에서 제외. 현재 담당자는 상단 정보에서만 표시. 중복 매칭 실행 차단.","기존 매칭 예시에 3건 추가. 10명씩 보기 문구 삭제 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.8","date":"2026.11.02","accountName":"with","summary":"10명씩 보기 문구 삭제","changes":["후보 목록 상단의 10명씩 보기 문구만 삭제. 총 인원·현재 페이지 및 10명 단위 페이지 이동 유지.","Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.7","date":"2026.11.02","accountName":"with","summary":"검색·초기화 버튼 영역 여백 조정","changes":["필터 하단 버튼 영역의 상하좌우 여백 16px, 버튼 간격 10px 적용.","공통 팝업 스타일로 초기화되던 안쪽 여백 보완. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.6","date":"2026.11.02","accountName":"with","summary":"매칭 검색필터 셀 높이·구분선 정렬","changes":["다른 목록과 동일한 항목명 120px·입력 셀 여백 적용, 언어·이름 컨트롤 높이 36px 통일.","조건 셀 높이·세로 구분선 정렬 및 모바일 1열 유지. Description·기획비고 미수정."]},
