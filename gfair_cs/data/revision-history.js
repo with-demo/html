@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.25","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 삭제 버튼 글자색 통일","changes":["그룹 삭제 버튼을 다른 편집 버튼과 같은 검정 글자색으로 변경."]},
+{"screenId":"SET-12","version":"v0.26","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 삭제 버튼 글자색 통일","changes":["그룹 삭제 버튼을 다른 편집 버튼과 같은 검정 글자색으로 변경."]},
 {"screenId":"SET-06","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
 {"screenId":"SET-15","version":"v0.8","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
 {"screenId":"SET-16","version":"v0.12","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
