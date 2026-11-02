@@ -27,3 +27,6 @@
 
 #dialog-content .pre04-popup-filters>.field:first-child{border-right:1px solid #ddd}
 @media(max-width:680px){#dialog-content .pre04-popup-filters>.field:first-child{border-right:0}}
+
+/* 검색 버튼 영역은 공통 팝업 버튼 규칙보다 구체적으로 셀 안쪽 여백을 확보한다. */
+#dialog.standard-popup #dialog-content .pre04-popup-filters>.popup-action-row{margin:0;padding:16px;gap:10px;min-height:68px;box-sizing:border-box}

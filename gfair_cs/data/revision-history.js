@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.7","date":"2026.11.02","accountName":"with","summary":"검색·초기화 버튼 영역 여백 조정","changes":["필터 하단 버튼 영역의 상하좌우 여백 16px, 버튼 간격 10px 적용.","공통 팝업 스타일로 초기화되던 안쪽 여백 보완. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.6","date":"2026.11.02","accountName":"with","summary":"매칭 검색필터 셀 높이·구분선 정렬","changes":["다른 목록과 동일한 항목명 120px·입력 셀 여백 적용, 언어·이름 컨트롤 높이 36px 통일.","조건 셀 높이·세로 구분선 정렬 및 모바일 1열 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.5","date":"2026.11.02","accountName":"with","summary":"매칭 팝업 이름 검색 인풋 적용","changes":["언어 복수 선택 유지, 통역원 선택 필터를 이름 부분검색 인풋으로 변경. 언어·이름 조건 AND 적용, 검색·Enter·초기화 제공.","사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-04","version":"v0.29","date":"2026.11.02","accountName":"with","summary":"수출상담 운영용역사 전용 매칭 및 관리자 조회 적용","changes":["수출상담 운영용역사만 통역원 매칭·변경 가능. 관리자는 매칭상태 텍스트와 검색·초기화만 제공.","사용자 요청에 따라 Description·기획비고 미수정."]},
