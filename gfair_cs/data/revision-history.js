@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.6","date":"2026.11.02","accountName":"with","summary":"매칭 검색필터 셀 높이·구분선 정렬","changes":["다른 목록과 동일한 항목명 120px·입력 셀 여백 적용, 언어·이름 컨트롤 높이 36px 통일.","조건 셀 높이·세로 구분선 정렬 및 모바일 1열 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.5","date":"2026.11.02","accountName":"with","summary":"매칭 팝업 이름 검색 인풋 적용","changes":["언어 복수 선택 유지, 통역원 선택 필터를 이름 부분검색 인풋으로 변경. 언어·이름 조건 AND 적용, 검색·Enter·초기화 제공.","사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-04","version":"v0.29","date":"2026.11.02","accountName":"with","summary":"수출상담 운영용역사 전용 매칭 및 관리자 조회 적용","changes":["수출상담 운영용역사만 통역원 매칭·변경 가능. 관리자는 매칭상태 텍스트와 검색·초기화만 제공.","사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-02","version":"v1.38","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
