@@ -53,7 +53,7 @@
   const size=document.createElement('select');size.setAttribute('aria-label',title+' 페이지당 표시 개수');
   [20,50,100,200].forEach(n=>size.add(new Option(n+'건씩 보기',String(n))));
   tools.prepend(size);
-  if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';tools.append(sync);}}
+  if(route==='BAS-01'){const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';const stamp=header.querySelector('[data-event-last-sync]');if(stamp)tools.append(stamp);tools.append(sync);}}
   if(route==='BAS-09'&&['admin','buyOperator','exportOperator'].includes(root.querySelector('#role-picker')?.value)){
    const sync=document.createElement('button');sync.type='button';sync.className='btn';sync.textContent='동기화 하기';sync.dataset.companySync='';sync.addEventListener('click',()=>{const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 정보를 확인했습니다. 실제 G-FAIR ADMIN 동기화는 시스템 연계 후 제공됩니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}});tools.append(sync);
    const selectedQr=document.createElement('button');selectedQr.type='button';selectedQr.className='btn';selectedQr.textContent='선택 QR다운로드';selectedQr.dataset.companyQrSelected='';tools.append(selectedQr);
