@@ -30,3 +30,17 @@
 
 /* 검색 버튼 영역은 공통 팝업 버튼 규칙보다 구체적으로 셀 안쪽 여백을 확보한다. */
 #dialog.standard-popup #dialog-content .pre04-popup-filters>.popup-action-row{margin:0;padding:16px;gap:10px;min-height:68px;box-sizing:border-box}
+
+/* 공통 목록과 같은 중앙 정렬·행 간격·페이지 이동 표현. */
+#dialog-content .pre04-candidate-count{margin:20px 0 12px;font-size:14px;color:var(--ink);font-weight:400}
+#dialog-content .pre04-candidates table{width:100%;table-layout:fixed;border-collapse:collapse;border-top:1px solid var(--line)}
+#dialog-content .pre04-candidates th,#dialog-content .pre04-candidates td{text-align:center;vertical-align:middle;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+#dialog-content .pre04-candidates th{background:#f5f5f5;color:var(--ink);font-weight:400}
+#dialog-content .pre04-candidates th:first-child{width:24%}#dialog-content .pre04-candidates th:last-child{width:20%}
+#dialog-content .pre04-candidates .btn{height:34px;min-height:34px;min-width:64px;padding:5px 12px;border:1px solid #c9c9c9;border-radius:6px;background:#fff;color:var(--ink);box-shadow:none;font-size:13px}
+#dialog-content .pre04-candidates .btn:hover{background:#f7f7f7;border-color:#aaa}
+#dialog-content .pre04-popup-pagination.admin-list-pagination{align-items:center;margin:0;padding:20px;gap:6px}
+#dialog-content .pre04-popup-pagination .btn{min-width:34px;height:34px;padding:5px 10px;border:0;background:transparent;color:#333;box-shadow:none;font-size:12px}
+#dialog-content .pre04-popup-pagination .btn:disabled{opacity:.35;cursor:default}
+#dialog-content .pre04-popup-pagination .btn[aria-current=page]{opacity:1;color:#111;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+@media(max-width:680px){#dialog-content .pre04-candidates th,#dialog-content .pre04-candidates td{padding:10px 8px}#dialog-content .pre04-candidates th:first-child{width:26%}#dialog-content .pre04-candidates th:last-child{width:24%}#dialog-content .pre04-popup-pagination.admin-list-pagination{padding:16px 8px}}

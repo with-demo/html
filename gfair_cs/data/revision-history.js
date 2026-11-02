@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.11","date":"2026.11.02","accountName":"with","summary":"통역원 후보 목록 공통 레이아웃 적용","changes":["목록 헤더·행 중앙 정렬, 열 너비·행 간격·매칭 버튼을 공통 목록 스타일로 통일.","공통 페이지 이동 형식과 현재 페이지 강조 적용. 매칭 정책·검색 동작 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04","version":"v0.31","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.10","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},
 {"screenId":"SET-05","version":"v0.37","date":"2026.11.02","accountName":"shyuwith","summary":"디스크립션을 검색필터·목록·관리 버튼으로 통합","changes":["01 검색필터, 02 설문관리 목록, 03 복사·삭제 관리 버튼으로 간결화.","기능상세·기본정책 중심으로 재작성하고 번호와 목업 핀 연결 정리.","기존 세부 설명 이력·댓글은 보존하고 통합 항목으로 대체 표시."]},
