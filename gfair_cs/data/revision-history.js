@@ -1,6 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
-{"screenId":"BAS-01","version":"v0.43","date":"2026.11.02","accountName":"with","summary":"최근 행사정보 동기화일시 표시","changes":["동기화 버튼 옆 최근 동기화일시(한국 시간) 표시. 버튼 처리 완료 시 갱신 및 현재 브라우저 저장.","기록이 없으면 동기화 이력 없음 표시. 관련 Description 및 기획비고 반영."]},
+{"screenId":"BAS-01","version":"v0.43","date":"2026.11.02","accountName":"with","summary":"최근 행사정보 동기화일시 표시","changes":["동기화 버튼 옆 최근 동기화일시(한국 시간) 표시. 버튼 처리 완료 시 갱신 및 현재 브라우저 저장.","기록이 없으면 동기화 이력 없음 표시. 사용자 요청에 따라 화면만 반영하고 Description·기획비고는 유지."]},
 {"screenId":"SET-13","version":"v0.7","date":"2026.11.02","accountName":"shyuwith","summary":"미리보기 필수 문항 별표 표시","changes":["설문 미리보기의 필수 문항에 필수 텍스트 대신 질문 옆 빨간 * 표시. 선택 문항은 표시하지 않음."]},
 {"screenId":"SET-13","version":"v0.6","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 안내 설명 분리","changes":["조건 안내의 자동 문구 구성 규칙을 02번으로 분리하고 조건부 안내 영역 연결."]},
 {"screenId":"SET-16","version":"v0.14","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 안내에 그룹·문항 번호 표시","changes":["미리보기와 동일한 선행 그룹·설문 전체 문항 번호를 조건 안내에 표시.","사용자 요청에 따라 SET-16 Description은 수정하지 않음."]},
