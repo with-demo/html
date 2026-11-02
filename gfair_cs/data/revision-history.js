@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-06","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
+{"screenId":"SET-16","version":"v0.9","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
+{"screenId":"SET-15","version":"v0.5","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
+{"screenId":"SET-14","version":"v0.2","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
 {"screenId":"SET-11","version":"v0.23","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 추가 시 새 그룹 위치로 자동 이동","changes":["그룹 추가 시 설문정보 맨 아래에 새 그룹을 펼쳐 추가하고 해당 위치로 스크롤 이동.","기존 입력값과 그룹·문항의 펼침 상태 유지."]},
 {"screenId":"SET-12","version":"v0.24","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 추가 시 새 그룹 위치로 자동 이동","changes":["그룹 추가 시 설문정보 맨 아래에 새 그룹을 펼쳐 추가하고 해당 위치로 스크롤 이동.","기존 입력값과 그룹·문항의 펼침 상태 유지."]},
 {"screenId":"PRE-04-p32","version":"v0.18","date":"2026.11.02","accountName":"with","summary":"연결 해외바이어 정보를 이름 아래 줄에 표시","changes":["통역원 이름·현재 담당 표시는 첫 줄, 연결 아이콘·해외바이어명은 아래 줄 중앙 정렬.","매칭 동작·Description·기획비고 유지."]},
