@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-12","version":"v0.22","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세 뒤로가기 시 목록 복귀 오류 수정","changes":["브라우저 뒤로가기·목록 이동 시 남아 있던 상세 편집 상태를 목록 화면에 적용하지 않도록 수정.","SET-05·SET-07은 항상 설문관리 목록을 표시하며 상세 화면은 독립 경로에서 유지."]},
+{"screenId":"SET-05","version":"v0.38","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세 뒤로가기 시 목록 복귀 오류 수정","changes":["브라우저 뒤로가기·목록 이동 시 남아 있던 상세 편집 상태를 목록 화면에 적용하지 않도록 수정.","SET-05·SET-07은 항상 설문관리 목록을 표시하며 상세 화면은 독립 경로에서 유지."]},
 {"screenId":"PRE-04","version":"v0.32","date":"2026.11.02","accountName":"with","summary":"매칭 메인 목록 상단 공통 도구 적용","changes":["별도 목록 제목을 제거하고 총 N명·현재 페이지 및 20건씩 보기 셀렉트만 제공.","관리자·수출상담 운영용역사 모두 공통 페이지당 표시 개수 및 페이지 이동 적용. 행별 매칭·변경 버튼 유지. Description·기획비고 미수정."]},
 {"screenId":"SET-12","version":"v0.21","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세로 화면명 통일 및 중복 제목 제거","changes":["SET-12 페이지명·화면 선택·현재 위치를 설문 상세로 통일.","본문 안의 설문관리 제목과 중복 경로 제거. 기존 수정·저장 동작 유지."]},
 {"screenId":"SET-13","version":"v0.4","date":"2026.11.02","accountName":"shyuwith","summary":"설문 미리보기 팝업 ID SET-13 통일","changes":["설문 목록·등록·수정의 미리보기 표시 ID와 설명 연결을 SET-13으로 통일.","기존 SET-05-p12의 설명·댓글·수정 이력은 유지하여 SET-13에서 함께 조회.","이전 SET-05-p12 진입 주소는 SET-13 미리보기로 연결."]},
