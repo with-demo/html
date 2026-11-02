@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-13","version":"v0.8","date":"2026.11.02","accountName":"shyuwith","summary":"조건 안내를 문항 번호 기준으로 통일","changes":["조건 문구에서 그룹 정보를 제거하고 전체 문항 번호·질문명·선택값만 표시.","응답 통계 문항 번호도 설문 전체 연속 순번으로 통일. 관련 조건 안내 Description 문구 수정."]},
+{"screenId":"SET-16","version":"v0.15","date":"2026.11.02","accountName":"shyuwith","summary":"조건 안내를 문항 번호 기준으로 통일","changes":["조건 문구에서 그룹 정보를 제거하고 전체 문항 번호·질문명·선택값만 표시.","응답 통계 문항 번호도 설문 전체 연속 순번으로 통일. 관련 조건 안내 Description 문구 수정."]},
 {"screenId":"BAS-01","version":"v0.43","date":"2026.11.02","accountName":"with","summary":"최근 행사정보 동기화일시 표시","changes":["동기화 버튼 옆 최근 동기화일시(한국 시간) 표시. 버튼 처리 완료 시 갱신 및 현재 브라우저 저장.","기록이 없으면 동기화 이력 없음 표시. 사용자 요청에 따라 화면만 반영하고 Description·기획비고는 유지."]},
 {"screenId":"SET-13","version":"v0.7","date":"2026.11.02","accountName":"shyuwith","summary":"미리보기 필수 문항 별표 표시","changes":["설문 미리보기의 필수 문항에 필수 텍스트 대신 질문 옆 빨간 * 표시. 선택 문항은 표시하지 않음."]},
 {"screenId":"SET-13","version":"v0.6","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 안내 설명 분리","changes":["조건 안내의 자동 문구 구성 규칙을 02번으로 분리하고 조건부 안내 영역 연결."]},
