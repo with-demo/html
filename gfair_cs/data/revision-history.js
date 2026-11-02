@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.29","date":"2026.11.02","accountName":"with","summary":"수출상담 운영용역사 전용 매칭 및 관리자 조회 적용","changes":["수출상담 운영용역사만 통역원 매칭·변경 가능. 관리자는 매칭상태 텍스트와 검색·초기화만 제공.","사용자 요청에 따라 Description·기획비고 미수정."]},
 {"screenId":"PRE-02","version":"v1.38","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
 {"screenId":"EVT-03","version":"v1.37","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
 {"screenId":"EVT-04","version":"v1.37","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
