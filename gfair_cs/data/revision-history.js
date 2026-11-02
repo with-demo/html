@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.22","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 버튼 문구·글자색 통일","changes":["문항 삭제를 보기 추가·삭제와 동일한 기본 버튼 글자색으로 변경.","그룹 추가·삭제, 문항 추가·삭제, 보기 추가·삭제에 띄어쓰기 적용."]},
+{"screenId":"SET-12","version":"v0.23","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 버튼 문구·글자색 통일","changes":["문항 삭제를 보기 추가·삭제와 동일한 기본 버튼 글자색으로 변경.","그룹 추가·삭제, 문항 추가·삭제, 보기 추가·삭제에 띄어쓰기 적용."]},
 {"screenId":"PRE-04","version":"v0.35","date":"2026.11.02","accountName":"with","summary":"검색필터 변경 후 사라진 번호 라벨 연결 복구","changes":["기존 01·02·03 라벨을 검색필터 전체·키워드 선택·키워드 입력에 연결.","설명 본문·기획비고·댓글·저장 번호·사용자 핀 위치 보존."]},
 {"screenId":"SET-11","version":"v0.21","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록의 중복 제목·경로 제거","changes":["본문 내부 설문관리 제목과 중복 경로를 제거하고 상단 설문 등록 제목·경로만 유지.","기본정보·설문정보·등록 입력 및 하단 작업 버튼 유지."]},
 {"screenId":"PRE-04","version":"v0.34","date":"2026.11.02","accountName":"with","summary":"매칭 목록 기업명 및 국가·키워드 검색 구성","changes":["목록 열: 해외바이어명·기업명·국가·담당통역원·언어·매칭상태.","검색은 국가 전체 행 및 키워드 전체 행. 전체·해외바이어·통역원·기업명 선택. Description·기획비고 미수정."]},
