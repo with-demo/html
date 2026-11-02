@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-06","version":"v0.31","summary":"응답관리 검색·목록·집계 디스크립션 작성","changes":["기능상세·기본정책 중심으로 01 검색필터, 02 응답관리 목록, 03 응답현황 집계 작성.","행사정보 참가자 연계·응답률 산식·국내 바이어 우선 표시·SET-16 이동 설명."],"date":"2026.11.02","accountName":"shyuwith"},
+{"screenId":"SET-16","version":"v0.17","summary":"통계·이력·응답 결과 보기 디스크립션 작성","changes":["01 검색필터부터 07 결과 보기까지 역할별 핵심 기능·정책 작성 및 번호 연결.","문항별 분모·복수응답 비율·조건부 문항 집계·SET-15/SET-14 팝업 연결·조회 상태 유지 명시."],"date":"2026.11.02","accountName":"shyuwith"},
+{"screenId":"SET-15","version":"v0.10","summary":"주관식 응답 팝업 디스크립션 작성","changes":["응답 목록과 페이지 이동·닫기 2개 항목 작성 및 번호 연결.","조회 기간·조건 연계, 최신순·읽기 전용·50건 고정·초과 페이지네이션·복귀 상태 유지 명시."],"date":"2026.11.02","accountName":"shyuwith"},
 {"screenId":"BAS-01","version":"v0.46","date":"2026.11.02","accountName":"with","summary":"동기화 버튼명 통일","changes":["동기화 하기 버튼명을 동기화로 변경. 기존 동작·최근 동기화일시 유지. 화면만 수정."]},
 {"screenId":"BAS-09","version":"v0.51","date":"2026.11.02","accountName":"with","summary":"동기화 버튼명 통일","changes":["동기화 하기 버튼명을 동기화로 변경. 기존 동작·최근 동기화일시 유지. 화면만 수정."]},
 {"screenId":"SET-06","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 만족도 조사 첫 행 표시","changes":["응답관리 목록에서 국내 바이어 설문을 우선 표시하고 나머지 설문의 기존 순서를 유지. 공통 목록 정렬·페이지 변경에도 우선순위 유지. 설문관리 목록 순서와 검색 조건은 유지."]},
