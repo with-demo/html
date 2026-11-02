@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-13","version":"v0.7","date":"2026.11.02","accountName":"shyuwith","summary":"미리보기 필수 문항 별표 표시","changes":["설문 미리보기의 필수 문항에 필수 텍스트 대신 질문 옆 빨간 * 표시. 선택 문항은 표시하지 않음."]},
 {"screenId":"SET-13","version":"v0.6","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 안내 설명 분리","changes":["조건 안내의 자동 문구 구성 규칙을 02번으로 분리하고 조건부 안내 영역 연결."]},
 {"screenId":"SET-16","version":"v0.14","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 안내에 그룹·문항 번호 표시","changes":["미리보기와 동일한 선행 그룹·설문 전체 문항 번호를 조건 안내에 표시.","사용자 요청에 따라 SET-16 Description은 수정하지 않음."]},
 {"screenId":"SET-16","version":"v0.13","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 대상 안내·집계 기준 적용","changes":["통계의 조건부 문항 제목 아래에 선행 질문·선택값에 따른 응답 대상 안내를 회색으로 표시.","조건을 충족하고 해당 문항에 답변한 응답만 건수·비율·주관식 답변 목록에 포함."]},
