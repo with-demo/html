@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-16","version":"v0.13","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 대상 안내·집계 기준 적용","changes":["통계의 조건부 문항 제목 아래에 선행 질문·선택값에 따른 응답 대상 안내를 회색으로 표시.","조건을 충족하고 해당 문항에 답변한 응답만 건수·비율·주관식 답변 목록에 포함."]},
+{"screenId":"SET-15","version":"v0.9","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 응답 대상 안내·집계 기준 적용","changes":["통계의 조건부 문항 제목 아래에 선행 질문·선택값에 따른 응답 대상 안내를 회색으로 표시.","조건을 충족하고 해당 문항에 답변한 응답만 건수·비율·주관식 답변 목록에 포함."]},
 {"screenId":"SET-13","version":"v0.5","date":"2026.11.02","accountName":"shyuwith","summary":"설문 미리보기 디스크립션 간결화","changes":["공유 Description의 화면 개요·01번 기능상세·기본정책을 기본정보관리 형식으로 정리.","조건부 문항 전체 미리보기와 실제 설문 선택값에 따른 표시·숨김 정책을 구분하고 예시 추가.","불필요한 스타일·미확정 원문 검토 문구 정리. 기존 조회 권한 유지."]},
 {"screenId":"SET-11","version":"v0.27","date":"2026.11.02","accountName":"shyuwith","summary":"편집 버튼 아이콘 간격 축소","changes":["추가·삭제 버튼 아이콘과 텍스트 간격을 6px에서 3px로 축소."]},
 {"screenId":"SET-12","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"편집 버튼 아이콘 간격 축소","changes":["추가·삭제 버튼 아이콘과 텍스트 간격을 6px에서 3px로 축소."]},
