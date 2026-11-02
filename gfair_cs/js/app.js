@@ -631,7 +631,7 @@ const splitJournalRender=render;render=function(){const alias={'JNL-BUY':'JNL-13
 
 // 행사 참가자 목록은 기본정보의 참가 여부·선택 행사연도를 기준으로 직접 조회한다.
 window.GFAIR_COMPANY_LIST_ROWS=()=>rows(map.get('BAS-09')).map(r=>({id:r[0],company:r[1],booth:r[3]}));
-window.GFAIR_COMPANY_QR_OPEN=body=>{modal('QR 보기',body);document.querySelector('#dialog-content > .dialogactions')?.remove();};
+window.GFAIR_COMPANY_QR_OPEN=body=>{modal('QR 보기',body,'close','확인','BAS-09-p08');document.querySelector('#dialog-content > .dialogactions')?.remove();};
 window.GFAIR_COMPANY_QR_ROWS=()=>rows(map.get('BAS-09')).filter(r=>(String(r[6]||'').match(/20\d{2}/g)||[]).includes(String(event))).map(r=>({id:r[0],company:r[1],booth:r[3]}));
 root.addEventListener('change',ev=>{if(!ev.target.matches('[data-master-participant-all]'))return;root.querySelectorAll('.participant-master-table tbody tr:not([hidden]) [data-master-participant]:not(:disabled)').forEach(box=>box.checked=ev.target.checked);});
 function participantExcludeMessage(chosen){return chosen.slice(0,10).map(row=>String(row[1]||'')).join(', ')+(chosen.length>10?' 외 '+(chosen.length-10)+'명':'')+'\n총 '+chosen.length+'명을 미참여로 변경하시겠습니까?';}
