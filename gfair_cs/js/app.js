@@ -400,7 +400,7 @@ function surveySeedResponseExamples(){
    if(v.type==='단답형')answers[key]=v.title==='회사명'?row[2]:v.title==='담당자'?row[1]:v.title==='부서'?['구매팀','상품기획팀','MD팀'][index%3]:v.title==='휴대전화번호'?'010-0000-0000':'응답 예시';
    else if(v.type==='서술형')answers[key]=(gi===9?['상담 전 기업별 제품 정보를 더 자세히 안내해 주시면 좋겠습니다.','상담 시간 사이 이동 시간을 조금 더 확보해 주세요.','현장 상담 안내 표지가 더 많으면 좋겠습니다.']:['신규 거래처를 발굴할 수 있어 좋았습니다. 내년에도 참여하고 싶습니다.','품목별 추천 기업을 사전에 확인할 수 있으면 좋겠습니다.','다양한 제품을 비교할 수 있어 유익했습니다.'])[index%3];
    else if(v.type==='복수응답형')answers[key]=[String(index%v.options.length),String((index+1)%v.options.length)].slice(0,v.maxSelections||2);
-   else if(v.options.length)answers[key]=String(v.type==='척도형'?Math.max(0,v.options.length-1-index%2):key==='0-1'?'1':index%v.options.length);
+   else if(v.options.length)answers[key]=String(v.type==='척도형'?Math.max(0,v.options.length-1-index%2):key==='0-1'?index%2:index%v.options.length);
    const values=Array.isArray(answers[key])?answers[key]:[answers[key]];
    v.options.forEach((o,oi)=>{if(o.extra&&values.includes(String(oi)))extras[key+'-'+oi]='기타 응답 예시';});
   }));

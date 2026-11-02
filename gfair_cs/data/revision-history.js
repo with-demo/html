@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-16","version":"v0.16","date":"2026.11.02","accountName":"shyuwith","summary":"공공기관·민간기업 혼합 예시 응답 구성","changes":["국내 바이어 60건을 공공기관 30건·민간기업 30건으로 분배.","소속기업유형 문항은 민간기업 응답 30건만 집계하여 조건부 응답 기준 표시. 기존 직접 작성된 응답은 유지."]},
 {"screenId":"SET-13","version":"v0.10","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 상시 표시·비활성 및 별표 제거","changes":["조건부 문항의 별표를 제거하고 조건 안내 문구로 응답 대상 안내.","참여 화면에서 모든 문항을 유지하고 조건 미충족·선행 미응답 문항은 비활성 처리.","비활성 문항 답변 초기화 및 필수 검사 제외. 조건 충족 시 입력 활성화."]},
 {"screenId":"NTC-08","version":"v0.17","date":"2026.11.02","accountName":"shyuwith","summary":"조건부 문항 상시 표시·비활성 및 별표 제거","changes":["조건부 문항의 별표를 제거하고 조건 안내 문구로 응답 대상 안내.","참여 화면에서 모든 문항을 유지하고 조건 미충족·선행 미응답 문항은 비활성 처리.","비활성 문항 답변 초기화 및 필수 검사 제외. 조건 충족 시 입력 활성화."]},
 {"screenId":"BAS-09","version":"v0.49","date":"2026.11.02","accountName":"with","summary":"참가기업 최근 동기화일시 표시","changes":["행사관리와 동일하게 필터 아래·목록 카드 바깥 오른쪽에 최근 동기화일시 표시. 위 8px·아래 4px 여백.","초기 예시 2026-09-03 10:00:00 KST, 버튼 처리 완료 시 현재 시각 갱신 및 브라우저 저장. 화면만 반영."]},
