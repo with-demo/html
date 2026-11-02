@@ -1,5 +1,9 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-05","version":"v0.39","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
+{"screenId":"SET-11","version":"v0.24","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
+{"screenId":"SET-12","version":"v0.25","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
+{"screenId":"NTC-08","version":"v0.16","date":"2026.11.02","accountName":"shyuwith","summary":"설문 조사 종료일 제거 및 무기한 운영","changes":["조사기간은 시작일 ~ 형식으로 표시. 등록·상세의 종료일 입력과 종료일 검증 제거.","기존 저장된 종료일도 해제하고 설문 참여 화면의 기간 만료 제한 제거."]},
 {"screenId":"SET-06","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
 {"screenId":"SET-16","version":"v0.9","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
 {"screenId":"SET-15","version":"v0.5","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 더미 응답 및 개별 결과 팝업","changes":["국내 바이어 만족도 조사에 참가자 기준 예시 응답을 추가하여 통계·주관식 응답·이력을 표시. 기존 응답 유지.","이력의 결과 보기에서 응답이 채워진 읽기 전용 팝업 표시. 닫으면 현재 목록 위치 유지."]},
