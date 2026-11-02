@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.16","date":"2026.11.02","accountName":"with","summary":"1:N 매칭 허용 및 연결 바이어 전체 표시","changes":["1:1 기본·1:N 허용 정책으로 다른 바이어 담당 통역원도 추가 매칭 및 긴급알림 선택 가능. 기존 연결 유지.","이름 옆 연결 해외바이어명 전체 표시. 현재 담당자 중복 재매칭은 비활성 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.15","date":"2026.11.02","accountName":"with","summary":"매칭된 통역원 및 연결 해외바이어명 표시","changes":["기존 매칭 통역원을 목록에 포함하고 이름 옆 연결 아이콘·해외바이어명 표시. 현재 담당자 첫 행 고정 유지.","매칭된 통역원의 매칭·긴급알림 비활성 및 1:1 중복 차단 유지. Description·기획비고 미수정."]},
 {"screenId":"SET-11","version":"v0.22","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 버튼 문구·글자색 통일","changes":["문항 삭제를 보기 추가·삭제와 동일한 기본 버튼 글자색으로 변경.","그룹 추가·삭제, 문항 추가·삭제, 보기 추가·삭제에 띄어쓰기 적용."]},
 {"screenId":"SET-12","version":"v0.23","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 버튼 문구·글자색 통일","changes":["문항 삭제를 보기 추가·삭제와 동일한 기본 버튼 글자색으로 변경.","그룹 추가·삭제, 문항 추가·삭제, 보기 추가·삭제에 띄어쓰기 적용."]},
