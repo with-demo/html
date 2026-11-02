@@ -120,26 +120,60 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
     if(root.querySelectorAll(selector).length===1&&root.querySelector(selector)===target)return selector;
    }
   }
+  // Prefer unique semantic attributes over DOM position for newly selected regions.
+  const prefix=root?.id?'#'+CSS.escape(root.id)+' ':'';
+  const unique=selector=>root&&root.querySelectorAll(selector).length===1&&root.querySelector(selector)===target;
+  if(target.id){const selector='#'+CSS.escape(target.id);if(unique(selector))return selector;}
+  for(const attr of [...target.attributes].filter(a=>a.name==='name'||a.name.startsWith('data-')&&!/^(data-search-layout|data-loaded|data-rendered)$/.test(a.name))){
+   const selector=prefix+target.tagName.toLowerCase()+'['+CSS.escape(attr.name)+'="'+CSS.escape(attr.value)+'"]';if(unique(selector))return selector;
+  }
+  if(target.matches('.field,.search-condition,.search-keyword,.write-form-row')){
+   const name=target.querySelector('[name]')?.name;
+   if(name){const selector=prefix+'.'+(target.matches('.search-condition')?'search-condition':target.matches('.search-keyword')?'search-keyword':target.matches('.write-form-row')?'write-form-row':'field')+':has([name="'+CSS.escape(name)+'"])';if(unique(selector))return selector;}
+  }
   const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}if(el===root)parts.unshift('#'+CSS.escape(root.id));return parts.join(' > ');}
  function find(record){try{
-  const anchor=record.anchor,scope=selectionScope();if(!scope)return null;if(document.body.dataset.project==='gfair_cs'&&route()==='SET-16'&&['.survey-stats-question','.survey-result-condition','[data-action="sur-text-results"]','[data-action="sur-individual"]'].includes(anchor.selector))return scope.querySelector(anchor.selector);if(route()==='SET-13'&&anchor.selector==='.survey-condition-guide')return scope.querySelector('.survey-condition-guide');const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return null;const el=matches[0];
+  const anchor=record.anchor,scope=selectionScope();if(!scope)return null;if(document.body.dataset.project==='gfair_cs'&&route()==='SET-16'&&['.survey-stats-question','.survey-result-condition','[data-action="sur-text-results"]','[data-action="sur-individual"]'].includes(anchor.selector))return scope.querySelector(anchor.selector);if(route()==='SET-13'&&anchor.selector==='.survey-condition-guide')return scope.querySelector('.survey-condition-guide');const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return recoverTarget(record,scope);const el=matches[0];
   // Semantic form controls remain the same target when inline validation text changes.
   if(anchor.selector.includes('[data-management-form=')&&(/\[name=|\[data-admin-id-check/.test(anchor.selector)))return el;
   // An explicit unique element ID survives changing timestamps, counters and text.
   if(/^#[\w-]+$/.test(anchor.selector)&&el.id===anchor.selector.slice(1))return el;
   const stableText=value=>value.replace(/\d+(?:[.,:/-]\d+)*/g,'#').replace(/\s+/g,' ').trim();
-  return anchor.sample&&!stableText(el.textContent).includes(stableText(anchor.sample))?null:el;
+  if(!/:nth-(?:of-type|child)/.test(anchor.selector)&&/\[(?:name|data-[\w-]+)(?:=|\])/.test(anchor.selector))return el;
+  return anchor.sample&&!stableText(el.textContent).includes(stableText(anchor.sample))?recoverTarget(record,scope):el;
  }catch{return null;}}
+ function recoverTarget(record,scope){
+  let item='';try{item=JSON.parse(record.text).item||'';}catch{}
+  const label=item.match(/^\[([^\]]+)\]\s*버튼$/)?.[1]||record.anchor?.sample||'';
+  if(!label)return null;
+  const normalize=v=>String(v).replace(/\s+/g,'').replace(/하기$/,'');
+  const matches=[...scope.querySelectorAll('button,a[role="button"],input[type="button"],input[type="submit"]')].filter(el=>normalize(el.textContent||el.value)===normalize(label));
+  return matches.length===1?matches[0]:null;
+ }
+ function pinPosition(rect,anchor,bounds){
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  // Keep offsets local to the target instead of preserving distant screen coordinates.
+  const x=Number.isFinite(anchor.x)?clamp(anchor.x,0,1):0,y=Number.isFinite(anchor.y)?clamp(anchor.y,0,1):0;
+  let left=rect.left+rect.width*x+clamp(Number(anchor.offsetX)||0,-24,24);
+  let top=rect.top+rect.height*y+clamp(Number(anchor.offsetY)||0,-24,24);
+  const l=Math.max(bounds.left+14,rect.left-24),r=Math.min(bounds.right-14,rect.right+24);
+  const t=Math.max(bounds.top+14,rect.top-24),b=Math.min(bounds.bottom-14,rect.bottom+24);
+  if(l>r||t>b)return null;
+  return {left:clamp(left,l,r),top:clamp(top,t,b)};
+ }
  function pins(){
   if(dragging)return;
   overlay.replaceChildren();if(route()==='screens'||view.closed||view.full||!view.numbers)return;
-  records().forEach(record=>{const target=find(record);if(!target||!target.getClientRects().length)return;const rect=target.getBoundingClientRect(),toolbar=document.querySelector('.ui-spec-toolbar');let top=rect.top+rect.height*record.anchor.y+(record.anchor.offsetY||0),left=rect.left+rect.width*record.anchor.x+(record.anchor.offsetX||0);if(['JNL-05','JNL-16'].includes(route())&&(left<rect.left-48||left>rect.right+48||top<rect.top-64||top>rect.bottom+64)){left=rect.left-12;top=rect.top+12;}if(['SET-11','SET-12'].includes(route())&&rect.top>=(toolbar?.getBoundingClientRect().bottom||0)&&rect.top<innerHeight&&(top<(toolbar?.getBoundingClientRect().bottom||0)||top>innerHeight||left<0||left>innerWidth)){left=Math.max(14,rect.left-12);top=rect.top+12;}if(top<(toolbar?.getBoundingClientRect().bottom||0)||top>innerHeight||left<0||left>innerWidth)return;if(route()==='COM-07'){const clip=target.closest('.tablewrap')?.getBoundingClientRect();if(clip&&(left<clip.left||left>clip.right||top<clip.top||top>clip.bottom))return;}
+  records().forEach(record=>{const target=find(record);if(!target||!target.getClientRects().length)return;const rect=target.getBoundingClientRect(),toolbar=document.querySelector('.ui-spec-toolbar'),scope=selectionScope(),scopeRect=scope?.getBoundingClientRect(),clip=target.closest('.tablewrap')?.getBoundingClientRect();
+   const bounds={left:Math.max(0,scopeRect?.left||0,clip?.left||0),right:Math.min(innerWidth,scopeRect?.right??innerWidth,clip?.right??innerWidth),top:Math.max(toolbar?.getBoundingClientRect().bottom||0,scopeRect?.top||0,clip?.top||0),bottom:Math.min(innerHeight,scopeRect?.bottom??innerHeight,clip?.bottom??innerHeight)};
+   if(rect.right<=bounds.left||rect.left>=bounds.right||rect.bottom<=bounds.top||rect.top>=bounds.bottom)return;
+   const position=pinPosition(rect,record.anchor,bounds);if(!position)return;let {left,top}=position;
    let moved=false;
    const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'nearest',behavior:'smooth'});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
    if(canEdit()){
     pin.classList.add('annotation-pin-movable');pin.title='클릭: 설명 보기 / 드래그: 핀 위치 저장';
     pin.addEventListener('pointerdown',event=>{if(!canEdit()||event.button!==0||picking||savingPins.has(record.id))return;event.preventDefault();event.stopPropagation();dragging={id:record.id,pointer:event.pointerId,x:event.clientX,y:event.clientY,left,top,screen:route(),offsetX:left-rect.left-rect.width*record.anchor.x,offsetY:top-rect.top-rect.height*record.anchor.y};pin.setPointerCapture(event.pointerId);});
-    pin.addEventListener('pointermove',event=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;const dx=event.clientX-d.x,dy=event.clientY-d.y;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;pin.classList.add('dragging');d.dx=Math.max(-4096-d.offsetX,Math.min(4096-d.offsetX,Math.max(14-d.left,Math.min(innerWidth-14-d.left,dx))));d.dy=Math.max(-4096-d.offsetY,Math.min(4096-d.offsetY,Math.max((toolbar?.getBoundingClientRect().bottom||0)+14-d.top,Math.min(innerHeight-14-d.top,dy))));pin.style.left=d.left+d.dx+'px';pin.style.top=d.top+d.dy+'px';});
+    pin.addEventListener('pointermove',event=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;const dx=event.clientX-d.x,dy=event.clientY-d.y;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;pin.classList.add('dragging');const minLeft=Math.max(bounds.left+14,rect.left-24),maxLeft=Math.min(bounds.right-14,rect.right+24),minTop=Math.max(bounds.top+14,rect.top-24),maxTop=Math.min(bounds.bottom-14,rect.bottom+24);d.dx=Math.max(minLeft-d.left,Math.min(maxLeft-d.left,dx));d.dy=Math.max(minTop-d.top,Math.min(maxTop-d.top,dy));pin.style.left=d.left+d.dx+'px';pin.style.top=d.top+d.dy+'px';});
     const finish=async(event,cancel=false)=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;dragging=null;if(pin.hasPointerCapture(event.pointerId))pin.releasePointerCapture(event.pointerId);if(!moved&&!cancel&&d.screen===route())return;if(cancel||d.screen!==route()){pins();return;}savingPins.add(record.id);try{await store.mutate('move',{id:record.id,revision:record.revision,offsetX:d.offsetX+d.dx,offsetY:d.offsetY+d.dy});message('핀 위치를 저장했습니다.');}catch(error){message(error.message);if(error.message.includes('다른 사용자가'))store.refresh();}finally{savingPins.delete(record.id);pins();}};
     pin.addEventListener('pointerup',event=>finish(event));pin.addEventListener('pointercancel',event=>finish(event,true));
    }
