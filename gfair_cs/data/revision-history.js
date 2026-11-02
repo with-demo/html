@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.18","date":"2026.11.02","accountName":"with","summary":"연결 해외바이어 정보를 이름 아래 줄에 표시","changes":["통역원 이름·현재 담당 표시는 첫 줄, 연결 아이콘·해외바이어명은 아래 줄 중앙 정렬.","매칭 동작·Description·기획비고 유지."]},
 {"screenId":"PRE-04","version":"v0.36","date":"2026.11.02","accountName":"with","summary":"1:1 매칭 복원 및 기존 연결 이동 확인","changes":["기존 담당 통역원·바이어 연결이 있는 변경은 확인창에 해제 대상과 신규 매칭 표시. 취소 시 기존 연결 유지.","확인 시 이전 바이어 연결 해제 후 새 바이어에 1:1 배정. 기존 바이어 목록 미매칭 상태 동기화. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.17","date":"2026.11.02","accountName":"with","summary":"1:1 매칭 복원 및 기존 연결 이동 확인","changes":["기존 담당 통역원·바이어 연결이 있는 변경은 확인창에 해제 대상과 신규 매칭 표시. 취소 시 기존 연결 유지.","확인 시 이전 바이어 연결 해제 후 새 바이어에 1:1 배정. 기존 바이어 목록 미매칭 상태 동기화. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.16","date":"2026.11.02","accountName":"with","summary":"1:N 매칭 허용 및 연결 바이어 전체 표시","changes":["1:1 기본·1:N 허용 정책으로 다른 바이어 담당 통역원도 추가 매칭 및 긴급알림 선택 가능. 기존 연결 유지.","이름 옆 연결 해외바이어명 전체 표시. 현재 담당자 중복 재매칭은 비활성 유지. Description·기획비고 미수정."]},

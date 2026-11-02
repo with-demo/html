@@ -52,7 +52,7 @@
 @media(max-width:680px){#dialog-content .pre04-candidates table{min-width:560px}}
 
 #dialog-content .pre04-candidates th:first-child{width:40%}#dialog-content .pre04-candidates th:nth-child(3){width:12%}#dialog-content .pre04-candidates th:last-child{width:20%}
-#dialog-content .pre04-interpreter-name{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 12px}
+#dialog-content .pre04-interpreter-name{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 #dialog-content .pre04-linked-buyer{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#555;text-align:left;overflow-wrap:anywhere}
 #dialog-content .pre04-linked-buyer .pre04-link-icon{width:18px;height:18px;flex:none}
 @media(max-width:680px){#dialog-content .pre04-candidates table{min-width:760px}}
