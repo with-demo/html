@@ -1,5 +1,6 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04-p32","version":"v0.13","date":"2026.11.02","accountName":"with","summary":"매칭 후보 목록 긴급알림 체크박스 추가","changes":["매칭 열 옆 긴급 열 및 긴급알림 체크박스 제공. 현재 담당자 행 비활성, 검색·페이지 이동 중 선택 유지.","긴급 선택값을 목업 매칭 콜백에 전달. 실제 알림 발송 연결 없음. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.12","date":"2026.11.02","accountName":"with","summary":"현재 담당 통역원 목록 첫 행 고정","changes":["검색 및 페이지 이동 시 현재 담당자를 목록 첫 행에 고정하고 매칭 버튼 비활성화.","다른 바이어에게 매칭된 통역원은 후보 제외, 현재 담당자 포함 10명 단위 표시. Description·기획비고 미수정."]},
 {"screenId":"SET-16","version":"v0.8","date":"2026.11.02","accountName":"shyuwith","summary":"이력 탭 목록 건수·페이지네이션 공통 UI 적용","changes":["상단 좌측 총 건수·페이지 정보, 우측 20·50·100·200건씩 보기로 통일.","하단 중앙 첫·이전·페이지번호·다음·마지막 페이지 이동 적용."]},
 {"screenId":"SET-15","version":"v0.4","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 이전 이동 및 조회 위치 유지","changes":["SET-15 하단 목록·취소·확인을 제거하고 이전 버튼 하나로 통일.","SET-16의 조회 조건·문항·스크롤 위치를 유지하여 복귀."]},
