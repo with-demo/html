@@ -423,7 +423,7 @@ const surveyEditorOpen=new WeakMap();
 window.addEventListener('hashchange',()=>{if(!['SET-11','SET-12'].includes(location.hash.slice(1))||!surveyUi.editor)return;for(const group of surveyUi.editor.groups){surveyEditorOpen.delete(group);for(const question of group.questions)surveyEditorOpen.delete(question);}},true);
 function surveyEditButton(action,label,cls='btn',attrs=''){
  const paths=action.endsWith('-add')?'<path d="M12 5v14M5 12h14"/>':'<path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6M14 10v6"/>';
- const icon='<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="vertical-align:-2px;margin-right:6px;flex:none">'+paths+'</svg>';
+ const icon='<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="vertical-align:-2px;margin-right:3px;flex:none">'+paths+'</svg>';
  return B(action,label,cls,attrs).replace('>','>'+icon);
 }
 

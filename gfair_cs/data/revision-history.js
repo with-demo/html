@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-11","version":"v0.27","date":"2026.11.02","accountName":"shyuwith","summary":"편집 버튼 아이콘 간격 축소","changes":["추가·삭제 버튼 아이콘과 텍스트 간격을 6px에서 3px로 축소."]},
+{"screenId":"SET-12","version":"v0.28","date":"2026.11.02","accountName":"shyuwith","summary":"편집 버튼 아이콘 간격 축소","changes":["추가·삭제 버튼 아이콘과 텍스트 간격을 6px에서 3px로 축소."]},
 {"screenId":"SET-11","version":"v0.26","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 추가·삭제 아이콘 표시","changes":["그룹·문항·보기 추가 버튼 좌측에 +, 삭제 버튼 좌측에 휴지통 아이콘 표시.","검정 글자색과 기존 추가·삭제 동작 유지."]},
 {"screenId":"SET-12","version":"v0.27","date":"2026.11.02","accountName":"shyuwith","summary":"설문 편집 추가·삭제 아이콘 표시","changes":["그룹·문항·보기 추가 버튼 좌측에 +, 삭제 버튼 좌측에 휴지통 아이콘 표시.","검정 글자색과 기존 추가·삭제 동작 유지."]},
 {"screenId":"SET-11","version":"v0.25","date":"2026.11.02","accountName":"shyuwith","summary":"그룹 삭제 버튼 글자색 통일","changes":["그룹 삭제 버튼을 다른 편집 버튼과 같은 검정 글자색으로 변경."]},
