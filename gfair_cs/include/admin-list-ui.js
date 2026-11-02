@@ -4,6 +4,8 @@
  const excluded=new Set(['COM-04','COM-05','COM-06','BAS-17','BAS-18','NTC-07']);
  const routes=new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).filter(s=>s.kind==='list'&&!excluded.has(s.id)).map(s=>s.id));
  ['COM-07','EVT-01','EVT-02','PRE-04','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
+ const companySyncStorageKey='gfair-company-last-sync-v1',companySyncDemoTime='2026-09-03T01:00:00.000Z';let companyLastSyncedAt=(()=>{try{return localStorage.getItem(companySyncStorageKey)||companySyncDemoTime}catch{return companySyncDemoTime}})();
+ function companySyncText(){const value=new Date(companyLastSyncedAt),date=Number.isFinite(value.getTime())?value:new Date(companySyncDemoTime);return '최근 동기화: '+new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(date)+' (KST)';}
  const pre01Pages=new Map();
  const prepared=new WeakSet(),collator=new Intl.Collator('ko',{numeric:true,sensitivity:'base'});
  const clean=el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.ui-spec-badge,[data-list-row-trigger]').forEach(e=>e.remove());return copy.textContent.trim().replace(/\s+/g,' ');};
@@ -55,7 +57,8 @@
   tools.prepend(size);
   if(route==='BAS-01'){tools.classList.add('event-sync-tools');const sync=header.querySelector('[data-action="event-sync"]');if(sync){sync.className='btn';const stamp=header.querySelector('[data-event-last-sync]');if(stamp)tools.append(stamp);tools.append(sync);}}
   if(route==='BAS-09'&&['admin','buyOperator','exportOperator'].includes(root.querySelector('#role-picker')?.value)){
-   const sync=document.createElement('button');sync.type='button';sync.className='btn';sync.textContent='동기화 하기';sync.dataset.companySync='';sync.addEventListener('click',()=>{const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 정보를 확인했습니다. 실제 G-FAIR ADMIN 동기화는 시스템 연계 후 제공됩니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}});tools.append(sync);
+   main.querySelectorAll('.company-sync-meta').forEach(el=>el.remove());const meta=document.createElement('div');meta.className='event-sync-meta company-sync-meta';const syncTime=document.createElement('span');syncTime.className='event-last-sync';syncTime.dataset.companyLastSync='';syncTime.setAttribute('role','status');syncTime.textContent=companySyncText();meta.append(syncTime);panel.before(meta);
+   const sync=document.createElement('button');sync.type='button';sync.className='btn';sync.textContent='동기화 하기';sync.dataset.companySync='';sync.addEventListener('click',()=>{companyLastSyncedAt=new Date().toISOString();try{localStorage.setItem(companySyncStorageKey,companyLastSyncedAt);}catch{}syncTime.textContent=companySyncText();const notice=document.getElementById('toast');if(notice){notice.textContent='참가기업 정보를 확인했습니다. 실제 G-FAIR ADMIN 동기화는 시스템 연계 후 제공됩니다.';notice.hidden=false;setTimeout(()=>notice.hidden=true,3500)}});tools.append(sync);
    const selectedQr=document.createElement('button');selectedQr.type='button';selectedQr.className='btn';selectedQr.textContent='선택 QR다운로드';selectedQr.dataset.companyQrSelected='';tools.append(selectedQr);
    const allQr=document.createElement('button');allQr.type='button';allQr.className='btn';allQr.textContent='전체 QR다운로드';allQr.dataset.companyQrAll='';allQr.dataset.companyQrDownload='';tools.append(allQr);
   }
