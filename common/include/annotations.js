@@ -8,7 +8,7 @@
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const isOverview=record=>{try{return JSON.parse(record.text).format==='screen-overview-v1';}catch{return false;}};
  function pre04Record(record){const links={'refresh-20261026-pre-04-buyer':'#content [data-pre04-search]','refresh-20261026-pre-04-interpreter':'#content [data-pre04-search] select[name="scope"]','refresh-20261026-pre-04-country':'#content [data-pre04-search] input[name="query"]'};const selector=record.anchor?.selector||'';return links[record.id]&&/preBuyers|preInterpreters/.test(selector)?{...record,anchor:{...record.anchor,selector:links[record.id]}}:record;}
- const originalRecords=()=>{const visible=store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})()).map(record=>route()==='PRE-04'?pre04Record(record):record);if(route()==='SET-05'){
+ const originalRecords=()=>{const visible=store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})()).map(record=>route()==='PRE-04'?pre04Record(record):record);if(route()==='SET-13'){return visible.map(record=>{let item='';try{item=JSON.parse(record.text).item;}catch{}return item==='조건부 문항 안내'?{...record,anchor:{...record.anchor,selector:'.survey-condition-guide',sample:'',x:0,y:0,offsetX:-10,offsetY:0}}:record;});}if(route()==='SET-05'){
  // 통합 전 세부 설명은 저장 이력·댓글 보존을 위해 남기고 통합 항목으로 대체 표시한다.
  const layout=[['filter-draft-20261022-set-05-target','#survey-list-filter'],['b1e9369b-8d63-4b77-af3b-d5606e5df839','#content table.survey-action-list'],['filter-draft-20261022-set-05-active','#content table.survey-action-list tbody tr:first-child td:last-child']];
  const consolidated=layout.map(([id,selector])=>{const record=visible.find(r=>r.id===id);if(!record)return null;let item='';try{item=JSON.parse(record.text).item;}catch{}if(!['검색필터','설문관리 목록','관리 버튼 (복사 / 삭제)'].includes(item))return null;return {...record,anchor:{...record.anchor,selector,sample:'',x:0,y:0,offsetX:5,offsetY:0}};});
@@ -104,7 +104,7 @@
   }
   const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}if(el===root)parts.unshift('#'+CSS.escape(root.id));return parts.join(' > ');}
  function find(record){try{
-  const anchor=record.anchor,scope=selectionScope();if(!scope)return null;const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return null;const el=matches[0];
+  const anchor=record.anchor,scope=selectionScope();if(!scope)return null;if(route()==='SET-13'&&anchor.selector==='.survey-condition-guide')return scope.querySelector('.survey-condition-guide');const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return null;const el=matches[0];
   // Semantic form controls remain the same target when inline validation text changes.
   if(anchor.selector.includes('[data-management-form=')&&(/\[name=|\[data-admin-id-check/.test(anchor.selector)))return el;
   // An explicit unique element ID survives changing timestamps, counters and text.
