@@ -7,7 +7,8 @@
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  const isOverview=record=>{try{return JSON.parse(record.text).format==='screen-overview-v1';}catch{return false;}};
- const originalRecords=()=>{const visible=store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})());if(route()==='SET-05'){
+ function pre04Record(record){const links={'refresh-20261026-pre-04-buyer':'#content [data-pre04-search]','refresh-20261026-pre-04-interpreter':'#content [data-pre04-search] select[name="scope"]','refresh-20261026-pre-04-country':'#content [data-pre04-search] input[name="query"]'};const selector=record.anchor?.selector||'';return links[record.id]&&/preBuyers|preInterpreters/.test(selector)?{...record,anchor:{...record.anchor,selector:links[record.id]}}:record;}
+ const originalRecords=()=>{const visible=store.records.filter(record=>!isOverview(record)&&!(()=>{try{return JSON.parse(record.text).format==='screen-message-v1';}catch{return false;}})()).map(record=>route()==='PRE-04'?pre04Record(record):record);if(route()==='SET-05'){
  // 통합 전 세부 설명은 저장 이력·댓글 보존을 위해 남기고 통합 항목으로 대체 표시한다.
  const layout=[['filter-draft-20261022-set-05-target','#survey-list-filter'],['b1e9369b-8d63-4b77-af3b-d5606e5df839','#content table.survey-action-list'],['filter-draft-20261022-set-05-active','#content table.survey-action-list tbody tr:first-child td:last-child']];
  const consolidated=layout.map(([id,selector])=>{const record=visible.find(r=>r.id===id);if(!record)return null;let item='';try{item=JSON.parse(record.text).item;}catch{}if(!['검색필터','설문관리 목록','관리 버튼 (복사 / 삭제)'].includes(item))return null;return {...record,anchor:{...record.anchor,selector,sample:'',x:0,y:0,offsetX:5,offsetY:0}};});
