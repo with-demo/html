@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-04","version":"v0.33","date":"2026.11.02","accountName":"with","summary":"바이어 국가와 통역 가능 언어에 맞춘 예시 매칭","changes":["영국·미국·캐나다 바이어의 담당자를 영어 가능 통역원 5명으로 1:1 배정. 통역원 원본 보유 언어 유지.","기존 바이어명 내림차순 정렬 유지. Description·기획비고 미수정."]},
+{"screenId":"PRE-04-p32","version":"v0.14","date":"2026.11.02","accountName":"with","summary":"바이어 국가와 통역 가능 언어에 맞춘 예시 매칭","changes":["영국·미국·캐나다 바이어의 담당자를 영어 가능 통역원 5명으로 1:1 배정. 통역원 원본 보유 언어 유지.","기존 바이어명 내림차순 정렬 유지. Description·기획비고 미수정."]},
 {"screenId":"SET-12","version":"v0.22","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세 뒤로가기 시 목록 복귀 오류 수정","changes":["브라우저 뒤로가기·목록 이동 시 남아 있던 상세 편집 상태를 목록 화면에 적용하지 않도록 수정.","SET-05·SET-07은 항상 설문관리 목록을 표시하며 상세 화면은 독립 경로에서 유지."]},
 {"screenId":"SET-05","version":"v0.38","date":"2026.11.02","accountName":"shyuwith","summary":"설문 상세 뒤로가기 시 목록 복귀 오류 수정","changes":["브라우저 뒤로가기·목록 이동 시 남아 있던 상세 편집 상태를 목록 화면에 적용하지 않도록 수정.","SET-05·SET-07은 항상 설문관리 목록을 표시하며 상세 화면은 독립 경로에서 유지."]},
 {"screenId":"PRE-04","version":"v0.32","date":"2026.11.02","accountName":"with","summary":"매칭 메인 목록 상단 공통 도구 적용","changes":["별도 목록 제목을 제거하고 총 N명·현재 페이지 및 20건씩 보기 셀렉트만 제공.","관리자·수출상담 운영용역사 모두 공통 페이지당 표시 개수 및 페이지 이동 적용. 행별 매칭·변경 버튼 유지. Description·기획비고 미수정."]},
