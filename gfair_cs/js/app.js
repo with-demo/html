@@ -384,23 +384,25 @@ for(const q of surveyStore)q.end='';
 for(const survey of surveyStore)for(const [index,response] of survey.responses.entries()){response.id||=survey.id+'-response-'+index;response.name=exampleLabel(response.name);response.helper=exampleLabel(response.helper);}
 
 
-// 국내 바이어 만족도 조사 결과 화면 확인용 예시 응답. 기존 응답은 덮어쓰지 않는다.
+// 국내 바이어 만족도 조사 결과·50건 페이지네이션 확인용 예시 60건. 실제 입력된 응답은 덮어쓰지 않는다.
 function surveySeedResponseExamples(){
- const q=surveyStore.find(s=>s.id==='SUR-2026-DOMESTIC-V3');if(!q||q.responses.length)return;
+ const q=surveyStore.find(s=>s.id==='SUR-2026-DOMESTIC-V3');if(!q||q.responses.some(r=>!String(r.id||'').startsWith('DEMO-DOMESTIC-2026-')))return;
  const participants=rows(map.get('BAS-05')).filter(row=>window.GFAIR_PARTICIPATION?.participating('BAS-05',row,String(q.year))).slice(0,3);
- q.responses=participants.map((row,index)=>{
+ q.exampleAudience=60;
+ q.responses=Array.from({length:60},(_,index)=>{
+  const n=String(index+1).padStart(2,'0'),row=participants[index]||['DEMO-K2026-'+n,'예시 바이어 '+n,'예시 유통기업 '+n];
   const answers={},extras={};
   q.groups.forEach((group,gi)=>group.questions.forEach((v,qi)=>{
    const key=gi+'-'+qi;
    if(v.visibleWhen){const previous=answers[v.visibleWhen.question];if(!(Array.isArray(previous)?previous:[previous]).includes(v.visibleWhen.option))return;}
-   if(v.type==='단답형')answers[key]=v.title==='회사명'?row[2]:v.title==='담당자'?row[1]:v.title==='부서'?['구매팀','상품기획팀','MD팀'][index]:v.title==='휴대전화번호'?'010-0000-0000':'응답 예시';
-   else if(v.type==='서술형')answers[key]=(gi===9?['상담 전 기업별 제품 정보를 더 자세히 안내해 주시면 좋겠습니다.','상담 시간 사이 이동 시간을 조금 더 확보해 주세요.','현장 상담 안내 표지가 더 많으면 좋겠습니다.']:['신규 거래처를 발굴할 수 있어 좋았습니다. 내년에도 참여하고 싶습니다.','품목별 추천 기업을 사전에 확인할 수 있으면 좋겠습니다.','다양한 제품을 비교할 수 있어 유익했습니다.'])[index];
+   if(v.type==='단답형')answers[key]=v.title==='회사명'?row[2]:v.title==='담당자'?row[1]:v.title==='부서'?['구매팀','상품기획팀','MD팀'][index%3]:v.title==='휴대전화번호'?'010-0000-0000':'응답 예시';
+   else if(v.type==='서술형')answers[key]=(gi===9?['상담 전 기업별 제품 정보를 더 자세히 안내해 주시면 좋겠습니다.','상담 시간 사이 이동 시간을 조금 더 확보해 주세요.','현장 상담 안내 표지가 더 많으면 좋겠습니다.']:['신규 거래처를 발굴할 수 있어 좋았습니다. 내년에도 참여하고 싶습니다.','품목별 추천 기업을 사전에 확인할 수 있으면 좋겠습니다.','다양한 제품을 비교할 수 있어 유익했습니다.'])[index%3];
    else if(v.type==='복수응답형')answers[key]=[String(index%v.options.length),String((index+1)%v.options.length)].slice(0,v.maxSelections||2);
    else if(v.options.length)answers[key]=String(v.type==='척도형'?Math.max(0,v.options.length-1-index%2):key==='0-1'?'1':index%v.options.length);
    const values=Array.isArray(answers[key])?answers[key]:[answers[key]];
    v.options.forEach((o,oi)=>{if(o.extra&&values.includes(String(oi)))extras[key+'-'+oi]='기타 응답 예시';});
   }));
-  return {id:'DEMO-DOMESTIC-2026-'+(index+1),userId:row[0],name:row[1],date:'2026-10-31 '+['15:10:00','15:25:00','15:40:00'][index],answers,extras};
+  return {id:'DEMO-DOMESTIC-2026-'+(index+1),userId:row[0],name:row[1],date:'2026-10-31 '+String(10+Math.floor(index*3/60)).padStart(2,'0')+':'+String(index*3%60).padStart(2,'0')+':00',answers,extras};
  });
 }
 surveySeedResponseExamples();
@@ -410,7 +412,7 @@ const surveyUi={manage:'list',response:'list',editor:null,id:null,tab:'stats',fi
 function surveyFind(id){return surveyStore.find(s=>s.id===id)}
 function surveyField(label,name,value,type='text',attrs=''){return F(label,I(name,type,value,attrs))}
 function surveyListFilter(response=false){const f=response?surveyUi.responseFilters:surveyUi.filters;return `<form id="survey-list-filter" data-response="${response}" class="panel filters">${F('대상',`<select name="target">${O(['전체',...surveyTargets],f.target)}</select>`)}${!response?F('사용여부',`<select name="active">${O(['전체','사용','미사용'],f.active)}</select>`):''}${surveyField('설문제목','query',f.query,'search','placeholder="설문제목 입력"')}<div class="row"><button type="submit" class="btn primary">검색</button>${B(response?'sur-response-reset':'sur-manage-reset','초기화')}</div></form>`}
-function surveyAudience(q){const id={'국내 바이어':'BAS-05','해외 바이어':'BAS-03','통역원':'BAS-07'}[q.target];if(!id)return 0;return rows(map.get(id)).filter(row=>window.GFAIR_PARTICIPATION?.participating(id,row,String(q.year))).length;}
+function surveyAudience(q){if(q.id==='SUR-2026-DOMESTIC-V3'&&q.exampleAudience===60&&q.responses.length===60)return 60;const id={'국내 바이어':'BAS-05','해외 바이어':'BAS-03','통역원':'BAS-07'}[q.target];if(!id)return 0;return rows(map.get(id)).filter(row=>window.GFAIR_PARTICIPATION?.participating(id,row,String(q.year))).length;}
 function surveyListed(response=false){for(const q of surveyStore)q.audience=surveyAudience(q);const f=response?surveyUi.responseFilters:surveyUi.filters;return surveyStore.filter(s=>(String(s.year)===String(event))&&(f.target==='전체'||s.target===f.target)&&(response||f.active==='전체'||s.active===(f.active==='사용'))&&s.title.includes(f.query.trim())).sort((a,b)=>a.created.localeCompare(b.created)||a.id.localeCompare(b.id))}
 function surveyManageList(s){const rr=surveyListed();return `${head({...s,title:'설문관리',summary:'국내 바이어·해외 바이어·통역원별 설문을 등록하고 미리보기한다.'},B('sur-create','등록','btn primary'))}${surveyListFilter()}<section class="panel"><div class="panelhead"><h2>설문 목록</h2><span>${rr.length}건 · 이 기기에서 저장되는 검토용 설문</span></div><div class="tablewrap"><table class="survey-action-list"><colgroup><col style="width:7%"><col style="width:9%"><col style="width:27%"><col style="width:10%"><col style="width:18%"><col style="width:9%"><col style="width:7%"><col style="width:13%"></colgroup><thead><tr><th>연도</th><th>대상</th><th>설문제목</th><th>예상 소요시간</th><th>조사기간</th><th>미리보기</th><th>사용여부</th><th>관리</th></tr></thead><tbody>${rr.map(q=>`<tr><td>${q.year}</td><td>${E(q.target)}</td><td>${B('sur-edit',q.title,'btn ghost',`data-id="${E(q.id)}"`)}</td><td>${q.minutes==null?'—':q.minutes+'분'}</td><td>${E(q.start)} ~</td><td>${B('sur-preview','미리보기','btn',`data-id="${E(q.id)}"`)}</td><td>${q.active?'사용':'미사용'}</td><td><div class="row">${B('sur-copy','복사','btn',`data-id="${E(q.id)}"`)}${B('sur-delete','삭제','btn danger',`data-id="${E(q.id)}"`)}</div></td></tr>`).join('')||'<tr><td colspan="8">조회된 설문이 없습니다.</td></tr>'}</tbody></table></div></section>`}
 function surveyConditionOptions(q,gi,qi){const result=[];q.groups.forEach((g,gIndex)=>g.questions.forEach((v,qIndex)=>{if(gIndex>gi||gIndex===gi&&qIndex>=qi||!['단일응답형','복수응답형','척도형'].includes(v.type))return;v.options.forEach((o,i)=>result.push({value:gIndex+'-'+qIndex+':'+i,label:g.title+' · '+v.title+' → '+o.label}));}));return result;}

@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-06","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
+{"screenId":"SET-15","version":"v0.8","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
+{"screenId":"SET-16","version":"v0.12","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 설문 예시 응답 60건 구성","changes":["국내 바이어 조사 대상·응답 예시를 60명으로 구성. 기본정보·행사정보의 참가자 원본은 유지.","통계·이력·서술형·단답형에 동일한 예시 응답 연결. 주관식 팝업 50건·10건 페이지 분할 확인."]},
 {"screenId":"SET-15","version":"v0.7","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 팝업 가로 폭 확대","changes":["팝업 가로 폭을 940px로 확대하고 좁은 화면에서는 화면 너비에 맞춰 표시.","응답자 15%·응답일시 23%·내용 62%로 배분하여 답변 가독성 개선."]},
 {"screenId":"SET-15","version":"v0.6","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 팝업 및 50건 페이지네이션","changes":["서술형·단답형 응답을 SET-15 읽기 전용 팝업으로 표시. 한 페이지에 50건, 초과 시 공통 페이지네이션 표시.","닫으면 SET-16 검색 조건·통계 탭·스크롤 위치 유지."]},
 {"screenId":"SET-16","version":"v0.11","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 팝업 및 50건 페이지네이션","changes":["서술형·단답형 응답을 SET-15 읽기 전용 팝업으로 표시. 한 페이지에 50건, 초과 시 공통 페이지네이션 표시.","닫으면 SET-16 검색 조건·통계 탭·스크롤 위치 유지."]},
