@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"BAS-01","version":"v0.46","date":"2026.11.02","accountName":"with","summary":"동기화 버튼명 통일","changes":["동기화 하기 버튼명을 동기화로 변경. 기존 동작·최근 동기화일시 유지. 화면만 수정."]},
+{"screenId":"BAS-09","version":"v0.51","date":"2026.11.02","accountName":"with","summary":"동기화 버튼명 통일","changes":["동기화 하기 버튼명을 동기화로 변경. 기존 동작·최근 동기화일시 유지. 화면만 수정."]},
 {"screenId":"SET-06","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"국내 바이어 만족도 조사 첫 행 표시","changes":["응답관리 목록에서 국내 바이어 설문을 우선 표시하고 나머지 설문의 기존 순서를 유지. 공통 목록 정렬·페이지 변경에도 우선순위 유지. 설문관리 목록 순서와 검색 조건은 유지."]},
 {"screenId":"SET-11","version":"v0.29","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리. 앵커 변경으로 번호가 화면 밖에 놓인 경우 표시 위치 보정."]},
 {"screenId":"SET-12","version":"v0.30","date":"2026.11.02","accountName":"shyuwith","summary":"설문 등록·상세 디스크립션 공통 저장 연결","changes":["화면 ID는 유지하고 두 화면의 Description 조회·생성·수정은 SET-11 저장 내용을 공통 사용.","기존 SET-12 저장 내용은 삭제하지 않고 보존. 양쪽 화면의 번호 연결을 공통 폼 요소 기준으로 정리. 앵커 변경으로 번호가 화면 밖에 놓인 경우 표시 위치 보정."]},
