@@ -31,6 +31,15 @@
    main.querySelectorAll('.workflow-page-nav,:scope>.page-bottom-actions,.head-actions a.btn[href="#SET-05"]').forEach(node=>node.remove());
    return;
   }
+  if(route==='SET-15'&&main.querySelector('.workflow-page-body')){
+   main.querySelectorAll('.workflow-page-nav,.workflow-page-body>.dialogactions').forEach(node=>node.remove());
+   let bar=main.querySelector(':scope>.page-bottom-actions');
+   if(!bar){bar=document.createElement('div');bar.className='page-bottom-actions';bar.setAttribute('aria-label','페이지 작업');main.append(bar);}
+   [...bar.children].filter(node=>!node.matches('[data-workflow-return]')).forEach(node=>node.remove());
+   if(!bar.querySelector('[data-workflow-return]')){const button=document.createElement('button');button.type='button';button.className='btn';button.dataset.workflowReturn='';button.textContent='이전';bar.append(button);}
+   if(bar!==main.lastElementChild)main.append(bar);
+   return;
+  }
   if(route==='BAS-17'&&main.querySelector('.operator-basic-actions')){
    main.querySelectorAll(':scope>.page-bottom-actions').forEach(bar=>bar.remove());
    main.querySelectorAll('.head-actions a.btn[href="#BAS-15"]').forEach(link=>link.remove());

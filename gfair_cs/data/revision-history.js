@@ -1,5 +1,7 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"SET-15","version":"v0.4","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 이전 이동 및 조회 위치 유지","changes":["SET-15 하단 목록·취소·확인을 제거하고 이전 버튼 하나로 통일.","SET-16의 조회 조건·문항·스크롤 위치를 유지하여 복귀."]},
+{"screenId":"SET-16","version":"v0.7","date":"2026.11.02","accountName":"shyuwith","summary":"주관식 응답 이전 이동 및 조회 위치 유지","changes":["SET-15 하단 목록·취소·확인을 제거하고 이전 버튼 하나로 통일.","SET-16의 조회 조건·문항·스크롤 위치를 유지하여 복귀."]},
 {"screenId":"PRE-04-p32","version":"v0.11","date":"2026.11.02","accountName":"with","summary":"통역원 후보 목록 공통 레이아웃 적용","changes":["목록 헤더·행 중앙 정렬, 열 너비·행 간격·매칭 버튼을 공통 목록 스타일로 통일.","공통 페이지 이동 형식과 현재 페이지 강조 적용. 매칭 정책·검색 동작 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04","version":"v0.31","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},
 {"screenId":"PRE-04-p32","version":"v0.10","date":"2026.11.02","accountName":"with","summary":"바이어·통역원 1:1 매칭 예시 정리","changes":["Emily Carter 담당 통역원을 정다은으로 조정하여 예시 5건을 서로 다른 통역원과 1:1 매칭.","기존 중복 매칭 차단 및 매칭된 통역원 후보 제외 유지. Description·기획비고 미수정."]},

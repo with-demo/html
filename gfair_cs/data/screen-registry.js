@@ -54,7 +54,7 @@ window.GFAIR_SCREEN_REGISTRY=[
   {
     "id": "SET-15",
     "title": "주관식 설문 응답",
-    "parent": "SET-06",
+    "parent": "SET-16",
     "summary": "주관식 설문 응답 화면에서 대상 정보와 처리 내용을 확인합니다.",
     "kind": "workflow",
     "match": "주관식 응답",
