@@ -40,3 +40,7 @@
 .admin-list-tools.event-sync-tools .event-last-sync{grid-column:1/-1;grid-row:1;margin:0;text-align:right}
 .admin-list-tools.event-sync-tools>select{grid-column:1;grid-row:2}
 .admin-list-tools.event-sync-tools>[data-action="event-sync"]{grid-column:2;grid-row:2}
+
+/* 최근 일시는 필터와 목록 사이 바깥쪽에 작게 표시한다. */
+#content .event-sync-meta{display:flex;justify-content:flex-end;margin:-12px 0 4px;padding:0 2px;min-height:18px;line-height:18px}
+.admin-list-tools.event-sync-tools{display:flex;align-items:center;gap:10px;width:auto}
