@@ -1,5 +1,8 @@
 window.GFAIR_REVISION_ACCOUNT_NAMES={"yulotsogreen":"shyu"};
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"PRE-02","version":"v1.38","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
+{"screenId":"EVT-03","version":"v1.37","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
+{"screenId":"EVT-04","version":"v1.37","date":"2026.11.02","accountName":"with","summary":"회원 상세 미입력 항목 공란 표시","changes":["해외바이어·국내바이어·통역원 상세의 값 없는 정보 항목을 미등록 대신 공란으로 표시.","관련 Description의 빈값 표시 기준 동기화."]},
 {"screenId":"EVT-03","version":"v1.36","date":"2026.11.02","accountName":"with","summary":"상세 QR 팝업 제거","changes":["QR 이미지를 클릭 없는 표시로 변경하고 상세 화면에서 직접 QR 다운로드 제공.","EVT-03-p08·EVT-04-p08 설명 종료 및 관련 상세 Description 동기화."]},
 {"screenId":"EVT-04","version":"v1.36","date":"2026.11.02","accountName":"with","summary":"상세 QR 팝업 제거","changes":["QR 이미지를 클릭 없는 표시로 변경하고 상세 화면에서 직접 QR 다운로드 제공.","EVT-03-p08·EVT-04-p08 설명 종료 및 관련 상세 Description 동기화."]},
 {"screenId":"PRE-02","version":"v1.37","date":"2026.11.02","accountName":"with","summary":"해외바이어 상세 담당 통역원 항목 제거","changes":["기본정보표의 담당 통역원 항목과 연결 Description 제거. 나머지 기본정보·기업정보·관심분야·방한현황 유지."]},
