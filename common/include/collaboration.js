@@ -17,7 +17,7 @@
   const route=current();if(activeRequest?.route===route&&!force)return;
   activeRequest?.controller.abort();if(route==='screens'){activeRequest=null;loading=false;changed();return;}
   const request={route,controller:new AbortController(),notify:screen!==route||!!window.GFAIR_COLLAB.error};activeRequest=request;loading=true;if(request.notify)changed();
-  try{const result=await api('list',undefined,{route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
+  try{const result=await api('list',undefined,{route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');if(route==='SET-13'){const legacy=await api('list',undefined,{route:'SET-05-p12',signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;const ids=new Set(result.records.map(r=>r.id));result.records=[...result.records,...(legacy.records||[]).filter(r=>!ids.has(r.id))].map(r=>({...r,screen:'SET-13'}));}user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
  }
  async function login(){
@@ -29,7 +29,7 @@
   location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:current()==='screens'?'MON-01':current()}));
  }
  window.GFAIR_COLLAB={get user(){return user;},get githubReady(){return githubReady;},get records(){return screen===current()?records:[];},get loading(){return loading;},get loaded(){return screen===current();},error:'',login,refresh,
-  async planningNotes(){return (await api('planning-notes')).records;},
+  async planningNotes(){return (await api('planning-notes')).records.map(r=>r.screen==='SET-05-p12'?{...r,screen:'SET-13'}:r);},
   async mutate(op,body){const result=await api(op,body);snapshot='';await refresh(true);return result;},
   async logout(){try{if(token)await api('logout',{});}finally{token='';user=null;records=[];snapshot='';sessionStorage.removeItem(TOKEN);changed();}}
  };
