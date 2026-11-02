@@ -18,5 +18,5 @@
 @media(max-width:600px){.survey-participation .survey-paper>h2{font-size:18px}.survey-participation .survey-answer-options.scale{flex-direction:column;gap:8px}.survey-participation .detaildata{grid-template-columns:100px minmax(0,1fr)}}
 
 /* 설문 제목과 카드 상단 사이 여백 확보 */
-.survey-participation .survey-paper{padding-top:20px}
-@media(max-width:600px){.survey-participation .survey-paper{padding-top:10px}}
+.survey-participation .survey-paper{padding-top:40px}
+@media(max-width:600px){.survey-participation .survey-paper{padding-top:24px}}
