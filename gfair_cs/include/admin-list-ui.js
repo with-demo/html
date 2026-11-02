@@ -3,7 +3,7 @@
  const root=document.getElementById('app');if(!root)return;
  const excluded=new Set(['COM-04','COM-05','COM-06','BAS-17','BAS-18','NTC-07']);
  const routes=new Set((window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).filter(s=>s.kind==='list'&&!excluded.has(s.id)).map(s=>s.id));
- ['COM-07','EVT-01','EVT-02','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
+ ['COM-07','EVT-01','EVT-02','PRE-04','JNL-13','JNL-14','SET-05','SET-07'].forEach(id=>routes.add(id));
  const pre01Pages=new Map();
  const prepared=new WeakSet(),collator=new Intl.Collator('ko',{numeric:true,sensitivity:'base'});
  const clean=el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.ui-spec-badge,[data-list-row-trigger]').forEach(e=>e.remove());return copy.textContent.trim().replace(/\s+/g,' ');};
@@ -35,7 +35,7 @@
   const rows=[...body.rows].filter(row=>row.cells.length>1||row.cells[0]?.colSpan===1&&!row.querySelector('.empty'));
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
   let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
-  count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01'].includes(route)?'명':'건')+' · 1/1page';
+  count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01','PRE-04'].includes(route)?'명':'건')+' · 1/1page';
   const exclude=main.querySelector('[data-master-exclude]');
   if(exclude&&['BAS-03','BAS-05','BAS-07'].includes(route)){
    const previous=exclude.parentElement,summary=document.createElement('div');summary.className='participant-bulk-summary';header.insertBefore(summary,count);summary.append(count,exclude);
@@ -70,7 +70,7 @@
    if(['BAS-03','BAS-05','BAS-07'].includes(route)){const yearIndex=headers.indexOf('참가연도'),latestYear=row=>Math.max(0,...(clean(row.cells[yearIndex]||row).match(/20\d{2}/g)||[]).map(Number));ordered.sort((a,b)=>latestYear(b.row)-latestYear(a.row)||a.i-b.i);}else if(route!=='PRE-01')ordered.sort((a,b)=>priority(a.row)-priority(b.row)||collator.compare(b.key,a.key)||a.i-b.i);
    const perPage=Number(size.value),pages=Math.max(1,Math.ceil(rows.length/perPage));page=Math.min(page,pages);
    if(stateKey)pre01Pages.set(stateKey,{page,size:perPage});
-   count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01'].includes(route)?'명':'건')+' · '+page+'/'+pages+'page';
+   count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01','PRE-04'].includes(route)?'명':'건')+' · '+page+'/'+pages+'page';
    observer.disconnect();
    ordered.forEach(({row},i)=>{row.classList.toggle('journal-approval-priority',prioritize&&priority(row)===0);row.hidden=i<(page-1)*perPage||i>=page*perPage;body.append(row);});
    pagination.replaceChildren();
@@ -89,7 +89,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='BAS-09'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='BAS-09'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='PRE-04'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;
