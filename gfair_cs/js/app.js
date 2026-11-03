@@ -430,7 +430,7 @@ function surveySeedForeignResponseExamples(){
    const values=Array.isArray(answers[key])?answers[key]:[answers[key]];
    v.options.forEach((o,oi)=>{if(o.extra&&values.includes(String(oi)))extras[key+'-'+oi]='Other response';});
   }));
-  return {id:'DEMO-FOREIGN-2026-'+(index+1),userId:row[0],...identity,name:row[1],helper:match?.[5]&&match[5]!=='미지정'?match[5]:'',date:'2026-10-31 '+String(13+Math.floor(index/4)).padStart(2,'0')+':'+String(index%4*12).padStart(2,'0')+':00',answers,extras};
+  return {id:'DEMO-FOREIGN-2026-'+(index+1),userId:row[0],...identity,name:row[1],helper:match?.[5]&&match[5]!=='미지정'?match[5]:(rows(map.get('BAS-07'))[index%Math.max(1,rows(map.get('BAS-07')).length)]?.[1]||'박서연'),date:'2026-10-31 '+String(13+Math.floor(index/4)).padStart(2,'0')+':'+String(index%4*12).padStart(2,'0')+':00',answers,extras};
  });
  q.responses=[...existing,...demos];
 }
