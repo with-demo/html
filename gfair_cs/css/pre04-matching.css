@@ -56,3 +56,7 @@
 #dialog-content .pre04-linked-buyer{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#555;text-align:left;overflow-wrap:anywhere}
 #dialog-content .pre04-linked-buyer .pre04-link-icon{width:18px;height:18px;flex:none}
 @media(max-width:680px){#dialog-content .pre04-candidates table{min-width:760px}}
+
+/* 국가·매칭상태 / 키워드검색 순서 */
+#app #content [data-pre04-search]>.search-condition{grid-column:auto}#app #content [data-pre04-search]>.search-keyword{grid-column:1/-1}
+#dialog-content .pre04-status-radios{display:flex;align-items:center;gap:14px;padding:12px 16px;flex-wrap:wrap}#dialog-content .pre04-status-radios label{display:inline-flex;align-items:center;gap:5px;font-size:13px;white-space:nowrap}#dialog-content .pre04-status-radios input{width:16px;min-height:16px;margin:0}#dialog-content .pre04-popup-filters>.pre04-popup-name{grid-column:1/-1}
