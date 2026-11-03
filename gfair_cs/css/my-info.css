@@ -16,3 +16,5 @@
 .account-info-fields.account-contact-fields dd:last-child:nth-child(4n+2){grid-column:auto}
 
 .account-buyer-basic .account-wide-value{grid-column:span 3;white-space:pre-line}.account-info-page [data-account-buyer] .overseas-buyer-section{margin:0 0 30px}.account-info-page [data-account-buyer-result]{font-size:13px;line-height:1.7}@media(max-width:700px){.account-buyer-basic .account-wide-value{grid-column:auto}}
+
+.account-info-page [data-account-buyer]>.formfooter{background:transparent;border:0;padding:16px 0}
