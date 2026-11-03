@@ -74,9 +74,9 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
   ],
   "PRE-02": [
     "578c360c-60d4-4399-a0d2-79119ffd2225",
+    "3687e794-fdb0-490b-828d-ab5d7241656d",
     "c9b72ef6-c3fe-4734-918c-7faf7ffe3a88",
     "lodging-PRE-02-lodging-20261103",
-    "3687e794-fdb0-490b-828d-ab5d7241656d",
     "travel-detail-manual-history-20261103"
   ],
   "NTC-01": [
