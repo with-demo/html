@@ -12,7 +12,14 @@
  if(route()==='BAS-2762908039')history.replaceState(null,'',location.pathname+location.search+'#BAS-02');
  try{const saved=JSON.parse(sessionStorage.getItem(storage)||'[]');const kept=saved.filter(e=>!obsoleteEventDetail(e));if(saved.length!==kept.length)sessionStorage.setItem(storage,JSON.stringify(kept));}catch{}
  const save=()=>{try{sessionStorage.setItem(storage,JSON.stringify([...entries].map(([id,e])=>({id,parent:e.parent,title:e.title,html:e.node.innerHTML,...(e.returnView?{returnView:e.returnView}:{})}))));}catch{}};
- const register=entry=>{const groups=window.GFAIR_SCREENS||[];if(!groups.flatMap(g=>g.screens).some(s=>s.id===entry.id)){const owner=groups.find(g=>g.screens.some(s=>s.id===entry.parent))||groups[0];owner?.screens.push({id:entry.id,title:entry.title,kind:'workflow',summary:entry.title+'의 내용을 확인하거나 입력하고 저장합니다.',ui:{}});const picker=document.querySelector('.ui-spec-screen-picker');if(picker&&!Array.from(picker.options).some(o=>o.value===entry.id)){const option=document.createElement('option');option.value=entry.id;option.textContent=entry.id+' : '+entry.title;picker.append(option);}}};
+ const register=entry=>{
+  const groups=window.GFAIR_SCREENS||[];
+  if(!groups.flatMap(g=>g.screens).some(s=>s.id===entry.id)){
+   const owner=groups.find(g=>g.screens.some(s=>s.id===entry.parent))||groups[0];
+   owner?.screens.push({id:entry.id,title:entry.title,parent:entry.parent,workflowParent:entry.parent,kind:'workflow',summary:entry.title+'의 내용을 확인하거나 입력하고 저장합니다.',ui:{}});
+  }
+  window.dispatchEvent(new Event('gfair-screen-catalog-changed'));
+ };
  try{for(const e of JSON.parse(sessionStorage.getItem(storage)||'[]')){if(/^COM-0[2345](?:$|-)/.test(e.id)||/^COM-0[2345]$/.test(e.parent))continue;if(['SET-11','SET-12'].includes(e.id))continue;if(e.id==='SET-08'||e.title==='그룹 등록'||e.id==='SET-13'||e.title==='설문 미리보기')continue;if(e.id==='SET-15')e.parent='SET-16';const canonical=definition(e.parent,e.title);if(canonical){if(route()===e.id&&e.id!==canonical.id)history.replaceState(null,'',location.pathname+location.search+'#'+canonical.id);e.id=canonical.id;}const node=document.createElement('section');node.className='panel workflow-page-body';node.innerHTML=e.html;entries.set(e.id,{...e,node});register(e);}}catch{}
  window.GFAIR_WORKFLOW={rememberReturn:(id,button)=>returnViews.set(id,{parent:route(),x:window.scrollX,y:window.scrollY,group:button?.dataset.group,question:button?.dataset.question}),entry:id=>entries.get(id),parent:()=>entries.get(route())?.parent||route(),back:()=>{if(route()==='SET-15'){location.hash='SET-16';return;}const e=entries.get(route());if(e)location.hash=e.parent;}};
  modal.showModal=function(){
