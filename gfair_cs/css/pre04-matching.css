@@ -63,12 +63,54 @@
 
 .pre04-assignment-history{margin-top:24px}.pre04-assignment-history h3{font-size:15px;margin:0 0 12px}.pre04-assignment-history table{min-width:700px}.pre04-history-reason{white-space:pre-wrap;overflow-wrap:anywhere;text-align:left}.pre04-change-summary{display:grid;grid-template-columns:130px minmax(0,1fr);border-top:1px solid #ddd;border-left:1px solid #ddd;margin:16px 0}.pre04-change-summary dt,.pre04-change-summary dd{margin:0;padding:12px;border-right:1px solid #ddd;border-bottom:1px solid #ddd}.pre04-change-summary dt{background:#f5f5f5}.pre04-change-reason{display:grid;gap:8px;margin-top:16px}.pre04-change-reason textarea{min-height:110px}[data-pre04-change-error]{color:#b3261e;font-size:13px}
 
-/* 매칭관리: 상태·이력·작업 버튼 고정 순서와 간결한 작업 영역 */
-#dialog:has(.pre04-management){width:min(1060px,calc(100vw - 32px));max-height:calc(100dvh - 60px)}#dialog-content:has(.pre04-management){width:100%;max-width:100%}
-#dialog-content .pre04-management .pre04-buyer-context{padding:10px;margin-bottom:10px;font-size:13px}#dialog-content .pre04-management .pre04-assignment-history{margin:0 0 10px}#dialog-content .pre04-management .pre04-assignment-history h3{font-size:12px;margin-bottom:5px}#dialog-content .pre04-management .pre04-assignment-history .tablewrap{max-height:95px;overflow:auto}#dialog-content .pre04-management .pre04-assignment-history table{font-size:11px;min-width:650px}#dialog-content .pre04-management .pre04-assignment-history th,#dialog-content .pre04-management .pre04-assignment-history td{font-size:11px;padding:4px 6px}#dialog-content .pre04-management .pre04-assignment-history p{font-size:11px;margin:4px 0}
-.pre04-management-actions{display:flex;justify-content:center;gap:8px;margin:10px 0}.pre04-management-actions .btn{min-height:32px;padding:5px 16px;font-size:13px}.pre04-reason-bar{display:flex;gap:8px;align-items:center;margin:8px 0}.pre04-reason-bar label{display:flex;flex:1;gap:8px;align-items:center;font-size:12px}.pre04-reason-bar label>span{white-space:nowrap}.pre04-reason-bar input{height:32px;min-height:32px;padding:4px 8px;font-size:12px}.pre04-reason-bar .btn{min-height:32px;padding:4px 12px;font-size:12px}
-#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr 1fr 1fr auto}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.field{grid-template-columns:55px minmax(0,1fr);min-height:42px;grid-column:auto}#dialog-content .pre04-management .pre04-popup-filters>.field>span{padding:6px;font-size:12px}#dialog-content .pre04-management .pre04-popup-filters .matching-multi{margin:5px 7px}#dialog-content .pre04-management .pre04-status-radios{padding:6px;gap:5px}#dialog-content .pre04-management .pre04-status-radios label{font-size:11px}#dialog-content .pre04-management .pre04-name-input{padding:5px 7px;min-height:40px}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{grid-column:auto;padding:5px 7px;min-height:40px;gap:4px}#dialog-content .pre04-management .pre04-popup-filters .btn{min-width:44px;padding:4px 7px;min-height:30px;font-size:12px}
-#dialog-content .pre04-management .pre04-candidate-count{margin:8px 0 5px;font-size:12px}#dialog-content .pre04-management .pre04-candidates table{min-width:0}#dialog-content .pre04-management .pre04-candidates th,#dialog-content .pre04-management .pre04-candidates td{font-size:12px;padding:6px 8px;line-height:1.35}#dialog-content .pre04-management .pre04-candidates .btn{height:28px;min-height:28px;font-size:12px;padding:3px 8px}#dialog-content .pre04-management .pre04-linked-buyer{display:block;font-size:10px;margin-top:3px}#dialog-content .pre04-management .pre04-popup-pagination{margin-top:6px;gap:4px}#dialog-content .pre04-management .pre04-popup-pagination .btn{height:28px;min-height:28px;padding:3px 9px;font-size:12px}
-@media(max-width:800px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr 1fr}}@media(max-width:500px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr}.pre04-reason-bar{flex-wrap:wrap}}
-
-#dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-status{grid-template-columns:65px minmax(0,1fr)}#dialog-content .pre04-management .pre04-popup-status>span{white-space:nowrap}
+/* 매칭관리 팝업: 모든 작업 상태에서 동일한 폭과 정돈된 정보 계층 */
+#dialog.standard-popup:has(.pre04-management){width:min(1060px,calc(100vw - 32px));max-width:calc(100vw - 32px);max-height:calc(100dvh - 60px)}
+#dialog.standard-popup #dialog-content:has(.pre04-management){width:100%;max-width:100%}
+#dialog-content .pre04-management .pre04-buyer-context{display:flex;align-items:center;justify-content:center;gap:24px;padding:14px 20px;margin:0 0 16px;background:#f6f7f8;border:1px solid #e0e3e6;border-radius:8px}
+#dialog-content .pre04-management .pre04-current-person{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;min-width:0;font-size:15px}
+#dialog-content .pre04-management .pre04-current-person small{font-size:11px;color:#777;font-weight:400}
+#dialog-content .pre04-management .pre04-link-icon{color:#888;font-size:22px}
+#dialog-content .pre04-management .pre04-assignment-history{margin:0 0 16px}
+#dialog-content .pre04-management .pre04-assignment-history h3{font-size:13px;margin:0 0 7px;font-weight:600;color:#555}
+#dialog-content .pre04-management .pre04-assignment-history .tablewrap{max-height:124px;overflow:auto;border:1px solid #e1e3e6;border-radius:6px}
+#dialog-content .pre04-management .pre04-assignment-history table{width:100%;min-width:700px;table-layout:fixed;border-collapse:collapse}
+#dialog-content .pre04-management .pre04-assignment-history th,#dialog-content .pre04-management .pre04-assignment-history td{font-size:12px;line-height:1.45;padding:7px 9px;text-align:left;border:0;border-bottom:1px solid #eceef0;vertical-align:top;overflow-wrap:anywhere}
+#dialog-content .pre04-management .pre04-assignment-history th{background:#f6f7f8;color:#666;font-weight:500;position:sticky;top:0}
+#dialog-content .pre04-management .pre04-assignment-history tbody tr:last-child td{border-bottom:0}
+#dialog-content .pre04-management .pre04-assignment-history p{font-size:12px;margin:0;padding:12px 14px;border:1px dashed #ddd;border-radius:6px;color:#888}
+#dialog-content .pre04-management-actions{display:flex;justify-content:center;gap:8px;margin:0 0 14px}
+#dialog-content .pre04-management-actions .btn{min-height:34px;min-width:88px;padding:6px 16px;font-size:13px;border-radius:6px}
+#dialog-content .pre04-workspace{border-top:1px solid #e5e7e9;padding-top:14px}
+#dialog-content .pre04-reason-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;padding:13px 15px;background:#fff7e8;border:1px solid #e7c98e;border-left:4px solid #bc872a;border-radius:6px}
+#dialog-content .pre04-reason-bar label{display:flex;align-items:center;gap:14px;flex:1;min-width:180px;font-size:13px;font-weight:600;color:#77501a}
+#dialog-content .pre04-reason-bar label>span{white-space:nowrap;min-width:70px}
+#dialog-content .pre04-reason-bar input{background:#fff;height:38px;min-height:38px;padding:7px 10px;border:1px solid #cbb58e;font-size:13px;border-radius:5px;font-weight:400}
+#dialog-content .pre04-reason-bar .btn{min-height:38px;padding:7px 15px;font-size:13px;white-space:nowrap}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{display:grid;grid-template-columns:1fr 1.2fr 1fr auto;gap:12px;padding:12px;margin:0 0 12px;background:#f7f8f9;border:1px solid #e1e4e7;border-radius:7px;align-items:end;overflow:visible}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.field{display:flex;flex-direction:column;gap:7px;grid-column:auto;margin:0;padding:0;min-height:0;border:0;background:transparent;align-self:stretch}
+#dialog-content .pre04-management .pre04-popup-filters>.field>span{display:block;padding:0;border:0;background:transparent;font-size:12px;font-weight:600;color:#666;white-space:nowrap}
+#dialog-content .pre04-management .pre04-popup-filters .matching-multi{margin:0;width:100%;align-self:stretch}
+#dialog-content .pre04-management .pre04-popup-filters .matching-multi summary{height:36px;min-height:36px;padding:7px 10px;border-radius:5px;font-size:12px;background:#fff}
+#dialog-content .pre04-management .pre04-status-radios{display:flex;flex-wrap:nowrap;gap:5px;padding:0;min-height:36px;align-items:stretch}
+#dialog-content .pre04-management .pre04-status-radios label{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;white-space:nowrap;padding:5px 6px;border:1px solid #d8dce0;border-radius:5px;background:#fff;font-size:12px}
+#dialog-content .pre04-management .pre04-status-radios label:has(input:checked){border-color:#777;background:#ebedf0;color:#222}
+#dialog-content .pre04-management .pre04-name-input{padding:0;min-height:0;display:block}
+#dialog-content .pre04-management .pre04-name-input input{height:36px;min-height:36px;padding:7px 10px;font-size:12px;border-radius:5px}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{display:flex;grid-column:auto;padding:0;margin:0;gap:5px;min-height:36px;align-items:center}
+#dialog-content .pre04-management .pre04-popup-filters .btn{min-width:48px;min-height:36px;padding:6px 9px;font-size:12px;border-radius:5px}
+#dialog-content .pre04-management .pre04-candidate-count{margin:0 0 7px;font-size:12px;color:#666}
+#dialog-content .pre04-management .pre04-candidates{border:1px solid #dfe3e6;border-radius:6px;overflow:auto}
+#dialog-content .pre04-management .pre04-candidates table{min-width:0;width:100%;table-layout:fixed;border:0;border-collapse:collapse}
+#dialog-content .pre04-management .pre04-candidates th,#dialog-content .pre04-management .pre04-candidates td{font-size:12px;padding:8px 10px;line-height:1.45;border:0;border-bottom:1px solid #e9ecef;text-align:center;vertical-align:middle;overflow-wrap:anywhere}
+#dialog-content .pre04-management .pre04-candidates th{background:#f3f5f6;font-weight:500;color:#666}
+#dialog-content .pre04-management .pre04-candidates th:first-child{width:28%}
+#dialog-content .pre04-management .pre04-candidates th:nth-child(3){width:80px}
+#dialog-content .pre04-management .pre04-candidates th:last-child{width:70px}
+#dialog-content .pre04-management .pre04-candidates td:first-child{text-align:left}
+#dialog-content .pre04-management .pre04-candidates tbody tr:last-child td{border-bottom:0}
+#dialog-content .pre04-management .pre04-candidates .btn{height:30px;min-height:30px;min-width:54px;padding:4px 10px;font-size:12px;border-radius:5px}
+#dialog-content .pre04-management .pre04-linked-buyer{display:block;font-size:11px;color:#888;margin-top:3px;line-height:1.4}
+#dialog-content .pre04-management .pre04-popup-pagination{margin:10px 0 0;gap:4px}
+#dialog-content .pre04-management .pre04-popup-pagination .btn{height:28px;min-height:28px;padding:4px 9px;font-size:12px}
+@media(max-width:850px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr 1fr}#dialog-content .pre04-management .pre04-assignment-history table{min-width:650px}}
+@media(max-width:500px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr}.pre04-reason-bar label{flex-wrap:wrap}#dialog-content .pre04-management .pre04-current-person{font-size:13px}}
