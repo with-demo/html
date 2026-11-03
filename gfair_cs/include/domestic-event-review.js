@@ -31,7 +31,7 @@ window.GFAIR_DOMESTIC_REVIEW={lockedRows:(year,route='EVT-01')=>controllers.get(
   const edits=operator()&&!finalized?'<div class="domestic-list-edits">'+button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',false,finalized)+button('add',cfg.interpreter?'통역원 추가':'바이어 추가',false,finalized)+'</div>':'';
   list=list.replace('<div class="row event-participant-tools">',edits+'<div class="row event-participant-tools">');
 
-  if(cfg.foreign){list=html.replace(/<button[^>]*data-pre01-action="exclude"[^>]*>[\s\S]*?<\/button>/g,'').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');if(!finalized)list=list.replace(/<button[^>]*data-pre01-action="qr"[^>]*>[\s\S]*?<\/button>/g,'미발급').replace(/<button[^>]*data-pre01-action="(?:qr-selected|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');list=list.replace('<div class="row event-participant-tools">',edits+'<div class="row event-participant-tools">');return list;}
+  if(cfg.foreign){list=html.replace(/<button[^>]*data-pre01-action="exclude"[^>]*>[\s\S]*?<\/button>/g,'').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');if(!finalized)list=list.replace(/<button[^>]*data-pre01-action="qr"[^>]*>[\s\S]*?<\/button>/g,'미발급').replace(/<button[^>]*data-pre01-action="(?:qr-selected|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');list=list.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()&&!finalized?button('add','바이어 추가'):''));list=list.replace('<span data-pre01-bulk-extra></span>',operator()&&!finalized?button('exclude','선택 바이어 제외'): '');return list;}
   return flow+list;
  }
  document.addEventListener('click',async ev=>{

@@ -1,5 +1,5 @@
 // 현재 구현된 보조 화면의 정식 ID와 진입 정보를 관리한다.
-window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-01-p41","title":"숙소관리","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"관리자·수출상담 운영용역사가 행사별 숙소명·위치를 등록·수정·삭제하고 바이어 숙소 선택 목록으로 사용합니다.","selector":"[data-pre01-action=\"lodgings\"]"},
+window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-01-p42","title":"숙소 일괄변경","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"선택한 해외바이어의 숙소를 한 번에 배정하거나 해제합니다.","selector":"[data-pre01-action=\"bulk-lodgings\"]"},{"id":"PRE-01-p41","title":"숙소관리","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"관리자·수출상담 운영용역사가 행사별 숙소명·위치를 등록·수정·삭제하고 바이어 숙소 선택 목록으로 사용합니다.","selector":"[data-pre01-action=\"lodgings\"]"},
 {"id":"PRE-01-p20","title":"바이어 이동상태 변경","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"수출상담 운영용역사가 목록에서 펼쳐진 이동상태를 선택하여 즉시 변경합니다.","selector":"[data-pre01-action=\"status\"]"},
 {"id":"JNL-14-p01","title":"수출상담일지 엑셀 일괄 업로드","parent":"JNL-14","summary":"엑셀 양식을 다운로드하고 오프라인 상담일지를 검증·일괄 등록합니다.","kind":"popup","source":"JNL-14","selector":"[data-journal-upload]"},
   {
