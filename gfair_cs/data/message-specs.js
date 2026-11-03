@@ -349,3 +349,5 @@ GFAIR_MESSAGE_SPECS.push(...[
 
 GFAIR_MESSAGE_SPECS.push({"key":"com06-interpreter-phone","title":"통역원 연락처 형식 오류","screens":["COM-06"],"type":"브라우저 입력 검증","trigger":"통역원 연락처의 가운데·끝자리가 각 4자리가 아닐 때 (일부 입력 포함)","message":"연락처를 4자리씩 입력해 주세요.","confirm":"저장 중단, 입력값 유지 및 해당 항목에 오류 표시","source":"include/my-info.js"});
 
+
+GFAIR_MESSAGE_SPECS.push(...[{"key":"resource-date-range","screens":["NTC-03"],"title":"등록일 범위 오류","type":"인라인 오류","trigger":"등록일 종료일이 시작일보다 빠른 상태에서 검색","message":"등록일 종료일은 시작일보다 빠를 수 없습니다.","confirm":"검색 중단, 입력값 유지","source":"include/public-boards.js"},{"key":"public-board-empty-content","screens":["NTC-10","NTC-11","NTC-13","NTC-14"],"title":"제목·내용 공백 입력","type":"인라인 오류","trigger":"관리자가 제목 또는 내용에 공백만 입력하고 등록·저장","message":"제목·내용은 공백만 입력할 수 없습니다.","confirm":"저장 중단, 입력값 유지","source":"include/public-boards.js"}]);

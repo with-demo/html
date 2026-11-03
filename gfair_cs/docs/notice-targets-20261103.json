@@ -1,0 +1,432 @@
+{
+  "notice": "[변경사항 있음 · 2026-11-03] 공지/알림 대상은 운영용역사·구매바이어·통역원으로 통일하고 게시상태를 제거. 자료실 목록·검색을 공지사항과 동일한 구성으로 정리.",
+  "updates": [
+    {
+      "screen": "NTC-01",
+      "id": "filter-draft-20261022-ntc-01-f1",
+      "patch": {
+        "options": "전체 / 운영용역사 / 구매바이어 / 통역원",
+        "detail": "- 선택한 대상과 일치하는 공지사항을 조회\n- 전체 선택 시 대상 조건을 적용하지 않음\n- 키워드 조건과 AND 조건으로 결합\n- 대상 선택만으로 목록을 변경하지 않으며 검색 실행 시 적용"
+      }
+    },
+    {
+      "screen": "NTC-01",
+      "id": "filter-draft-20261022-ntc-01-registeredFrom",
+      "patch": {
+        "errorMessage": "등록일 종료일은 시작일보다 빠를 수 없습니다."
+      }
+    },
+    {
+      "screen": "NTC-01",
+      "id": "filter-draft-20261022-ntc-01-keyword",
+      "patch": {
+        "detail": "- 다른 검색 조건과 AND 조건으로 결합\n- 빈 값 또는 공백만 입력한 경우 키워드 조건을 적용하지 않음\n- 선택한 검색 범위를 기준으로 조회하며 입력 중에는 목록을 변경하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-01",
+      "id": "filter-draft-20261022-ntc-01-actions",
+      "patch": {
+        "detail": "- 검색 실행 시 대상·공지구분·등록일·검색 범위·키워드를 함께 적용하고 목록 첫 페이지로 이동\n- 키워드 입력 후 Enter 입력 시 [검색] 버튼과 동일하게 처리\n- 초기화 시 대상·공지구분·등록일를 기본값으로 변경하고 검색 범위를 전체로 변경하고 키워드를 비운 뒤 전체 목록을 조회"
+      }
+    },
+    {
+      "screen": "NTC-02",
+      "id": "filter-draft-20261022-ntc-02-target",
+      "patch": {
+        "options": "전체 / 운영용역사 / 구매바이어 / 통역원",
+        "detail": "- 목록에 저장된 대상과 일치하는 대상만 조회\n- 전체 선택 시 대상 조건을 적용하지 않음\n- 키워드 조건과 AND 조건으로 결합\n- 대상 선택만으로 목록을 변경하지 않으며 검색 실행 시 적용"
+      }
+    },
+    {
+      "screen": "NTC-02",
+      "id": "filter-draft-20261022-ntc-02-keyword",
+      "patch": {
+        "detail": "- 다른 검색 조건과 AND 조건으로 결합\n- 빈 값 또는 공백만 입력한 경우 키워드 조건을 적용하지 않음\n- 선택한 검색 범위를 기준으로 조회하며 입력 중에는 목록을 변경하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "filter-draft-20261022-ntc-03-target",
+      "patch": {
+        "options": "전체 / 운영용역사 / 구매바이어 / 통역원",
+        "detail": "- 목록에 저장된 대상과 일치하는 대상만 조회\n- 전체 선택 시 대상 조건을 적용하지 않음\n- 키워드 조건과 AND 조건으로 결합\n- 대상 선택만으로 목록을 변경하지 않으며 검색 실행 시 적용"
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "filter-draft-20261022-ntc-03-scope",
+      "patch": {
+        "options": "전체 / 제목 / 작성자",
+        "detail": "- 전체 선택 시 제목 또는 내용 또는 작성자 중 하나라도 키워드와 일치하는 대상을 조회\n- 선택한 값만 검색 대상으로 사용\n- 검색 범위 변경은 다음 검색 실행 시 적용",
+        "policy": "- 전체는 제목·내용·작성자의 통합 검색을 의미하며 다른 필터 항목은 키워드 검색 대상에 포함하지 않음",
+        "exception": ""
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "filter-draft-20261022-ntc-03-keyword",
+      "patch": {
+        "detail": "- 다른 검색 조건과 AND 조건으로 결합\n- 빈 값 또는 공백만 입력한 경우 키워드 조건을 적용하지 않음\n- 선택한 검색 범위를 기준으로 조회하며 입력 중에는 목록을 변경하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "filter-draft-20261022-ntc-03-actions",
+      "patch": {
+        "detail": "- 검색 실행 시 대상·자료구분·등록일·검색 범위·키워드를 함께 적용하고 목록 첫 페이지로 이동\n- 키워드 입력 후 Enter 입력 시 [검색] 버튼과 동일하게 처리\n- 초기화 시 대상·자료구분·등록일을 기본값으로 변경하고 검색 범위를 전체로 변경하고 키워드를 비운 뒤 전체 목록을 조회"
+      }
+    }
+  ],
+  "retired": [
+    {
+      "screen": "NTC-01",
+      "id": "filter-draft-20261022-ntc-01-f3"
+    }
+  ],
+  "inserts": [
+    {
+      "screen": "NTC-01",
+      "id": "notice-targets-NTC-01-permission-20261103",
+      "selector": ".notice-panel",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "대상 및 관리 권한",
+        "type": "권한",
+        "defaultValue": "로그인 사용구분",
+        "required": "N",
+        "detail": "- 게시물 대상은 운영용역사 / 구매바이어 / 통역원 세 구분으로 고정\n- 구매·수출 운영용역사는 동일한 운영용역사 대상으로 열람\n- 관리자는 전체 대상 조회·등록·수정 가능\n- 운영용역사·구매바이어·통역원은 현재 행사에서 본인 대상 게시물 조회·첨부 다운로드만 가능",
+        "policy": "- 게시상태 항목·필터·목록 열·조회 조건은 사용하지 않음\n- 등록·수정 버튼을 관리자에게만 표시하고 저장 시에도 관리자 권한 확인\n- 검색의 전체는 대상 조건 해제용이며 등록 대상에는 포함하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-02",
+      "id": "notice-targets-NTC-02-permission-20261103",
+      "selector": "[data-public-board-root]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "대상 및 관리 권한",
+        "type": "권한",
+        "defaultValue": "로그인 사용구분",
+        "required": "N",
+        "detail": "- 게시물 대상은 운영용역사 / 구매바이어 / 통역원 세 구분으로 고정\n- 구매·수출 운영용역사는 동일한 운영용역사 대상으로 열람\n- 관리자는 전체 대상 조회·등록·수정 가능\n- 운영용역사·구매바이어·통역원은 현재 행사에서 본인 대상 게시물 조회·첨부 다운로드만 가능",
+        "policy": "- 게시상태 항목·필터·목록 열·조회 조건은 사용하지 않음\n- 등록·수정 버튼을 관리자에게만 표시하고 저장 시에도 관리자 권한 확인\n- 검색의 전체는 대상 조건 해제용이며 등록 대상에는 포함하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "notice-targets-NTC-03-permission-20261103",
+      "selector": "[data-public-board-root]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "대상 및 관리 권한",
+        "type": "권한",
+        "defaultValue": "로그인 사용구분",
+        "required": "N",
+        "detail": "- 게시물 대상은 운영용역사 / 구매바이어 / 통역원 세 구분으로 고정\n- 구매·수출 운영용역사는 동일한 운영용역사 대상으로 열람\n- 관리자는 전체 대상 조회·등록·수정 가능\n- 운영용역사·구매바이어·통역원은 현재 행사에서 본인 대상 게시물 조회·첨부 다운로드만 가능",
+        "policy": "- 게시상태 항목·필터·목록 열·조회 조건은 사용하지 않음\n- 등록·수정 버튼을 관리자에게만 표시하고 저장 시에도 관리자 권한 확인\n- 검색의 전체는 대상 조건 해제용이며 등록 대상에는 포함하지 않음"
+      }
+    },
+    {
+      "screen": "NTC-01",
+      "id": "notice-targets-NTC-01-list-20261103",
+      "selector": ".notice-list",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "공지사항 목록",
+        "type": "목록",
+        "defaultValue": "현재 등록값",
+        "required": "N",
+        "detail": "- No. / 공지구분 / 제목 / 대상 / 작성자 / 등록일 순서\n- 관리자에게 대상 열 표시, 사용자에게는 본인 대상 게시물만 제공\n- 상단 공지 핀, 제목 상세 이동, 20·50·100·200건 보기와 페이지 이동 유지",
+        "policy": ""
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "notice-targets-NTC-03-list-20261103",
+      "selector": ".resource-list",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "자료실 목록",
+        "type": "목록",
+        "defaultValue": "현재 등록값",
+        "required": "N",
+        "detail": "- No. / 자료구분 / 제목 / 대상 / 작성자 / 등록일 순서로 공지사항 목록과 대응\n- 자료구분은 운영자료 / 일반자료\n- 관리자에게 대상 열 표시, 사용자에게는 본인 대상 게시물만 제공\n- 첨부파일·게시상태 열은 제공하지 않고 첨부는 상세에서 다운로드\n- 제목 클릭 시 NTC-12 상세 이동, 20·50·100·200건 보기 및 페이지 이동",
+        "policy": ""
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "notice-targets-NTC-03-category-20261103",
+      "selector": "#filter-form .search-condition:has([name=\"category\"])",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "자료구분 검색",
+        "type": "라디오박스",
+        "defaultValue": "전체",
+        "required": "N",
+        "detail": "- 선택한 자료구분과 일치하는 자료만 조회\n- 전체는 자료구분 조건을 해제\n- 대상·등록일·키워드와 AND 적용",
+        "policy": ""
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "notice-targets-NTC-03-dates-20261103",
+      "selector": "#filter-form .search-condition:has([name=\"registeredFrom\"])",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록일 검색",
+        "type": "날짜",
+        "defaultValue": "미선택",
+        "required": "N",
+        "detail": "- 시작일·종료일을 포함하여 조회\n- 한쪽만 입력하면 열린 범위로 조회\n- 종료일이 시작일보다 빠르면 검색 중단, 입력값 유지 및 오류 안내",
+        "policy": "- 오류 문구: 등록일 종료일은 시작일보다 빠를 수 없습니다."
+      }
+    },
+    {
+      "screen": "NTC-04",
+      "id": "notice-targets-NTC-04-fields-20261103",
+      "selector": "#content .panel",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "상세 조회 및 관리 권한",
+        "type": "조회",
+        "defaultValue": "등록값",
+        "required": "해당 없음",
+        "detail": "본인 대상 게시물의 제목·내용·대상·첨부파일을 조회하며 첨부파일을 다운로드한다.\n- 관리자에게만 수정 버튼을 표시한다.",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-10",
+      "id": "notice-targets-NTC-10-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 질문(제목)·답변(내용) 및 첨부파일 입력\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-11",
+      "id": "notice-targets-NTC-11-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 질문(제목)·답변(내용) 및 첨부파일 입력\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-12",
+      "id": "notice-targets-NTC-12-fields-20261103",
+      "selector": "#content .panel",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "상세 조회 및 관리 권한",
+        "type": "조회",
+        "defaultValue": "등록값",
+        "required": "해당 없음",
+        "detail": "본인 대상 게시물의 제목·내용·대상·첨부파일을 조회하며 첨부파일을 다운로드한다.\n- 관리자에게만 수정 버튼을 표시한다.",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-13",
+      "id": "notice-targets-NTC-13-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 자료구분은 운영자료 / 일반자료, 첨부파일 선택 제공\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-14",
+      "id": "notice-targets-NTC-14-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 자료구분은 운영자료 / 일반자료, 첨부파일 선택 제공\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-15",
+      "id": "notice-targets-NTC-15-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 행사·공지구분·상단 공지·제목·내용·첨부파일 입력\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-16",
+      "id": "notice-targets-NTC-16-fields-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·수정 항목 및 권한",
+        "type": "입력",
+        "defaultValue": "등록값",
+        "required": "대상·제목·내용 필수",
+        "detail": "- 대상은 운영용역사 / 구매바이어 / 통역원 중 선택\n- 제목·내용은 필수이며 공백만 입력할 수 없음\n- 행사·공지구분·상단 공지·제목·내용·첨부파일 입력\n- 게시상태 항목은 제공하지 않음",
+        "policy": "관리자만 등록·수정·저장 가능. 운영용역사·구매바이어·통역원은 본인 대상 조회·첨부 다운로드만 가능."
+      }
+    },
+    {
+      "screen": "NTC-03",
+      "id": "notice-targets-NTC-03-resource-date-range-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "resource-date-range",
+        "screens": [
+          "NTC-03"
+        ],
+        "title": "등록일 범위 오류",
+        "type": "인라인 오류",
+        "trigger": "등록일 종료일이 시작일보다 빠른 상태에서 검색",
+        "message": "등록일 종료일은 시작일보다 빠를 수 없습니다.",
+        "confirm": "검색 중단, 입력값 유지",
+        "source": "include/public-boards.js"
+      }
+    },
+    {
+      "screen": "NTC-10",
+      "id": "notice-targets-NTC-10-public-board-empty-content-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "public-board-empty-content",
+        "screens": [
+          "NTC-10",
+          "NTC-11",
+          "NTC-13",
+          "NTC-14"
+        ],
+        "title": "제목·내용 공백 입력",
+        "type": "인라인 오류",
+        "trigger": "관리자가 제목 또는 내용에 공백만 입력하고 등록·저장",
+        "message": "제목·내용은 공백만 입력할 수 없습니다.",
+        "confirm": "저장 중단, 입력값 유지",
+        "source": "include/public-boards.js"
+      }
+    },
+    {
+      "screen": "NTC-11",
+      "id": "notice-targets-NTC-11-public-board-empty-content-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "public-board-empty-content",
+        "screens": [
+          "NTC-10",
+          "NTC-11",
+          "NTC-13",
+          "NTC-14"
+        ],
+        "title": "제목·내용 공백 입력",
+        "type": "인라인 오류",
+        "trigger": "관리자가 제목 또는 내용에 공백만 입력하고 등록·저장",
+        "message": "제목·내용은 공백만 입력할 수 없습니다.",
+        "confirm": "저장 중단, 입력값 유지",
+        "source": "include/public-boards.js"
+      }
+    },
+    {
+      "screen": "NTC-13",
+      "id": "notice-targets-NTC-13-public-board-empty-content-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "public-board-empty-content",
+        "screens": [
+          "NTC-10",
+          "NTC-11",
+          "NTC-13",
+          "NTC-14"
+        ],
+        "title": "제목·내용 공백 입력",
+        "type": "인라인 오류",
+        "trigger": "관리자가 제목 또는 내용에 공백만 입력하고 등록·저장",
+        "message": "제목·내용은 공백만 입력할 수 없습니다.",
+        "confirm": "저장 중단, 입력값 유지",
+        "source": "include/public-boards.js"
+      }
+    },
+    {
+      "screen": "NTC-14",
+      "id": "notice-targets-NTC-14-public-board-empty-content-20261103",
+      "selector": "#content form",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "public-board-empty-content",
+        "screens": [
+          "NTC-10",
+          "NTC-11",
+          "NTC-13",
+          "NTC-14"
+        ],
+        "title": "제목·내용 공백 입력",
+        "type": "인라인 오류",
+        "trigger": "관리자가 제목 또는 내용에 공백만 입력하고 등록·저장",
+        "message": "제목·내용은 공백만 입력할 수 없습니다.",
+        "confirm": "저장 중단, 입력값 유지",
+        "source": "include/public-boards.js"
+      }
+    }
+  ],
+  "messages": [
+    {
+      "format": "screen-message-v1",
+      "key": "resource-date-range",
+      "screens": [
+        "NTC-03"
+      ],
+      "title": "등록일 범위 오류",
+      "type": "인라인 오류",
+      "trigger": "등록일 종료일이 시작일보다 빠른 상태에서 검색",
+      "message": "등록일 종료일은 시작일보다 빠를 수 없습니다.",
+      "confirm": "검색 중단, 입력값 유지",
+      "source": "include/public-boards.js"
+    },
+    {
+      "format": "screen-message-v1",
+      "key": "public-board-empty-content",
+      "screens": [
+        "NTC-10",
+        "NTC-11",
+        "NTC-13",
+        "NTC-14"
+      ],
+      "title": "제목·내용 공백 입력",
+      "type": "인라인 오류",
+      "trigger": "관리자가 제목 또는 내용에 공백만 입력하고 등록·저장",
+      "message": "제목·내용은 공백만 입력할 수 없습니다.",
+      "confirm": "저장 중단, 입력값 유지",
+      "source": "include/public-boards.js"
+    }
+  ]
+}
