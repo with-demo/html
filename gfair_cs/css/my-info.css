@@ -18,3 +18,21 @@
 .account-buyer-basic .account-wide-value{grid-column:span 3;white-space:pre-line}.account-info-page [data-account-buyer] .overseas-buyer-section{margin:0 0 30px}.account-info-page [data-account-buyer-result]{font-size:13px;line-height:1.7}@media(max-width:700px){.account-buyer-basic .account-wide-value{grid-column:auto}}
 
 .account-info-page [data-account-buyer]>.formfooter{background:transparent;border:0;padding:16px 0}
+/* COM-06: 사용자 구분별 내정보 입력 및 행 배치 */
+.account-info-page [data-account-profile] .account-info-fields dd:last-child:nth-child(4n+2):not(.account-wide-value){grid-column:auto}
+.account-info-page>.account-matched-buyers{margin-top:30px}
+.account-info-page [data-account-profile] .account-wide-value{grid-column:span 3}
+.account-info-page [data-account-profile] input:not([type=checkbox]),.account-info-page [data-account-profile] select{width:100%;min-width:0;font-size:13px;box-sizing:border-box}
+.account-info-page [data-account-profile] .account-password-rule{font-size:12px!important;line-height:1.5;color:#666;margin:8px 0 0}
+.account-info-page [data-account-profile] .overseas-buyer-section{margin:0 0 30px}
+.account-info-page [data-account-profile]>.formfooter{background:transparent;border:0;padding:16px 0;display:flex;justify-content:flex-end}
+.account-language-fields{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+@media(max-width:700px){.account-info-page [data-account-profile] .account-wide-value{grid-column:auto}.account-language-fields{grid-template-columns:1fr}}
+/* 관리 등록·수정과 동일한 연락처 분할 입력 및 이메일 도메인 선택 */
+#app #content [data-account-profile] .buyer-phone{display:flex;gap:4px;min-width:0;width:100%}
+#app #content [data-account-profile] .buyer-phone>select{flex:0 0 64px;width:64px;min-width:0;padding:6px}
+#app #content [data-account-profile] .buyer-phone>input{flex:1 1 0;width:0;min-width:0;max-width:94px;padding:6px}
+#app #content [data-account-profile] .buyer-email{display:flex;gap:6px;min-width:0;width:100%;flex-wrap:wrap}
+#app #content [data-account-profile] .buyer-email>input{flex:1 1 70px;width:0;min-width:0;max-width:220px}
+#app #content [data-account-profile] .buyer-email>select{flex:0 1 125px;min-width:90px}
+@media(max-width:600px){#app #content [data-account-profile] .buyer-email>select{flex-basis:100%;width:100%;min-width:0}}
