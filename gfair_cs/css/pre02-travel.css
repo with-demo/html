@@ -12,3 +12,5 @@
 
 /* 방한현황 수동 변경 폼·기록 */
 .pre01-manual-actor{display:inline-block;margin-top:3px;color:#777;font-size:12px;font-weight:400}.pre02-history-reason{white-space:pre-wrap;overflow-wrap:anywhere;min-width:140px}.pre01-period{display:flex;gap:8px;align-items:center;width:100%}.pre01-period input{flex:1;min-width:0}.pre02-change-fields textarea{min-height:90px}.pre02-change-fields>label{align-items:stretch}.pre02-change-fields>label>span{align-items:center}#pre02-status-form .dialogactions{margin-top:15px}
+
+.pre02-edit-target{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#f6f7f8;border-radius:6px;margin:0 0 18px}.pre02-edit-target span{font-size:13px;color:#555}.pre02-cancel-record{color:#a12525;border-color:#d7b6b6}.pre02-audit-operation{display:block;font-size:12px;color:#777;margin-top:4px}.pre02-stage-section .pre02-travel-list th:last-child{width:100px}.pre02-manual-history td:first-child{min-width:180px}.pre02-manual-history td:nth-child(2){white-space:nowrap}
