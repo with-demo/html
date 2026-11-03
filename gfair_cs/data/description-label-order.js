@@ -1,4 +1,4 @@
-/* 검증한 화면의 표시 번호만 정리한다. 설명·연결·핀 위치·저장 번호는 변경하지 않는다. */
+/* 현재 화면 순서에 따른 표시 번호. 저장된 설명 ID·핀 위치는 유지한다. */
 window.GFAIR_DESCRIPTION_LABEL_ORDER={
   "BAS-04": [
     "bas04-draft-20261022-01",
@@ -68,11 +68,9 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "com07-password-view-20261026"
   ],
   "NTC-02": [
-    "notice-targets-NTC-02-permission-20261103",
-    "filter-draft-20261022-ntc-02-target",
-    "filter-draft-20261022-ntc-02-scope",
-    "filter-draft-20261022-ntc-02-keyword",
-    "filter-draft-20261022-ntc-02-actions"
+    "notice-reset-20261103-NTC-02-search",
+    "notice-reset-20261103-NTC-02-list",
+    "notice-reset-20261103-NTC-02-register"
   ],
   "PRE-02": [
     "578c360c-60d4-4399-a0d2-79119ffd2225",
@@ -80,5 +78,53 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "lodging-PRE-02-lodging-20261103",
     "3687e794-fdb0-490b-828d-ab5d7241656d",
     "travel-detail-manual-history-20261103"
+  ],
+  "NTC-01": [
+    "notice-reset-20261103-NTC-01-search",
+    "notice-reset-20261103-NTC-01-list",
+    "notice-reset-20261103-NTC-01-register"
+  ],
+  "NTC-03": [
+    "notice-reset-20261103-NTC-03-search",
+    "notice-reset-20261103-NTC-03-list",
+    "notice-reset-20261103-NTC-03-register"
+  ],
+  "NTC-04": [
+    "notice-reset-20261103-NTC-04-detail",
+    "notice-reset-20261103-NTC-04-actions"
+  ],
+  "NTC-12": [
+    "notice-reset-20261103-NTC-12-detail",
+    "notice-reset-20261103-NTC-12-actions"
+  ],
+  "NTC-10": [
+    "notice-reset-20261103-NTC-10-form",
+    "notice-reset-20261103-NTC-10-file",
+    "notice-reset-20261103-NTC-10-actions"
+  ],
+  "NTC-11": [
+    "notice-reset-20261103-NTC-11-form",
+    "notice-reset-20261103-NTC-11-file",
+    "notice-reset-20261103-NTC-11-actions"
+  ],
+  "NTC-13": [
+    "notice-reset-20261103-NTC-13-form",
+    "notice-reset-20261103-NTC-13-file",
+    "notice-reset-20261103-NTC-13-actions"
+  ],
+  "NTC-14": [
+    "notice-reset-20261103-NTC-14-form",
+    "notice-reset-20261103-NTC-14-file",
+    "notice-reset-20261103-NTC-14-actions"
+  ],
+  "NTC-15": [
+    "notice-reset-20261103-NTC-15-form",
+    "notice-reset-20261103-NTC-15-file",
+    "notice-reset-20261103-NTC-15-actions"
+  ],
+  "NTC-16": [
+    "notice-reset-20261103-NTC-16-form",
+    "notice-reset-20261103-NTC-16-file",
+    "notice-reset-20261103-NTC-16-actions"
   ]
 };

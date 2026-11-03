@@ -1,0 +1,777 @@
+{
+  "scope": "공지/알림 > 공지사항·FAQ·자료실 및 연결된 등록·수정·상세 11개 화면",
+  "textColor": "black",
+  "planningNotes": false,
+  "screens": {
+    "NTC-01": [
+      {
+        "id": "notice-reset-20261103-NTC-01-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자는 공지사항을 등록·수정하고 전체 대상을 조회합니다. 운영용역사·구매바이어·통역원은 본인 대상 게시물만 조회합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-01-search",
+        "selector": "#filter-form",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "검색필터",
+          "type": "기타",
+          "defaultValue": "대상 전체 / 검색어 빈 값 / 공지구분 전체",
+          "required": "N",
+          "detail": "- 화면에 정의된 검색 항목 및 옵션을 기준으로 검색 조건 설정\n- 검색 및 초기화 동작은 기본정책에 따라 진행",
+          "policy": "- 검색 조건은 목록 및 상세 화면의 데이터 항목을 기준으로 적용한다.\n- 검색 항목별 옵션, 기본값 및 조회 기준은 화면 정의를 따르되, 예외 및 추가 사항은 별도 설명에 따른다.\n- 검색어는 선택한 검색 항목을 기준으로 조회하며, '전체' 선택 시 모든 검색 대상 항목에서 조회한다.\n- [검색] 클릭 시 조건을 적용하며, 복수 조건은 AND로 결합한다.\n- [초기화] 클릭 시 모든 조건을 기본값으로 복원하고 목록을 재조회한다.",
+          "planningNote": "",
+          "options": "대상: 전체 / 운영용역사 / 구매바이어 / 통역원\n공지구분: 전체 / 운영공지 / 일반공지\n검색범위: 전체 / 제목 / 작성자",
+          "visibility": "대상 조건은 관리자에게만 표시. 그 외 사용자는 본인 대상 게시물로 제한."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-01-list",
+        "selector": ".notice-list",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "공지사항 목록",
+          "type": "텍스트",
+          "defaultValue": "해당 없음",
+          "required": "N",
+          "detail": "- 등록·수정 페이지에 저장된 정보를 목록에 표시\n- 제목 클릭 시 상세페이지로 이동\n- 상단 공지는 번호 대신 공지 문구와 핀 아이콘 표시",
+          "policy": "- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\n- 페이지당 20 / 50 / 100 / 200건을 선택하며 기본값은 20건. 변경 시 첫 페이지로 이동.",
+          "planningNote": "",
+          "permission": "관리자는 전체 대상, 그 외 사용자는 본인 대상만 조회."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-01-register",
+        "selector": "[data-notice-action=\"create\"]",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[등록], [알림 발송] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- 클릭 시 등록페이지로 이동\n- [알림 발송] 클릭 시 알림 발송 화면으로 이동",
+          "policy": "",
+          "planningNote": "",
+          "permission": "관리자에게만 표시",
+          "destination": "등록: NTC-15 / 알림 발송: NTC-05"
+        }
+      }
+    ],
+    "NTC-02": [
+      {
+        "id": "notice-reset-20261103-NTC-02-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자는 FAQ을 등록·수정하고 전체 대상을 조회합니다. 운영용역사·구매바이어·통역원은 본인 대상 게시물만 조회합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-02-search",
+        "selector": "[data-public-form=\"search\"]",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "검색필터",
+          "type": "기타",
+          "defaultValue": "대상 전체 / 검색어 빈 값",
+          "required": "N",
+          "detail": "- 화면에 정의된 검색 항목 및 옵션을 기준으로 검색 조건 설정\n- 검색 및 초기화 동작은 기본정책에 따라 진행",
+          "policy": "- 검색 조건은 목록 및 상세 화면의 데이터 항목을 기준으로 적용한다.\n- 검색 항목별 옵션, 기본값 및 조회 기준은 화면 정의를 따르되, 예외 및 추가 사항은 별도 설명에 따른다.\n- 검색어는 선택한 검색 항목을 기준으로 조회하며, '전체' 선택 시 모든 검색 대상 항목에서 조회한다.\n- [검색] 클릭 시 조건을 적용하며, 복수 조건은 AND로 결합한다.\n- [초기화] 클릭 시 모든 조건을 기본값으로 복원하고 목록을 재조회한다.",
+          "planningNote": "",
+          "options": "대상: 전체 / 운영용역사 / 구매바이어 / 통역원\n검색범위: 전체(제목·내용)",
+          "visibility": "대상 조건은 관리자에게만 표시. 그 외 사용자는 본인 대상 게시물로 제한."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-02-list",
+        "selector": ".faq-accordion",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "FAQ 목록",
+          "type": "아코디언 UI",
+          "defaultValue": "모두 접힘",
+          "required": "N",
+          "detail": "- 등록·수정 페이지에 저장된 정보를 목록에 표시\n- 질문 클릭 시 답변과 첨부파일을 펼치고 다시 클릭 시 접음\n- 다른 질문을 펼치면 기존 답변은 접음\n- [수정] 버튼은 관리자에게만 표시",
+          "policy": "- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.",
+          "planningNote": "",
+          "permission": "관리자는 전체 대상, 그 외 사용자는 본인 대상만 조회."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-02-register",
+        "selector": "[data-public-board=\"create\"]",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[등록] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- 클릭 시 등록페이지로 이동",
+          "policy": "",
+          "planningNote": "",
+          "permission": "관리자에게만 표시",
+          "destination": "NTC-10"
+        }
+      }
+    ],
+    "NTC-03": [
+      {
+        "id": "notice-reset-20261103-NTC-03-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자는 자료실을 등록·수정하고 전체 대상을 조회합니다. 운영용역사·구매바이어·통역원은 본인 대상 게시물만 조회합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-03-search",
+        "selector": "#filter-form",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "검색필터",
+          "type": "기타",
+          "defaultValue": "대상 전체 / 검색어 빈 값",
+          "required": "N",
+          "detail": "- 화면에 정의된 검색 항목 및 옵션을 기준으로 검색 조건 설정\n- 검색 및 초기화 동작은 기본정책에 따라 진행",
+          "policy": "- 검색 조건은 목록 및 상세 화면의 데이터 항목을 기준으로 적용한다.\n- 검색 항목별 옵션, 기본값 및 조회 기준은 화면 정의를 따르되, 예외 및 추가 사항은 별도 설명에 따른다.\n- 검색어는 선택한 검색 항목을 기준으로 조회하며, '전체' 선택 시 모든 검색 대상 항목에서 조회한다.\n- [검색] 클릭 시 조건을 적용하며, 복수 조건은 AND로 결합한다.\n- [초기화] 클릭 시 모든 조건을 기본값으로 복원하고 목록을 재조회한다.",
+          "planningNote": "",
+          "options": "대상: 전체 / 운영용역사 / 구매바이어 / 통역원\n검색범위: 전체 / 제목 / 작성자",
+          "visibility": "대상 조건은 관리자에게만 표시. 그 외 사용자는 본인 대상 게시물로 제한."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-03-list",
+        "selector": ".resource-list",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "자료실 목록",
+          "type": "텍스트",
+          "defaultValue": "해당 없음",
+          "required": "N",
+          "detail": "- 등록·수정 페이지에 저장된 정보를 목록에 표시\n- 제목 클릭 시 상세페이지로 이동",
+          "policy": "- 목록은 등록·수정 페이지에 저장된 데이터를 기준으로 표시한다.\n- 목록 내 항목 및 기능은 화면 정의를 따르되, 세부 동작과 예외사항은 별도 설명에 따른다.\n- 페이지당 20 / 50 / 100 / 200건을 선택하며 기본값은 20건. 변경 시 첫 페이지로 이동.",
+          "planningNote": "",
+          "permission": "관리자는 전체 대상, 그 외 사용자는 본인 대상만 조회."
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-03-register",
+        "selector": "[data-public-board=\"create\"]",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[등록] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- 클릭 시 등록페이지로 이동",
+          "policy": "",
+          "planningNote": "",
+          "permission": "관리자에게만 표시",
+          "destination": "NTC-13"
+        }
+      }
+    ],
+    "NTC-04": [
+      {
+        "id": "notice-reset-20261103-NTC-04-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "공지사항의 등록 내용을 조회합니다. 관리자만 수정할 수 있습니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-04-detail",
+        "selector": ".notice-detail",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "공지사항 상세정보",
+          "type": "텍스트",
+          "defaultValue": "해당 없음",
+          "required": "N",
+          "detail": "- 등록·수정 페이지에 저장된 정보를 표시\n- 첨부파일이 있으면 [다운로드] 버튼 표시, 없으면 미등록 안내 표시\n- 공지구분·상단 공지·행사·대상·작성자·등록일·제목·내용을 조회",
+          "policy": "",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-04-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[목록], [수정] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [목록] 클릭 시 목록페이지로 이동\n- [수정] 클릭 시 수정페이지로 이동",
+          "policy": "",
+          "planningNote": "",
+          "permission": "[수정] 버튼은 관리자에게만 표시",
+          "destination": "목록: NTC-01 / 수정: NTC-16"
+        }
+      }
+    ],
+    "NTC-12": [
+      {
+        "id": "notice-reset-20261103-NTC-12-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "자료실의 등록 내용을 조회합니다. 관리자만 수정할 수 있습니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-12-detail",
+        "selector": "[data-public-board-root] section.panel",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "자료실 상세정보",
+          "type": "텍스트",
+          "defaultValue": "해당 없음",
+          "required": "N",
+          "detail": "- 등록·수정 페이지에 저장된 정보를 표시\n- 첨부파일이 있으면 [다운로드] 버튼 표시, 없으면 미등록 안내 표시\n- 대상·등록일·제목·내용을 조회",
+          "policy": "",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-12-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[목록], [수정] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [목록] 클릭 시 목록페이지로 이동\n- [수정] 클릭 시 수정페이지로 이동",
+          "policy": "",
+          "planningNote": "",
+          "permission": "[수정] 버튼은 관리자에게만 표시",
+          "destination": "목록: NTC-03 / 수정: NTC-14"
+        }
+      }
+    ],
+    "NTC-10": [
+      {
+        "id": "notice-reset-20261103-NTC-10-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 FAQ을 등록합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-10-form",
+        "selector": "[data-public-form=\"save\"] .formgrid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "대상 운영용역사 / 제목·내용 빈 값",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-10-file",
+        "selector": "[data-public-form=\"save\"] .field:has([name=\"file\"])",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-10-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [등록] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [등록] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 FAQ 목록으로 이동하고 해당 답변을 펼쳐 표시\n- [취소] 클릭 시 입력을 취소하고 목록페이지로 이동",
+          "policy": "입력 취소 시 별도 컨펌 없이 목록으로 이동.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-02 / 취소: NTC-02"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-10-msg-public-board-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "public-board-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "인라인 오류",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 등록·저장",
+          "message": "제목·내용은 공백만 입력할 수 없습니다.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-10"
+          ],
+          "planningNote": ""
+        }
+      }
+    ],
+    "NTC-11": [
+      {
+        "id": "notice-reset-20261103-NTC-11-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 FAQ을 수정합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-11-form",
+        "selector": "[data-public-form=\"save\"] .formgrid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "저장된 정보",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-11-file",
+        "selector": "[data-public-form=\"save\"] .field:has([name=\"file\"])",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-11-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [저장] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [저장] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 FAQ 목록으로 이동하고 해당 답변을 펼쳐 표시\n- [취소] 클릭 시 입력을 취소하고 목록페이지로 이동",
+          "policy": "입력 취소 시 별도 컨펌 없이 목록으로 이동.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-02 / 취소: NTC-02"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-11-msg-public-board-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "public-board-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "인라인 오류",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 등록·저장",
+          "message": "제목·내용은 공백만 입력할 수 없습니다.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-11"
+          ],
+          "planningNote": ""
+        }
+      }
+    ],
+    "NTC-13": [
+      {
+        "id": "notice-reset-20261103-NTC-13-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 자료실을 등록합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-13-form",
+        "selector": "[data-public-form=\"save\"] .formgrid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "대상 운영용역사 / 제목·내용 빈 값",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-13-file",
+        "selector": "[data-public-form=\"save\"] .field:has([name=\"file\"])",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-13-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [등록] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [등록] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 상세페이지로 이동\n- [취소] 클릭 시 입력을 취소하고 목록페이지로 이동",
+          "policy": "입력 취소 시 별도 컨펌 없이 목록으로 이동.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-12 / 취소: NTC-03"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-13-msg-public-board-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "public-board-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "인라인 오류",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 등록·저장",
+          "message": "제목·내용은 공백만 입력할 수 없습니다.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-13"
+          ],
+          "planningNote": ""
+        }
+      }
+    ],
+    "NTC-14": [
+      {
+        "id": "notice-reset-20261103-NTC-14-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 자료실을 수정합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-14-form",
+        "selector": "[data-public-form=\"save\"] .formgrid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "저장된 정보",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-14-file",
+        "selector": "[data-public-form=\"save\"] .field:has([name=\"file\"])",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-14-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [저장] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [저장] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 상세페이지로 이동\n- [취소] 클릭 시 입력을 취소하고 목록페이지로 이동",
+          "policy": "입력 취소 시 별도 컨펌 없이 목록으로 이동.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-12 / 취소: NTC-03"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-14-msg-public-board-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "public-board-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "인라인 오류",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 등록·저장",
+          "message": "제목·내용은 공백만 입력할 수 없습니다.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-14"
+          ],
+          "planningNote": ""
+        }
+      }
+    ],
+    "NTC-15": [
+      {
+        "id": "notice-reset-20261103-NTC-15-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 공지사항을 등록합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-form",
+        "selector": ".notice-form-grid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "대상 운영용역사 / 제목·내용 빈 값 / 행사 현재 연도 / 공지구분 미선택 / 상단 공지 아니오",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음\n- 행사·공지구분 필수선택, 상단 공지는 예 / 아니오 중 선택\n- 제목은 최대 200자 입력",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원\n행사: 2026 / 2025\n공지구분: 운영공지 / 일반공지\n상단 공지: 예 / 아니오",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-file",
+        "selector": ".field:has(#notice-file)",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지\n- [첨부 삭제] 클릭 시 기존 첨부 해제",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개, 10MB 이하\n허용 확장자: jpg, png, bmp, zip, hwp, doc, xls, ppt, pdf"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [저장] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [저장] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 상세페이지로 이동\n- [취소] 클릭 시 입력을 취소하고 목록페이지로 이동",
+          "policy": "입력 취소 전 컨펌창에서 확인 후 이동. 취소 선택 시 입력값 유지.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-04 / 취소: NTC-01"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-msg-notice-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "브라우저 알럿",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 저장",
+          "message": "제목과 내용을 입력해 주세요.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-15"
+          ],
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-msg-notice-file-invalid",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-file-invalid",
+          "title": "첨부파일 형식·용량 오류",
+          "type": "브라우저 알럿",
+          "trigger": "허용하지 않는 확장자 또는 10MB 초과 파일 선택",
+          "message": "허용 확장자의 10MB 이하 파일 1개를 선택해 주세요.",
+          "confirm": "선택 파일을 해제하고 기존 입력값 유지",
+          "screens": [
+            "NTC-15"
+          ],
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-15-msg-notice-cancel",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-cancel",
+          "title": "입력 취소 확인",
+          "type": "브라우저 컨펌",
+          "trigger": "[취소] 클릭",
+          "message": "입력을 취소하고 이전 화면으로 돌아갈까요?",
+          "confirm": "입력을 취소하고 목록페이지로 이동",
+          "cancel": "현재 화면과 입력값 유지",
+          "screens": [
+            "NTC-15"
+          ],
+          "planningNote": ""
+        }
+      }
+    ],
+    "NTC-16": [
+      {
+        "id": "notice-reset-20261103-NTC-16-overview",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-overview-v1",
+          "overview": "관리자가 공지사항을 수정합니다. 필수항목을 입력하고 첨부파일을 선택하여 저장합니다.",
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-form",
+        "selector": ".notice-form-grid",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "기본정보",
+          "type": "기타",
+          "defaultValue": "저장된 정보",
+          "required": "Y",
+          "detail": "- 등록 시 기본값, 수정 시 저장된 정보를 표시\n- 대상·제목·내용은 필수입력, 제목·내용은 공백만 입력할 수 없음\n- 행사·공지구분 필수선택, 상단 공지는 예 / 아니오 중 선택\n- 제목은 최대 200자 입력",
+          "policy": "",
+          "planningNote": "",
+          "options": "대상: 운영용역사 / 구매바이어 / 통역원\n행사: 2026 / 2025\n공지구분: 운영공지 / 일반공지\n상단 공지: 예 / 아니오",
+          "permission": "관리자만 등록·수정 가능"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-file",
+        "selector": ".field:has(#notice-file)",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "첨부파일",
+          "type": "파일첨부",
+          "defaultValue": "미첨부",
+          "required": "N",
+          "detail": "- 파일 선택 시 게시물에 첨부파일 등록\n- 수정 시 새 파일을 선택하지 않으면 기존 첨부파일 유지\n- [첨부 삭제] 클릭 시 기존 첨부 해제",
+          "policy": "",
+          "planningNote": "",
+          "inputLimit": "파일 1개, 10MB 이하\n허용 확장자: jpg, png, bmp, zip, hwp, doc, xls, ppt, pdf"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-actions",
+        "selector": ".page-bottom-actions",
+        "spec": {
+          "format": "description-spec-v1",
+          "item": "[취소], [저장] 버튼",
+          "type": "버튼",
+          "defaultValue": "활성",
+          "required": "N",
+          "detail": "- [저장] 클릭 시 필수항목 검증 후 입력한 정보를 저장\n- 저장 완료 시 상세페이지로 이동\n- [취소] 클릭 시 입력을 취소하고 상세페이지로 이동",
+          "policy": "입력 취소 전 컨펌창에서 확인 후 이동. 취소 선택 시 입력값 유지.",
+          "planningNote": "",
+          "destination": "저장 후: NTC-04 / 취소: NTC-04"
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-msg-notice-empty-content",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-empty-content",
+          "title": "제목·내용 공백 입력",
+          "type": "브라우저 알럿",
+          "trigger": "제목 또는 내용에 공백만 입력한 뒤 저장",
+          "message": "제목과 내용을 입력해 주세요.",
+          "confirm": "저장을 중단하고 입력값 유지",
+          "screens": [
+            "NTC-16"
+          ],
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-msg-notice-file-invalid",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-file-invalid",
+          "title": "첨부파일 형식·용량 오류",
+          "type": "브라우저 알럿",
+          "trigger": "허용하지 않는 확장자 또는 10MB 초과 파일 선택",
+          "message": "허용 확장자의 10MB 이하 파일 1개를 선택해 주세요.",
+          "confirm": "선택 파일을 해제하고 기존 입력값 유지",
+          "screens": [
+            "NTC-16"
+          ],
+          "planningNote": ""
+        }
+      },
+      {
+        "id": "notice-reset-20261103-NTC-16-msg-notice-cancel",
+        "selector": "#content",
+        "spec": {
+          "format": "screen-message-v1",
+          "key": "notice-cancel",
+          "title": "입력 취소 확인",
+          "type": "브라우저 컨펌",
+          "trigger": "[취소] 클릭",
+          "message": "입력을 취소하고 이전 화면으로 돌아갈까요?",
+          "confirm": "입력을 취소하고 상세페이지로 이동",
+          "cancel": "현재 화면과 입력값 유지",
+          "screens": [
+            "NTC-16"
+          ],
+          "planningNote": ""
+        }
+      }
+    ]
+  }
+}
