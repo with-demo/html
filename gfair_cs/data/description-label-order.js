@@ -126,5 +126,23 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "notice-reset-20261103-NTC-16-form",
     "notice-reset-20261103-NTC-16-file",
     "notice-reset-20261103-NTC-16-actions"
+  ],
+  "PRE-01": [
+    "align-pre01-admin-status",
+    "align-pre01-notice",
+    "three-review-pre-01-finalize",
+    "align-pre01-travel-board",
+    "travel-seven-20261103-period",
+    "5357be12-5ab4-4a08-a445-c55ef3df4213",
+    "pre01-draft-20261021-2",
+    "three-review-pre-01-member-add",
+    "lodging-PRE-01-open-20261103",
+    "align-pre01-excel",
+    "align-pre01-selected-qr",
+    "align-pre01-all-qr",
+    "bulk-lodging-PRE-01-selection-20261103",
+    "member-lifecycle-20261030-pre-01-exclude",
+    "three-review-pre-01-roster",
+    "align-pre01-qr"
   ]
 };
