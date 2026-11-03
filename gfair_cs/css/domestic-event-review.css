@@ -20,4 +20,3 @@
 @media(max-width:600px){#dialog-content [data-domestic-new] .overseas-buyer-basic{grid-template-columns:100px minmax(0,1fr)}#dialog-content [data-domestic-new] .buyer-phone,#dialog-content [data-domestic-new] .buyer-email{flex-wrap:wrap}#dialog-content [data-domestic-new] .buyer-phone-international select{width:100%;max-width:100%}#dialog-content [data-domestic-new] .buyer-email select{width:100%;max-width:100%}}
 
 .event-basic-qr{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.event-basic-qr .event-detail-qr-download{margin:0}#dialog:has([data-event-member-upload]){width:min(700px,calc(100vw - 32px));max-width:700px}
-.pre01-admin-review-note .domestic-status .badge{min-height:42px;display:inline-flex;align-items:center;padding:9px 15px;font-size:14px}
