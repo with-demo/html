@@ -36,8 +36,7 @@
    scale('신규 거래처 발굴 및 후속 거래기회 확보'),scale('중소기업 제품에 대한 이해 및 인식 향상'),scale('‘참가 성과’에 대한 전반적 만족도')]),
   group('문10. 차년도 개선사항',[multi('차년도 G-FAIR KOREA 구매상담회 운영시 개선이 필요한 사항은 무엇입니까?',['참가기업·품목 다양성','제품 품질·경쟁력','기업·제품 사전정보','구매상담회 사전 안내','현장 상담 운영 및 지원','특별한 개선사항 없음','기타'],2)]),
   group('문11. 차년도 참가 계획',[single('내년도 G-FAIR KOREA 전시회 및 구매상담회(바이어 초청) 참가에 대한 검토단계',['꼭 참가할 것','참가의사 있음','보통','추후 검토 예정','없음'])]),
-  group('문12. 제안사항',[essay('「G-FAIR KOREA」의 향후 발전을 위한 제안사항이 있으시면 자유롭게 작성하여 주시기 바랍니다.')]),
-  group('응답자 인적 사항',[text('회사명'),text('담당자'),text('부서'),text('휴대전화번호')])
+  group('문12. 제안사항',[essay('「G-FAIR KOREA」의 향후 발전을 위한 제안사항이 있으시면 자유롭게 작성하여 주시기 바랍니다.')])
  ];
  const overseas=[
   group('Q1. Basic information',[
@@ -64,8 +63,7 @@
    single('Experience participating in G-FAIR KOREA',['once for the first time','2 times','3 times','4 times','5 times or more']),
    single('Experience participating in other export consultation meetings in 2026',['once for the first time','2 times','3 times','4 times','5 times or more'])]),
   group('Q8. Plan for next year',[single('G-FAIR KOREA 2027 will also be held in the second half of 2027. Please indicate your level of intention to participate next year.',['Definitely Participate','Likely Participate','Neutral','Considering Later','No Plan to Participate'])]),
-  group('Q9. Opinions or suggestions',[essay('Please share any opinions or suggestions to help improve G-FAIR KOREA in the future.')]),
-  group('Respondent information',[text('Company name'),text('Name of person in charge'),text('Mobile number'),text('email')])
+  group('Q9. Opinions or suggestions',[essay('Please share any opinions or suggestions to help improve G-FAIR KOREA in the future.')])
  ];
  const common={year:2026,minutes:10,active:true,start:'2026-10-31',end:'',created:'2026-10-28',audience:0,responses:[],sourceVersion:'HWP v3'};
  window.GFAIR_SURVEY_EXAMPLES=[
