@@ -3,7 +3,7 @@
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),digits=v=>String(v||'').replace(/\D/g,'');
 const controllers=new Map();
 // 작성 편의를 위한 해외바이어 최종확정 미리보기. 복원 시 false로 전환.
-const PRE01_FINALIZED_PREVIEW=true;
+const PRE01_FINALIZED_PREVIEW=false;
 window.GFAIR_DOMESTIC_REVIEW={lockedRows:(year,route='EVT-01')=>controllers.get(route)?.lockedRows(year)||null,eventView:(row,route='EVT-01')=>controllers.get(route)?.view(row),isFinalized:(route,year)=>controllers.get(route)?.done(year)||false,create(ctx,base,kind='domestic'){
  const cfg=kind==='overseas'?{route:'PRE-01',source:'BAS-03',profile:'BAS-04',role:'exportOperator',prefix:'F',title:'해외바이어',yearIndex:4,foreign:true}:kind==='interpreter'?{route:'EVT-02',source:'BAS-07',profile:'BAS-08',role:'exportOperator',prefix:'I',title:'통역원',yearIndex:3,interpreter:true}:{route:'EVT-01',source:'BAS-05',profile:'BAS-06',role:'buyOperator',prefix:'K',title:'국내바이어',yearIndex:3};
  const source=()=>ctx.source(cfg.source),api=()=>window.GFAIR_OVERSEAS_BUYER_DETAIL,participation=()=>window.GFAIR_PARTICIPATION;
