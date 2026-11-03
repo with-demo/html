@@ -130,4 +130,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 /* 로고 아래 시스템 명칭과 현재 사용자 구분 */
 .sidebar .caption{display:flex;align-items:center;gap:4px 6px;flex-wrap:wrap;font-size:12px;line-height:1.5}
-.sidebar-system-name,.sidebar-user-role{white-space:nowrap}.sidebar-user-role{display:inline-flex;align-items:center;flex:none;white-space:nowrap;border:1px solid #5a5a5a;border-radius:4px;background:#444;color:#ddd;padding:2px 6px;font-size:11px;font-weight:500;line-height:1.5}
+.sidebar-user-role{white-space:nowrap}.sidebar-user-role{display:inline-flex;align-items:center;flex:none;white-space:nowrap;border:1px solid #5a5a5a;border-radius:4px;background:#444;color:#ddd;padding:2px 6px;font-size:11px;font-weight:500;line-height:1.5}
+
+/* GTMS 원본 형태의 투명 로고: 어두운 영역은 흰색, 밝은 모바일 헤더는 검정 */
+.gtms-logo{display:block;width:184px;max-width:100%;height:auto;filter:brightness(0) invert(1)}.sidebar .gtms-brand{line-height:0}.sidebar .gtms-brand+.caption{margin-top:-10px}.login-brand .gtms-logo{width:220px}.mobile-top .gtms-logo{width:140px;filter:brightness(0)}
