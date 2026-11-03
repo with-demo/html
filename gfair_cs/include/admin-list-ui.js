@@ -39,11 +39,6 @@
   const title=main.querySelector('h1')?.textContent.trim()||'목록';
   let count=header.querySelector('h2');if(!count){count=document.createElement('h2');header.prepend(count);}
   count.innerHTML='총 <strong>'+rows.length+'</strong>'+(['EVT-01','EVT-02','PRE-01','PRE-04'].includes(route)?'명':'건')+' · 1/1page';
-  const exclude=main.querySelector('[data-master-exclude]');
-  if(exclude&&['BAS-03','BAS-05','BAS-07'].includes(route)){
-   const previous=exclude.parentElement,summary=document.createElement('div');summary.className='participant-bulk-summary';header.insertBefore(summary,count);summary.append(count,exclude);
-   if(previous!==summary&&!previous.children.length)previous.remove();
-  }
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
   if(['EVT-01','EVT-02','PRE-01'].includes(route)){const edits=header.querySelector('.domestic-list-edits'),left=document.createElement('div');left.className='domestic-list-left';header.prepend(left);left.append(count);if(edits)left.append(edits);}
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
