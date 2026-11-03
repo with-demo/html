@@ -134,3 +134,6 @@
 
 /* PRE-01 현황판: 제목은 왼쪽, 조회기간은 같은 줄 오른쪽. */
 .travel-overview-title-row{width:100%}.travel-board-period{margin-left:auto}.travel-overview-title-row>.travel-own-button{order:1}@media(max-width:700px){.travel-overview-title-row{gap:10px}.travel-board-period{flex-wrap:nowrap}.travel-board-period input{width:130px}}@media(max-width:480px){.travel-board-period{width:100%;margin-left:0;gap:6px}.travel-board-period input{flex:1;width:0;min-width:0}.travel-board-period>span{white-space:nowrap}}
+
+/* 전체 바이어는 왼쪽 두 줄, 상태는 오른쪽 4열 두 줄로 배치한다. */
+.travel-overview .travel-stage-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.travel-overview .travel-all{grid-row:span 2;display:flex;flex-direction:column;justify-content:center;background:#f4f4f4;border-color:#555}.travel-overview .travel-all .travel-stage-name{font-weight:700}@media(max-width:1000px){.travel-overview .travel-stage{padding:12px}.travel-overview .travel-stage-name{font-size:12px;gap:4px}.travel-overview .travel-stage-name svg{width:16px;height:16px}}@media(max-width:700px){.travel-overview .travel-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.travel-overview .travel-all{grid-column:1/-1;grid-row:auto}.travel-overview .travel-stage-name{font-size:13px}}
