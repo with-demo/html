@@ -20,3 +20,5 @@
 /* 설문 제목과 카드 상단 사이 여백 확보 */
 .survey-participation .survey-paper{box-sizing:border-box;padding:24px 24px 0}
 @media(max-width:600px){.survey-participation .survey-paper{padding:14px 6px 0}}
+
+.survey-participation .survey-submit-complete{margin:32px 0 12px;padding:0;background:transparent;border:0;color:#111;text-align:center;font-size:14px;line-height:1.7}
