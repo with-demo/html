@@ -3542,4 +3542,4 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='NTC-03');s.ui.columns=['No.','제목','대상','작성자','등록일'];s.ui.filters=['대상','등록일','키워드 검색'];})();
 
 // 2026-11-03: 해외바이어 숙소는 숙소관리 목록을 참조하여 선택한다.
-(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='PRE-01');s.ui.columns=['바이어명','기업명','국가','숙소','방한현황','상태변경일시','QR'];s.summary='해외바이어의 숙소 배정과 방한 이동상태를 관리합니다. 숙소는 숙소관리에서 등록한 목록을 선택합니다.';})();
+(()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='PRE-01');s.ui.columns=['바이어명','기업명','국가','숙소','방한현황','최신기록일시','QR'];s.summary='해외바이어의 숙소 배정과 방한 이동상태를 관리합니다. 숙소는 숙소관리에서 등록한 목록을 선택합니다.';})();

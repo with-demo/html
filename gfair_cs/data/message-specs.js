@@ -1,5 +1,5 @@
 // 회원관리 참여여부·계정발급 확인창 정의. 기존 초기화된 정의는 복원하지 않는다.
-window.GFAIR_MESSAGE_SPECS=[
+window.GFAIR_MESSAGE_SPECS=[{"key":"pre01-period-order","screens":["PRE-01"],"title":"기간 역전","type":"브라우저 입력 검증","trigger":"기간 종료일이 시작일보다 빠를 때 검색","message":"종료일은 시작일보다 빠를 수 없습니다.","confirm":"검색 중단, 종료일에 오류 표시 및 검색 조건 유지"},{"key":"pre01-travel-reason","screens":["PRE-01-p20"],"title":"변경 사유 필수","type":"브라우저 입력 검증","trigger":"변경 사유가 공백인 상태로 변경","message":"변경 사유를 입력해 주세요.","confirm":"변경 중단, 사유 입력에 오류 표시"},{"key":"pre01-travel-required","screens":["PRE-01-p20"],"title":"상태·변경시간 필수","type":"브라우저 입력 검증","trigger":"이동상태·변경시간이 없거나 입력 형식 오류","message":"브라우저 기본 필수 입력·형식 안내","confirm":"변경 중단, 해당 입력에 오류 표시"},{"key":"pre01-travel-saved","screens":["PRE-01-p20"],"title":"방한현황 변경 완료","type":"토스트","trigger":"이동상태·변경시간·사유 검증 통과 후 변경 완료","message":"방한현황을 {이동상태}(으)로 변경했습니다.","confirm":"팝업 닫기, 목록·상세·현황판 및 매칭 바이어 방한상태 갱신"},
 {"key":"operator-inactive-account-send","screens":["BAS-15"],"title":"미사용 운영용역사 계정발송 제한","trigger":"선택 또는 일괄 계정발송 대상에 진행 행사연도가 아닌 미사용 계정 포함","type":"알럿","message":"미사용 상태의 계정은 발송할 수 없습니다.","confirm":"발송을 중단하고 현재 목록·선택 유지","cancel":""},
   {
     "format": "screen-message-v1",

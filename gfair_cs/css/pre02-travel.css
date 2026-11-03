@@ -9,3 +9,6 @@
 .pre02-status-options>.popup-action-row{display:contents;margin:0;padding:0}
 
 #dialog .pre02-status-options>.popup-action-row{display:contents!important;margin:0!important;padding:0!important}
+
+/* 방한현황 수동 변경 폼·기록 */
+.pre01-manual-actor{display:inline-block;margin-top:3px;color:#777;font-size:12px;font-weight:400}.pre02-history-reason{white-space:pre-wrap;overflow-wrap:anywhere;min-width:140px}.pre01-period{display:flex;gap:8px;align-items:center;width:100%}.pre01-period input{flex:1;min-width:0}.pre02-change-fields textarea{min-height:90px}.pre02-change-fields>label{align-items:stretch}.pre02-change-fields>label>span{align-items:center}#pre02-status-form .dialogactions{margin-top:15px}
