@@ -26,3 +26,5 @@
 .survey-participation .survey-foreign-submit-complete{display:flex;justify-content:center;align-items:center;gap:10px;min-height:180px;padding:24px 0;margin:12px 0 0;color:#111;text-align:center}.survey-participation .survey-foreign-submit-complete strong{font-size:22px;font-weight:700;line-height:1.6}.survey-participation .survey-foreign-submit-complete svg{flex:0 0 32px}@media(max-width:600px){.survey-participation .survey-foreign-submit-complete{min-height:140px}.survey-participation .survey-foreign-submit-complete strong{font-size:20px}}
 
 .survey-participation-caution{margin:0 0 20px;padding:16px 20px;border:1px solid #ddd;background:#f7f7f7;color:#333;font-size:13px;line-height:1.8}.survey-participation-caution>strong{display:block;margin:0 0 4px;font-size:14px}.survey-participation-caution ul{margin:0;padding-left:20px}.survey-participation-caution li{margin:2px 0}
+
+.survey-participation .survey-question-error{color:#c62828!important;font-size:13px;line-height:1.7;margin:10px 0 0;font-weight:400}
