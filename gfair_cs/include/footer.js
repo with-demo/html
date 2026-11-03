@@ -24,7 +24,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/list-row-navigation.css?v=participant-examples-revert-align-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('list-row-navigation.js?v=name-links-20261022',base).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=detail-left-admin-order-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=my-info-contacts-20261103',base).href;document.head.append(script);})();
+(()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=detail-left-admin-order-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=admin-name-readonly-20261103',base).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=resource-no-category-20261103',document.currentScript.src).href;document.head.append(script);})();
 
