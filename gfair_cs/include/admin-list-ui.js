@@ -42,7 +42,7 @@
   [...header.children].filter(el=>el!==count&&el!==tools).forEach(el=>{if(!el.querySelector('button,a,select'))el.hidden=true;});
   if(['EVT-01','EVT-02','PRE-01'].includes(route)){const edits=header.querySelector('.domestic-list-edits'),left=document.createElement('div');left.className='domestic-list-left';header.prepend(left);left.append(count);if(edits)left.append(edits);}
   const headers=[...table.querySelectorAll('thead tr:last-child>th')].map(clean);
-  const columnWidths=({'BAS-03':['60px','180px','auto','160px','180px'],'BAS-05':['60px','170px','26%','auto','180px'],'BAS-07':['60px','170px','26%','auto','180px'],'BAS-15':['60px','90px','120px','auto','150px','120px']})[route];
+  const columnWidths=table.classList.contains('participant-master-table')?headers.map((label,i)=>table.tHead.rows[0].cells[i]?.querySelector('input[type=checkbox]')?'70px':/코드/.test(label)?'160px':/바이어명|통역원명|이름/.test(label)?'190px':/연도/.test(label)?'160px':/국가/.test(label)?'120px':'auto'):({'BAS-15':['60px','90px','120px','auto','150px','120px']})[route];
   if(columnWidths&&headers.length===columnWidths.length){
    const cols=document.createElement('colgroup');columnWidths.forEach(width=>{const col=document.createElement('col');if(width!=='auto')col.style.width=width;cols.append(col);});table.querySelectorAll(':scope>colgroup').forEach(group=>group.remove());table.prepend(cols);table.classList.add('weighted-master-table');
   }

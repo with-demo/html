@@ -30,7 +30,7 @@
 
 /* 선택 열은 고정하고 긴 이름·기업명·언어에 나머지 너비를 배분한다. */
 .admin-list-panel table.weighted-master-table{table-layout:fixed;min-width:800px;width:100%}
-.admin-list-panel table.weighted-master-table tr>th:first-child,.admin-list-panel table.weighted-master-table tr>td:first-child{width:60px;min-width:60px;max-width:60px;padding-left:12px;padding-right:12px;text-align:center}
+.admin-list-panel table.weighted-master-table:not(.participant-master-table) tr>th:first-child,.admin-list-panel table.weighted-master-table:not(.participant-master-table) tr>td:first-child{width:60px;min-width:60px;max-width:60px;padding-left:12px;padding-right:12px;text-align:center}
 .admin-list-panel table.weighted-master-table th,.admin-list-panel table.weighted-master-table td{overflow-wrap:anywhere}
 .admin-list-panel table.weighted-master-table .list-name-link,.admin-list-panel table.weighted-master-table td:nth-child(3) .btn{white-space:normal;max-width:100%}
 
@@ -48,3 +48,5 @@
 /* 참가기업: 설명 패널을 열어도 QR 버튼과 연결 라벨을 확인한다. */
 #content table.company-participant-table th:last-child,#content table.company-participant-table td:last-child{position:sticky;right:0;background:#fff;z-index:1;box-shadow:-1px 0 #eee}
 #content table.company-participant-table thead th:last-child{background:#f7f7f7;z-index:2}
+
+.admin-list-panel .participant-master-table .participant-code-state{white-space:nowrap;max-width:100%}.admin-list-panel .participant-master-table th,.admin-list-panel .participant-master-table td{vertical-align:middle}
