@@ -9,9 +9,9 @@
 
  }
 
- const stages=['입국','호텔 이동','호텔 도착','전시장 출발','통역원 만남','상담 시작','상담 종료'],legacy={'공항 대기':'입국','공항 도착':'입국','이동':'호텔 이동','호텔 도착·체크인':'호텔 도착','행사장 도착':'전시장 출발','통역원 매칭':'통역원 만남','상담 진행':'상담 시작'},states=new Map();let pending=null;
+ const stages=['입국','호텔 이동','호텔 도착','전시장 출발','통역원 만남','상담 시작','상담 종료'],legacy={'공항 대기':'미입국','공항 도착':'입국','이동':'호텔 이동','호텔 도착·체크인':'호텔 도착','행사장 도착':'전시장 출발','통역원 매칭':'통역원 만남','상담 진행':'상담 시작'},states=new Map();let pending=null;
  const stamp=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
- const normalized=value=>stages.includes(value)?value:legacy[value]||stages[0];
+ const normalized=value=>stages.includes(value)?value:legacy[value]||'미입국';
  function stateFor(row,year,identity){const key=String(year)+'|'+(identity||row[0]);if(!states.has(key)){const stage=normalized(row[4]),current=stages.indexOf(stage),times=['09:10:00','09:50:00','10:40:00','09:30:00','09:45:00','10:00:00','17:00:00'],history=stages.slice(0,current+1).map((name,i)=>({stage:name,effective:year+'-10-'+(i<3?'28':'29')+' '+times[i],actor:'',reason:'',source:'QR'}));states.set(key,{stage,history,current:history.at(-1)});}return states.get(key);}
  function currentRecord(row,year,identity){return stateFor(row,year,identity).current||null;}
  function recordText(record){return record?E(record.effective)+(record.source==='manual'?'<br><span class="pre01-manual-actor">'+E(record.actor)+'(수동)</span>':''):'-';}
