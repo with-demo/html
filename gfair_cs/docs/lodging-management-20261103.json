@@ -1,0 +1,255 @@
+{
+  "notice": "[변경사항 있음 · 2026-11-03] 숙소관리 팝업에서 숙소명·위치를 관리하고 해외바이어 목록·상세에서 등록 숙소를 선택하도록 변경. 관리자·수출상담 운영용역사 관리, 통역원 제외.",
+  "updates": [
+    {
+      "screen": "PRE-01",
+      "id": "three-review-pre-01-roster",
+      "patch": {
+        "detail": "- [기본정보관리 > 해외 바이어 관리]에서 해당연도 참가상태인 정보를 목록에 표시\n- 바이어명 클릭시 상세페이지로 이동\n- 숙소 열에서 등록된 숙소명·위치를 확인하고 셀렉트로 바이어 숙소 배정·해제\n- 관리자·수출상담 운영용역사만 이용하며 통역원은 해외바이어 메뉴 접근 불가",
+        "defaultValue": "체크박스/바이어명/기업명/국가/숙소/방한현황/상태변경일시/QR"
+      }
+    },
+    {
+      "screen": "PRE-02",
+      "id": "578c360c-60d4-4399-a0d2-79119ffd2225",
+      "patch": {
+        "detail": "- [기본정보관리 > 해 바이어 관리]메뉴에 있는 정보 일부내용 연계 조회\n- 방한정보 제공\n- 숙소정보에서 등록된 숙소를 선택하고 위치를 조회\n- 목록과 상세의 숙소 배정은 같은 행사연도·바이어 고유코드로 연결"
+      }
+    },
+    {
+      "screen": "PRE-01",
+      "id": "align-pre01-excel",
+      "patch": {
+        "detail": "- 다운로드 항목: 바이어명, 생년월일, 국가, 연락처, 이메일, 올해초청기관, 기업코드, 기업명, 직위, 비즈니스 유형, 홈페이지, 주소, 기업소개, 관심분야, 숙소명, 숙소위치, 현재방한현황, 방한상태변경일시\n- 상세에 저장된 최신 값을 제공\n- 파일명: G-FAIR_행사연도_참가_해외바이어_YYYYMMDD(다운로드일자).xlsx"
+      }
+    }
+  ],
+  "retired": [],
+  "inserts": [
+    {
+      "screen": "PRE-01",
+      "id": "lodging-PRE-01-open-20261103",
+      "selector": "[data-pre01-action=\"lodgings\"]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "[숙소관리] 버튼",
+        "type": "버튼",
+        "defaultValue": "활성",
+        "required": "N",
+        "detail": "- 관리자·수출상담 운영용역사에게만 노출\n- 클릭 시 PRE-01-p41 숙소관리 팝업 표시\n- 최종확정 여부와 무관하게 현재 행사연도 숙소를 관리",
+        "policy": "- 통역원은 해외바이어 메뉴에 접근할 수 없으며 숙소관리에서도 제외"
+      }
+    },
+    {
+      "screen": "PRE-01",
+      "id": "lodging-PRE-01-picker-20261103",
+      "selector": "[data-lodging-buyer]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "바이어 숙소 선택",
+        "type": "단일셀렉트박스",
+        "defaultValue": "숙소 선택",
+        "required": "N",
+        "detail": "- 현재 행사연도에 등록된 숙소명 (위치)을 선택 옵션으로 표시\n- 바이어 고유코드별로 선택 즉시 배정하며 숙소 선택을 비우면 배정 해제\n- 등록된 숙소가 없으면 등록된 숙소 없음 표시 및 비활성\n- 목록·상세는 동일 배정을 공유",
+        "policy": "- 행사연도별 숙소와 배정을 분리\n- 목업은 현재 탭 sessionStorage에 저장하여 새로고침 후 유지, 실제 운영 서버 저장은 미연동\n- 숙소명·위치를 수정해도 기존 배정은 숙소 ID로 유지"
+      }
+    },
+    {
+      "screen": "PRE-02",
+      "id": "lodging-PRE-02-lodging-20261103",
+      "selector": ".buyer-lodging-section",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "숙소정보",
+        "type": "조회·선택",
+        "defaultValue": "배정 숙소 또는 빈 값",
+        "required": "N",
+        "detail": "- 숙소 셀렉트로 배정·해제하고 선택한 숙소의 위치를 표시\n- 바이어 목록과 동일한 행사연도·고유코드 배정을 사용",
+        "policy": "- 관리자·수출상담 운영용역사만 사용\n- 변경은 현재 탭에서 유지되며 실제 운영 서버 저장은 미연동"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-fields-20261103",
+      "selector": "[data-lodging-form]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "숙소명·위치",
+        "type": "인풋",
+        "defaultValue": "빈 값 또는 수정 대상 등록값",
+        "required": "Y",
+        "detail": "- 숙소명과 위치를 한 행에 항목·입력 두 쌍으로 배치\n- 숙소명 최대 100자, 위치 최대 200자\n- 숙소명·위치 필수, 공백만 입력 시 저장 중단\n- 등록은 새 숙소 ID 생성, 수정은 기존 숙소 ID 유지",
+        "policy": "- 관리자·수출상담 운영용역사만 등록·수정\n- 현재 행사연도별 숙소 목록을 관리"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-list-20261103",
+      "selector": ".lodging-manager-table",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "숙소 목록 및 관리",
+        "type": "목록",
+        "defaultValue": "등록값",
+        "required": "N",
+        "detail": "- 숙소명 / 위치 / 배정 바이어 수 / 관리 표시\n- 수정 클릭 시 기존 숙소명·위치를 입력란에 표시\n- 배정 바이어가 있으면 삭제 버튼 비활성, 바이어 배정 중인 숙소입니다 툴팁 표시\n- 미배정 숙소 삭제 시 브라우저 컨펌 후 삭제",
+        "policy": "- 배정 중인 숙소는 자동 배정 해제하거나 삭제하지 않음\n- 숙소명을 변경해도 배정 ID 유지, 선택명·위치는 즉시 갱신"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-actions-20261103",
+      "selector": "[data-lodging-form] .dialogactions",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "등록·저장·취소·닫기",
+        "type": "버튼",
+        "defaultValue": "활성",
+        "required": "N",
+        "detail": "- 등록·저장 시 현재 탭에 저장하고 입력란 초기화, 팝업은 유지\n- 수정 취소는 입력 변경을 버리고 등록 모드로 복귀\n- 닫기·X·Esc는 팝업 닫기, 이미 저장한 목록·배정 유지",
+        "policy": "- 실행 버튼은 본문 하단 중앙 정렬\n- 설명 버튼과 PRE-01-p41 화면 ID는 팝업 본문 밖에 표시"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-lodging-empty-20261103",
+      "selector": "#dialog-content [data-lodging-manager], [data-lodging-buyer]",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "lodging-empty",
+        "screens": [
+          "PRE-01-p41"
+        ],
+        "title": "숙소명·위치 공백",
+        "type": "인라인 오류",
+        "trigger": "숙소명 또는 위치에 공백만 입력한 뒤 등록·저장",
+        "message": "숙소명과 위치를 입력해 주세요.",
+        "confirm": "저장 중단 및 해당 입력으로 포커스, 입력값 유지",
+        "source": "include/lodging-management.js"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-lodging-delete-20261103",
+      "selector": "#dialog-content [data-lodging-manager], [data-lodging-buyer]",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "lodging-delete",
+        "screens": [
+          "PRE-01-p41"
+        ],
+        "title": "숙소 삭제 확인",
+        "type": "브라우저 컨펌",
+        "trigger": "배정된 바이어가 없는 숙소의 삭제 클릭",
+        "message": "등록한 숙소를 삭제하시겠습니까?",
+        "confirm": "숙소 삭제 후 목록 및 선택 옵션 갱신",
+        "cancel": "숙소와 배정 유지",
+        "source": "include/lodging-management.js"
+      }
+    },
+    {
+      "screen": "PRE-01",
+      "id": "lodging-PRE-01-lodging-storage-20261103",
+      "selector": "#dialog-content [data-lodging-manager], [data-lodging-buyer]",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "lodging-storage",
+        "screens": [
+          "PRE-01",
+          "PRE-02",
+          "PRE-01-p41"
+        ],
+        "title": "숙소 저장 공간 부족",
+        "type": "인라인 오류 또는 브라우저 알럿",
+        "trigger": "현재 탭 저장소에 변경 내용을 저장하지 못할 때",
+        "message": "숙소 정보를 저장할 공간이 부족합니다.",
+        "confirm": "변경 전 숙소·배정 복원, 입력값 유지. 팝업은 인라인 오류, 배정 변경은 알럿 표시",
+        "source": "include/lodging-management.js"
+      }
+    },
+    {
+      "screen": "PRE-02",
+      "id": "lodging-PRE-02-lodging-storage-20261103",
+      "selector": "#dialog-content [data-lodging-manager], [data-lodging-buyer]",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "lodging-storage",
+        "screens": [
+          "PRE-01",
+          "PRE-02",
+          "PRE-01-p41"
+        ],
+        "title": "숙소 저장 공간 부족",
+        "type": "인라인 오류 또는 브라우저 알럿",
+        "trigger": "현재 탭 저장소에 변경 내용을 저장하지 못할 때",
+        "message": "숙소 정보를 저장할 공간이 부족합니다.",
+        "confirm": "변경 전 숙소·배정 복원, 입력값 유지. 팝업은 인라인 오류, 배정 변경은 알럿 표시",
+        "source": "include/lodging-management.js"
+      }
+    },
+    {
+      "screen": "PRE-01-p41",
+      "id": "lodging-PRE-01-p41-lodging-storage-20261103",
+      "selector": "#dialog-content [data-lodging-manager], [data-lodging-buyer]",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "lodging-storage",
+        "screens": [
+          "PRE-01",
+          "PRE-02",
+          "PRE-01-p41"
+        ],
+        "title": "숙소 저장 공간 부족",
+        "type": "인라인 오류 또는 브라우저 알럿",
+        "trigger": "현재 탭 저장소에 변경 내용을 저장하지 못할 때",
+        "message": "숙소 정보를 저장할 공간이 부족합니다.",
+        "confirm": "변경 전 숙소·배정 복원, 입력값 유지. 팝업은 인라인 오류, 배정 변경은 알럿 표시",
+        "source": "include/lodging-management.js"
+      }
+    }
+  ],
+  "messages": [
+    {
+      "format": "screen-message-v1",
+      "key": "lodging-empty",
+      "screens": [
+        "PRE-01-p41"
+      ],
+      "title": "숙소명·위치 공백",
+      "type": "인라인 오류",
+      "trigger": "숙소명 또는 위치에 공백만 입력한 뒤 등록·저장",
+      "message": "숙소명과 위치를 입력해 주세요.",
+      "confirm": "저장 중단 및 해당 입력으로 포커스, 입력값 유지",
+      "source": "include/lodging-management.js"
+    },
+    {
+      "format": "screen-message-v1",
+      "key": "lodging-delete",
+      "screens": [
+        "PRE-01-p41"
+      ],
+      "title": "숙소 삭제 확인",
+      "type": "브라우저 컨펌",
+      "trigger": "배정된 바이어가 없는 숙소의 삭제 클릭",
+      "message": "등록한 숙소를 삭제하시겠습니까?",
+      "confirm": "숙소 삭제 후 목록 및 선택 옵션 갱신",
+      "cancel": "숙소와 배정 유지",
+      "source": "include/lodging-management.js"
+    },
+    {
+      "format": "screen-message-v1",
+      "key": "lodging-storage",
+      "screens": [
+        "PRE-01",
+        "PRE-02",
+        "PRE-01-p41"
+      ],
+      "title": "숙소 저장 공간 부족",
+      "type": "인라인 오류 또는 브라우저 알럿",
+      "trigger": "현재 탭 저장소에 변경 내용을 저장하지 못할 때",
+      "message": "숙소 정보를 저장할 공간이 부족합니다.",
+      "confirm": "변경 전 숙소·배정 복원, 입력값 유지. 팝업은 인라인 오류, 배정 변경은 알럿 표시",
+      "source": "include/lodging-management.js"
+    }
+  ]
+}
