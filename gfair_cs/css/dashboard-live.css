@@ -137,3 +137,6 @@
 
 /* 전체 바이어는 왼쪽 두 줄, 상태는 오른쪽 4열 두 줄로 배치한다. */
 .travel-overview .travel-stage-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.travel-overview .travel-all{grid-row:span 2;display:flex;flex-direction:column;justify-content:center;background:#f4f4f4;border-color:#555}.travel-overview .travel-all .travel-stage-name{font-weight:700}@media(max-width:1000px){.travel-overview .travel-stage{padding:12px}.travel-overview .travel-stage-name{font-size:12px;gap:4px}.travel-overview .travel-stage-name svg{width:16px;height:16px}}@media(max-width:700px){.travel-overview .travel-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.travel-overview .travel-all{grid-column:1/-1;grid-row:auto}.travel-overview .travel-stage-name{font-size:13px}}
+
+/* 방한현황은 선택 카드만 강조하고 제목·인원 사이 여백을 두지 않는다. */
+.travel-overview .travel-stage{--stage-color:#777;border-color:#ddd;background:#fff}.travel-overview .travel-stage>strong{margin-top:0}.travel-overview .travel-stage .travel-stage-name{font-weight:400}.travel-overview .travel-stage:hover{border-color:#aaa;background:#fafafa}.travel-overview .travel-stage.active{--stage-color:#222;border-color:#555;background:#f1f1f1}.travel-overview .travel-stage.active .travel-stage-name{font-weight:700}
