@@ -156,8 +156,9 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const x=Number.isFinite(anchor.x)?clamp(anchor.x,0,1):0,y=Number.isFinite(anchor.y)?clamp(anchor.y,0,1):0;
   let left=rect.left+rect.width*x+clamp(Number(anchor.offsetX)||0,-4096,4096);
   let top=rect.top+rect.height*y+clamp(Number(anchor.offsetY)||0,-4096,4096);
-  const l=Math.max(bounds.left+14,rect.left-24),r=Math.min(bounds.right-14,rect.right+24);
-  const t=Math.max(bounds.top+14,rect.top-24),b=Math.min(bounds.bottom-14,rect.bottom+24);
+  const free=['SET-11','SET-12'].includes(route());
+  const l=free?bounds.left+14:Math.max(bounds.left+14,rect.left-24),r=free?bounds.right-14:Math.min(bounds.right-14,rect.right+24);
+  const t=free?bounds.top+14:Math.max(bounds.top+14,rect.top-24),b=free?bounds.bottom-14:Math.min(bounds.bottom-14,rect.bottom+24);
   if(l>r||t>b)return null;
   return {left:clamp(left,l,r),top:clamp(top,t,b)};
  }
@@ -173,7 +174,7 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
    if(canEdit()){
     pin.classList.add('annotation-pin-movable');pin.title='클릭: 설명 보기 / 드래그: 핀 위치 저장';
     pin.addEventListener('pointerdown',event=>{if(!canEdit()||event.button!==0||picking||savingPins.has(record.id))return;event.preventDefault();event.stopPropagation();dragging={id:record.id,pointer:event.pointerId,x:event.clientX,y:event.clientY,left,top,screen:route(),offsetX:left-rect.left-rect.width*record.anchor.x,offsetY:top-rect.top-rect.height*record.anchor.y};pin.setPointerCapture(event.pointerId);});
-    pin.addEventListener('pointermove',event=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;const dx=event.clientX-d.x,dy=event.clientY-d.y;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;pin.classList.add('dragging');const minLeft=Math.max(bounds.left+14,rect.left-24),maxLeft=Math.min(bounds.right-14,rect.right+24),minTop=Math.max(bounds.top+14,rect.top-24),maxTop=Math.min(bounds.bottom-14,rect.bottom+24);d.dx=Math.max(minLeft-d.left,Math.min(maxLeft-d.left,dx));d.dy=Math.max(minTop-d.top,Math.min(maxTop-d.top,dy));pin.style.left=d.left+d.dx+'px';pin.style.top=d.top+d.dy+'px';});
+    pin.addEventListener('pointermove',event=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;const dx=event.clientX-d.x,dy=event.clientY-d.y;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;pin.classList.add('dragging');const free=['SET-11','SET-12'].includes(route()),minLeft=free?bounds.left+14:Math.max(bounds.left+14,rect.left-24),maxLeft=free?bounds.right-14:Math.min(bounds.right-14,rect.right+24),minTop=free?bounds.top+14:Math.max(bounds.top+14,rect.top-24),maxTop=free?bounds.bottom-14:Math.min(bounds.bottom-14,rect.bottom+24);d.dx=Math.max(minLeft-d.left,Math.min(maxLeft-d.left,dx));d.dy=Math.max(minTop-d.top,Math.min(maxTop-d.top,dy));pin.style.left=d.left+d.dx+'px';pin.style.top=d.top+d.dy+'px';});
     const finish=async(event,cancel=false)=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;dragging=null;if(pin.hasPointerCapture(event.pointerId))pin.releasePointerCapture(event.pointerId);if(!moved&&!cancel&&d.screen===route())return;if(cancel||d.screen!==route()){pins();return;}savingPins.add(record.id);try{await store.mutate('move',{id:record.id,revision:record.revision,offsetX:d.offsetX+d.dx,offsetY:d.offsetY+d.dy});message('핀 위치를 저장했습니다.');}catch(error){message(error.message);if(error.message.includes('다른 사용자가'))store.refresh();}finally{savingPins.delete(record.id);pins();}};
     pin.addEventListener('pointerup',event=>finish(event));pin.addEventListener('pointercancel',event=>finish(event,true));
    }
