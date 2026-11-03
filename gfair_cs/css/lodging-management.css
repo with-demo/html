@@ -12,3 +12,10 @@
 .pre01-participant-list col.pre01-select-column{width:32px}.pre01-participant-list col.pre01-country-column,.pre01-participant-list col.pre01-qr-column{width:7%}.pre01-participant-list col.pre01-record-column{width:18%}
 #app #content .pre01-participant-list .btn,#app #content .pre01-participant-list .list-name-link{max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;padding-left:7px;padding-right:7px}
 #app #content .pre01-participant-list .pre01-stage-control{flex-wrap:wrap;justify-content:center;gap:4px}
+
+/* 숙소관리: 맨 위 입력행에서 추가하고 등록 숙소는 텍스트로 조회 */
+#dialog.standard-popup:has([data-lodging-manager]){width:900px;max-width:calc(100vw - 32px)}
+.lodging-manager-guide{text-align:center;line-height:1.9;margin:4px 0 24px;font-size:14px;color:#555}
+.lodging-manager-scroll{max-height:440px;overflow:auto}.lodging-manager-table{width:100%;min-width:560px;table-layout:fixed;border-collapse:separate;border-spacing:0}
+.lodging-manager-table th,.lodging-manager-table td{padding:12px 10px;vertical-align:middle;overflow-wrap:anywhere}.lodging-manager-table thead th{position:sticky;top:0;z-index:2;background:#f5f5f5}.lodging-manager-table .lodging-add-row td{position:sticky;top:45px;z-index:1;background:#f4f8fc;border-bottom:1px solid #d7e2ee}.lodging-manager-table input{width:100%;min-width:0;box-sizing:border-box;font-size:13px}.lodging-manager-table td:first-child{text-align:left}.lodging-manager-table .btn{min-width:58px}.lodging-manager-table [data-lodging-add]{margin:0}
+[data-lodging-message]:empty{display:none}
