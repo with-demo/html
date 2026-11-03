@@ -114,3 +114,5 @@
 #dialog-content .pre04-management .pre04-popup-pagination .btn{height:28px;min-height:28px;padding:4px 9px;font-size:12px}
 @media(max-width:850px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr 1fr}#dialog-content .pre04-management .pre04-assignment-history table{min-width:650px}}
 @media(max-width:500px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:1fr}.pre04-reason-bar label{flex-wrap:wrap}#dialog-content .pre04-management .pre04-current-person{font-size:13px}}
+
+#dialog-content .pre04-management .pre04-assignment-history>summary{cursor:pointer;font-size:13px;font-weight:600;color:#555;padding:10px 12px;background:#f6f7f8;border:1px solid #e1e3e6;border-radius:6px}#dialog-content .pre04-management .pre04-assignment-history[open]>summary{margin-bottom:8px}

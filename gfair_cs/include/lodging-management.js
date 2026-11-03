@@ -2,6 +2,7 @@
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const storage='gfair.lodgings.v1';let state={lodgings:{},assignments:{}},manager=null,bulk=null,message='';
  try{const stored=JSON.parse(sessionStorage.getItem(storage)||'null');if(stored&&typeof stored.lodgings==='object'&&typeof stored.assignments==='object')state=stored;}catch{}
+ if(!state.exampleHotels20261103){const examples=[{id:'hotel-gloucester-cheongju',name:'글로스터',location:'충청북도 청주시 흥덕구 대농로 47-2'},{id:'hotel-sonocalm-goyang',name:'소노캄',location:'경기도 고양시 일산동구 태극로 20'}];state.lodgings['2026']=[...(state.lodgings['2026']||[]),...examples.filter(h=>!(state.lodgings['2026']||[]).some(r=>r.id===h.id))];state.exampleHotels20261103=true;try{sessionStorage.setItem(storage,JSON.stringify(state));}catch{}}
  const role=()=>document.getElementById('role-picker')?.value||'',allowed=()=>['admin','exportOperator'].includes(role()),canAssign=()=>role()==='exportOperator';
  const catalog=year=>state.lodgings[String(year)]||[],key=(year,buyer)=>String(year)+'|'+buyer;
  const assigned=(buyer,year)=>catalog(year).find(item=>item.id===state.assignments[key(year,buyer)]);
