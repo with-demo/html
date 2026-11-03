@@ -134,3 +134,6 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 /* GTMS 원본 형태의 투명 로고: 어두운 영역은 흰색, 밝은 모바일 헤더는 검정 */
 .gtms-logo{display:block;width:160px;max-width:100%;height:auto;filter:brightness(0) invert(1)}.sidebar .gtms-brand{line-height:0}.sidebar .gtms-brand+.caption{padding-left:5px}.login-brand .gtms-logo{width:220px}.mobile-top .gtms-logo{width:140px;filter:brightness(0)}
+
+/* 목록 체크박스 열 공통 너비 */
+#app #content table tr>.list-checkbox-column,#dialog-content table tr>.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important;box-sizing:border-box;text-align:center;padding-left:8px!important;padding-right:8px!important}#content table col.list-checkbox-column,#dialog-content table col.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important}

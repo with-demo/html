@@ -21,5 +21,5 @@
  document.addEventListener('change',event=>{const select=event.target;if(!select.matches('[data-lodging-buyer]'))return;event.stopImmediatePropagation();const buyer=select.dataset.lodgingBuyer,year=select.dataset.lodgingYear,previous=state.assignments[key(year,buyer)]||'';if(!canAssign()){select.value=previous;return;}if(select.value&&!catalog(year).some(item=>item.id===select.value)){select.value=previous;return;}try{mutate(()=>{if(select.value)state.assignments[key(year,buyer)]=select.value;else delete state.assignments[key(year,buyer)];});}catch(error){select.value=previous;alert(error.message);}},true);
  window.addEventListener('hashchange',()=>{if(manager||bulk){document.getElementById('dialog')?.close();manager=null;bulk=null;}});
  document.getElementById('dialog')?.addEventListener('close',()=>{if(!document.getElementById('dialog').open){manager=null;bulk=null;}});
- window.GFAIR_LODGINGS={open,openBulk,picker,detail,assigned};
+ window.GFAIR_LODGINGS={open,openBulk,picker,detail,assigned,list:year=>catalog(year).map(item=>({...item}))};
 })();
