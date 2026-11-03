@@ -413,6 +413,30 @@ function surveySeedResponseExamples(){
 }
 surveySeedResponseExamples();
 
+// 해외 바이어 18명 중 8명 응답 예시. 사용자가 제출한 응답은 보존한다.
+function surveySeedForeignResponseExamples(){
+ const q=surveyStore.find(s=>s.id==='SUR-2026-OVERSEAS-V3');if(!q)return;
+ const existing=q.responses.filter(r=>!String(r.id||'').startsWith('DEMO-FOREIGN-2026-'));
+ const records=rows(map.get('BAS-03')),participants=records.filter(r=>window.GFAIR_PARTICIPATION?.participating('BAS-03',r,String(q.year))),needed=Math.max(0,8-existing.length);
+ const comments=['The business meetings were useful. I would like to participate again.','Please provide product information before the meetings.','The interpretation support was very helpful.','More time between meetings would improve the experience.','I found potential suppliers for our market.','The venue was easy to navigate.'];
+ const demos=participants.filter(row=>!existing.some(r=>(r.participantCode||r.userId)===row[0]||r.name===row[1])).slice(0,needed).map((row,index)=>{
+  const answers={},extras={},identity=surveyRespondentInfo(q,{userId:row[0],name:row[1]}),match=rows(map.get('PRE-01')).find(r=>r[0]===row[1]);
+  q.groups.forEach((g,gi)=>g.questions.forEach((v,qi)=>{
+   const key=gi+'-'+qi;if(v.visibleWhen){const previous=answers[v.visibleWhen.question];if(!(Array.isArray(previous)?previous:[previous]).includes(String(v.visibleWhen.option)))return;}
+   if(v.type==='서술형')answers[key]=index<6?comments[index]:'';
+   else if(v.type==='단답형')answers[key]=/company/i.test(v.title)?['Bright Retail','Horizon Trading','Global Market','Evergreen Imports','Blue Ocean Commerce','Prime Distribution','Union Retail','Summit Trade'][index]:/name.*person|person.*charge/i.test(v.title)?row[1]:/mobile/i.test(v.title)?'':/email/i.test(v.title)?'':'';
+   else if(v.type==='복수응답형')answers[key]=[String(index%v.options.length),String((index+1)%v.options.length)].slice(0,v.maxSelections||2);
+   else if(v.options.length)answers[key]=String(v.type==='척도형'?Math.max(0,v.options.length-1-index%3):index%v.options.length);
+   const values=Array.isArray(answers[key])?answers[key]:[answers[key]];
+   v.options.forEach((o,oi)=>{if(o.extra&&values.includes(String(oi)))extras[key+'-'+oi]='Other response';});
+  }));
+  return {id:'DEMO-FOREIGN-2026-'+(index+1),userId:row[0],...identity,name:row[1],helper:match?.[5]&&match[5]!=='미지정'?match[5]:'',date:'2026-10-31 '+String(13+Math.floor(index/4)).padStart(2,'0')+':'+String(index%4*12).padStart(2,'0')+':00',answers,extras};
+ });
+ q.responses=[...existing,...demos];
+}
+surveySeedForeignResponseExamples();
+
+
 function surveyPersist(){try{localStorage.setItem('gfair-surveys-source-v3-20261028',JSON.stringify(surveyStore));return true}catch{toast('이 기기의 저장 공간을 사용할 수 없습니다.');return false}}
 const surveyUi={manage:'list',response:'list',editor:null,id:null,tab:'stats',filters:{year:'전체',target:'전체',active:'전체',query:''},responseFilters:{year:'전체',target:'전체',query:''},from:'',to:'',historyPage:1,historySize:20};
 function surveyFind(id){return surveyStore.find(s=>s.id===id)}
