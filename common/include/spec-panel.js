@@ -6,7 +6,7 @@
  const toolbar=document.createElement('div');toolbar.className='ui-spec-toolbar';toolbar.hidden=true;
  toolbar.innerHTML='<div class="ui-spec-identity"><strong>With / 기획팀 SB</strong><select class="ui-spec-screen-picker" data-spec="screen" aria-label="목업 화면 선택"></select><button type="button" data-spec="screen-search">화면검색</button><span class="ui-spec-preview">예시 데이터 · 검토용</span></div><div class="ui-spec-actions"><label>사용구분 <select aria-label="사용구분"></select></label><button type="button" data-spec="close">닫기</button><span class="ui-spec-status" role="status"></span></div>';
  const screenPicker=toolbar.querySelector('[data-spec=screen]');
- (window.GFAIR_SCREENS||[]).forEach(group=>{
+ (window.GFAIR_SCREEN_CATALOG||window.GFAIR_SCREENS||[]).forEach(group=>{
   const section=document.createElement('optgroup');section.label=group.name;
   group.screens.forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+screen.title;section.append(option);});screenPicker.append(section);
  });
