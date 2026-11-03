@@ -15,7 +15,7 @@
 
 /* 숙소관리: 맨 위 입력행에서 추가하고 등록 숙소는 텍스트로 조회 */
 #dialog.standard-popup:has([data-lodging-manager]){width:900px;max-width:calc(100vw - 32px)}
-.lodging-manager-guide{text-align:center;line-height:1.9;margin:4px 0 24px;font-size:14px;color:#555}
+.lodging-manager-guide{text-align:left;line-height:1.5;margin:0 0 10px;font-size:13px;color:#555}
 .lodging-manager-scroll{max-height:440px;overflow:auto}.lodging-manager-table{width:100%;min-width:560px;table-layout:fixed;border-collapse:separate;border-spacing:0}
 .lodging-manager-table th,.lodging-manager-table td{padding:12px 10px;vertical-align:middle;overflow-wrap:anywhere}.lodging-manager-table thead th{position:sticky;top:0;z-index:2;background:#f5f5f5}.lodging-manager-table .lodging-add-row td{position:sticky;top:45px;z-index:1;background:#f4f8fc;border-bottom:1px solid #d7e2ee}.lodging-manager-table input{width:100%;min-width:0;box-sizing:border-box;font-size:13px}.lodging-manager-table td:first-child{text-align:left}.lodging-manager-table .btn{min-width:58px}.lodging-manager-table [data-lodging-add]{margin:0}
 [data-lodging-message]:empty{display:none}
