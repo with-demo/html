@@ -2,7 +2,7 @@
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const drafts=new Map(),submitted=new Set(),selected=new Map();let ctx=null;
  const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
- function targets(c){const self=c.self||{},out=[{id:'self',name:self.name||'',companyName:self.companyName||'',label:c.role==='interpreter'?'통역원':'국내 바이어',target:c.role==='interpreter'?'통역원':'국내 바이어'}];if(c.role==='interpreter')for(const b of c.buyers||[])out.push({id:b.id,name:b.name,country:b.country||'',label:b.name,target:'해외 바이어'});return out;}
+ function targets(c){const self=c.self||{},out=[{id:'self',name:self.name||'',companyName:self.companyName||'',label:c.role==='interpreter'?'통역원':'국내 바이어',target:c.role==='interpreter'?'통역원':'국내 바이어'}];if(c.role==='interpreter')for(const b of c.buyers||[])out.push({id:b.id,name:b.name,country:b.country||'',companyName:b.companyName||'',label:b.name,target:'해외 바이어'});return out;}
  const key=(c,t)=>[c.year,c.role,c.self?.id,t.id].join('|');
  function questionnaire(c,t){const matches=c.questionnaires.filter(q=>String(q.year)===String(c.year)&&q.target===t.target);return matches.find(q=>q.active)||matches.find(q=>q.materialPending);}
  function visible(v,answers,q,seen=new Set()){if(!v.visibleWhen)return true;const key=v.visibleWhen.question;if(seen.has(key))return false;seen.add(key);const a=answers[key],[gi,qi]=key.split('-').map(Number),source=q?.groups[gi]?.questions[qi];return (Array.isArray(a)?a:[a]).includes(String(v.visibleWhen.option))&&(!q||!!source&&visible(source,answers,q,seen));}
