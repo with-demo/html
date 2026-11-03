@@ -20,7 +20,7 @@
  function buyerPage(year){
   const screen=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id==='BAS-05'),records=screen?.ui.rows||[],record=records[0],api=window.GFAIR_OVERSEAS_BUYER_DETAIL;
   if(!record||!api?.myInfo)return '<p class="account-info-empty">등록된 내정보를 확인할 수 없습니다.</p>';
-  const data=api.myInfo(record,records,year),account=api.eventView(record,records,'BAS-06',year),rows=[['로그인 ID',account.accountId||''],['사용자 구분',roles.buyer],...data.basic.filter(([label])=>!["생년월일","메모"].includes(label)).map(([label,value,wide])=>[label,label==='바이어명'?value+' ('+data.code+')':value,wide])];
+  const data=api.myInfo(record,records,year),account=api.eventView(record,records,'BAS-06',year),rows=[['로그인 ID',account.accountId||''],['사용자 구분',roles.buyer],...data.basic.filter(([label])=>!["생년월일","메모"].includes(label)).map(([label,value,wide])=>[label,label==='바이어명'?value+' ('+data.code+')':value,label==='초청기관'?false:wide])];
   return '<div class="account-info-page"><section class="account-info-section"><h2 class="detail-section-title">기본정보</h2><dl class="account-info-fields account-buyer-basic">'+rows.map(([label,value,wide])=>'<dt>'+E(label)+'</dt><dd'+(wide?' class="account-wide-value"':'')+'>'+E(value)+'</dd>').join('')+'</dl></section><form id="my-info-buyer-form" data-account-buyer data-buyer-company-form data-participant-detail="BAS-06">'+data.editor+'<p data-account-buyer-result role="status"></p><div class="formfooter"><button type="submit" class="btn primary">저장</button></div></form></div>';
  }
  function render(role,year){
