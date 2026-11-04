@@ -120,7 +120,7 @@ function journalCategorySelect(groups, saved) {
   const options = categories.map(value =>
     '<option value="' + E(value) + '"' + (value === selected ? ' selected' : '') + '>' + E(value) + '</option>'
   ).join('');
-  return '<select name="representativeCategory" aria-label="대표 상담 제품군"' + (categories.length ? '' : ' disabled') +
+  return '<select name="representativeCategory" aria-label="대표 상담 제품군"' + (categories.length ? ' required' : ' disabled') +
     '><option value="">' + placeholder + '</option>' + options + '</select>';
 }
 function journalQuickAmount(controls) {
