@@ -1,6 +1,5 @@
 // 현재 구현된 보조 화면의 정식 ID와 진입 정보를 관리한다.
 window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-02-p43","title":"방한기록 수정","parent":"PRE-02","source":"PRE-02","kind":"popup","summary":"해당 단계 기록일시 수정 또는 기록취소. 사유는 필수입니다.","selector":"[data-pre02-edit-stage]"},{"id":"PRE-01-p42","title":"숙소 일괄변경","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"선택한 해외바이어의 숙소를 한 번에 배정하거나 해제합니다.","selector":"[data-pre01-action=\"bulk-lodgings\"]"},{"id":"PRE-01-p41","title":"숙소관리","parent":"PRE-01","source":"PRE-01","kind":"popup","summary":"관리자·수출상담 운영용역사가 행사별 숙소명·위치를 등록·수정·삭제하고 바이어 숙소 선택 목록으로 사용합니다.","selector":"[data-pre01-action=\"lodgings\"]"},
-{"id":"JNL-14-p01","title":"수출상담일지 엑셀 일괄 업로드","parent":"JNL-14","summary":"엑셀 양식을 다운로드하고 오프라인 상담일지를 검증·일괄 등록합니다.","kind":"popup","source":"JNL-14","selector":"[data-journal-upload]"},
   {
     "id": "SET-07",
     "title": "만족도설문 관리",
