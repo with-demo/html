@@ -132,6 +132,11 @@
   #app .export-journal-form .journal-pair.full:has(.consult-date-range){grid-template-columns:minmax(118px,9.25%) minmax(0,1fr)}
 }
  
-#app .journal-pair:has(select[name="representativeCategory"]){grid-template-columns:minmax(max-content,18.5%) minmax(0,1fr)}
+#app .journal-table:has(select[name="representativeCategory"]) {
+  container-type: inline-size;
+}
+#app .journal-table:has(select[name="representativeCategory"]) .journal-pair {
+  grid-template-columns: max(140px, 18.5cqi) minmax(0, 1fr);
+}
 #app .journal-pair:has(select[name="representativeCategory"])>.journal-label{white-space:nowrap}
 #app .journal-pair:has(select[name="representativeCategory"][required])>.journal-label::after{content:"*";margin-left:3px;color:#c62828}
