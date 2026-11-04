@@ -115,7 +115,7 @@ function sellerCardPreviews(){const cards=image?.items||(image?[image]:[]);retur
 function optionalSellerCardUpload(d){return '<div class="journal-upload">'+sellerCardPreviews()+'<input type="hidden" name="sellerCard" value="'+E(d.sellerCard||image?.name||'')+'"><input id="draft-image" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple aria-label="셀러 명함 이미지 선택"><small class="hint">JPG, JPEG, PNG · 파일당 최대 10MB · 최대 2개 (선택 첨부)</small></div>'}
 function journalQuickAmount(controls) {
   const buttons = [100000, 10000, 1000, 100].map(value =>
-    '<button type="button" data-journal-add="' + value + '" style="flex:1 1 auto;border:0;border-radius:1rem;background:#f1f1f1;padding:4px 8px;color:#222;cursor:pointer">+ ' + value.toLocaleString('en-US') + '</button>'
+    '<button type="button" data-journal-add="' + value + '" style="display:inline-flex;align-items:center;justify-content:center;text-align:center;flex:1 1 0;white-space:nowrap;border:0;border-radius:1rem;background:#f1f1f1;padding:4px 8px;color:#222;cursor:pointer">+ ' + value.toLocaleString('en-US') + '</button>'
   ).join('');
   return '<div data-journal-money style="width:100%;min-width:0"><div style="display:flex;gap:6px;align-items:center">' + controls + '</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">' + buttons + '</div></div>';
 }
