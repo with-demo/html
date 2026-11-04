@@ -256,3 +256,6 @@ window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-02-p43","title":"방한기록 수정","
 (()=>{const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id==='SET-02');s.title='그룹 등록·상세';s.summary='그룹명과 사용여부만 등록·수정합니다. 메뉴 접근 권한은 목록의 메뉴권한 팝업에서 설정합니다.';if(window.GFAIR_SCREEN_OVERVIEWS)GFAIR_SCREEN_OVERVIEWS[s.id]=s.summary;})();
 
 (()=>{const all=GFAIR_SCREENS.flatMap(g=>g.screens),info=all.find(s=>s.id==='COM-06'),alerts=all.find(s=>s.id==='NTC-07');if(info)Object.assign(info,{title:'내정보',kind:'detail',role:'전체 사용자',summary:'기본정보관리에 등록된 본인의 계정·기본정보를 조회하며 관리자는 비밀번호를 변경합니다.',ui:{fields:[],actions:[]}});if(alerts)Object.assign(alerts,{title:'알림',summary:'현재 행사에서 본인에게 전달된 알림 내역과 확인 여부를 조회합니다.'});if(window.GFAIR_SCREEN_OVERVIEWS){GFAIR_SCREEN_OVERVIEWS['COM-06']=info.summary;GFAIR_SCREEN_OVERVIEWS['NTC-07']=alerts.summary;}})();
+
+// 사용 종료한 FAQ·자료실 화면은 라우트와 화면 목록에서 제거한다.
+(()=>{const removed=new Set(['NTC-02','NTC-03',...GFAIR_SCREEN_REGISTRY.filter(s=>s.publicBoard).map(s=>s.id)]);window.GFAIR_SCREEN_REGISTRY=GFAIR_SCREEN_REGISTRY.filter(s=>!removed.has(s.id)&&!removed.has(s.parent));for(const group of GFAIR_SCREENS){group.screens=group.screens.filter(s=>!removed.has(s.id)&&!removed.has(s.parent));for(const screen of group.screens)if(['NTC-01','NTC-04','NTC-15','NTC-16'].includes(screen.id))screen.title=screen.title.replaceAll('공지사항','공지/알림');}})();
