@@ -127,8 +127,8 @@
     if (table) {
       const orderedRows = [
         [participant, number],
-        [product],
         [contact, phone],
+        [product],
         [card]
       ];
       table.replaceChildren(...orderedRows.map(items => {
