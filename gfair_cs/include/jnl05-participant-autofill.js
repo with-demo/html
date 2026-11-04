@@ -127,7 +127,7 @@
     if (table) {
       const orderedRows = [
         [participant, number],
-        [country, product],
+        [product],
         [contact, phone],
         [card]
       ];
