@@ -5,7 +5,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 // 공동작업 Description 패널을 직접 불러온다.
 (()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=live-catalog-20261103',document.currentScript.src).href;document.head.append(script);})();
-(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=remove-registered-filter-20261103',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=notice-only-20261104',document.currentScript.src).href;document.head.append(script);})();
 
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.
 (()=>{
@@ -26,7 +26,6 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const base=document.currentScript.src;const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/management-ui.css?v=detail-left-admin-order-20261031',base).href;document.head.append(css);const script=document.createElement('script');script.src=new URL('management-ui.js?v=ui-lodging-send-finalize-checkbox-20261103',base).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement('script');script.src=new URL('public-boards.js?v=remove-registered-filter-20261103',document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('../css/agency-filters.css?v=agency-multi-20261020',document.currentScript.src).href;document.head.append(link);})();
 
