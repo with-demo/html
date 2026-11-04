@@ -858,7 +858,7 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     const oldWriter=j.writer;
     Object.assign(j,{company:company[1],booth:company[3],sellerCode:company[0],contactPerson:company[4],contactPhone:company[5],
       buyer:buyer[1],buyerCode:buyer[0],buyerCountry:buyer[2],buyerCountryCode:(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.name===buyer[2])?.code||'',
-      writer,productGroup:categories.join(' / '),hashtags:categories,consultStart:day+'T09:'+String(index%6*5).padStart(2,'0'),consultEnd:day+'T09:'+String(30+index%6*5).padStart(2,'0'),
+      writer,interpreterName:j.interpreterName||(j.id.includes('DRAFT')?(assigned||'박서연'):writer),productGroup:categories.join(' / '),hashtags:categories,consultStart:day+'T09:'+String(index%6*5).padStart(2,'0'),consultEnd:day+'T09:'+String(30+index%6*5).padStart(2,'0'),
       time:day+' '+hour+':45',amount:12500+index*2100,contract:index%4===0?0:3000+index*420,
       content:company[1]+' 부스에서 '+buyer[1]+' 바이어와 '+(categories[0]||'전시')+' 제품의 유통 조건을 논의했다. '+notes[index%notes.length]});
     j.history=j.history.map(([status,actor,reason],n)=>[status,(actor.split(' · ')[0]===oldWriter?writer:actor.split(' · ')[0])+' · '+day+' '+hour+':'+String(45-n*5).padStart(2,'0'),reason]);
