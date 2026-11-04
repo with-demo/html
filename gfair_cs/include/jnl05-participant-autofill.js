@@ -47,7 +47,7 @@
   function apply(form) {
     if (!form || form.dataset.participantAutofillReady === 'true') return;
     const companySection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('기업 정보'));
-    const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('바이어정보'));
+    const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('바이어 정보'));
     if (!companySection || !buyerSection) return;
     form.dataset.participantAutofillReady = 'true';
     companySection.classList.add('participant-info-section');
@@ -173,7 +173,19 @@
       row.className = 'journal-table-row';
       row.append(buyerSelectPair);
       if (buyerCountry) row.append(buyerCountry);
-      buyerTable.replaceChildren(row);
+      const details = document.createElement('div');
+      details.className = 'journal-table-row';
+      const select = buyerSelectPair.querySelector('[data-single-select]');
+      const buyer = JSON.parse(select.dataset.options).find(item => item.value === select.querySelector('input[data-select-value]').value);
+      for (const [label, field, value] of [['기업명', 'buyerCompanyName', buyer?.companyName], ['연락처', 'buyerPhone', buyer?.phone]]) {
+        const pair = document.createElement('div');
+        pair.className = 'journal-pair';
+        pair.innerHTML = '<div class="journal-label"></div><div class="journal-control"></div>';
+        pair.firstElementChild.textContent = label;
+        replaceWithLockedInput(pair, field, value);
+        details.append(pair);
+      }
+      buyerTable.replaceChildren(row, details);
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
   }
@@ -202,6 +214,8 @@
         if (savedCard) savedCard.value = state.value;
       }
     } else if (select?.dataset.name === 'buyer') {
+      setLockedValue(form, 'buyerCompanyName', meta.companyName || '');
+      setLockedValue(form, 'buyerPhone', meta.phone || '');
       setLockedValue(form, 'buyerCode', meta.code || '');
       setLockedValue(form, 'buyerCountry', countryValue('buyerCountry', meta.country, meta.countryCode));
     }
