@@ -140,3 +140,7 @@
 }
 #app .journal-pair:has(select[name="representativeCategory"])>.journal-label{white-space:nowrap}
 #app .journal-pair:has(select[name="representativeCategory"][required])>.journal-label::after{content:"*";margin-left:3px;color:#c62828}
+.export-journal-form .journal-products { width: 100%; display: grid; gap: 6px; }
+.export-journal-form .journal-product-row { display: flex; align-items: center; gap: 6px; }
+.export-journal-form .journal-product-row input { flex: 1; min-width: 0; }
+.export-journal-form .journal-product-row button { margin-left: auto; flex: none; }

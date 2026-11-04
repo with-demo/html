@@ -59,7 +59,7 @@
     const number = find('셀러 코드');
     const country = find('셀러 국가');
     const card = find('셀러 명함');
-    const product = find('제품군');
+    const product = pairs.find(pair => pair.querySelector('[data-name="productGroup"]'));
     const contact = pairs.find(pair => pair.querySelector('[name="contactPerson"]'));
     const phone = find('담당자 연락처');
     const rows = [...companySection.querySelectorAll('.journal-table-row')];
