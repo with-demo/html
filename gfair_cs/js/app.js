@@ -187,7 +187,11 @@ function refreshJournalBuyers(form, interpreter) {
  box.querySelector('input[data-select-value]').value = '';
  box.querySelector('[data-select-label]').textContent = '선택해 주세요';
  box.querySelector('[data-select-trigger]').disabled = !interpreter;
- box.querySelector('.journal-select-results').replaceChildren();
+ const search = box.querySelector('[data-select-search]');
+ search.value = '';
+ search.dispatchEvent(new Event('input', {bubbles:true}));
+ box.querySelector('.journal-select-options').hidden = true;
+ box.querySelector('[data-select-trigger]').setAttribute('aria-expanded','false');
  for (const key of ['buyer','buyerCode','buyerCountry','buyerCountryCode','buyerCompanyName','buyerPhone']) {
    draft[key] = '';
    form.querySelectorAll('[name="'+key+'"]').forEach(input => { input.value = ''; });
