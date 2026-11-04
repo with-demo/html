@@ -462,3 +462,6 @@ GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,item
 
 // 국내바이어와 통역원 LNB에는 통합 대시보드를 표시하지 않는다.
 (()=>{const group=GFAIR_MENU.find(g=>g.name==='모니터링');const dashboard=group?.items.find(item=>item[0]==='MON-01');if(dashboard)Object.assign(dashboard[3],{buyer:'X',interpreter:'X'});})();
+
+// 공지/알림은 단일 목록으로 직접 이동한다.
+(()=>{const group=GFAIR_MENU.find(g=>g.name==='공지/알림');const item=group.items.find(i=>i[0]==='NTC-01');item[1]='공지/알림';group.items=[item];group.direct=true;})();
