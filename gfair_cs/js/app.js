@@ -856,7 +856,8 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     j.history=j.history.map(([status,actor,reason],n)=>[status,(actor.split(' · ')[0]===oldWriter?writer:actor.split(' · ')[0])+' · '+day+' '+hour+':'+String(45-n*5).padStart(2,'0'),reason]);
   });
 }
-render();})();
+const proxyExample=journals.find(j=>j.id==='GF-000484');
+if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});render();})();
 
 
 
