@@ -156,7 +156,7 @@
     const buyerCode = buyerPairs.find(pair => text(pair.querySelector('.journal-label')).startsWith('바이어 코드'));
     const buyerCountry = buyerPairs.find(pair => text(pair.querySelector('.journal-label')).startsWith('바이어 국가'));
     const buyerCountrySelect = buyerCountry?.querySelector('[data-single-select]');
-    const initialBuyerCountry = buyerCountrySelect?.querySelector('[data-select-label]')?.textContent || '';
+    const initialBuyerCountry = buyerCountrySelect?.querySelector('input[data-select-value]')?.value && buyerCountrySelect?.querySelector('[data-select-label]')?.textContent || '';
     buyerCode?.remove();
     const buyerCountryOptions = JSON.parse(buyerCountrySelect?.dataset.options || '[]');
     optionMap.set('buyerCountry', buyerCountryOptions);
