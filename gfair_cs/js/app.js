@@ -109,7 +109,9 @@ function jTableExportReview(rows){
  const body=rows.map(j=>{
   const pending=['작성 중','임시 저장'].includes(j.status);
   const buyerLink=B('j-detail',E(j.buyer||'미선택'),'btn ghost','data-id="'+E(j.id)+'"'+(role==='interpreter'?' data-personal="true"':''));
-  const values=[j.buyerCountry,j.company,j.booth,j.interpreterName??j.writer,j.updatedAt||j.time,pending?'':j.time];
+  const code=j.buyerCountryCode || window.GFAIR_COUNTRY_CODES?.find(c=>c.name===j.buyerCountry)?.code;
+  const country=j.buyerCountry && code ? j.buyerCountry+'('+code+')' : j.buyerCountry;
+  const values=[country,j.company,j.booth,j.interpreterName??j.writer,j.updatedAt||j.time,pending?'':j.time];
   return '<tr><td>'+buyerLink+'</td>'+values.map(v=>'<td>'+E(v||'-')+'</td>').join('')+'<td>'+badge(j.status)+'</td></tr>';
  }).join('');
  return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+(body||'<tr><td colspan="8"><div class="empty">해당 조건의 상담일지가 없습니다.</div></td></tr>')+'</tbody></table></div>';
