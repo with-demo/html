@@ -752,11 +752,13 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
   ];
   if(companies.length && buyers.length) journals.filter(j=>j.type==='수출').forEach((j,index)=>{
     const company=(j.id==='GF-000487'&&companies.find(row=>row[1]==='루미뷰티랩'))||companies[index%companies.length];
-    const buyer=buyers[index%buyers.length];
+    const ownExample=['GF-000487','GF-000488','GF-000484','GF-000486'].includes(j.id);
+    const buyer=(ownExample&&buyers.find(row=>row[1]===(['GF-000488','GF-000484'].includes(j.id)?'Emily Carter':'James Whitmore')))||buyers[index%buyers.length];
     const categories=window.GFAIR_COMPANY_FILTER.categoriesFor(company);
     const day='2026-10-'+(31-Math.floor(index/6));
     const hour=String(15-index%6).padStart(2,'0');
-    const writer=j.id.includes('DRAFT')?j.writer:(window.GFAIR_CURRENT_MATCHING.assignedName(buyer[1])||((index%3===0||j.id==='GF-000487'||j.id==='GF-000488')?'박서연':interpreters[index%interpreters.length]?.[1])||j.writer);
+    const assigned=window.GFAIR_CURRENT_MATCHING.assignedName(buyer[1]);
+    const writer=j.id.includes('DRAFT')?j.writer:ownExample?'박서연':(interpreters.some(row=>row[1]===assigned)&&assigned||((index%3===0||j.id==='GF-000487'||j.id==='GF-000488')?'박서연':interpreters[index%interpreters.length]?.[1])||j.writer);
     const oldWriter=j.writer;
     Object.assign(j,{company:company[1],booth:company[3],sellerCode:company[0],contactPerson:company[4],contactPhone:company[5],
       buyer:buyer[1],buyerCode:buyer[0],buyerCountry:buyer[2],buyerCountryCode:(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.name===buyer[2])?.code||'',
