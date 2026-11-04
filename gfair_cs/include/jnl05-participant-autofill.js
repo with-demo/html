@@ -60,8 +60,8 @@
     const country = find('셀러 국가');
     const card = find('셀러 명함');
     const product = find('제품군');
-    const contact = find('상담사 (기업 담당자)');
-    const phone = find('상담사 연락처');
+    const contact = pairs.find(pair => pair.querySelector('[name="contactPerson"]'));
+    const phone = find('담당자 연락처');
     const rows = [...companySection.querySelectorAll('.journal-table-row')];
     const table = companySection.querySelector('.journal-table');
 
@@ -87,10 +87,8 @@
     const companyOptions = JSON.parse(companyInput?.dataset.options || '[]');
     const selectedCompanyValue = companyInput?.querySelector('[data-select-value]')?.value;
     const selectedCompany = companyOptions.find(item => item.value === selectedCompanyValue);
-    const exhibitorScreen = (window.GFAIR_SCREENS || []).flatMap(group => group.screens || []).find(screen => screen.id === 'ENT-01');
-    const boothByCompany = new Map((exhibitorScreen?.ui?.rows || []).map(row => [row[0], String(row[1] || '').replace(/^부스\s*/, '')]));
     companyOptions.forEach(item => {
-      const boothNumber = boothByCompany.get(item.value);
+      const boothNumber = item.boothNumber;
       if (!boothNumber) return;
       item.boothNumber = boothNumber;
       item.label = `${item.value} / ${boothNumber}`;
@@ -112,13 +110,15 @@
       });
     }
     if (participant) {
-      participant.querySelector('.journal-label').innerHTML = '참가 기업<em> *</em>';
+      participant.querySelector('.journal-label').innerHTML = '기업명 / 부스 번호<em> *</em>';
       participant.classList.remove('full');
     }
     replaceWithLockedInput(number, 'businessNo', businessNumber(selectedCompany, companyInput));
     if (number) number.querySelector('.journal-label').innerHTML = '사업자 번호<em> *</em>';
     replaceWithLockedInput(country, 'sellerCountry', initialCountry);
-    replaceWithLockedInput(product, 'productGroup', initialProduct);
+    setLockedValue(form, 'contactPerson', selectedCompany?.contactPerson || '');
+    setLockedValue(form, 'contactPhone', selectedCompany?.contactPhone || '');
+    replaceWithLockedInput(product, 'productGroup', selectedCompany?.productGroup || '');
     [number, country, product, contact, phone].forEach(pair => {
       const input = pair?.querySelector('.journal-control input');
       if (input) { input.readOnly = true; input.disabled = true; input.classList.add('journal-readonly'); }
@@ -187,7 +187,7 @@
     if (select?.dataset.name === 'company') {
       setLockedValue(form, 'businessNo', businessNumber(meta, select));
       setLockedValue(form, 'sellerCountry', countryValue('sellerCountry', meta.country, meta.countryCode));
-      setLockedValue(form, 'productGroup', productValue(meta.productGroup));
+      setLockedValue(form, 'productGroup', meta.productGroup || '');
       setLockedValue(form, 'contactPerson', meta.contactPerson || '');
       setLockedValue(form, 'contactPhone', meta.contactPhone || '');
       const upload = form.querySelector('.journal-upload'), state = manualCardState.get(form);
