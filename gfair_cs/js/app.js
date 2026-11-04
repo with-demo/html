@@ -113,15 +113,15 @@ const buy=s.id==='MON-02'||kind==='구매',exp=s.id==='MON-03'||kind==='수출',
 function draftState(){return `<div class="notice ${connected()?'':'amber'}" id="connection-notice">${connected()?'온라인 · 서버 연결 전 검토용 화면':'오프라인 · 기기 초안으로 작성할 수 있습니다.'}</div><p class="save-state" id="save-state"><span data-save-label>${savedAt?'기기 임시저장 '+E(savedAt):'기기 저장 전'}</span></p>`}
 function sellerCardPreviews(){const cards=image?.items||(image?[image]:[]);return cards.map((card,index)=>'<div class="journal-card-preview"><img class="imagepreview" src="'+E(card.url)+'" alt="첨부한 셀러 명함 '+(index+1)+'"><small class="journal-card-name">'+E(card.name)+'</small></div>').join('')}
 function optionalSellerCardUpload(d){return '<div class="journal-upload">'+sellerCardPreviews()+'<input type="hidden" name="sellerCard" value="'+E(d.sellerCard||image?.name||'')+'"><input id="draft-image" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple aria-label="셀러 명함 이미지 선택"><small class="hint">JPG, JPEG, PNG · 파일당 최대 10MB · 최대 2개 (선택 첨부)</small></div>'}
-function journalCategoryOptions(groups, saved) {
+function journalCategorySelect(groups, saved) {
   const categories = [...new Set((groups || '').split('/').map(value => value.trim()).filter(Boolean))];
   const selected = categories.length === 1 ? categories[0] : saved;
-  return '<option value="">선택해 주세요</option>' + categories.map(value =>
+  const placeholder = categories.length ? '선택해 주세요' : '등록된 제품군 없음';
+  const options = categories.map(value =>
     '<option value="' + E(value) + '"' + (value === selected ? ' selected' : '') + '>' + E(value) + '</option>'
   ).join('');
-}
-function journalCategorySelect(groups, saved) {
-  return '<select name="representativeCategory" aria-label="대표 상담 제품군">' + journalCategoryOptions(groups, saved) + '</select>';
+  return '<select name="representativeCategory" aria-label="대표 상담 제품군"' + (categories.length ? '' : ' disabled') +
+    '><option value="">' + placeholder + '</option>' + options + '</select>';
 }
 function journalQuickAmount(controls) {
   const buttons = [100000, 10000, 1000, 100].map(value =>
@@ -204,7 +204,8 @@ if(['JNL-05','JNL-16'].includes(current)&&form){
   setSelect('sellerCountry',meta.country||'',meta.countryCode||'');
   setSelect('productGroup',meta.productGroup||'');
   const category = form.elements.namedItem('representativeCategory');
-  if (category) category.innerHTML = journalCategoryOptions(meta.productGroup);
+  if (category) category.outerHTML = journalCategorySelect(meta.productGroup);
+  draft.representativeCategory = form.elements.namedItem('representativeCategory')?.value || '';
   setField('contactPerson',meta.contactPerson||'');
   setField('contactPhone',meta.contactPhone||'');
  }else if(wrap.dataset.name==='buyer'){
