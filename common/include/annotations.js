@@ -47,7 +47,15 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   return !!item && readSpec(record.text)?.item===item;
  }
  function records(){
-  const ordered=orderDescriptionLabels(layoutRecords(),route());
+  const screen=route();
+  let ordered=orderDescriptionLabels(layoutRecords(),screen);
+  if(screen==='JNL-03'&&ordered.some(record=>readSpec(record.text)?.item==='상담 시작 QR 스캔 카메라')){
+   ordered=ordered.filter(record=>{
+    const spec=readSpec(record.text);
+    const generated=spec?.item==='상담 시작 QR 스캔'&&spec.detail.startsWith('플로팅 버튼 [상담 시작]에서 진입하면')&&!spec.policy&&!record.updated&&!record.comments?.length;
+    return !generated;
+   });
+  }
   const entry=ordered.find(isQrEntry);
   if(!entry)return ordered;
   return [entry,...ordered.filter(record=>record!==entry)].map((record,index)=>({...record,number:index+1}));
