@@ -29,6 +29,7 @@
   const bytes=crypto.getRandomValues(new Uint8Array(32)),verifier=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
   sessionStorage.setItem(VERIFIER,verifier);const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier)));
   const challenge=btoa(String.fromCharCode(...digest)).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
+  window.GFAIR_QR_WORKFLOW?.rememberLoginContext?.();
   location.assign(SERVER+'/api/github/start?'+new URLSearchParams({challenge,project:PROJECT,screen:current()==='screens'?'MON-01':current()}));
  }
  window.GFAIR_COLLAB={get user(){return user;},get githubReady(){return githubReady;},get records(){return screen===current()?records:[];},get loading(){return loading;},get loaded(){return screen===current();},error:'',login,refresh,

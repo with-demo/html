@@ -45,8 +45,31 @@ async function start(){
  }catch{if(token===epoch)stop();}
 }
 const qrRoutes = ['PRE-03', 'PRE-12', 'JNL-03'];
-const context = new URLSearchParams(location.search);
+const loginContextKey = 'gfair.qr.login-context';
+const qrContextKeys = ['popup', 'userRole', 'eventYear', 'from'];
+const returnUrl = new URL(location.href);
+const context = returnUrl.searchParams;
+if (context.has('annotation_code') || context.has('annotation_error')) {
+ const pending = sessionStorage.getItem(loginContextKey);
+ sessionStorage.removeItem(loginContextKey);
+ const saved = pending && new URL(pending, location.origin);
+ if (saved && saved.pathname === returnUrl.pathname && saved.hash === returnUrl.hash) {
+  for (const key of qrContextKeys) {
+   if (saved.searchParams.has(key)) context.set(key, saved.searchParams.get(key));
+  }
+  history.replaceState(history.state, '', returnUrl);
+ }
+}
 const standalone = id => context.get('popup') === 'qr' && qrRoutes.includes(id);
+function rememberLoginContext() {
+ sessionStorage.removeItem(loginContextKey);
+ if (!standalone(location.hash.slice(1))) return;
+ const url = new URL(location.pathname + location.hash, location.origin);
+ for (const key of qrContextKeys) {
+  if (context.has(key)) url.searchParams.set(key, context.get(key));
+ }
+ sessionStorage.setItem(loginContextKey, url.pathname + url.search + url.hash);
+}
 function windowUrl(screen, from, role, year) {
  const url = new URL('index.html', location.href);
  url.search = new URLSearchParams({popup:'qr', userRole:role, eventYear:year, from});
@@ -112,5 +135,5 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch]
 let mounted=null;function mount(){const node=document.querySelector('#qr-viewfinder');if(node===mounted)return;mounted=node;stop();if(node){cameraFacing='environment';start();}}
 new MutationObserver(mount).observe(document.getElementById('app'),{childList:true,subtree:true});
 window.addEventListener('hashchange',stop);window.addEventListener('pagehide',stop);
-window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,states,stop};
+window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,rememberLoginContext,states,stop};
 })();
