@@ -41,6 +41,7 @@
 
 .qr-camera-wide { padding-bottom:24px; }
 .qr-viewfinder { --qr-frame-size:230px; }
+.qr-camera-wide .qr-viewfinder { --qr-frame-size:min(360px, 76vw, 52dvh); }
 .qr-viewfinder .qr-reticle { width:var(--qr-frame-size); height:var(--qr-frame-size); }
 .qr-viewfinder .qr-scan-guide {
  position:absolute;
