@@ -31,3 +31,6 @@
  text-align:center;
  overflow-wrap:anywhere;
 }
+
+.qr-camera-wide { padding-bottom:24px; }
+.qr-scan-guide { margin:12px 16px 0; color:#b5b5b5; text-align:center; font-size:13px; }
