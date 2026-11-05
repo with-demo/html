@@ -136,10 +136,11 @@
   container-type: inline-size;
 }
 #app .journal-table:has(select[name="representativeCategory"]) .journal-pair {
-  grid-template-columns: max(140px, 18.5cqi) minmax(0, 1fr);
+  grid-template-columns: max(140px, 9.25cqi) minmax(0, 1fr);
 }
 #app .journal-pair:has(select[name="representativeCategory"])>.journal-label{white-space:nowrap}
 .export-journal-form .journal-products { width: 100%; display: grid; gap: 6px; }
-.export-journal-form .journal-product-row { display: flex; align-items: center; gap: 6px; }
+.export-journal-form .journal-product-row { width: 100%; display: flex; align-items: center; gap: 6px; }
 .export-journal-form .journal-product-row input { flex: 1; min-width: 0; }
 .export-journal-form .journal-product-row button { margin-left: auto; flex: none; }
+@media(max-width:600px){#app .journal-table:has(select[name="representativeCategory"]) .journal-pair{grid-template-columns:110px minmax(0,1fr)}}

@@ -22,7 +22,7 @@
     input.disabled = true;
     input.className = 'journal-readonly';
     input.setAttribute('aria-readonly', 'true');
-    input.setAttribute('aria-label', text(pair.querySelector('.journal-label')));
+    input.setAttribute('aria-label', text(pair.querySelector('.journal-label')).replace(/\*/g, '').trim());
     if (options) optionMap.set(name, options);
     control.replaceChildren(input);
     return input;
@@ -91,7 +91,7 @@
       const boothNumber = item.boothNumber;
       if (!boothNumber) return;
       item.boothNumber = boothNumber;
-      item.label = `${item.value} / ${boothNumber}`;
+      item.label = item.value;
       item.search = `${item.search || item.value} ${item.label} ${boothNumber}`;
     });
     if (companyInput) {
@@ -110,25 +110,28 @@
       });
     }
     if (participant) {
-      participant.querySelector('.journal-label').innerHTML = '기업명 / 부스 번호<em> *</em>';
+      participant.querySelector('.journal-label').innerHTML = '기업명<em> *</em>';
       participant.classList.remove('full');
     }
     replaceWithLockedInput(number, 'businessNo', businessNumber(selectedCompany, companyInput));
-    if (number) number.querySelector('.journal-label').innerHTML = '사업자 번호<em> *</em>';
+    if (number) number.querySelector('.journal-label').textContent = '사업자 번호';
+    if (booth) booth.querySelector('.journal-label').textContent = '부스번호';
+    replaceWithLockedInput(booth, 'booth', selectedCompany?.boothNumber || '');
     replaceWithLockedInput(country, 'sellerCountry', initialCountry);
     setLockedValue(form, 'contactPerson', selectedCompany?.contactPerson || '');
     setLockedValue(form, 'contactPhone', selectedCompany?.contactPhone || '');
     replaceWithLockedInput(product, 'productGroup', selectedCompany?.productGroup || '');
-    [number, country, product, contact, phone].forEach(pair => {
+    [booth, number, country, product, contact, phone].forEach(pair => {
+      pair?.querySelector('.journal-label')?.querySelectorAll('em,.required-asterisk').forEach(mark => mark.remove());
       const input = pair?.querySelector('.journal-control input');
-      if (input) { input.readOnly = true; input.disabled = true; input.classList.add('journal-readonly'); }
+      if (input) { input.readOnly = true; input.disabled = true; input.required = false; input.classList.add('journal-readonly'); input.setAttribute('aria-label', text(pair.querySelector('.journal-label')).replace(/\*/g, '').trim()); }
     });
 
     if (table) {
       const orderedRows = [
-        [participant, number],
+        [participant, booth],
+        [number, product],
         [contact, phone],
-        [product],
         [card]
       ];
       table.replaceChildren(...orderedRows.map(items => {
@@ -161,9 +164,10 @@
     const buyerCountryOptions = JSON.parse(buyerCountrySelect?.dataset.options || '[]');
     optionMap.set('buyerCountry', buyerCountryOptions);
     replaceWithLockedInput(buyerCountry, 'buyerCountry', initialBuyerCountry, buyerCountryOptions);
+    buyerCountry?.querySelector('.journal-label')?.querySelectorAll('em,.required-asterisk').forEach(mark => mark.remove());
     [buyerCountry].forEach(pair => {
       const input = pair?.querySelector('.journal-control input');
-      if (input) { input.readOnly = true; input.disabled = true; input.classList.add('journal-readonly'); }
+      if (input) { input.readOnly = true; input.disabled = true; input.required = false; input.classList.add('journal-readonly'); }
     });
     buyerSelectPair?.classList.remove('full');
     buyerCountry?.classList.remove('full');
@@ -188,6 +192,7 @@
       buyerTable.replaceChildren(row, details);
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
+    document.dispatchEvent(new Event('journal-participant-filled'));
   }
 
   function selected(event) {
@@ -197,6 +202,7 @@
     const select = option.closest('[data-single-select]');
     const meta = JSON.parse(option.dataset.selectMeta || '{}');
     if (select?.dataset.name === 'company') {
+      setLockedValue(form, 'booth', meta.boothNumber || '');
       setLockedValue(form, 'businessNo', businessNumber(meta, select));
       setLockedValue(form, 'sellerCountry', countryValue('sellerCountry', meta.country, meta.countryCode));
       setLockedValue(form, 'productGroup', meta.productGroup || '');
