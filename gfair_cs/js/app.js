@@ -5,7 +5,7 @@ let uploadData=null;let current='MON-01',role='admin',event='2026',filter={},kin
 const forms={},lists={},logs=[],roles={admin:'관리자',buyOperator:'구매상담 운영용역사',exportOperator:'수출상담 운영용역사',buyer:'국내바이어',interpreter:'통역원'};
 const roleStorageKey='gfair.mockup.role.'+(document.body.dataset.project||'gfair_cs');
 try{const storedRole=localStorage.getItem(roleStorageKey);if(Object.hasOwn(roles,storedRole))role=storedRole;}catch{}
-const popupContext=new URLSearchParams(location.search);if(location.hash==='#COM-09'&&popupContext.get('popup')==='my-info'){const popupRole=popupContext.get('userRole');if(Object.hasOwn(roles,popupRole))role=popupRole;const popupYear=popupContext.get('eventYear');if(/^20\d{2}$/.test(popupYear||''))event=popupYear;}
+const popupContext=new URLSearchParams(location.search);if((location.hash==='#COM-09'&&popupContext.get('popup')==='my-info')||window.GFAIR_QR_WORKFLOW?.standalone(location.hash.slice(1))){const popupRole=popupContext.get('userRole');if(Object.hasOwn(roles,popupRole))role=popupRole;const popupYear=popupContext.get('eventYear');if(/^20\d{2}$/.test(popupYear||''))event=popupYear;}
 function setMockupRole(value){if(!Object.hasOwn(roles,value))return;role=value;try{localStorage.setItem(roleStorageKey,value);}catch{}}
 let draft={id:'GF-DRAFT-01',type:'구매',company:'다온리빙',booth:'A-01',content:'',date:'2026-10-02T14:30',amount:'',contract:'',currency:'KRW',tags:[],followup:''};
 try{const d=JSON.parse(sessionStorage.getItem('gfair-draft'));if(d?.id?.startsWith('GF-DRAFT-')){draft={...draft,...d};savedAtISO=d.savedAtISO||'';savedAt=savedAtISO?formatSaveStamp(savedAtISO):(d.savedAt||'')}}catch{}
@@ -348,7 +348,7 @@ map.set('SET-07',{...map.get('SET-05'),id:'SET-07',title:'만족도설문 관리
 const folderShell=shell;
 const folderOwner=menuOwner;
 menuOwner=function(id){if(['buyer','interpreter'].includes(role)&&/^JNL-/.test(id)&&!window.GFAIR_NAV.has(id))return role==='buyer'?'JNL-13':'JNL-14';if(id==='PRE-07')return 'PRE-01';return folderOwner(id)};
-shell=function(s,body){body+=(window.GFAIR_QR_WORKFLOW?.floating(s.id,role)||'');return `<div class="shell ${menu?'menu-open':''}">${sidebar(s)}<div class="workspace">${top()}<main id="content" class="content ${isMobile(s)?'mobile-content':''}">${body}</main>${window.GFAIR_INCLUDE.footer()}</div></div>`};
+shell=function(s,body){if(window.GFAIR_QR_WORKFLOW?.standalone(s.id))return '<main id="content" class="qr-standalone">'+body+'</main>';body+=(window.GFAIR_QR_WORKFLOW?.floating(s.id,role,event)||'');return `<div class="shell ${menu?'menu-open':''}">${sidebar(s)}<div class="workspace">${top()}<main id="content" class="content ${isMobile(s)?'mobile-content':''}">${body}</main>${window.GFAIR_INCLUDE.footer()}</div></div>`};
 const folderJournal=journalList;
 journalList=function(s){if(s.journalType){filter.type=s.journalType;return folderJournal(s)}return folderJournal(s)};
 const folderList=list;
