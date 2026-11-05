@@ -62,8 +62,10 @@ function render(s,role,year,head){
  const launchDate=`${part("year")}.${part("month")}.${part("day")}(${part("weekday")})`;
  return `${head(s)}
  <section class="qr-launch qr-launch-centered" aria-labelledby="qr-event-name">
-  <h2 id="qr-event-name">G-FAIR KOREA ${E(year)}</h2>
-  <p class="qr-date" id="qr-date">${launchDate}</p>
+  <header>
+   <h2 id="qr-event-name">G-FAIR KOREA ${E(year)}</h2>
+   <p class="qr-date" id="qr-date">${launchDate}</p>
+  </header>
   <div class="qr-field" id="qr-state-field">
    <label for="qr-status-select">바이어 방한 상태</label>
    <select id="qr-status-select" aria-describedby="qr-launch-help">

@@ -62,10 +62,10 @@
 .qr-camera-wide .qr-camera-top strong { font-size:18px; line-height:1.2; }
 
 .qr-launch-centered { text-align:center; padding:clamp(28px,6vw,60px) 16px; }
-.qr-launch-centered #qr-event-name { margin:0; font-size:clamp(23px,4vw,34px); }
+.qr-launch-centered #qr-event-name { margin:0; text-align:center; font-size:clamp(23px,4vw,34px); }
 .qr-launch-centered .qr-date { margin:12px 0 40px; color:#333; }
-.qr-launch-centered .qr-field { width:min(100%,360px); margin-inline:auto; grid-template-columns:max-content minmax(0,1fr); text-align:left; }
+.qr-launch-centered .qr-field { width:min(100%,480px); margin-inline:auto; grid-template-columns:max-content minmax(0,1fr); text-align:left; }
 .qr-launch-centered .qr-field label { padding:10px; }
 .qr-launch-centered .qr-field select { margin:6px; width:calc(100% - 12px); }
-.qr-launch-centered #qr-launch-help { margin:8px 0 0; color:#666; font-size:13px; }
+.qr-launch-centered #qr-launch-help { margin:8px 0 0; color:#666; font-size:11px; }
 .qr-launch-centered .actions { justify-content:center; margin-top:44px; }
