@@ -21,7 +21,8 @@
 .shell:has(.qr-camera-wide) { grid-template-columns:minmax(0,1fr); }
 .shell:has(.qr-camera-wide) > .sidebar { display:none; }
 .content:has(> .qr-camera-wide) { width:100%; max-width:none; padding:clamp(12px,3vw,36px); }
-.qr-camera-wide { max-width:800px; border-radius:12px; }
+.qr-camera-wide,.qr-launch-centered { max-width:800px; }
+.qr-camera-wide { border-radius:12px; }
 .qr-camera-wide .qr-feedback {
  position:static;
  width:fit-content;
