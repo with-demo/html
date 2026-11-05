@@ -343,7 +343,7 @@ window.GFAIR_MENU=[
       ],
       [
         "SET-03",
-        "접근로그",
+        "메뉴 접근 로그",
         [],
         {
           "admin": "O",
@@ -465,3 +465,5 @@ GFAIR_MENU.push({name:'만족도 조사',icon:'clipboard-check',direct:true,item
 
 // 공지/알림은 단일 목록으로 직접 이동한다.
 (()=>{const group=GFAIR_MENU.find(g=>g.name==='공지/알림');const item=group.items.find(i=>i[0]==='NTC-01');item[1]='공지/알림';group.items=[item];group.direct=true;})();
+
+;(()=>{const g=GFAIR_MENU.find(g=>g.items.some(i=>i[0]==='SET-03'));const i=g.items.findIndex(i=>i[0]==='SET-03');g.items.splice(i+1,0,['SET-19','개인정보 접속 이력',[],{admin:'O',buyOperator:'X',exportOperator:'X',interpreter:'X',buyer:'X'}]);})();

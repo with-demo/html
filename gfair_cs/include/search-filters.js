@@ -21,6 +21,7 @@ if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
 if(location.hash.slice(1)==='PRE-01')labels=['바이어명','기업명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','기업'];
 if(location.hash.slice(1)==='SET-03')labels=['사용자','메뉴명','IP'];
+if(location.hash.slice(1)==='SET-19')labels=['사용자','이력','정보주체','IP'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];
 if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];if(location.hash.slice(1)==='BAS-09')labels=['참가기업','사업자 번호','부스번호','담당자'];
 [...new Set(['전체',...labels].filter(t=>t&&t!=='내용'))].forEach(t=>select.add(new Option(t,t)));select.value=[...select.options].some(o=>o.value===scopes.get(key(form,input)))?scopes.get(key(form,input)):'전체';scopes.set(key(form,input),select.value);select.addEventListener('change',()=>scopes.set(key(form,input),select.value));
