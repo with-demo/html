@@ -1,1 +1,20 @@
 .qr-launch{max-width:720px;margin:24px auto;background:#fff;border:1px solid #ddd;padding:32px}.qr-date{font-size:15px;color:#555;margin-bottom:24px}.qr-launch h2{font-size:18px;margin-bottom:16px}.qr-field{display:grid;grid-template-columns:120px 1fr;border:1px solid #ddd}.qr-field label{padding:16px;background:#f5f5f5;display:flex;align-items:center}.qr-field select{margin:10px;width:calc(100% - 20px)}.qr-launch-guide{padding:44px 0;text-align:center;display:grid;gap:12px}.qr-launch-guide>span{font-size:60px}.qr-launch-guide p,.qr-demo p{color:#666;font-size:13px}.qr-launch .actions{justify-content:flex-end}.qr-return{display:block;margin-top:16px;text-align:right}.qr-floating{position:fixed;right:24px;bottom:calc(84px + env(safe-area-inset-bottom));width:66px;height:66px;border-radius:50%;background:#222;color:#fff;box-shadow:0 4px 16px #0003;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:45;font-size:11px}.qr-floating>span:first-child{font-size:25px}.qr-floating:focus-visible{outline:3px solid #888;outline-offset:3px}.qr-camera{position:relative;max-width:720px;margin:0 auto;background:#151515;color:#fff;min-height:580px;overflow:hidden}.qr-camera-top{position:relative;z-index:2;display:flex;gap:18px;align-items:center;padding:18px;background:#111}.qr-camera-top div{display:grid;gap:6px}.qr-camera-top span{font-size:12px;color:#ccc}.qr-back{color:#fff;border:1px solid #777;border-radius:4px;font-size:24px;padding:4px 12px}.qr-viewfinder{height:460px;position:relative;display:grid;place-items:center}.qr-viewfinder video{width:100%;height:100%;position:absolute;object-fit:cover}.qr-reticle{width:230px;height:230px;border:3px solid #fff;border-radius:12px;z-index:1;box-shadow:0 0 0 100vmax #0004}.qr-viewfinder p{position:absolute;bottom:24px;left:20px;right:20px;z-index:1;text-align:center;color:#fff;background:#111b;padding:10px;font-size:13px}.qr-camera-tools{padding:16px;position:relative;z-index:2;text-align:center}.qr-feedback{position:absolute;left:20px;right:20px;bottom:85px;background:#fff;color:#111;border-radius:8px;box-shadow:0 4px 20px #0005;padding:18px;z-index:3;text-align:center;font-weight:600}.qr-feedback[hidden]{display:none}.qr-demo{max-width:720px;margin:16px auto;padding:12px;border:1px solid #ddd;background:#fff}.qr-demo .btn{margin-top:10px}@media(max-width:640px){.qr-launch{margin:12px 0;padding:20px}.qr-field{grid-template-columns:100px 1fr}.qr-floating{right:18px}.qr-camera{min-height:calc(100dvh - 210px)}.qr-viewfinder{height:calc(100dvh - 355px);min-height:330px}.qr-reticle{width:210px;height:210px}}
+
+.qr-travel-shortcut {
+ display:flex; align-items:center; gap:10px; padding:12px;
+ color:#111; background:#fff; border:1px solid #aaa; border-radius:6px;
+ text-decoration:none; flex-shrink:0;
+}
+.qr-travel-shortcut > span:last-child { margin-left:auto; font-size:20px; }
+.qr-travel-shortcut strong,.qr-travel-shortcut small { display:block; }
+.qr-travel-shortcut small { margin-top:3px; color:#555; font-size:11px; }
+.qr-travel-shortcut:hover { background:#eee; }
+.qr-travel-shortcut:focus-visible { outline:2px solid #888; outline-offset:2px; }
+.sidebar:has(> .qr-travel-shortcut) > nav { min-height:0; overflow-y:auto; }
+.sidebar > .qr-travel-shortcut { margin-top:auto; }
+.sidebar > .qr-travel-shortcut + .profile { margin-top:0; }
+.qr-travel-mobile { display:none; }
+@media(max-width:800px) {
+ .sidebar > .qr-travel-shortcut { display:none; }
+ .qr-travel-mobile { display:flex; position:fixed; z-index:45; left:16px; bottom:calc(20px + env(safe-area-inset-bottom)); box-shadow:0 4px 16px #0003; }
+}

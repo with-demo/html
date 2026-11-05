@@ -6,10 +6,8 @@ for(const [id,title,kind] of [['PRE-03','QR 리더기 실행','form'],['JNL-03',
 for(const [id,title,parent] of [['PRE-12','방한 QR 스캔 카메라','PRE-03']]){
  GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id===parent)).screens.push({...get(parent),id,title,parent,kind:parent==='PRE-03'?'form':'mobile',ui:{}});
 }
-const travelMenu=GFAIR_MENU.find(g=>g.items.some(i=>i[0]==='PRE-01'));
-travelMenu?.items.push(['PRE-03','QR 스캔',[],{admin:'O',exportOperator:'O',buyOperator:'X',interpreter:'X',buyer:'X'}]);
 // 플로팅 진입 화면도 화면선택·화면검색에 포함한다.
-window.GFAIR_SCREEN_REGISTRY.push({id:'JNL-03',parent:'JNL-14'},{id:'PRE-12',parent:'PRE-03'});
+window.GFAIR_SCREEN_REGISTRY.push({id:'JNL-03',parent:'JNL-14'},{id:'PRE-03',parent:'PRE-01'},{id:'PRE-12',parent:'PRE-03'});
 let mode='travel',state='',consultState='상담 시작',media=null,epoch=0,frame=null,busy=false,last='',lastAt=0,returnTo='JNL-07',toastTimer;
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=()=>new Intl.DateTimeFormat('ko-KR',{dateStyle:'full',timeZone:'Asia/Seoul'}).format(new Date());
@@ -46,7 +44,11 @@ async function start(){
   frame=requestAnimationFrame(tick);
  }catch(error){if(token!==epoch)return;status(error.name==='NotAllowedError'?'카메라 권한이 필요합니다. 브라우저 설정을 확인한 후 다시 시도해 주세요.':error.name==='NotFoundError'?'사용 가능한 카메라가 없습니다.':'카메라를 실행하지 못했습니다. 연결 상태를 확인해 주세요.');}
 }
-function floating(id,role){return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" aria-label="상담 시작·종료 QR 스캔" data-qr-floating><span aria-hidden="true">▦</span><span>QR 스캔</span></a>':'';}
+function travelShortcut(id, role, mobile = false) {
+ if (!['admin', 'exportOperator'].includes(role) || ['PRE-03', 'PRE-12', 'COM-01'].includes(id)) return '';
+ return '<a class="qr-travel-shortcut'+(mobile?' qr-travel-mobile':'')+'" href="#PRE-03"><span aria-hidden="true"><i data-lucide="qr-code"></i></span><span><strong>QR 스캔</strong><small>해외 바이어 방한 체크</small></span><span aria-hidden="true">›</span></a>';
+}
+function floating(id,role){if (['admin','exportOperator'].includes(role)) return travelShortcut(id, role, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" aria-label="상담 시작·종료 QR 스캔" data-qr-floating><span aria-hidden="true">▦</span><span>QR 스캔</span></a>':'';}
 function render(s,role,year,head){
  const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?['admin','exportOperator'].includes(role):['interpreter','buyer'].includes(role);
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
@@ -66,5 +68,5 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch]
 let mounted=null;function mount(){const node=document.querySelector('#qr-viewfinder');if(node===mounted)return;mounted=node;stop();if(node&&(location.hash==='#JNL-03'||state))start();}
 new MutationObserver(mount).observe(document.getElementById('app'),{childList:true,subtree:true});
 window.addEventListener('hashchange',stop);window.addEventListener('pagehide',stop);
-window.GFAIR_QR_WORKFLOW={render,floating,states,stop};
+window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,states,stop};
 })();
