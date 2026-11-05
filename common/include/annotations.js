@@ -153,15 +153,18 @@ return spec;}catch{return null;}}
    if(name){const selector=prefix+'.'+(target.matches('.search-condition')?'search-condition':target.matches('.search-keyword')?'search-keyword':target.matches('.write-form-row')?'write-form-row':'field')+':has([name="'+CSS.escape(name)+'"])';if(unique(selector))return selector;}
   }
   const parts=[];let el=target;while(el&&el!==root){if(el.id){parts.unshift('#'+CSS.escape(el.id));break;}const siblings=el.parentElement?Array.from(el.parentElement.children).filter(x=>x.tagName===el.tagName):[];parts.unshift(el.tagName.toLowerCase()+':nth-of-type('+(siblings.indexOf(el)+1)+')');el=el.parentElement;}if(el===root)parts.unshift('#'+CSS.escape(root.id));return parts.join(' > ');}
- const travelCameraTargets = {
+ const qrCameraTargets = {
   'QR 스캔 카메라': '.qr-reticle',
+  '상담 시작 QR 스캔': '.qr-reticle',
+  '상담 시작·날짜': '.qr-camera-top > div',
+  '카메라 전환 버튼': '[data-qr-facing]',
   '선택한 방한 상태·날짜': '.qr-camera-top > div',
   '뒤로가기': '.qr-camera-top .qr-back',
   '스캔 처리 결과 토스트': '#qr-feedback'
  };
  function find(record){try{
-  if(route()==='PRE-12'){
-   const selector=travelCameraTargets[readSpec(record.text)?.item];
+  if(['PRE-12','JNL-03'].includes(route())){
+   const selector=qrCameraTargets[readSpec(record.text)?.item];
    if(selector)return selectionScope()?.querySelector(selector)||null;
   }
   const anchor=record.anchor,scope=selectionScope();if(!scope)return null;if(route()==='JNL-05'&&['99d8d7df-7391-463a-b746-d801017c3107','3a5463bc-5e0c-4e65-ba1b-699de34a6e2d'].includes(record.id)){const own=document.querySelector('#role-picker')?.value==='interpreter',personal=record.id==='99d8d7df-7391-463a-b746-d801017c3107';return own===personal?scope.querySelector('button[type=submit][form=draft-form]'):null;}const journalTargets={'JNL-05':{'5b093d9a-5bf7-4fbb-8a87-b4581566c4f5':'#draft-form .journal-section','48ecfd20-8927-454f-9552-36a521f86ccb':'#draft-form .participant-booth-row','340a41dc-0b62-408a-98ef-b9f8078399c1':'#draft-form .journal-consult-product'},'JNL-16':{'170e44e7-0dd2-4b47-a721-2f2df9ae3205':'#draft-form .journal-section','ab176dc5-b32a-497e-9bbf-20c030f3747f':'#draft-form .participant-booth-row','f681564b-78f0-462c-84d5-ec65a9d6e180':'#draft-form .journal-consult-product'}};if(journalTargets[route()]?.[record.id])return scope.querySelector(journalTargets[route()][record.id]);if(route()==='JNL-14'&&record.id==='421ee8f5-e482-4ab4-ad08-3000661de36b')return scope.querySelector('#journal-filter .search-keyword');if(route()==='PRE-02-p43'){const links={'travel-detail-target-20261103':'.pre02-edit-target','travel-detail-actions-20261103':'#pre02-status-form .dialogactions'};if(links[record.id])return scope.querySelector(links[record.id]);}if(route()==='PRE-02'&&record.id==='travel-detail-manual-history-20261103')return scope.querySelector('.pre02-manual-history>summary');if(route()==='PRE-02'&&record.id==='c9b72ef6-c3fe-4734-918c-7faf7ffe3a88')return scope.querySelector('.event-detail-qr-download');if(route()==='PRE-01'&&record.id==='bulk-lodging-PRE-01-selection-20261103')return scope.querySelector('[data-pre01-action="bulk-lodgings"]')?scope.querySelector('.pre01-bulk-toolbar'):null;if(route()==='PRE-04-p32'&&record.id==='matching-management-actions-20261103')return scope.querySelector('.pre04-management-actions');if(route()==='PRE-04-p32'&&record.id==='matching-history-list-20261103')return scope.querySelector('.pre04-assignment-history>summary');if(route()==='PRE-04-p32'&&record.id==='0e208ccc-66e5-4abe-9900-be17e4935963')return scope.querySelector('.pre04-candidates [data-pre04-urgent]');if(route()==='PRE-04-p32'&&record.id==='a6d9a52f-5497-4767-ac49-61bdcd2c2440')return scope.querySelector('[data-pre04-cancel-form] button[type=submit]');if(route()==='NTC-08'&&record.id==='78357f03-e0cc-43dc-a39f-bf454ba1c5c7')return scope.querySelector('button[form="survey-participation-form"],#survey-participation-form button[type="submit"]');if(document.body.dataset.project==='gfair_cs'&&route()==='SET-16'&&['.survey-stats-question','.survey-result-condition','[data-action="sur-text-results"]','[data-action="sur-individual"]'].includes(anchor.selector))return scope.querySelector(anchor.selector);if(document.body.dataset.project==='gfair_cs'&&route()==='NTC-08'&&anchor.selector==='.survey-participation-condition')return scope.querySelector(anchor.selector);if(route()==='SET-13'&&anchor.selector==='.survey-condition-guide')return scope.querySelector('.survey-condition-guide');const matches=[...(scope.matches(anchor.selector)?[scope]:[]),...scope.querySelectorAll(anchor.selector)];if(matches.length!==1)return recoverTarget(record,scope);const el=matches[0];
@@ -182,7 +185,7 @@ return spec;}catch{return null;}}
   return matches.length===1?matches[0]:null;
  }
  function highlightPosition(target){
-  if(route()==='PRE-12'){
+  if(['PRE-12','JNL-03'].includes(route())){
    selectionScope()?.querySelector('.qr-annotation-selected')?.classList.remove('qr-annotation-selected');
    target?.classList.add('qr-annotation-selected');
    return;
@@ -208,7 +211,7 @@ return spec;}catch{return null;}}
    if(rect.right<=bounds.left||rect.left>=bounds.right||rect.bottom<=bounds.top||rect.top>=bounds.bottom)return;
    const position=pinPosition(rect,record.anchor,bounds);if(!position)return;let {left,top}=position;
    let moved=false;
-   const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});if(route()==='PRE-12')highlightPosition(find(record));});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
+   const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});if(['PRE-12','JNL-03'].includes(route()))highlightPosition(find(record));});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
    if(canEdit()){
     pin.classList.add('annotation-pin-movable');pin.title='클릭: 설명 보기 / 드래그: 핀 위치 저장';
     pin.addEventListener('pointerdown',event=>{if(!canEdit()||event.button!==0||picking||savingPins.has(record.id))return;event.preventDefault();event.stopPropagation();dragging={id:record.id,pointer:event.pointerId,x:event.clientX,y:event.clientY,left,top,screen:route(),offsetX:left-rect.left-rect.width*record.anchor.x,offsetY:top-rect.top-rect.height*record.anchor.y};pin.setPointerCapture(event.pointerId);});

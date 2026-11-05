@@ -96,7 +96,7 @@
    trigger:'화면 진입 시 후면 카메라 연결을 우선 시도한다. 전환 버튼을 누르면 선택한 방향의 카메라 연결을 시도한다.',
    errorMessage:'사용 가능한 카메라가 없으면 “사용 가능한 카메라가 없습니다.”를 표시한다. 그 외 카메라 연결 실패 시 “카메라를 실행하지 못했습니다. 연결 상태를 확인해 주세요.”를 표시한다. 화면 목업에서는 오류 문구를 숨긴다.'
   };
-  if (previous && Object.entries(updates).every(([key,value]) => previous[key] === value)) return;
+  if (previous?.errorMessage) return;
   saving = true;
   try {
    if (previous) {
