@@ -63,7 +63,7 @@ function backLink(id) {
   const destination = id === 'PRE-12' ? 'PRE-03' : 'JNL-07';
   return '<a class="qr-back" href="#' + destination + '" aria-label="뒤로가기">←</a>';
  }
- return '<a class="qr-back" data-qr-close href="' + sourceUrl(id === 'PRE-03' ? 'PRE-01' : 'JNL-07') + '" aria-label="QR 스캔 창 닫기">←</a>';
+ return '<a class="qr-back" data-qr-close href="' + sourceUrl('JNL-07') + '" aria-label="QR 스캔 창 닫기">←</a>';
 }
 function travelShortcut(id, role, year, mobile = false) {
  if (!['admin', 'exportOperator'].includes(role) || ['PRE-03', 'PRE-12', 'COM-01'].includes(id)) return '';
@@ -83,7 +83,6 @@ function render(s,role,year,head){
  return `${standalone(s.id) ? '' : head(s)}
  <section class="qr-launch qr-launch-centered" aria-labelledby="qr-event-name">
   <header>
-   ${standalone(s.id) ? backLink(s.id) : ''}
    <h2 id="qr-event-name">G-FAIR KOREA ${E(year)}</h2>
    <p class="qr-date" id="qr-date">${launchDate}</p>
   </header>

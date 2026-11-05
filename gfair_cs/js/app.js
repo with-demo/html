@@ -348,7 +348,7 @@ map.set('SET-07',{...map.get('SET-05'),id:'SET-07',title:'만족도설문 관리
 const folderShell=shell;
 const folderOwner=menuOwner;
 menuOwner=function(id){if(['buyer','interpreter'].includes(role)&&/^JNL-/.test(id)&&!window.GFAIR_NAV.has(id))return role==='buyer'?'JNL-13':'JNL-14';if(id==='PRE-07')return 'PRE-01';return folderOwner(id)};
-shell=function(s,body){if(window.GFAIR_QR_WORKFLOW?.standalone(s.id))return '<main id="content" class="qr-standalone">'+body+'</main>';body+=(window.GFAIR_QR_WORKFLOW?.floating(s.id,role,event)||'');return `<div class="shell ${menu?'menu-open':''}">${sidebar(s)}<div class="workspace">${top()}<main id="content" class="content ${isMobile(s)?'mobile-content':''}">${body}</main>${window.GFAIR_INCLUDE.footer()}</div></div>`};
+shell=function(s,body){if(window.GFAIR_QR_WORKFLOW?.standalone(s.id))return `<select id="role-picker" hidden>${Object.entries(roles).map(([key,label])=>`<option value="${key}" ${key===role?'selected':''}>${label}</option>`).join('')}</select><main id="content" class="qr-standalone">${body}</main>`;body+=(window.GFAIR_QR_WORKFLOW?.floating(s.id,role,event)||'');return `<div class="shell ${menu?'menu-open':''}">${sidebar(s)}<div class="workspace">${top()}<main id="content" class="content ${isMobile(s)?'mobile-content':''}">${body}</main>${window.GFAIR_INCLUDE.footer()}</div></div>`};
 const folderJournal=journalList;
 journalList=function(s){if(s.journalType){filter.type=s.journalType;return folderJournal(s)}return folderJournal(s)};
 const folderList=list;
