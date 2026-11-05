@@ -44,7 +44,7 @@
 .qr-camera-wide .qr-reticle { width:var(--qr-frame-size); height:var(--qr-frame-size); }
 .qr-viewfinder .qr-scan-guide {
  position:absolute;
- top:calc(50% + var(--qr-frame-size) / 2 + 8px);
+ top:calc(50% + var(--qr-frame-size) / 2 + 16px);
  bottom:auto;
  left:12px;
  right:12px;
@@ -62,4 +62,4 @@
 .qr-camera-wide .qr-back { border:0; border-radius:0; font-size:28px; line-height:1; padding:8px; }
 .qr-facing { position:absolute; top:12px; right:12px; z-index:2; display:inline-flex; align-items:center; gap:6px; min-height:36px; padding:6px 10px; border:1px solid #777; border-radius:6px; background:#161616; color:#fff; font-size:12px; cursor:pointer; }
 
-.qr-camera-wide .qr-camera-top strong { font-size:22px; line-height:1.2; }
+.qr-camera-wide .qr-camera-top strong { font-size:18px; line-height:1.2; }
