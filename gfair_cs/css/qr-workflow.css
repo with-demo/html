@@ -5,6 +5,9 @@
  color:#111; background:#fff; border:1px solid #aaa; border-radius:6px;
  text-decoration:none; flex-shrink:0;
 }
+.qr-shortcut-label { grid-column:2; display:inline-flex; align-items:center; justify-self:center; gap:6px; white-space:nowrap; }
+.qr-shortcut-label :is(svg,i) { width:17px; height:17px; flex:none; }
+.qr-shortcut-chevron { grid-column:3; justify-self:end; font-size:21px; line-height:1; font-weight:600; }
 .qr-travel-shortcut:hover { background:#eee; }
 .qr-travel-shortcut:focus-visible { outline:2px solid #888; outline-offset:2px; }
 .sidebar:has(> .qr-travel-shortcut) > nav { min-height:0; overflow-y:auto; }

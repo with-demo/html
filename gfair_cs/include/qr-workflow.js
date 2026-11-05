@@ -47,7 +47,7 @@ async function start(){
 }
 function travelShortcut(id, role, mobile = false) {
  if (!['admin', 'exportOperator'].includes(role) || ['PRE-03', 'PRE-12', 'COM-01'].includes(id)) return '';
- return '<a class="qr-travel-shortcut'+(mobile?' qr-travel-mobile':'')+'" href="#PRE-03"><span aria-hidden="true"><i data-lucide="qr-code"></i></span><strong>QR 스캔</strong><span aria-hidden="true">›</span></a>';
+ return '<a class="qr-travel-shortcut'+(mobile?' qr-travel-mobile':'')+'" href="#PRE-03"><span class="qr-shortcut-label"><i data-lucide="qr-code" aria-hidden="true"></i><strong>QR 스캔</strong></span><span class="qr-shortcut-chevron" aria-hidden="true">›</span></a>';
 }
 function floating(id,role){if (['admin','exportOperator'].includes(role)) return travelShortcut(id, role, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" aria-label="상담 시작·종료 QR 스캔" data-qr-floating><span aria-hidden="true">▦</span><span>QR 스캔</span></a>':'';}
 function render(s,role,year,head){
