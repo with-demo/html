@@ -123,3 +123,47 @@
  window.addEventListener('hashchange', saveConsultDescription);
  saveConsultDescription();
 })();
+
+(() => {
+ const route = '#PRE-03';
+ const originalOverview = 'QR 스캔 배너를 누르면 별도 URL의 새 창에서 열립니다. 행사명과 날짜를 확인하고 해외 바이어의 방한 상태를 선택한 뒤, 같은 창에서 방한 QR 스캔 카메라(PRE-12)로 이동합니다. 전용 창은 서비스 상단 메뉴와 사이드 메뉴 없이 화면을 구성하며 목업의 상단 기획 도구를 표시합니다. QR 스캔을 시작하기 전에 종료하려면 브라우저 창이나 탭을 닫습니다.';
+ const changes = [
+  ['행사명·날짜', 'visibility', 'QR 스캔 배너로 별도 URL의 새 창을 열면 상단에 행사명과 날짜를 표시한다.'],
+  ['바이어 방한 상태', 'trigger', '행사명과 날짜를 확인한 뒤, QR 스캔을 실행하기 전에 방한 상태를 선택한다.'],
+  ['QR 스캔 실행', 'policy', 'PRE-12는 PRE-03과 같은 전용 창에서 열린다. 전용 창은 서비스 상단 메뉴와 사이드 메뉴 없이 화면을 구성하며 목업의 상단 기획 도구를 표시한다. 스캔 시작 전 종료하려면 브라우저 창이나 탭을 닫는다.']
+ ];
+ let saving = false;
+ async function redistributeOverview() {
+  const store = window.GFAIR_COLLAB;
+  const highlights = window.GFAIR_DESCRIPTION_CHANGES;
+  if (saving || location.hash !== route || !store?.loaded || !store.user?.editor || !highlights) return;
+  const records = store.records.flatMap(record => {
+   try { return [{record, spec:JSON.parse(record.text)}]; } catch { return []; }
+  });
+  const overview = records.find(({spec}) => spec.format === 'screen-overview-v1' && spec.overview?.startsWith(originalOverview + '\n\n사용자별 권한'));
+  if (!overview) return;
+  const sections = changes.map(([name]) => records.find(({spec}) => spec.format === 'description-spec-v1' && spec.item === name));
+  if (sections.some(section => !section)) return;
+
+  const update = ({record, spec}, key, value) => store.mutate('update', {
+   id:record.id, revision:record.revision,
+   text:JSON.stringify(highlights.markAgentChanges(spec, {...spec, [key]:value}))
+  });
+  saving = true;
+  try {
+   for (const [index, [, key, addition]] of changes.entries()) {
+    const section = sections[index];
+    const current = section.spec[key] || '';
+    if (!current.includes(addition)) await update(section, key, [current, addition].filter(Boolean).join('\n'));
+   }
+   await update(overview, 'overview', '해외 바이어의 방한 상태를 선택하고 QR 스캔을 시작하는 화면입니다.' + overview.spec.overview.slice(originalOverview.length));
+  } catch (error) {
+   console.error('PRE-03 디스크립션 재분류 실패:', error.message);
+  } finally {
+   saving = false;
+  }
+ }
+ window.addEventListener('collaboration-updated', redistributeOverview);
+ window.addEventListener('hashchange', redistributeOverview);
+ redistributeOverview();
+})();
