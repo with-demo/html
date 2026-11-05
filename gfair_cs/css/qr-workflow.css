@@ -13,7 +13,7 @@
 .qr-travel-mobile { display:none; }
 @media(max-width:800px) {
  .sidebar > .qr-travel-shortcut { display:none; }
- .qr-travel-mobile { display:flex; position:fixed; z-index:45; left:16px; bottom:calc(20px + env(safe-area-inset-bottom)); box-shadow:0 4px 16px #0003; }
+ .qr-travel-mobile { display:grid; position:fixed; z-index:45; left:16px; bottom:calc(20px + env(safe-area-inset-bottom)); box-shadow:0 4px 16px #0003; }
 }
 
 .shell:has(.qr-camera-wide) { grid-template-columns:minmax(0,1fr); }
