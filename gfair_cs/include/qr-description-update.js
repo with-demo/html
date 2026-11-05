@@ -47,3 +47,36 @@
  window.addEventListener('hashchange', saveDescription);
  saveDescription();
 })();
+
+(() => {
+ const screen = 'PRE-03';
+ const item = 'QR 스캔 실행';
+ let saving = false;
+ async function saveLaunchDescription() {
+  const store = window.GFAIR_COLLAB;
+  if (saving || location.hash !== '#' + screen || !store?.loaded || !store.user?.editor) return;
+  if (store.records.some(record => {
+   try { return JSON.parse(record.text).item === item; } catch { return false; }
+  })) return;
+  saving = true;
+  try {
+   await store.mutate('create', {
+    screen,
+    text:JSON.stringify({
+     format:'description-spec-v1',item,type:'기타',defaultValue:'방한 상태 미선택',required:'Y',
+     detail:'선택한 행사명과 현재 날짜를 표시한다. 바이어 방한 상태를 선택하고 QR 스캔을 실행한다.',
+     enabled:'방한 상태를 선택하면 QR 스캔 버튼을 활성화한다.',
+     destination:'QR 스캔을 누르면 선택한 상태를 유지한 채 방한 QR 스캔 카메라(PRE-12)로 이동한다.'
+    }),
+    anchor:{selector:'.qr-launch-centered',sample:'',x:0,y:0}
+   });
+  } catch (error) {
+   console.error('QR 스캔 실행 설명 저장 실패:', error.message);
+  } finally {
+   saving = false;
+  }
+ }
+ window.addEventListener('collaboration-updated', saveLaunchDescription);
+ window.addEventListener('hashchange', saveLaunchDescription);
+ saveLaunchDescription();
+})();

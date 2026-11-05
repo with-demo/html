@@ -57,7 +57,23 @@ function render(s,role,year,head){
  if(camera){const step=travel?state:consultState;
  return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div>${travel?`<button type="button" class="qr-facing" data-qr-facing aria-label="전면 카메라로 전환"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7h-4l-2-3h-4L8 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 13a4 4 0 1 1 3 4m-3-7v3h3"/></svg><span>후면 카메라</span></button>`:''}</header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div>${travel?'':`<p id="qr-camera-status">카메라를 준비하고 있습니다.</p>`}${travel?'<p class="qr-scan-guide">바이어 명찰 QR을 카메라로 스캔해 주세요</p>':''}</div><div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" ${travel?'':'hidden'}>${travel?E(`James Whitmore ${step||'호텔 도착'} 처리 되었습니다.`):''}</div>${travel?'':`<div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div>`}</section>`;
  }
- return `${head(s)}<section class="qr-launch"><p class="qr-date" id="qr-date">${date()}</p><h2>${travel?'바이어 방한 상태':'상담 상태'}</h2><div class="qr-field" id="qr-state-field"><label for="qr-status-select">${travel?'바이어 상태':'상태 선택'}</label><select id="qr-status-select"><option value="">선택해 주세요</option>${(travel?states:['상담 시작','상담 종료']).map(v=>`<option ${v===(travel?state:consultState)?'selected':''}>${v}</option>`).join('')}</select></div><div class="qr-launch-guide"><span aria-hidden="true">▦</span><strong>${travel?'해외 바이어 QR을 스캔해 주세요':'참가기업 QR을 스캔해 주세요'}</strong><p>${travel?'선택한 상태로 바이어의 방한 진행 단계를 체크합니다.':'상담 시작·종료를 선택한 후 부스의 QR을 스캔합니다.'}</p></div><div class="actions"><button type="button" class="btn primary" id="qr-launch" data-qr-launch ${travel&&!state?'disabled':''}>QR 스캔</button></div>${travel?'':`<a class="qr-return" href="#${E(returnTo)}">이전 화면</a>`}</section>`;
+ const dateParts=new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit",weekday:"short"}).formatToParts(new Date());
+ const part=type=>dateParts.find(entry=>entry.type===type).value;
+ const launchDate=`${part("year")}.${part("month")}.${part("day")}(${part("weekday")})`;
+ return `${head(s)}
+ <section class="qr-launch qr-launch-centered" aria-labelledby="qr-event-name">
+  <h2 id="qr-event-name">G-FAIR KOREA ${E(year)}</h2>
+  <p class="qr-date" id="qr-date">${launchDate}</p>
+  <div class="qr-field" id="qr-state-field">
+   <label for="qr-status-select">바이어 방한 상태</label>
+   <select id="qr-status-select" aria-describedby="qr-launch-help">
+    <option value="">선택해 주세요</option>
+    ${states.map(value=>`<option ${value===state?"selected":""}>${value}</option>`).join("")}
+   </select>
+  </div>
+  <p id="qr-launch-help">선택한 상태로 바이어의 방한 단계를 체크합니다.</p>
+  <div class="actions"><button type="button" class="btn primary" id="qr-launch" data-qr-launch ${state?"":"disabled"}>QR 스캔</button></div>
+ </section>`;
 }
 document.addEventListener('change',e=>{if(e.target.id==='qr-status-select'){if(mode==='travel')state=e.target.value;else consultState=e.target.value;const launch=document.querySelector('#qr-launch');if(launch)launch.disabled=!e.target.value;document.querySelector('#qr-feedback')?.setAttribute('hidden','');last='';}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch],[data-qr-retry],[data-qr-floating],[data-qr-facing]');if(!b)return;
