@@ -182,6 +182,11 @@ return spec;}catch{return null;}}
   return matches.length===1?matches[0]:null;
  }
  function highlightPosition(target){
+  if(route()==='PRE-12'){
+   selectionScope()?.querySelector('.qr-annotation-selected')?.classList.remove('qr-annotation-selected');
+   target?.classList.add('qr-annotation-selected');
+   return;
+  }
   target?.animate([{outline:'3px solid #c62828'},{outline:'3px solid transparent'}],{duration:1500});
  }
  function pinPosition(rect,anchor,bounds){

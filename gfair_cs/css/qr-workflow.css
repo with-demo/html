@@ -99,3 +99,5 @@
 }
 .qr-standalone .qr-viewfinder { flex:1; min-height:300px; }
 .qr-standalone .qr-camera-wide .qr-feedback { margin:12px auto clamp(24px, 5dvh, 48px); }
+
+.qr-camera .qr-annotation-selected { outline:3px solid #c62828; outline-offset:3px; }
