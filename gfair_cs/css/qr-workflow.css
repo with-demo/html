@@ -19,36 +19,7 @@
  .qr-travel-mobile { display:flex; position:fixed; z-index:45; left:16px; bottom:calc(20px + env(safe-area-inset-bottom)); box-shadow:0 4px 16px #0003; }
 }
 
-.shell:has(.qr-travel-screen) { grid-template-columns:minmax(0,1fr); }
-.shell:has(.qr-travel-screen) > .sidebar { display:none; }
-.content:has(> .qr-travel-screen) { width:100%; max-width:none; padding:0; }
-.qr-travel-screen { min-height:calc(100dvh - 120px); background:#f4f5f7; }
-.qr-travel-heading {
- display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px;
- background:#fff; border-bottom:1px solid #ddd; padding:12px clamp(12px,2vw,24px);
-}
-.qr-travel-heading h1 { margin:0; font-size:clamp(18px,2vw,24px); }
-.qr-travel-heading span { color:#555; font-size:13px; }
-.qr-travel-heading .qr-back { color:#222; border-color:#ccc; }
-.qr-travel-grid {
- display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
- gap:clamp(16px,2vw,28px); padding:clamp(12px,2vw,24px);
-}
-.qr-travel-capture { text-align:center; min-width:0; }
-.qr-travel-capture .qr-viewfinder {
- width:min(100%,520px); height:auto; min-height:0; aspect-ratio:1;
- margin-inline:auto; overflow:hidden; border-radius:12px; background:#111;
-}
-.qr-travel-capture .qr-reticle { width:82%; height:82%; border-width:2px; }
-.qr-travel-capture > p { margin:12px 0; font-size:13px; }
-.qr-travel-result { min-width:0; overflow-wrap:anywhere; }
-.qr-travel-result .qr-feedback,.qr-travel-prompt {
- position:static; text-align:center; margin:0; padding:20px 16px;
- border:1px solid #d5d8df; border-radius:12px; background:#fff; box-shadow:none;
-}
-.qr-travel-result .qr-feedback:not([hidden]) + .qr-travel-prompt { display:none; }
-.qr-travel-result .qr-demo { max-width:none; border-radius:12px; }
-@media(max-width:759px) {
- .qr-travel-grid { grid-template-columns:minmax(0,1fr); }
- .qr-travel-capture .qr-viewfinder { width:min(100%,400px); }
-}
+.shell:has(.qr-camera-wide) { grid-template-columns:minmax(0,1fr); }
+.shell:has(.qr-camera-wide) > .sidebar { display:none; }
+.content:has(> .qr-camera-wide) { width:100%; max-width:none; padding:0; }
+.qr-camera-wide,.qr-camera-wide + .qr-demo { max-width:none; }

@@ -49,40 +49,12 @@ function travelShortcut(id, role, mobile = false) {
  return '<a class="qr-travel-shortcut'+(mobile?' qr-travel-mobile':'')+'" href="#PRE-03"><span aria-hidden="true"><i data-lucide="qr-code"></i></span><span><strong>QR 스캔</strong><small>해외 바이어 방한 체크</small></span><span aria-hidden="true">›</span></a>';
 }
 function floating(id,role){if (['admin','exportOperator'].includes(role)) return travelShortcut(id, role, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" aria-label="상담 시작·종료 QR 스캔" data-qr-floating><span aria-hidden="true">▦</span><span>QR 스캔</span></a>':'';}
-function renderTravelCamera() {
- return `<section class="qr-travel-screen" aria-label="방한 QR 스캔 카메라">
-  <header class="qr-travel-heading">
-   <a class="qr-back" href="#PRE-03" aria-label="뒤로가기">←</a>
-   <h1>방한 QR 스캔</h1><strong>${E(state || "상태 미선택")}</strong><span>${date()}</span>
-  </header>
-  <div class="qr-travel-grid">
-   <div class="qr-travel-capture">
-    <div class="qr-viewfinder" id="qr-viewfinder">
-     <video id="qr-video" autoplay muted playsinline></video>
-     <div class="qr-reticle" aria-hidden="true"></div>
-    </div>
-    <p id="qr-camera-status">${state ? "카메라를 준비하고 있습니다." : "이전 화면에서 상태를 선택해 주세요."}</p>
-    <button type="button" class="btn" data-qr-retry ${state ? "" : "disabled"}>카메라 다시 연결</button>
-   </div>
-   <div class="qr-travel-result">
-    <div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" hidden></div>
-    <p class="qr-travel-prompt">해외 바이어 QR을 스캔해 주세요.</p>
-    <details class="qr-demo">
-     <summary>목업 스캔 테스트</summary>
-     <p>예시 QR로 화면 동작을 확인합니다. 실제 방한 서버에 전송하지 않습니다.</p>
-     <button type="button" class="btn" data-qr-demo>예시 QR 인식</button>
-    </details>
-   </div>
-  </div>
- </section>`;
-}
 function render(s,role,year,head){
  const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?['admin','exportOperator'].includes(role):['interpreter','buyer'].includes(role);
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
  mode=travel?'travel':'consult';
- if(s.id==='PRE-12')return renderTravelCamera();
  if(camera){const step=travel?state:consultState;
- return `<section class="qr-camera" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div><p id="qr-camera-status">${step?'카메라를 준비하고 있습니다.':'이전 화면에서 상태를 선택해 주세요.'}</p></div><div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" hidden></div><div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div></section><details class="qr-demo"><summary>목업 스캔 테스트</summary><p>예시 QR로 화면 동작을 확인합니다. 실제 방한·상담 서버에 전송하지 않습니다.</p><button type="button" class="btn" data-qr-demo>예시 QR 인식</button></details>`;
+ return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div><p id="qr-camera-status">${step?'카메라를 준비하고 있습니다.':'이전 화면에서 상태를 선택해 주세요.'}</p></div><div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" hidden></div><div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div></section><details class="qr-demo"><summary>목업 스캔 테스트</summary><p>예시 QR로 화면 동작을 확인합니다. 실제 방한·상담 서버에 전송하지 않습니다.</p><button type="button" class="btn" data-qr-demo>예시 QR 인식</button></details>`;
  }
  return `${head(s)}<section class="qr-launch"><p class="qr-date" id="qr-date">${date()}</p><h2>${travel?'바이어 방한 상태':'상담 상태'}</h2><div class="qr-field" id="qr-state-field"><label for="qr-status-select">${travel?'바이어 상태':'상태 선택'}</label><select id="qr-status-select"><option value="">선택해 주세요</option>${(travel?states:['상담 시작','상담 종료']).map(v=>`<option ${v===(travel?state:consultState)?'selected':''}>${v}</option>`).join('')}</select></div><div class="qr-launch-guide"><span aria-hidden="true">▦</span><strong>${travel?'해외 바이어 QR을 스캔해 주세요':'참가기업 QR을 스캔해 주세요'}</strong><p>${travel?'선택한 상태로 바이어의 방한 진행 단계를 체크합니다.':'상담 시작·종료를 선택한 후 부스의 QR을 스캔합니다.'}</p></div><div class="actions"><button type="button" class="btn primary" id="qr-launch" data-qr-launch ${travel&&!state?'disabled':''}>QR 스캔</button></div>${travel?'':`<a class="qr-return" href="#${E(returnTo)}">이전 화면</a>`}</section>`;
 }
