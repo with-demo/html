@@ -40,8 +40,8 @@
 }
 
 .qr-camera-wide { padding-bottom:24px; }
-.qr-camera-wide .qr-viewfinder { --qr-frame-size:230px; }
-.qr-camera-wide .qr-reticle { width:var(--qr-frame-size); height:var(--qr-frame-size); }
+.qr-viewfinder { --qr-frame-size:230px; }
+.qr-viewfinder .qr-reticle { width:var(--qr-frame-size); height:var(--qr-frame-size); }
 .qr-viewfinder .qr-scan-guide {
  position:absolute;
  top:calc(50% + var(--qr-frame-size) / 2 + 16px);
@@ -56,7 +56,7 @@
  font-size:13px;
 }
 @media(max-width:640px) {
- .qr-camera-wide .qr-viewfinder { --qr-frame-size:min(210px,70vw); }
+ .qr-viewfinder { --qr-frame-size:min(210px,70vw); }
 }
 
 .qr-camera-wide .qr-back { border:0; border-radius:0; font-size:28px; line-height:1; padding:8px; }
