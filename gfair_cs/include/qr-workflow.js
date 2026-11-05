@@ -30,11 +30,12 @@ function accept(raw){
  sessionStorage.setItem('gfair.qr.checks',JSON.stringify(records));
  notice(travel?`${person[1]}가 ${step} 처리되었습니다`:`${person[1]} ${step} 처리되었습니다`);
 }
+let travelFacing='environment';
 async function start(){
  stop();const token=epoch;status('카메라 연결 중');
  try{
   if(!navigator.mediaDevices?.getUserMedia)throw Error('unsupported');
-  const next=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+  const next=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:location.hash==='#PRE-12'?travelFacing:'environment'}},audio:false});
   if(token!==epoch){next.getTracks().forEach(t=>t.stop());return;}
   media=next;const video=document.querySelector('#qr-video');if(!video){stop();return;}video.srcObject=media;await video.play();
   status('QR 코드를 사각형 안에 맞춰 주세요');
@@ -54,17 +55,24 @@ function render(s,role,year,head){
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
  mode=travel?'travel':'consult';
  if(camera){const step=travel?state:consultState;
- return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div><p id="qr-camera-status">${step?'카메라를 준비하고 있습니다.':'이전 화면에서 상태를 선택해 주세요.'}</p></div>${travel?'<p class="qr-scan-guide">바이어 명찰 QR을 카메라에 비추거나 리더기로 스캔해 주세요</p>':''}<div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" ${travel?'':'hidden'}>${travel?E(`James Whitmore가 ${step||'호텔 도착'} 처리되었습니다`):''}</div>${travel?'':`<div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div>`}</section>`;
+ return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div>${travel?`<button type="button" class="qr-facing" data-qr-facing aria-label="전면 카메라로 전환"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7h-4l-2-3h-4L8 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 13a4 4 0 1 1 3 4m-3-7v3h3"/></svg><span>후면 카메라</span></button>`:`<p id="qr-camera-status">카메라를 준비하고 있습니다.</p>`}</div>${travel?'<p class="qr-scan-guide">바이어 명찰 QR을 카메라에 비추거나 리더기로 스캔해 주세요</p>':''}<div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" ${travel?'':'hidden'}>${travel?E(`James Whitmore가 ${step||'호텔 도착'} 처리되었습니다`):''}</div>${travel?'':`<div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div>`}</section>`;
  }
  return `${head(s)}<section class="qr-launch"><p class="qr-date" id="qr-date">${date()}</p><h2>${travel?'바이어 방한 상태':'상담 상태'}</h2><div class="qr-field" id="qr-state-field"><label for="qr-status-select">${travel?'바이어 상태':'상태 선택'}</label><select id="qr-status-select"><option value="">선택해 주세요</option>${(travel?states:['상담 시작','상담 종료']).map(v=>`<option ${v===(travel?state:consultState)?'selected':''}>${v}</option>`).join('')}</select></div><div class="qr-launch-guide"><span aria-hidden="true">▦</span><strong>${travel?'해외 바이어 QR을 스캔해 주세요':'참가기업 QR을 스캔해 주세요'}</strong><p>${travel?'선택한 상태로 바이어의 방한 진행 단계를 체크합니다.':'상담 시작·종료를 선택한 후 부스의 QR을 스캔합니다.'}</p></div><div class="actions"><button type="button" class="btn primary" id="qr-launch" data-qr-launch ${travel&&!state?'disabled':''}>QR 스캔</button></div>${travel?'':`<a class="qr-return" href="#${E(returnTo)}">이전 화면</a>`}</section>`;
 }
 document.addEventListener('change',e=>{if(e.target.id==='qr-status-select'){if(mode==='travel')state=e.target.value;else consultState=e.target.value;const launch=document.querySelector('#qr-launch');if(launch)launch.disabled=!e.target.value;document.querySelector('#qr-feedback')?.setAttribute('hidden','');last='';}});
-document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch],[data-qr-retry],[data-qr-floating]');if(!b)return;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch],[data-qr-retry],[data-qr-floating],[data-qr-facing]');if(!b)return;
  if(b.hasAttribute('data-qr-floating')){returnTo=location.hash.slice(1);return;}
  if(b.hasAttribute('data-qr-launch')){location.hash=mode==='travel'?'PRE-12':'JNL-03';return;}
+ if(b.hasAttribute('data-qr-facing')){
+  travelFacing=travelFacing==='environment'?'user':'environment';
+  const front=travelFacing==='user';
+  b.querySelector('span').textContent=front?'전면 카메라':'후면 카메라';
+  b.setAttribute('aria-label',front?'후면 카메라로 전환':'전면 카메라로 전환');
+  start();return;
+ }
  if(b.hasAttribute('data-qr-retry')){start();return;}
 });
-let mounted=null;function mount(){const node=document.querySelector('#qr-viewfinder');if(node===mounted)return;mounted=node;stop();if(node&&(location.hash==='#JNL-03'||state))start();}
+let mounted=null;function mount(){const node=document.querySelector('#qr-viewfinder');if(node===mounted)return;mounted=node;stop();if(node){travelFacing='environment';start();}}
 new MutationObserver(mount).observe(document.getElementById('app'),{childList:true,subtree:true});
 window.addEventListener('hashchange',stop);window.addEventListener('pagehide',stop);
 window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,states,stop};
