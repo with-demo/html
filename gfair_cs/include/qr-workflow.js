@@ -8,7 +8,8 @@ for(const [id,title,parent] of [['PRE-12','방한 QR 스캔 카메라','PRE-03']
 }
 // 플로팅 진입 화면도 화면선택·화면검색에 포함한다.
 window.GFAIR_SCREEN_REGISTRY.push({id:'JNL-03',parent:'JNL-14'},{id:'PRE-03',parent:'PRE-01'},{id:'PRE-12',parent:'PRE-03'});
-let mode='travel',state='',consultState='상담 시작',media=null,epoch=0,frame=null,busy=false,last='',lastAt=0,returnTo='JNL-07',toastTimer;
+const consultState='상담 시작';
+let mode='travel',state='',media=null,epoch=0,frame=null,busy=false,last='',lastAt=0,returnTo='JNL-07',toastTimer;
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=()=>new Intl.DateTimeFormat('ko-KR',{dateStyle:'full',timeZone:'Asia/Seoul'}).format(new Date());
 function stop(){epoch++;cancelAnimationFrame(frame);media?.getTracks().forEach(t=>t.stop());media=null;busy=false;}
@@ -49,13 +50,13 @@ function travelShortcut(id, role, mobile = false) {
  if (!['admin', 'exportOperator'].includes(role) || ['PRE-03', 'PRE-12', 'COM-01'].includes(id)) return '';
  return '<a class="qr-travel-shortcut'+(mobile?' qr-travel-mobile':'')+'" href="#PRE-03"><span class="qr-shortcut-label"><i data-lucide="qr-code" aria-hidden="true"></i><strong>QR 스캔</strong></span></a>';
 }
-function floating(id,role){if (['admin','exportOperator'].includes(role)) return travelShortcut(id, role, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" aria-label="상담 시작·종료 QR 스캔" data-qr-floating><span aria-hidden="true">▦</span><span>QR 스캔</span></a>':'';}
+function floating(id,role){if (['admin','exportOperator'].includes(role)) return travelShortcut(id, role, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="#JNL-03" data-qr-floating><span aria-hidden="true"><i data-lucide="qr-code"></i></span><span>상담 시작</span></a>':'';}
 function render(s,role,year,head){
  const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?['admin','exportOperator'].includes(role):['interpreter','buyer'].includes(role);
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
  mode=travel?'travel':'consult';
  if(camera){const step=travel?state:consultState;
- return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<label class="qr-consult-label" for="qr-status-select">상담 상태</label><select id="qr-status-select">'+['상담 시작','상담 종료'].map(v=>'<option '+(v===consultState?'selected':'')+'>'+v+'</option>').join('')+'</select>'}<span>${date()}</span></div>${travel?`<button type="button" class="qr-facing" data-qr-facing aria-label="전면 카메라로 전환"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7h-4l-2-3h-4L8 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 13a4 4 0 1 1 3 4m-3-7v3h3"/></svg><span>후면 카메라</span></button>`:''}</header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div>${travel?'':`<p id="qr-camera-status">카메라를 준비하고 있습니다.</p>`}${travel?'<p class="qr-scan-guide">바이어 명찰 QR을 카메라로 스캔해 주세요</p>':''}</div><div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" ${travel?'':'hidden'}>${travel?E(`James Whitmore ${step||'호텔 도착'} 처리 되었습니다.`):''}</div>${travel?'':`<div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div>`}</section>`;
+ return `<section class="qr-camera${travel?' qr-camera-wide':''}" aria-label="QR 스캔 카메라"><header class="qr-camera-top"><a class="qr-back" href="#${travel?'PRE-03':E(returnTo)}" aria-label="뒤로가기">←</a><div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<strong>'+consultState+'</strong>'}<span>${date()}</span></div>${travel?`<button type="button" class="qr-facing" data-qr-facing aria-label="전면 카메라로 전환"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7h-4l-2-3h-4L8 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 13a4 4 0 1 1 3 4m-3-7v3h3"/></svg><span>후면 카메라</span></button>`:''}</header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div>${travel?'':`<p id="qr-camera-status">카메라를 준비하고 있습니다.</p>`}${travel?'<p class="qr-scan-guide">바이어 명찰 QR을 카메라로 스캔해 주세요</p>':''}</div><div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite" ${travel?'':'hidden'}>${travel?E(`James Whitmore ${step||'호텔 도착'} 처리 되었습니다.`):''}</div>${travel?'':`<div class="qr-camera-tools"><button type="button" class="btn" data-qr-retry>카메라 다시 연결</button></div>`}</section>`;
  }
  const dateParts=new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit",weekday:"short"}).formatToParts(new Date());
  const part=type=>dateParts.find(entry=>entry.type===type).value;
@@ -77,7 +78,7 @@ function render(s,role,year,head){
   <div class="actions"><button type="button" class="btn primary" id="qr-launch" data-qr-launch ${state?"":"disabled"}>QR 스캔</button></div>
  </section>`;
 }
-document.addEventListener('change',e=>{if(e.target.id==='qr-status-select'){if(mode==='travel')state=e.target.value;else consultState=e.target.value;const launch=document.querySelector('#qr-launch');if(launch)launch.disabled=!e.target.value;document.querySelector('#qr-feedback')?.setAttribute('hidden','');last='';}});
+document.addEventListener('change',e=>{if(e.target.id==='qr-status-select'){state=e.target.value;const launch=document.querySelector('#qr-launch');if(launch)launch.disabled=!e.target.value;document.querySelector('#qr-feedback')?.setAttribute('hidden','');last='';}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-qr-launch],[data-qr-retry],[data-qr-floating],[data-qr-facing]');if(!b)return;
  if(b.hasAttribute('data-qr-floating')){returnTo=location.hash.slice(1);return;}
  if(b.hasAttribute('data-qr-launch')){location.hash=mode==='travel'?'PRE-12':'JNL-03';return;}

@@ -80,3 +80,35 @@
  window.addEventListener('hashchange', saveLaunchDescription);
  saveLaunchDescription();
 })();
+
+(() => {
+ let saving = false;
+ async function saveConsultDescription() {
+  const store = window.GFAIR_COLLAB;
+  if (saving || location.hash !== '#JNL-03' || !store?.loaded || !store.user?.editor) return;
+  const item = '상담 시작 QR 스캔';
+  if (store.records.some(record => {
+   try { return JSON.parse(record.text).item === item; } catch { return false; }
+  })) return;
+  saving = true;
+  try {
+   await store.mutate('create', {
+    screen:'JNL-03',
+    text:JSON.stringify({
+     format:'description-spec-v1',item,type:'기타',defaultValue:'상담 시작',required:'Y',
+     permission:'국내바이어·통역원',
+     detail:'플로팅 버튼 [상담 시작]에서 진입하면 상담 시작 상태로 참가기업 부스 QR을 스캔한다.',
+     trigger:'화면 진입 시 카메라 연결을 시도한다.'
+    }),
+    anchor:{selector:'#qr-viewfinder',sample:'',x:0,y:0}
+   });
+  } catch (error) {
+   console.error('상담 시작 QR 설명 저장 실패:', error.message);
+  } finally {
+   saving = false;
+  }
+ }
+ window.addEventListener('collaboration-updated', saveConsultDescription);
+ window.addEventListener('hashchange', saveConsultDescription);
+ saveConsultDescription();
+})();
