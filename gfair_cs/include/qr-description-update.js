@@ -88,7 +88,7 @@
   if (saving || location.hash !== '#JNL-03' || !store?.loaded || !store.user?.editor) return;
   const item = '상담 시작 QR 스캔';
   const existing = store.records.find(record => {
-   try { return JSON.parse(record.text).item === item; } catch { return false; }
+   try { return [item, '상담 시작 QR 스캔 카메라'].includes(JSON.parse(record.text).item); } catch { return false; }
   });
   const previous = existing ? JSON.parse(existing.text) : null;
   const updates = {

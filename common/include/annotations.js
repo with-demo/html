@@ -166,6 +166,7 @@ return spec;}catch{return null;}}
  const qrCameraTargets = {
   'QR 스캔 카메라': '.qr-reticle',
   '상담 시작 QR 스캔': '.qr-reticle',
+  '상담 시작 QR 스캔 카메라': '.qr-reticle',
   '상담 시작·날짜': '.qr-camera-top > div',
   '카메라 전환 버튼': '[data-qr-facing]',
   '선택한 방한 상태·날짜': '.qr-camera-top > div',
