@@ -41,10 +41,10 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const saved=store.records.find(r=>r.id===record.id)?.anchor;if(!saved)return record;return {...record,anchor:{...record.anchor,...(Number.isFinite(saved.offsetX)?{offsetX:saved.offsetX}:{}),...(Number.isFinite(saved.offsetY)?{offsetY:saved.offsetY}:{})}};}),config=['PRE-01','EVT-02'].includes(route())?null:searchFilterDescriptions[route()];if(!config)return existing;const added=existing.find(r=>r.id===config.id);if(!added)return existing;return [added,...existing.filter(r=>r.id!==config.id)].map((r,index)=>({...r,number:index+1,...(r.id===config.id?{anchor:{...r.anchor,selector:config.selector,sample:'검색필터',x:0,y:0,offsetX:route()==='JNL-14'?5:r.anchor?.offsetX??5,offsetY:route()==='JNL-14'?0:r.anchor?.offsetY??0}}:{})}));};
  function orderDescriptionLabels(existing,screen){const ids=window.GFAIR_DESCRIPTION_LABEL_ORDER?.[screen];if(!ids||existing.some(r=>String(r.number).includes('-')))return existing;const rank=new Map(ids.map((id,index)=>[id,index])),ordered=existing.filter(r=>rank.has(r.id)).slice().sort((a,b)=>rank.get(a.id)-rank.get(b.id));let index=0;const result=existing.map(r=>rank.has(r.id)?ordered[index++]:r);if(result.every((r,i)=>r===existing[i]))return existing;return result.map((r,i)=>({...r,number:i+1}));}
  function orderPlanningLabelNumbers(notes){const result=notes.slice();for(const screen of new Set(notes.map(n=>n.screen))){const ids=window.GFAIR_DESCRIPTION_LABEL_ORDER?.[screen];if(!ids)continue;const rank=new Map(ids.map((id,index)=>[id,index+1])),positions=notes.flatMap((n,i)=>n.screen===screen?[i]:[]),group=positions.map(i=>rank.has(notes[i].id)?{...notes[i],number:rank.get(notes[i].id)}:notes[i]).sort((a,b)=>Number(a.number)-Number(b.number));positions.forEach((position,i)=>{result[position]=group[i];});}return result;}
- const qrEntryItems = {'JNL-03':'상담 시작 플로팅 버튼','PRE-03':'QR 스캔 배너'};
+ const qrEntryAnchors = {'JNL-03':'.qr-floating','PRE-03':'.qr-travel-shortcut'};
  function isQrEntry(record){
-  const item=qrEntryItems[route()];
-  return !!item && readSpec(record.text)?.item===item;
+  const selector=qrEntryAnchors[route()];
+  return !!selector && record.anchor?.selector===selector;
  }
  function records(){
   const screen=route();
@@ -56,9 +56,12 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
     return !generated;
    });
   }
-  const entry=ordered.find(isQrEntry);
-  if(!entry)return ordered;
-  return [entry,...ordered.filter(record=>record!==entry)].map((record,index)=>({...record,number:index+1}));
+  const entries=ordered.filter(isQrEntry);
+  if(!entries.length)return ordered;
+  const entry=entries.find(record=>record.updated)||entries[0];
+  const otherRecords=ordered.filter(record=>!isQrEntry(record));
+  return [entry,...otherRecords].map((record,index)=>({...record,number:index+1}));
+
  }
  const element=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const button=(text,action)=>{const el=element('button',text);el.type='button';el.addEventListener('click',action);return el;};
