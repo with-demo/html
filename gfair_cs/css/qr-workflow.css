@@ -40,7 +40,24 @@
 }
 
 .qr-camera-wide { padding-bottom:24px; }
-.qr-scan-guide { margin:12px 16px 0; color:#b5b5b5; text-align:center; font-size:13px; }
+.qr-camera-wide .qr-viewfinder { --qr-frame-size:230px; }
+.qr-camera-wide .qr-reticle { width:var(--qr-frame-size); height:var(--qr-frame-size); }
+.qr-viewfinder .qr-scan-guide {
+ position:absolute;
+ top:calc(50% + var(--qr-frame-size) / 2 + 8px);
+ bottom:auto;
+ left:12px;
+ right:12px;
+ margin:0;
+ padding:0;
+ background:none;
+ color:#b5b5b5;
+ text-align:center;
+ font-size:13px;
+}
+@media(max-width:640px) {
+ .qr-camera-wide .qr-viewfinder { --qr-frame-size:min(210px,70vw); }
+}
 
 .qr-camera-wide .qr-back { border:0; border-radius:0; font-size:28px; line-height:1; padding:8px; }
 .qr-facing { position:absolute; top:12px; right:12px; z-index:2; display:inline-flex; align-items:center; gap:6px; min-height:36px; padding:6px 10px; border:1px solid #777; border-radius:6px; background:#161616; color:#fff; font-size:12px; cursor:pointer; }
