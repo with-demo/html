@@ -87,18 +87,29 @@
   const store = window.GFAIR_COLLAB;
   if (saving || location.hash !== '#JNL-03' || !store?.loaded || !store.user?.editor) return;
   const item = '상담 시작 QR 스캔';
-  if (store.records.some(record => {
+  const existing = store.records.find(record => {
    try { return JSON.parse(record.text).item === item; } catch { return false; }
-  })) return;
+  });
+  const previous = existing ? JSON.parse(existing.text) : null;
+  const updates = {
+   detail:'플로팅 버튼 [상담 시작]에서 진입하면 참가기업 부스 QR을 스캔한다. 좌측 상단에 상담 시작과 날짜를 표시한다. 우측 상단 버튼으로 전면·후면 카메라를 전환한다. 스캔 영역 아래에 “참가기업 부스 QR을 카메라로 스캔해 주세요”를 표시한다.',
+   trigger:'화면 진입 시 후면 카메라 연결을 우선 시도한다. 전환 버튼을 누르면 선택한 방향의 카메라 연결을 시도한다.',
+   errorMessage:'사용 가능한 카메라가 없으면 “사용 가능한 카메라가 없습니다.”를 표시한다. 그 외 카메라 연결 실패 시 “카메라를 실행하지 못했습니다. 연결 상태를 확인해 주세요.”를 표시한다. 화면 목업에서는 오류 문구를 숨긴다.'
+  };
+  if (previous && Object.entries(updates).every(([key,value]) => previous[key] === value)) return;
   saving = true;
   try {
+   if (previous) {
+    const next = {...previous, ...updates};
+    const changes = window.GFAIR_DESCRIPTION_CHANGES;
+    await store.mutate('update', {id:existing.id, revision:existing.revision, text:JSON.stringify(changes ? changes.markAgentChanges(previous,next) : next)});
+    return;
+   }
    await store.mutate('create', {
     screen:'JNL-03',
     text:JSON.stringify({
      format:'description-spec-v1',item,type:'기타',defaultValue:'상담 시작',required:'Y',
-     permission:'국내바이어·통역원',
-     detail:'플로팅 버튼 [상담 시작]에서 진입하면 상담 시작 상태로 참가기업 부스 QR을 스캔한다.',
-     trigger:'화면 진입 시 카메라 연결을 시도한다.'
+     permission:'국내바이어·통역원',...updates
     }),
     anchor:{selector:'#qr-viewfinder',sample:'',x:0,y:0}
    });
