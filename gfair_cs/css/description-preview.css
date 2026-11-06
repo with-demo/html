@@ -1,0 +1,45 @@
+@media screen and (min-width: 1101px) {
+/* The review panel reduces the mockup width; fit its tables without hiding columns. */
+.ui-spec-layout.with-spec #content {
+  container: description-preview / inline-size;
+}
+
+.ui-spec-layout.with-spec #content .tablewrap > table {
+  width: 100% !important;
+  min-width: 0 !important;
+  table-layout: auto !important;
+}
+
+.ui-spec-layout.with-spec #content .tablewrap > table :is(col, th, td) {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+.ui-spec-layout.with-spec #content .tablewrap :is(th, td) {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  padding-inline: 8px;
+}
+
+.ui-spec-layout.with-spec #content .tablewrap :is(th, td) :is(button, a, .badge, .small, small) {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.ui-spec-layout.with-spec #content .tablewrap .btn {
+  padding-inline: 6px;
+}
+
+@container description-preview (max-width: 1050px) {
+  .overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ui-spec-layout.with-spec #content .survey-action-list :is(th, td):first-child { min-width: 56px !important; white-space: nowrap !important; }
+.ui-spec-layout.with-spec #content .survey-action-list .btn { white-space: nowrap !important; }
+
+}
