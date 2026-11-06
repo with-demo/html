@@ -47,7 +47,7 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   return !!selector && record.anchor?.selector===selector;
  }
  const surveyAccessId='8675ecb0-e5a2-4d0b-beda-4539ab0ffb8b';
- const surveyMenuRule='- 국내 바이어·통역원에게는 행사 마지막 날과 등록된 조사 시작일 중 늦은 날짜부터, 참여 가능한 설문이 있을 때만 [만족도 조사] 메뉴를 표시한다.';
+ const surveyMenuRule='- 국내 바이어·통역원은 행사 마지막 날 당일부터 [만족도 조사] 메뉴를 열어 설문에 참여할 수 있다. 참여 가능한 설문이 등록된 경우에만 메뉴를 표시한다.';
  const surveyDirectRule='- 참여 가능일 전 또는 참여 가능한 설문이 없을 때 주소로 직접 접근하면 본인의 상담일지 목록으로 이동한다.';
  function surveyAccessDescription(record){
   if(document.body.dataset.project!=='gfair_cs'||route()!=='NTC-08'||record.id!==surveyAccessId)return record;
@@ -55,10 +55,11 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const before=readSpec(record.text);
   if(!changes||before?.item!=='설문 표시·참여 조건')return record;
   const append=(value,line)=>value.includes(line)?value:[value,line].filter(Boolean).join('\n');
-  const visibility=append(before.visibility||'',surveyMenuRule);
+  const visibility=append((before.visibility||'').replace('- 국내 바이어·통역원에게는 행사 마지막 날과 등록된 조사 시작일 중 늦은 날짜부터, 참여 가능한 설문이 있을 때만 [만족도 조사] 메뉴를 표시한다.',surveyMenuRule),surveyMenuRule);
+  const policy=(before.policy||'').replace('행사 마지막 날과 등록된 조사 시작일 이후부터','행사 마지막 날 당일부터');
   const exception=append(before.exception||'',surveyDirectRule);
-  if(visibility===before.visibility&&exception===before.exception)return record;
-  return {...record,text:JSON.stringify(changes.markAgentChanges(JSON.parse(record.text),{...JSON.parse(record.text),visibility,exception}))};
+  if(visibility===before.visibility&&policy===before.policy&&exception===before.exception)return record;
+  return {...record,text:JSON.stringify(changes.markAgentChanges(JSON.parse(record.text),{...JSON.parse(record.text),visibility,policy,exception}))};
  }
  let surveyAccessSaveRunning=false,surveyAccessAttemptedRevision;
  async function saveSurveyAccessDescription(){
