@@ -1,6 +1,6 @@
 /* QR 동선 목업. 예시 체크 이력만 현재 탭에 보관한다. */
 (()=>{'use strict';
-const states=['입국','호텔 이동','호텔 도착','전시장 출발','전시장 입장','통역원 만남','전시장 퇴장'];
+const states=['입국','호텔 이동','호텔 도착','전시장 출발','전시장 입장','통역원 만남','상담 시작','상담 종료','전시장 퇴장'];
 const screens=GFAIR_SCREENS.flatMap(g=>g.screens),get=id=>screens.find(s=>s.id===id);
 for(const [id,title,kind] of [['PRE-03','QR 리더기 실행','form'],['JNL-03','상담 QR 리더','mobile']])Object.assign(get(id),{title,kind});
 for(const [id,title,parent] of [['PRE-12','방한 QR 스캔 카메라','PRE-03']]){
