@@ -69,7 +69,7 @@
 .qr-launch-centered #qr-event-name { margin:0; text-align:center; font-size:clamp(23px,4vw,34px); }
 #app #content .qr-launch-centered #qr-date { margin:12px 0 40px; color:#333; font-size:15px; }
 .qr-launch-centered .qr-field { width:min(100%,480px); margin-inline:auto; grid-template-columns:96px minmax(0,1fr); text-align:left; }
-.qr-launch-centered .qr-field label { padding:10px; }
+.qr-launch-centered .qr-field label { padding:10px; justify-content:center; text-align:center; }
 .qr-launch-centered .qr-field select { margin:6px; width:calc(100% - 12px); }
 #app #content #qr-launch-help { margin:12px 0 0; color:#666; font-size:12px; }
 .qr-launch-centered .actions { justify-content:center; margin-top:44px; }
