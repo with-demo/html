@@ -116,19 +116,11 @@ window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-02-p43","title":"방한기록 수정","
   },
   {
     "id": "NTC-15",
-    "title": "공지사항 등록",
+    "title": "공지사항 등록·수정",
     "parent": "NTC-01",
-    "summary": "공지사항 등록 화면에서 대상 정보와 처리 내용을 확인합니다.",
+    "summary": "등록은 빈 항목, 수정은 기존 게시물 값으로 여는 공용 편집 화면입니다.",
     "kind": "list",
-    "noticeMode": "create"
-  },
-  {
-    "id": "NTC-16",
-    "title": "공지사항 수정",
-    "parent": "NTC-01",
-    "summary": "공지사항 수정 화면에서 대상 정보와 처리 내용을 확인합니다.",
-    "kind": "list",
-    "noticeMode": "edit"
+    "noticeMode": "editor"
   },
   {
     "id": "BAS-21",
@@ -259,3 +251,5 @@ window.GFAIR_SCREEN_REGISTRY=[{"id":"PRE-02-p43","title":"방한기록 수정","
 
 // 사용 종료한 FAQ·자료실 화면은 라우트와 화면 목록에서 제거한다.
 (()=>{const removed=new Set(['NTC-02','NTC-03',...GFAIR_SCREEN_REGISTRY.filter(s=>s.publicBoard).map(s=>s.id)]);window.GFAIR_SCREEN_REGISTRY=GFAIR_SCREEN_REGISTRY.filter(s=>!removed.has(s.id)&&!removed.has(s.parent));for(const group of GFAIR_SCREENS){group.screens=group.screens.filter(s=>!removed.has(s.id)&&!removed.has(s.parent));for(const screen of group.screens)if(['NTC-01','NTC-04','NTC-15','NTC-16'].includes(screen.id))screen.title=screen.title.replaceAll('공지사항','공지/알림');}})();
+
+(()=>{const u=new URL(location.href);if(u.hash==='#NTC-16'){u.searchParams.set('noticeMode','edit');u.hash='NTC-15';history.replaceState(null,'',u.pathname+u.search+u.hash);}for(const group of GFAIR_SCREENS)group.screens=group.screens.filter(s=>s.id!=='NTC-16');})();
