@@ -179,6 +179,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-editor-required-mark { color:#c62828; }
 .survey-required-slot { display:inline-flex; justify-content:center; min-width:36px; }
 .survey-required-badge { background:#333; color:#fff; }
+.survey-required-slot .survey-required-badge[hidden] { display:inline-block; visibility:hidden; }
 .survey-builder .survey-question-body > .field:first-child,
 .survey-builder .survey-option-edit > .row > .field {
   display:grid;
