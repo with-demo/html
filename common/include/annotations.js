@@ -46,64 +46,9 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const selector=qrEntryAnchors[route()];
   return !!selector && record.anchor?.selector===selector;
  }
- const surveyAccessId='8675ecb0-e5a2-4d0b-beda-4539ab0ffb8b';
- const surveyMenuRule='- 국내 바이어·통역원은 행사 마지막 날 당일부터 [만족도 조사] 메뉴를 열어 설문에 참여할 수 있다. 참여 가능한 설문이 등록된 경우에만 메뉴를 표시한다.';
- const surveyDirectRule='- 참여 가능일 전 또는 참여 가능한 설문이 없을 때 주소로 직접 접근하면 본인의 상담일지 목록으로 이동한다.';
- const surveyCautionItem='유의사항';
- const surveyCautionAnchor={selector:'.survey-participation-caution',sample:'',x:0,y:0};
- const surveyCautionSpec={
-  format:'description-spec-v1',item:surveyCautionItem,type:'텍스트',required:'N',
-  detail:'설문 작성 전에 작성 내용 유지 및 제출 후 수정 제한을 안내한다.',
-  visibility:'미제출 설문 상단에 표시한다. 국내 바이어와 통역원 본인 설문은 국문, 담당 해외 바이어 설문은 영문으로 표시한다. 제출 완료 화면에서는 숨긴다.',
-  policy:'- 통역원은 응답 대상 탭을 전환해도 작성 중인 내용을 유지한다.\n- 새로고침하거나 다른 페이지로 이동하면 미제출 작성 내용이 초기화된다.\n- 제출 완료 후에는 수정하거나 다시 제출할 수 없다.'
- };
- const isSurveyCaution=record=>readSpec(record.text)?.item===surveyCautionItem;
- function surveyCautionText(){
-  return JSON.stringify(window.GFAIR_DESCRIPTION_CHANGES?.markAgentChanges({},surveyCautionSpec)||surveyCautionSpec);
- }
- function surveyAccessDescription(record){
-  if(document.body.dataset.project!=='gfair_cs'||route()!=='NTC-08'||record.id!==surveyAccessId)return record;
-  const changes=window.GFAIR_DESCRIPTION_CHANGES;
-  const before=readSpec(record.text);
-  if(!changes||before?.item!=='설문 표시·참여 조건')return record;
-  const append=(value,line)=>value.includes(line)?value:[value,line].filter(Boolean).join('\n');
-  const visibility=append((before.visibility||'').replace('- 국내 바이어·통역원에게는 행사 마지막 날과 등록된 조사 시작일 중 늦은 날짜부터, 참여 가능한 설문이 있을 때만 [만족도 조사] 메뉴를 표시한다.',surveyMenuRule),surveyMenuRule);
-  const policy=(before.policy||'').replace('행사 마지막 날과 등록된 조사 시작일 이후부터','행사 마지막 날 당일부터')
-   .split('\n').filter(line=>!/^\s*-\s*(미제출 설문 상단에 유의사항을 표시한다|통역원은 탭 전환 시 작성값 유지)/.test(line)).join('\n');
-  const exception=append(before.exception||'',surveyDirectRule);
-  if(visibility===before.visibility&&policy===before.policy&&exception===before.exception)return record;
-  return {...record,text:JSON.stringify(changes.markAgentChanges(JSON.parse(record.text),{...JSON.parse(record.text),visibility,policy,exception}))};
- }
- let surveyAccessSaveRunning=false,surveyAccessAttemptedRevision;
- async function saveSurveyAccessDescription(){
-  if(route()!=='NTC-08'||!store.loaded||!store.user?.editor||surveyAccessSaveRunning)return;
-  const record=store.records.find(record=>record.id===surveyAccessId);
-  if(!record||record.revision===surveyAccessAttemptedRevision)return;
-  const updated=surveyAccessDescription(record);
-  const needsCaution=!store.records.some(isSurveyCaution);if(updated===record&&!needsCaution)return;
-  surveyAccessSaveRunning=true;
-  surveyAccessAttemptedRevision=record.revision;
-  try{
-   if(needsCaution)await store.mutate('create',{screen:'NTC-08',text:surveyCautionText(),anchor:surveyCautionAnchor});
-   const latest=store.records.find(record=>record.id===surveyAccessId);
-   if(route()!=='NTC-08'||!latest)return;
-   const revised=surveyAccessDescription(latest);
-   if(revised!==latest)await store.mutate('update',{id:latest.id,revision:latest.revision,text:revised.text});
-  }
-  catch(error){console.error('NTC-08 디스크립션 저장 실패:',error.message);}
-  finally{surveyAccessSaveRunning=false;}
- }
- window.addEventListener('collaboration-updated',saveSurveyAccessDescription);
- saveSurveyAccessDescription();
  function records(){
   const screen=route();
   let ordered=orderDescriptionLabels(layoutRecords(),screen);
-  if(screen==='NTC-08'&&document.body.dataset.project==='gfair_cs'){
-   ordered=ordered.map(surveyAccessDescription);
-   if(ordered.some(record=>record.id===surveyAccessId)&&!ordered.some(isSurveyCaution)){
-    ordered.push({id:'ntc08-survey-caution',screen,number:5,text:surveyCautionText(),anchor:surveyCautionAnchor,comments:[],previewOnly:true});
-   }
-  }
   if(screen==='PRE-03'&&ordered.some(record=>record.anchor?.selector==='#qr-launch')){
    ordered=ordered.filter(record=>{
     const spec=readSpec(record.text);
@@ -200,10 +145,7 @@ return spec;}catch{return null;}}
   function relevantFields(){const inputTypes=['인풋','텍스트에리어'],selectionTypes=['단일셀렉트박스','다중셀렉트박스','체크박스','라디오박스'],rules={placeholder:inputTypes.includes(type.value),inputFormat:type.value==='인풋',inputLimit:inputTypes.includes(type.value),options:selectionTypes.includes(type.value),validation:true,errorMessage:type.value!=='텍스트'};Object.entries(rules).forEach(([key,visible])=>{fields[key].parentElement.hidden=!visible;fields[key].parentElement.querySelectorAll('input,select,textarea').forEach(control=>control.disabled=!visible);});optionalGroups.forEach(section=>section.hidden=Array.from(section.querySelectorAll('.annotation-spec-field')).every(label=>label.hidden));}
   type.addEventListener('change',relevantFields);relevantFields();
   const actions=element('div',undefined,'annotation-actions'),submit=element('button',record?'저장':'설명 등록');submit.type='submit';actions.append(button('취소',()=>dialog.close()),submit);const header=element('div',undefined,'annotation-dialog-header'),closeButton=button('×',()=>dialog.close());closeButton.className='annotation-dialog-close';closeButton.setAttribute('aria-label','설명 팝업 닫기');closeButton.title='닫기';header.append(title,closeButton);form.append(header,element('p','* 표시 항목만 필수입니다. 나머지는 필요한 내용만 작성하세요. (전체 저장 한도 5,000자)','annotation-guide'),grid,actions);
-  let highlightDraft={...saved};
-  const trackHighlights=()=>{const next={format:'description-spec-v1'};for(const key of Object.keys(specLabels))next[key]=key==='required'?(new FormData(form).get(key)||''):key==='defaultValue'?(custom.hidden?defaultValue.value:custom.value):fields[key].specValue?fields[key].specValue():fields[key].value;highlightDraft=window.GFAIR_DESCRIPTION_CHANGES.preserveUserEdits(highlightDraft,next);};
-  form.addEventListener('input',trackHighlights);form.addEventListener('change',trackHighlights);
-  form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screen!==route()||!form.reportValidity())return;const spec={format:'description-spec-v1'};for(const key of Object.keys(specLabels)){spec[key]=key==='required'?new FormData(form).get(key):key==='defaultValue'?(custom.hidden?defaultValue.value:custom.value.trim()):fields[key].specValue?fields[key].specValue():fields[key].tagName==='TEXTAREA'?fields[key].value:fields[key].value.trim();if(!String(spec[key]||'').trim()&&requiredSpecKeys.includes(key)){message(specLabels[key]+'을 입력해 주세요.');return;}}const normalized=window.GFAIR_DESCRIPTION_CHANGES.preserveUserEdits(highlightDraft,spec);if(normalized.codexHighlights)spec.codexHighlights=normalized.codexHighlights;const text=JSON.stringify(spec);if(window.GFAIR_DESCRIPTION_CHANGES.plainSize(spec)>5000||text.length>15000){message('전체 입력 내용을 5,000자 이내로 줄여 주세요.');return;}const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen,text,anchor},submit);if(result){dialog.close();picking=false;selected=result.id||record?.id;render();}});dialog.append(form);dialog.showModal();item.focus();
+  form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screen!==route()||!form.reportValidity())return;const spec={format:'description-spec-v1'};for(const key of Object.keys(specLabels)){spec[key]=key==='required'?new FormData(form).get(key):key==='defaultValue'?(custom.hidden?defaultValue.value:custom.value.trim()):fields[key].specValue?fields[key].specValue():fields[key].tagName==='TEXTAREA'?fields[key].value:fields[key].value.trim();if(!String(spec[key]||'').trim()&&requiredSpecKeys.includes(key)){message(specLabels[key]+'을 입력해 주세요.');return;}}if(record&&['SET-13','SET-14','NTC-08'].includes(screen)){for(const key of Object.keys(specLabels))if(typeof spec[key]==='string')spec[key]=spec[key].replace(/^([ \t]*(?:-[ \t]*)?)\(수정\)[ \t]*/gm,'$1');}const text=JSON.stringify(record?spec:window.GFAIR_DESCRIPTION_CHANGES.markAgentChanges({},spec));if(window.GFAIR_DESCRIPTION_CHANGES.plainSize(spec)>5000||text.length>15000){message('전체 입력 내용을 5,000자 이내로 줄여 주세요.');return;}const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen,text,anchor},submit);if(result){dialog.close();picking=false;selected=result.id||record?.id;render();}});dialog.append(form);dialog.showModal();item.focus();
  }
 
  function selectionScope(){return window.MOCKUP_DESCRIPTION_CONTEXT?document.getElementById('dialog-content'):route()==='NTC-07'?document.body:app.querySelector('#content');}
@@ -300,7 +242,7 @@ return spec;}catch{return null;}}
    const position=pinPosition(rect,record.anchor,bounds);if(!position)return;let {left,top}=position;
    let moved=false;
    const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});if(['PRE-12','JNL-03'].includes(route()))highlightPosition(find(record));});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
-   if(canEdit()&&!record.previewOnly){
+   if(canEdit()){
     pin.classList.add('annotation-pin-movable');pin.title='클릭: 설명 보기 / 드래그: 핀 위치 저장';
     pin.addEventListener('pointerdown',event=>{if(!canEdit()||event.button!==0||picking||savingPins.has(record.id))return;event.preventDefault();event.stopPropagation();dragging={id:record.id,pointer:event.pointerId,x:event.clientX,y:event.clientY,left,top,screen:route(),offsetX:left-rect.left-rect.width*record.anchor.x,offsetY:top-rect.top-rect.height*record.anchor.y};pin.setPointerCapture(event.pointerId);});
     pin.addEventListener('pointermove',event=>{const d=dragging;if(!d||d.id!==record.id||d.pointer!==event.pointerId)return;const dx=event.clientX-d.x,dy=event.clientY-d.y;if(!moved&&Math.hypot(dx,dy)<4)return;moved=true;pin.classList.add('dragging');const minLeft=bounds.left+14,maxLeft=bounds.right-14,minTop=bounds.top+14,maxTop=bounds.bottom-14;d.dx=Math.max(minLeft-d.left,Math.min(maxLeft-d.left,dx));d.dy=Math.max(minTop-d.top,Math.min(maxTop-d.top,dy));pin.style.left=d.left+d.dx+'px';pin.style.top=d.top+d.dy+'px';});
@@ -327,9 +269,8 @@ return spec;}catch{return null;}}
   if(!canEdit())return;const screenId=route();dialog.replaceChildren();
   const form=element('form',undefined,'annotation-spec-form'),header=element('div',undefined,'annotation-dialog-header'),close=button('×',()=>dialog.close());close.className='annotation-dialog-close';close.setAttribute('aria-label','화면 개요 수정 닫기');header.append(element('h2','화면 개요 수정'),close);
   const label=element('label','화면 개요'),input=element('textarea');input.required=true;input.maxLength=2000;input.rows=7;input.value=record?JSON.parse(record.text).overview:screenId==='JNL-14'?'':defaultOverview(screen);label.append(input);
-  let overviewDraft=record?JSON.parse(record.text):{format:'screen-overview-v1',overview:input.value};input.addEventListener('input',()=>{overviewDraft=window.GFAIR_DESCRIPTION_CHANGES.preserveUserEdits(overviewDraft,{format:'screen-overview-v1',overview:input.value});});
   const actions=element('div',undefined,'annotation-actions'),save=element('button','저장');save.type='submit';actions.append(button('취소',()=>dialog.close()),save);form.append(header,label,actions);
-  form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const text=JSON.stringify(window.GFAIR_DESCRIPTION_CHANGES.preserveUserEdits(overviewDraft,{format:'screen-overview-v1',overview:input.value}));const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
+  form.addEventListener('submit',async event=>{event.preventDefault();if(!canEdit()||screenId!==route()||!form.reportValidity()||!input.value.trim())return;const spec={format:'screen-overview-v1',overview:input.value};const text=JSON.stringify(record?spec:window.GFAIR_DESCRIPTION_CHANGES.markAgentChanges({},spec));const result=await change(record?'update':'create',record?{id:record.id,text,revision:record.revision}:{screen:screenId,text,anchor:{selector:'#content',sample:'화면 개요',x:0,y:0}},save);if(result){dialog.close();render();}});
   dialog.append(form);dialog.showModal();input.focus();
  }
  
@@ -350,7 +291,7 @@ return spec;}catch{return null;}}
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
    head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});highlightPosition(target);}else message(isQrEntry(record)?'진입 화면에 표시되는 공통 버튼입니다.':'연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
    const positionButton=head.firstElementChild;positionButton.classList.add('annotation-position-number');positionButton.title=String(record.number).padStart(2,'0')+'번 위치 보기';positionButton.setAttribute('aria-label',positionButton.title);
-   if(canEdit()&&!record.previewOnly)head.append(button('수정',()=>edit(record)),button('삭제',()=>{dialog.replaceChildren(element('h2','설명을 삭제할까요?'),element('p','이 설명에 달린 댓글도 화면에서 함께 제외됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
+   if(canEdit())head.append(button('수정',()=>edit(record)),button('삭제',()=>{dialog.replaceChildren(element('h2','설명을 삭제할까요?'),element('p','이 설명에 달린 댓글도 화면에서 함께 제외됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
    card.append(head,descriptionBody(record.text),element('small',(record.author||'')+(record.created?' · '+format(record.created):'')+(record.updated?' · 수정 '+format(record.updated)+' / '+record.updatedBy:'')));
    if(!find(record))card.append(element('p',isQrEntry(record)?'진입 화면에 표시되는 공통 버튼입니다.':'연결 영역이 현재 화면에 표시되지 않습니다.','annotation-hint'));
    const comments=element('div',undefined,'annotation-comments');record.comments.forEach(comment=>{const item=element('div',undefined,'annotation-comment');item.append(element('strong',comment.author+' · '+format(comment.created)),element('p',comment.text,'annotation-text'));
