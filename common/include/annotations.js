@@ -192,7 +192,8 @@ return spec;}catch{return null;}}
   '카메라 전환 버튼': '[data-qr-facing]',
   '선택한 방한 상태·날짜': '.qr-camera-top > div',
   '뒤로가기': '.qr-camera-top .qr-back',
-  '스캔 처리 결과 토스트': '#qr-feedback'
+  '스캔 처리 결과 토스트': '#qr-feedback',
+  '스캔 처리 결과 토스트 팝업': '#qr-feedback'
  };
  function find(record){try{
   if(['PRE-12','JNL-03'].includes(route())){
