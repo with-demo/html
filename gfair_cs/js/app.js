@@ -42,7 +42,7 @@ const O=(a,v)=>a.map(t=>`<option ${v===t?'selected':''}>${E(t)}</option>`).join(
 const I=(n,t='text',v='',x='')=>`<input name="${E(n)}" type="${t}" value="${E(v)}" ${x}>`;
 const F=(label,control,required=false,wide=false)=>`<label class="field ${wide?'wide':''}"><span>${E(label)}${required?'<em>필수</em>':''}</span>${control}</label>`;
 function toast(msg){if(/(?:저장|수정|변경|반영|적용|등록|다운로드|갱신|새로고침|발급|완료)했습니다[.!]?|현재 탭에만 반영됩니다/.test(String(msg)))return;const el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(timer);timer=setTimeout(()=>el.hidden=true,4500)}
-function nav(id){if(!map.has(id)&&id!=='screens')return toast('해당 화면을 찾을 수 없습니다.');if(location.hash==='#'+id)render();else location.hash=id}
+function nav(id){if(!map.has(id)&&id!=='screens')return toast('해당 화면을 찾을 수 없습니다.');if(location.hash==='#'+id)render();else if(confirmSurveyExit())location.hash=id}
 function journalSubmittedAt(){const parts=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());const value=type=>parts.find(p=>p.type===type).value;return `${value('year')}-${value('month')}-${value('day')} ${value('hour')}:${value('minute')}`}
 function log(action,target){logs.unshift({time:new Date().toLocaleString('ko-KR'),action,target})}
 function top(){return window.GFAIR_INCLUDE.header({event,role,roles,button:B,link:A,escape:E})}
@@ -724,10 +724,20 @@ function confirmSurveyExit(){
  return true;
 }
 for(const eventType of ['input','change']){
- root.addEventListener(eventType,event=>{
+ document.addEventListener(eventType,event=>{
   if(event.target.closest('#survey-editor')&&!event.target.matches(':disabled'))surveyEditorDirty=true;
  },true);
 }
+document.addEventListener('click',event=>{
+ if(!surveyHasUnsavedChanges()||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ const link=event.target.closest('a[href]');
+ if(!link||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
+ const next=new URL(link.href,location.href);
+ if(next.origin!==location.origin||next.pathname!==location.pathname||next.search!==location.search||!next.hash||next.hash===location.hash||!map.has(next.hash.slice(1)))return;
+ if(confirmSurveyExit())return;
+ event.preventDefault();
+ event.stopImmediatePropagation();
+},true);
 window.addEventListener('hashchange',event=>{
  if(!surveyHasUnsavedChanges()||new URL(event.oldURL).hash===location.hash)return;
  if(confirmSurveyExit())return;
