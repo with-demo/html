@@ -2,6 +2,8 @@
  const app=document.getElementById('app');
  if(!app)return;
  const base=new URL('.',document.currentScript.src);
+ const policyProject=document.body.dataset.project==='gfair_cs';let policyNavigating=false;
+ function openPlanningPolicy(replace=false){if(policyNavigating)return;policyNavigating=true;const url=new URL('../../gfair_cs/planning-policy.html',base),route=decodeURIComponent(location.hash.slice(1));url.searchParams.set('from',route&&route!=='screens'?route:document.body.dataset.screen||'MON-01');if(replace)location.replace(url.href);else location.assign(url.href);}
  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/spec-panel.css?v=description-height-20261021-6',base);document.head.append(css);
  const toolbar=document.createElement('div');toolbar.className='ui-spec-toolbar';toolbar.hidden=true;
  toolbar.innerHTML='<div class="ui-spec-identity"><strong>With / 기획팀 SB</strong><select class="ui-spec-screen-picker" data-spec="screen" aria-label="목업 화면 선택"></select><button type="button" data-spec="screen-search">화면검색</button><span class="ui-spec-preview">예시 데이터 · 검토용</span></div><div class="ui-spec-actions"><label>사용구분 <select aria-label="사용구분"></select></label><button type="button" data-spec="close">닫기</button><span class="ui-spec-status" role="status"></span></div>';
@@ -15,7 +17,7 @@
    const section=document.createElement('optgroup');section.label=group.name;
    group.screens.forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+screen.title;section.append(option);});screenPicker.append(section);
   });
-  const overview=document.createElement('option');overview.value='screens';overview.textContent='SCREEN-LIST : 전체 화면 목록';screenPicker.append(overview);
+  if(!policyProject){const overview=document.createElement('option');overview.value='screens';overview.textContent='SCREEN-LIST : 전체 화면 목록';screenPicker.append(overview);}
  }
  refreshScreenPicker();
  const layout=document.createElement('div');layout.className='ui-spec-layout';app.before(toolbar,layout);layout.append(app);
@@ -33,6 +35,7 @@
   // Former overview copy must not reappear inside the mockup after removing the panel content.
   app.querySelectorAll('#content .pagehead .subtitle,#content .management-note,#content .attendance-demo-note,#content .statistics-footnote,#content .notice-save-note,#content .notice-file-note').forEach(el=>{el.dataset.descriptionOverview='';});
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen,overview=route==='screens';
+  if(policyProject&&overview){openPlanningPolicy(true);return;}
   toolbar.hidden=false;panel.hidden=closed||overview;screenPicker.value=route;
   ['close','numbers'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview;});status.hidden=overview;
   layout.classList.toggle('with-spec',!closed&&!overview);layout.classList.toggle('spec-full',!closed&&!overview&&full);
@@ -46,7 +49,7 @@
  }
  toolbar.addEventListener('click',event=>{
   const action=event.target.dataset.spec;
-  if(action==='screen-search'){full=false;location.hash='screens';}
+  if(action==='screen-search'){if(policyProject){openPlanningPolicy();return;}full=false;location.hash='screens';}
   if(action==='close'){closed=!closed;full=false;sessionStorage.setItem(visibilityKey,String(!closed));}
   if(action==='numbers'){numbers=!numbers;sessionStorage.setItem(numbersKey,String(numbers));}
   sync();
