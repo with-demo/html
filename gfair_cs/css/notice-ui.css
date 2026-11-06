@@ -56,3 +56,5 @@
 #app #content .notice-board[data-notice-view="detail"] .notice-detail{grid-template-columns:120px minmax(0,1fr) 120px minmax(0,1fr)}#app #content .notice-board[data-notice-view="detail"] .notice-detail>.notice-wide{grid-column:2/-1}@media(max-width:850px){#app #content .notice-board[data-notice-view="detail"] .notice-detail{grid-template-columns:100px minmax(0,1fr)}}
 
 #app #content .notice-editor .notice-form-grid.write-form-rows{gap:0;padding:0}
+
+#app #content .notice-editor .write-form-controls>input[name="title"]{width:100%;max-width:100%;box-sizing:border-box}

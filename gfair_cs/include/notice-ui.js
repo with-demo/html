@@ -1,6 +1,6 @@
 (()=>{
  const app=document.getElementById('app');if(!app)return;
- const base=document.currentScript.src,css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/notice-ui.css?v=notice-editor-unified-20261106',base);document.head.append(css);
+ const base=document.currentScript.src,css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/notice-ui.css?v=title-full-width-20261106',base);document.head.append(css);
  const E=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const titles=['행사 운영 및 참가 안내','상담일지 작성 안내','바이어 현장 도착 및 출석 안내','상담 일정 확인 안내','통역원 사전 준비 안내','참가기업 부스 운영 안내','구매상담 진행 안내','수출상담 자료 준비 안내','행사장 이용 안내','만족도 설문 참여 안내','현장 매칭 안내','상담 후속 업무 안내'];
  const sampleContent='G-FAIR KOREA 행사 운영 안내 · 기획 검토용 파일입니다.';
