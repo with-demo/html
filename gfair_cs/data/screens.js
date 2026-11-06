@@ -3531,3 +3531,5 @@ for(const [id,title,fields,prefix] of [['BAS-06','국내 바이어 관리 상세
 (()=>{for(const id of ["EVT-01","PRE-01","EVT-02"]){const s=GFAIR_SCREENS.flatMap(g=>g.screens).find(s=>s.id===id);if(s?.ui?.columns&&!s.ui.columns.includes("연락처"))s.ui.columns.splice(1,0,"연락처");}})();
 
 ;(()=>{const g=window.GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id==='SET-03'));const old=g.screens.find(s=>s.id==='SET-03');old.title='메뉴 접근 로그';g.screens.splice(g.screens.indexOf(old)+1,0,{...old,id:'SET-19',title:'개인정보 접속 이력',summary:'개인정보 조회 및 처리 이력을 조회합니다.',ui:{...old.ui,columns:['접속 일시','사용자','사용구분','메뉴명','작업 이력','정보주체','IP']},rules:['관리자만 조회하며 이력 수정·삭제는 제공하지 않습니다.','개인정보 처리 이력을 접속 일시 최신순으로 표시합니다.']});})();
+
+(()=>{const all=window.GFAIR_SCREENS.flatMap(g=>g.screens),list=all.find(s=>s.id==='NTC-01'),detail=all.find(s=>s.id==='NTC-04');list.ui.filters=['연도','대상','통합검색'];list.ui.columns=['No.','연도','제목','대상','작성자','등록일'];detail.ui.fields=[['상단 공지','예 / 아니오'],['연도','전체 또는 진행·종료 행사 연도'],['대상','전체 / 운영용역사 / 구매바이어 / 통역원'],['제목','필수 / 최대 200자'],['내용','필수'],['첨부파일','기존 확장자·용량 정책 유지']];})();
