@@ -144,7 +144,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-builder-head + .survey-group { margin-top:0; }
 .survey-builder .survey-group > summary { overflow-wrap:anywhere; border-radius:8px; }
 .survey-builder .survey-group[open] > summary { border-radius:8px 8px 0 0; }
-.survey-builder .survey-question-editor { --survey-delete-inset:24px; border:1px solid #d2d2d2; border-radius:8px; background:#fff; }
+.survey-builder .survey-question-editor { --survey-delete-inset:20px; border:1px solid #d2d2d2; border-radius:8px; background:#fff; }
 .survey-builder .survey-question-editor > summary { position:relative; padding:12px 14px; border-radius:7px; }
 .survey-builder .survey-question-editor[open] > summary { border-radius:7px 7px 0 0; border-bottom:1px solid var(--line); }
 .survey-builder .survey-question-body { padding-inline:14px; }
