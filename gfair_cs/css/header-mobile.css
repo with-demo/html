@@ -1,0 +1,12 @@
+/* 모바일 헤더: 기존 QR의 권한·대상·별도 창 연결은 그대로 사용한다. */
+.topbar .account-links a.header-qr-scan{display:none}
+@media(max-width:800px){
+ .topbar{padding:10px 12px;gap:8px}
+ .topbar .togglemenu{align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px}
+ .topbar .togglemenu :is(svg,i){width:21px;height:21px;flex:none}
+ .topbar .header-action-label,.topbar .account-divider{display:none}
+ .topbar .account-links{gap:4px;justify-content:flex-end}
+ .topbar .account-links :is(a[href="#NTC-07"],button[data-action="logout"],a.header-qr-scan){display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px}
+ .topbar .account-links a.header-qr-scan :is(svg,i){width:20px;height:20px;flex:none}
+ .qr-floating,.qr-travel-mobile,.sidebar>.qr-travel-shortcut{display:none!important}
+}
