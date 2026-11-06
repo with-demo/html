@@ -609,8 +609,8 @@ function surveyQuestionSettings(v,gi,qi,q){
  return '<div class="field survey-condition-field"><div class="survey-condition-heading">'+
   '<label class="check"><input type="checkbox" name="'+name+'" +'+(eligible?'':'disabled ')+(v.branchEnabled?'checked':'')+'> 응답에 따라 문항 이동</label>'+
   '<details class="survey-condition-help"><summary aria-label="응답에 따라 문항 이동 도움말">i</summary>'+
-  '<p>보기별로 이동할 문항을 지정할 수 있습니다. 지정하지 않은 보기는 기본 순서대로 다음 문항으로 진행합니다.'+
-  (eligible?'':' 단일응답형과 척도형에서 설정할 수 있습니다.')+'</p></details></div></div>'+
+  '<p><span>보기별로 이동할 문항을 지정할 수 있습니다.</span><span>지정하지 않은 보기는 기본 순서대로 다음 문항으로 진행합니다.</span>'+
+  (eligible?'':'<span>단일응답형과 척도형에서 설정할 수 있습니다.</span>')+'</p></details></div></div>'+
   (legacy?'<div class="survey-legacy-condition">'+F('기존 표시 조건','<select name="when-'+gi+'-'+qi+'"><option value="">항상 표시</option>'+surveyConditionOptions(q,gi,qi).map(o=>'<option value="'+E(o.value)+'"'+(o.value===legacy?' selected':'')+'>'+E(o.label)+'</option>').join('')+'</select>')+'</div>':'');
 }
 function surveyBranchField(v,gi,qi,oi,options){
