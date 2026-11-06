@@ -311,3 +311,15 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 @media (max-width:520px) {
   .survey-condition-help > p { right:-80px; width:min(360px, 75vw); }
 }
+
+.survey-group-body > .survey-question-add {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  min-height:44px;
+  margin-top:14px;
+  border-color:transparent;
+  background:#f0f0f0;
+}
+.survey-group-body > .survey-question-add:hover:not(:disabled) { background:#e8e8e8; }
