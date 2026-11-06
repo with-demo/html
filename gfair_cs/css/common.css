@@ -184,12 +184,14 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   align-items:center;
   gap:8px;
 }
-.survey-builder .survey-question-body > .field:first-child > span,
-.survey-builder .survey-option-heading {
+#app #content .survey-builder .survey-question-body > .field:first-child > span,
+#app #content .survey-builder .survey-option-heading {
   font-size:15px;
   font-weight:700;
+  line-height:1.4;
 }
-.survey-option-heading { margin:14px 0 8px; }
+.survey-builder .survey-option-edit { padding-top:10px; }
+.survey-option-heading { margin:0 0 8px; }
 .survey-builder .survey-option-edit > .row {
   display:grid;
   grid-template-columns:minmax(0, 1fr) max-content 32px;
