@@ -245,7 +245,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 }
 .survey-group-summary > span { flex:none; }
 .survey-group-summary > input { width:min(100%, 440px); min-width:0; }
-.survey-group-actions { justify-content:flex-end; }
+.survey-group-actions { display:inline-flex; align-items:center; gap:6px; margin-inline-start:auto; }
 
 .survey-question-summary {
   display:inline-flex;
