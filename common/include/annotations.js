@@ -214,6 +214,13 @@ return spec;}catch{return null;}}
   const matches=[...scope.querySelectorAll('button,a[role="button"],input[type="button"],input[type="submit"]')].filter(el=>normalize(el.textContent||el.value)===normalize(label));
   return matches.length===1?matches[0]:null;
  }
+ function showSurveyBuilder(target){
+  if(!['SET-11','SET-12'].includes(route())||!target?.matches('.survey-builder'))return false;
+  const firstGroup=target.querySelector('.survey-group');
+  if(firstGroup)firstGroup.open=true;
+  target.scrollIntoView({block:'start',behavior:'instant'});
+  return true;
+ }
  function highlightPosition(target){
   if(['PRE-12','JNL-03'].includes(route())){
    selectionScope()?.querySelector('.qr-annotation-selected')?.classList.remove('qr-annotation-selected');
@@ -241,7 +248,7 @@ return spec;}catch{return null;}}
    if(rect.right<=bounds.left||rect.left>=bounds.right||rect.bottom<=bounds.top||rect.top>=bounds.bottom)return;
    const position=pinPosition(rect,record.anchor,bounds);if(!position)return;let {left,top}=position;
    let moved=false;
-   const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});if(['PRE-12','JNL-03'].includes(route()))highlightPosition(find(record));});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
+   const pin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();if(moved){moved=false;return;}selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});const target=find(record);if(!showSurveyBuilder(target)&&['PRE-12','JNL-03'].includes(route()))highlightPosition(target);});});pin.className='annotation-pin'+(selected===record.id?' selected':'');if(String(record.number).includes('-')){pin.style.minWidth='36px';pin.style.width='auto';}pin.style.left=left+'px';pin.style.top=top+'px';pin.setAttribute('aria-label',record.number+'번 설명 보기');overlay.append(pin);
    if(canEdit()){
     pin.classList.add('annotation-pin-movable');pin.title='클릭: 설명 보기 / 드래그: 핀 위치 저장';
     pin.addEventListener('pointerdown',event=>{if(!canEdit()||event.button!==0||picking||savingPins.has(record.id))return;event.preventDefault();event.stopPropagation();dragging={id:record.id,pointer:event.pointerId,x:event.clientX,y:event.clientY,left,top,screen:route(),offsetX:left-rect.left-rect.width*record.anchor.x,offsetY:top-rect.top-rect.height*record.anchor.y};pin.setPointerCapture(event.pointerId);});
@@ -289,7 +296,7 @@ return spec;}catch{return null;}}
   if(!records().length&&!picking){if(store.loading||(!store.loaded&&!store.error))section.append(element('p','디스크립션을 불러오는 중입니다.','annotation-guide'));else if(!store.error)section.append(element('p',canEdit()?'영역에 설명 추가 버튼을 눌러 시작하세요.':'아직 작성된 설명이 없습니다.','annotation-guide'));}
   records().forEach(record=>{
    const card=element('article',undefined,'annotation-card'+(record.id===selected?' selected':''));card.id='annotation-'+record.id;const head=element('div',undefined,'annotation-actions');
-   head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){target.scrollIntoView({block:'center',behavior:'smooth'});highlightPosition(target);}else message(isQrEntry(record)?'진입 화면에 표시되는 공통 버튼입니다.':'연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
+   head.append(button(String(record.number).padStart(2,'0'),()=>{selected=record.id;const target=find(record);if(target){if(!showSurveyBuilder(target)){target.scrollIntoView({block:'center',behavior:'smooth'});highlightPosition(target);}}else message(isQrEntry(record)?'진입 화면에 표시되는 공통 버튼입니다.':'연결 영역이 현재 화면에 없습니다. 사용구분이나 화면 구성을 확인해 주세요.');render();}));
    const positionButton=head.firstElementChild;positionButton.classList.add('annotation-position-number');positionButton.title=String(record.number).padStart(2,'0')+'번 위치 보기';positionButton.setAttribute('aria-label',positionButton.title);
    if(canEdit())head.append(button('수정',()=>edit(record)),button('삭제',()=>{dialog.replaceChildren(element('h2','설명을 삭제할까요?'),element('p','이 설명에 달린 댓글도 화면에서 함께 제외됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
    card.append(head,descriptionBody(record.text),element('small',(record.author||'')+(record.created?' · '+format(record.created):'')+(record.updated?' · 수정 '+format(record.updated)+' / '+record.updatedBy:'')));
@@ -300,7 +307,7 @@ return spec;}catch{return null;}}
    if(record.comments.length)card.append(comments);section.append(card);
   });
   const version=panel.querySelector('.ui-spec-version');if(version)version.after(section);else panel.prepend(section);panel.scrollTop=scrollTop;if(focusId){const input=document.getElementById(focusId)?.querySelector(focusSelector);input?.focus({preventScroll:true});if(input&&selection)input.setSelectionRange(...selection);}pins();
-  if(pending){pendingPlanningTarget=null;const card=document.getElementById('annotation-'+pending.id);card.tabIndex=-1;card.focus({preventScroll:true});card.scrollIntoView({block:'nearest'});const target=find(pending);if(target)target.scrollIntoView({block:'center'});}
+  if(pending){pendingPlanningTarget=null;const card=document.getElementById('annotation-'+pending.id);card.tabIndex=-1;card.focus({preventScroll:true});card.scrollIntoView({block:'nearest'});const target=find(pending);if(target&&!showSurveyBuilder(target))target.scrollIntoView({block:'center'});}
  }
  function schedule(){if(queued)return;queued=true;requestAnimationFrame(render);}
  document.addEventListener('click',event=>{if(!picking||!canEdit()||route()==='screens')return;if(route()==='NTC-07'&&!event.target.closest('#app,.account-alert-stack'))return;const scope=selectionScope();if(!scope?.contains(event.target)||event.target.closest('[data-popup-description],.annotation-pin,.ui-spec-pin'))return;const target=selectionTarget(event.target,scope);if(!target)return;event.preventDefault();event.stopImmediatePropagation();const selector=selectorFor(target);if(!selector||scope.querySelectorAll(selector).length!==1||scope.querySelector(selector)!==target){message('선택한 영역을 정확히 연결하지 못했습니다. 입력칸이나 항목명을 다시 선택해 주세요.');return;}const rect=target.getBoundingClientRect();edit(null,{selector,sample:target.textContent.replace(/\s+/g,' ').trim().slice(0,60),x:Math.max(0,Math.min(1,(event.clientX-rect.left)/(rect.width||1))),y:Math.max(0,Math.min(1,(event.clientY-rect.top)/(rect.height||1)))});},true);
