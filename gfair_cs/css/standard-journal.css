@@ -1,0 +1,17 @@
+/* 기존 모노톤 상담일지 표·폼 규칙을 그대로 따른다. */
+.standard-journal-form [hidden]{display:none!important}
+.standard-journal-form .standard-company-confirm{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px}
+.standard-journal-form .standard-company-confirm span{font-size:12px;color:#666}
+.standard-journal-form .standard-money{display:flex;align-items:center;gap:8px;max-width:100%}
+.standard-journal-form .standard-money input{min-width:0;flex:1;text-align:right}
+.standard-journal-form .standard-money span{white-space:nowrap}
+.standard-journal-form .standard-unknown{display:flex;align-items:center;gap:7px;margin-top:8px}
+.standard-journal-form .standard-unknown input{width:auto}
+.standard-journal-form .standard-journal-section>h2{margin-bottom:14px}
+.standard-journal-form .standard-journal-section .journal-control{display:flex;flex-direction:column;align-items:stretch;gap:6px}
+.standard-journal-form [data-standard-company-search]{margin-bottom:8px}
+.standard-journal-form .hint{margin-top:7px;white-space:normal}
+.standard-journal-form #standard-memo-count{font-size:12px;margin-top:7px;color:#666}
+.standard-journal-form textarea[name=content]{min-height:170px}
+.standard-journal-form .journal-pair:only-child{width:100%;flex-basis:100%}
+@media(max-width:700px){.standard-journal-form .journal-radios{flex-wrap:wrap;gap:10px}.standard-journal-form .standard-company-confirm{align-items:flex-start}.standard-journal-form .journal-control{min-width:0}}
