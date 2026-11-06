@@ -150,7 +150,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-builder .survey-question-body { padding-inline:14px; }
 .survey-builder .survey-question-controls {
   display:grid;
-  grid-template-columns:minmax(0, 1.15fr) minmax(0, .8fr) minmax(0, 1.05fr);
+  grid-template-columns:minmax(0, 340px) max-content minmax(0, 1fr);
   align-items:center;
   gap:12px 16px;
   padding:12px;
@@ -351,15 +351,9 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   .survey-builder .survey-question-controls > .survey-condition-field {
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     min-height:40px;
     border-inline-start:1px solid var(--line);
-    padding-inline:8px;
-  }
-}
-
-@media (min-width:801px) {
-  .survey-builder .survey-question-controls:not(:has(> .survey-condition-field)) {
-    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+    padding-inline:16px 0;
   }
 }
