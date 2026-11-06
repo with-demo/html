@@ -137,3 +137,92 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 /* 목록 체크박스 열 공통 너비 */
 #app #content table tr>.list-checkbox-column,#dialog-content table tr>.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important;box-sizing:border-box;text-align:center;padding-left:8px!important;padding-right:8px!important}#content table col.list-checkbox-column,#dialog-content table col.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important}
+
+/* Survey registration and detail editor */
+.survey-builder { margin-bottom:20px; }
+.survey-builder-head { padding-inline:0; border-bottom:0; flex-wrap:wrap; }
+.survey-builder-head + .survey-group { margin-top:0; }
+.survey-builder .survey-group > summary { overflow-wrap:anywhere; }
+.survey-builder .survey-question-editor { border:0; border-radius:0; border-top:1px solid var(--line); }
+.survey-builder .survey-question-editor > summary { padding:12px 14px; }
+.survey-builder .survey-question-body { padding-inline:14px; }
+.survey-builder .survey-question-controls {
+  display:grid;
+  grid-template-columns:minmax(120px, 1fr) auto minmax(180px, 2fr);
+  align-items:end;
+  gap:12px 16px;
+  padding:12px;
+  border-radius:6px;
+  background:#f5f5f5;
+}
+.survey-builder .survey-question-controls > .field { min-width:0; }
+.survey-builder .survey-question-controls > .check {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:40px;
+  white-space:nowrap;
+}
+.survey-builder select { min-width:0; }
+.survey-badge {
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:999px;
+  background:#eee;
+  font-size:.75rem;
+  line-height:1.5;
+  white-space:nowrap;
+}
+.survey-badge[hidden] { display:none; }
+.survey-required-badge { margin-inline:4px; background:#333; color:#fff; }
+.survey-option-heading { margin:14px 0 8px; font-weight:600; }
+.survey-builder .survey-option-edit > .row {
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) max-content 94px;
+  align-items:end;
+  gap:8px;
+}
+.survey-builder .survey-option-edit .field { min-width:0; }
+.survey-builder .survey-option-edit .check { display:flex; align-items:center; gap:4px; min-height:40px; }
+.survey-builder .survey-option-edit [data-action="sur-option-delete"] { width:100%; }
+@media (max-width:800px) {
+  .survey-builder .survey-question-controls { grid-template-columns:minmax(0, 1fr) auto; }
+  .survey-builder .survey-question-controls > .field:last-child { grid-column:1 / -1; }
+}
+@media (max-width:520px) {
+  .survey-builder .survey-option-edit > .row { grid-template-columns:minmax(0, 1fr) 94px; }
+  .survey-builder .survey-option-edit .field { grid-column:1 / -1; }
+}
+
+.survey-condition-heading { display:flex; align-items:center; gap:6px; }
+.survey-condition-help { position:relative; flex:none; }
+.survey-condition-help > summary {
+  display:grid;
+  place-items:center;
+  width:18px;
+  height:18px;
+  border:1px solid #777;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:600;
+  line-height:1;
+}
+.survey-condition-help > summary::-webkit-details-marker { display:none; }
+.survey-condition-help > p {
+  position:absolute;
+  z-index:2;
+  top:calc(100% + 6px);
+  right:-32px;
+  width:min(230px, 60vw);
+  margin:0;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  color:#333;
+  box-shadow:0 3px 10px #0002;
+  font-size:.75rem;
+  font-weight:400;
+}
+.survey-builder .survey-question-editor { overflow:visible; }
