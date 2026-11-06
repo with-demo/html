@@ -1,49 +1,46 @@
-// 국내바이어 참가 명단 검토안. 예시 회원만 사용하며 실제 회원 조회는 서버의 정확 일치 확인으로 연결한다.
+// 등록 즉시 참가·계정/QR 사용. 제외 후 재등록 시 같은 행사 발급 정보를 재사용한다.
 (()=>{'use strict';
-const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),digits=v=>String(v||'').replace(/\D/g,'');
-const controllers=new Map();
-// 작성 편의를 위한 해외바이어 최종확정 미리보기. 복원 시 false로 전환.
-const PRE01_FINALIZED_PREVIEW=false;
-window.GFAIR_DOMESTIC_REVIEW={lockedRows:(year,route='EVT-01')=>controllers.get(route)?.lockedRows(year)||null,eventView:(row,route='EVT-01')=>controllers.get(route)?.view(row),isFinalized:(route,year)=>controllers.get(route)?.done(year)||false,create(ctx,base,kind='domestic'){
- const cfg=kind==='overseas'?{route:'PRE-01',source:'BAS-03',profile:'BAS-04',role:'exportOperator',prefix:'F',title:'해외바이어',yearIndex:4,foreign:true}:kind==='interpreter'?{route:'EVT-02',source:'BAS-07',profile:'BAS-08',role:'exportOperator',prefix:'I',title:'통역원',yearIndex:3,interpreter:true}:{route:'EVT-01',source:'BAS-05',profile:'BAS-06',role:'buyOperator',prefix:'K',title:'국내바이어',yearIndex:3};
- const source=()=>ctx.source(cfg.source),api=()=>window.GFAIR_OVERSEAS_BUYER_DETAIL,participation=()=>window.GFAIR_PARTICIPATION;
- const operator=()=>ctx.role()===cfg.role,active=()=>location.hash==='#'+cfg.route;
- let checked=null,confirmed=new Map();
- // 기획 검토용 확정 상태는 현재 페이지 메모리에만 보관한다.
- try{sessionStorage.removeItem('gfair-domestic-finalized-20261101');}catch{}
- const rawView=row=>api().eventView(row,source().rows,cfg.profile,ctx.year());
- const view=row=>{const p=rawView(row);return confirmed.has(String(ctx.year()))?p:{...p,accountId:'',accountPw:''};};
-
- const lockedRows=year=>confirmed.get(String(year))?.rows.map(r=>r.slice())||null;
- controllers.set(cfg.route,{view,lockedRows,done:year=>confirmed.has(String(year))||(cfg.foreign&&PRE01_FINALIZED_PREVIEW)});
- const people=()=>lockedRows(ctx.year())||source().rows.filter(r=>participation().participating(cfg.source,r,ctx.year()));
- const signature=()=>people().map(r=>r[0]).sort().join('|');
- const done=()=>confirmed.has(String(ctx.year()))||(cfg.foreign&&PRE01_FINALIZED_PREVIEW);
- const button=(action,text,primary=false,disabled=false)=>'<button type="button" class="btn'+(primary?' primary':'')+'" data-domestic-action="'+action+'"'+(disabled?' disabled':'')+'>'+text+'</button>';
- const selected=()=>[...document.querySelectorAll('[data-'+(cfg.foreign?'pre01':'event')+'-check]:checked')].map(n=>cfg.foreign?n.dataset.pre01Check:n.dataset.eventCheck);
- function invalidate(){confirmed.delete(String(ctx.year()));}
- function modal(title,body){ctx.modal(title,body,'close','확인',cfg.route+'-p39');document.querySelector('#dialog-content > .dialogactions')?.remove();}
- function addDialog(){window.GFAIR_EVENT_MEMBER_UPLOAD.open(cfg,{modal,source,year:ctx.year,canUse:()=>operator()&&!done()&&active(),setRows:ctx.setRows,invalidate,refresh:ctx.refresh});}
- function notice(){if(ctx.role()==='admin')return '';const count=people().length,finalized=done();return '<section class="panel domestic-review-notice"><div class="domestic-review-notice-head"><strong>참가 대상 검토 안내</strong><div class="domestic-status">'+(operator()?button('finalize',finalized?'최종확정 완료':'최종확정',true,!count||finalized):'')+'</div></div><p>참가할 '+(cfg.interpreter?'통역원을':'바이어를')+' 검토한 후 [최종확정]을 누르면 '+(cfg.foreign?'QR코드가 생성됩니다.':'계정과 QR코드가 생성됩니다.')+'<br>참가확정 이후에는 참가자 항목을 변경할 수 없으니, 명단을 최종 확인한 후 확정해 주세요.'+(cfg.foreign?'<br><br>※ 참가확정이후 방한상태를 관리할 수 있습니다.':'')+'</p></section>';}
- function render(route){const html=base.list(route);if(route!==cfg.route)return html;const finalized=done(),flow=notice();
-  let list=html.replace(/<button type="button" class="btn" data-event-action="issue">.*?<\/button>/,'').replace(/<button type="button" class="btn" data-event-action="exclude">.*?<\/button>/,'');
-  list=list.replace('<th scope="col">계정발급</th>','').replace(/<td><button type="button" class="btn" data-event-action="issue-one"[^>]*>계정발급<\/button><\/td>/g,'').replace('<th scope="col">소속기업</th>','<th scope="col">기업</th>').replace('<th scope="col">발급 ID</th>','<th scope="col">'+(cfg.interpreter?'발급 ID':'발급ID')+'</th>').replace('<th scope="col">QR발급</th>','<th scope="col">QR</th>').replace('colspan="7"','colspan="6"').replace('선택 엑셀 다운로드','엑셀 다운로드');
-  list=list.replace(/(data-event-action="qr"[^>]*>)(QR발급)(<\/button>)/g,'$1QR보기$3').replace(/aria-label="([^"]*) QR발급"/g,'aria-label="$1 QR보기"');
-  if(!finalized)list=list.replace(/<button[^>]*data-event-action="qr"[^>]*>[\s\S]*?<\/button>/g,'미발급').replace(/<button[^>]*data-event-action="(?:qr-download|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');
-  if(!cfg.foreign){list=list.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()&&!finalized?button('add',cfg.interpreter?'통역원 추가':'바이어 추가'):''));const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(operator()&&!finalized?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',false,true):'')+'</div>';list=list.replace('<div class="tablewrap">',strip+'<div class="tablewrap">');}
-
-  if(cfg.foreign){list=html.replace(/<button[^>]*data-pre01-action="exclude"[^>]*>[\s\S]*?<\/button>/g,'').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');if(!finalized)list=list.replace(/<button[^>]*data-pre01-action="qr"[^>]*>[\s\S]*?<\/button>/g,'미발급').replace(/<button[^>]*data-pre01-action="(?:qr-selected|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');list=list.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(!finalized&&operator()?button('add','바이어 추가'):''));list=list.replace('<span data-pre01-bulk-extra></span>',!finalized&&operator()?button('exclude','선택 바이어 제외'):'');return list;}
-  return flow+list;
- }
- document.addEventListener('click',async ev=>{
-  const b=ev.target.closest('[data-domestic-action]');if(!b||!active())return;ev.preventDefault();ev.stopImmediatePropagation();if(!operator())return;if(done())return ctx.toast('참가확정 이후에는 참가자 항목을 변경할 수 없습니다.');
-  try{const action=b.dataset.domesticAction;
-   if(action==='add'){addDialog();return;}
-   if(action==='exclude'){const keys=new Set(selected()),rows=people().filter(r=>keys.has(r[0]));if(!rows.length){ctx.toast('제외할 대상을 선택해 주세요.');return;}if(!participation().confirmExclude(rows.map(row=>row[1])))return;for(const row of rows)participation().set(cfg.source,row,ctx.year(),false);invalidate();ctx.refresh();return;}
-   if(action==='finalize'){const rows=people().slice(),snapshot=signature();if(!rows.length||done())return;const pending=cfg.foreign?[]:rows.filter(r=>!rawView(r).accountId);const names=rows.slice(0,10).map(r=>r[1]).join(', '),others=rows.length>10?' 외 '+(rows.length-10)+'명':'';if(!window.confirm(names+others+'\n총 '+rows.length+'명의 참가를 최종확정하고 '+(cfg.foreign?'QR코드를':'미발급 계정과 QR코드를')+' 생성하시겠습니까?\n참가확정 이후에는 참가자 항목을 변경할 수 없습니다.'))return;if(snapshot!==signature())throw Error('참가 명단이 변경되었습니다. 다시 확인해 주세요.');for(const row of pending)api().issueAccount(row,source().rows,cfg.profile,ctx.year());for(const row of rows){const p=rawView(row);GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+ctx.year()+'|'+(cfg.foreign?'OVERSEAS':cfg.interpreter?'INTERPRETER':'BUYER')+'|'+(cfg.foreign?row[0]:p.accountId),GFAIR_DOWNLOAD_NAMES.qrImage(p.name,cfg.foreign?row[0]:p.accountId));}const entry={rows:rows.map(r=>r.slice())};confirmed.set(String(ctx.year()),entry);ctx.refresh();ctx.toast(rows.length+'명 최종 참가 확정 및 '+(cfg.foreign?'QR 생성':'미발급 계정 발급')+'을 완료했습니다.');}
-  }catch(error){ctx.toast(error.message||'처리에 실패했습니다.');}
- },true);
- document.addEventListener('click',ev=>{if(!active()||done())return;const b=ev.target.closest('[data-event-action=qr],[data-event-action=qr-download],[data-event-action=qr-all]');if(!b)return;ev.preventDefault();ev.stopImmediatePropagation();ctx.toast('최종확정 후 QR코드를 확인할 수 있습니다.');},true);
- return {list:render,detail:base.detail,notice};
-}};
+ const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const controllers=new Map();
+ window.GFAIR_DOMESTIC_REVIEW={
+  lockedRows:()=>null,
+  isFinalized:()=>false,
+  isReady:(route,year)=>controllers.get(route)?.ready(year)||false,
+  eventView:(row,route='EVT-01')=>controllers.get(route)?.view(row),
+  create(ctx,base,kind='domestic'){
+   const cfg=kind==='overseas'?{route:'PRE-01',source:'BAS-03',profile:'BAS-04',role:'exportOperator',prefix:'F',title:'해외바이어',yearIndex:4,foreign:true}:kind==='interpreter'?{route:'EVT-02',source:'BAS-07',profile:'BAS-08',role:'exportOperator',prefix:'I',title:'통역원',yearIndex:3,interpreter:true}:{route:'EVT-01',source:'BAS-05',profile:'BAS-06',role:'buyOperator',prefix:'K',title:'국내바이어',yearIndex:3};
+   const source=()=>ctx.source(cfg.source),api=()=>window.GFAIR_OVERSEAS_BUYER_DETAIL,participation=()=>window.GFAIR_PARTICIPATION;
+   const operator=()=>ctx.role()===cfg.role,canExclude=()=>operator()||ctx.role()==='admin',active=()=>location.hash==='#'+cfg.route;
+   const people=(year=ctx.year())=>source().rows.filter(row=>participation().participating(cfg.source,row,year));
+   const view=row=>{const current=source();if(participation().participating(cfg.source,row,ctx.year()))api().syncParticipation(row,current.rows,cfg.profile,ctx.year(),true);return api().eventView(row,current.rows,cfg.profile,ctx.year());};
+   controllers.set(cfg.route,{ready:year=>people(year).length>0,view});
+   const button=(action,label,disabled=false)=>'<button type="button" class="btn" data-domestic-action="'+action+'"'+(disabled?' disabled':'')+'>'+label+'</button>';
+   const selected=()=>[...document.querySelectorAll('[data-'+(cfg.foreign?'pre01':'event')+'-check]:checked')].map(n=>cfg.foreign?n.dataset.pre01Check:n.dataset.eventCheck);
+   function notice(){return ctx.role()==='admin'?'':'<section class="panel domestic-review-notice"><p>등록한 참가자는 행사 명단에 바로 표시되며 '+(cfg.foreign?'QR을 사용할 수 있습니다.':'계정과 QR이 자동 발급됩니다.')+' 제외한 참가자는 행사 명단에서 숨겨지고 '+(cfg.foreign?'QR이 미사용 처리됩니다.':'발급 계정과 QR이 미사용 처리됩니다.')+' 다시 추가하면 '+(cfg.foreign?'기존 고유코드의 QR을':'동일 행사에 발급했던 ID와 QR을')+' 재사용합니다.</p></section>';}
+   function render(route){
+    if(route!==cfg.route)return base.list(route);
+    const current=source();for(const row of people())api().syncParticipation(row,current.rows,cfg.profile,ctx.year(),true);
+    let html=base.list(route);
+    html=html.replace(/<td><button[^>]*data-event-action="issue-one"[^>]*>[\s\S]*?<\/button><\/td>/g,'');
+    html=html.replace(/<button[^>]*data-event-action="(?:issue|issue-one|exclude)"[^>]*>[\s\S]*?<\/button>/g,'').replace('<th scope="col">계정발급</th>','');
+    html=html.replace('<th scope="col">소속기업</th>','<th scope="col">기업</th>').replace('<th scope="col">QR발급</th>','<th scope="col">QR</th>').replace('colspan="7"','colspan="6"').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');
+    if(cfg.foreign){
+     html=html.replace(/<button[^>]*data-pre01-action="exclude"[^>]*>[\s\S]*?<\/button>/g,'');
+     html=html.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()?button('add','바이어 추가'):''));
+     html=html.replace('<span data-pre01-bulk-extra></span>',canExclude()?button('exclude','선택 바이어 제외'):'');
+     return html;
+    }
+    html=html.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()?button('add',cfg.interpreter?'통역원 추가':'바이어 추가'):''));
+    const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(canExclude()?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',true):'')+'</div>';
+    return notice()+html.replace('<div class="tablewrap">',strip+'<div class="tablewrap">');
+   }
+   document.addEventListener('click',ev=>{
+    const b=ev.target.closest('[data-domestic-action]');if(!b||!active())return;ev.preventDefault();ev.stopImmediatePropagation();
+    try{if(b.dataset.domesticAction==='add'){if(!operator())return;window.GFAIR_EVENT_MEMBER_UPLOAD.open(cfg,{modal(title,body){ctx.modal(title,body,'close','확인',cfg.route+'-p39');document.querySelector('#dialog-content > .dialogactions')?.remove();},source,year:ctx.year,canUse:()=>operator()&&active(),setRows:ctx.setRows,invalidate(){},refresh:ctx.refresh});}
+     else if(b.dataset.domesticAction==='exclude'){if(!canExclude())return;const keys=new Set(selected()),rows=people().filter(r=>keys.has(r[0]));if(!rows.length)return ctx.toast('제외할 대상을 선택해 주세요.');if(!participation().confirmExclude(rows.map(r=>r[1])))return;for(const row of rows)participation().set(cfg.source,row,ctx.year(),false);ctx.refresh();}
+    }catch(error){ctx.toast(error.message||'처리에 실패했습니다.');}
+   },true);
+   return {list:render,detail:base.detail,notice};
+  }
+ };
 })();

@@ -8,7 +8,7 @@
   const button=(action,label,extra='')=>'<button type="button" class="btn'+(action==='detail'?' list-name-link':'')+'" data-pre01-action="'+action+'" '+extra+'>'+label+'</button>';
   function list(entries){
    const next=ctx.scope();if(next!==scope){scope=next;selected.clear();}shown=entries.map(person);const keys=new Set(shown.map(p=>p.key));for(const key of selected)if(!keys.has(key))selected.delete(key);
-   const readOnly=ctx.getRole()==='interpreter',finalized=window.GFAIR_DOMESTIC_REVIEW?.isFinalized('PRE-01',ctx.year());
+   const readOnly=ctx.getRole()==='interpreter',finalized=window.GFAIR_DOMESTIC_REVIEW?.isReady('PRE-01',ctx.year());
    const canManageLodgings=['admin','exportOperator'].includes(ctx.getRole());
    const columns=['바이어명','연락처','기업명','국가',...(canManageLodgings?['숙소']:[]),'방한현황','최신기록일시',...(readOnly?[]:['QR'])];
    const tools=readOnly?'':'<div class="row event-participant-tools">'+(canManageLodgings?button('lodgings','숙소관리'):'')+button('excel','엑셀 다운로드')+(finalized?button('qr-selected','선택 QR다운로드')+button('qr-all','전체 QR다운로드'):'')+'</div>';
@@ -22,8 +22,8 @@
   function qr(p,filename=GFAIR_DOWNLOAD_NAMES.qrImage(p.name,p.code)){if(!p.code)throw Error('바이어코드를 확인해 주세요.');return GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+ctx.year()+'|OVERSEAS|'+p.code,filename);}
   document.addEventListener('change',e=>{if(!ctx.active()||ctx.getRole()==='interpreter')return;const box=e.target;if(box.matches('[data-pre01-check]')){box.checked?selected.add(box.dataset.pre01Check):selected.delete(box.dataset.pre01Check);sync();}if(box.matches('[data-pre01-all]')){document.querySelectorAll('.pre01-participant-list tbody tr:not([hidden]) [data-pre01-check]').forEach(b=>{b.checked=box.checked;box.checked?selected.add(b.dataset.pre01Check):selected.delete(b.dataset.pre01Check);});sync();}});
   document.addEventListener('pre01-page-change',sync);
-  document.addEventListener('click',async e=>{const b=e.target.closest('[data-pre01-action]');if(!b||!ctx.active()||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();const action=b.dataset.pre01Action;if(['status','qr','qr-selected','qr-all'].includes(action)&&!window.GFAIR_DOMESTIC_REVIEW.isFinalized('PRE-01',ctx.year()))return ctx.toast('최종확정 후 이용할 수 있습니다.');if(ctx.getRole()==='interpreter'&&action!=='detail')return;try{
-   if(action==='bulk-lodgings'){if(ctx.getRole()!=='exportOperator'||!window.GFAIR_DOMESTIC_REVIEW?.isFinalized('PRE-01',ctx.year()))return;const rr=chosen();if(rr.length)window.GFAIR_LODGINGS.openBulk(ctx,rr);return;}
+  document.addEventListener('click',async e=>{const b=e.target.closest('[data-pre01-action]');if(!b||!ctx.active()||document.body.classList.contains('annotation-picking'))return;e.preventDefault();e.stopImmediatePropagation();const action=b.dataset.pre01Action;if(['status','qr','qr-selected','qr-all'].includes(action)&&!window.GFAIR_DOMESTIC_REVIEW.isReady('PRE-01',ctx.year()))return ctx.toast('현재 행사 참가 대상을 확인해 주세요.');if(ctx.getRole()==='interpreter'&&action!=='detail')return;try{
+   if(action==='bulk-lodgings'){if(ctx.getRole()!=='exportOperator'||!window.GFAIR_DOMESTIC_REVIEW?.isReady('PRE-01',ctx.year()))return;const rr=chosen();if(rr.length)window.GFAIR_LODGINGS.openBulk(ctx,rr);return;}
    if(action==='lodgings'){if(['admin','exportOperator'].includes(ctx.getRole()))window.GFAIR_LODGINGS.open(ctx);return;}
    if(action==='exclude'){if(!['admin','exportOperator'].includes(ctx.getRole()))return;const rr=chosen();if(!rr.length)return;if(!window.GFAIR_PARTICIPATION.confirmExclude(rr.map(person=>person.name)))return;const master=ctx.master();rr.forEach(p=>{const row=master.find(row=>row[0]===p.key);if(row)window.GFAIR_PARTICIPATION.set('BAS-03',row,ctx.year(),false);});selected.clear();ctx.refresh();return;}
    if(action==='detail'){const p=shown.find(p=>p.key===b.dataset.key);if(p)ctx.detail(p.index);return;}

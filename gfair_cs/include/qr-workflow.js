@@ -18,7 +18,7 @@ const date=()=>new Intl.DateTimeFormat('ko-KR',{dateStyle:'full',timeZone:'Asia/
 function stop(){epoch++;cancelAnimationFrame(frame);media?.getTracks().forEach(t=>t.stop());media=null;busy=false;}
 function notice(text){const el=document.querySelector('#qr-feedback');if(el){el.hidden=false;el.textContent=text;}}
 function participantFor(type, code, step, year){
- if(type==='OVERSEAS')return get('BAS-03')?.ui.rows.find(row=>row[0]===code);
+ if(type==='OVERSEAS')return get('BAS-03')?.ui.rows.find(row=>row[0]===code&&window.GFAIR_PARTICIPATION?.participating('BAS-03',row,year));
  if(!attendanceStates.has(step)||!Object.hasOwn(attendanceProfiles,type))return;
  const [source,profile]=attendanceProfiles[type];
  const rows=get(source)?.ui.rows||[];
