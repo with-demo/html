@@ -5,6 +5,16 @@
  function targets(c){const self=c.self||{},out=[{id:'self',name:self.name||'',companyName:self.companyName||'',label:c.role==='interpreter'?'통역원':'국내 바이어',target:c.role==='interpreter'?'통역원':'국내 바이어'}];if(c.role==='interpreter')for(const b of c.buyers||[])out.push({id:b.id,name:b.name,country:b.country||'',companyName:b.companyName||'',label:b.name,target:'해외 바이어'});return out;}
  const key=(c,t)=>[c.year,c.role,c.self?.id,t.id].join('|');
  function questionnaire(c,t){const matches=c.questionnaires.filter(q=>String(q.year)===String(c.year)&&q.target===t.target);return matches.find(q=>q.active)||matches.find(q=>q.materialPending);}
+ function canParticipate(c,q,date=today()){
+  return !!c.openDate&&date>=c.openDate&&(!q?.start||date>=q.start);
+ }
+ function menuOpen(c){
+  const date=today();
+  return targets(c).some(t=>{
+   const q=questionnaire(c,t);
+   return !!q?.active&&!pending(q)&&canParticipate(c,q,date);
+  });
+ }
  function visible(v,answers,q,seen=new Set()){if(!v.visibleWhen)return true;const key=v.visibleWhen.question;if(seen.has(key))return false;seen.add(key);const a=answers[key],[gi,qi]=key.split('-').map(Number),source=q?.groups[gi]?.questions[qi];return (Array.isArray(a)?a:[a]).includes(String(v.visibleWhen.option))&&(!q||!!source&&visible(source,answers,q,seen));}
  function skippedQuestions(q,answers){
   const entries=q.groups.flatMap((g,gi)=>g.questions.map((v,qi)=>({v,key:gi+'-'+qi})));
@@ -26,8 +36,8 @@ function fields(q,d){let no=0;const skipped=skippedQuestions(q,d.answers);return
  function clearResolvedErrors(f,d){if(!ctx)return;const t=targets(ctx).find(t=>t.id===f.dataset.target),q=questionnaire(ctx,t);if(!q)return;f.querySelectorAll('[data-survey-question][aria-invalid="true"]').forEach(el=>{const k=el.dataset.surveyQuestion,[gi,qi]=k.split('-').map(Number),v=q.groups[gi]?.questions[qi];if(v&&(el.hidden||!visible(v,d.answers,q)||!answerError(v,d.answers[k],q.target==='해외 바이어'))){el.removeAttribute('aria-invalid');el.querySelector('.survey-question-error')?.remove();el.querySelectorAll('[aria-describedby^="survey-error-"]').forEach(control=>{control.removeAttribute('aria-describedby');control.removeAttribute('aria-invalid');});}});}
  function pending(q){return !!q?.materialPending&&!q.groups.some(g=>g.questions?.length);}
  function isDone(c,t){if(c.role==='buyer')return false;const q=questionnaire(c,t);return submitted.has(key(c,t))||!!q?.responses?.some(r=>!(c.role==='buyer'&&String(r.id||'').startsWith('DEMO-DOMESTIC-2026-'))&&(r.participantCode||r.userId)===(t.id==='self'?(c.self.participantCode||c.self.id):t.id));}
- function render(c){ctx=c;if(!['buyer','interpreter'].includes(c.role))return '<section class="panel pad"><div class="empty">설문 참여 대상이 아닙니다.</div></section>';const ts=targets(c),scope=c.role+'|'+c.year,active=ts.find(t=>t.id===selected.get(scope))||ts[0],k=key(c,active),q=questionnaire(c,active),d=drafts.get(k)||{answers:{},extras:{}},opened=!!c.openDate&&today()>=c.openDate,done=isDone(c,active),tabs=c.role==='interpreter'?'<div class="survey-person-tabs" role="tablist" aria-label="만족도 조사 응답 대상">'+ts.map(t=>'<button type="button" role="tab" id="survey-person-'+E(t.id)+'" aria-controls="survey-person-panel" aria-selected="'+(t.id===active.id)+'" class="btn'+(t.id===active.id?' primary':'')+'" data-survey-person="'+E(t.id)+'">'+E(t.label)+'</button>').join('')+'</div>':'';
- const unavailable=!q||pending(q),en=q?.target==='해외 바이어',start=q?.start&&q.start>c.openDate?q.start:c.openDate,canOpen=opened&&(!q?.start||today()>=q.start);
+ function render(c){ctx=c;if(!['buyer','interpreter'].includes(c.role))return '<section class="panel pad"><div class="empty">설문 참여 대상이 아닙니다.</div></section>';const ts=targets(c),scope=c.role+'|'+c.year,active=ts.find(t=>t.id===selected.get(scope))||ts[0],k=key(c,active),q=questionnaire(c,active),d=drafts.get(k)||{answers:{},extras:{}},done=isDone(c,active),tabs=c.role==='interpreter'?'<div class="survey-person-tabs" role="tablist" aria-label="만족도 조사 응답 대상">'+ts.map(t=>'<button type="button" role="tab" id="survey-person-'+E(t.id)+'" aria-controls="survey-person-panel" aria-selected="'+(t.id===active.id)+'" class="btn'+(t.id===active.id?' primary':'')+'" data-survey-person="'+E(t.id)+'">'+E(t.label)+'</button>').join('')+'</div>':'';
+ const unavailable=!q||pending(q),en=q?.target==='해외 바이어',start=q?.start&&q.start>c.openDate?q.start:c.openDate,canOpen=canParticipate(c,q);
  const identity='<dl class="detaildata"><dt>대상</dt><dd>'+E(active.target)+'</dd><dt>예상 소요시간</dt><dd>'+E(q?.minutes==null?'-':q.minutes+'분')+'</dd><dt>응답자</dt><dd>'+E(active.name)+'</dd>'+(active.target==='국내 바이어'?'<dt>기업명</dt><dd>'+E(active.companyName||'-')+'</dd>':'')+(active.target==='해외 바이어'?'<dt>국가</dt><dd>'+E(active.country||'-')+'</dd><dt>기업명</dt><dd>'+E(active.companyName||'-')+'</dd><dt>지원 통역원</dt><dd>'+E(c.self.name)+'</dd>':'')+'</dl>';
  const caution=canOpen&&!done&&!unavailable?'<aside class="survey-participation-caution" aria-label="'+(en?'Important notes':'유의사항')+'"><strong>※ '+(en?'Important notes':'유의사항')+'</strong><ul>'+(c.role==='interpreter'?'<li>'+(en?'Your answers are retained when you switch between respondent tabs.':'응답 대상 탭을 전환해도 작성 중인 내용은 유지됩니다.')+'</li>':'')+'<li>'+(en?'Refreshing the page or navigating to another page will clear all unsubmitted answers.':'새로고침하거나 다른 페이지로 이동하면 미제출 작성 내용이 초기화됩니다.')+'</li><li>'+(en?'Once submitted, the survey cannot be edited or submitted again.':'제출 완료한 설문은 다시 제출하거나 수정할 수 없습니다.')+'</li></ul></aside>':'';
 
@@ -43,5 +53,5 @@ function fields(q,d){let no=0;const skipped=skippedQuestions(q,d.answers);return
  if(ctx.role==='buyer'){drafts.delete(key(ctx,t));ctx.refresh();document.getElementById('survey-person-panel')?.scrollIntoView({block:'start'});window.alert('제출이 완료되었습니다.');return;}
  if(ctx.save?.(q,t,d)===false)return;submitted.add(key(ctx,t));ctx.refresh();},true);
  window.addEventListener('hashchange',()=>{if(location.hash!=='#NTC-08'){drafts.clear();ctx=null;}});
- window.GFAIR_SURVEY_PARTICIPATION={render,targets,skippedQuestions};
+ window.GFAIR_SURVEY_PARTICIPATION={render,targets,skippedQuestions,menuOpen};
 })();
