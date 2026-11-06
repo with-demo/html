@@ -353,3 +353,9 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
     padding-inline:8px;
   }
 }
+
+@media (min-width:801px) {
+  .survey-builder .survey-question-controls:not(:has(> .survey-condition-field)) {
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
