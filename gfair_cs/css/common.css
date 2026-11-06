@@ -140,7 +140,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 
 /* Survey registration and detail editor */
 .survey-builder { margin-bottom:20px; }
-.survey-builder-head { padding-inline:0; border-bottom:0; flex-wrap:wrap; }
+.survey-builder-head { flex-wrap:wrap; }
 .survey-builder-head + .survey-group { margin-top:0; }
 .survey-builder .survey-group > summary { overflow-wrap:anywhere; }
 .survey-builder .survey-question-editor { border:0; border-radius:0; border-top:1px solid var(--line); }
