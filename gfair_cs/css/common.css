@@ -325,7 +325,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-group-body > .survey-question-add:hover:not(:disabled) { background:#e8e8e8; }
 
 .survey-branch-label { display:inline-flex; align-items:center; gap:5px; font-size:.75rem; }
-.survey-branch-label > span { font-size:1rem; line-height:1; }
+.survey-branch-arrow { flex:none; color:#555; }
 @media (min-width:801px) {
   .survey-builder .survey-question-controls > .check,
   .survey-builder .survey-question-controls > .survey-condition-field {

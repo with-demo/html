@@ -615,7 +615,7 @@ function surveyQuestionSettings(v,gi,qi,q){
 }
 function surveyBranchField(v,gi,qi,oi,options){
  if(!surveyCanBranch(v))return '';
- return '<label class="survey-branch-field"'+(v.branchEnabled?'':' hidden')+'><span class="survey-branch-label"><span aria-hidden="true">↳</span> 선택 시 이동</span><select name="next-'+gi+'-'+qi+'-'+oi+'"><option value="">다음 문항으로 진행</option>'+
+ return '<label class="survey-branch-field"'+(v.branchEnabled?'':' hidden')+'><span class="survey-branch-label"><svg class="survey-branch-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M3 3v3a4 4 0 0 0 4 4h13m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 선택 시 이동</span><select name="next-'+gi+'-'+qi+'-'+oi+'"><option value="">다음 문항으로 진행</option>'+
   options.map(o=>'<option value="'+E(o.key)+'"'+(o.key===v.options[oi].nextQuestion?' selected':'')+'>'+E(o.label)+'</option>').join('')+'</select></label>';
 }
 function surveyRemapBranches(q,before){
