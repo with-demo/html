@@ -139,7 +139,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 #app #content table tr>.list-checkbox-column,#dialog-content table tr>.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important;box-sizing:border-box;text-align:center;padding-left:8px!important;padding-right:8px!important}#content table col.list-checkbox-column,#dialog-content table col.list-checkbox-column{width:70px!important;min-width:70px!important;max-width:70px!important}
 
 /* Survey registration and detail editor */
-.survey-builder { margin-bottom:20px; }
+.survey-builder { --survey-title-size:13px; margin-bottom:20px; }
 .survey-builder-head { flex-wrap:wrap; }
 .survey-builder-head + .survey-group { margin-top:0; }
 .survey-builder .survey-group > summary { overflow-wrap:anywhere; border-radius:8px; }
@@ -186,7 +186,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 }
 #app #content .survey-builder .survey-question-body > .field:first-child > span,
 #app #content .survey-builder .survey-option-heading {
-  font-size:15px;
+  font-size:calc(var(--survey-title-size) - 1px);
   font-weight:700;
   line-height:1.4;
 }
@@ -259,6 +259,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   width:calc(100% - 24px);
 }
 .survey-group-summary > span { flex:none; }
+.survey-group-summary > span:first-child { font-size:var(--survey-title-size); }
 .survey-group-summary > input { width:min(100%, 440px); min-width:0; }
 .survey-group-actions { display:inline-flex; align-items:center; gap:6px; margin-inline-start:auto; }
 
@@ -271,7 +272,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   width:calc(100% - 24px);
 }
 .survey-question-summary { min-height:32px; padding-inline-end:42px; }
-.survey-question-summary > span { min-width:0; font-size:16px; font-weight:700; line-height:1.4; }
+.survey-question-summary > span { min-width:0; font-size:var(--survey-title-size); font-weight:700; line-height:1.4; }
 .survey-question-summary > .survey-question-delete { position:absolute; inset-inline-end:var(--survey-delete-inset); top:50%; transform:translateY(-50%); }
 .survey-question-delete {
   display:grid;
