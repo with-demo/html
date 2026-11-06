@@ -143,8 +143,9 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-builder-head { flex-wrap:wrap; }
 .survey-builder-head + .survey-group { margin-top:0; }
 .survey-builder .survey-group > summary { overflow-wrap:anywhere; }
-.survey-builder .survey-question-editor { border:0; border-radius:0; border-top:1px solid var(--line); }
-.survey-builder .survey-question-editor > summary { padding:12px 14px; }
+.survey-builder .survey-question-editor { border:1px solid #d2d2d2; border-radius:8px; background:#fff; }
+.survey-builder .survey-question-editor > summary { padding:12px 14px; border-radius:7px; }
+.survey-builder .survey-question-editor[open] > summary { border-radius:7px 7px 0 0; border-bottom:1px solid var(--line); }
 .survey-builder .survey-question-body { padding-inline:14px; }
 .survey-builder .survey-question-controls {
   display:grid;
