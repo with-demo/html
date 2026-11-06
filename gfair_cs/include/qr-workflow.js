@@ -5,7 +5,7 @@ const attendanceStates = new Set(['전시장 입장', '전시장 퇴장']);
 const statusOperators = ['admin', 'exportOperator', 'buyOperator'];
 const attendanceProfiles = {BUYER:['BAS-05','BAS-06'], INTERPRETER:['BAS-07','BAS-08']};
 const screens=GFAIR_SCREENS.flatMap(g=>g.screens),get=id=>screens.find(s=>s.id===id);
-for(const [id,title,kind] of [['PRE-03','QR 리더기 실행','form'],['JNL-03','상담 QR 리더','mobile']])Object.assign(get(id),{title,kind});
+for(const [id,title,kind] of [['PRE-03','방한 상태, 행사 출결 QR 리더기 실행','form'],['JNL-03','상담 QR 리더','mobile']])Object.assign(get(id),{title,kind});
 for(const [id,title,parent] of [['PRE-12','방한 QR 스캔 카메라','PRE-03']]){
  GFAIR_SCREENS.find(g=>g.screens.some(s=>s.id===parent)).screens.push({...get(parent),id,title,parent,kind:parent==='PRE-03'?'form':'mobile',ui:{}});
 }
