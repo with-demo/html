@@ -178,19 +178,19 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-option-heading { margin:14px 0 8px; font-weight:600; }
 .survey-builder .survey-option-edit > .row {
   display:grid;
-  grid-template-columns:minmax(0, 1fr) max-content 94px;
+  grid-template-columns:minmax(0, 1fr) max-content 32px;
   align-items:end;
   gap:8px;
 }
 .survey-builder .survey-option-edit .field { min-width:0; }
 .survey-builder .survey-option-edit .check { display:flex; align-items:center; gap:4px; min-height:40px; }
-.survey-builder .survey-option-edit [data-action="sur-option-delete"] { width:100%; }
+.survey-builder .survey-option-edit [data-action="sur-option-delete"] { align-self:end; margin-bottom:4px; }
 @media (max-width:800px) {
   .survey-builder .survey-question-controls { grid-template-columns:minmax(0, 1fr) auto; }
   .survey-builder .survey-question-controls > .survey-condition-field { grid-column:1 / -1; }
 }
 @media (max-width:520px) {
-  .survey-builder .survey-option-edit > .row { grid-template-columns:minmax(0, 1fr) 94px; }
+  .survey-builder .survey-option-edit > .row { grid-template-columns:minmax(0, 1fr) 32px; }
   .survey-builder .survey-option-edit .field { grid-column:1 / -1; }
 }
 
