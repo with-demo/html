@@ -5,7 +5,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 // 공동작업 Description 패널을 직접 불러온다.
 (()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=live-catalog-20261103',document.currentScript.src).href;document.head.append(script);})();
-(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=notice-year-audience-20261106',document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement('script');script.src=new URL('notice-ui.js?v=notice-content-20261106',document.currentScript.src).href;document.head.append(script);})();
 
 // 목록 본문은 가운데 정렬, 긴 텍스트 열은 왼쪽 정렬한다.
 (()=>{
@@ -34,7 +34,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=account-pages-final-20261030",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=language-filter-design-20261101",base).href;js.src=new URL("search-filters.js?v=jnl14-keyword-20261105",base).href;document.head.append(css,js);})();
+(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=language-filter-design-20261101",base).href;js.src=new URL("search-filters.js?v=notice-content-20261106",base).href;document.head.append(css,js);})();
 
 (()=>{const s=document.createElement('script');s.src=new URL('people-excel.js?v=member-templates-20261028',document.currentScript.src);document.head.append(s);})();
 
