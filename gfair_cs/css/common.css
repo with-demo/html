@@ -272,7 +272,8 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   width:calc(100% - 24px);
 }
 .survey-question-summary { min-height:32px; padding-inline-end:42px; }
-.survey-question-summary > span { min-width:0; font-size:var(--survey-title-size); font-weight:700; line-height:1.4; }
+.survey-question-summary > input { flex:1; width:100%; min-width:0; }
+.survey-question-summary > span { flex:none; white-space:nowrap; font-size:var(--survey-title-size); font-weight:700; line-height:1.4; }
 .survey-question-summary > .survey-question-delete { position:absolute; inset-inline-end:var(--survey-delete-inset); top:50%; transform:translateY(-50%); }
 .survey-question-delete {
   display:grid;
