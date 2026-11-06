@@ -177,7 +177,19 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 }
 .survey-badge[hidden] { display:none; }
 .survey-required-badge { margin-inline:4px; background:#333; color:#fff; }
-.survey-option-heading { margin:14px 0 8px; font-weight:600; }
+.survey-builder .survey-question-body > .field:first-child,
+.survey-builder .survey-option-edit > .row > .field {
+  display:grid;
+  grid-template-columns:48px minmax(0, 1fr);
+  align-items:center;
+  gap:8px;
+}
+.survey-builder .survey-question-body > .field:first-child > span,
+.survey-builder .survey-option-heading {
+  font-size:15px;
+  font-weight:700;
+}
+.survey-option-heading { margin:14px 0 8px; }
 .survey-builder .survey-option-edit > .row {
   display:grid;
   grid-template-columns:minmax(0, 1fr) max-content 32px;
