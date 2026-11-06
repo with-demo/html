@@ -49,11 +49,21 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
  function records(){
   const screen=route();
   let ordered=orderDescriptionLabels(layoutRecords(),screen);
+  if(screen==='PRE-03'&&ordered.some(record=>record.anchor?.selector==='#qr-launch')){
+   ordered=ordered.filter(record=>{
+    const spec=readSpec(record.text);
+    return !(record.anchor?.selector==='.qr-launch-centered'&&['QR 스캔','QR 스캔 실행'].includes(spec?.item)
+     &&spec.detail==='선택한 행사명과 현재 날짜를 표시한다. 바이어 방한 상태를 선택하고 QR 스캔을 실행한다.');
+   });
+  }
+  if(['PRE-12','JNL-03'].includes(screen)){
+   ordered=ordered.filter(record=>readSpec(record.text)?.item!=='카메라 전환 버튼');
+  }
   if(screen==='JNL-03'&&ordered.some(record=>readSpec(record.text)?.item==='상담 시작 QR 스캔 카메라')){
    ordered=ordered.filter(record=>{
     const spec=readSpec(record.text);
-    const generated=spec?.item==='상담 시작 QR 스캔'&&spec.detail.startsWith('플로팅 버튼 [상담 시작]에서 진입하면')&&!spec.policy&&!record.updated&&!record.comments?.length;
-    return !generated;
+    return !(record.anchor?.selector==='#qr-viewfinder'&&spec?.item==='상담 시작 QR 스캔'
+     &&spec.detail.startsWith('플로팅 버튼 [상담 시작]에서 진입하면')&&spec.detail.includes('전면·후면 카메라를 전환한다.'));
    });
   }
   const entries=ordered.filter(isQrEntry);
