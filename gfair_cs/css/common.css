@@ -233,3 +233,14 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 .survey-branch-field[hidden], [data-survey-question][hidden] { display:none; }
 .survey-branch-field > span { flex:none; }
 .survey-branch-field > select { width:min(100%, 380px); }
+
+.survey-group-summary {
+  display:inline-flex;
+  align-items:center;
+  vertical-align:middle;
+  gap:12px;
+  width:calc(100% - 24px);
+}
+.survey-group-summary > span { flex:none; }
+.survey-group-summary > input { width:min(100%, 440px); min-width:0; }
+.survey-group-actions { justify-content:flex-end; }
