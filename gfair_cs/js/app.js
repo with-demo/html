@@ -941,6 +941,11 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     j.history=j.history.map(([status,actor,reason],n)=>[status,(actor.split(' · ')[0]===oldWriter?writer:actor.split(' · ')[0])+' · '+day+' '+hour+':'+String(45-n*5).padStart(2,'0'),reason]);
   });
 }
+const memberRegistration=window.GFAIR_MEMBER_REGISTRATION;
+memberRegistration.bind({source:id=>({screen:map.get(id),rows:rows(map.get(id))}),setRows:(id,value)=>{lists[id]=value;},year:()=>event,role:()=>role,nav,toast});
+const memberList=list;list=function(s){return memberList(s)+memberRegistration.button(s.id);};
+const memberForm=form;form=function(s){const body=memberRegistration.render(s.id);return body===null?memberForm(s):memberRegistration.heading(s.id)+body;};
+const memberRender=render;render=function(){const id=location.hash.slice(1);const q=new URLSearchParams(location.search);if(q.get('memberMode')&&q.get('memberScreen')!==id)memberRegistration.clear();memberRender();};
 const proxyExample=journals.find(j=>j.id==='GF-000484');
 if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});render();})();
 
