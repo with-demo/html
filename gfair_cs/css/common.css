@@ -186,7 +186,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
 }
 #app #content .survey-builder .survey-question-body > .field:first-child > span,
 #app #content .survey-builder .survey-option-heading {
-  font-size:calc(var(--survey-title-size) - 1px);
+  font-size:var(--survey-title-size);
   font-weight:700;
   line-height:1.4;
 }
