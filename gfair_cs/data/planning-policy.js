@@ -1,2 +1,1486 @@
-// 공통 기획정책 v0.3 · 2026-11-06 참가·계정 정책 사용자 확정 반영
-window.GFAIR_PLANNING_POLICY={"meta":{"title":"G-FAIR KOREA | 공통 기획정책","version":"v0.3","date":"2026-11-06","timezone":"Asia/Seoul","scope":"기획 검토 초안","baseCommit":"26ba0a81672f4546beb437de1198b85e4af865e5","limitations":"목업·정책문서 기준 기획 초안. 참가·계정 발급 정책은 2026-11-06 사용자 확정 기준 반영. 실제 인증·계정 운영 서버 연동은 별도 구현."},"roles":{"admin":"관리자","buyOperator":"구매상담 운영용역사","exportOperator":"수출상담 운영용역사","buyer":"국내 구매바이어","interpreter":"통역원"},"menus":[{"name":"모니터링","icon":"layout-dashboard","items":[["MON-01","통합 대시보드",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"X","buyer":"X"}],["MON-08","출결 대시보드",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"X","buyer":"X"}]]},{"name":"기본정보관리","icon":"folder","items":[["BAS-01","행사관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["BAS-15","운영용역사 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["BAS-03","해외 바이어 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["BAS-05","국내 바이어 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["BAS-07","통역원 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["BAS-16","관리자 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}]]},{"name":"담당자관리","icon":"users","direct":true,"items":[["COM-07","담당자관리",[],{"admin":"X","buyOperator":"O","exportOperator":"O","buyer":"X","interpreter":"X"}]]},{"name":"행사정보","icon":"calendar-days","items":[["BAS-09","참가기업",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"△","buyer":"△"}],["PRE-01","해외 바이어",[],{"admin":"O","buyOperator":"X","exportOperator":"O","interpreter":"X","buyer":"X"}],["EVT-01","국내 바이어",[],{"admin":"O","buyOperator":"O","exportOperator":"X","interpreter":"X","buyer":"X"}],["EVT-02","통역원",[],{"admin":"O","buyOperator":"X","exportOperator":"O","interpreter":"X","buyer":"X"}],["PRE-04","통역원 매칭",[],{"admin":"O","buyOperator":"X","exportOperator":"△","interpreter":"X","buyer":"X"}]]},{"name":"상담일지","icon":"clipboard-list","items":[["JNL-13","구매상담일지",[],{"admin":"O","buyOperator":"O","exportOperator":"X","interpreter":"X","buyer":"O"}],["JNL-14","수출상담일지",[],{"admin":"O","buyOperator":"X","exportOperator":"O","interpreter":"O","buyer":"X"}]]},{"name":"공지/알림","icon":"bell","items":[["NTC-01","공지/알림",[],{"admin":"O","buyOperator":"△","exportOperator":"△","interpreter":"△","buyer":"△"}]],"direct":true},{"name":"통계","icon":"chart-no-axes-column","items":[["STA-01","통계 대시보드",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["STA-02","연도별 상담실적 통계",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["STA-03","연도별 바이어 통계",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}]]},{"name":"환경설정","icon":"settings","items":[["SET-01","그룹권한관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["SET-04","상담일지 관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["SET-07","만족도설문 관리",[["SET-05","설문관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["SET-06","응답관리",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}]],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["SET-03","메뉴 접근 로그",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}],["SET-19","개인정보 접속 이력",[],{"admin":"O","buyOperator":"X","exportOperator":"X","interpreter":"X","buyer":"X"}]]},{"name":"로그인","icon":"log-in","items":[["COM-01","로그인",[],{"admin":"O","buyOperator":"O","exportOperator":"O","interpreter":"X","buyer":"X"}]]},{"name":"알림","icon":"bell","items":[["NTC-07","알림",[],{"admin":"O","buyOperator":"O","exportOperator":"O","interpreter":"O","buyer":"O"}]]},{"name":"만족도 조사","icon":"clipboard-check","direct":true,"items":[["NTC-08","만족도 조사",[],{"admin":"X","buyOperator":"X","exportOperator":"X","buyer":"O","interpreter":"O"}]]}],"catalog":[{"name":"공통","key":"common","screens":[{"id":"COM-01","title":"로그인","kind":"form"},{"id":"COM-06","title":"내정보","kind":"detail"},{"id":"NTC-07","title":"알림","kind":"list"}]},{"name":"모니터링","key":"menu-0","screens":[{"id":"MON-01","title":"통합 대시보드","kind":"dashboard"},{"id":"MON-08","title":"출결 대시보드","kind":"dashboard"}]},{"name":"기본정보관리","key":"menu-1","screens":[{"id":"BAS-01","title":"행사관리","kind":"list"},{"id":"BAS-02","title":"행사관리 상세","kind":"form"},{"id":"BAS-15","title":"운영용역사 관리","kind":"list"},{"id":"BAS-17","title":"운영용역사 상세","kind":"list"},{"id":"BAS-19","title":"운영용역사 등록","kind":"form"},{"id":"BAS-03","title":"해외 바이어 관리","kind":"list"},{"id":"BAS-04","title":"해외 바이어 관리 상세","kind":"form"},{"id":"BAS-05","title":"국내 바이어 관리","kind":"list"},{"id":"BAS-06","title":"국내 바이어 관리 상세","kind":"form"},{"id":"BAS-07","title":"통역원 관리","kind":"list"},{"id":"BAS-08","title":"통역원 관리 상세","kind":"form"},{"id":"BAS-16","title":"관리자 관리","kind":"list"},{"id":"BAS-18","title":"관리자 등록·상세","kind":"list"}]},{"name":"담당자관리","key":"menu-2","screens":[{"id":"COM-07","title":"담당자관리","kind":"list"},{"id":"COM-08","title":"담당자 등록·상세","kind":"list"}]},{"name":"행사정보","key":"menu-3","screens":[{"id":"BAS-09","title":"참가기업","kind":"list"},{"id":"BAS-10","title":"참가기업 상세","kind":"form"},{"id":"PRE-01","title":"해외 바이어","kind":"list"},{"id":"PRE-02","title":"해외 바이어 상세","kind":"form"},{"id":"PRE-02-p43","title":"방한기록 수정","parent":"PRE-02","kind":"popup"},{"id":"PRE-01-p42","title":"숙소 일괄변경","parent":"PRE-01","kind":"popup"},{"id":"PRE-01-p41","title":"숙소관리","parent":"PRE-01","kind":"popup"},{"id":"EVT-01","title":"국내 바이어","kind":"list"},{"id":"EVT-03","title":"국내 바이어 상세","kind":"form"},{"id":"EVT-02","title":"통역원","kind":"list"},{"id":"EVT-04","title":"통역원 상세","kind":"form"},{"id":"PRE-04","title":"통역원 매칭","kind":"list"}]},{"name":"상담일지","key":"menu-4","screens":[{"id":"JNL-13","title":"구매상담일지","kind":"list"},{"id":"JNL-04","title":"구매상담일지 등록","kind":"mobile"},{"id":"JNL-15","title":"구매상담일지 상세","kind":"form"},{"id":"JNL-14","title":"수출상담일지","kind":"list"},{"id":"JNL-05","title":"수출상담일지 등록","kind":"mobile"},{"id":"JNL-16","title":"수출상담일지 상세","kind":"mobile"}]},{"name":"공지/알림","key":"menu-5","screens":[{"id":"NTC-01","title":"공지/알림","kind":"list"},{"id":"NTC-04","title":"공지/알림 상세","kind":"form"},{"id":"NTC-15","title":"공지/알림 등록","parent":"NTC-01","kind":"list"},{"id":"NTC-16","title":"공지/알림 수정","parent":"NTC-01","kind":"list"}]},{"name":"통계","key":"menu-6","screens":[{"id":"STA-01","title":"통계 대시보드","kind":"dashboard"},{"id":"STA-02","title":"연도별 상담실적 통계","kind":"list"},{"id":"STA-03","title":"연도별 바이어 통계","kind":"list"}]},{"name":"환경설정","key":"menu-7","screens":[{"id":"SET-01","title":"그룹권한관리","kind":"list"},{"id":"SET-02","title":"그룹 등록·상세","kind":"matrix"},{"id":"SET-04","title":"상담일지 관리","kind":"form"},{"id":"SET-07","title":"만족도설문 관리","parent":"SET-05","kind":"list"},{"id":"SET-05","title":"설문관리","kind":"form"},{"id":"SET-11","title":"설문 등록","parent":"SET-05","workflowParent":"SET-05","kind":"workflow"},{"id":"SET-12","title":"설문 상세","parent":"SET-05","workflowParent":"SET-05","kind":"workflow"},{"id":"SET-13","title":"설문 미리보기","parent":"SET-05","kind":"popup"},{"id":"SET-06","title":"응답관리","kind":"list"},{"id":"SET-14","title":"개별 설문 응답","parent":"SET-06","workflowParent":"SET-06","kind":"workflow"},{"id":"SET-16","title":"설문 응답 결과 상세","parent":"SET-06","kind":"list"},{"id":"SET-15","title":"주관식 설문 응답","parent":"SET-16","workflowParent":"SET-16","kind":"workflow"},{"id":"SET-03","title":"메뉴 접근 로그","kind":"list"},{"id":"SET-17","title":"접근·개인정보·변경 로그 상세","parent":"SET-03","workflowParent":"SET-03","kind":"workflow"},{"id":"SET-18","title":"접근·개인정보·변경 로그 · 상세 조회","parent":"SET-03","workflowParent":"SET-03","kind":"workflow"},{"id":"SET-19","title":"개인정보 접속 이력","kind":"list"}]},{"name":"만족도 조사","key":"menu-10","screens":[{"id":"NTC-08","title":"만족도 조사","kind":"mobile"}]},{"name":"QR 바로가기 · 별도 창","screens":[{"id":"PRE-03","title":"방한 상태·행사 출결 QR 실행","kind":"form","roles":["admin","buyOperator","exportOperator"]},{"id":"PRE-12","title":"상태관리 QR 스캔 카메라","parent":"PRE-03","kind":"form","roles":["admin","buyOperator","exportOperator"]},{"id":"JNL-03","title":"상담 시작 QR 리더","kind":"mobile","roles":["buyer","interpreter"]}]}],"states":[{"id":"T01","area":"회원·참가","title":"회원 기본정보와 행사 참가 상태 분리","nodes":["회원 기본정보 보유","행사연도별 참가 / 미참여","해당 행사 목록 반영"],"rows":[["참가 / 신규","기본정보와 행사정보에서 조회","현재 행사 대상"],["미참여","기본정보 목록에 유지, 행사정보 대상에서 제외","고유코드·과거 이력 보존"],["이력 삭제","선택 행사 행에서만 버튼 노출","물리 삭제 대신 숨김 + 미참여"]],"basis":["S03","S07","S08"],"note":"신규 행사에 전년도 참가를 자동 승계하지 않는 문서 정책은 서버 운영 구현에서도 검증해야 한다."},{"id":"T02","area":"행사 확정","title":"참가 검토 → 최종확정","nodes":["참가 검토중","명단 확인 + 최종확정","참가확정 / 참가자 변경 잠금"],"rows":[["검토중","해당 용역사 추가·제외·최종확정","대상 0명일 때 확정 불가"],["확정","QR 열람·다운로드, 확정 완료 표시","추가·제외 숨김 / 최종확정 비활성"],["해외바이어","로그인 계정 없음","행사연도 + 고유코드 QR"],["국내바이어·통역원","미발급 행사계정 생성","기본정보 업로드만으로 자동 발급하지 않음"]],"basis":["S05","S06"],"note":"확정 상태는 목업 메모리에만 존재한다. 실서비스 영속 저장·확정 해제·명단 추가 예외는 검토 필요."},{"id":"T03","area":"매칭","title":"미매칭 ↔ 매칭","nodes":["미매칭","통역원 선택 + 매칭 확인","매칭"],"rows":[["미매칭","매칭 작업 제공","선택 통역원 연결"],["매칭","변경 / 매칭취소 작업 제공","현재 통역원 선택 불가"],["변경","변경 사유 필수 + 확인","새 연결 및 배정이력"],["취소","취소 사유 필수","미매칭 전환 및 배정이력"]],"basis":["S14"],"note":"기존 연결 해제 범위와 긴급 체크의 배정 예외를 별도 정책으로 더 세분화할 필요가 있다."},{"id":"T04","area":"수출상담일지","title":"작성 → 승인 요청 → 승인 / 반려","nodes":["작성 중 / 반려","통역원 승인 요청","승인 요청","관리자·수출 용역사 승인 → 승인 완료"],"rows":[["작성 중 / 반려","통역원 일괄 선택·승인 요청 가능","반려 후 다시 요청 가능"],["승인 요청","관리자·수출 용역사 승인·반려 가능","통역원 일괄 선택 비활성"],["반려","사유 필수","재요청 시 이전 사유 초기화"],["관리자·수출 용역사 신규 등록","승인 완료로 직접 저장","통역원 등록은 승인 요청"]],"basis":["S11","S12","S13"],"note":"임시 저장 / 작성 중 명칭 및 구매상담일지 흐름은 동일하다고 가정하지 않고 후속 검토 대상으로 둔다."},{"id":"T05","area":"QR·출결","title":"처리 상태 선택과 QR 종류 검증","nodes":["처리 상태 선택","현재 행사 QR 검증","체크 이력 기록"],"rows":[["해외바이어 방한","입국 → 호텔 이동 → 호텔 도착 → 전시장 출발 → 전시장 입장 → 통역원 만남 → 전시장 퇴장","목업의 선택 상태 목록이며, 선행 단계 강제 여부는 별도 확인"],["전시장 입장 / 퇴장","국내바이어·통역원 행사계정 QR도 허용","현재 행사 참가와 계정 확인"],["상담 시작","참가기업 QR 사용","방한·출결 QR과 분리"],["동일 QR + 상태","3초 내 재인식 무시","재입장/재처리/취소 정책 추가 합의"]],"basis":["S15","S16"],"note":"나열된 상태 순서가 곧 필수 전이 순서를 뜻하지 않는다. QR 기록과 최종확정·집계 화면의 연계도 검토 필요."},{"id":"T06","area":"설문","title":"공개 조건 → 응답 → 제출 완료","nodes":["참여 시작 전","시작일 도래 + 설문 가능","응답 작성","제출 완료"],"rows":[["시작 전","참여 시작 안내","제출 불가"],["작성중","보이는 필수 문항 검증","대상 탭 간 작성값 유지"],["조건 불충족 문항","입력 비활성·응답 값 제거","제출 검증에서 제외"],["제출 완료","서비스 정책상 재수정·재제출 불가","국내바이어는 반복 시연 예외 존재"]],"basis":["S18","S19"],"note":"제출 1회 보장·응답자 식별·중복 판정은 서버 정책으로 확정해야 한다."}],"buttons":[{"id":"B01","area":"회원·참가","screens":"BAS-03/05/07","label":"선택 미참여","who":"관리자","when":"기본정보관리 목록","enabled":"대상 선택 필요","validation":"현재 행사·대상 확인","result":"현재 행사만 미참여; 기본정보·고유코드·과거 이력 보존","cancel":"취소 시 변경 없음","basis":["S03","S04"],"evidence":"목업 확인"},{"id":"B02","area":"회원·참가","screens":"BAS-04/06/08","label":"저장","who":"관리자","when":"회원 기본정보 상세","enabled":"필수 입력·형식 검증 통과","validation":"화면별 연락처·이메일·통역언어 검증","result":"수정한 기본정보 반영","cancel":"저장 전 이탈 경고 여부 검토","basis":["S08"],"evidence":"목업 확인"},{"id":"B03","area":"회원·참가","screens":"BAS-04/06/08","label":"행사참가이력 삭제","who":"관리자","when":"선택 행사연도와 일치하는 이력 행만 표시","enabled":"대상 이력 존재","validation":"확인창에서 행사연도 재확인","result":"이력은 보존하고 화면에서 숨김 + 해당 행사 미참여","cancel":"취소 시 유지","basis":["S07","S08","S04"],"evidence":"목업 확인"},{"id":"B04","area":"회원·참가","screens":"BAS-03/05/07·COM-07","label":"파일 검증 / 엑셀 등록","who":"화면 접근 권한 보유자","when":"등록양식 업로드","enabled":"파일 선택·필수값 충족","validation":"이름·생년월일·원본 코드·사용여부 등 유형별 검증","result":"현재 코드는 오류 1건 이상이면 전체 good 비움. 정상행 부분 반영 규칙과 충돌","cancel":"검증 오류이면 반영 범위 최종 합의 필요","basis":["S09","S10"],"evidence":"검토 필요"},{"id":"B05","area":"행사 확정","screens":"PRE-01·EVT-01/02","label":"바이어 / 통역원 추가","who":"해당 구매·수출 용역사","when":"최종확정 이전","enabled":"현재 행사·역할·미확정 상태","validation":"대상 등록 검증; 명단 변경 시 확정 상태 무효화","result":"현재 행사 참가 명단에 반영","cancel":"취소 시 명단 유지","basis":["S06"],"evidence":"목업 확인"},{"id":"B06","area":"행사 확정","screens":"PRE-01·EVT-01/02","label":"선택 바이어 / 통역원 제외","who":"해당 용역사","when":"최종확정 이전","enabled":"선택 대상 1명 이상","validation":"이름·총 인원 포함 컨펌","result":"현재 행사 미참여로 전환; 기본정보는 보존","cancel":"취소 시 제외 안 함","basis":["S05","S03"],"evidence":"목업 확인"},{"id":"B07","area":"행사 확정","screens":"PRE-01·EVT-01/02","label":"최종확정","who":"해당 용역사","when":"참가 검토중","enabled":"참가자 1명 이상·미확정","validation":"확정 직전 명단 시그니처 재검증","result":"해외: QR 생성 / 국내·통역원: 미발급 계정+QR 생성. 참가자 변경 잠금","cancel":"확인 전 취소 가능; 확정 취소 정책은 별도 합의","basis":["S05"],"evidence":"목업 확인"},{"id":"B08","area":"행사 확정","screens":"PRE-01·EVT-01/02","label":"최종확정 완료","who":"해당 용역사","when":"확정 이후","enabled":"비활성","validation":"재실행 방지","result":"확정 상태만 표시","cancel":"해제 동작 없음","basis":["S06"],"evidence":"목업 확인"},{"id":"B09","area":"행사 확정","screens":"PRE-01·EVT-01/02","label":"QR보기 / QR 다운로드","who":"해당 행사 화면 사용자","when":"확정 이후","enabled":"생성된 QR 대상","validation":"해외 F고유코드 / 국내·통역원 행사계정 구분","result":"선택 대상 또는 전체 대상 QR 열람·다운로드","cancel":"전체·선택 범위 UI별 확인","basis":["S06","S15"],"evidence":"목업 확인"},{"id":"B10","area":"매칭","screens":"PRE-04·PRE-04-p32","label":"매칭","who":"매칭 처리 권한 보유자","when":"미매칭 바이어","enabled":"다른 통역원 선택 가능","validation":"현재 연결과 같으면 차단; 확인창","result":"바이어-통역원 연결; 기존 연결 해제 안내","cancel":"취소 시 연결 유지","basis":["S14"],"evidence":"목업 확인"},{"id":"B11","area":"매칭","screens":"PRE-04-p32","label":"변경","who":"매칭 처리 권한 보유자","when":"기존 매칭 존재","enabled":"현재 통역원은 선택 비활성","validation":"변경 사유 필수·매칭 확인","result":"연결 변경 및 배정이력 기록","cancel":"취소 시 기존 매칭 유지","basis":["S14"],"evidence":"목업 확인"},{"id":"B12","area":"매칭","screens":"PRE-04-p32","label":"매칭취소","who":"매칭 처리 권한 보유자","when":"기존 매칭 존재","enabled":"취소 모드에서 실행","validation":"취소 사유 필수","result":"미매칭으로 전환; 이력 보존","cancel":"사유 미입력 시 실행 차단","basis":["S14"],"evidence":"목업 확인"},{"id":"B13","area":"수출상담일지","screens":"JNL-05/16","label":"등록 / 제출","who":"통역원","when":"신규 또는 작성 가능한 일지","enabled":"필수 입력 정상·온라인·진행 행사","validation":"대표 카테고리 선택 가능 시 필수; 내용·시작/종료 검증","result":"승인 요청으로 저장 후 JNL-14 이동","cancel":"오류·오프라인이면 제출 차단, 기기 초안 보관","basis":["S12"],"evidence":"목업 확인"},{"id":"B14","area":"수출상담일지","screens":"JNL-05/16","label":"등록 / 제출","who":"관리자·수출 용역사","when":"신규 작성","enabled":"필수 입력 정상·온라인·진행 행사","validation":"통역원 작성과 동일 기본 검증","result":"승인 완료로 직접 저장 후 JNL-14 이동","cancel":"작성자·대리작성 정책 추가 정리 필요","basis":["S12"],"evidence":"목업 확인"},{"id":"B15","area":"수출상담일지","screens":"JNL-14","label":"일괄 승인 요청","who":"통역원","when":"작성 중 / 반려","enabled":"선택 1건 이상·현재 페이지의 처리 가능 행","validation":"실행 시 권한·상태 재검증","result":"승인 요청; 기존 반려 사유 초기화; 처리이력 추가","cancel":"컨펌 취소 시 유지","basis":["S11"],"evidence":"목업 확인"},{"id":"B16","area":"수출상담일지","screens":"JNL-14","label":"일괄 승인","who":"관리자·수출 용역사","when":"승인 요청","enabled":"선택 1건 이상","validation":"선택한 모든 행의 처리 가능 여부 재검증","result":"승인 완료로 전환 및 이력 기록","cancel":"상태 변경된 행이 있으면 재확인","basis":["S11"],"evidence":"목업 확인"},{"id":"B17","area":"수출상담일지","screens":"JNL-14","label":"일괄 반려","who":"관리자·수출 용역사","when":"승인 요청","enabled":"선택 1건 이상","validation":"공통 반려 사유 필수","result":"반려 상태·사유·처리이력 기록","cancel":"사유 공백이면 차단; 취소 시 유지","basis":["S11"],"evidence":"목업 확인"},{"id":"B18","area":"상담일지 검수","screens":"JNL-16 및 일지 상세","label":"승인 / 반려","who":"해당 유형 검수 권한자","when":"승인 요청","enabled":"일지 상태·담당 유형·검수 범위 일치","validation":"반려 사유 필수; 수출 상세는 입력 검증 재수행","result":"승인 완료 또는 반려. 변경값과 처리이력 반영","cancel":"권한·상태가 바뀌면 처리 차단","basis":["S13"],"evidence":"목업 확인"},{"id":"B19","area":"수출상담일지","screens":"JNL-14","label":"전체 선택","who":"관리자·수출 용역사·통역원","when":"목록 표시중","enabled":"현재 페이지의 처리 가능 행만 선택","validation":"관리자/용역사: 승인 요청, 통역원: 작성 중/반려","result":"선택 수에 따라 일괄 버튼 활성","cancel":"페이지 변경 시 선택 해제","basis":["S11"],"evidence":"목업 확인"},{"id":"B20","area":"QR·출결","screens":"PRE-03/12","label":"상태 선택 → 카메라 실행","who":"관리자·구매/수출 용역사","when":"상태 관리 진입","enabled":"처리 상태 선택·카메라 권한","validation":"행사연도·QR 구조·참가자 유형·고유 식별 검증","result":"선택 상태의 체크 이력 저장","cancel":"권한 거절·지원 불가 시 안내; 수동 대체 절차 검토","basis":["S15","S16"],"evidence":"목업 확인"},{"id":"B21","area":"QR·출결","screens":"JNL-03","label":"상담 시작 QR 스캔","who":"국내 구매바이어·통역원","when":"상담 QR 진입","enabled":"참가기업 QR 일치","validation":"현재 행사·기업 코드 확인","result":"상담 시작 체크 이력 기록","cancel":"바이어/출결 QR을 기업 QR로 간주하지 않음","basis":["S15"],"evidence":"목업 확인"},{"id":"B22","area":"QR·출결","screens":"PRE-12·JNL-03","label":"동일 QR 연속 스캔","who":"현재 스캔 사용자","when":"같은 QR + 같은 상태를 3초 내 재인식","enabled":"중복 억제","validation":"QR 원문 + 상태 + 마지막 처리시각 비교","result":"새 체크 이력을 추가하지 않음","cancel":"3초 이후 업무 중복 처리 정책은 추가 검토","basis":["S15"],"evidence":"목업 확인"},{"id":"B23","area":"공지/알림","screens":"NTC-01","label":"대메뉴 공지/알림","who":"모든 메뉴 허용 역할","when":"항상","enabled":"역할별 메뉴 열람 허용","validation":"대상별 목록 필터","result":"하위 메뉴 없이 공지/알림 목록 직행","cancel":"FAQ·자료실은 사용 종료","basis":["S01","S17"],"evidence":"목업 확인"},{"id":"B24","area":"공지/알림","screens":"NTC-01/15/16","label":"공지 등록 / 수정","who":"관리자","when":"관리자에게만 작성 버튼","enabled":"필수 입력 검증","validation":"대상·행사·제목 등 에디터 검증","result":"공지 등록 또는 수정 반영","cancel":"비관리자는 자기 대상 공지 열람","basis":["S17"],"evidence":"목업 확인"},{"id":"B25","area":"설문","screens":"NTC-08","label":"응답 대상 전환","who":"통역원","when":"다수 응답 대상이 있을 때","enabled":"대상별 설문 접근 조건","validation":"탭 전환 전 현재 응답 저장","result":"대상 탭 전환; 작성중 응답 유지","cancel":"페이지 이동·새로고침은 미제출 응답 초기화","basis":["S18","S19"],"evidence":"목업 확인"},{"id":"B26","area":"설문","screens":"NTC-08","label":"제출","who":"국내바이어·통역원 등 대상 응답자","when":"시작일 도래·설문 가능·미제출","enabled":"보이는 필수 문항 검증 정상","validation":"첫 오류 문항 안내·포커스; 비활성 조건부 문항 제외","result":"서비스 목표: 제출 완료·재제출/수정 불가","cancel":"국내바이어 목업은 반복 시연을 위해 제출 후 초기화하므로 별도 구분","basis":["S19"],"evidence":"검토 필요"}],"issues":[{"id":"Q01","priority":"P1","title":"엑셀 오류 반영 단위","finding":"작업 규칙은 정상행 즉시 반영, 현재 검증 코드는 오류가 하나라도 있으면 good 배열을 비운다.","decision":"전체 실패 / 정상행 부분 반영 중 하나를 확정하고 화면·문서·설명을 맞춘다.","basis":["S09","S10"]},{"id":"Q04","priority":"P1","title":"QR 상태 전이·정정","finding":"현재 구현은 선택한 단계의 체크 이력을 적재한다. 나열 순서만으로 순차 처리 강제를 단정할 수 없다.","decision":"역순·건너뛰기·중복·재입장·취소·수정 권한과 집계 반영 기준을 확정한다.","basis":["S15"]},{"id":"Q05","priority":"P1","title":"설문 제출 완료 판정","finding":"국내바이어는 목업 시연을 위해 제출 후 초기화하며, 안내 문구는 재제출 불가를 말한다.","decision":"목업 예외와 서비스 1회 제출 정책을 개발 전달 시 분리한다.","basis":["S18","S19"]},{"id":"Q06","priority":"P2","title":"구매·수출 일지 상태 명칭","finding":"수출 일괄 처리는 작성 중/반려를 사용한다. 다른 코드에는 임시 저장도 존재한다.","decision":"유형별 상태코드·노출명·수정/삭제/재제출 가능 여부 표를 완성한다.","basis":["S11","S12"]},{"id":"Q07","priority":"P2","title":"메뉴 접근과 처리 권한","finding":"메뉴의 △는 단일한 수정/열람 권한으로 해석할 수 없다.","decision":"담당 범위·행사·목록·상세·버튼·서버 API 단위 권한표를 연결한다.","basis":["S01","S13"]},{"id":"Q08","priority":"P2","title":"전체 정책의 범위 확장","finding":"초안의 상태·버튼 상세는 참가·매칭·수출일지·QR·공지·설문 핵심 흐름 중심이다.","decision":"구매일지, 통계 산식, 개인정보 이력, 담당자 사용여부, 숙소·방한 정정 정책을 추가한다.","basis":["S02"]},{"id":"Q09","priority":"P2","title":"데이터 저장 수준","finding":"참가 상태·QR 기록·설문 작성값 등은 현재 메모리 또는 탭 저장 예제가 섞여 있다.","decision":"새로고침 복원·동시 작업·중복 실행·서버 장애·감사 로그 보존 기준을 정한다.","basis":["S05","S15","S19"]}],"sources":[{"id":"S01","file":"gfair_cs/data/navigation.js","line":414,"keyword":"window.GFAIR_NAV","note":"메뉴별 O/△/X의 선언값. 실제 처리 권한은 업무 코드와 별도 확인."},{"id":"S02","file":"gfair_cs/data/screen-catalog.js","line":3,"keyword":"function build","note":"공통·주메뉴·자식 화면의 현재 화면 목록."},{"id":"S03","file":"gfair_cs/include/participant-lifecycle.js","line":7,"keyword":"function participating","note":"회원 기본정보와 행사연도별 참가 상태 분리."},{"id":"S04","file":"gfair_cs/docs/회원관리_참여여부_계정발급_2026-10-30.md","line":10,"keyword":"## 미참여 처리","note":"과거 미참여 정책 참고. 현행 발급 기준은 2026-11-06 변경이력과 CP-03·SP-02·SP-03을 우선한다."},{"id":"S05","file":"gfair_cs/include/domestic-event-review.js","line":15,"keyword":"syncParticipation","note":"참가 즉시 발급, 제외 시 미사용 및 동일 행사 발급 정보 재활성화."},{"id":"S06","file":"gfair_cs/include/domestic-event-review.js","line":20,"keyword":"function render(route)","note":"즉시 발급과 참가자 추가·제외, QR 버튼 노출 조건."},{"id":"S07","file":"gfair_cs/include/buyer-profile-fields.js","line":27,"keyword":"data-history-delete","note":"바이어 참가이력 삭제 버튼의 선택 행사연도 조건."},{"id":"S08","file":"gfair_cs/include/overseas-buyer-detail.js","line":56,"keyword":"data-history-delete","note":"통역원 참가이력 삭제 버튼 및 기본정보."},{"id":"S09","file":"gfair_cs/include/member-upload.js","line":49,"keyword":"entries.every","note":"하나라도 오류이면 good 배열을 비우는 현재 검증 구현."},{"id":"S10","file":"AGENTS.md","line":288,"keyword":"정상 행은 별도 반영 버튼","note":"정상행 즉시 반영이라는 작업 규칙과 현재 코드의 불일치 확인 필요."},{"id":"S11","file":"gfair_cs/include/jnl14-bulk.js","line":5,"keyword":"const eligible","note":"수출상담일지 일괄 처리 상태·역할 조건."},{"id":"S12","file":"gfair_cs/js/app.js","line":229,"keyword":"function submitExportJournal","note":"수출상담일지 검증·등록 후 상태."},{"id":"S13","file":"gfair_cs/js/app.js","line":254,"keyword":"function approve(","note":"승인 요청 상태, 검수 권한, 반려 사유 재검증."},{"id":"S14","file":"gfair_cs/include/pre04-matching.js","line":38,"keyword":"function reasonValue","note":"매칭 변경·취소 사유 필수 및 이력."},{"id":"S15","file":"gfair_cs/include/qr-workflow.js","line":28,"keyword":"function accept","note":"QR 종류·행사·참가자 검증과 동일 QR/상태 3초 중복 방지."},{"id":"S16","file":"gfair_cs/include/qr-workflow.js","line":3,"keyword":"const states=","note":"QR 처리 상태와 역할 목록."},{"id":"S17","file":"gfair_cs/include/notice-ui.js","line":15,"keyword":"function visible","note":"대상별 공지 열람, 관리자 작성 버튼."},{"id":"S18","file":"gfair_cs/include/survey-participation.js","line":15,"keyword":"function isDone","note":"설문 완료 판정과 국내바이어 시연 예외."},{"id":"S19","file":"gfair_cs/include/survey-participation.js","line":27,"keyword":"document.addEventListener('submit'","note":"제출 조건, 조건부 문항 검증, 미제출 응답 초기화."},{"id":"S20","file":"../RFP 및 자료/기준코드/README.md","line":13,"keyword":"## 코드 구성","note":"국가 250 / 언어 104 / 산업군 20. 원본 코드는 임의 대체하지 않음."}],"referenceCodes":{"source":"RFP 및 자료/기준코드/gfair-reference-codes.json","format":"gfair-reference-codes-v1","counts":{"countries":250,"languages":104,"industries":20}}};
+// 현행 기획정책의 단일 본문. 사이트·MD·구글시트는 정책 ID로 대조한다.
+window.GFAIR_PLANNING_POLICY={
+  "meta": {
+    "title": "G-FAIR KOREA | 공통 기획정책",
+    "version": "v1.0",
+    "date": "2026-11-06",
+    "timezone": "Asia/Seoul",
+    "scope": "현행 사이트 기준 정리",
+    "baseCommit": "c2df83cf1d443032161735bd3538182c4dc83550",
+    "limitations": "2026-11-06 공개 사이트 소스와 저장 Description을 대조한 현행 정리본. 확인된 동작과 사용자 확정 기준을 기록하며, 불일치·미연동은 확인필요사항에서 별도로 관리한다."
+  },
+  "roles": {
+    "admin": "관리자",
+    "buyOperator": "구매상담 운영용역사",
+    "exportOperator": "수출상담 운영용역사",
+    "buyer": "국내바이어",
+    "interpreter": "통역원"
+  },
+  "menus": [
+    {
+      "name": "모니터링",
+      "icon": "layout-dashboard",
+      "items": [
+        [
+          "MON-01",
+          "통합 대시보드",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "△",
+            "exportOperator": "△",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "MON-08",
+          "출결 대시보드",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "△",
+            "exportOperator": "△",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "기본정보관리",
+      "icon": "folder",
+      "items": [
+        [
+          "BAS-01",
+          "행사관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "BAS-15",
+          "운영용역사 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "BAS-03",
+          "해외 바이어 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "BAS-05",
+          "국내 바이어 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "BAS-07",
+          "통역원 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "BAS-16",
+          "관리자 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "담당자관리",
+      "icon": "users",
+      "direct": true,
+      "items": [
+        [
+          "COM-07",
+          "담당자관리",
+          [],
+          {
+            "admin": "X",
+            "buyOperator": "O",
+            "exportOperator": "O",
+            "buyer": "X",
+            "interpreter": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "행사정보",
+      "icon": "calendar-days",
+      "items": [
+        [
+          "BAS-09",
+          "참가기업",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "△",
+            "exportOperator": "△",
+            "interpreter": "△",
+            "buyer": "△"
+          }
+        ],
+        [
+          "PRE-01",
+          "해외 바이어",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "O",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "EVT-01",
+          "국내 바이어",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "O",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "EVT-02",
+          "통역원",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "O",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "PRE-04",
+          "통역원 매칭",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "△",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "상담일지",
+      "icon": "clipboard-list",
+      "items": [
+        [
+          "JNL-13",
+          "구매상담일지",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "O",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "O"
+          }
+        ],
+        [
+          "JNL-14",
+          "수출상담일지",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "O",
+            "interpreter": "O",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "공지/알림",
+      "icon": "bell",
+      "items": [
+        [
+          "NTC-01",
+          "공지/알림",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "△",
+            "exportOperator": "△",
+            "interpreter": "△",
+            "buyer": "△"
+          }
+        ]
+      ],
+      "direct": true
+    },
+    {
+      "name": "통계",
+      "icon": "chart-no-axes-column",
+      "items": [
+        [
+          "STA-01",
+          "통계 대시보드",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "STA-02",
+          "연도별 상담실적 통계",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "STA-03",
+          "연도별 바이어 통계",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "환경설정",
+      "icon": "settings",
+      "items": [
+        [
+          "SET-01",
+          "그룹권한관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "SET-04",
+          "상담일지 관리",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "SET-07",
+          "만족도설문 관리",
+          [
+            [
+              "SET-05",
+              "설문관리",
+              [],
+              {
+                "admin": "O",
+                "buyOperator": "X",
+                "exportOperator": "X",
+                "interpreter": "X",
+                "buyer": "X"
+              }
+            ],
+            [
+              "SET-06",
+              "응답관리",
+              [],
+              {
+                "admin": "O",
+                "buyOperator": "X",
+                "exportOperator": "X",
+                "interpreter": "X",
+                "buyer": "X"
+              }
+            ]
+          ],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "SET-03",
+          "메뉴 접근 로그",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ],
+        [
+          "SET-19",
+          "개인정보 접속 이력",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "로그인",
+      "icon": "log-in",
+      "items": [
+        [
+          "COM-01",
+          "로그인",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "O",
+            "exportOperator": "O",
+            "interpreter": "X",
+            "buyer": "X"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "알림",
+      "icon": "bell",
+      "items": [
+        [
+          "NTC-07",
+          "알림",
+          [],
+          {
+            "admin": "O",
+            "buyOperator": "O",
+            "exportOperator": "O",
+            "interpreter": "O",
+            "buyer": "O"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "만족도 조사",
+      "icon": "clipboard-check",
+      "direct": true,
+      "items": [
+        [
+          "NTC-08",
+          "만족도 조사",
+          [],
+          {
+            "admin": "X",
+            "buyOperator": "X",
+            "exportOperator": "X",
+            "buyer": "O",
+            "interpreter": "O"
+          }
+        ]
+      ]
+    }
+  ],
+  "catalog": [
+    {
+      "name": "공통",
+      "key": "common",
+      "screens": [
+        {
+          "id": "COM-01",
+          "title": "로그인",
+          "kind": "form"
+        },
+        {
+          "id": "COM-06",
+          "title": "내정보",
+          "kind": "detail"
+        },
+        {
+          "id": "NTC-07",
+          "title": "알림",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "모니터링",
+      "key": "menu-0",
+      "screens": [
+        {
+          "id": "MON-01",
+          "title": "통합 대시보드",
+          "kind": "dashboard"
+        },
+        {
+          "id": "MON-08",
+          "title": "출결 대시보드",
+          "kind": "dashboard"
+        }
+      ]
+    },
+    {
+      "name": "기본정보관리",
+      "key": "menu-1",
+      "screens": [
+        {
+          "id": "BAS-01",
+          "title": "행사관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-02",
+          "title": "행사관리 상세",
+          "kind": "form"
+        },
+        {
+          "id": "BAS-15",
+          "title": "운영용역사 관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-17",
+          "title": "운영용역사 상세",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-19",
+          "title": "운영용역사 등록",
+          "kind": "form"
+        },
+        {
+          "id": "BAS-03",
+          "title": "해외 바이어 관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-04",
+          "title": "해외 바이어 관리 상세",
+          "kind": "form"
+        },
+        {
+          "id": "BAS-05",
+          "title": "국내 바이어 관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-06",
+          "title": "국내 바이어 관리 상세",
+          "kind": "form"
+        },
+        {
+          "id": "BAS-07",
+          "title": "통역원 관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-08",
+          "title": "통역원 관리 상세",
+          "kind": "form"
+        },
+        {
+          "id": "BAS-16",
+          "title": "관리자 관리",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-18",
+          "title": "관리자 등록·상세",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "담당자관리",
+      "key": "menu-2",
+      "screens": [
+        {
+          "id": "COM-07",
+          "title": "담당자관리",
+          "kind": "list"
+        },
+        {
+          "id": "COM-08",
+          "title": "담당자 등록·상세",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "행사정보",
+      "key": "menu-3",
+      "screens": [
+        {
+          "id": "BAS-09",
+          "title": "참가기업",
+          "kind": "list"
+        },
+        {
+          "id": "BAS-10",
+          "title": "참가기업 상세",
+          "kind": "form"
+        },
+        {
+          "id": "PRE-01",
+          "title": "해외 바이어",
+          "kind": "list"
+        },
+        {
+          "id": "PRE-02",
+          "title": "해외 바이어 상세",
+          "kind": "form"
+        },
+        {
+          "id": "PRE-02-p43",
+          "title": "방한기록 수정",
+          "kind": "popup",
+          "parent": "PRE-02"
+        },
+        {
+          "id": "PRE-01-p42",
+          "title": "숙소 일괄변경",
+          "kind": "popup",
+          "parent": "PRE-01"
+        },
+        {
+          "id": "PRE-01-p41",
+          "title": "숙소관리",
+          "kind": "popup",
+          "parent": "PRE-01"
+        },
+        {
+          "id": "PRE-03",
+          "title": "방한 상태, 행사 출결 QR 리더기 실행",
+          "kind": "form"
+        },
+        {
+          "id": "PRE-12",
+          "title": "상태관리 QR 스캔 카메라",
+          "kind": "form",
+          "parent": "PRE-03"
+        },
+        {
+          "id": "EVT-01",
+          "title": "국내 바이어",
+          "kind": "list"
+        },
+        {
+          "id": "EVT-03",
+          "title": "국내 바이어 상세",
+          "kind": "form"
+        },
+        {
+          "id": "EVT-02",
+          "title": "통역원",
+          "kind": "list"
+        },
+        {
+          "id": "EVT-04",
+          "title": "통역원 상세",
+          "kind": "form"
+        },
+        {
+          "id": "PRE-04",
+          "title": "통역원 매칭",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "상담일지",
+      "key": "menu-4",
+      "screens": [
+        {
+          "id": "JNL-13",
+          "title": "구매상담일지",
+          "kind": "list"
+        },
+        {
+          "id": "JNL-04",
+          "title": "구매상담일지 등록",
+          "kind": "mobile"
+        },
+        {
+          "id": "JNL-15",
+          "title": "구매상담일지 상세",
+          "kind": "form"
+        },
+        {
+          "id": "JNL-14",
+          "title": "수출상담일지",
+          "kind": "list"
+        },
+        {
+          "id": "JNL-05",
+          "title": "수출상담일지 등록",
+          "kind": "mobile"
+        },
+        {
+          "id": "JNL-16",
+          "title": "수출상담일지 상세",
+          "kind": "mobile"
+        },
+        {
+          "id": "JNL-03",
+          "title": "상담 QR 리더",
+          "kind": "mobile"
+        }
+      ]
+    },
+    {
+      "name": "공지/알림",
+      "key": "menu-5",
+      "screens": [
+        {
+          "id": "NTC-01",
+          "title": "공지/알림",
+          "kind": "list"
+        },
+        {
+          "id": "NTC-04",
+          "title": "공지/알림 상세",
+          "kind": "form"
+        },
+        {
+          "id": "NTC-15",
+          "title": "공지/알림 등록",
+          "kind": "list",
+          "parent": "NTC-01"
+        },
+        {
+          "id": "NTC-16",
+          "title": "공지/알림 수정",
+          "kind": "list",
+          "parent": "NTC-01"
+        }
+      ]
+    },
+    {
+      "name": "통계",
+      "key": "menu-6",
+      "screens": [
+        {
+          "id": "STA-01",
+          "title": "통계 대시보드",
+          "kind": "dashboard"
+        },
+        {
+          "id": "STA-02",
+          "title": "연도별 상담실적 통계",
+          "kind": "list"
+        },
+        {
+          "id": "STA-03",
+          "title": "연도별 바이어 통계",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "환경설정",
+      "key": "menu-7",
+      "screens": [
+        {
+          "id": "SET-01",
+          "title": "그룹권한관리",
+          "kind": "list"
+        },
+        {
+          "id": "SET-02",
+          "title": "그룹 등록·상세",
+          "kind": "matrix"
+        },
+        {
+          "id": "SET-04",
+          "title": "상담일지 관리",
+          "kind": "form"
+        },
+        {
+          "id": "SET-07",
+          "title": "만족도설문 관리",
+          "kind": "list",
+          "parent": "SET-05"
+        },
+        {
+          "id": "SET-05",
+          "title": "설문관리",
+          "kind": "form"
+        },
+        {
+          "id": "SET-11",
+          "title": "설문 등록",
+          "kind": "workflow",
+          "parent": "SET-05"
+        },
+        {
+          "id": "SET-12",
+          "title": "설문 상세",
+          "kind": "workflow",
+          "parent": "SET-05"
+        },
+        {
+          "id": "SET-13",
+          "title": "설문 미리보기",
+          "kind": "popup",
+          "parent": "SET-05"
+        },
+        {
+          "id": "SET-06",
+          "title": "응답관리",
+          "kind": "list"
+        },
+        {
+          "id": "SET-14",
+          "title": "개별 설문 응답",
+          "kind": "workflow",
+          "parent": "SET-06"
+        },
+        {
+          "id": "SET-16",
+          "title": "설문 응답 결과 상세",
+          "kind": "list",
+          "parent": "SET-06"
+        },
+        {
+          "id": "SET-15",
+          "title": "주관식 설문 응답",
+          "kind": "workflow",
+          "parent": "SET-16"
+        },
+        {
+          "id": "SET-03",
+          "title": "메뉴 접근 로그",
+          "kind": "list"
+        },
+        {
+          "id": "SET-17",
+          "title": "접근·개인정보·변경 로그 상세",
+          "kind": "workflow",
+          "parent": "SET-03"
+        },
+        {
+          "id": "SET-18",
+          "title": "접근·개인정보·변경 로그 · 상세 조회",
+          "kind": "workflow",
+          "parent": "SET-03"
+        },
+        {
+          "id": "SET-19",
+          "title": "개인정보 접속 이력",
+          "kind": "list"
+        }
+      ]
+    },
+    {
+      "name": "만족도 조사",
+      "key": "menu-10",
+      "screens": [
+        {
+          "id": "NTC-08",
+          "title": "만족도 조사",
+          "kind": "mobile"
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "Q01",
+      "priority": "P1",
+      "title": "엑셀 오류 반영 단위의 불일치",
+      "finding": "현재 검증·화면은 오류 1건 이상이면 전체 미반영한다. 과거 정상 행 부분 반영 요청과 일부 업로드 Description은 다른 기준이다.",
+      "decision": "현재 전체 실패를 유지할지 정상 행 부분 반영으로 바꿀지 확인한 뒤 코드·Description·규칙을 한 번에 맞춘다.",
+      "basis": [
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "id": "Q04",
+      "priority": "P1",
+      "title": "QR 상태 전이·정정",
+      "finding": "QR 선택 화면은 입국·호텔 이동·호텔 도착·전시장 출발·전시장 입장·통역원 만남·전시장 퇴장을 제공한다. 해외바이어 상세 이력에는 상담 시작·종료 등 다른 단계 정의가 있다.",
+      "decision": "QR 상태와 방한 상세·출결·상담 이력의 대응표, 역순·건너뛰기·재입장·정정 및 통계 집계 기준을 확인한다.",
+      "basis": [
+        "S15"
+      ]
+    },
+    {
+      "id": "Q05",
+      "priority": "P1",
+      "title": "설문 1회 제출의 서버 판정",
+      "finding": "Description은 설문 ID·연도·응답자 고유코드의 1회 제출을 정의한다. 국내바이어는 목업에서 제출 후 빈 설문으로 돌아가는 반복 시연 예외가 있다.",
+      "decision": "운영 서버의 중복 제출 방지·저장 완료 판정·실패 복원을 구현하고 목업 예외가 운영에 적용되지 않도록 확인한다.",
+      "basis": [
+        "S18",
+        "S19"
+      ]
+    },
+    {
+      "id": "Q06",
+      "priority": "P2",
+      "title": "구매·수출 일지 상태 명칭",
+      "finding": "수출 일괄 처리는 작성 중/반려를 사용한다. 다른 코드에는 임시 저장도 존재한다.",
+      "decision": "유형별 상태코드·노출명·수정/삭제/재제출 가능 여부 표를 완성한다.",
+      "basis": [
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "id": "Q07",
+      "priority": "P2",
+      "title": "메뉴 접근과 처리 권한",
+      "finding": "메뉴의 △는 단일한 수정/열람 권한으로 해석할 수 없다.",
+      "decision": "담당 범위·행사·목록·상세·버튼·서버 API 단위 권한표를 연결한다.",
+      "basis": [
+        "S01",
+        "S13"
+      ]
+    },
+    {
+      "id": "Q08",
+      "priority": "P2",
+      "title": "상세 Description과 운영 산식 검토",
+      "finding": "현재 문서가 여러 화면에 영향을 주는 공통 기준을 관리한다. 개별 항목·알럿·핀과 일부 예시 값·과거 설명은 저장 Description에 남아 있다.",
+      "decision": "Description의 오타·노출 조건과 통계 산식·개인정보 이력 보존 기간을 업무별 검토한다. 문서 정리를 이유로 설명과 댓글을 일괄 삭제하지 않는다.",
+      "basis": [
+        "S02"
+      ]
+    },
+    {
+      "id": "Q09",
+      "priority": "P2",
+      "title": "데이터 저장 수준",
+      "finding": "참가 상태·QR 기록·설문 작성값 등은 현재 메모리 또는 탭 저장 예제가 섞여 있다.",
+      "decision": "새로고침 복원·동시 작업·중복 실행·서버 장애·감사 로그 보존 기준을 정한다.",
+      "basis": [
+        "S05",
+        "S15",
+        "S19"
+      ]
+    },
+    {
+      "id": "Q10",
+      "priority": "P1",
+      "title": "승인된 표준상담일지 변경의 연결·배포 확인",
+      "finding": "표준상담일지 모듈과 문서는 저장소에 있으나 기준 공개 소스의 index.html·app.js에는 모듈 진입 연결이 없다. 구매 만원/KRW·수출 USD 예외는 사용자 확정사항이다.",
+      "decision": "기업 확인·상담수준 C1~C5·후속조치·250자 검증 등의 연결·Description·배포를 별도 완료한 뒤 현행 화면 기준으로 승격한다.",
+      "basis": [
+        "S11",
+        "S12"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "file": "gfair_cs/data/navigation.js",
+      "line": 1,
+      "keyword": "window.GFAIR_MENU",
+      "note": "현재 메뉴와 역할별 접근 선언. △의 처리 범위는 별도 확인."
+    },
+    {
+      "id": "S02",
+      "file": "gfair_cs/data/screen-catalog.js",
+      "line": 3,
+      "keyword": "function build",
+      "note": "현재 메뉴와 등록된 보조 화면 목록. QR 3개 화면은 qr-workflow.js에서 추가한다."
+    },
+    {
+      "id": "S03",
+      "file": "gfair_cs/include/participant-lifecycle.js",
+      "line": 7,
+      "keyword": "function participating",
+      "note": "회원과 행사별 참가 상태·미참여 표시·원본 보존."
+    },
+    {
+      "id": "S04",
+      "file": "gfair_cs/docs/회원_행사_계정.md",
+      "line": 5,
+      "keyword": "## 참가와 제외",
+      "note": "현행 참가·자동 발급·동일 행사 재활성화 기준."
+    },
+    {
+      "id": "S05",
+      "file": "gfair_cs/include/domestic-event-review.js",
+      "line": 15,
+      "keyword": "const view=row",
+      "note": "해외·국내·통역원의 행사 목록과 자동 발급 연결."
+    },
+    {
+      "id": "S06",
+      "file": "common/README.md",
+      "line": 5,
+      "keyword": "## 검토 도구와 실제 화면",
+      "note": "상단 도구·Description·레이아웃과 서비스 정책 구분."
+    },
+    {
+      "id": "S07",
+      "file": "gfair_cs/include/overseas-buyer-detail.js",
+      "line": 97,
+      "keyword": "hideHistory",
+      "note": "회원 상세·참가이력 숨김·발급 정보 보존."
+    },
+    {
+      "id": "S08",
+      "file": "gfair_cs/docs/화면_정책.md",
+      "line": 77,
+      "keyword": "## SP-09",
+      "note": "운영용역사·담당자·내정보 등 화면별 적용 기준."
+    },
+    {
+      "id": "S09",
+      "file": "AGENTS.md",
+      "line": 5,
+      "keyword": "## 기준 문서",
+      "note": "현행 문서의 우선순위와 변경·검증 작업 규칙."
+    },
+    {
+      "id": "S10",
+      "file": "gfair_cs/include/member-upload.js",
+      "line": 17,
+      "keyword": "function validate",
+      "note": "엑셀 필수값·형식·중복 및 현행 전체 미반영 검증."
+    },
+    {
+      "id": "S11",
+      "file": "gfair_cs/js/app.js",
+      "line": 111,
+      "keyword": "function exportJournal",
+      "note": "공개 진입 소스의 상담일지 작성·검수·상태 처리."
+    },
+    {
+      "id": "S12",
+      "file": "gfair_cs/docs/확인필요사항.md",
+      "line": 56,
+      "keyword": "## Q10",
+      "note": "승인된 표준양식 변경과 실제 배포 상태를 구분한다."
+    },
+    {
+      "id": "S13",
+      "file": "gfair_cs/include/jnl14-bulk.js",
+      "line": 1,
+      "keyword": "create",
+      "note": "수출상담일지 목록·일괄 검수 처리."
+    },
+    {
+      "id": "S14",
+      "file": "gfair_cs/include/pre04-matching.js",
+      "line": 4,
+      "keyword": "create",
+      "note": "통역원 매칭·변경·취소와 이력."
+    },
+    {
+      "id": "S15",
+      "file": "gfair_cs/include/qr-workflow.js",
+      "line": 3,
+      "keyword": "const states=",
+      "note": "QR 상태·참가자 식별·출결과 중복 체크."
+    },
+    {
+      "id": "S16",
+      "file": "gfair_cs/include/header.js",
+      "line": 5,
+      "keyword": "accountLabel",
+      "note": "현재 이름·역할 표시·내정보 링크·모바일 QR."
+    },
+    {
+      "id": "S17",
+      "file": "gfair_cs/include/notice-ui.js",
+      "line": 5,
+      "keyword": "const titles=",
+      "note": "공지/알림 목록·대상·등록·상세."
+    },
+    {
+      "id": "S18",
+      "file": "gfair_cs/include/survey-participation.js",
+      "line": 11,
+      "keyword": "function menuOpen",
+      "note": "행사 마지막 날 개방·대상·조건부 문항·제출."
+    },
+    {
+      "id": "S19",
+      "file": "gfair_cs/js/app.js",
+      "line": 241,
+      "keyword": "function surveyContext",
+      "note": "설문 원천 데이터·응답 및 행사 종료일 연결."
+    },
+    {
+      "id": "S20",
+      "file": "../RFP 및 자료/기준코드/README.md",
+      "line": 1,
+      "keyword": "## 코드 구성",
+      "note": "국가 250·언어 104·산업군 20. 전달 원본 유지."
+    }
+  ],
+  "referenceCodes": {
+    "source": "RFP 및 자료/기준코드/gfair-reference-codes.json",
+    "format": "gfair-reference-codes-v1",
+    "counts": {
+      "countries": 250,
+      "languages": 104,
+      "industries": 20
+    }
+  },
+  "commonPolicies": [
+    {
+      "id": "CP-01",
+      "title": "접근 권한과 처리 권한",
+      "status": "목업 확인",
+      "scope": "모든 메뉴·목록·상세·처리 화면",
+      "rules": [
+        "메뉴 접근 권한과 업무 처리 권한을 구분한다. 메뉴의 O·△·X만으로 등록·수정·검수 가능 여부를 확정하지 않는다.",
+        "동일 업무의 목록·상세·일괄 처리에서도 역할, 담당 유형과 대상 상태를 함께 확인한다.",
+        "권한 조건을 변경할 때는 메뉴, 직접 URL 접근, 상세 열람과 실행 시점 검증을 함께 확인한다."
+      ],
+      "impact": "메뉴 접근표 · 담당 범위 · 상담일지 검수 · 직접 URL 진입",
+      "basis": [
+        "S01",
+        "S11",
+        "S13"
+      ],
+      "questions": [
+        "Q07"
+      ]
+    },
+    {
+      "id": "CP-02",
+      "title": "행사연도와 참가 대상 분리",
+      "status": "사이트 기준",
+      "scope": "기본정보관리 · 행사정보 · QR·출결 · 통계",
+      "rules": [
+        "회원 기본정보·고유코드와 행사연도별 참가 상태를 분리한다. 현재 행사에서 제외해도 원본과 다른 연도의 참가이력은 보존한다.",
+        "업로드의 참가연도는 행사관리에서 진행 상태인 행사연도를 사용한다. 새 행사연도에는 전년도 참가 상태를 자동 승계하지 않는다. 동일 연도의 재조회·재동기화로 참가 상태를 초기화하지 않는다.",
+        "관리자와 일반 사용자의 행사 선택 노출은 각 화면·역할 정의를 따른다. 행사 전환 시 선택 대상·참가 상태·계정·QR의 연도가 섞이지 않도록 한다."
+      ],
+      "impact": "행사 선택 · 참가 명단 · 선택 대상 · QR 유효성 · 연도별 집계",
+      "basis": [
+        "S03",
+        "S04",
+        "S05",
+        "S15"
+      ],
+      "questions": [
+        "Q09"
+      ]
+    },
+    {
+      "id": "CP-03",
+      "title": "참가 즉시 반영과 발급 정보 재사용",
+      "status": "사용자 확정 · 2026-11-06",
+      "scope": "해외바이어 · 국내바이어 · 통역원 행사 참가 흐름",
+      "flow": [
+        "엑셀 업로드 반영 · 참가/자동 발급",
+        "제외 · 미참여/발급 정보 미사용",
+        "같은 행사 재추가 · 기존 발급 정보 재활성화"
+      ],
+      "rules": [
+        "정상 엑셀 업로드가 반영되면 별도 최종확정 없이 행사 참가 목록에 즉시 표시한다. 해외바이어는 QR만, 국내바이어·통역원은 행사별 ID/PW와 QR을 자동 발급한다.",
+        "현재 행사에서 제외하면 행사 목록에서 숨기고 발급 ID와 QR을 미사용 처리한다. 기본정보에는 해당 행사 미참여 상태를 표시하고 참가연도 표시에서 해당 연도를 제외한다. 기본정보·고유코드·과거 이력은 보존한다.",
+        "같은 행사에 다시 추가하면 기존에 발급한 ID/PW와 QR을 그대로 재활성화한다. 새로운 행사연도의 계정과 혼용하지 않는다. 최종확정 버튼과 확정 후 명단 잠금은 사용하지 않는다."
+      ],
+      "impact": "참가 명단 · 버튼 노출/활성 · 계정·QR · 방한 운영",
+      "basis": [
+        "S05",
+        "S06"
+      ],
+      "questions": [
+        "Q09"
+      ]
+    },
+    {
+      "id": "CP-04",
+      "title": "QR 식별과 체크 이력",
+      "status": "사이트 기준",
+      "scope": "방한 상태 · 행사 출결 · 상담 시작 QR",
+      "rules": [
+        "현재 행사연도·대상 유형·참가 여부와 QR 식별값을 확인한다. 해외바이어는 고유코드, 국내바이어·통역원은 행사계정, 상담 시작은 참가기업 QR을 사용한다. 제외되어 미사용 처리한 참가자 QR은 처리 대상에서 제외한다.",
+        "같은 QR과 같은 처리 상태를 3초 안에 반복 인식하면 새 이력을 추가하지 않는 목업 조건을 적용한다. QR 화면의 상태 선택과 해외바이어 상세의 방한 이력은 각각의 정의를 구분해 확인한다.",
+        "QR 단계의 역순·건너뛰기·정정·재입장과 대시보드 집계 기준은 Q04에서 관리한다. 화면에 나열된 순서만으로 필수 처리 순서를 확정하지 않는다."
+      ],
+      "impact": "QR 진입 · 참가자 검증 · 체크 이력 · 현황판·통계",
+      "basis": [
+        "S15",
+        "S16"
+      ],
+      "questions": [
+        "Q04"
+      ]
+    },
+    {
+      "id": "CP-05",
+      "title": "상담일지 상태와 검수 일관성",
+      "status": "목업 확인",
+      "scope": "상담일지 작성 · 상세 · 검수 · 일괄 처리",
+      "flow": [
+        "작성 중 / 반려",
+        "승인 요청",
+        "승인 완료 또는 반려"
+      ],
+      "rules": [
+        "수출상담일지는 작성·승인 요청·승인 완료·반려 상태에 따라 처리 가능 범위가 달라진다. 목록·상세·일괄 처리에서 같은 상태 기준을 사용한다.",
+        "승인·반려 실행 시 검수 권한과 최신 처리 상태를 다시 확인한다. 반려 사유와 처리 이력을 보존한다.",
+        "임시 저장과 작성 중의 상태 명칭, 구매·수출 유형별 차이, 수정·삭제·재제출 범위는 동일하다고 가정하지 않고 명시적으로 관리한다."
+      ],
+      "impact": "작성 화면 · 상세 열람·수정 · 승인/반려 · 일괄 처리 · 처리 이력",
+      "basis": [
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "questions": [
+        "Q06",
+        "Q07"
+      ]
+    },
+    {
+      "id": "CP-06",
+      "title": "제외·숨김·원본 보존",
+      "status": "목업 확인",
+      "scope": "회원 기본정보 · 행사 참가이력 · 행사 대상 명단",
+      "rules": [
+        "현재 행사 제외, 이력 숨김, 회원 원본 삭제를 서로 다른 처리로 구분한다. 화면에서 보이지 않는다는 이유만으로 데이터가 물리 삭제되었다고 해석하지 않는다.",
+        "현재 행사 미참여 처리는 회원 기본정보·고유코드·과거 참가이력을 보존한다. 참가이력 삭제는 현재 구현상 이력 숨김과 해당 행사 미참여로 처리한다.",
+        "같은 행사에 다시 추가하면 기존 발급 ID/PW와 QR을 재활성화한다. 해외바이어는 고유코드 기반 QR만 재사용한다. 다른 연도의 참가 상태와 발급 정보에는 영향을 주지 않는다."
+      ],
+      "impact": "기본정보 조회 · 행사 목록 · 참가이력 · 재참가·복원",
+      "basis": [
+        "S03",
+        "S04",
+        "S07",
+        "S08"
+      ],
+      "questions": [
+        "Q09"
+      ]
+    },
+    {
+      "id": "CP-07",
+      "title": "저장 수준과 완료 상태",
+      "status": "사이트 기준",
+      "scope": "초안 저장 · 행사 참가 · QR 기록 · 설문 응답",
+      "rules": [
+        "공개 목업의 예시 저장과 실제 운영 서버 저장을 구분한다. 브라우저 메모리·sessionStorage·localStorage와 Description 서버 저장은 서로 다른 저장 범위다.",
+        "상담일지의 기기 초안, 참가 상태, 설문 편집·응답 작성값의 유지·초기화 조건은 해당 업무 정의를 따른다. 성공 안내만으로 실제 계정 인증·문자 발송·운영 DB 저장 완료로 간주하지 않는다.",
+        "동시 작업·중복 실행·영속 저장·장애 복원·감사 이력은 운영 서버 연동 시 확인한다. 승인된 화면 변경도 공개 진입 스크립트 연결과 실제 배포를 확인한 뒤 현행으로 표기한다."
+      ],
+      "impact": "초안 복원 · 새로고침 · 동시 작업 · 오류 복원 · 완료 판정",
+      "basis": [
+        "S05",
+        "S15",
+        "S18",
+        "S19"
+      ],
+      "questions": [
+        "Q05",
+        "Q09"
+      ]
+    },
+    {
+      "id": "CP-08",
+      "title": "기준코드와 일괄 등록 단위",
+      "status": "사이트 기준",
+      "scope": "국가·언어·산업군 사용 화면 · 회원 엑셀 등록",
+      "rules": [
+        "국가 250개·언어 104개·산업군 20개는 사용자 제공 원본 이름·코드·대소문자를 유지한다. 관심분야 제품 카테고리·전시관 구분을 산업군 코드와 혼용하지 않는다.",
+        "등록정보 시트와 현재 유형의 열 이름·순서를 검증한다. 예시 행·참고 코드 시트는 등록하지 않고, 필수값·형식·중복·수식 여부를 검사한다.",
+        "현행 검증 코드는 입력 오류가 1건이라도 있으면 전체 미반영한다. 과거의 정상 행 부분 반영 요청 및 일부 Description과의 차이는 Q01에 기록하며, 문서 정리만으로 처리 방식을 변경하지 않는다."
+      ],
+      "impact": "입력 옵션 · 엑셀 검증 · 대상 반영 · 오류 안내",
+      "basis": [
+        "S09",
+        "S10",
+        "S20"
+      ],
+      "questions": [
+        "Q01"
+      ]
+    }
+  ],
+  "screenPolicies": [
+    {
+      "id": "SP-01",
+      "title": "기본정보의 참가이력",
+      "screens": [
+        "BAS-04",
+        "BAS-06",
+        "BAS-08"
+      ],
+      "common": [
+        "CP-02",
+        "CP-06"
+      ],
+      "rule": "기본정보 목록은 해당 행사 참가 상태를 표시한다. 참가이력의 삭제는 현재 선택 행사 행에만 제공하며 해당 행사 미참여·이력 숨김으로 처리한다. 다른 연도의 이력과 원본을 삭제하지 않는다.",
+      "detail": "입력 항목과 저장 검증은 각 회원 상세의 Description에서 관리한다.",
+      "basis": [
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "id": "SP-02",
+      "title": "해외바이어의 계정 예외",
+      "screens": [
+        "PRE-01",
+        "PRE-02"
+      ],
+      "common": [
+        "CP-02",
+        "CP-03",
+        "CP-04"
+      ],
+      "rule": "해외바이어는 로그인 ID/PW를 발급하지 않는다. 업로드 반영 즉시 행사 참가 목록에 표시하고 행사연도와 고유코드로 QR을 발급한다. 제외 시 QR 미사용, 같은 행사 재추가 시 기존 QR을 다시 사용한다.",
+      "detail": "방한 단계별 입력·정정 사유·숙소 항목은 해당 화면 명세를 참조한다.",
+      "basis": [
+        "S04",
+        "S05",
+        "S15"
+      ]
+    },
+    {
+      "id": "SP-03",
+      "title": "국내바이어·통역원의 발급 기준",
+      "screens": [
+        "EVT-01",
+        "EVT-02"
+      ],
+      "common": [
+        "CP-01",
+        "CP-03",
+        "CP-04"
+      ],
+      "rule": "국내바이어·통역원은 업로드 반영 즉시 해당 행사 ID/PW와 QR을 자동 발급한다. 제외하면 행사 목록에서 숨기고 발급 ID·QR을 미사용 처리한다. 동일 행사 재추가 시 기존 ID/PW와 QR을 그대로 재활성화한다.",
+      "detail": "기존 GK/GI 발급 규칙·7자리 임시 PW를 유지한다. 발급 규칙과 재사용 기준은 회원_행사_계정.md에서 관리한다.",
+      "basis": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "SP-04",
+      "title": "매칭 변경·취소의 이력",
+      "screens": [
+        "PRE-04",
+        "PRE-04-p32"
+      ],
+      "common": [
+        "CP-01",
+        "CP-06",
+        "CP-07"
+      ],
+      "rule": "기존 매칭의 변경·취소에는 사유가 필요하며 배정이력을 보존한다. 현재 통역원과 동일한 대상의 재선택은 제한한다.",
+      "detail": "후보 검색·긴급 체크·연결 해제 범위·버튼별 확인창은 매칭관리 명세에서 관리한다.",
+      "basis": [
+        "S14"
+      ]
+    },
+    {
+      "id": "SP-05",
+      "title": "수출상담일지의 역할별 등록 상태",
+      "screens": [
+        "JNL-05",
+        "JNL-14",
+        "JNL-16"
+      ],
+      "common": [
+        "CP-01",
+        "CP-05"
+      ],
+      "rule": "현재 수출 흐름에서 통역원의 신규 등록은 승인 요청으로, 관리자·수출 용역사의 신규 등록은 승인 완료로 저장된다. 일괄 검수는 승인 요청 상태를 대상으로 한다.",
+      "detail": "제품별 입력, 금액, 검증 메시지, 반려 의견과 버튼 구성은 상담일지 화면설계서에서 관리한다. 화면 변경안은 승인·배포 상태를 확인한 뒤 현행 정책에 반영한다.",
+      "basis": [
+        "S11",
+        "S12",
+        "S13"
+      ]
+    },
+    {
+      "id": "SP-06",
+      "title": "QR 업무별 대상 분리",
+      "screens": [
+        "PRE-03",
+        "PRE-12",
+        "JNL-03"
+      ],
+      "common": [
+        "CP-01",
+        "CP-04"
+      ],
+      "rule": "방한·출결 QR은 관리자·구매/수출 용역사 흐름이며, 상담 시작 QR은 국내바이어·통역원 흐름이다. 상담 시작에서는 참가기업을 식별한다.",
+      "detail": "카메라 UI·권한 오류 안내·상태별 체크 동작은 QR 화면 명세를 참조한다.",
+      "basis": [
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "SP-07",
+      "title": "공지/알림의 단일 진입과 열람 범위",
+      "screens": [
+        "NTC-01",
+        "NTC-04",
+        "NTC-15",
+        "NTC-16"
+      ],
+      "common": [
+        "CP-01"
+      ],
+      "rule": "공지/알림 대메뉴는 NTC-01 목록으로 바로 이동한다. FAQ·자료실은 사용 종료이며 별도 메뉴·페이지 정책으로 다시 추가하지 않는다. 관리자는 작성·수정하고 일반 사용자는 대상에 맞는 공지를 열람한다.",
+      "detail": "제목·대상·첨부파일·알럿/컨펌 상세는 공지/알림 화면에서 관리한다.",
+      "basis": [
+        "S01",
+        "S17"
+      ]
+    },
+    {
+      "id": "SP-08",
+      "title": "만족도 조사 개방과 응답 보존",
+      "screens": [
+        "NTC-08"
+      ],
+      "common": [
+        "CP-02",
+        "CP-07"
+      ],
+      "rule": "국내바이어·통역원의 만족도 조사 메뉴는 행사 마지막 날부터 표시한다. 해당 연도·대상 유형의 사용 설문과 원본 준비 여부를 확인하고, 직접 URL 접근도 같은 조건으로 제한한다. 통역원은 본인 및 담당 해외바이어별로 응답한다. 대상 탭 전환은 초안을 유지하고 다른 페이지 이동·새로고침은 미제출 초안을 초기화한다.",
+      "detail": "단일응답형·척도형은 보기별 다음 문항 이동을 지정할 수 있으며 미지정 보기는 기본 순서로 진행한다. 현재 등록 화면은 과거 표시 조건 대신 이 문항 이동 설정을 사용한다. 설문 ID·행사연도·응답자 고유코드의 1회 제출 기준과 국내바이어 반복 시연 예외를 구분한다. 응답이 있는 설문은 수정 대신 복사하여 등록한다.",
+      "basis": [
+        "S18",
+        "S19"
+      ]
+    },
+    {
+      "id": "SP-09",
+      "title": "운영용역사·담당자 관리 범위",
+      "screens": [
+        "BAS-15",
+        "BAS-17",
+        "BAS-19",
+        "COM-07",
+        "COM-08"
+      ],
+      "common": [
+        "CP-01",
+        "CP-02",
+        "CP-07"
+      ],
+      "rule": "운영용역사는 행사 배정과 기업·대표담당자 정보를 관리하며, 용역사 담당자관리는 로그인한 회사·행사 범위로 제한한다. ID 중복과 행사연도·구분 중복을 각각 검사한다. 계정발송은 유효한 발급 정보와 연락처가 있는 대상만 처리하는 목업 예시다.",
+      "detail": "등록·상세의 입력 항목, ID 수정 가능 여부, 비밀번호 검증과 선택·일괄 발송은 각 화면 Description을 따른다. 실제 SMS·인증 서버는 미연동이다.",
+      "basis": [
+        "S08",
+        "S13"
+      ]
+    },
+    {
+      "id": "SP-10",
+      "title": "공통 헤더와 내정보 진입",
+      "screens": [
+        "COM-06"
+      ],
+      "common": [
+        "CP-01"
+      ],
+      "rule": "헤더에는 이름님과 역할 배지를 표시하고 누르면 COM-06의 기존 내정보 수정 화면으로 이동한다. 사이드바 로고 아래·하단의 역할 표시는 사용하지 않는다. 모바일은 메뉴 아이콘과 QR·알림·로그아웃 아이콘을 사용한다.",
+      "detail": "유형별 본인 정보는 원천 기본정보의 입력·검증 정책을 따르고 이력 영역은 내정보에 표시하지 않는다. COM-09는 과거 주소 호환용이며 별도 팝업 정책으로 관리하지 않는다.",
+      "basis": [
+        "S08",
+        "S16"
+      ]
+    }
+  ],
+  "issuePolicies": {
+    "Q01": [
+      "CP-08"
+    ],
+    "Q04": [
+      "CP-04"
+    ],
+    "Q05": [
+      "CP-07"
+    ],
+    "Q06": [
+      "CP-05"
+    ],
+    "Q07": [
+      "CP-01"
+    ],
+    "Q08": [],
+    "Q09": [
+      "CP-02",
+      "CP-03",
+      "CP-07"
+    ],
+    "Q10": [
+      "CP-05",
+      "CP-07"
+    ]
+  }
+};
