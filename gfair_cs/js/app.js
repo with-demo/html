@@ -605,15 +605,28 @@ const surveyCanBranch=v=>['단일응답형','척도형'].includes(v.type);
 const surveyQuestionEntries=q=>q.groups.flatMap((g,gi)=>g.questions.map((question,qi)=>({question,key:gi+'-'+qi})));
 function migrateAdjacentSurveyConditions(q){
  const entries=surveyQuestionEntries(q);
- for(let i=1;i<entries.length-1;i++){
+ const seedId=q.id?.startsWith('SUR-DEMO-ARCHIVE-')?'SUR-2026-DOMESTIC-V3':q.id;
+ const seed=window.GFAIR_SURVEY_EXAMPLES?.find(survey=>survey.id===seedId);
+ for(let i=1;i<entries.length;i++){
   const source=entries[i-1],target=entries[i],next=entries[i+1];
-  const condition=target.question.visibleWhen;
-  if(condition?.question!==source.key||!surveyCanBranch(source.question)||!source.question.required)continue;
+  if(!surveyCanBranch(source.question)||!source.question.required)continue;
   const options=source.question.options;
-  if(!options[Number(condition.option)]||options.some(option=>option.nextQuestion))continue;
+  let condition=target.question.visibleWhen;
+  // Recover the original condition from sample records saved with the old skip routes.
+  if(!condition&&seed&&next&&source.question.branchEnabled){
+   const [gi,qi]=target.key.split('-').map(Number);
+   const original=seed.groups[gi]?.questions[qi];
+   if(original?.title===target.question.title&&original.visibleWhen?.question===source.key
+    &&options.every((option,index)=>option.nextQuestion===(String(index)===String(original.visibleWhen.option)?target.key:next.key))){
+    condition={...original.visibleWhen};
+   }
+  }
+  if(condition?.question!==source.key||!options[Number(condition.option)])continue;
+  const oldSkip=next&&options.every((option,index)=>option.nextQuestion===(String(index)===String(condition.option)?target.key:next.key));
+  if(!oldSkip&&options.some(option=>option.nextQuestion))continue;
+  target.question.visibleWhen=condition;
   source.question.branchEnabled=true;
-  options.forEach((option,index)=>{option.nextQuestion=String(index)===String(condition.option)?target.key:next.key;});
-  delete target.question.visibleWhen;
+  options.forEach((option,index)=>{option.nextQuestion=String(index)===String(condition.option)?target.key:'';});
  }
 }
 surveyStore.forEach(migrateAdjacentSurveyConditions);
@@ -628,7 +641,7 @@ function surveyQuestionSettings(v,gi,qi){
  return eligible?'<div class="field survey-condition-field"><div class="survey-condition-heading">'+
   '<label class="check"><input type="checkbox" name="'+name+'" data-survey-branch role="switch" '+(v.branchEnabled?'checked':'')+'> 응답에 따라 문항 이동</label>'+
   '<details class="survey-condition-help"><summary aria-label="응답에 따라 문항 이동 도움말">i</summary>'+
-  '<p><span>단일응답형, 척도형의 경우 보기별로 이동할 문항을 지정할 수 있습니다.</span><span>지정하지 않은 보기는 기본 순서대로 다음 문항으로 이동합니다.</span></p></details></div></div>':'';
+  '<p><span>단일응답형, 척도형의 경우 보기별로 이동할 문항을 지정할 수 있습니다.</span><span>지정하지 않은 보기는 기본 순서대로 진행합니다.</span></p></details></div></div>':'';
 }
 function surveyBranchField(v,gi,qi,oi,options){
  if(!surveyCanBranch(v))return '';
