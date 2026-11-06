@@ -17,7 +17,7 @@
   for(const name of ['buyerName','interpreterName','birthDate']){const input=form.elements[name];if(!input)continue;input.removeAttribute('readonly');input.removeAttribute('aria-readonly');input.required=true;input.value='';if(name==='birthDate'){input.type='date';input.max=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());}else input.maxLength=100;const label=input.closest('dd').previousElementSibling;label.insertAdjacentHTML('beforeend','<span class="required-asterisk" role="img" aria-label="필수">*</span>');}
   for(const section of form.querySelectorAll('section'))if(section.querySelector('.overseas-buyer-history'))section.remove();
   form.querySelector('.formfooter a').href='#'+(id===c.profile?c.source:c.eventList);form.querySelector('[type="submit"]').textContent='등록';
-  form.insertAdjacentHTML('afterbegin','<p class="notice">'+E(ctx.year())+'년 행사에 참가 등록합니다. '+(c.prefix==='F'?'QR':'ID·비밀번호와 QR')+'은 등록 후 자동 발급됩니다.</p>');return template.innerHTML;
+  return template.innerHTML;
  }
  function save(form){const id=form.dataset.memberRegistration,c=config(id);if(!c||!mode(id)||!canUse(c,id))throw Error('등록 권한과 화면을 확인해 주세요.');const f=form.elements,name=(f.buyerName||f.interpreterName).value.trim(),dob=f.birthDate.value,year=String(ctx.year()),source=ctx.source(c.source),rows=source.rows.map(r=>r.slice()),births={...(source.screen.ui.birthDates||{})};
   if(!name)throw Error('이름을 입력해 주세요.');if(!/^\d{4}-\d{2}-\d{2}$/.test(dob)||dob>f.birthDate.max||new Date(dob+'T00:00:00Z').toISOString().slice(0,10)!==dob)throw Error('생년월일을 확인해 주세요.');
