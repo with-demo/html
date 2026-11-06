@@ -226,3 +226,10 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   font-weight:400;
 }
 .survey-builder .survey-question-editor { overflow:visible; }
+
+.survey-builder .survey-condition-field { align-self:center; }
+.survey-condition-heading > .check { display:flex; align-items:center; gap:6px; }
+.survey-branch-field { display:flex; align-items:center; gap:8px; margin:0 0 12px; }
+.survey-branch-field[hidden], [data-survey-question][hidden] { display:none; }
+.survey-branch-field > span { flex:none; }
+.survey-branch-field > select { width:min(100%, 380px); }
