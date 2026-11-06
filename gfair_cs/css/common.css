@@ -190,7 +190,7 @@ details.survey-question-editor{padding:0;overflow:hidden}details.survey-question
   font-weight:700;
   line-height:1.4;
 }
-.survey-builder .survey-option-edit { padding-top:10px; }
+.survey-builder .survey-option-edit { padding-top:14px; }
 .survey-option-heading { margin:0 0 8px; }
 .survey-builder .survey-option-edit > .row {
   display:grid;
