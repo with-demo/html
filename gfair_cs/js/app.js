@@ -298,7 +298,7 @@ if(['JNL-05','JNL-16'].includes(current)&&form){
 }
 save();return}const countryOption=ev.target.closest('[data-country-option]'),countryRemove=ev.target.closest('[data-country-remove]');if(countryOption||countryRemove){const wrap=(countryOption||countryRemove).closest('[data-country-select]'),search=wrap.querySelector('[data-country-search]'),value=(countryOption||countryRemove).dataset.countryOption||(countryRemove&&countryRemove.dataset.countryRemove),selected=[...wrap.querySelectorAll('input[name="sellerCountry"]')].map(el=>el.value),options=JSON.parse(wrap.dataset.options||'[]'),option=options.find(o=>o.value===value);let next=countryRemove?selected.filter(v=>v!==value):(selected.includes(value)?selected.filter(v=>v!==value):[...selected,value]);wrap.querySelector('[data-country-selected]').innerHTML=next.map(v=>{const o=options.find(x=>x.value===v);return o?'<span class="country-chip">'+E(o.label)+'<button type="button" aria-label="'+E(o.label)+' 제거" data-country-remove="'+E(o.value)+'">×</button></span>':''}).join('');wrap.querySelector('[data-country-values]').innerHTML=next.map(v=>{const o=options.find(x=>x.value===v);return '<input type="hidden" name="sellerCountry" value="'+E(v)+'"><input type="hidden" name="sellerCountryCode" value="'+E(o?.code||'')+'">'}).join('');search.required=!next.length;search.setCustomValidity(next.length?'':'국가를 하나 이상 선택해 주세요.');const q=search.value.trim().toLowerCase(),available=options.filter(o=>!q||(o.search||o.label||o.value).toLowerCase().includes(q));wrap.querySelector('.journal-select-options').innerHTML=available.slice(0,40).map(o=>'<button type="button" role="option" aria-selected="'+next.includes(o.value)+'" class="journal-select-option'+(next.includes(o.value)?' selected':'')+'" data-country-option="'+E(o.value)+'" data-country-label="'+E(o.label)+'" data-country-code="'+E(o.code)+'">'+(next.includes(o.value)?'✓ ':'')+E(o.label)+'</button>').join('');wrap.querySelector('.journal-select-options').hidden=false;search.setAttribute('aria-expanded','true');save();return}if(!['JNL-05','JNL-16'].includes(current))return;const suggestion=ev.target.closest('[data-tag-suggestion]');if(suggestion){const value=suggestion.dataset.tagSuggestion,p=root.querySelector('#hashtag-preview'),input=root.querySelector('[name="hashtag-input"]'),box=root.querySelector('#hashtag-suggestions');if(p&&!([...p.querySelectorAll('input[name="hashtags"]')].some(item=>item.value===value)))p.insertAdjacentHTML('beforeend','<span class="hashtag-label">#'+E(value)+'<button type="button" data-remove-hashtag aria-label="'+E(value)+' 삭제">×</button><input type="hidden" name="hashtags" value="'+E(value)+'"></span>');if(input)input.value='';if(box){box.hidden=true;box.innerHTML=''}save();return}const button=ev.target.closest('[data-remove-hashtag]');if(!button)return;button.closest('.hashtag-label')?.remove();save()});
 let pendingOwnTravel=null;
-window.addEventListener('hashchange',()=>{if(document.getElementById('draft-form'))save();filter={};if(location.hash==='#PRE-01'&&pendingOwnTravel!==null){filter.ownBuyerOnly=pendingOwnTravel;pendingOwnTravel=null;}render();window.scrollTo(0,0)});window.addEventListener('online',()=>{if(document.getElementById('draft-form'))save();render();toast('인터넷 연결이 복구되었습니다. 기기 초안은 유지됩니다. 서버 연결 전입니다.')});window.addEventListener('offline',()=>{if(document.getElementById('draft-form'))save();render()});window.addEventListener('beforeunload',()=>{if(document.getElementById('draft-form'))save();stop()});setInterval(()=>{if(document.getElementById('draft-form'))save()},30000);
+window.addEventListener('hashchange',event=>{if(blockSurveyHistoryExit(event))return;if(document.getElementById('draft-form'))save();filter={};if(location.hash==='#PRE-01'&&pendingOwnTravel!==null){filter.ownBuyerOnly=pendingOwnTravel;pendingOwnTravel=null;}render();window.scrollTo(0,0)});window.addEventListener('online',()=>{if(document.getElementById('draft-form'))save();render();toast('인터넷 연결이 복구되었습니다. 기기 초안은 유지됩니다. 서버 연결 전입니다.')});window.addEventListener('offline',()=>{if(document.getElementById('draft-form'))save();render()});window.addEventListener('beforeunload',()=>{if(document.getElementById('draft-form'))save();stop()});setInterval(()=>{if(document.getElementById('draft-form'))save()},30000);
 if(document.modelContext?.registerTool){const life=new AbortController();window.addEventListener('pagehide',()=>life.abort(),{once:true});try{Promise.resolve(document.modelContext.registerTool({name:'navigate_gfair_screen',title:'G-FAIR 화면 열기',description:'SB 화면코드로 검토용 화면을 엽니다. 데이터는 변경하지 않습니다.',inputSchema:{type:'object',properties:{screen_id:{type:'string'}},required:['screen_id'],additionalProperties:false},annotations:{readOnlyHint:false},execute(input){if(!input||typeof input.screen_id!=='string'||!map.has(input.screen_id))throw Error('유효한 SB 화면코드가 필요합니다.');nav(input.screen_id);render();return {screen_id:input.screen_id,title:map.get(input.screen_id).title}}},{signal:life.signal})).catch(()=>{})}catch{}}
 window.GFAIR={screens:all.map(s=>({id:s.id,title:s.title,group:s.group})),navigate:nav,getState:()=>({current,role,event,scope,connected:connected(),savedAt,submitted,journalStates:journals.map(j=>({id:j.id,status:j.status})),logs}),setOffline:v=>{if(document.getElementById('draft-form'))save();offline=Boolean(v);render()}};
 root.addEventListener('click',ev=>{if(!ev.target.closest('[data-action="event-sync"]'))return;eventLastSyncedAt=new Date().toISOString();try{localStorage.setItem(eventSyncStorageKey,eventLastSyncedAt);}catch{}const label=root.querySelector('[data-event-last-sync]');if(label)label.textContent='최근 동기화: '+eventLastSyncText();toast('2026 G-FAIR KOREA 행사 정보가 업데이트되었습니다.');});
@@ -738,12 +738,12 @@ document.addEventListener('click',event=>{
  event.preventDefault();
  event.stopImmediatePropagation();
 },true);
-window.addEventListener('hashchange',event=>{
+function blockSurveyHistoryExit(event){
  if(!surveyHasUnsavedChanges()||new URL(event.oldURL).hash===location.hash)return;
  event.stopImmediatePropagation();
  history.replaceState(history.state,'',event.oldURL);
  const openWarning=document.getElementById('survey-history-warning');
- if(openWarning?.open)return;
+ if(openWarning?.open)return true;
  const warning=document.createElement('dialog');
  warning.id='survey-history-warning';
  warning.setAttribute('aria-labelledby','survey-history-warning-title');
@@ -757,7 +757,8 @@ window.addEventListener('hashchange',event=>{
  },{once:true});
  document.body.append(warning);
  warning.showModal();
-},true);
+ return true;
+}
 window.addEventListener('beforeunload',event=>{
  if(!surveyHasUnsavedChanges())return;
  event.preventDefault();
