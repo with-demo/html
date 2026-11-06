@@ -46,9 +46,39 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const selector=qrEntryAnchors[route()];
   return !!selector && record.anchor?.selector===selector;
  }
+ const surveyAccessId='8675ecb0-e5a2-4d0b-beda-4539ab0ffb8b';
+ const surveyMenuRule='- 국내 바이어·통역원에게는 행사 마지막 날과 등록된 조사 시작일 중 늦은 날짜부터, 참여 가능한 설문이 있을 때만 [만족도 조사] 메뉴를 표시한다.';
+ const surveyDirectRule='- 참여 가능일 전 또는 참여 가능한 설문이 없을 때 주소로 직접 접근하면 본인의 상담일지 목록으로 이동한다.';
+ function surveyAccessDescription(record){
+  if(document.body.dataset.project!=='gfair_cs'||route()!=='NTC-08'||record.id!==surveyAccessId)return record;
+  const changes=window.GFAIR_DESCRIPTION_CHANGES;
+  const before=readSpec(record.text);
+  if(!changes||before?.item!=='설문 표시·참여 조건')return record;
+  const append=(value,line)=>value.includes(line)?value:[value,line].filter(Boolean).join('\n');
+  const visibility=append(before.visibility||'',surveyMenuRule);
+  const exception=append(before.exception||'',surveyDirectRule);
+  if(visibility===before.visibility&&exception===before.exception)return record;
+  return {...record,text:JSON.stringify(changes.markAgentChanges(JSON.parse(record.text),{...JSON.parse(record.text),visibility,exception}))};
+ }
+ let surveyAccessSaveRunning=false,surveyAccessAttemptedRevision;
+ async function saveSurveyAccessDescription(){
+  if(route()!=='NTC-08'||!store.loaded||!store.user?.editor||surveyAccessSaveRunning)return;
+  const record=store.records.find(record=>record.id===surveyAccessId);
+  if(!record||record.revision===surveyAccessAttemptedRevision)return;
+  const updated=surveyAccessDescription(record);
+  if(updated===record)return;
+  surveyAccessSaveRunning=true;
+  surveyAccessAttemptedRevision=record.revision;
+  try{await store.mutate('update',{id:record.id,revision:record.revision,text:updated.text});}
+  catch(error){console.error('NTC-08 디스크립션 저장 실패:',error.message);}
+  finally{surveyAccessSaveRunning=false;}
+ }
+ window.addEventListener('collaboration-updated',saveSurveyAccessDescription);
+ saveSurveyAccessDescription();
  function records(){
   const screen=route();
   let ordered=orderDescriptionLabels(layoutRecords(),screen);
+  if(screen==='NTC-08')ordered=ordered.map(surveyAccessDescription);
   if(screen==='PRE-03'&&ordered.some(record=>record.anchor?.selector==='#qr-launch')){
    ordered=ordered.filter(record=>{
     const spec=readSpec(record.text);
