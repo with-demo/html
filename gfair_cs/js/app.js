@@ -740,9 +740,23 @@ document.addEventListener('click',event=>{
 },true);
 window.addEventListener('hashchange',event=>{
  if(!surveyHasUnsavedChanges()||new URL(event.oldURL).hash===location.hash)return;
- if(confirmSurveyExit())return;
  event.stopImmediatePropagation();
  history.replaceState(history.state,'',event.oldURL);
+ const openWarning=document.getElementById('survey-history-warning');
+ if(openWarning?.open)return;
+ const warning=document.createElement('dialog');
+ warning.id='survey-history-warning';
+ warning.setAttribute('aria-labelledby','survey-history-warning-title');
+ warning.innerHTML='<form method="dialog"><div class="dialoghead"><h2 id="survey-history-warning-title">저장하지 않은 변경사항이 있습니다.</h2></div><div class="dialogbody">이 화면을 나가시겠습니까?</div><div class="dialogactions"><button type="submit" value="stay" class="btn" autofocus>취소</button><button type="submit" value="leave" class="btn primary">나가기</button></div></form>';
+ warning.addEventListener('close',()=>{
+  warning.remove();
+  if(warning.returnValue!=='leave')return;
+  surveyEditorDirty=false;
+  history.replaceState(history.state,'',event.newURL);
+  window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL:event.oldURL,newURL:event.newURL}));
+ },{once:true});
+ document.body.append(warning);
+ warning.showModal();
 },true);
 window.addEventListener('beforeunload',event=>{
  if(!surveyHasUnsavedChanges())return;
