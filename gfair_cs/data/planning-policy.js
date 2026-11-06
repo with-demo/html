@@ -754,7 +754,7 @@ window.GFAIR_PLANNING_POLICY={
         },
         {
           "id": "SET-02",
-          "title": "그룹 등록·상세",
+          "title": "그룹 상세",
           "kind": "matrix"
         },
         {
