@@ -16,7 +16,7 @@
    controllers.set(cfg.route,{ready:year=>people(year).length>0,view});
    const button=(action,label,disabled=false)=>'<button type="button" class="btn" data-domestic-action="'+action+'"'+(disabled?' disabled':'')+'>'+label+'</button>';
    const selected=()=>[...document.querySelectorAll('[data-'+(cfg.foreign?'pre01':'event')+'-check]:checked')].map(n=>cfg.foreign?n.dataset.pre01Check:n.dataset.eventCheck);
-   function notice(){return ctx.role()==='admin'?'':'<section class="panel domestic-review-notice"><p>등록한 참가자는 행사 명단에 바로 표시되며 '+(cfg.foreign?'QR을 사용할 수 있습니다.':'계정과 QR이 자동 발급됩니다.')+' 제외한 참가자는 행사 명단에서 숨겨지고 '+(cfg.foreign?'QR이 미사용 처리됩니다.':'발급 계정과 QR이 미사용 처리됩니다.')+' 다시 추가하면 '+(cfg.foreign?'기존 고유코드의 QR을':'동일 행사에 발급했던 ID와 QR을')+' 재사용합니다.</p></section>';}
+   function notice(){return ''; }
    function render(route){
     if(route!==cfg.route)return base.list(route);
     const current=source();for(const row of people())api().syncParticipation(row,current.rows,cfg.profile,ctx.year(),true);
