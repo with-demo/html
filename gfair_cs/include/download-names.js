@@ -5,7 +5,7 @@
  const png=(payload,filename='')=>{
   if(typeof window.qrcode!=='function')throw Error('QR 도구를 불러오지 못했습니다.');const qr=window.qrcode(0,'M');qr.addData(payload);qr.make();
   const n=qr.getModuleCount(),scale=8,margin=4,size=(n+margin*2)*scale,canvas=document.createElement('canvas'),measure=document.createElement('canvas').getContext('2d'),font='12px Arial, "Malgun Gothic", sans-serif',lines=[];measure.font=font;let line='';
-  for(const char of String(filename)){if(line&&measure.measureText(line+char).width>size-24){lines.push(line);line=char;}else line+=char;}if(line)lines.push(line);
+  for(const char of String(filename).replace(/_qr코드(?=\.png$)/i,'')){if(line&&measure.measureText(line+char).width>size-24){lines.push(line);line=char;}else line+=char;}if(line)lines.push(line);
   canvas.width=size;canvas.height=size+(lines.length?lines.length*16+12:0);const paint=canvas.getContext('2d');paint.fillStyle='#fff';paint.fillRect(0,0,canvas.width,canvas.height);paint.fillStyle='#000';
   for(let row=0;row<n;row++)for(let col=0;col<n;col++)if(qr.isDark(row,col))paint.fillRect((col+margin)*scale,(row+margin)*scale,scale,scale);
   paint.font=font;paint.fillStyle='#555';paint.textAlign='center';paint.textBaseline='top';lines.forEach((text,i)=>paint.fillText(text,size/2,size+4+i*16));return canvas.toDataURL('image/png');
