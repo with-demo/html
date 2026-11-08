@@ -17,7 +17,7 @@
  function templateColumns(s){return GFAIRMemberUpload.headers(s.id)}
  function openUpload(id){
   validated=null;validationEpoch++;const name=labels[id];
-  const guide=GFAIRMemberUpload.uploadGuideHtml+'<div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
+  const guide=GFAIRMemberUpload.uploadGuideHtml+'<p class="small">오류행이 1건이라도 있으면 정상행을 포함한 파일 전체를 반영하지 않습니다. 오류를 수정한 후 파일을 다시 업로드해 주세요.</p>'+'<div class="popup-action-row" style="margin-bottom:15px"><button type="button" class="btn" data-master-template>엑셀양식 다운로드</button></div>';
   content.innerHTML=`<div class="dialoghead"><h2>${name} 엑셀 일괄 업로드</h2><button type="button" class="btn ghost" data-action="close">닫기</button></div><div class="dialogbody">${guide}<form data-master-upload-form="${id}"><label class="field"><span>엑셀 파일</span><input type="file" name="file" accept=".xlsx" required><small class="hint">XLSX 파일 1개 · 용량 제한 없음</small></label><button type="submit" class="btn primary">파일 검증</button></form><div data-master-upload-result aria-live="polite"></div></div>`;
   dialog.showModal();
  }
@@ -32,7 +32,7 @@
  function normalizeDob(value){const dob=String(value??'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(dob))return '';const d=new Date(dob+'T00:00:00Z');return !Number.isNaN(d.valueOf())&&d.toISOString().slice(0,10)===dob?dob:''}
  function table(headers,rows){return `<div class="tablewrap"><table><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
  function setStatus(row,s,status){const i=s.ui.columns.indexOf('참가상태');if(i>=0)row[i]=status;}
- function renderValidation(id,entries,errors){const result=content.querySelector('[data-master-upload-result]');result.innerHTML='';validated=null;if(errors.length){window.alert(GFAIRMemberUpload.fileError(errors.join(' / ')));return;}if(entries.some(x=>!x.valid)){window.alert(GFAIRMemberUpload.summary(entries,0));return;}validated={id,entries,year:currentYear()};applyValidated();window.alert(GFAIRMemberUpload.summary(entries,entries.length));}
+ function renderValidation(id,entries,errors){const result=content.querySelector('[data-master-upload-result]');result.innerHTML='';validated=null;if(errors.length){window.alert(GFAIRMemberUpload.fileError(errors.join(' / ')));return;}if(entries.some(x=>!x.valid)){window.alert(GFAIRMemberUpload.summary(entries,0)+'\n오류행이 있어 전체 반영을 중단했습니다.\n정상행을 포함해 반영 0건입니다.');return;}validated={id,entries,year:currentYear()};applyValidated();window.alert(GFAIRMemberUpload.summary(entries,entries.length));}
  document.addEventListener('change',ev=>{if(ev.target.matches('[data-master-upload-form] input[type="file"]')){validated=null;validationEpoch++;const result=content.querySelector('[data-master-upload-result]');if(result)result.innerHTML='';const submit=ev.target.form?.querySelector('button[type="submit"]');if(submit)submit.disabled=false;}});
  document.addEventListener('submit',async ev=>{
   const form=ev.target;if(!form.matches('[data-master-upload-form]'))return;
