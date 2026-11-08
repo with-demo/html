@@ -3,6 +3,13 @@
  const storageKey='gfair.event-interpreter-reserve.v1';let values={};
  try{const saved=JSON.parse(sessionStorage.getItem(storageKey)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))values=saved;}catch{}
  const key=(year,id)=>String(year)+'|'+id;
+ // 2026년 참가 명단에서 예비인력 4명 예시를 최초 한 번만 구성한다.
+ const seed='demo-reserve-20261108';
+ if(!values[seed]){
+  const rows=(window.GFAIR_SCREENS||[]).flatMap(g=>g.screens).find(s=>s.id==='BAS-07')?.ui?.rows||[];
+  const people=rows.filter(row=>window.GFAIR_PARTICIPATION?.participating('BAS-07',row,'2026'));
+  if(people.length){const next={...values};const needed=Math.max(0,4-people.filter(row=>next[key('2026',row[0])]==='Y').length);for(const row of people.filter(row=>!Object.hasOwn(next,key('2026',row[0]))).slice(0,needed))next[key('2026',row[0])]='Y';next[seed]=true;try{sessionStorage.setItem(storageKey,JSON.stringify(next));values=next;}catch{}}
+ }
  window.GFAIR_EVENT_INTERPRETER_RESERVE={
   label:value=>value==='Y'?'예비':'일반',
   get:(year,id)=>values[key(year,id)]==='Y'?'Y':'N',
