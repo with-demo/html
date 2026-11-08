@@ -1,0 +1,51 @@
+{
+  "notice": "[변경사항 있음 · 2026-11-08] 예비인력 지정·해제 전 이름 목록·총 인원을 표시하는 브라우저 컨펌 추가. 취소 시 인력구분과 선택 유지.",
+  "updates": [
+    {
+      "id": "interpreter-reserve-bulk-20261108",
+      "fields": {
+        "detail": {
+          "append": "\n- 지정·해제 실행 전 브라우저 컨펌 표시. 10명 이하는 이름 모두, 초과 시 앞 10명과 외 나머지 인원 및 총 인원 표시. 확인 시 변경, 취소 시 기존 인력구분·선택 유지."
+        }
+      }
+    }
+  ],
+  "inserts": [
+    {
+      "id": "interpreter-reserve-confirm-assign-20261108",
+      "selector": "#content",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "interpreter-reserve-assign-confirm",
+        "screens": [
+          "EVT-02"
+        ],
+        "title": "예비인력 지정 확인",
+        "type": "브라우저 컨펌",
+        "trigger": "통역원 선택 후 [예비인력 지정] 클릭",
+        "message": "{이름 목록}{초과 시 외 M명}\n총 {N}명을 예비인력으로 지정하시겠습니까?",
+        "confirm": "선택 인원의 인력구분을 예비로 변경하고 목록 재조회",
+        "cancel": "인력구분·선택 상태 유지",
+        "note": "10명 이하는 이름 모두 표시. 11명 이상은 앞 10명과 외 나머지 인원수명 표시."
+      }
+    },
+    {
+      "id": "interpreter-reserve-confirm-release-20261108",
+      "selector": "#content",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "interpreter-reserve-release-confirm",
+        "screens": [
+          "EVT-02"
+        ],
+        "title": "예비인력 해제 확인",
+        "type": "브라우저 컨펌",
+        "trigger": "통역원 선택 후 [예비인력 해제] 클릭",
+        "message": "{이름 목록}{초과 시 외 M명}\n총 {N}명의 예비인력 지정을 해제하시겠습니까?",
+        "confirm": "선택 인원의 인력구분을 일반으로 변경하고 목록 재조회",
+        "cancel": "인력구분·선택 상태 유지",
+        "note": "10명 이하는 이름 모두 표시. 11명 이상은 앞 10명과 외 나머지 인원수명 표시."
+      }
+    }
+  ]
+}
