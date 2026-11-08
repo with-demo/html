@@ -29,7 +29,6 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('../css/agency-filters.css?v=agency-multi-20261020',document.currentScript.src).href;document.head.append(link);})();
 
-(()=>{const script=document.createElement('script');script.src=new URL('master-upload-ui.js?v=all-or-nothing-20261108',document.currentScript.src).href;document.head.append(script);})();
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=travel-detail-record-edit-20261103',document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=account-pages-final-20261030",document.currentScript.src).href;document.head.append(script);})();
