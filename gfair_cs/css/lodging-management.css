@@ -19,3 +19,5 @@
 .lodging-manager-scroll{max-height:440px;overflow:auto}.lodging-manager-table{width:100%;min-width:560px;table-layout:fixed;border-collapse:separate;border-spacing:0}
 .lodging-manager-table th,.lodging-manager-table td{padding:12px 10px;vertical-align:middle;overflow-wrap:anywhere}.lodging-manager-table thead th{position:sticky;top:0;z-index:2;background:#f5f5f5}.lodging-manager-table .lodging-add-row td{position:sticky;top:45px;z-index:1;background:#f4f8fc;border-bottom:1px solid #d7e2ee}.lodging-manager-table input{width:100%;min-width:0;box-sizing:border-box;font-size:13px}.lodging-manager-table td:first-child{text-align:left}.lodging-manager-table .btn{min-width:58px}.lodging-manager-table [data-lodging-add]{margin:0}
 [data-lodging-message]:empty{display:none}
+
+.pre01-bulk-toolbar>.participant-qr-tools{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.pre01-participant-list .event-participant-tools .btn.pre01-lodging-manage{background:#eaf2ff;border-color:#6090c4;color:#234f82}.pre01-participant-list .event-participant-tools .btn.pre01-lodging-manage:hover{background:#dceaff;border-color:#4374aa}
