@@ -23,7 +23,7 @@
     let html=base.list(route);
     html=html.replace(/<td><button[^>]*data-event-action="issue-one"[^>]*>[\s\S]*?<\/button><\/td>/g,'');
     html=html.replace(/<button[^>]*data-event-action="(?:issue|issue-one|exclude)"[^>]*>[\s\S]*?<\/button>/g,'').replace('<th scope="col">계정발급</th>','');
-    html=html.replace('<th scope="col">소속기업</th>','<th scope="col">기업</th>').replace('<th scope="col">QR발급</th>','<th scope="col">QR</th>').replace('colspan="7"','colspan="6"').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');
+    html=html.replace('<th scope="col">소속기업</th>','<th scope="col">기업</th>').replace('<th scope="col">QR발급</th>','<th scope="col">QR</th>').replace(cfg.interpreter?'colspan="8"':'colspan="7"',cfg.interpreter?'colspan="7"':'colspan="6"').replaceAll('선택 엑셀 다운로드','엑셀 다운로드').replaceAll('QR발급','QR보기');
     if(cfg.foreign){
      html=html.replace(/<button[^>]*data-pre01-action="exclude"[^>]*>[\s\S]*?<\/button>/g,'');
      html=html.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()?button('add','바이어 추가'):''));
@@ -31,7 +31,7 @@
      return html;
     }
     html=html.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(operator()?button('add',cfg.interpreter?'통역원 추가':'바이어 추가'):''));
-    const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(canExclude()?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',true):'')+'</div>';
+    const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(canExclude()?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',true):'')+(cfg.interpreter&&canExclude()?'<button type="button" class="btn" data-event-action="reserve-y" disabled>선택 예비인력 Y</button><button type="button" class="btn" data-event-action="reserve-n" disabled>선택 예비인력 N</button>':'')+'</div>';
     return notice()+html.replace('<div class="tablewrap">',strip+'<div class="tablewrap">');
    }
    document.addEventListener('click',ev=>{

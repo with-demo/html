@@ -1,0 +1,61 @@
+{
+  "notice": "[변경사항 있음 · 2026-11-08] 행사정보 통역원의 예비인력 Y/N 구분, 검색 및 선택 인원 일괄 변경 추가.",
+  "updates": [
+    {
+      "id": "refresh-20261026-evt-02-check",
+      "append": "\n- 예비인력은 Y / N으로 표시하며 미설정 기본값은 N. 행사연도·통역원별로 관리하고 기본정보관리의 회원 정보는 변경하지 않는다."
+    },
+    {
+      "id": "refresh-20261026-evt-02-excel",
+      "replace": [
+        "통역언어, 참가연도",
+        "통역언어, 예비인력, 참가연도"
+      ]
+    }
+  ],
+  "inserts": [
+    {
+      "id": "interpreter-reserve-filter-20261108",
+      "selector": "[data-event-search] .search-condition:has([name=\"reserve\"])",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "검색필터 - 예비인력",
+        "type": "라디오박스",
+        "defaultValue": "전체",
+        "required": "N",
+        "options": "전체 / Y / N",
+        "detail": "- Y는 예비인력, N은 일반인력 조회\n- 통역언어·키워드와 AND 조건으로 결합하며 [검색] 클릭 시 적용\n- [초기화] 클릭 시 전체로 복원"
+      }
+    },
+    {
+      "id": "interpreter-reserve-bulk-20261108",
+      "selector": ".event-bulk-toolbar [data-event-action=\"reserve-y\"]",
+      "spec": {
+        "format": "description-spec-v1",
+        "item": "[선택 예비인력 Y], [선택 예비인력 N] 버튼",
+        "type": "버튼",
+        "defaultValue": "비활성",
+        "required": "N",
+        "detail": "- 선택한 통역원들의 예비인력 값을 Y 또는 N으로 일괄 변경\n- 선택 1명 이상일 때 활성. 변경 후 현재 검색 조건으로 목록 재조회\n- 행사연도별 값으로 관리하며 다른 행사·기본정보관리 통역원 정보에는 영향 없음",
+        "permission": "관리자·수출상담 운영용역사만 변경 가능",
+        "policy": "미설정 기본 N. 현재 탭에 저장하며 저장 실패 시 기존 값을 유지."
+      }
+    },
+    {
+      "id": "interpreter-reserve-storage-20261108",
+      "selector": "#content",
+      "spec": {
+        "format": "screen-message-v1",
+        "key": "interpreter-reserve-storage",
+        "screens": [
+          "EVT-02"
+        ],
+        "title": "예비인력 저장 실패",
+        "type": "토스트",
+        "trigger": "선택 통역원 예비인력 변경을 현재 탭에 저장하지 못한 경우",
+        "message": "예비인력 정보를 저장할 공간이 부족합니다.",
+        "confirm": "기존 예비인력 값과 선택을 유지"
+      }
+    }
+  ]
+}
