@@ -20,7 +20,7 @@
  function make(name,key,items){
   const group={name,key,screens:[]};
   function add(id,title){
-   if(id==='JNL-14-p01'||used.has(id)||!screens.has(id))return;
+   if(['PRE-01-p39','EVT-01-p39','EVT-02-p39'].includes(id)||id==='JNL-14-p01'||used.has(id)||!screens.has(id))return;
    used.add(id);const source=screens.get(id);
    group.screens.push({...source,title:title||menuTitles.get(id)||window.GFAIR_WORKFLOW?.entry(id)?.title||titles[id]||source.title});
    for(const child of children[id]||[])add(child);

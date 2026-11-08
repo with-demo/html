@@ -37,7 +37,7 @@
    }
    document.addEventListener('click',ev=>{
     const b=ev.target.closest('[data-domestic-action]');if(!b||!active())return;ev.preventDefault();ev.stopImmediatePropagation();
-    try{if(b.dataset.domesticAction==='add'){if(!canImport())return;window.GFAIR_EVENT_MEMBER_UPLOAD.open(cfg,{modal(title,body){ctx.modal(title,body,'close','확인',cfg.route+'-p39');document.querySelector('#dialog-content > .dialogactions')?.remove();},source,year:ctx.year,canUse:()=>canImport()&&active(),setRows:ctx.setRows,invalidate(){},refresh:ctx.refresh});}
+    try{if(b.dataset.domesticAction==='add'){if(!canImport())return;window.GFAIR_EVENT_MEMBER_UPLOAD.open(cfg,{modal(title,body){ctx.modal(title,body,'close','확인',cfg.route+'-p01');document.querySelector('#dialog-content > .dialogactions')?.remove();},source,year:ctx.year,canUse:()=>canImport()&&active(),setRows:ctx.setRows,invalidate(){},refresh:ctx.refresh});}
      else if(b.dataset.domesticAction==='exclude'){if(!canExclude())return;const keys=new Set(selected()),rows=people().filter(r=>keys.has(r[0]));if(!rows.length)return ctx.toast('제외할 대상을 선택해 주세요.');if(!participation().confirmExclude(rows.map(r=>r[1])))return;for(const row of rows)participation().set(cfg.source,row,ctx.year(),false);ctx.refresh();}
     }catch(error){ctx.toast(error.message||'처리에 실패했습니다.');}
    },true);
