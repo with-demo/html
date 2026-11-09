@@ -32,7 +32,7 @@
     }
     html=html.replace('<div class="row event-participant-tools">','<div class="row event-participant-tools">'+(canImport()?button('add',cfg.interpreter?'통역원 일괄 업로드':'바이어 일괄 업로드'):''));
     const qrTools=(html.match(/<button[^>]*data-event-action="(?:qr-download|qr-all)"[^>]*>[\s\S]*?<\/button>/g)||[]).join('');html=html.replace(/<button[^>]*data-event-action="(?:qr-download|qr-all)"[^>]*>[\s\S]*?<\/button>/g,'');
-    const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(canExclude()?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',true):'')+(cfg.interpreter&&canExclude()?'<button type="button" class="btn" data-event-action="reserve-y" disabled>예비인력 지정</button><button type="button" class="btn" data-event-action="reserve-n" disabled>예비인력 해제</button>':'')+'<div class="participant-qr-tools">'+qrTools+'</div></div>';
+    const strip='<div class="pre01-bulk-toolbar event-bulk-toolbar" aria-label="선택 참가자 작업"><strong>선택 <span data-event-selected-count>0</span>명</strong>'+(canExclude()?button('exclude',cfg.interpreter?'선택 통역원 제외':'선택 바이어 제외',true):'')+(cfg.interpreter&&operator()?'<button type="button" class="btn" data-event-action="reserve-y" disabled>예비인력 지정</button><button type="button" class="btn" data-event-action="reserve-n" disabled>예비인력 해제</button>':'')+'<div class="participant-qr-tools">'+qrTools+'</div></div>';
     return notice()+html.replace('<div class="tablewrap">',strip+'<div class="tablewrap">');
    }
    document.addEventListener('click',ev=>{
