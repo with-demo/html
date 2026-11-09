@@ -156,7 +156,7 @@ function journalCategorySelect(groups, saved, name='representativeCategory') {
 }
 function journalProductRow(value, first, category='', groups='') {
  const count=[...new Set(groups.split('/').map(v=>v.trim()).filter(Boolean))].length;
- return '<div class="journal-table-row journal-consult-product" data-product-groups="'+E(groups)+'"><div class="journal-pair"><div class="journal-label">메인 카테고리'+(count>1?'<em> *</em>':'')+'</div><div class="journal-control">'+journalCategorySelect(groups,category,first?'representativeCategory':'additionalCategory')+'</div></div><div class="journal-pair"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><input type="text" name="'+(first?'consultProduct':'additionalProduct')+'" aria-label="상담 제품" placeholder="실제 상담한 제품명을 입력해 주세요" value="'+E(value)+'"><button class="btn" type="button" data-product-action="'+(first?'add':'remove')+'" aria-label="'+(first?'상담 제품 추가':'상담 제품 삭제')+'">'+(first?'+':'−')+'</button></div></div></div></div>';
+ return '<div class="journal-table-row journal-consult-product" data-product-groups="'+E(groups)+'"><div class="journal-pair"><div class="journal-label">메인 카테고리'+(count>1?'<em> *</em>':'')+'</div><div class="journal-control">'+journalCategorySelect(groups,category,first?'representativeCategory':'additionalCategory')+'</div></div><div class="journal-pair"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><input type="text" name="'+(first?'consultProduct':'additionalProduct')+'" aria-label="상담 제품" placeholder="실제 상담한 제품명을 입력해 주세요" value="'+E(value)+'">' + (first ? '' : '<button class="btn" type="button" data-product-action="remove" aria-label="상담 제품 삭제">−</button>') + '<button class="btn" type="button" data-product-action="add" aria-label="상담 제품 추가">+</button></div></div></div></div>';
 }
 function journalProducts(data, groups='') {
  return journalProductRow(data.consultProduct||'',true,data.representativeCategory,groups)+(data.additionalProducts||[]).map((value,index)=>journalProductRow(value,false,data.additionalCategories?.[index]||'',groups)).join('');
@@ -165,10 +165,13 @@ document.addEventListener('click',event=>{
  const button=event.target.closest('[data-product-action]');if(!button||button.disabled)return;
  const row=button.closest('.journal-consult-product'),table=row?.parentElement;if(!table)return;
  if(button.dataset.productAction==='add'){
-  const last=[...table.querySelectorAll('.journal-consult-product')].at(-1);
-  last.insertAdjacentHTML('afterend',journalProductRow('',false,'',row.dataset.productGroups||''));
-  last.nextElementSibling.querySelector('input').focus();
- }else{row.remove();table.querySelector('[data-product-action="add"]').focus();}
+  row.insertAdjacentHTML('afterend',journalProductRow('',false,'',row.dataset.productGroups||''));
+  row.nextElementSibling.querySelector('input').focus();
+ }else if(row.querySelector('[name="additionalProduct"]')){
+  const previous=row.previousElementSibling;
+  row.remove();
+  previous?.querySelector('[data-product-action="add"]')?.focus();
+ }else return;
  save();
 });
 document.addEventListener('journal-participant-filled',()=>save());
