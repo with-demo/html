@@ -41,8 +41,8 @@
     const after=patch(before);after.planningNote=append(before.planningNote,note);
     await store.mutate('update',{id,text:JSON.stringify(changes.markAgentChanges(before,after)),revision:record.revision});
    }
-   if(location.hash.slice(1)===route&&route!=='JNL-14'&&!store.records.some(r=>{try{return JSON.parse(r.text).item==='상담 상세';}catch{return false;}})){
-    const detail=route==='JNL-16',spec={format:'description-spec-v1',item:'상담 상세',type:'텍스트에리어',defaultValue:detail?'해당 상담일지에 저장된 값':'빈 값',required:'Y',placeholder:'상담 내용을 입력하세요',detail:'상담한 제품의 내용과 협의 사항을 직접 작성한다.',validation:'상담 내용은 필수 입력.',enabled:detail?'[통역원] 작성 중·반려 상태에서 편집 가능. 승인 요청·승인 완료는 읽기 전용.\n[관리자 / 수출상담 운영용역사] 편집 가능.':'[통역원 / 관리자 / 수출상담 운영용역사] 작성 가능.'};
+   if(location.hash.slice(1)===route&&route==='JNL-05'&&!store.records.some(r=>{try{return JSON.parse(r.text).item==='상담 상세';}catch{return false;}})){
+    const spec={format:'description-spec-v1',item:'상담 상세',type:'텍스트에리어',defaultValue:'빈 값',required:'Y',placeholder:'상담 내용을 입력하세요',detail:'상담한 제품의 내용과 협의 사항을 직접 작성한다.',validation:'상담 내용은 필수 입력.',enabled:'[통역원 / 관리자 / 수출상담 운영용역사] 작성 가능.'};
     await store.mutate('create',{screen:route,text:JSON.stringify(changes.markAgentChanges({},spec)),anchor:{selector:'#draft-form [name="content"]',sample:'',x:0,y:0}});
    }
   }catch(error){console.error('수출상담일지 설명 대조 반영 실패:',error.message);}finally{running=false;}
