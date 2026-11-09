@@ -16,6 +16,27 @@
   running=true;
   try{
    if(route==='JNL-16'){
+    const scope='[관리자 / 수출상담 운영용역사] ';
+    const wording='편집이 허용된 상태에서만 수정할 수 있으며, 승인 완료 건은 조회만 가능';
+    const oldConditions=['상세 진입 즉시 원문 편집 가능.','상담액·계약 추진액 편집 가능.','라디오 결과 편집 가능.','해시태그 편집 가능.','편집 가능.'];
+    const oldPermission=scope+'모든 수출상담일지의 원문 편집 및 승인·반려 처리 가능.';
+    for(const record of store.records.slice()){
+     if(location.hash.slice(1)!==route)break;
+     let before;try{before=JSON.parse(record.text);}catch{continue;}
+     if(before.format!=='description-spec-v1')continue;
+     const after={...before};
+     for(const old of oldConditions){
+      if(after.enabled?.includes(scope+old))after.enabled=after.enabled.replace(scope+old,scope+wording);
+     }
+     if(after.permission?.includes(oldPermission)){
+      after.permission=after.permission.replace(oldPermission,scope+wording+'. 승인 요청 건은 승인·반려 처리 가능.');
+     }
+     if(after.enabled!==before.enabled||after.permission!==before.permission){
+      await store.mutate('update',{id:record.id,text:JSON.stringify(changes.markAgentChanges(before,after)),revision:record.revision});
+     }
+    }
+   }
+   if(route==='JNL-16'){
     const record=store.records.find(r=>r.id==='1f54c161-d965-470e-a170-33072bf4c260');
     if(record){
      const saved=JSON.parse(record.text);
