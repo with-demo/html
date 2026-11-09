@@ -15,7 +15,7 @@ window.GFAIR_EVENT_DESCRIPTION_LAYOUT={
     },
     {
       "id": "fabc070e-3193-4300-b004-afe51d9adcc2",
-      "selector": "#filter-form > div:first-of-type",
+      "selector": "#filter-form .search-keyword input[name=f0]",
       "previous": {
         "selector": "#filter-form > div:nth-of-type(1)",
         "sample": "참가기업전체전체플러프랩스 주식회사다온리빙브리즈펫케어에코홈랩온그린푸드키친모먼트아웃도어링크루미뷰티랩모던웨어리빙포",
