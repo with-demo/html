@@ -14,7 +14,24 @@
   const route=location.hash.slice(1),store=window.GFAIR_COLLAB,changes=window.GFAIR_DESCRIPTION_CHANGES;
   if(running||!patches[route]||!store?.user?.editor||!store.loaded||!changes)return;
   running=true;
-  try{for(const [id,patch] of Object.entries(patches[route])){
+  try{
+   if(route==='JNL-16'){
+    const record=store.records.find(r=>r.id==='1f54c161-d965-470e-a170-33072bf4c260');
+    if(record){
+     const saved=JSON.parse(record.text);
+     const format='JPG, JPEG, PNG 이미지 파일만 첨부할 수 있다.';
+     const limit='파일당 최대 10MB, 상담일지당 최대 2개까지 첨부할 수 있다.';
+     const optional='셀러 명함은 선택 첨부하며, 첨부하지 않아도 상담일지를 저장하거나 제출할 수 있다.';
+     const marked=line=>'- (수정) '+line;
+     const validation=marked(format)+'\n'+marked(limit);
+     if(saved.required==='N'&&saved.validation===validation&&saved.policy?.split('\n').includes(marked(optional))){
+      const before={...saved,required:'Y',validation:'',policy:saved.policy.split('\n').filter(line=>line!==marked(optional)).join('\n')};
+      const after={...saved,validation:'- '+format+'\n- '+limit,policy:saved.policy.replace(marked(optional),'- '+optional)};
+      await store.mutate('update',{id:record.id,text:JSON.stringify(changes.markAgentChanges(before,after)),revision:record.revision});
+     }
+    }
+   }
+   for(const [id,patch] of Object.entries(patches[route])){
    if(location.hash.slice(1)!==route)break;
    const record=store.records.find(r=>r.id===id);if(!record)continue;
    let before;try{before=JSON.parse(record.text);}catch{continue;}

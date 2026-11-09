@@ -214,8 +214,6 @@
         (state.previews || []).slice().reverse().forEach(node => upload.insertBefore(node.cloneNode(true), upload.firstChild));
         if (state.image) upload.insertBefore(state.image.cloneNode(true), upload.firstChild);
         if (state.name) upload.insertBefore(state.name.cloneNode(true), upload.firstChild);
-        const file = upload.querySelector('#draft-image');
-        if (file) file.required = location.hash === '#JNL-05' ? false : !state.value;
         const savedCard = upload.querySelector('[name="sellerCard"]');
         if (savedCard) savedCard.value = state.value;
       }
