@@ -41,6 +41,11 @@
   cursor: pointer;
 }
 .journal-amount-help-text {
+  inset: auto;
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-inline, flip-block, flip-block flip-inline;
+  margin: 6px 0 0;
+  width: max-content;
   box-sizing: border-box;
   max-width: min(440px, calc(100vw - 32px));
   padding: 14px 16px;
