@@ -28,7 +28,7 @@
 /* JNL-14 일괄 처리 버튼은 목록 하단 좌측, 등록은 우측에 둔다. */
 .page-bottom-actions>.jnl14-bulk-actions{display:flex;align-items:center;gap:8px;margin-right:auto;flex-wrap:wrap}
 
-#app #content .journal-audit-section td.journal-audit-empty-reason {
+#app #content .journal-audit-section td.journal-audit-empty {
   color: #777;
   text-align: center;
 }
