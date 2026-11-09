@@ -127,3 +127,17 @@
 
 #dialog-content .pre04-management .pre04-candidates th:first-child{width:36%}#dialog-content .pre04-management .pre04-candidates th:nth-child(2){width:auto}#dialog-content .pre04-management .pre04-candidates th:nth-child(3){width:80px}
 #dialog-content .pre04-candidate-name{display:inline-flex;align-items:center;gap:8px;font-size:12px}#dialog-content .pre04-candidate-name .pre04-staff-badge{flex:none;font-size:11px}
+
+/* 인력구분 4개 옵션과 키워드 작업행을 분리해 팝업 폭에 맞춰 정렬한다. */
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:minmax(160px,1fr) minmax(0,1fr) minmax(0,1fr) auto;align-items:end}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.field:first-child{grid-column:1}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-status{grid-column:2/-1}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-name{grid-column:1/4}
+#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{grid-column:4;align-self:end;flex-wrap:nowrap}
+#dialog-content .pre04-management .pre04-status-radios{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-width:0}
+#dialog-content .pre04-management .pre04-status-radios label{min-width:0;min-height:36px;padding:5px 6px;box-sizing:border-box}
+#dialog-content .pre04-management .pre04-status-radios input{flex:none}
+#dialog-content .pre04-management .pre04-popup-name,#dialog-content .pre04-management .pre04-name-input{min-width:0;width:100%}
+#dialog-content .pre04-management .pre04-name-input input{width:100%;min-width:0;box-sizing:border-box}
+@media(max-width:850px){#dialog-content .pre04-management .pre04-status-radios{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:minmax(0,1fr)}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.field:first-child,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-status,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-name,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{grid-column:1}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{justify-content:flex-end}}
