@@ -42,6 +42,15 @@ function accept(raw){
  const records=JSON.parse(sessionStorage.getItem('gfair.qr.checks')||'[]');
  records.push({code:travel?parts[3]:parts[2],name:person[1],state:step,at:new Date().toISOString(),mode:travel?'travel':'consult',role:scanRole,...(travel?{participantType:parts[2],eventYear:year}:{})});
  sessionStorage.setItem('gfair.qr.checks',JSON.stringify(records));
+ if(!travel&&scanRole==='buyer'){
+  sessionStorage.setItem('gfair.purchase-company-qr',person[0]);
+  const target=new URL(location.href);
+  target.searchParams.delete('popup');
+  target.searchParams.delete('from');
+  target.hash='JNL-04';
+  location.replace(target.href);
+  return;
+ }
  if(travel&&parts[2]==='OVERSEAS'){window.dispatchEvent(new Event('gfair-travel-recorded'));window.opener?.postMessage({type:'gfair-travel-record',record:records.at(-1)},location.origin);}
  notice(travel?`${person[1]} ${step} 처리 되었습니다.`:`${person[1]} ${step} 처리되었습니다`);
 }

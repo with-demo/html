@@ -351,11 +351,14 @@ function purchaseJournalWrite(s,j){
  template.innerHTML=exportJournalDetailWrite(s);
  const form=template.content.querySelector('#draft-form');
  const sections=[...form.querySelectorAll('.journal-section')];
- const [buyerSection,companySection,overseasSection,,resultSection]=sections;
+ const [buyerSection,companySection,overseasSection,consultSection,resultSection]=sections;
  if(!draft.company){
+  companySection.querySelector('[data-name="company"] [data-select-label]').textContent='선택해 주세요';
+  consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
+  consultSection.querySelector('.journal-table').insertAdjacentHTML('afterbegin',journalProducts(draft));
   for(const key of ['booth','sellerCode','contactPerson','contactPhone']){
    const field=companySection.querySelector('[name="'+key+'"]');
-   if(field)field.value='';
+   if(field)field.setAttribute('value','');
   }
  }
  const profiles=purchaseBuyerProfiles();
@@ -371,7 +374,7 @@ function purchaseJournalWrite(s,j){
   row(pair('바이어명',name,true),pair('상담일시',dateMarkup,true))+
   row(pair('기업명',I('buyerCompanyName','text',draft.buyerCompanyName??buyer?.company,'readonly class="journal-readonly" aria-label="기업명"')),
       pair('직위',I('buyerPosition','text',draft.buyerPosition??buyer?.position,'readonly class="journal-readonly" aria-label="직위"')));
- if(!j)for(const name of ['consultStart','consultEnd'])form.elements.namedItem(name).value=draft[name]||'';
+ if(!j)for(const name of ['consultStart','consultEnd'])form.elements.namedItem(name).setAttribute('value',draft[name]||'');
  overseasSection.remove();
  const amounts=resultSection.querySelector('.journal-table-row');
  amounts.querySelector('.journal-label').firstChild.textContent='구매 상담액';
@@ -400,7 +403,7 @@ function purchaseJournalWrite(s,j){
   footer.innerHTML=B('approve','승인','btn primary',pending?'':'disabled')+B('reject','반려','btn',pending?'':'disabled')+list;
  }
  if(j&&(role!=='buyer'||j.status==='반려')){
-  const review=role==='buyer'?'<p>'+E(j.reason||'기록된 반려 사유가 없습니다.')+'</p>':'<textarea id="reject-reason" placeholder="검토 의견을 입력하세요."></textarea>';
+  const review=j.status==='승인 요청'&&role!=='buyer'?'<textarea id="reject-reason" placeholder="검토 의견을 입력하세요."></textarea>':'<p>'+E(j.reason||'—')+'</p>';
   footer.insertAdjacentHTML('beforebegin','<section class="panel pad journal-section"><div class="journal-section-head"><h2>검수 의견</h2></div><div class="journal-table">'+row(pair('반려 사유',review))+'</div></section>');
  }
  if(!editable){
@@ -461,8 +464,13 @@ function render(){const previousScreen=current;stop();current=decodeURIComponent
  if(journal)openPurchaseJournal(journal);
 }
 if(current==='JNL-04'&&previousScreen!==current){
+ const qrKey='gfair.purchase-company-qr';
+ const qrCode=sessionStorage.getItem(qrKey);
+ if(qrCode)sessionStorage.removeItem(qrKey);
  const scanned=['JNL-03','ENT-01','ENT-02'].includes(previousScreen);
+ const companyRow=qrCode&&rows(map.get('BAS-09')).find(row=>row[0]===qrCode);
  const company=scanned?Object.fromEntries(['company','booth','sellerCode','sellerCountry','sellerCountryCode','productGroup','contactPerson','contactPhone'].map(key=>[key,draft[key]])):{};
+ if(companyRow)Object.assign(company,{company:companyRow[1],booth:companyRow[3],sellerCode:companyRow[0],sellerCountry:'대한민국',sellerCountryCode:'KR',productGroup:(window.GFAIR_COMPANY_FILTER?.categoriesFor(companyRow)||[]).join(' / '),contactPerson:companyRow[4],contactPhone:companyRow[5]});
  draft={...company,id:'GF-DRAFT-'+Date.now(),type:'구매',writer:purchaseWriter(),buyer:role==='buyer'?purchaseWriter():'',currency:'KRW',contractCurrency:'KRW'};
  image=null;savedAt='';savedAtISO='';
 }
