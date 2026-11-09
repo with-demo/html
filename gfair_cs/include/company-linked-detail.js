@@ -25,8 +25,8 @@
   const value=v=>v===undefined||v===null||String(v).trim()===''?'-':E(v);
   const safeUrl=url=>{if(typeof url!=='string'||!url.trim())return '';try{const u=new URL(url,location.href);return ['http:','https:'].includes(u.protocol)?u.href:'';}catch{return '';}};
   const website=safeUrl(profile?.homepage),logo=safeUrl(profile?.logo?.url),brochure=safeUrl(profile?.brochure?.url);
-  const qrName=GFAIR_DOWNLOAD_NAMES.safe(r[1]||'참가기업')+'_'+GFAIR_DOWNLOAD_NAMES.safe(r[3]||'미지정')+'_qr코드.png';
-  const qr=GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|'+(r[0]||'')+'|'+(r[3]||''),qrName);
+  const asset=GFAIR_DOWNLOAD_NAMES.qrAsset(year,'참가기업',{company:r[1],booth:r[3],code:r[0]}),qrName=asset.filename;
+  const qr=GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|'+(r[0]||'')+'|'+(r[3]||''),asset.caption);
   const basic=[
    ['기업명',value(r[1])],
    ['QR코드','<div style="display:flex;align-items:center;gap:16px;white-space:normal"><img src="'+qr+'" alt="'+E(r[1]||'참가기업')+' 부스 QR코드" style="width:96px;height:auto;display:block"><a class="btn" data-company-detail-qr href="'+qr+'" download="'+E(qrName)+'">QR 다운로드</a></div>'],

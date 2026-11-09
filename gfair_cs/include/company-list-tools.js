@@ -5,8 +5,9 @@
  const year=()=>String(document.querySelector('#event-picker')?.value||'2026').match(/20\d{2}/)?.[0]||'2026';
  function notify(message){const node=document.getElementById('toast');if(node){node.textContent=message;node.hidden=false;setTimeout(()=>node.hidden=true,3500);}}
  function sync(){const selected=document.querySelectorAll('#content [data-company-select]:checked').length;document.querySelectorAll('[data-company-selected-count]').forEach(node=>node.textContent=selected);const boxes=[...document.querySelectorAll('#content tbody tr:not([hidden]) [data-company-select]')],all=document.querySelector('[data-company-all]');if(all){const checked=boxes.filter(b=>b.checked).length;all.checked=boxes.length>0&&checked===boxes.length;all.indeterminate=checked>0&&checked<boxes.length;}}
- const png=(p,filename)=>GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year()+'|'+p.id+'|'+p.booth,filename);
- const individualFile=p=>GFAIR_DOWNLOAD_NAMES.safe(p.company)+'_'+GFAIR_DOWNLOAD_NAMES.safe(p.booth)+'_qr코드.png';
+ const asset=p=>GFAIR_DOWNLOAD_NAMES.qrAsset(year(),'참가기업',{company:p.company,booth:p.booth,code:p.id});
+ const png=p=>GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year()+'|'+p.id+'|'+p.booth,asset(p).caption);
+ const individualFile=p=>asset(p).filename;
  const file=p=>individualFile(p);
  document.addEventListener('company-page-change',sync);
  document.addEventListener('change',e=>{if(!active())return;if(e.target.matches('[data-company-all]'))document.querySelectorAll('#content tbody tr:not([hidden]) [data-company-select]').forEach(b=>b.checked=e.target.checked);if(e.target.matches('[data-company-all],[data-company-select]'))sync();});

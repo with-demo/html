@@ -2,6 +2,7 @@
  const safe=value=>String(value??'').trim().replace(/[<>:"/\\|?*\u0000-\u001f]/g,'_').replace(/[. ]+$/g,'').slice(0,100)||'미등록';
  const category=value=>safe(value).replace(/\s+/g,'');
  const date=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replaceAll('-','');
+ const qrAsset=(year,type,data={})=>{const text=v=>String(v??'').trim(),languages=(Array.isArray(data.languages)?data.languages:text(data.languages).split(/[,/|;]/)).map(text).filter(Boolean).join('·'),parts=type==='참가기업'?[data.company,data.booth||'부스 미배정']:type==='통역원'?[data.name,languages]:[data.name,data.company],labels=parts.map(text).filter(Boolean);return {caption:labels.join('_'),filename:[year,type,...labels,data.code].map(safe).join('_')+'.png'};};
  const png=(payload,filename='')=>{
   if(typeof window.qrcode!=='function')throw Error('QR 도구를 불러오지 못했습니다.');const qr=window.qrcode(0,'M');qr.addData(payload);qr.make();
   const n=qr.getModuleCount(),scale=8,margin=4,size=(n+margin*2)*scale,canvas=document.createElement('canvas'),measure=document.createElement('canvas').getContext('2d'),font='12px Arial, "Malgun Gothic", sans-serif',lines=[];measure.font=font;let line='';
@@ -11,5 +12,5 @@
   paint.font=font;paint.fillStyle='#555';paint.textAlign='center';paint.textBaseline='top';lines.forEach((text,i)=>paint.fillText(text,size/2,size+4+i*16));return canvas.toDataURL('image/png');
  };
 
- window.GFAIR_DOWNLOAD_NAMES={safe,date,png,participants:(year,type)=>'G-FAIR_'+safe(year)+'_참가_'+category(type)+'_'+date()+'.xlsx',template:(year,type)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_등록양식_'+date()+'.xlsx',list:(year,type,selected=false)=>'G-FAIR_'+safe(year)+'_'+category(type)+(selected?'_선택':'')+'_'+date()+'.xlsx',qrZip:(year,type,selected)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_'+(selected?'선택':'전체')+'QR코드.zip',qrImage:(name,id)=>safe(name)+'_'+safe(id)+'_qr코드.png'};
+ window.GFAIR_DOWNLOAD_NAMES={safe,date,png,qrAsset,participants:(year,type)=>'G-FAIR_'+safe(year)+'_참가_'+category(type)+'_'+date()+'.xlsx',template:(year,type)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_등록양식_'+date()+'.xlsx',list:(year,type,selected=false)=>'G-FAIR_'+safe(year)+'_'+category(type)+(selected?'_선택':'')+'_'+date()+'.xlsx',qrZip:(year,type,selected)=>'G-FAIR_'+safe(year)+'_'+category(type)+'_'+(selected?'선택':'전체')+'QR코드.zip',qrImage:(name,id)=>safe(name)+'_'+safe(id)+'_qr코드.png'};
 })();

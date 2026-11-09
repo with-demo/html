@@ -4,7 +4,7 @@
   const source=master.find(r=>row?.memberCode?r[0]===row.memberCode:r[1]===row?.[0]);if(!source)return '<section class="panel pad"><p>연결된 해외 바이어 기본정보가 없습니다.</p></section>';
   const p=GFAIR_OVERSEAS_BUYER_DETAIL.eventView(source,master,'BAS-04',year),country=(window.GFAIR_COUNTRY_CODES||[]).find(c=>c.code===source[2]||c.name===source[2]),countryText=country?country.name+' ('+country.code+')':source[2];
   const pair=(label,value,wide=false)=>'<dt'+(wide?' class="event-field-wide-label"':'')+'>'+label+'</dt><dd'+(wide?' class="event-field-wide"':'')+'>'+E(value||'미등록')+'</dd>';
-  const filename=GFAIR_DOWNLOAD_NAMES.qrImage(p.name,p.code),qr=p.code&&window.GFAIR_DOMESTIC_REVIEW?.isReady('PRE-01',year)?GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|OVERSEAS|'+source[0],filename):'';
+  const asset=GFAIR_DOWNLOAD_NAMES.qrAsset(year,'해외바이어',{name:p.name,company:GFAIR_OVERSEAS_BUYER_DETAIL.exportRecord(source,master,'BAS-04',year).companyName,code:p.code}),filename=asset.filename,qr=p.code&&window.GFAIR_DOMESTIC_REVIEW?.isReady('PRE-01',year)?GFAIR_DOWNLOAD_NAMES.png('GFAIR-DEMO|'+year+'|OVERSEAS|'+source[0],asset.caption):'';
   const qrHtml=qr?'<div class="event-basic-qr"><img src="'+qr+'" alt="'+E(p.name)+' QR코드" style="width:96px;height:auto"><a class="btn event-detail-qr-download" href="'+qr+'" download="'+E(filename)+'">QR 다운로드</a></div>':'미발급';return window.GFAIR_EVENT_PROFILE_TEXT.render(source,master,'BAS-04',year,{prefix:[['QR코드',qrHtml,true,true]],afterBasic:extra.afterBasic||''});
 
  }
