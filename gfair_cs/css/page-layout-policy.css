@@ -41,6 +41,7 @@
   cursor: pointer;
 }
 .journal-amount-help-text {
+  font-weight: 400;
   inset: auto;
   position-area: block-end span-inline-end;
   position-try-fallbacks: flip-inline, flip-block, flip-block flip-inline;
@@ -54,4 +55,8 @@
   background: #fff;
   color: #222;
   line-height: 1.6;
+}
+
+.journal-amount-help-text li + li {
+  margin-block-start: 6px;
 }
