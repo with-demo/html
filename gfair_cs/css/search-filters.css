@@ -39,3 +39,8 @@
 #app #content .unified-search .matching-options{box-sizing:border-box}
 #app #content .unified-search .matching-options .matching-search{width:100%;min-width:0}
 #app #content .unified-search .matching-multi[open] summary{color:#222;border-color:#555}
+
+/* JNL-14 keeps tags on a dedicated row below status and submission date. */
+#app #content #journal-filter.unified-search > .search-condition:has([name="exportTags"]) {
+  grid-column:1/-1;
+}
