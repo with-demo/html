@@ -1180,6 +1180,31 @@ setInterval(()=>{if(current==='STA-01'&&role==='admin'&&!document.hidden)render(
 function journalStatusOptions(){if(['JNL-13','JNL-14'].includes(current))return ['전체','작성 중','승인 요청','승인 완료','반려'];return ['전체',...(['buyer','interpreter'].includes(role)?['임시 저장']:[]),'승인 요청','승인 완료','반려'];}
 // 구매 미제출 초안은 작성자 전용. 수출 작성 중은 세 사용자 목록에서 조회한다.
 for(const [type,writer] of [['구매','김민준'],['수출','박서연']])journals.push({id:'GF-DRAFT-'+(type==='구매'?'BUY':'EXPORT'),type,company:'다온리빙',booth:'미선택',buyer:type==='구매'?'김민준':'James Whitmore',writer,time:'2026-10-20 09:00',status:type==='수출'?'작성 중':'임시 저장',amount:0,contract:0,currency:type==='구매'?'KRW':'USD',content:'',reason:'',history:[[type==='수출'?'작성 중':'임시 저장',writer]]});
+// 구매 목록에서 상태별 화면과 작성자별 초안 범위를 확인하는 목업 데이터.
+const purchaseJournalExamples=[
+ ['GF-DRAFT-BUY-02','작성 중','김민준','김민준','키친모먼트','E-03','2026-10-31 11:10',['주방용품']],
+ ['GF-DRAFT-BUY-ADMIN','작성 중','윤서진','이서준','온그린푸드','D-02','2026-10-31 11:25',['식품']],
+ ['GF-DRAFT-BUY-OPERATOR','작성 중','김정우','박지은','모던웨어','H-06','2026-10-31 11:40',['견적 요청']],
+ ['GF-BUY-000486','승인 요청','김민준','김민준','온그린푸드','D-02','2026-10-31 10:20',['식품','샘플 검토']],
+ ['GF-BUY-000487','승인 요청','이서준','이서준','스마트브릿지','D-08','2026-10-30 15:35',['전자제품']],
+ ['GF-BUY-000488','승인 완료','김민준','김민준','모던웨어','H-06','2026-10-31 14:20',['패션','견적 요청']],
+ ['GF-BUY-000489','승인 완료','김정우','박지은','키친모먼트','E-03','2026-10-30 16:10',['주방용품']],
+ ['GF-BUY-000490','반려','김민준','김민준','퓨어코스','G-11','2026-10-31 13:40',['뷰티','샘플 검토']],
+ ['GF-BUY-000491','반려','이서준','이서준','브리즈펫케어','B-12','2026-10-30 14:30',['반려동물']]
+];
+for(const [id,status,writer,buyer,company,booth,updatedAt,hashtags] of purchaseJournalExamples){
+ const isDraft=status==='작성 중', proxy=writer!==buyer;
+ const day=updatedAt.slice(0,10),createdAt=isDraft?updatedAt:day+' 09:30';
+ const time=isDraft?'':proxy||status==='승인 요청'?updatedAt:day+' 10:00';
+ const reason=status==='반려'?'상담 제품과 후속조치 계획을 구체적으로 작성해 주세요.':'';
+ const history=[[status,(isDraft||status==='승인 요청'||proxy?writer:'윤서진')+' · '+updatedAt,reason]];
+ if(!isDraft&&status!=='승인 요청'&&!proxy)history.push(['승인 요청',writer+' · '+time]);
+ journals.push({id,type:'구매',status,writer,buyer,company,booth,createdAt:proxy&&!isDraft?time:createdAt,
+  createdByProxy:proxy,initialStatus:proxy&&!isDraft?'승인 완료':'작성 중',updatedAt,time,hashtags,history,reason,
+  consultStart:day+'T09:00',consultEnd:day+'T09:30',currency:'KRW',contractCurrency:'KRW',
+  amount:isDraft?'':8500000,contract:isDraft?'':1500000,tradePotential:'보통',followUpYn:'예',followUpType:'추가 미팅',
+  content:'참가기업과 공급 조건을 논의했습니다. 샘플 검토 후 추가 미팅에서 납기와 견적을 확인할 예정입니다.'});
+}
 const purchaseTagExamples={'GF-000485':['반려동물','샘플 검토'],'GF-000483':['식품','견적 요청'],'GF-000482':['생활용품','유통 상담'],'GF-DRAFT-BUY':['생활용품','샘플 검토']};
 for(const journal of journals){
  if(purchaseTagExamples[journal.id]&&!journal.hashtags)journal.hashtags=purchaseTagExamples[journal.id];
