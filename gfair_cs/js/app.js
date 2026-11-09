@@ -219,12 +219,15 @@ function applyJournalBuyerProfile(form, buyer) {
   country.querySelector('[data-select-label]').textContent = countryOption?.label || '선택해 주세요';
  }
  for(const [key,value] of Object.entries({
-  buyerCode:buyer?.code, buyerCountry:countryOption?.value,
+  buyerCode:buyer?.code, buyerCountry:buyer?.country,
   buyerCountryCode:buyer?.countryCode || countryOption?.code,
   buyerCompanyName:buyer?.companyName, buyerPhone:buyer?.phone
  })) {
   draft[key] = value || '';
-  form.querySelectorAll('[name="'+key+'"]').forEach(input => { input.value = draft[key]; });
+  form.querySelectorAll('[name="'+key+'"]').forEach(input => {
+   input.value = key==='buyerCountry' && input.disabled && buyer?.country && buyer.countryCode
+    ? buyer.country+' ('+buyer.countryCode+')' : draft[key];
+  });
  }
 }
 function refreshJournalBuyers(form, interpreter) {
