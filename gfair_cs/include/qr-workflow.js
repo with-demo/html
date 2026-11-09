@@ -45,7 +45,7 @@ function accept(raw){
  if(!travel&&scanRole==='buyer'){
   sessionStorage.setItem('gfair.purchase-company-qr',person[0]);
   const target=new URL(location.href);
-  target.searchParams.delete('popup');
+  target.searchParams.set('popup','buyer-journal');
   target.searchParams.delete('from');
   target.hash='JNL-04';
   location.replace(target.href);
