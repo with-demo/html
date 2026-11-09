@@ -32,3 +32,21 @@
   color: #777;
   text-align: center;
 }
+
+.journal-amount-help {
+  padding: 2px 4px;
+  border: 0;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+}
+.journal-amount-help-text {
+  box-sizing: border-box;
+  max-width: min(440px, calc(100vw - 32px));
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  line-height: 1.6;
+}
