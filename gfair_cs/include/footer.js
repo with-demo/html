@@ -1,7 +1,7 @@
 window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C) G-FAIR KOREA 구매수출 상담시스템 ALL RIGHTS RESERVED.</span></footer>';
 (()=>{const projectBase=document.currentScript.src,shared=new URL('../../common/',projectBase);const config=document.createElement('script');config.src=new URL('config.js?v=clean-copy-20261021',shared).href;config.onload=()=>{const data=document.createElement('script');data.src=new URL('include/collaboration.js?v=qr-login-context-20261105',shared).href;data.onload=()=>{const highlights=document.createElement('script');highlights.src=new URL('include/description-changes.js?v=word-change-color-20261031',shared).href;highlights.onload=()=>{const script=document.createElement('script');script.src=new URL('include/annotations.js?v=event-flow-20261109',shared).href;document.head.append(script);};document.head.append(highlights);};document.head.append(data);};document.head.append(config);})();
 (()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/group-access.css?v=table-form-20261029',base).href;script.src=new URL('group-access.js?v=set01-list-search-20261101',base).href;document.head.append(css,script);})();
-(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=master-checkbox-alignment-20261103',base).href;script.src=new URL('admin-list-ui.js?v=company-qr-toolbar-20261108',base).href;document.head.append(css,script);})();
+(()=>{const base=document.currentScript.src,css=document.createElement('link'),script=document.createElement('script');css.rel='stylesheet';css.href=new URL('../css/admin-list-ui.css?v=master-checkbox-alignment-20261103',base).href;script.src=new URL('admin-list-ui.js?v=purchase-journal-list-20261109',base).href;document.head.append(css,script);})();
 
 // 공동작업 Description 패널을 직접 불러온다.
 (()=>{const script=document.createElement('script');script.src=new URL('../../common/include/spec-panel.js?v=live-catalog-20261103',document.currentScript.src).href;document.head.append(script);})();
@@ -33,7 +33,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=account-pages-final-20261030",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=jnl14-filter-rows-20261109",base).href;js.src=new URL("search-filters.js?v=notice-content-20261106",base).href;document.head.append(css,js);})();
+(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=jnl14-filter-rows-20261109",base).href;js.src=new URL("search-filters.js?v=purchase-journal-list-20261109",base).href;document.head.append(css,js);})();
 
 (()=>{const s=document.createElement('script');s.src=new URL('people-excel.js?v=member-templates-20261028',document.currentScript.src);document.head.append(s);})();
 

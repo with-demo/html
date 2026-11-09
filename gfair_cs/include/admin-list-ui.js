@@ -79,7 +79,7 @@
    const start=Math.max(1,Math.min(page-2,pages-4)),numbers=[...new Set([1,...Array.from({length:Math.min(5,pages)},(_,i)=>start+i),pages])].sort((a,b)=>a-b);
    numbers.forEach((n,i)=>{if(i&&n>numbers[i-1]+1){const gap=document.createElement('span');gap.textContent='…';pagination.append(gap);}add(String(n),n,false,n===page);});
    add('>',page+1,page===pages);add('>>',pages,page===pages);
-   if(route==='JNL-14')document.dispatchEvent(new Event('jnl14-page-change'));if(route==='PRE-01')document.dispatchEvent(new Event('pre01-page-change'));if(route==='BAS-09')document.dispatchEvent(new Event('company-page-change'));
+   if(['JNL-13','JNL-14'].includes(route))document.dispatchEvent(new Event('jnl14-page-change'));if(route==='PRE-01')document.dispatchEvent(new Event('pre01-page-change'));if(route==='BAS-09')document.dispatchEvent(new Event('company-page-change'));
    observer.observe(root,{childList:true,subtree:true});
   }
   size.addEventListener('change',()=>{page=1;paint();});paint();
