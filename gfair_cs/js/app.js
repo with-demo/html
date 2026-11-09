@@ -402,7 +402,9 @@ function purchaseJournalWrite(s,j){
  const footer=form.querySelector('.formfooter');
  const list=A('JNL-13','목록');
  const saveButton=B('save','임시 저장');
- const submit='<button type="submit" class="btn primary">'+(role==='buyer'?'승인 요청':'등록')+'</button>';
+ const submit=role==='buyer'
+  ?'<button type="submit" class="btn primary" data-journal-request>승인 요청</button>'
+  :'<button type="submit" class="btn primary">등록</button>';
  if(!j||editable&&j.status!=='승인 요청')footer.innerHTML=list+saveButton+submit;
  else if(role==='buyer')footer.innerHTML=list;
  else{
