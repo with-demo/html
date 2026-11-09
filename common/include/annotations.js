@@ -256,6 +256,55 @@ return spec;}catch{return null;}}
   ['문항 구분',['.survey-option-heading .survey-badge','보기 수']],
   ['필수 응답',['.survey-required-badge','필수']]
  ]);
+ const surveyBadgeOffsets=new Map();
+ function surveyBadgeOffset(key){
+  if(surveyBadgeOffsets.has(key))return surveyBadgeOffsets.get(key);
+  const initial={offsetX:-9,offsetY:-6};
+  try{
+   const saved=JSON.parse(localStorage.getItem(key));
+   if(Number.isFinite(saved?.offsetX)&&Number.isFinite(saved?.offsetY))return saved;
+  }catch{}
+  return initial;
+ }
+ function enableSurveyBadgeDrag(pin,key,rect,bounds,position){
+  pin.classList.add('annotation-pin-movable');
+  pin.title='클릭: 설명 보기 / 드래그: 라벨 이동';
+  let suppressClick=false;
+  pin.addEventListener('click',event=>{
+   if(suppressClick&&event.detail){event.preventDefault();event.stopImmediatePropagation();}
+  },true);
+  pin.addEventListener('pointerdown',event=>{
+   if(event.button!==0||dragging||picking||!canEdit())return;
+   event.preventDefault();
+   event.stopPropagation();
+   suppressClick=false;
+   dragging={pin,pointer:event.pointerId,x:event.clientX,y:event.clientY,screen:route()};
+   pin.setPointerCapture(event.pointerId);
+  });
+  pin.addEventListener('pointermove',event=>{
+   if(dragging?.pin!==pin||dragging.pointer!==event.pointerId)return;
+   const dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
+   if(!suppressClick&&Math.hypot(dx,dy)<4)return;
+   suppressClick=true;
+   pin.classList.add('dragging');
+   dragging.position=pinPosition(rect,{x:0,y:0,offsetX:position.left-rect.left+dx,offsetY:position.top-rect.top+dy},bounds);
+   pin.style.left=dragging.position.left+'px';
+   pin.style.top=dragging.position.top+'px';
+  });
+  const finish=event=>{
+   if(dragging?.pin!==pin||dragging.pointer!==event.pointerId)return;
+   const drag=dragging;
+   dragging=null;
+   pin.classList.remove('dragging');
+   if(event.type==='pointerup'&&drag.position&&drag.screen===route()){
+    const offset={offsetX:drag.position.left-rect.left,offsetY:drag.position.top-rect.top};
+    surveyBadgeOffsets.set(key,offset);
+    try{localStorage.setItem(key,JSON.stringify(offset));}catch{}
+   }
+   if(event.type!=='pointerup'||drag.position)requestAnimationFrame(pins);
+  };
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])pin.addEventListener(type,finish);
+ }
  app.addEventListener('toggle',event=>{if(event.target.matches?.('.survey-group,.survey-question-editor'))requestAnimationFrame(pins);},true);
  app.addEventListener('change',event=>{if(event.target.matches?.('[data-survey-required]'))requestAnimationFrame(pins);});
  function pins(){
@@ -270,10 +319,12 @@ return spec;}catch{return null;}}
     const badge=entry&&[...app.querySelectorAll('#survey-editor '+entry[0])].find(el=>!el.hidden&&el.getBoundingClientRect().width>0);
     const badgeRect=badge?.getBoundingClientRect();
     if(badgeRect&&badgeRect.right>bounds.left&&badgeRect.left<bounds.right&&badgeRect.bottom>bounds.top&&badgeRect.top<bounds.bottom){
-     const pos=pinPosition(badgeRect,{x:0,y:0,offsetX:-9,offsetY:-6},bounds);
+     const key='gfair:survey-badge-pin:'+route()+':'+record.id;
+     const pos=pinPosition(badgeRect,{x:0,y:0,...surveyBadgeOffset(key)},bounds);
      if(pos){
       const badgePin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});});});
       badgePin.className='annotation-pin'+(selected===record.id?' selected':'');badgePin.style.left=pos.left+'px';badgePin.style.top=pos.top+'px';badgePin.setAttribute('aria-label',entry[1]+' 배지: '+record.number+'번 설명 보기');overlay.append(badgePin);
+      if(canEdit())enableSurveyBadgeDrag(badgePin,key,badgeRect,bounds,pos);
      }
     }
    }
