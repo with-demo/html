@@ -90,7 +90,7 @@
   try{
    const main=root.querySelector('#content');if(!main)return;
    const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen;
-   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='BAS-09'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='PRE-04'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
+   const currentRole=root.querySelector('#role-picker')?.value;const admin=currentRole==='admin'||route==='BAS-09'||route==='PRE-01'&&['exportOperator','interpreter'].includes(currentRole)||route==='EVT-01'&&currentRole==='buyOperator'||route==='EVT-02'&&currentRole==='exportOperator'||route==='PRE-04'&&currentRole==='exportOperator'||route==='COM-07'&&['buyOperator','exportOperator'].includes(currentRole)||route==='JNL-13'&&currentRole==='buyOperator'||route==='JNL-14'&&['exportOperator','interpreter'].includes(currentRole);main.classList.toggle('admin-list-layout',admin&&routes.has(route));
    if(!admin||!routes.has(route))return;
    // 상세·등록 폼과 대시보드의 집계 표는 목록 대상으로 처리하지 않는다.
    if(main.querySelector('.notice-editor,[data-notice-view="detail"],[data-public-form="save"],#survey-editor,#survey-history-size,[data-management-form="admin-save"]'))return;
