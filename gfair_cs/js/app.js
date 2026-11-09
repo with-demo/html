@@ -1061,6 +1061,7 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     '소매 유통을 위한 포장 단위와 현지 표시 기준을 검토했다.',
     '시범 판매 후 재주문할 경우의 공급 단가를 협의했다.'
   ];
+  let approvedExampleIndex=0;
   if(companies.length && buyers.length) journals.filter(j=>j.type==='수출').forEach((j,index)=>{
     const company=(j.id==='GF-000487'&&companies.find(row=>row[1]==='루미뷰티랩'))||companies[index%companies.length];
     const ownExample=['GF-000487','GF-000488','GF-000484','GF-000486'].includes(j.id);
@@ -1077,6 +1078,34 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
       time:day+' '+hour+':45',amount:12500+index*2100,contract:index%4===0?0:3000+index*420,
       content:company[1]+' 부스에서 '+buyer[1]+' 바이어와 '+(categories[0]||'전시')+' 제품의 유통 조건을 논의했다. '+notes[index%notes.length]});
     j.history=j.history.map(([status,actor,reason],n)=>[status,(actor.split(' · ')[0]===oldWriter?writer:actor.split(' · ')[0])+' · '+day+' '+hour+':'+String(45-n*5).padStart(2,'0'),reason]);
+    if(j.status==='승인 완료'){
+      const scenario=approvedExampleIndex++%4;
+      const directSubmission=scenario===1;
+      const transferred=scenario===2;
+      const repeatedReview=scenario===3;
+      const requestedAt=day+' '+hour+':15';
+      const registeredAt=directSubmission?requestedAt:j.consultEnd.replace('T',' ');
+      const previousInterpreter=interpreters.find(row=>row[1]!==j.interpreterName)?.[1]||'김하린';
+      j.createdAt=registeredAt;
+      j.initialStatus=directSubmission?'승인 요청':'작성 중';
+      j.auditExamples=[
+        [registeredAt,'상담일지 최초 등록',directSubmission?'승인 요청과 함께 최초 등록':'최초 임시 저장',j.initialStatus],
+        [day+' 08:30','최초 매칭','미배정 → '+(transferred?previousInterpreter:j.interpreterName),'—']
+      ];
+      if(transferred){
+        const change=previousInterpreter+' → '+j.interpreterName;
+        j.auditExamples.push([day+' 10:00','통역원 변경',change,'작성 중'],[day+' 10:00','상담일지 이관',change,'작성 중']);
+      }
+      if(repeatedReview){
+        j.history.push(
+          ['승인 요청',j.writer+' · '+day+' '+hour+':35'],
+          ['반려','김도현 · '+day+' '+hour+':30','계약 추진 조건을 구체적으로 작성해 주세요.'],
+          ['승인 요청',j.writer+' · '+day+' '+hour+':25'],
+          ['반려','정수아 · '+day+' '+hour+':20','상담 제품과 바이어 요청사항을 보완해 주세요.']
+        );
+      }
+      j.history.push(['승인 요청',j.writer+' · '+requestedAt]);
+    }
   });
 }
 const memberRegistration=window.GFAIR_MEMBER_REGISTRATION;
@@ -1085,7 +1114,7 @@ const memberList=list;list=function(s){return memberList(s)+memberRegistration.b
 const memberForm=form;form=function(s){const body=memberRegistration.render(s.id);return body===null?memberForm(s):memberRegistration.heading(s.id)+body;};
 const memberRender=render;render=function(){const id=location.hash.slice(1);const q=new URLSearchParams(location.search);if(q.get('memberMode')&&q.get('memberScreen')!==id)memberRegistration.clear();memberRender();};
 const proxyExample=journals.find(j=>j.id==='GF-000484');
-if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();render();})();
+if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',createdAt:'2026-10-31 17:00',createdByProxy:true,initialStatus:'승인 완료',auditExamples:proxyExample.auditExamples.filter(([,label])=>label==='최초 매칭'),history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();render();})();
 
 
 
