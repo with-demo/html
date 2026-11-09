@@ -15,8 +15,15 @@
   if(running||!patches[route]||!store?.user?.editor||!store.loaded||!changes)return;
   running=true;
   try{
+   for(const record of store.records.slice()){
+    if(location.hash.slice(1)!==route)break;
+    let before;try{before=JSON.parse(record.text);}catch{continue;}
+    if(before.format!=='description-spec-v1'||before.item!=='상담성과 라디오 선택')continue;
+    const after={...before,item:'상담 결과 라디오 선택'};
+    await store.mutate('update',{id:record.id,text:JSON.stringify(changes.markAgentChanges(before,after)),revision:record.revision});
+   }
    if(route==='JNL-16'){
-    const items=new Set(['통역원 정보 · 상담 일시','기업명 · 부스번호','셀러 명함 첨부','바이어 정보 · 바이어 선택','수출 상담액·계약 추진액','상담성과 라디오 선택','해시태그']);
+    const items=new Set(['통역원 정보 · 상담 일시','기업명 · 부스번호','셀러 명함 첨부','바이어 정보 · 바이어 선택','수출 상담액·계약 추진액','상담성과 라디오 선택','상담 결과 라디오 선택','해시태그']);
     const admin='[관리자 / 수출상담 운영용역사] ';
     const wording='편집이 허용된 상태에서만 수정할 수 있으며, 승인 완료 건은 조회만 가능';
     for(const record of store.records.slice()){

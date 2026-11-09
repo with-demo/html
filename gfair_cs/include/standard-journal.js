@@ -59,7 +59,7 @@
   form.classList.add('standard-journal-form');form.dataset.standardType=type;
   const s=sections(d,type),info=[...form.querySelectorAll('.journal-section')].find(e=>e.querySelector('h2')?.textContent==='상담 정보');
   if(info){info.querySelector('[name="content"]')?.closest('.journal-table-row')?.remove();info.querySelector('.journal-table')?.insertAdjacentHTML('afterbegin',row(pair('상담일자',input('consultDate',s.date,'type="date" required aria-label="상담일자"'),true,true)));}
-  const outcomes=[...form.querySelectorAll('.journal-section')].find(e=>e.querySelector('h2')?.textContent==='상담성과');
+  const outcomes=[...form.querySelectorAll('.journal-section')].find(e=>e.querySelector('h2')?.textContent==='상담 결과');
   if(outcomes){for(const name of ['amount','contract','tradePotential'])outcomes.querySelector('[name="'+name+'"]')?.closest('.journal-pair')?.remove();outcomes.querySelectorAll('.journal-table-row').forEach(e=>{if(!e.children.length)e.remove();else if(e.children.length===1)e.firstElementChild.classList.add('full')});outcomes.querySelector('h2').textContent='추가 상담성과';outcomes.insertAdjacentHTML('beforebegin',s.result+s.amount+s.follow+s.memo);}
   const company=form.querySelector('[data-name="company"]')?.closest('.journal-control');
   if(company)company.insertAdjacentHTML('beforeend',confirmation(d));
