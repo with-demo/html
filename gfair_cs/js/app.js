@@ -641,11 +641,11 @@ function surveyQuestionSettings(v,gi,qi){
  return eligible?'<div class="field survey-condition-field"><div class="survey-condition-heading">'+
   '<label class="check"><input type="checkbox" name="'+name+'" data-survey-branch role="switch" '+(v.branchEnabled?'checked':'')+'> 응답에 따라 문항 이동</label>'+
   '<details class="survey-condition-help"><summary aria-label="응답에 따라 문항 이동 도움말">i</summary>'+
-  '<p><span>단일응답형, 척도형의 경우 보기별로 이동할 문항을 지정할 수 있습니다.</span><span>‘없음’을 선택하면 기본 순서대로 진행합니다.</span></p></details></div></div>':'';
+  '<p><span>단일응답형, 척도형의 경우 보기별로 이동할 문항을 지정할 수 있습니다.</span><span>이동할 문항을 지정하지 않으면 응답 가능한 다음 문항으로 진행합니다.</span></p></details></div></div>':'';
 }
 function surveyBranchField(v,gi,qi,oi,options){
  if(!surveyCanBranch(v))return '';
- return '<label class="survey-branch-field"'+(v.branchEnabled?'':' hidden')+'><span class="survey-branch-label"><svg class="survey-branch-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M3 3v3a4 4 0 0 0 4 4h13m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 선택 시 이동</span><select name="next-'+gi+'-'+qi+'-'+oi+'"><option value="">없음</option>'+
+ return '<label class="survey-branch-field"'+(v.branchEnabled?'':' hidden')+'><span class="survey-branch-label"><svg class="survey-branch-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M3 3v3a4 4 0 0 0 4 4h13m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 선택 시 이동</span><select name="next-'+gi+'-'+qi+'-'+oi+'"><option value="">기본 순서로 진행</option>'+
   options.map(o=>'<option value="'+E(o.key)+'"'+(o.key===v.options[oi].nextQuestion?' selected':'')+'>'+E(o.label)+'</option>').join('')+'</select></label>';
 }
 function surveyRemapBranches(q,before){
