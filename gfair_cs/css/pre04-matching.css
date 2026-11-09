@@ -141,3 +141,6 @@
 #dialog-content .pre04-management .pre04-name-input input{width:100%;min-width:0;box-sizing:border-box}
 @media(max-width:850px){#dialog-content .pre04-management .pre04-status-radios{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters{grid-template-columns:minmax(0,1fr)}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.field:first-child,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-status,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.pre04-popup-name,#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{grid-column:1}#dialog.standard-popup #dialog-content .pre04-management .pre04-popup-filters>.popup-action-row{justify-content:flex-end}}
+
+/* 이관 목록에서 실제 상담 상세를 두 줄까지 바로 표시한다. */
+.matching-journal-transfer .matching-transfer-content{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;line-height:1.6;max-height:3.2em;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.matching-journal-transfer td:has(.matching-transfer-content){vertical-align:middle}

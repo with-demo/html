@@ -20,3 +20,5 @@ test('다른 바이어에게 배정된 통역원은 목록과 직접 선택 모�
 test('이관 팝업 조회 후 다른 매칭이 생겨도 연결을 빼앗거나 일지를 이관하지 않음',()=>{const t=setup();t.openChange();t.buyers.push(['F3','Oliver Bennett','GB','','2026']);t.submit(['DRAFT1']);assert.equal(t.api.assignedName('James Whitmore'),'박서연');assert.equal(t.api.assignedName('Oliver Bennett'),'김지우');assert.equal(t.journals[0].writer,'박서연');assert(t.messages.some(m=>m.includes('이미 다른 바이어')));});
 
 test('미지정 통역원을 일반에 합산하지 않고 별도 건수·배지로 표시',()=>{const t=setup('U');t.click('open',{buyer:'F1'});t.click('mode',{mode:'change'});const html=t.body.innerHTML;assert(html.includes('미지정(1명)'));assert(html.includes('일반(0명)'));assert(html.includes('예비(0명)'));assert(html.includes('>미지정</span>'));});
+
+test('이관 목록은 저장된 상담 상세를 안전하게 바로 표시하고 보기 토글 없음',()=>{const t=setup();t.journals[0].content='상담 상세 첫 줄\n둘째 줄 <script>내용</script>';t.openChange();const html=t.modals.at(-1).html;assert(html.includes('<th>상담상세</th>'));assert(html.includes('상담 상세 첫 줄\n둘째 줄 &lt;script&gt;내용&lt;/script&gt;'));assert(!html.includes('<summary>보기</summary>'));assert(html.includes('<p class="matching-transfer-content">'));});
