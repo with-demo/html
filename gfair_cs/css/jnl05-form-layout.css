@@ -144,3 +144,13 @@
 .export-journal-form .journal-product-row input { flex: 1; min-width: 0; }
 .export-journal-form .journal-product-row button { margin-left: auto; flex: none; }
 @media(max-width:600px){#app .journal-table:has(select[name="representativeCategory"]) .journal-pair{grid-template-columns:110px minmax(0,1fr)}}
+
+#app .export-journal-form .journal-control:has(> [data-journal-money]) {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+#app .export-journal-form .journal-control > label:has(> [name="contractUnestimated"]) {
+  flex-wrap: nowrap;
+  gap: 6px;
+}
