@@ -276,7 +276,7 @@ function exportJournalDetailWrite(s){const d=draft,evname=rows(map.get('BAS-01')
 });const select=(label,name,value,options,placeholder,required,codeName)=>{const optionData=options.map(o=>typeof o==='string'?{value:o,label:o,search:o}:o),selectValue=Array.isArray(value)?value[0]:value,selected=optionData.find(o=>o.value===selectValue||o.label===selectValue),labelValue=selected?.label||selectValue||'',initialOptions=optionData.map(o=>'<button type="button" role="option" aria-selected="'+(selected?.value===o.value)+'" class="journal-select-option'+(selected?.value===o.value?' selected':'')+'" data-select-value="'+E(o.value)+'" data-select-label="'+E(o.label)+'" data-select-code="'+E(o.code||'')+'" data-select-meta="'+E(JSON.stringify(o))+'"><span class="journal-select-radio" aria-hidden="true"></span>'+E(o.label)+'</button>').join('');return pair(label,'<div class="journal-single-select" data-single-select data-name="'+name+'" data-options="'+E(JSON.stringify(optionData))+'"><button type="button" class="journal-select-trigger" data-select-trigger role="combobox" aria-expanded="false"><span data-select-label>'+E(labelValue)+'</span><span class="journal-select-chevron" aria-hidden="true">⌄</span></button><input type="hidden" name="'+name+'" data-select-value value="'+E(selected?.value||'')+'" '+(codeName?'data-code-name="'+codeName+'"':'')+'>'+(codeName?'<input type="hidden" name="'+codeName+'" value="'+E(selected?.code||'')+'">':'')+'<div class="journal-select-options" role="listbox" hidden><input type="text" class="journal-select-search" data-select-search autocomplete="off" aria-label="'+E(label)+' 검색" placeholder="검색"><div class="journal-select-results">'+initialOptions+'</div></div></div>',required,false)};function setJournalSelectValue(name,value,code){const wrap=root.querySelector('[data-single-select][data-name="'+name+'"]');if(!wrap)return;const options=JSON.parse(wrap.dataset.options||'[]'),option=options.find(o=>o.value===value||o.label===value);if(!option)return;wrap.querySelector('[data-select-value]').value=option.value;wrap.querySelector('[data-select-label]').textContent=option.label;const codeName=wrap.querySelector('[data-select-value]').dataset.codeName;if(codeName){let field=wrap.querySelector('[name="'+codeName+'"]');if(!field){field=document.createElement('input');field.type='hidden';field.name=codeName;wrap.append(field)}field.value=code||option.code||''}}window.addEventListener('resize',()=>root.querySelectorAll('[data-single-select]').forEach(w=>{if(!w.querySelector('.journal-select-options').hidden)positionJournalSelect(w)}));document.addEventListener('scroll',()=>root.querySelectorAll('[data-single-select]').forEach(w=>{if(!w.querySelector('.journal-select-options').hidden)positionJournalSelect(w)}),true);const multiCountry=(label,name,values,options,placeholder)=>{const selectedNames=Array.isArray(values)?values:(values?[values]:[]),selected=options.filter(o=>selectedNames.includes(o.value)||selectedNames.includes(o.label)),codeOptions=options.map(o=>({value:o.value,label:o.label,search:o.search,code:o.code}));const chips=selected.map(o=>'<span class="country-chip">'+E(o.label)+'<button type="button" aria-label="'+E(o.label)+' 제거" data-country-remove="'+E(o.value)+'">×</button></span>').join('');const hidden=selected.map(o=>'<input type="hidden" name="'+name+'" value="'+E(o.value)+'"><input type="hidden" name="sellerCountryCode" value="'+E(o.code)+'">').join('');return pair(label,'<div class="journal-country-select" data-country-select data-options="'+E(JSON.stringify(codeOptions))+'"><div class="journal-country-selected" data-country-selected>'+chips+'</div><input type="text" class="journal-select-search" data-country-search autocomplete="off" role="combobox" aria-expanded="false" '+(selected.length?'':'required')+'><div class="journal-select-options" role="listbox" aria-multiselectable="true" hidden></div><div data-country-values>'+hidden+'</div></div>',true,false)};const radios=(name,values,value,required)=>'<div class="journal-radios">'+values.map((v,i)=>'<label><input type="radio" name="'+name+'" value="'+E(v)+'" '+(value===v?'checked':'')+(required?' required':'')+'>'+E(v)+'</label>').join('')+'</div>';const yn=(name,value)=>radios(name,['예','아니오'],value,true);const upload=optionalSellerCardUpload(d);const currencies=['USD','KRW'],currencySelect=name=>'<select name="'+name+'" aria-label="'+(name==='currency'?'수출 상담액':'계약 추진액')+' 통화">'+O(currencies,d[name]||'USD')+'</select>',hashtagValues=Array.isArray(d.hashtags)?d.hashtags:(typeof d.hashtags==='string'&&d.hashtags?[d.hashtags]:[]);return head(s)+'<form id="draft-form" class="export-journal-form">'+section('통역원 정보',row(journalInterpreterField(d,pair,select),pair('상담 일시','<div class="consult-date-range">'+I('consultStart','datetime-local',d.consultStart||'2026-10-29T10:00','required')+'<span>~</span>'+I('consultEnd','datetime-local',d.consultEnd||'2026-10-29T10:30','required')+'</div>',true)))+section('상담 기업 정보',row(pair('부스 / 홀',I('booth','text',d.booth,'placeholder="부스 또는 홀을 입력하세요" required'),true),select('셀러 (기업명)','company',d.company,sellers,'기업명을 검색하세요',true))+row(pair('셀러 코드',I('sellerCode','text',d.sellerCode||sellers.find(o=>o.value===(d.company||sellers[0]?.value))?.code||'','required'),true))+row(pair('셀러 명함',upload,false),select('메인 카테고리','productGroup',d.productGroup||sellers.find(o=>o.value===(d.company||sellers[0]?.value))?.productGroup||'Food',productOptions,'메인 카테고리를 검색하세요',true))+row(pair('담당자',I('contactPerson','text',d.contactPerson||sellers.find(o=>o.value===(d.company||sellers[0]?.value))?.contactPerson||'','required'),true),pair('담당자 연락처',I('contactPhone','tel',d.contactPhone||sellers.find(o=>o.value===(d.company||sellers[0]?.value))?.contactPhone||'','required'),true)))+section('바이어 정보',row(['admin','exportOperator'].includes(role)?proxyJournalBuyer(select,d,buyers):select('바이어명','buyer',d.buyer||buyers[0]?.value||'James Whitmore',buyers,'바이어명을 검색하세요',true),pair('바이어 코드',I('buyerCode','text',d.buyerCode||'F20260001','required'),true))+row(select('바이어 국가','buyerCountry',d.buyerCountry||'영국',countryOptions.map(([name,code])=>({value:name,label:name+' ('+code+')',search:name+' '+code,code})), '국가명 또는 코드를 검색하세요',true,'buyerCountryCode'),null))+section('상담 정보',journalProducts(d,sellers.find(o=>o.value===(d.company||sellers[0]?.value))?.productGroup||'')+row(pair('상담 상세','<textarea name="content" placeholder="상담 내용을 입력하세요" required>'+E(d.content)+'</textarea>',true,true)))+section('상담 결과',row(pair('수출 상담액',journalQuickAmount(I('amount','number',d.amount,'min="0" step="any" inputmode="decimal" placeholder="금액 입력" required')+currencySelect('currency')),true),pair('계약 추진액',journalQuickAmount(I('contract','number',d.contract,'min="0" step="any" inputmode="decimal" placeholder="금액 입력" required')+currencySelect('contractCurrency')),true))+row(pair('거래 가능성',radios('tradePotential',['매우 낮음','낮음','보통','높음','매우 높음'],d.tradePotential||'보통',true),true),pair('현장 계약',yn('onSiteContract',d.onSiteContract||'아니오'),true))+row(pair('우수 사례',yn('excellentCase',d.excellentCase||'아니오'),true),pair('샘플 전달',yn('sampleDelivered',d.sampleDelivered||'아니오'),true))+row(pair('MOU 체결',yn('mouSigned',d.mouSigned||'아니오'),true),pair('MOU 예정',yn('mouPlanned',d.mouPlanned||'아니오'),true)))+section('해시태그',row(pair('해시태그','<div class="tag-picker">'+I('hashtag-input','text','','autocomplete="off" aria-autocomplete="list" aria-controls="hashtag-suggestions"')+'<div class="tag-suggestions" id="hashtag-suggestions" role="listbox" hidden></div></div><div class="hashtag-list" id="hashtag-preview" aria-live="polite">'+hashtagValues.map(t=>'<span class="hashtag-label">#'+E(t)+'<button type="button" data-remove-hashtag aria-label="'+E(t)+' 삭제">×</button><input type="hidden" name="hashtags" value="'+E(t)+'"></span>').join('')+'</div>',false,true)))+'<div class="formfooter">'+A('JNL-14','목록')+B('save','임시 저장')+'<button type="submit" class="btn primary">등록</button></div></form>'}
 function journalAuditTable(j){
  const events=[];
- let previous=j.auditExamples?.some(([,label])=>label==='상담일지 최초 등록')?'작성 중':'';
+ let previous=j.auditExamples?.some(([,label,,state])=>label==='상담일지 최초 등록'&&state==='작성 중')?'작성 중':'';
  const stamp=(value,fallback='')=>{
   const raw=String(value||'').replaceAll('.','-');
   const date=raw.match(/20\d{2}-\d{2}-\d{2}/)?.[0]||String(fallback).slice(0,10);
@@ -1061,6 +1061,7 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     '소매 유통을 위한 포장 단위와 현지 표시 기준을 검토했다.',
     '시범 판매 후 재주문할 경우의 공급 단가를 협의했다.'
   ];
+  let approvedExampleIndex=0;
   if(companies.length && buyers.length) journals.filter(j=>j.type==='수출').forEach((j,index)=>{
     const company=(j.id==='GF-000487'&&companies.find(row=>row[1]==='루미뷰티랩'))||companies[index%companies.length];
     const ownExample=['GF-000487','GF-000488','GF-000484','GF-000486'].includes(j.id);
@@ -1077,6 +1078,34 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
       time:day+' '+hour+':45',amount:12500+index*2100,contract:index%4===0?0:3000+index*420,
       content:company[1]+' 부스에서 '+buyer[1]+' 바이어와 '+(categories[0]||'전시')+' 제품의 유통 조건을 논의했다. '+notes[index%notes.length]});
     j.history=j.history.map(([status,actor,reason],n)=>[status,(actor.split(' · ')[0]===oldWriter?writer:actor.split(' · ')[0])+' · '+day+' '+hour+':'+String(45-n*5).padStart(2,'0'),reason]);
+    if(j.status==='승인 완료'){
+      const scenario=approvedExampleIndex++%4;
+      const directSubmission=scenario===1;
+      const transferred=scenario===2;
+      const repeatedReview=scenario===3;
+      const requestedAt=day+' '+hour+':15';
+      const registeredAt=directSubmission?requestedAt:j.consultEnd.replace('T',' ');
+      const previousInterpreter=interpreters.find(row=>row[1]!==j.interpreterName)?.[1]||'김하린';
+      j.createdAt=registeredAt;
+      j.initialStatus=directSubmission?'승인 요청':'작성 중';
+      j.auditExamples=[
+        [registeredAt,'상담일지 최초 등록',directSubmission?'승인 요청과 함께 최초 등록':'최초 임시 저장',j.initialStatus],
+        [day+' 08:30','최초 매칭','미배정 → '+(transferred?previousInterpreter:j.interpreterName),'—']
+      ];
+      if(transferred){
+        const change=previousInterpreter+' → '+j.interpreterName;
+        j.auditExamples.push([day+' 10:00','통역원 변경',change,'작성 중'],[day+' 10:00','상담일지 이관',change,'작성 중']);
+      }
+      if(repeatedReview){
+        j.history.push(
+          ['승인 요청',j.writer+' · '+day+' '+hour+':35'],
+          ['반려','김도현 · '+day+' '+hour+':30','계약 추진 조건을 구체적으로 작성해 주세요.'],
+          ['승인 요청',j.writer+' · '+day+' '+hour+':25'],
+          ['반려','정수아 · '+day+' '+hour+':20','상담 제품과 바이어 요청사항을 보완해 주세요.']
+        );
+      }
+      j.history.push(['승인 요청',j.writer+' · '+requestedAt]);
+    }
   });
 }
 const memberRegistration=window.GFAIR_MEMBER_REGISTRATION;
@@ -1085,7 +1114,7 @@ const memberList=list;list=function(s){return memberList(s)+memberRegistration.b
 const memberForm=form;form=function(s){const body=memberRegistration.render(s.id);return body===null?memberForm(s):memberRegistration.heading(s.id)+body;};
 const memberRender=render;render=function(){const id=location.hash.slice(1);const q=new URLSearchParams(location.search);if(q.get('memberMode')&&q.get('memberScreen')!==id)memberRegistration.clear();memberRender();};
 const proxyExample=journals.find(j=>j.id==='GF-000484');
-if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();render();})();
+if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',createdAt:'2026-10-31 17:00',createdByProxy:true,initialStatus:'승인 완료',auditExamples:(proxyExample.auditExamples||[]).filter(([,label])=>label==='최초 매칭'),history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();render();})();
 
 
 
