@@ -74,7 +74,12 @@
    }
   }
   for(const b of bar.children){const text=(b.textContent||b.value||'').trim();b.classList.toggle('page-action-delete',/삭제/.test(text));b.classList.toggle('page-action-submit',/제출/.test(text));}
-  if(bar!==main.lastElementChild)main.append(bar);
+  const audit=route==='JNL-16'?main.querySelector(':scope>.journal-audit-section'):null;
+  if(audit){
+   const title=audit.previousElementSibling;
+   const anchor=title?.matches('h2.page-section-title')&&title.textContent.trim()==='이력관리'?title:audit;
+   if(bar.nextElementSibling!==anchor)anchor.before(bar);
+  }else if(bar!==main.lastElementChild)main.append(bar);
  }
  const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(apply)}};
  new MutationObserver(schedule).observe(app,{childList:true,subtree:true});
