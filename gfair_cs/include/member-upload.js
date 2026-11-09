@@ -3,7 +3,7 @@
  const schemas={
   'BAS-03':{file:'overseas-buyer.xlsx',templateVersion:'buyer-company-20261030',type:'해외바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['country','국가',true],['phone','연락처'],['email','이메일'],['invitation','초청기관'],['companyName','기업명',true],['companyCode','기업코드',true],['position','직위']],example:['[예시] James Whitmore','1990-01-01','GB','7700900123','james@example.com','GBC_벵갈루루','ABC MARKET','QA12345678','CEO']},
   'BAS-05':{file:'domestic-buyer.xlsx',templateVersion:'buyer-company-20261030',type:'국내바이어',fields:[['name','바이어명',true],['dob','생년월일',true],['phone','연락처'],['email','이메일'],['invitation','초청기관'],['organization','기업명'],['position','직위']],example:['[예시] 김민준','1990-01-01','010-0000-0000','buyer@example.com','㈜한울컨벤션','한빛리테일','대표']},
-  'BAS-07':{file:'interpreter.xlsx',templateVersion:'provided-interpreter-20261031',type:'통역원',fields:[['name','통역원명',true],['dob','생년월일',true],['language1','언어1(코드)',true],['language2','언어2(코드)'],['language3','언어3(코드)'],['language4','언어4(코드)'],['language5','언어5(코드)'],['phone','연락처'],['email','이메일']],example:['[예시] 박서연','1990-01-01','en','ja','','','','010-0000-0000','interpreter@example.com']},
+  'BAS-07':{file:'interpreter.xlsx',templateVersion:'interpreter-staff-type-20261109',type:'통역원',fields:[['name','통역원명',true],['dob','생년월일',true],['language1','언어1(코드)',true],['language2','언어2(코드)'],['language3','언어3(코드)'],['language4','언어4(코드)'],['language5','언어5(코드)'],['phone','연락처'],['email','이메일'],['staffType','인력구분',true]],example:['[예시] 박서연','1990-01-01','en','ja','','','','010-0000-0000','interpreter@example.com','일반']},
   'COM-07':{file:'operator-staff.xlsx',templateVersion:'provided-staff-20261031',type:'담당자',fields:[['id','아이디',true],['name','이름',true],['phone','연락처',true],['org','소속'],['email','이메일'],['status','사용여부',true]],example:['[예시] operator_staff01','김민준','010-0000-0000','운영팀','staff@example.com','Y']}
  };
  const trim=v=>String(v??'').trim(),header=v=>trim(v).replace(/\s*\((필수|선택)\)\s*$/,'').replace(/\s*\*$/,'').replace('생년월일(yyyy-mm-dd)','생년월일').replace('사용여부(Y/N)','사용여부');
@@ -28,6 +28,8 @@
    if('dob'in data&&data.dob&&!dob(data.dob))errors.push('생년월일 형식·날짜 오류 (yyyy-mm-dd)');
    if(id==='BAS-03'&&data.country&&!countries.has(data.country))errors.push('바이어국가 코드 오류 (국가코드표의 대문자 코드 사용)');
    if(id==='BAS-07'){
+    if(data.staffType&&!['일반','예비'].includes(data.staffType))errors.push('인력구분은 일반 또는 예비만 입력');
+    data.reserve=data.staffType==='예비'?'Y':'N';
     const list=[1,2,3,4,5].map(n=>data['language'+n]).filter(Boolean);data.languages=list;
     if(list.some(code=>!languages.has(code)))errors.push('언어 코드 오류 (언어코드표의 소문자 코드 사용)');
     if(new Set(list).size!==list.length)errors.push('언어 코드 중복');
