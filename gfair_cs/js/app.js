@@ -371,7 +371,7 @@ function purchaseJournalWrite(s,j){
  const profiles=purchaseBuyerProfiles();
  const buyer=profiles.find(profile=>profile.name===draft.buyer);
  const buyerNames=[...new Set([...profiles.map(profile=>profile.name),draft.buyer].filter(Boolean))];
- const pair=(label,body,required=false)=>'<div class="journal-pair"><div class="journal-label">'+E(label)+(required?'<em> *</em>':'')+'</div><div class="journal-control">'+body+'</div></div>';
+ const pair=(label,body,required=false,full=false)=>'<div class="journal-pair'+(full?' full':'')+'"><div class="journal-label">'+E(label)+(required?'<em> *</em>':'')+'</div><div class="journal-control">'+body+'</div></div>';
  const row=(...pairs)=>'<div class="journal-table-row">'+pairs.join('')+'</div>';
  const name=role==='buyer'?I('buyer','text',purchaseWriter(),'readonly class="journal-readonly" aria-label="바이어명"'):purchaseChoice('buyer',buyerNames,draft.buyer,'required aria-label="바이어명"');
  buyerSection.querySelector('h2').textContent='국내 바이어 정보';
@@ -411,7 +411,7 @@ function purchaseJournalWrite(s,j){
  }
  if(j&&(role!=='buyer'||j.status==='반려')){
   const review=j.status==='승인 요청'&&role!=='buyer'?'<textarea id="reject-reason" placeholder="검토 의견을 입력하세요."></textarea>':'<p>'+E(j.reason||'—')+'</p>';
-  footer.insertAdjacentHTML('beforebegin','<section class="panel pad journal-section"><div class="journal-section-head"><h2>검수 의견</h2></div><div class="journal-table">'+row(pair('반려 사유',review))+'</div></section>');
+  footer.insertAdjacentHTML('beforebegin','<section class="panel pad journal-section"><div class="journal-section-head"><h2>검수 의견</h2></div><div class="journal-table">'+row(pair('반려 사유',review,false,true))+'</div></section>');
  }
  if(!editable){
   form.classList.add('journal-read-view');
