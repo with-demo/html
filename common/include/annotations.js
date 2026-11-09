@@ -250,11 +250,34 @@ return spec;}catch{return null;}}
   if(l>r||t>b)return null;
   return {left:clamp(left,l,r),top:clamp(top,t,b)};
  }
+ const surveyBadgePins=new Map([
+  ['설문정보',['.survey-group-actions .survey-badge','문항 수']],
+  ['설문 정보',['.survey-group-actions .survey-badge','문항 수']],
+  ['문항 구분',['.survey-option-heading .survey-badge','보기 수']],
+  ['필수 응답',['.survey-required-badge','필수']]
+ ]);
+ app.addEventListener('toggle',event=>{if(event.target.matches?.('.survey-group,.survey-question-editor'))requestAnimationFrame(pins);},true);
+ app.addEventListener('change',event=>{if(event.target.matches?.('[data-survey-required]'))requestAnimationFrame(pins);});
  function pins(){
   if(dragging)return;
   overlay.replaceChildren();if(route()==='screens'||view.closed||view.full||!view.numbers)return;
-  records().forEach(record=>{const target=find(record);if(!target||!target.getClientRects().length)return;const rect=target.getBoundingClientRect(),toolbar=document.querySelector('.ui-spec-toolbar'),scope=selectionScope(),scopeRect=scope?.getBoundingClientRect();
+  const toolbar=document.querySelector('.ui-spec-toolbar'),scope=selectionScope(),scopeRect=scope?.getBoundingClientRect();
    const bounds={left:Math.max(0,scopeRect?.left||0),right:Math.min(innerWidth,scopeRect?.right??innerWidth),top:Math.max(toolbar?.getBoundingClientRect().bottom||0,scopeRect?.top||0),bottom:Math.min(innerHeight,scopeRect?.bottom??innerHeight)};
+  records().forEach(record=>{
+   if(['SET-11','SET-12'].includes(route())){
+    let item;try{item=JSON.parse(record.text).item;}catch{}
+    const entry=surveyBadgePins.get(item);
+    const badge=entry&&[...app.querySelectorAll('#survey-editor '+entry[0])].find(el=>!el.hidden&&el.getBoundingClientRect().width>0);
+    const badgeRect=badge?.getBoundingClientRect();
+    if(badgeRect&&badgeRect.right>bounds.left&&badgeRect.left<bounds.right&&badgeRect.bottom>bounds.top&&badgeRect.top<bounds.bottom){
+     const pos=pinPosition(badgeRect,{x:0,y:0,offsetX:-9,offsetY:-6},bounds);
+     if(pos){
+      const badgePin=button(String(record.number).padStart(2,'0'),event=>{event.stopPropagation();selected=record.id;render();requestAnimationFrame(()=>{document.getElementById('description-tab-regions')?.click();document.getElementById('annotation-'+record.id)?.scrollIntoView({block:'start',behavior:'instant'});});});
+      badgePin.className='annotation-pin'+(selected===record.id?' selected':'');badgePin.style.left=pos.left+'px';badgePin.style.top=pos.top+'px';badgePin.setAttribute('aria-label',entry[1]+' 배지: '+record.number+'번 설명 보기');overlay.append(badgePin);
+     }
+    }
+   }
+   const target=find(record);if(!target||!target.getClientRects().length)return;const rect=target.getBoundingClientRect();
    if(rect.right<=bounds.left||rect.left>=bounds.right||rect.bottom<=bounds.top||rect.top>=bounds.bottom)return;
    const position=pinPosition(rect,record.anchor,bounds);if(!position)return;let {left,top}=position;
    let moved=false;
