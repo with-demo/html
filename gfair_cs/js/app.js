@@ -736,7 +736,7 @@ function purchaseJournalVisible(j){
 const buyJournalRows=jRows;
 jRows=function(s){
  if(s.id!=='JNL-13')return buyJournalRows(s);
- const tags=Array.isArray(filter.exportTags)?filter.exportTags:[];
+ const tags=role!=='buyer'&&Array.isArray(filter.exportTags)?filter.exportTags:[];
  return journals.filter(j=>purchaseJournalVisible(j)
   &&(!filter.status||filter.status==='전체'||(purchaseDraft(j)?'작성 중':j.status)===filter.status)
   &&exportJournalSubmissionMatches(j)&&purchaseJournalKeywordMatches(j)
@@ -758,7 +758,7 @@ journalList=function(s){
  const tags=[...new Set(journals.filter(purchaseJournalVisible).flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko'));
  const controls='<form id="journal-filter" class="panel filters matching-filters">'+
   F('처리 상태','<select name="status">'+O(journalStatusOptions(),filter.status||'전체')+'</select>')+
-  exportJournalSubmissionFilter()+matchingMulti('태그','exportTags',tags,'태그 검색')+
+  exportJournalSubmissionFilter()+(role==='buyer'?'':matchingMulti('태그','exportTags',tags,'태그 검색'))+
   F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))+
   '<div class="row"><button type="submit" class="btn primary">검색</button>'+B('reset','초기화')+'</div></form>';
  const table=window.GFAIR_JNL14.table(purchaseJournalTable(rows),rows,role,s.id);
