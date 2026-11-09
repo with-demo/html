@@ -27,9 +27,9 @@
    });
    if(amountRecord&&location.hash.slice(1)===route){
     const before=JSON.parse(amountRecord.text);
-    const help='각 항목의 도움말 아이콘을 클릭하면 금액 산정 기준을 표시한다.\n수출 상담액 「이번 상담을 통해 거래가 성사될 경우, 향후 3년간 예상되는 총 거래금액을 입력해 주세요.」\n계약 추진액 「이번 상담 결과 실제 거래 추진 가능성이 있다고 판단되는 향후 1년 이내 예상 거래금액을 입력해 주세요.」';
+    const help='각 항목의 도움말 아이콘을 클릭하면 금액 산정 기준을 표시한다.\n수출 상담액 「이번 상담을 통해 거래가 성사될 경우, 향후 3년간 예상되는 총 거래 금액 입력」\n계약 추진액 「이번 상담 결과 실제 거래 추진 가능성이 있다고 판단되는 경우, 향후 1년 이내 예상 거래금액 입력 / 실제 계약 체결액이 아니며, 산정하기 어렵다면 \'아직 금액을 산정할 수 없음\'을 선택」';
     if(!before.detail?.includes(help)){
-     const after={...before,detail:[before.detail,help].filter(Boolean).join('\n'),validation:'수출 상담액은 필수 입력, 계약 추진액은 선택 입력이다. 두 항목 모두 입력 시 0 이상의 숫자만 허용한다.',planningNote:[before.planningNote,'[변경사항 있음 · 2026-11-09] 금액별 도움말 추가 및 계약 추진액 선택 입력 적용.'].filter(Boolean).join('\n')};
+     const after={...before,detail:[before.detail?.replace(/\n?각 항목의 도움말 아이콘을 클릭하면 금액 산정 기준을 표시한다\.\n수출 상담액 「[^」]*」\n계약 추진액 「[^」]*」/,'') ,help].filter(Boolean).join('\n'),validation:'수출 상담액은 필수 입력, 계약 추진액은 선택 입력이다. 두 항목 모두 입력 시 0 이상의 숫자만 허용한다.',planningNote:[before.planningNote,'[변경사항 있음 · 2026-11-09] 금액별 도움말 추가 및 계약 추진액 선택 입력 적용.'].filter(Boolean).join('\n')};
      await store.mutate('update',{id:amountRecord.id,text:JSON.stringify(changes.markAgentChanges(before,after)),revision:amountRecord.revision});
     }
    }

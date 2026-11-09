@@ -190,12 +190,13 @@ document.addEventListener('click',event=>{
 document.addEventListener('journal-participant-filled',()=>save());
 function journalAmountHelp(label){
  const help={
-  '수출 상담액':['amount','이번 상담을 통해 거래가 성사될 경우, 향후 3년간 예상되는 총 거래금액을 입력해 주세요.'],
-  '계약 추진액':['contract','이번 상담 결과 실제 거래 추진 가능성이 있다고 판단되는 향후 1년 이내 예상 거래금액을 입력해 주세요.']
+  '수출 상담액':['amount','이번 상담을 통해 거래가 성사될 경우, 향후 3년간 예상되는 총 거래 금액 입력'],
+  '계약 추진액':['contract',['이번 상담 결과 실제 거래 추진 가능성이 있다고 판단되는 경우, 향후 1년 이내 예상 거래금액 입력',"실제 계약 체결액이 아니며, 산정하기 어렵다면 '아직 금액을 산정할 수 없음'을 선택"]]
  }[label];
  if(!help)return '';
  const [key,message]=help,id='journal-'+key+'-help';
- return ' <button type="button" class="journal-amount-help" aria-label="'+E(label)+' 도움말" popovertarget="'+id+'">ⓘ</button><p class="journal-amount-help-text" id="'+id+'" popover>'+E(message)+'</p>';
+ const body=Array.isArray(message)?'<ul style="margin:0;padding-inline-start:1.2em">'+message.map(line=>'<li>'+E(line)+'</li>').join('')+'</ul>':E(message);
+ return ' <button type="button" class="journal-amount-help" aria-label="'+E(label)+' 도움말" popovertarget="'+id+'">ⓘ</button><div class="journal-amount-help-text" id="'+id+'" popover>'+body+'</div>';
 }
 function journalQuickAmount(controls, disabled=false) {
   const buttons = [100000, 10000, 1000, 100].map(value =>
