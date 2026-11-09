@@ -37,7 +37,9 @@
    if(!bar){bar=document.createElement('div');bar.className='page-bottom-actions';bar.setAttribute('aria-label','페이지 작업');main.append(bar);}
    [...bar.children].filter(node=>!node.matches('[data-workflow-return]')).forEach(node=>node.remove());
    if(!bar.querySelector('[data-workflow-return]')){const button=document.createElement('button');button.type='button';button.className='btn';button.dataset.workflowReturn='';button.textContent='이전';bar.append(button);}
-   if(bar!==main.lastElementChild)main.append(bar);
+   const audit=route==='JNL-16'?main.querySelector(':scope>.journal-audit-section'):null;
+  if(audit){if(bar.nextElementSibling!==audit)audit.before(bar);}
+  else if(bar!==main.lastElementChild)main.append(bar);
    return;
   }
   if(route==='BAS-17'&&main.querySelector('.operator-basic-actions')){
