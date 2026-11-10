@@ -183,11 +183,11 @@
   margin-top: 4px;
   color: #555;
 }
-#app .journal-control:has(> #purchase-memo-guide) {
+#app .journal-control:has(> #purchase-memo-count) {
   flex-direction: column;
   align-items: stretch;
 }
-#app #purchase-memo-guide, #app #purchase-memo-count {
+#app #purchase-memo-count {
   margin: 0;
   color: #444;
 }
@@ -263,11 +263,6 @@
   width: 16px;
   height: 16px;
 }
-#app #purchase-memo-guide {
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 #app .purchase-amount-title .journal-amount-help-text {
   white-space: normal;
   overflow-wrap: anywhere;
