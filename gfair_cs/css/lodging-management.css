@@ -21,3 +21,5 @@
 [data-lodging-message]:empty{display:none}
 
 .pre01-bulk-toolbar>.participant-qr-tools{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}.pre01-participant-list .event-participant-tools .btn.pre01-lodging-manage{background:#eaf2ff;border-color:#6090c4;color:#234f82}.pre01-participant-list .event-participant-tools .btn.pre01-lodging-manage:hover{background:#dceaff;border-color:#4374aa}
+
+#app #content #buyer-lodging-details{box-sizing:border-box;height:55px;min-height:55px}
