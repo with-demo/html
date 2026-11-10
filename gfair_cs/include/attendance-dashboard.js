@@ -1,5 +1,5 @@
 (()=>{'use strict';
- const src=document.currentScript.src,style=document.createElement('link');style.rel='stylesheet';style.href=new URL('../css/attendance-dashboard.css?v=list-grid-20261110',src);document.head.append(style);
+ const src=document.currentScript.src,style=document.createElement('link');style.rel='stylesheet';style.href=new URL('../css/attendance-dashboard.css?v=grid-three-groups-20261110',src);document.head.append(style);
  const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const groups=[{key:'domestic',title:'국내 바이어',source:'BAS-05',columns:['이름','소속','출석일시'],search:'소속',total:45,initial:24},{key:'overseas',title:'해외 바이어',source:'BAS-03',columns:['이름','국가','출석일시'],search:'국가',total:36,initial:18},{key:'interpreter',title:'통역원',source:'BAS-07',columns:['이름','출석일시'],search:'언어',total:38,initial:20}];
  const allowed={admin:['domestic','overseas','interpreter'],buyOperator:['domestic'],exportOperator:['overseas','interpreter']},states=new Map();let activeRole='admin',activeEvent='2026',nextRefresh=0,mode='list',columns='auto';
