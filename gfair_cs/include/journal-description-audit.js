@@ -11,7 +11,6 @@
    'c440b995-754d-47a3-9077-ebec8b17a58f':s=>({...s,enabled:'수출 상담액과 계약 추진액의 통화를 각각 USD / KRW 중 선택 가능.',validation:s.validation.replace('금액은 필수 입력, 숫자만 입력 가능.','금액은 필수 입력이며 0 이상의 숫자만 입력 가능.'),policy:s.policy.replace('통화는 USD로 고정.','두 금액의 통화는 USD를 기본 선택하며, 각각 USD / KRW 중 선택할 수 있다.')}),
    'ddb15c7b-3b9b-4f89-9c60-e97490de4444':s=>s.policy?.includes('신규 등록 시 라디오는 미선택 상태로 표시.')?({...s,defaultValue:'거래 가능성 미선택 / 현장 계약·우수 사례·샘플 전달·MOU 체결·MOU 예정은 아니오',policy:s.policy.replace('신규 등록 시 라디오는 미선택 상태로 표시.','신규 등록 시 거래 가능성은 미선택으로 표시하고 직접 선택한다. 현장 계약·우수 사례·샘플 전달·MOU 체결·MOU 예정은 ‘아니오’를 기본 선택한다.')}):s,
    'b301c68d-2472-4329-82be-250c5767602e':s=>s.result?.includes('기본 정보 우측 상단')?({...s,result:s.result.replace('기본 정보 우측 상단','통역원 정보 우측 상단'),policy:append(s.policy,'현재 목업의 임시 저장은 현재 탭의 기기 저장소에 보관하며, 실제 운영 서버 저장은 연계 전이다.')}):s,
-   '99d8d7df-7391-463a-b746-d801017c3107':s=>({...s,item:'[등록] 버튼 · 통역원',visibility:s.visibility.replace('[통역원] 좌측 하단 [승인 요청] 표시','[통역원] 우측 하단 [등록] 표시. 등록 실행 시 승인 요청 상태로 처리.'),trigger:'[등록] 클릭 시',detail:s.detail.replace('승인 요청하는 기능.','[등록] 버튼으로 승인 요청하는 기능.')}),
    '3a5463bc-5e0c-4e65-ba1b-699de34a6e2d':s=>({...s,visibility:s.visibility.replace('[통역원] [등록] 버튼 미표시','[통역원] 승인 완료로 바로 등록하는 기능은 미제공. 통역원 화면의 [등록] 버튼은 09번 기준으로 승인 요청 처리.')}),
    '340a41dc-0b62-408a-98ef-b9f8078399c1':s=>({...s,exception:s.exception.replace('등록된 제품군 없음','등록된 메인 카테고리 없음')})
   },
