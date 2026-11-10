@@ -4,7 +4,7 @@
  let running=false;
  async function apply(){
   const route=location.hash.slice(1),store=window.GFAIR_COLLAB,changes=window.GFAIR_DESCRIPTION_CHANGES;
-  if(running||!["JNL-05","JNL-16"].includes(route)||!store?.user?.editor||!store.loaded||!changes)return;
+  if(running||route!=='JNL-16'||!store?.user?.editor||!store.loaded||!changes)return;
   running=true;
   try{
    for(const record of store.records.slice()){
