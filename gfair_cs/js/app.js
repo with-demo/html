@@ -405,7 +405,8 @@ function purchaseJournalWrite(s,j){
  booth.setAttribute('value',selectedCompany?.boothNumber||draft.booth||'');
  const companyPair=companySelect.closest('.journal-pair');
  companyPair.querySelector('.journal-label').innerHTML='기업명<em> *</em>';
- booth.closest('.journal-pair').before(companyPair);
+ const boothPair=booth.closest('.journal-pair');
+ boothPair.remove();
 
  const contactFields=['contactPerson','contactPhone'].map(name=>companySection.querySelector('[name="'+name+'"]'));
  for(const field of contactFields){
@@ -444,19 +445,18 @@ function purchaseJournalWrite(s,j){
       pair('직위',I('buyerPosition','text',draft.buyerPosition??buyer?.position,'readonly class="journal-readonly" aria-label="직위"')));
  overseasSection.remove();
  const companyTable=companySection.querySelector('.journal-table');
- contactRow.insertAdjacentHTML('beforebegin',row(
-  pair('메인 카테고리',I('linkedProductGroups','text',selectedCompany?.productGroup||'','readonly class="journal-readonly" aria-label="기업 메인 카테고리"')),
-  pair('상담일시',dateMarkup,true)
- ));
+ companyPair.insertAdjacentHTML('afterend',pair('상담일시',dateMarkup,true));
+ contactRow.insertAdjacentHTML('beforebegin',row(pair('메인 카테고리',I('linkedProductGroups','text',selectedCompany?.productGroup||'','readonly class="journal-readonly" aria-label="기업 메인 카테고리"'))));
+ contactRow.previousElementSibling.prepend(boothPair);
  if(!j)for(const field of ['consultStart','consultEnd'])form.elements.namedItem(field).setAttribute('value',draft[field]||'');
  consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
  companyTable.insertAdjacentHTML('beforeend',journalProducts(draft,selectedCompany?.productGroup||'',true));
- if(editable)companySection.querySelector('.journal-section-head').insertAdjacentHTML('beforeend',B('purchase-company-scan','부스 QR 코드 스캔'));
+ if(editable)companySection.querySelector('.journal-section-head').insertAdjacentHTML('beforeend','<button type="button" class="btn purchase-company-scan" data-action="purchase-company-scan"><i data-lucide="qr-code" aria-hidden="true"></i>부스 QR 스캔</button>');
  const memo=consultSection.querySelector('textarea[name="content"]');
  memo.setAttribute('aria-describedby','purchase-memo-guide purchase-memo-count');
  memo.placeholder='협의한 제품, 바이어 평가, 거래조건, 요청사항 등 실제 상담 내용을 구체적으로 입력해 주세요.';
- memo.insertAdjacentHTML('beforebegin','<p class="hint" id="purchase-memo-count" aria-live="polite">'+purchaseMemoCounter(memo.value)+'</p>');
- memo.insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-guide">최소 250자 이상 필수 (공백 포함, 앞뒤 공백 제외). 기업별로 실제 협의한 내용과 평가를 구체적으로 기록해 주세요. 동일 글자·문구·문장의 무의미한 반복 입력은 제출이 제한됩니다.</p>');
+ memo.insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-count" aria-live="polite">'+purchaseMemoCounter(memo.value)+'</p>');
+ consultSection.querySelector('#purchase-memo-count').insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-guide">최소 250자 이상 필수 (공백 포함, 앞뒤 공백 제외). 기업별로 실제 협의한 내용과 평가를 구체적으로 기록해 주세요. 동일 글자·문구·문장의 무의미한 반복 입력은 제출이 제한됩니다.</p>');
  consultSection.querySelector('h2').textContent='주요 상담내용';
 
  const amounts=resultSection.querySelector('.journal-table-row');

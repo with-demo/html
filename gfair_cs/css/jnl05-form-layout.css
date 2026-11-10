@@ -252,3 +252,22 @@
   color: #555;
   white-space: nowrap;
 }
+
+#app .purchase-company-scan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#app .purchase-company-scan svg {
+  width: 16px;
+  height: 16px;
+}
+#app #purchase-memo-guide {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+#app .purchase-amount-title .journal-amount-help-text {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
