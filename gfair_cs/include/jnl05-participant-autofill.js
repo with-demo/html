@@ -46,7 +46,7 @@
 
   function apply(form) {
     if (!form || form.dataset.participantAutofillReady === 'true') return;
-    const companySection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('기업 정보'));
+    const companySection = [...form.querySelectorAll('.journal-section')].find(section => section.querySelector('[data-single-select][data-name="company"]'));
     const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('바이어 정보'));
     if (!companySection || !buyerSection) return;
     form.dataset.participantAutofillReady = 'true';
