@@ -46,7 +46,7 @@
    return;
   }
   if(main.querySelector('[data-member-registration]'))return;
-  if(['BAS-04','BAS-06','BAS-08'].includes(route)&&main.querySelector('#overseas-buyer-detail-form .formfooter'))return;
+  if(['BAS-04','BAS-06','BAS-08','PRE-02'].includes(route)&&main.querySelector('#overseas-buyer-detail-form .formfooter'))return;
   let bar=main.querySelector(':scope>.page-bottom-actions');
   const candidates=[...new Set([...main.querySelectorAll(sources+(!detail?',.panelhead':''))].flatMap(group=>[...group.querySelectorAll('button,a.btn,input[type=submit]')]))].filter(b=>!b.closest('.tablewrap,table,dialog,.page-bottom-actions')&&!b.matches('[hidden]'));
   const footer='.formfooter,.notice-bottom-actions,.group-detail-actions,.group-access-footer,form>.actions';

@@ -30,3 +30,9 @@
 #app #content .overseas-buyer-section.pre02-stage-section{margin-bottom:14px}
 
 .pre02-day-cell{min-width:125px}.pre02-day-cell strong,.pre02-day-cell span{display:block}.pre02-day-cell span{font-size:12px;color:#777;font-weight:400;margin-top:2px}.pre02-travel-empty{font-weight:400;color:#777;height:100px}.pre02-stage-section .pre02-travel-heading .btn{font-size:12px;min-height:30px}.pre02-stage-section .pre02-travel-list tr[data-travel-date]+tr[data-travel-date] .pre02-day-cell{vertical-align:middle}[data-pre02-record-error]{font-size:13px;color:#b3261e}
+
+/* 상세 하단에서 전체 방한기록을 내부 스크롤 없이 표시 */
+#app #content .pre02-stage-section>.tablewrap,#app #content .pre02-manual-history>.tablewrap{height:auto;max-height:none;overflow:visible;scrollbar-gutter:auto}
+#app #content .pre02-stage-section .pre02-travel-list,#app #content .pre02-manual-history table{width:100%;min-width:0;table-layout:auto}
+#app #content .pre02-travel-list th,#app #content .pre02-travel-list td{min-width:0;white-space:normal;overflow-wrap:anywhere}
+#app #content .pre02-travel-list th{position:static}
