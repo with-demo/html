@@ -9,7 +9,8 @@
 #app .journal-table{border-top:1px solid #ddd;background:#fff}
 #app .journal-table-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid #ddd;min-width:0}
 #app .journal-pair{display:grid;grid-template-columns:minmax(118px,18.5%) minmax(0,1fr);min-width:0;align-items:stretch;border-right:1px solid #ddd}
-#app .journal-pair:nth-child(2){border-right:0}
+#app .journal-pair:nth-child(2),
+#app .export-journal-form .journal-pair:only-child:has([name="interpreterName"]){border-right:0}
 #app .journal-pair.full{grid-column:1/-1;border-right:0}
 #app .journal-label{display:flex;align-items:center;padding:12px 14px;background:#f4f4f4;font-size:13px;font-weight:600;line-height:1.5;color:#111}
 #app .journal-label em{color:#c62828;font-style:normal}
