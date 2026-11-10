@@ -393,7 +393,22 @@ function purchaseJournalWrite(s,j){
  const companySelect=companySection.querySelector('[data-name="company"]');
  const selectedCompany=JSON.parse(companySelect.dataset.options||'[]').find(option=>option.value===draft.company);
  booth.setAttribute('value',selectedCompany?.boothNumber||draft.booth||'');
- companySection.querySelector('[data-name="company"]').closest('.journal-pair').querySelector('.journal-label').innerHTML='기업명<em> *</em>';
+ const companyPair=companySelect.closest('.journal-pair');
+ companyPair.querySelector('.journal-label').innerHTML='기업명<em> *</em>';
+ booth.closest('.journal-pair').before(companyPair);
+
+ const contactFields=['contactPerson','contactPhone'].map(name=>companySection.querySelector('[name="'+name+'"]'));
+ for(const field of contactFields){
+  const label=field.closest('.journal-pair').querySelector('.journal-label');
+  label.querySelector('em')?.remove();
+  field.required=false;
+  field.readOnly=true;
+  field.classList.add('journal-readonly');
+  field.setAttribute('aria-label',label.textContent.trim());
+ }
+ const contactRow=contactFields[0].closest('.journal-table-row');
+ const cardRow=companySection.querySelector('#draft-image').closest('.journal-table-row');
+ cardRow.before(contactRow);
  if(!draft.company){
   companySection.querySelector('[data-name="company"] [data-select-label]').textContent='선택해 주세요';
   consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
