@@ -361,7 +361,8 @@ function purchaseBuyerProfiles(){
  const records=rows(map.get('BAS-05'));
  return records.map(record=>{
   const profile=window.GFAIR_OVERSEAS_BUYER_DETAIL?.exportRecord(record,records,'BAS-06',event);
-  return {name:record[1],code:record[0],company:profile?.companyName||record[2]||'',position:profile?.position||''};
+  const account=window.GFAIR_OVERSEAS_BUYER_DETAIL?.eventView(record,records,'BAS-06',event);
+  return {name:record[1],id:account?.accountId||'',company:profile?.companyName||record[2]||'',position:profile?.position||''};
  });
 }
 function purchaseChoice(name,options,value,attrs=''){
@@ -377,27 +378,43 @@ function purchaseJournalWrite(s,j){
  const form=template.content.querySelector('#draft-form');
  const sections=[...form.querySelectorAll('.journal-section')];
  const [buyerSection,companySection,overseasSection,consultSection,resultSection]=sections;
+ form.classList.add('purchase-journal-form');
+ companySection.classList.add('purchase-company-section');
+ companySection.querySelector('[name="sellerCode"]').closest('.journal-table-row').remove();
+ companySection.querySelector('[data-name="productGroup"]').closest('.journal-pair').remove();
+ companySection.querySelector('#draft-image').closest('.journal-pair').classList.add('full');
+ const booth=companySection.querySelector('[name="booth"]');
+ booth.closest('.journal-pair').querySelector('.journal-label').textContent='부스번호';
+ booth.readOnly=true;
+ booth.required=false;
+ booth.removeAttribute('placeholder');
+ booth.setAttribute('aria-label','부스번호');
+ booth.classList.add('journal-readonly');
+ const companySelect=companySection.querySelector('[data-name="company"]');
+ const selectedCompany=JSON.parse(companySelect.dataset.options||'[]').find(option=>option.value===draft.company);
+ booth.setAttribute('value',selectedCompany?.boothNumber||draft.booth||'');
+ companySection.querySelector('[data-name="company"]').closest('.journal-pair').querySelector('.journal-label').innerHTML='기업명<em> *</em>';
  if(!draft.company){
   companySection.querySelector('[data-name="company"] [data-select-label]').textContent='선택해 주세요';
   consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
   consultSection.querySelector('.journal-table').insertAdjacentHTML('afterbegin',journalProducts(draft));
-  for(const key of ['booth','sellerCode','contactPerson','contactPhone']){
+  for(const key of ['booth','contactPerson','contactPhone']){
    const field=companySection.querySelector('[name="'+key+'"]');
    if(field)field.setAttribute('value','');
   }
  }
  const profiles=purchaseBuyerProfiles();
- const buyer=profiles.find(profile=>profile.name===draft.buyer);
+ const buyer=profiles.find(profile=>profile.name===(role==='buyer'?purchaseWriter():draft.buyer));
  const buyerNames=[...new Set([...profiles.map(profile=>profile.name),draft.buyer].filter(Boolean))];
  const pair=(label,body,required=false,full=false)=>'<div class="journal-pair'+(full?' full':'')+'"><div class="journal-label">'+E(label)+(required?'<em> *</em>':'')+'</div><div class="journal-control">'+body+'</div></div>';
  const row=(...pairs)=>'<div class="journal-table-row">'+pairs.join('')+'</div>';
  const name=role==='buyer'?I('buyer','text',purchaseWriter(),'readonly class="journal-readonly" aria-label="바이어명"'):purchaseChoice('buyer',buyerNames,draft.buyer,'required aria-label="바이어명"');
- buyerSection.querySelector('h2').textContent='1. 국내 바이어';
- companySection.querySelector('h2').textContent='2. 상담기업';
+ buyerSection.querySelector('h2').textContent='국내 바이어';
+ companySection.querySelector('h2').textContent='상담기업';
  const dates=buyerSection.querySelector('.consult-date-range');
  const dateMarkup=dates.outerHTML;
  buyerSection.querySelector('.journal-table').innerHTML=
-  row(pair('바이어명',name,true),pair('바이어 코드',I('buyerCode','text',buyer?.code,'readonly class="journal-readonly" aria-label="바이어 코드"')))+
+  row(pair('바이어명',name,true),pair('ID',I('buyerCode','text',buyer?.id,'readonly class="journal-readonly" aria-label="ID"')))+
   row(pair('기업명',I('buyerCompanyName','text',draft.buyerCompanyName??buyer?.company,'readonly class="journal-readonly" aria-label="기업명"')),
       pair('직위',I('buyerPosition','text',draft.buyerPosition??buyer?.position,'readonly class="journal-readonly" aria-label="직위"')));
  overseasSection.remove();
@@ -409,7 +426,7 @@ function purchaseJournalWrite(s,j){
  const memo=consultSection.querySelector('textarea[name="content"]');
  memo.setAttribute('aria-describedby','purchase-memo-guide purchase-memo-count');
  memo.insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-guide">상담 내용을 최소 250자 이상 입력해 주세요. 앞뒤 공백은 글자 수에서 제외됩니다.</p><p class="hint" id="purchase-memo-count" aria-live="polite">'+purchaseMemoLength(draft.content)+' / 250자</p>');
- consultSection.querySelector('h2').textContent='6. 주요 상담내용';
+ consultSection.querySelector('h2').textContent='주요 상담내용';
 
  const amounts=resultSection.querySelector('.journal-table-row');
  amounts.querySelector('.journal-label').firstChild.textContent='구매 상담액';
@@ -440,14 +457,14 @@ function purchaseJournalWrite(s,j){
  const selectedResult=purchaseResults.find(([title,,legacy])=>[title,legacy].includes(draft.tradePotential))?.[0];
  const choices=purchaseResults.map(([title,description])=>'<label class="purchase-result-choice"><input type="radio" name="tradePotential" value="'+E(title)+'" required'+(selectedResult===title?' checked':'')+'><span><strong>'+E(title)+'</strong><small>'+E(description)+'</small></span></label>').join('');
  const section=(title,rows)=>'<section class="panel pad journal-section"><div class="journal-section-head"><h2>'+title+'</h2></div><div class="journal-table">'+rows+'</div></section>';
- resultSection.querySelector('h2').textContent='4. 예상 거래금액';
+ resultSection.querySelector('h2').textContent='예상 거래금액';
  resultSection.querySelectorAll('.journal-table-row:not(:first-child)').forEach(item=>item.remove());
  amounts.querySelectorAll('.journal-label')[0].firstChild.textContent='구매 상담액 (향후 3년)';
  amounts.querySelectorAll('.journal-label')[1].firstChild.textContent='계약 추진액 (향후 1년)';
- resultSection.insertAdjacentHTML('beforebegin',section('3. 상담결과',
+ resultSection.insertAdjacentHTML('beforebegin',section('상담결과',
   row(pair('상담수준','<div class="purchase-result-choices" role="radiogroup" aria-label="상담수준">'+choices+'</div>',true,true))+
   row(pair('주요 보완사항',purchaseChoice('issueCode',purchaseIssues,draft.issueCode,'aria-label="주요 보완사항"'),false,true))));
- resultSection.insertAdjacentHTML('afterend',section('5. 후속조치',
+ resultSection.insertAdjacentHTML('afterend',section('후속조치',
   row(pair('후속조치 예정','<div class="journal-radios" role="radiogroup" aria-label="후속조치 예정">'+planned+'</div>',true),
       pair('후속조치 유형',purchaseChoice('followUpType',purchaseFollowUpTypes,draft.followUpType,'aria-label="후속조치 유형" '+(draft.followUpYn==='예'?'required':'disabled')),draft.followUpYn==='예'))));
  resultSection.nextElementSibling.after(consultSection);
@@ -597,7 +614,7 @@ root.addEventListener('change',ev=>{const t=ev.target;
   if(t.name==='tradePotential'){syncPurchaseContract(t.form);save();}
   if(t.name==='buyer'){
    const buyer=purchaseBuyerProfiles().find(profile=>profile.name===t.value);
-   t.form.elements.buyerCode.value=buyer?.code||'';
+   t.form.elements.buyerCode.value=buyer?.id||'';
    t.form.elements.buyerCompanyName.value=buyer?.company||'';
    t.form.elements.buyerPosition.value=buyer?.position||'';
   }
@@ -617,6 +634,7 @@ if(fullJournalScreens.includes(current)&&form){
  const setField=(name,value)=>{const field=form.querySelector('[name="'+name+'"]');if(field&&value!==undefined&&value!==null)field.value=value};
  const setSelect=(name,value,code)=>{const target=root.querySelector('[data-single-select][data-name="'+name+'"]');if(!target)return;const items=JSON.parse(target.dataset.options||'[]'),item=items.find(x=>x.value===value||x.label===value);if(!item)return;target.querySelector('[data-select-value]').value=item.value;target.querySelector('[data-select-label]').textContent=item.label;const codeName=target.querySelector('[data-select-value]').dataset.codeName;if(codeName){const codeField=target.querySelector('[name="'+codeName+'"]');if(codeField)codeField.value=code||item.code||''}};
  if(wrap.dataset.name==='company'){
+  if(purchaseJournalScreens.includes(current))setField('booth',meta.boothNumber||'');
   setField('sellerCode',meta.code||'');
   setSelect('sellerCountry',meta.country||'',meta.countryCode||'');
   setSelect('productGroup',meta.productGroup||'');
