@@ -484,8 +484,17 @@ function purchaseJournalWrite(s,j){
  const section=(title,rows)=>'<section class="panel pad journal-section"><div class="journal-section-head"><h2>'+title+'</h2></div><div class="journal-table">'+rows+'</div></section>';
  resultSection.querySelector('h2').textContent='예상 거래금액';
  resultSection.querySelectorAll('.journal-table-row:not(:first-child)').forEach(item=>item.remove());
- amounts.querySelectorAll('.journal-label')[0].firstChild.textContent='구매 상담액 (향후 3년 이내)';
- amounts.querySelectorAll('.journal-label')[1].firstChild.textContent='계약 추진액 (향후 1년 이내)';
+ const amountPeriods=['(향후 3년 이내)','(향후 1년 이내)'];
+ amounts.querySelectorAll('.journal-label').forEach((label,index)=>{
+  const title=document.createElement('span');
+  title.className='purchase-amount-title';
+  title.append(...label.childNodes);
+  const period=document.createElement('span');
+  period.className='purchase-amount-period';
+  period.textContent=amountPeriods[index];
+  label.classList.add('purchase-amount-label');
+  label.append(title,period);
+ });
  resultSection.insertAdjacentHTML('beforebegin',section('상담결과',
   row(pair('상담수준','<div class="purchase-result-choices" role="radiogroup" aria-label="상담수준">'+choices+'</div>',true,true))+
   row(pair('주요 보완사항',purchaseChoice('issueCode',purchaseIssues,draft.issueCode,'aria-label="주요 보완사항"'),false,true))));

@@ -238,3 +238,17 @@
   #app .purchase-journal-form .journal-product-row { flex-wrap: wrap; }
   #app .purchase-product-category { flex-basis: 100%; }
 }
+
+#app .journal-label.purchase-amount-label {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+}
+#app .purchase-amount-title { white-space: nowrap; }
+#app .purchase-amount-period {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;
+}
