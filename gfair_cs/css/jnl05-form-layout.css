@@ -195,3 +195,12 @@
 }
 
 #app .purchase-money-unit { flex-shrink: 0; white-space: nowrap; }
+
+@media (min-width: 601px) {
+  #app .purchase-journal-form .purchase-company-section .journal-table {
+    container-type: inline-size;
+  }
+  #app .purchase-journal-form .purchase-company-section .journal-table .journal-pair {
+    grid-template-columns: max(140px, 9.25cqi) minmax(0, 1fr);
+  }
+}
