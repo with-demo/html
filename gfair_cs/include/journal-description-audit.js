@@ -24,13 +24,10 @@
   },
   'JNL-14':{'47bf9d25-5a82-4040-8c88-1fefe3997cfe':s=>({...s,policy:s.policy.replace('결과 라디오 미선택','거래 가능성 미선택, 현장 계약·우수 사례·샘플 전달·MOU 체결·MOU 예정은 아니오 기본 선택')})}
  };
- const baseIds={'JNL-05':['48ecfd20-8927-454f-9552-36a521f86ccb','cdb01469-49a6-43f5-a19b-e08a9e064cd2','340a41dc-0b62-408a-98ef-b9f8078399c1'],'JNL-16':['ab176dc5-b32a-497e-9bbf-20c030f3747f','7a18d599-0b39-43d3-8e20-d3fc1471a015','f681564b-78f0-462c-84d5-ec65a9d6e180']};
  let running=false;
  async function apply(){
   const route=location.hash.slice(1),store=window.GFAIR_COLLAB,changes=window.GFAIR_DESCRIPTION_CHANGES;
   if(running||!patches[route]||!store?.user?.editor||!store.loaded||!changes)return;
-  // 제품 행 보정과 같은 레코드를 동시에 수정하지 않는다.
-  if((baseIds[route]||[]).some(id=>{const r=store.records.find(r=>r.id===id);return r&&!r.text.includes('자동입력 항목의 필수 별표 제거.');}))return;
   running=true;
   try{
    for(const [id,patch] of Object.entries(patches[route])){
