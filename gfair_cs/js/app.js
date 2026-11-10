@@ -331,7 +331,7 @@ function journalAuditTable(j){
   events.push([j.createdAt,'상담일지 최초 등록',j.createdByProxy?'대리 등록':'최초 등록',j.initialStatus||'작성 중']);
  const tieOrder={'상담일지 최초 등록':-1,'상담일지 이관':1};
  const ordered=events.reverse().sort((a,b)=>b[0].localeCompare(a[0])||(tieOrder[b[1]]||0)-(tieOrder[a[1]]||0));
- return '<details class="journal-audit-section" open><summary>이력 관리</summary><div class="tablewrap"><table aria-label="'+(j.type==='구매'?'구매':'수출')+'상담일지 이력관리"><thead><tr><th scope="col">발생 일시</th><th scope="col">이력 항목</th><th scope="col">변경 내용</th><th scope="col">일지 상태</th><th scope="col">사유</th></tr></thead><tbody>'+
+ return '<details class="journal-audit-section"><summary>이력 관리</summary><div class="tablewrap"><table aria-label="'+(j.type==='구매'?'구매':'수출')+'상담일지 이력관리"><thead><tr><th scope="col">발생 일시</th><th scope="col">이력 항목</th><th scope="col">변경 내용</th><th scope="col">일지 상태</th><th scope="col">사유</th></tr></thead><tbody>'+
   (ordered.map(([at,label,change,state,reason])=>'<tr>'+[at.slice(0,16),label,change].map(value=>'<td>'+E(value||'—')+'</td>').join('')+(state&&state!=='—'?'<td>'+E(state)+'</td>':'<td class="journal-audit-empty">-</td>')+(reason?.trim()?'<td>'+E(reason)+'</td>':'<td class="journal-audit-empty">-</td>')+'</tr>').join('')||'<tr><td colspan="5">기록된 이력이 없습니다.</td></tr>')+'</tbody></table></div></details>';
 }
 const purchaseJournalScreens=['JNL-04','JNL-15'];

@@ -43,6 +43,14 @@
   margin-bottom: 8px;
 }
 
+#app #content .journal-audit-section > .tablewrap {
+  background: #fff;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+}
+#app #content .journal-audit-section tbody td {
+  background: #fff;
+}
 #app #content .journal-audit-section td.journal-audit-empty {
   color: #777;
   text-align: center;
