@@ -189,6 +189,7 @@
 }
 #app #purchase-memo-guide, #app #purchase-memo-count {
   margin: 0;
+  color: #444;
 }
 #app #purchase-memo-count {
   text-align: right;

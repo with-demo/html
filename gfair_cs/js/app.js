@@ -455,8 +455,8 @@ function purchaseJournalWrite(s,j){
  const memo=consultSection.querySelector('textarea[name="content"]');
  memo.setAttribute('aria-describedby','purchase-memo-guide purchase-memo-count');
  memo.placeholder='협의한 제품, 바이어 평가, 거래조건, 요청사항 등 실제 상담 내용을 구체적으로 입력해 주세요.';
- memo.insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-count" aria-live="polite">'+purchaseMemoCounter(memo.value)+'</p>');
- consultSection.querySelector('#purchase-memo-count').insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-guide">최소 250자 이상 필수 (공백 포함, 앞뒤 공백 제외). 기업별로 실제 협의한 내용과 평가를 구체적으로 기록해 주세요. 동일 글자·문구·문장의 무의미한 반복 입력은 제출이 제한됩니다.</p>');
+ memo.insertAdjacentHTML('beforebegin','<p class="hint" id="purchase-memo-count" aria-live="polite">'+purchaseMemoCounter(memo.value)+'</p>');
+ memo.insertAdjacentHTML('afterend','<p class="hint" id="purchase-memo-guide">최소 250자 이상 필수 (공백 포함, 앞뒤 공백 제외). 기업별로 실제 협의한 내용과 평가를 구체적으로 기록해 주세요. 동일 글자·문구·문장의 무의미한 반복 입력은 제출이 제한됩니다.</p>');
  consultSection.querySelector('h2').textContent='주요 상담내용';
 
  const amounts=resultSection.querySelector('.journal-table-row');
