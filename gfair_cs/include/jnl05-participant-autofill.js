@@ -190,7 +190,18 @@
         replaceWithLockedInput(pair, field, value);
         details.append(pair);
       }
-      buyerTable.replaceChildren(row, details);
+      const interpreterPair = getField(form, 'interpreterName')?.closest('.journal-pair');
+      const interpreterSection = interpreterPair?.closest('.journal-section');
+      const interpreterTable = interpreterPair?.closest('.journal-table');
+      const interpreterHeading = interpreterSection?.querySelector('h2');
+      if (interpreterTable && interpreterHeading) {
+        interpreterHeading.textContent = '통역원 · 해외 바이어';
+        interpreterPair.classList.add('full');
+        interpreterTable.append(row, details);
+        buyerSection.remove();
+      } else {
+        buyerTable.replaceChildren(row, details);
+      }
     }
     form.dataset.participantCompanySelect = companyInput?.dataset.name || 'company';
     document.dispatchEvent(new Event('journal-participant-filled'));
