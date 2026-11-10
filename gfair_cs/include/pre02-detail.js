@@ -13,7 +13,7 @@
  const stages=window.GFAIR_TRAVEL_LEDGER.stages,ledger=window.GFAIR_TRAVEL_LEDGER.create(sessionStorage);let active=null,pending=null;
  const stamp=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
  const codeFor=(row,identity)=>identity||row.memberCode||row[0];
- function stateFor(row,year,identity){const state=ledger.get(year,codeFor(row,identity)),rows=window.GFAIR_TRAVEL_LEDGER.timeline(state.records),current=rows.at(-1)||null;return {...state,rows,current,stage:current?.stage||'미입국'};}
+ function stateFor(row,year,identity){const saved=ledger.get(year,codeFor(row,identity)),account=window.GFAIR_INCLUDE?.accountName('exportOperator',year),resolve=record=>record.actor==='수출상담 운영용역사 담당자'&&account&&account!=='회원'?{...record,actor:account}:record,state={...saved,records:saved.records.map(resolve),audit:(saved.audit||[]).map(resolve)},rows=window.GFAIR_TRAVEL_LEDGER.timeline(state.records),current=rows.at(-1)||null;return {...state,rows,current,stage:current?.stage||'미입국'};}
  function currentRecord(row,year,identity){return stateFor(row,year,identity).current;}
  function recordText(record){return record?E(record.effective)+'<br><span class="pre01-manual-actor">('+E(record.source==='manual'?record.actor||'처리자 미등록':record.source==='journal'?'상담일지':'QR 스캔')+')</span>':'-';}
  const dayLabel=r=>r.day===null?'일차 미정':r.day<1?'입국 전':r.day+'일차';
