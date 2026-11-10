@@ -196,7 +196,6 @@
       const interpreterHeading = interpreterSection?.querySelector('h2');
       if (interpreterTable && interpreterHeading) {
         interpreterHeading.textContent = '통역원 · 해외 바이어';
-        interpreterPair.classList.add('full');
         interpreterTable.append(row, details);
         buyerSection.remove();
       } else {
