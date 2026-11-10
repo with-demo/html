@@ -220,3 +220,21 @@
     display: none;
   }
 }
+
+#app .purchase-product-category {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 1 200px;
+  min-width: 0;
+}
+#app .purchase-product-category select {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+}
+#app .purchase-product-category .required-asterisk { color: #c62828; }
+@media (max-width: 600px) {
+  #app .purchase-journal-form .journal-product-row { flex-wrap: wrap; }
+  #app .purchase-product-category { flex-basis: 100%; }
+}
