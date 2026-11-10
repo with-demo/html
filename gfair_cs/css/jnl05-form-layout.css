@@ -204,3 +204,19 @@
     grid-template-columns: max(140px, 9.25cqi) minmax(0, 1fr);
   }
 }
+
+#app .purchase-company-section .journal-control:has(> .consult-date-range) {
+  container-type: inline-size;
+}
+@container (max-width: 345px) {
+  #app .purchase-company-section .consult-date-range {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #app .purchase-company-section .consult-date-range input {
+    width: 100%;
+  }
+  #app .purchase-company-section .consult-date-range span {
+    display: none;
+  }
+}
