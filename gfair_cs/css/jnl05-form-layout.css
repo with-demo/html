@@ -236,7 +236,7 @@
 }
 #app .purchase-product-category .required-asterisk { color: #c62828; }
 @media (max-width: 600px) {
-  #app .purchase-journal-form .journal-product-row { flex-wrap: wrap; }
+  #app :is(.purchase-journal-form,.export-journal-aligned) .journal-product-row { flex-wrap: wrap; }
   #app .purchase-product-category { flex-basis: 100%; }
 }
 

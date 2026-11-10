@@ -47,7 +47,7 @@
   function apply(form) {
     if (!form || form.dataset.participantAutofillReady === 'true') return;
     const companySection = [...form.querySelectorAll('.journal-section')].find(section => section.querySelector('[data-single-select][data-name="company"]'));
-    const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => text(section.querySelector('h2')).includes('바이어 정보'));
+    const buyerSection = [...form.querySelectorAll('.journal-section')].find(section => ['해외 바이어','바이어 정보'].includes(text(section.querySelector('h2'))));
     if (!companySection || !buyerSection) return;
     form.dataset.participantAutofillReady = 'true';
     companySection.classList.add('participant-info-section');
@@ -129,8 +129,8 @@
 
     if (table) {
       const orderedRows = [
-        [participant, booth],
-        [number, product],
+        [participant],
+        [booth, product],
         [contact, phone],
         [card]
       ];
