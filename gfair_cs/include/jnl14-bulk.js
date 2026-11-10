@@ -29,6 +29,10 @@
   const reason=document.getElementById('jnl14-reject-reason')?.value.trim()||'';if(reject&&!reason){document.getElementById('jnl14-reject-error').textContent='반려 사유를 입력해 주세요.';document.getElementById('jnl14-reject-reason').focus();return;}
   const rows=c.rows.filter(j=>pending.includes(j.id)&&eligible(j,c.role,c.current));if(rows.length!==pending.length||!rows.length)return c.toast('처리 상태가 변경되었습니다. 목록을 다시 확인해 주세요.');
   if(request&&c.current==='JNL-13'&&rows.some(j=>c.purchaseMemoLength(j.content)<250)){document.getElementById('dialog').close();return c.toast('주요 상담내용을 250자 이상 작성한 일지만 승인 요청할 수 있습니다.');}
+  if(request&&c.current==='JNL-13'&&rows.some(j=>window.GFAIR_STANDARD_JOURNAL.repeatedFiller(j.content))){
+   document.getElementById('dialog').close();
+   return c.toast('동일 글자·문구·문장이 반복된 상담내용을 수정해 주세요.');
+  }
   const state=request?'승인 요청':reject?'반려':'승인 완료';const now=new Date().toLocaleString('sv-SE',{timeZone:'Asia/Seoul'}).slice(0,16);for(const j of rows){j.status=state;j.updatedAt=now;if(reject)j.reason=reason;else if(request){j.reason='';j.time=now;}j.history=j.history||[];j.history.unshift([state,({admin:'관리자',exportOperator:'수출상담 운영용역사',buyOperator:'구매상담 운영용역사',interpreter:'통역원',buyer:'국내 바이어'})[c.role]+' · '+now,reject?reason:'']);}
   document.getElementById('dialog').close();c.render();c.toast(rows.length+'건을 '+state+' 상태로 변경했습니다.');
  });
