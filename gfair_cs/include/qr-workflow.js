@@ -42,6 +42,11 @@ function accept(raw){
  const records=JSON.parse(sessionStorage.getItem('gfair.qr.checks')||'[]');
  records.push({code:travel?parts[3]:parts[2],name:person[1],state:step,at:new Date().toISOString(),mode:travel?'travel':'consult',role:scanRole,...(travel?{participantType:parts[2],eventYear:year}:{})});
  sessionStorage.setItem('gfair.qr.checks',JSON.stringify(records));
+ if(!travel&&context.get('purchase')==='1'){
+  sessionStorage.setItem('gfair.purchase-company-qr',person[0]);
+  location.replace(purchaseScanReturnUrl());
+  return;
+ }
  if(!travel&&scanRole==='buyer'){
   sessionStorage.setItem('gfair.purchase-company-qr',person[0]);
   const target=new URL(location.href);
@@ -100,12 +105,26 @@ function windowUrl(screen, from, role, year) {
  url.hash = screen;
  return E(url.pathname + url.search + url.hash);
 }
+function purchaseScanUrl(screen,role,year){
+ const target=new URL(location.href);
+ target.search=new URLSearchParams({popup:'qr',userRole:role,eventYear:year,from:screen,purchase:'1'});
+ target.hash='JNL-03';
+ return target.href;
+}
+function purchaseScanReturnUrl(){
+ const target=new URL(location.href);
+ target.searchParams.set('popup','purchase-journal');
+ target.searchParams.delete('purchase');
+ target.hash=context.get('from')==='JNL-15'?'JNL-15':'JNL-04';
+ return target.href;
+}
 function sourceUrl(fallback) {
  const from = context.get('from');
  const source = /^[A-Z]+-\d{2}$/.test(from || '') ? from : fallback;
  return 'index.html#' + source;
 }
 function backLink(id) {
+ if(id==='JNL-03'&&context.get('purchase')==='1')return '<a class="qr-back" href="'+E(purchaseScanReturnUrl())+'" aria-label="구매상담일지로 돌아가기">←</a>';
  if (!standalone(id) || id === 'PRE-12') {
   const destination = id === 'PRE-12' ? 'PRE-03' : 'JNL-07';
   return '<a class="qr-back" href="#' + destination + '" aria-label="뒤로가기">←</a>';
@@ -118,7 +137,7 @@ function travelShortcut(id, role, year, mobile = false) {
 }
 function floating(id,role,year){if (statusOperators.includes(role)) return travelShortcut(id, role, year, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="'+windowUrl('JNL-03',id,role,year)+'" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3m5 0v.01M12 7v3a2 2 0 0 1-2 2H7m-4 0h.01M12 3h.01M12 16h.01M16 12h1m4 0h.01M12 21v-1"/></svg><span>상담 시작</span></a>':'';}
 function render(s,role,year,head){
- const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?statusOperators.includes(role):['interpreter','buyer'].includes(role);
+ const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?statusOperators.includes(role):(['interpreter','buyer'].includes(role)||context.get('purchase')==='1'&&['admin','buyOperator'].includes(role));
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·구매상담 운영용역사·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
  if(eventYear!==year)state='';
  eventYear=year; scanRole=role;
@@ -156,5 +175,5 @@ window.addEventListener('hashchange',event=>{
  if(new URL(event.oldURL).hash==='#PRE-12'&&location.hash==='#PRE-03')state='';
  stop();
 });window.addEventListener('pagehide',stop);
-window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,rememberLoginContext,states,stop};
+window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,purchaseScanUrl,rememberLoginContext,states,stop};
 })();
