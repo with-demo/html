@@ -1,4 +1,6 @@
 window.GFAIR_REVISION_HISTORY=[
+{"screenId":"JNL-05","version":"v0.106","date":"2026.11.10","accountName":"yulotso0310-cyber","summary":"상담기업에 부스 QR 스캔 추가","changes":["편집 가능한 상담일지의 상담기업 제목 옆에서 부스 QR을 스캔하여 기업 정보를 채운다."]},
+{"screenId":"JNL-16","version":"v0.46","date":"2026.11.10","accountName":"yulotso0310-cyber","summary":"상담기업에 부스 QR 스캔 추가","changes":["편집 가능한 상담일지의 상담기업 제목 옆에서 부스 QR을 스캔하여 기업 정보를 채운다."]},
 {"screenId":"JNL-04","version":"v0.101","date":"2026.11.10","accountName":"yulotso0310-cyber","summary":"상담 상세 입력 안내 위치와 문구 변경","changes":["플레이스홀더에 최소 250자 안내를 추가하고 글자 수는 입력란 오른쪽 아래로 이동. 입력 정책은 디스크립션에서 안내."]},
 {"screenId":"JNL-15","version":"v0.15","date":"2026.11.10","accountName":"yulotso0310-cyber","summary":"상담 상세 입력 안내 위치와 문구 변경","changes":["플레이스홀더에 최소 250자 안내를 추가하고 글자 수는 입력란 오른쪽 아래로 이동. 입력 정책은 디스크립션에서 안내."]},
 {"screenId":"JNL-05","version":"v0.105","date":"2026.11.10","accountName":"yulotso0310-cyber","summary":"상담 상세 입력 안내 위치와 문구 변경","changes":["플레이스홀더에 최소 250자 안내를 추가하고 글자 수는 입력란 오른쪽 아래로 이동. 입력 정책은 디스크립션에서 안내."]},

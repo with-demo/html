@@ -37,6 +37,11 @@ function accept(raw){
   const target=!travel?'참가기업':attendanceStates.has(step)?'참가자':'해외 바이어';
   return notice('현재 행사 '+target+' QR인지 확인해 주세요.');
  }
+ if(!travel&&context.get('exportCompany')==='1'){
+  sessionStorage.setItem('gfair.export-company-qr',person[0]);
+  location.replace(exportScanReturnUrl());
+  return;
+ }
  const key=raw+'|'+step,now=Date.now();if(last===key&&now-lastAt<3000)return;
  last=key;lastAt=now;
  const records=JSON.parse(sessionStorage.getItem('gfair.qr.checks')||'[]');
@@ -111,6 +116,19 @@ function purchaseScanUrl(screen,role,year){
  target.hash='JNL-03';
  return target.href;
 }
+function exportScanUrl(screen,role,year){
+ const target=new URL(purchaseScanUrl(screen,role,year));
+ target.searchParams.delete('purchase');
+ target.searchParams.set('exportCompany','1');
+ return target.href;
+}
+function exportScanReturnUrl(){
+ const target=new URL(location.href);
+ target.searchParams.set('popup','export-journal');
+ target.searchParams.delete('exportCompany');
+ target.hash=context.get('from')==='JNL-16'?'JNL-16':'JNL-05';
+ return target.href;
+}
 function purchaseScanReturnUrl(){
  const target=new URL(location.href);
  target.searchParams.set('popup','purchase-journal');
@@ -124,6 +142,7 @@ function sourceUrl(fallback) {
  return 'index.html#' + source;
 }
 function backLink(id) {
+ if(id==='JNL-03'&&context.get('exportCompany')==='1')return '<a class="qr-back" href="'+E(exportScanReturnUrl())+'" aria-label="수출상담일지로 돌아가기">←</a>';
  if(id==='JNL-03'&&context.get('purchase')==='1')return '<a class="qr-back" href="'+E(purchaseScanReturnUrl())+'" aria-label="구매상담일지로 돌아가기">←</a>';
  if (!standalone(id) || id === 'PRE-12') {
   const destination = id === 'PRE-12' ? 'PRE-03' : 'JNL-07';
@@ -137,12 +156,12 @@ function travelShortcut(id, role, year, mobile = false) {
 }
 function floating(id,role,year){if (statusOperators.includes(role)) return travelShortcut(id, role, year, true);return ['interpreter','buyer'].includes(role)&&!['COM-01','JNL-03','PRE-12'].includes(id)?'<a class="qr-floating" href="'+windowUrl('JNL-03',id,role,year)+'" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3m5 0v.01M12 7v3a2 2 0 0 1-2 2H7m-4 0h.01M12 3h.01M12 16h.01M16 12h1m4 0h.01M12 21v-1"/></svg><span>상담 시작</span></a>':'';}
 function render(s,role,year,head){
- const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?statusOperators.includes(role):(['interpreter','buyer'].includes(role)||context.get('purchase')==='1'&&['admin','buyOperator'].includes(role));
+ const travel=s.id.startsWith('PRE'),camera=['PRE-12','JNL-03'].includes(s.id),allowed=travel?statusOperators.includes(role):(['interpreter','buyer'].includes(role)||context.get('purchase')==='1'&&['admin','buyOperator'].includes(role)||context.get('exportCompany')==='1'&&['admin','exportOperator'].includes(role));
  if(!allowed)return head(s)+'<div class="empty"><strong>이 화면에 접근할 수 없습니다.</strong><p>'+(travel?'관리자·구매상담 운영용역사·수출상담 운영용역사':'통역원·구매 바이어')+' 전용 화면입니다.</p></div>';
  if(eventYear!==year)state='';
  eventYear=year; scanRole=role;
  if(camera){const step=travel?state:consultState;
- return `<section class="qr-camera qr-camera-wide" aria-label="QR 스캔 카메라"><header class="qr-camera-top">${backLink(s.id)}<div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<strong>'+consultState+'</strong>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div><p class="qr-scan-guide">${travel?(attendanceStates.has(step)?"참가자 명찰 QR을 카메라로 스캔해 주세요":"바이어 명찰 QR을 카메라로 스캔해 주세요"):"참가기업 부스 QR을 카메라로 스캔해 주세요"}</p></div>${travel?`<div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite">${E(`James Whitmore ${step||'호텔 도착'} 처리 되었습니다.`)}</div>`:'<div class="qr-feedback qr-camera-warning" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.9 2.8 18a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg><div><strong>사용 가능한 카메라가 없습니다.</strong><p>카메라 연결 상태를 확인해 주세요</p></div></div>'}</section>`;
+ return `<section class="qr-camera qr-camera-wide" aria-label="QR 스캔 카메라"><header class="qr-camera-top">${backLink(s.id)}<div>${travel?'<strong>'+E(step||'상태 미선택')+'</strong>':'<strong>'+(context.get('exportCompany')==='1'?'부스 QR 스캔':consultState)+'</strong>'}<span>${date()}</span></div></header><div class="qr-viewfinder" id="qr-viewfinder"><video id="qr-video" autoplay muted playsinline></video><div class="qr-reticle" aria-hidden="true"></div><p class="qr-scan-guide">${travel?(attendanceStates.has(step)?"참가자 명찰 QR을 카메라로 스캔해 주세요":"바이어 명찰 QR을 카메라로 스캔해 주세요"):"참가기업 부스 QR을 카메라로 스캔해 주세요"}</p></div>${travel?`<div id="qr-feedback" class="qr-feedback" role="status" aria-live="polite">${E(`James Whitmore ${step||'호텔 도착'} 처리 되었습니다.`)}</div>`:'<div class="qr-feedback qr-camera-warning" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.9 2.8 18a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg><div><strong>사용 가능한 카메라가 없습니다.</strong><p>카메라 연결 상태를 확인해 주세요</p></div></div>'}</section>`;
  }
  const dateParts=new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit",weekday:"short"}).formatToParts(new Date());
  const part=type=>dateParts.find(entry=>entry.type===type).value;
@@ -175,5 +194,5 @@ window.addEventListener('hashchange',event=>{
  if(new URL(event.oldURL).hash==='#PRE-12'&&location.hash==='#PRE-03')state='';
  stop();
 });window.addEventListener('pagehide',stop);
-window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,purchaseScanUrl,rememberLoginContext,states,stop};
+window.GFAIR_QR_WORKFLOW={render,floating,travelShortcut,standalone,purchaseScanUrl,exportScanUrl,rememberLoginContext,states,stop};
 })();
