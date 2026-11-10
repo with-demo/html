@@ -31,7 +31,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement('script');script.src=new URL('popup-description-example.js?v=travel-daily-ledger-20261109',document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=account-pages-final-20261030",document.currentScript.src).href;document.head.append(script);})();
+(()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=journal-audit-20261110",document.currentScript.src).href;document.head.append(script);})();
 
 (()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=jnl14-filter-rows-20261109",base).href;js.src=new URL("search-filters.js?v=purchase-journal-list-20261109",base).href;document.head.append(css,js);})();
 

@@ -28,6 +28,21 @@
 /* JNL-14 일괄 처리 버튼은 목록 하단 좌측, 등록은 우측에 둔다. */
 .page-bottom-actions>.jnl14-bulk-actions{display:flex;align-items:center;gap:8px;margin-right:auto;flex-wrap:wrap}
 
+#app #content .journal-audit-section {
+  margin: 12px 0 20px;
+}
+#app #content .journal-audit-section > summary {
+  display: list-item;
+  cursor: pointer;
+  padding: 10px 12px;
+  background: #f6f7f8;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+}
+#app #content .journal-audit-section[open] > summary {
+  margin-bottom: 8px;
+}
+
 #app #content .journal-audit-section td.journal-audit-empty {
   color: #777;
   text-align: center;
