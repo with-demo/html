@@ -172,7 +172,7 @@ function journalProductRow(value, first, category='', groups='', required=false)
  const productControls='<input type="text" name="'+(first?'consultProduct':'additionalProduct')+'" aria-label="상담 제품" placeholder="실제 상담한 제품명을 입력해 주세요" value="'+E(value)+'">' + (first ? '' : '<button class="btn" type="button" data-product-action="remove" aria-label="상담 제품 삭제">−</button>') + '<button class="btn" type="button" data-product-action="add" aria-label="상담 제품 추가">+</button>';
  const rowStart='<div class="journal-table-row journal-consult-product" data-product-groups="'+E(groups)+'">';
  if(required){
-  return rowStart+'<div class="journal-pair full"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><span class="purchase-product-category">'+categorySelect+'<em class="required-asterisk" aria-hidden="true">*</em></span>'+productControls+'</div></div></div></div>';
+  return rowStart+'<div class="journal-pair full"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><span class="purchase-product-category">'+categorySelect+'</span>'+productControls+'</div></div></div></div>';
  }
  const hasMultipleCategories=new Set(groups.split('/').map(value=>value.trim()).filter(Boolean)).size>1;
  return rowStart+'<div class="journal-pair"><div class="journal-label">메인 카테고리'+(hasMultipleCategories?'<em> *</em>':'')+'</div><div class="journal-control">'+categorySelect+'</div></div><div class="journal-pair"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row">'+productControls+'</div></div></div></div>';
