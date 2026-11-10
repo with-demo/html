@@ -128,8 +128,9 @@
     });
 
     if (table) {
+      const consultationTime = getField(form, 'consultStart')?.closest('.journal-pair');
       const orderedRows = [
-        [participant],
+        [participant, consultationTime],
         [booth, product],
         [contact, phone],
         [card]
