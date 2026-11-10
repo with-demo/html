@@ -162,23 +162,23 @@ function draftState(){return `<div class="notice ${connected()?'':'amber'}" id="
 function sellerCardPreviews(){const cards=image?.items||(image?[image]:[]);return cards.map((card,index)=>'<div class="journal-card-preview"><img class="imagepreview" src="'+E(card.url)+'" alt="첨부한 셀러 명함 '+(index+1)+'"><small class="journal-card-name">'+E(card.name)+'</small></div>').join('')}
 function optionalSellerCardUpload(d){return '<div class="journal-upload">'+sellerCardPreviews()+'<input type="hidden" name="sellerCard" value="'+E(d.sellerCard||image?.name||'')+'"><input id="draft-image" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple aria-label="셀러 명함 이미지 선택"><small class="hint">JPG, JPEG, PNG · 파일당 최대 10MB · 최대 2개 (선택 첨부)</small></div>'}
 function positionJournalSelect(wrap){const trigger=wrap.querySelector('[data-select-trigger]'),box=wrap.querySelector('.journal-select-options'),results=wrap.querySelector('.journal-select-results');if(!trigger||!box||!results)return;const rect=trigger.getBoundingClientRect(),edge=8,desired=240,below=window.innerHeight-rect.bottom-edge,above=rect.top-edge,up=below<desired&&above>below,available=Math.max(100,Math.min(desired,up?above:below)),width=Math.min(Math.max(rect.width,306),420,window.innerWidth-edge*2),left=Math.max(edge,Math.min(rect.left,window.innerWidth-width-edge)),top=up?Math.max(edge,rect.top-available-3):rect.bottom+3;box.style.position='fixed';box.style.zIndex='9999';box.style.left=left+'px';box.style.top=top+'px';box.style.right='auto';box.style.width=width+'px';box.style.maxWidth='calc(100vw - 16px)';box.style.maxHeight=available+'px';results.style.maxHeight=Math.max(60,available-58)+'px'}
-function journalCategorySelect(groups, saved, name='representativeCategory') {
+function journalCategorySelect(groups, saved, name='representativeCategory', required=false) {
  const categories=[...new Set((groups||'').split('/').map(v=>v.trim()).filter(Boolean))];
  const selected=categories.length===1?categories[0]:saved;
- return '<select name="'+name+'" aria-label="메인 카테고리"'+(categories.length>1?' required':categories.length?'':' disabled')+'><option value="">'+(categories.length?'선택해 주세요':'등록된 메인 카테고리 없음')+'</option>'+categories.map(value=>'<option value="'+E(value)+'"'+(value===selected?' selected':'')+'>'+E(value)+'</option>').join('')+'</select>';
+ return '<select name="'+name+'" aria-label="메인 카테고리"'+(categories.length>1||required&&categories.length?' required':categories.length?'':' disabled')+'><option value="">'+(categories.length?'선택해 주세요':'등록된 메인 카테고리 없음')+'</option>'+categories.map(value=>'<option value="'+E(value)+'"'+(value===selected?' selected':'')+'>'+E(value)+'</option>').join('')+'</select>';
 }
-function journalProductRow(value, first, category='', groups='') {
+function journalProductRow(value, first, category='', groups='', required=false) {
  const count=[...new Set(groups.split('/').map(v=>v.trim()).filter(Boolean))].length;
- return '<div class="journal-table-row journal-consult-product" data-product-groups="'+E(groups)+'"><div class="journal-pair"><div class="journal-label">메인 카테고리'+(count>1?'<em> *</em>':'')+'</div><div class="journal-control">'+journalCategorySelect(groups,category,first?'representativeCategory':'additionalCategory')+'</div></div><div class="journal-pair"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><input type="text" name="'+(first?'consultProduct':'additionalProduct')+'" aria-label="상담 제품" placeholder="실제 상담한 제품명을 입력해 주세요" value="'+E(value)+'">' + (first ? '' : '<button class="btn" type="button" data-product-action="remove" aria-label="상담 제품 삭제">−</button>') + '<button class="btn" type="button" data-product-action="add" aria-label="상담 제품 추가">+</button></div></div></div></div>';
+ return '<div class="journal-table-row journal-consult-product" data-product-groups="'+E(groups)+'"><div class="journal-pair"><div class="journal-label">메인 카테고리'+(required||count>1?'<em> *</em>':'')+'</div><div class="journal-control">'+journalCategorySelect(groups,category,first?'representativeCategory':'additionalCategory',required)+'</div></div><div class="journal-pair"><div class="journal-label">상담 제품</div><div class="journal-control"><div class="journal-product-row"><input type="text" name="'+(first?'consultProduct':'additionalProduct')+'" aria-label="상담 제품" placeholder="실제 상담한 제품명을 입력해 주세요" value="'+E(value)+'">' + (first ? '' : '<button class="btn" type="button" data-product-action="remove" aria-label="상담 제품 삭제">−</button>') + '<button class="btn" type="button" data-product-action="add" aria-label="상담 제품 추가">+</button></div></div></div></div>';
 }
-function journalProducts(data, groups='') {
- return journalProductRow(data.consultProduct||'',true,data.representativeCategory,groups)+(data.additionalProducts||[]).map((value,index)=>journalProductRow(value,false,data.additionalCategories?.[index]||'',groups)).join('');
+function journalProducts(data, groups='', required=false) {
+ return journalProductRow(data.consultProduct||'',true,data.representativeCategory,groups,required)+(data.additionalProducts||[]).map((value,index)=>journalProductRow(value,false,data.additionalCategories?.[index]||'',groups,required)).join('');
 }
 document.addEventListener('click',event=>{
  const button=event.target.closest('[data-product-action]');if(!button||button.disabled)return;
  const row=button.closest('.journal-consult-product'),table=row?.parentElement;if(!table)return;
  if(button.dataset.productAction==='add'){
-  row.insertAdjacentHTML('afterend',journalProductRow('',false,'',row.dataset.productGroups||''));
+  row.insertAdjacentHTML('afterend',journalProductRow('',false,'',row.dataset.productGroups||'',!!row.closest('.purchase-journal-form')));
   row.nextElementSibling.querySelector('input').focus();
  }else if(row.querySelector('[name="additionalProduct"]')){
   const previous=row.previousElementSibling;
@@ -411,8 +411,6 @@ function purchaseJournalWrite(s,j){
  cardRow.before(contactRow);
  if(!draft.company){
   companySection.querySelector('[data-name="company"] [data-select-label]').textContent='선택해 주세요';
-  consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
-  consultSection.querySelector('.journal-table').insertAdjacentHTML('afterbegin',journalProducts(draft));
   for(const key of ['booth','contactPerson','contactPhone']){
    const field=companySection.querySelector('[name="'+key+'"]');
    if(field)field.setAttribute('value','');
@@ -436,7 +434,8 @@ function purchaseJournalWrite(s,j){
  const companyTable=companySection.querySelector('.journal-table');
  companyTable.insertAdjacentHTML('beforeend',row(pair('상담일시',dateMarkup,true,true)));
  if(!j)for(const field of ['consultStart','consultEnd'])form.elements.namedItem(field).setAttribute('value',draft[field]||'');
- companyTable.append(...consultSection.querySelectorAll('.journal-consult-product'));
+ consultSection.querySelectorAll('.journal-consult-product').forEach(product=>product.remove());
+ companyTable.insertAdjacentHTML('beforeend',journalProducts(draft,selectedCompany?.productGroup||'',true));
  if(editable)companySection.querySelector('.journal-section-head').insertAdjacentHTML('beforeend',B('purchase-company-scan','부스 QR 코드 스캔'));
  const memo=consultSection.querySelector('textarea[name="content"]');
  memo.setAttribute('aria-describedby','purchase-memo-guide purchase-memo-count');
@@ -585,10 +584,12 @@ if(!purchaseQrReturn&&current==='JNL-04'&&previousScreen!==current){
  const qrCode=sessionStorage.getItem(qrKey);
  if(qrCode)sessionStorage.removeItem(qrKey);
  const scanned=['JNL-03','ENT-01','ENT-02'].includes(previousScreen);
- const companyRow=qrCode&&rows(map.get('BAS-09')).find(row=>row[0]===qrCode);
+ const companies=rows(map.get('BAS-09'));
+ const companyRow=qrCode?companies.find(row=>row[0]===qrCode):role==='buyer'&&!scanned?companies.find(row=>row[1]==='온그린푸드'):null;
  const company=scanned?Object.fromEntries(['company','booth','sellerCode','sellerCountry','sellerCountryCode','productGroup','contactPerson','contactPhone'].map(key=>[key,draft[key]])):{};
  if(companyRow)Object.assign(company,{company:companyRow[1],booth:companyRow[3],sellerCode:companyRow[0],sellerCountry:'대한민국',sellerCountryCode:'KR',productGroup:(window.GFAIR_COMPANY_FILTER?.categoriesFor(companyRow)||[]).join(' / '),contactPerson:companyRow[4],contactPhone:companyRow[5]});
- draft={...company,id:'GF-DRAFT-'+Date.now(),type:'구매',writer:purchaseWriter(),buyer:role==='buyer'?purchaseWriter():'',currency:'KRW',contractCurrency:'KRW'};
+ const buyer=role==='buyer'?purchaseBuyerProfiles().find(profile=>profile.name===purchaseWriter()):null;
+ draft={...company,id:'GF-DRAFT-'+Date.now(),type:'구매',writer:purchaseWriter(),buyer:buyer?.name||'',buyerCode:buyer?.id||'',buyerCompanyName:buyer?.company||'',buyerPosition:buyer?.position||'',currency:'KRW',contractCurrency:'KRW'};
  image=null;savedAt='';savedAtISO='';
 }
 if(current==='JNL-16'&&previousScreen!=='JNL-16'){const journal=journals.find(x=>x.id===selected&&x.type==='수출')||journals.find(x=>x.type==='수출');if(journal){loadExportJournal(journal);exportJournalMode=['임시 저장','작성 중','반려'].includes(journal.status)?'detail':'view'}}else if(current!=='JNL-16')exportJournalMode='create';if(['JNL-05','JNL-16'].includes(current)&&exportJournalMode==='create'&&previousScreen!=='JNL-05'){draft={...draft,id:'GF-DRAFT-'+Date.now(),type:'수출',interpreterName:'',buyer:'',buyerCode:'',buyerCountry:'',buyerCountryCode:'',currency:'USD',contractCurrency:'USD',consultStart:'',consultEnd:'',representativeCategory:'',additionalCategories:[],additionalProducts:[],consultProduct:'',content:'',remarks:'',amount:'',contract:'',contractUnestimated:false,tradePotential:'',excellentCase:'',onSiteContract:'',sampleDelivered:'',mouSigned:'',mouPlanned:'',hashtags:[],tags:[]};resubmit=null;submitted=false;savedAt='';savedAtISO='';if(image){URL.revokeObjectURL(image.url);image=null}delete draft.sellerCards;delete draft.sellerCard}if(current==='screens'){root.innerHTML=screenList();return}if(current==='BAS-16-D1JY7DMW'){current='BAS-20';history.replaceState(null,'',location.pathname+location.search+'#BAS-20');}if(current==='BAS-20'){current='BAS-18';const url=new URL(location.href);url.searchParams.set('adminMode','create');url.hash='BAS-18';history.replaceState(null,'',url.pathname+url.search+url.hash);}const workflow=window.GFAIR_WORKFLOW?.entry(current);if(workflow&&current!=='BAS-19'&&current!=='COM-09'&&current!=='COM-06'){current=workflow.parent;const source=map.get(current)||all[0],page={...source,id:workflow.id,title:workflow.title};root.innerHTML=shell(page,head(page));if(workflow.build)workflow.node.innerHTML=workflow.build();document.getElementById('content').append(workflow.node);return;}let s=map.get(current);if(!s){root.innerHTML=`${top()}<main class="content" id="content"><div class="empty"><strong>화면을 찾을 수 없습니다.</strong>${A('screens','화면 목록')}</div></main>`;return}if(['JNL-05','JNL-16'].includes(s.id)&&['detail','view'].includes(exportJournalMode))s={...s,title:'수출상담일지 상세',summary:'목록에서 선택한 수출상담일지의 작성 내용과 성과를 확인합니다. 임시 저장 또는 반려 상태의 일지는 이 화면에서 내용을 수정하고 저장할 수 있습니다.'};if(s.id==='JNL-14')exportJournalMode='create';if(s.id==='SET-02')s={...s,title:'그룹 상세'};document.title=(['JNL-05','JNL-16'].includes(s.id)&&exportJournalMode!=='create'?((exportJournalMode==='view'||exportJournalMode==='detail')?'수출상담일지 상세':'수출상담일지 수정'):s.title)+' · G-FAIR KOREA';if(s.id==='COM-06'){root.innerHTML=shell(s,head(s)+(window.GFAIR_MY_INFO?window.GFAIR_MY_INFO.render(role,event):'<p>내정보를 불러오는 중입니다.</p>'));return;}if(s.id==='COM-01'){root.innerHTML=login();return}let body;if(s.id==='MON-08')body=window.GFAIR_ATTENDANCE?window.GFAIR_ATTENDANCE.render(role,event):head(s);else if([...fullJournalScreens,'JNL-06'].includes(s.id))body=write(s);else if(s.id==='JNL-09')body=sync(s);else if(['JNL-10','JNL-11','BAS-12'].includes(s.id))body=upload(s);else if(['COM-02','JNL-03','PRE-03','PRE-12','JNL-17'].includes(s.id))body=scan(s);else if(s.id==='COM-03')body=`${head(s)}<div class="notice danger"><div><strong>인증을 완료할 수 없습니다.</strong><p>QR의 유효 여부와 행사 참가 승인을 확인해 주세요.</p></div></div><section class="panel pad"><h2>이용 전 확인사항</h2><p style="margin:16px 0">카메라를 허용하거나 발급된 링크로 다시 시도해 주세요. 미승인·비활성 계정은 운영 담당자의 확인이 필요합니다.</p><div class="actions">${A('COM-02','다시 인증','btn primary')}${B('contact','문의 안내')}</div></section>`;else if(s.id==='PRE-07')body=schedule(s);else if(s.id==='NTC-06')body=urgent(s);else if(s.id==='NTC-08')body=survey(s);else if(s.id==='SET-02')body=permission(s);else if(s.id==='BAS-19')body=list(s);else if(s.id==='MON-07'||s.kind==='dashboard'||s.ui.metrics)body=dash(s);else if(['list','matrix'].includes(s.kind))body=list(s);else body=form(s);root.innerHTML=shell(s,body);window.GFAIR_JNL14?.bind({current,role,rows:['JNL-13','JNL-14'].includes(current)?jRows(s):[],render,toast,modal,purchaseMemoLength});window.GFAIR_JOURNAL_UPLOAD?.bind({current,role,year:event,journals,render,toast,download});if(['JNL-05','JNL-16'].includes(s.id)){const detailInput=root.querySelector('#draft-form [name=content]');if(detailInput)detailInput.placeholder='상담 내용을 입력하세요'}if(['JNL-05','JNL-16'].includes(s.id)&&exportJournalMode==='view'&&!(s.id==='JNL-16'&&['admin','exportOperator'].includes(role))){const form=root.querySelector('#draft-form');form?.classList.add('journal-read-view');form?.querySelectorAll('.journal-table input:not([type=hidden]),.journal-table textarea,.journal-table select,.journal-table button').forEach(control=>{control.disabled=true;if(control.matches('input:not([type=file]) ,textarea'))control.readOnly=true})}if(['JNL-05','JNL-16'].includes(s.id)&&exportJournalMode!=='view'&&!savedAtISO)save();if(window.lucide)lucide.createIcons({attrs:{width:20,height:20,'stroke-width':1.6}})}
@@ -656,8 +657,9 @@ if(fullJournalScreens.includes(current)&&form){
   form.querySelectorAll('.journal-consult-product').forEach(row=>{
    row.dataset.productGroups=meta.productGroup||'';
    const category=row.querySelector('select');if(!category)return;
-   const name=category.name;category.outerHTML=journalCategorySelect(meta.productGroup,'',name);
-   row.querySelector('.journal-label').innerHTML='메인 카테고리'+(row.querySelector('select').required?'<em> *</em>':'');
+   const required=purchaseJournalScreens.includes(current);
+   const name=category.name;category.outerHTML=journalCategorySelect(meta.productGroup,'',name,required);
+   row.querySelector('.journal-label').innerHTML='메인 카테고리'+(required||row.querySelector('select').required?'<em> *</em>':'');
   });
   draft.representativeCategory=form.elements.namedItem('representativeCategory')?.value||'';
   setField('contactPerson',meta.contactPerson||'');
