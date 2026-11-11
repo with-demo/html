@@ -64,7 +64,15 @@
    seen.add(k);bar.append(b);
    if(!original.children.length)original.classList.add('page-action-source-empty');
   }
-  if(['JNL-04','JNL-05','JNL-15','JNL-16'].includes(route)){const request=bar.querySelector('[data-journal-request],[data-export-request]');if(request){request.style.marginRight='auto';bar.prepend(request);}}
+  if(['JNL-04','JNL-05','JNL-15','JNL-16'].includes(route)){
+   const request=bar.querySelector('[data-journal-request],[data-export-request]'),remove=bar.querySelector('[data-journal-draft-delete]');
+   if(request||remove){
+    let left=bar.querySelector('.journal-left-actions');
+    if(!left){left=document.createElement('div');left.className='journal-left-actions';left.style.cssText='display:flex;align-items:center;gap:8px;margin-right:auto;';bar.prepend(left);}
+    if(request){request.style.marginRight='';if(request.parentElement!==left)left.prepend(request);}
+    if(remove&&remove.parentElement!==left)left.append(remove);
+   }
+  }
   if(['JNL-13','JNL-14'].includes(route)){
    bar.querySelectorAll(route==='JNL-13'?'a[href="#JNL-04"]':'a[href="#JNL-05"]').forEach(link=>{if(link.textContent.trim()!=='등록')link.textContent='등록';});
    const buttons=[...bar.querySelectorAll('[data-jnl14-bulk]')];
