@@ -55,6 +55,14 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
  function records(){
   const screen=route();
   let ordered=orderDescriptionLabels(layoutRecords(),screen);
+  // 공통 설명은 등록·상세에서 같은 저장 좌표를 사용한다.
+  if(['JNL-05','JNL-16'].includes(screen)){
+   ordered=ordered.map(record=>{
+    const anchor=store.records.find(saved=>saved.id===record.id)?.anchor;
+    if(!anchor)return record;
+    return {...record,anchor:{...record.anchor,x:anchor.x??0,y:anchor.y??0,offsetX:anchor.offsetX??0,offsetY:anchor.offsetY??0}};
+   });
+  }
   if(screen==='PRE-03'&&ordered.some(record=>record.anchor?.selector==='#qr-launch')){
    ordered=ordered.filter(record=>{
     const spec=readSpec(record.text);
