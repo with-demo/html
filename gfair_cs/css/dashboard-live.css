@@ -171,3 +171,13 @@
 @media(max-width:600px){
  #content .overview-module .overview-area>.monitoring-module-money{margin:12px;gap:12px}
 }
+
+/* 복수 선택 유형은 전체 참가자 대비 비율을 각각 표시한다. */
+.dashboard-business-types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;margin-top:18px}
+.dashboard-business-type-label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;font-size:13px}
+.dashboard-business-type-label strong{font-weight:600;white-space:nowrap}
+.dashboard-business-type-label strong span{font-weight:400;color:#666}
+.dashboard-business-type-track{height:9px;background:#eee;border-radius:5px;overflow:hidden}
+.dashboard-business-type-track>span{display:block;height:100%;background:#929292;border-radius:5px}
+.dashboard-business-type-note{font-size:12px;color:#666;line-height:1.6;margin:16px 0 0}
+@media(max-width:600px){.dashboard-business-types{grid-template-columns:1fr;gap:14px}}
