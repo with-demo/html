@@ -161,3 +161,13 @@
 #content .monitoring-module-money .kpi{padding:20px 16px;min-height:132px}
 #content .monitoring-module-money .kpi-value{font-size:28px}
 @media(max-width:600px){#content .monitoring-module-money{grid-template-columns:1fr}}
+
+/* 금액 카드와 하단 차트의 좌우 기준선·간격을 통일한다. */
+#content .overview-module .overview-area>.monitoring-module-money{margin:16px;gap:16px;align-self:start}
+#content .overview-grid:not(.overview-single):has(.monitoring-module-money){grid-template-rows:auto repeat(3,auto)}
+#content .overview-grid:not(.overview-single)>.overview-module:has(.monitoring-module-money){grid-row:span 4}
+#content .overview-grid:not(.overview-single)>.overview-module:has(.monitoring-module-money)>.overview-area{grid-row:span 3}
+#content .overview-module:has(.monitoring-module-money) .overview-area>.overview-two:nth-child(2){margin-top:0}
+@media(max-width:600px){
+ #content .overview-module .overview-area>.monitoring-module-money{margin:12px;gap:12px}
+}
