@@ -318,18 +318,6 @@ window.GFAIR_PLANNING_POLICY={
           }
         ],
         [
-          "SET-04",
-          "상담일지 관리",
-          [],
-          {
-            "admin": "O",
-            "buyOperator": "X",
-            "exportOperator": "X",
-            "interpreter": "X",
-            "buyer": "X"
-          }
-        ],
-        [
           "SET-07",
           "만족도설문 관리",
           [
@@ -750,11 +738,6 @@ window.GFAIR_PLANNING_POLICY={
           "id": "SET-02",
           "title": "그룹 상세",
           "kind": "matrix"
-        },
-        {
-          "id": "SET-04",
-          "title": "상담일지 관리",
-          "kind": "form"
         },
         {
           "id": "SET-07",

@@ -293,18 +293,6 @@ window.GFAIR_MENU=[
         }
       ],
       [
-        "SET-04",
-        "상담일지 관리",
-        [],
-        {
-          "admin": "O",
-          "buyOperator": "X",
-          "exportOperator": "X",
-          "interpreter": "X",
-          "buyer": "X"
-        }
-      ],
-      [
         "SET-07",
         "만족도설문 관리",
         [
