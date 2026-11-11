@@ -607,7 +607,7 @@ function alignExportJournal(html,screen){
  return template.innerHTML;
 }
 function write(s){if(purchaseJournalScreens.includes(s.id))return purchaseJournalWrite({...s,title:s.id==='JNL-04'?'구매상담일지 등록':'구매상담일지 상세'},s.id==='JNL-15'?purchaseRecord():null);if(['JNL-05','JNL-16'].includes(s.id)){draft.type='수출';const mode=exportJournalMode,title=(mode==='view'||mode==='detail')?'수출상담일지 상세':mode==='edit'?'수출상담일지 수정':'수출상담일지 등록';let html=alignExportJournal((s.id==='JNL-16'?exportJournalDetailWrite:exportJournalWrite)({...s,title}),s.id);if(mode!=='create'){const actions=mode==='view'?A('JNL-14','목록'):(role==='interpreter'?'<button type="submit" class="btn primary" data-export-request>승인 요청</button>':'')+A('JNL-14','목록')+'<button type="submit" class="'+(role==='interpreter'?'btn':'btn primary')+'">'+(role==='interpreter'?'임시 저장':'저장')+'</button>';html=html.replace(/<div class="formfooter">[\s\S]*?<\/div><\/form>/,'<div class="formfooter">'+actions+'</div></form>')}if(s.id==='JNL-16'&&['admin','exportOperator'].includes(role)){const target=journals.find(j=>j.id===selected&&j.type==='수출');if(target&&['작성 중','임시 저장'].includes(target.status)&&!isOwnReviewerDraft(target))return head({...s,title:'수출상담일지 상세'})+'<div class="empty"><p>다른 작성자의 작성 중 상담일지는 조회할 수 없습니다.</p></div><div class="formfooter">'+A('JNL-14','목록')+'</div>';}if(s.id==='JNL-16'&&isOwnReviewerDraft(journals.find(j=>j.id===selected&&j.type==='수출'))){html=html.replace(/<div class="formfooter">[\s\S]*?<\/div><\/form>/,'<div class="formfooter">'+A('JNL-14','목록')+B('save','임시 저장','btn','data-own-draft-save')+'<button type="submit" class="btn primary" data-own-draft-register>등록</button></div></form>');return html+journalAuditTable(journals.find(j=>j.id===selected&&j.type==='수출'));}if(s.id==='JNL-16'){const j=journals.find(j=>j.id===selected&&j.type==='수출'),returnedInterpreter=role==='interpreter'&&j?.status==='반려';if(j&&(['admin','exportOperator'].includes(role)||returnedInterpreter)){const enabled=canReviewJournal(j)&&j.status==='승인 요청';html=html.replace(/<div class="formfooter">[\s\S]*?<\/div><\/form>/,'</form>');html+='<section class="panel pad journal-review-section"><h2 class="detail-section-title">검수 의견</h2><div class="journal-table"><div class="journal-table-row"><div class="journal-pair full"><label class="journal-label" for="reject-reason">반려 사유</label><div class="journal-control">'+(returnedInterpreter?'<p id="reject-reason" class="journal-rejection-text" aria-label="최근 반려 사유">'+E(j.history?.find(row=>row[0]==='반려')?.[2]||j.reason||'기록된 반려 사유가 없습니다.')+'</p>':'<textarea id="reject-reason" placeholder="검토 의견을 입력하세요."></textarea>')+'</div></div></div></div><div class="formfooter">'+(returnedInterpreter?'<button type="submit" class="btn primary" form="draft-form" data-export-request>승인 요청</button>'+A('JNL-14','목록')+'<button type="submit" class="btn" form="draft-form">임시 저장</button>':B('approve','승인','btn primary',enabled?'':'disabled')+B('reject','반려','btn',enabled?'':'disabled')+A('JNL-14','목록'))+'</div></section>';if(!returnedInterpreter)html+=journalAuditTable(j);if(returnedInterpreter){const earlier=(j.history||[]).filter(row=>row[0]==='반려');if(earlier.length){const past='<details class="journal-previous-rejections"><summary>이전 반려 사유 보기</summary>'+earlier.map(([,actor,reason])=>'<div class="journal-history-reason"><small>'+E(reviewHistoryActor(actor,j.time))+'</small><p>'+E(reason||'기록된 반려 사유가 없습니다.')+'</p></div>').join('')+'</details>';html=html.replace('<div class="formfooter">',past+'<div class="formfooter">');}}}}return html}if(s.id==='JNL-04')draft.type='구매';if(['JNL-05','JNL-16'].includes(s.id))draft.type='수출';const d=draft,out=s.id==='JNL-06';return `${head({...s,title:d.type+'상담일지 등록'})}<div class="steps"><a href="#${d.type==='구매'?'JNL-04':'JNL-05'}" class="${!out?'active':''}">1 상담 내용</a><hr><a href="#JNL-06" class="${out?'active':''}">2 성과·제출</a></div>${draftState()}<div class="companycard"><span class="booth">${E(d.booth)}</span><div><strong>${E(d.company)}</strong><small>생활용품 · 친환경 주방용품</small></div>${A('ENT-01','기업 변경','btn ghost')}</div><form id="draft-form" class="formgrid">${out?`${F('상담액',I('amount','number',d.amount,'min="0" step="any" inputmode="decimal" required'),true)}${F('통화',`<select name="currency">${O(d.type==='구매'?['KRW']:['USD','EUR','KRW'],d.currency)}</select>`)}${F('계약추진액',I('contract','number',d.contract,'min="0" step="any" inputmode="decimal"'))}${F('후속조치',`<textarea name="followup" placeholder="견적서 전달, 샘플 검토 등">${E(d.followup)}</textarea>`)}${d.type==='수출'?F('MOU 진행 여부',`<select name="mou">${O(['해당 없음','검토 중','체결 예정','체결 완료'],d.mou)}</select>`):''}<label class="check"><input name="confirm" type="checkbox" required>상담내용과 금액을 확인했습니다.</label>`:`${F('작성자',I('writer','text',d.type==='구매'?'김민준':'박서연','readonly class="readonly"'))}${d.type==='수출'?F('담당 해외바이어','<select name="buyer"><option>James Whitmore</option></select>'):''}${F('상담일시',I('date','datetime-local',d.date,'required'),true)}${F('상담품목',`<select name="category">${O(['생활용품','식품','뷰티','산업용품'],d.category)}</select>`)}${F('상담내용',`<textarea name="content" placeholder="상담내용과 바이어 관심사항을 작성해 주세요." required>${E(d.content)}</textarea>`,true,true)}<div class="field wide"><span>관심품목·후속조치 태그</span><div class="chips">${['샘플 검토','견적 요청','후속 미팅','유통 상담'].map(t=>`<label><input type="checkbox" name="tags" value="${t}" ${d.tags.includes(t)?'checked':''}>${t}</label>`).join('')}</div></div><div class="field wide"><span>명함 이미지</span>${image?`<img class="imagepreview" src="${image.url}" alt="첨부한 명함 미리보기"><small>${E(image.name)}</small>`:'<span class="hint">촬영하거나 이미지를 첨부해 주세요.</span>'}<input id="draft-image" type="file" accept="image/*" capture="environment" aria-label="명함 이미지 촬영 또는 선택">${image?B('remove-image','첨부 제거','btn ghost'):''}</div>`}<div class="formfooter wide">${A(out?(d.type==='구매'?'JNL-04':'JNL-05'):'JNL-07',out?'이전':'목록')}${B('save','임시 저장')}<button type="submit" class="btn primary">${out?'검토용 제출':'성과 입력'}</button></div></form><p class="small">작성 중 30초마다 이 기기에 임시저장합니다. 서버 제출은 연계 후 이용할 수 있습니다.</p>`}
-function storeExportJournal(status){let j=journals.find(x=>x.id===draft.id&&x.type===draft.type);const history=j?.history||[];const record={...draft,createdAt:j?.createdAt||(!j?journalSubmittedAt():''),createdByProxy:j?.createdByProxy??(!j&&['admin','exportOperator','buyOperator'].includes(role)),initialStatus:j?.initialStatus||(!j?status:''),id:draft.id,type:draft.type,writer:draft.writer||'박서연',updatedAt:journalSubmittedAt(),time:status==='작성 중'?(j?.time||''):journalSubmittedAt(),status,currency:draft.currency||'USD',contractCurrency:draft.contractCurrency||'USD',sellerCard:draft.sellerCard||image?.name||'',reason:j?.reason||'',history};history.unshift([status,roles[role]+' · '+journalSubmittedAt()]);if(j)Object.assign(j,record);else{j=record;journals.unshift(j);}selected=j.id;return j;}
+function storeExportJournal(status){let j=journals.find(x=>x.id===draft.id&&x.type===draft.type);const history=j?.history||[];const record={...draft,hasApprovalRequest:status==='승인 요청'||journalHasApprovalRequest(j),createdAt:j?.createdAt||(!j?journalSubmittedAt():''),createdByProxy:j?.createdByProxy??(!j&&['admin','exportOperator','buyOperator'].includes(role)),initialStatus:j?.initialStatus||(!j?status:''),id:draft.id,type:draft.type,writer:draft.writer||'박서연',updatedAt:journalSubmittedAt(),time:status==='작성 중'?(j?.time||''):journalSubmittedAt(),status,currency:draft.currency||'USD',contractCurrency:draft.contractCurrency||'USD',sellerCard:draft.sellerCard||image?.name||'',reason:j?.reason||'',history};history.unshift([status,roles[role]+' · '+journalSubmittedAt()]);if(j)Object.assign(j,record);else{j=record;journals.unshift(j);}selected=j.id;return j;}
 function submitExportJournal(form){const buyer=form.querySelector('[data-buyer-pool]');if(buyer&&!buyer.querySelector('[data-select-value]').value)return toast(buyer.querySelector('[data-select-trigger]').disabled&&draft.interpreterName?'매칭된 해외 바이어가 없습니다.':'통역원과 해외 바이어를 선택해 주세요.');if(!form.reportValidity())return;if(!validateJournalMemo(form.elements.content))return;if(form.elements.consultStart.value>form.elements.consultEnd.value)return toast('종료일은 시작일 이후로 입력해 주세요.');if(!save())return;if(!connected())return toast('오프라인입니다. 기기 초안은 저장했으며 제출할 수 없습니다.');if(event==='2025')return toast('종료 행사에서는 예시 일지를 제출할 수 없습니다.');const status=['admin','exportOperator'].includes(role)?'승인 완료':'승인 요청';storeExportJournal(status);submitted=true;resubmit=null;toast('검토용 일지를 '+status+' 상태로 등록했습니다.');nav('JNL-14');}
 function save(){if(purchaseJournalScreens.includes(current)&&document.querySelector('#draft-form.journal-read-view'))return true;if(fullJournalScreens.includes(current)&&exportJournalMode==='view'&&!(current==='JNL-16'&&['admin','exportOperator'].includes(role)))return true;const f=document.getElementById('draft-form');if(f){const fd=new FormData(f);if(fullJournalScreens.includes(current)&&f.elements.contractUnestimated){draft.contractUnestimated=f.elements.contractUnestimated.checked;if(draft.contractUnestimated||purchaseJournalScreens.includes(current)&&f.elements.contract.disabled)draft.contract='';}if(purchaseJournalScreens.includes(current)&&!fd.has('followUpType'))draft.followUpType='';for(const k of ['date','content','consultProduct','representativeCategory','category','amount','contract','currency','contractCurrency','writer','interpreterName','followup','mou','buyer','eventName','tradeOffice','consultStart','consultEnd','booth','company','sellerCode','sellerCountry','productGroup','contactPerson','contactPhone','buyerCode','buyerCountry','sellerCountryCode','buyerCountryCode','remarks','tradePotential','excellentCase','onSiteContract','sampleDelivered','mouSigned','mouPlanned','buyerCompanyName','buyerPosition','issueCode','followUpYn','followUpType'])if(fd.has(k))draft[k]=fd.get(k);if(purchaseJournalScreens.includes(current)){
  for(const [name,unit] of [['amount','currency'],['contract','contractCurrency']]){
@@ -1567,7 +1567,72 @@ const memberList=list;list=function(s){return memberList(s)+memberRegistration.b
 const memberForm=form;form=function(s){const body=memberRegistration.render(s.id);return body===null?memberForm(s):memberRegistration.heading(s.id)+body;};
 const memberRender=render;render=function(){const id=location.hash.slice(1);const q=new URLSearchParams(location.search);if(q.get('memberMode')&&q.get('memberScreen')!==id)memberRegistration.clear();memberRender();};
 const proxyExample=journals.find(j=>j.id==='GF-000484');
-if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',createdAt:'2026-10-31 17:00',createdByProxy:true,initialStatus:'승인 완료',auditExamples:(proxyExample.auditExamples||[]).filter(([,label])=>label==='최초 매칭'),history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();render();})();
+if(proxyExample) journals.unshift({...proxyExample,id:'GF-PROXY-000489',writer:'윤서진',interpreterName:'박서연',time:'2026-10-31 17:00',status:'승인 완료',createdAt:'2026-10-31 17:00',createdByProxy:true,initialStatus:'승인 완료',auditExamples:(proxyExample.auditExamples||[]).filter(([,label])=>label==='최초 매칭'),history:[['승인 완료','윤서진 · 2026-10-31 17:00']]});journalHandover.restore();
+/* 작성 중 일지 삭제: 최초 승인 요청 이후에는 삭제할 수 없다. */
+function journalHasApprovalRequest(j){
+ return !!j&&(j.hasApprovalRequest===true||['승인 요청','승인 완료','반려'].includes(j.status)||
+  ['승인 요청','승인 완료','반려'].includes(j.initialStatus)||
+  (j.history||[]).some(row=>/승인 요청|승인 재요청|재제출|반려|승인 완료/.test(String(row[0])))||
+  (j.auditExamples||[]).some(row=>/승인 요청|승인 재요청|반려|승인 완료/.test(String(row[1])+' '+String(row[3]))));
+}
+function canDeleteJournalDraft(j,actorRole=role){
+ if(!j||!['작성 중','임시 저장'].includes(j.status)||journalHasApprovalRequest(j))return false;
+ const names={admin:'윤서진',buyOperator:'김정우',exportOperator:'김정우',buyer:'김민준',interpreter:'박서연'};
+ const allowed=j.type==='구매'?['admin','buyOperator','buyer']:['admin','exportOperator','interpreter'];
+ return allowed.includes(actorRole)&&(actorRole==='buyer'?j.buyer===names[actorRole]&&j.writer===names[actorRole]:j.writer===names[actorRole]);
+}
+const journalDeletedKey='gfair.journal.deleted-drafts.v1';
+const deletedJournalIds=new Set(JSON.parse(sessionStorage.getItem(journalDeletedKey)||'[]'));
+for(let i=journals.length-1;i>=0;i--)if(deletedJournalIds.has(journals[i].id))journals.splice(i,1);
+function activeDraftDeletionRecord(){
+ if(!['JNL-04','JNL-05','JNL-15','JNL-16'].includes(current))return null;
+ const id=['JNL-15','JNL-16'].includes(current)?selected:draft.id;
+ const type=['JNL-04','JNL-15'].includes(current)?'구매':'수출';
+ return journals.find(j=>j.id===id&&j.type===type)||null;
+}
+function syncJournalDeleteButton(){
+ const form=root.querySelector('#draft-form');
+ const record=form&&activeDraftDeletionRecord();
+ const existing=root.querySelector('[data-action="journal-draft-delete"]');
+ if(!form||!canDeleteJournalDraft(record)){existing?.remove();return;}
+ if(existing)return;
+ const footer=root.querySelector('.page-bottom-actions')||form.querySelector('.formfooter');
+ if(footer)footer.insertAdjacentHTML('beforeend',B('journal-draft-delete','삭제','btn','data-journal-draft-delete'));
+}
+let journalDeleteTarget=null;
+root.addEventListener('click',ev=>{
+ const action=ev.target.closest('[data-action]')?.dataset.action;
+ if(action==='journal-draft-delete'){
+  const j=activeDraftDeletionRecord();
+  if(!canDeleteJournalDraft(j))return toast('승인 요청 이력이 없는 본인의 작성 중 일지만 삭제할 수 있습니다.');
+  journalDeleteTarget={id:j.id,type:j.type,actor:role};
+  modal('상담일지 삭제','<p>작성 중인 상담일지를 삭제하시겠습니까?</p>','journal-draft-delete-confirm','삭제');
+ }
+ if(action==='save')queueMicrotask(syncJournalDeleteButton);
+});
+dialog.addEventListener('click',ev=>{
+ if(!ev.target.closest('[data-action="journal-draft-delete-confirm"]'))return;
+ const target=journalDeleteTarget,j=target&&journals.find(j=>j.id===target.id&&j.type===target.type);
+ if(!target||target.actor!==role||!canDeleteJournalDraft(j)){
+  dialog.close();journalDeleteTarget=null;return toast('상태가 변경되어 삭제할 수 없습니다. 상담일지를 다시 확인해 주세요.');
+ }
+ const ids=[...deletedJournalIds,target.id];
+ try{sessionStorage.setItem(journalDeletedKey,JSON.stringify(ids));}catch{return toast('삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.');}
+ deletedJournalIds.add(target.id);journals.splice(journals.indexOf(j),1);
+ const saved=JSON.parse(sessionStorage.getItem('gfair-draft')||'null');
+ if(saved?.id===target.id)sessionStorage.removeItem('gfair-draft');
+ for(const key of ['gfair.export-qr-return','gfair.purchase-qr-return']){
+  const value=JSON.parse(sessionStorage.getItem(key)||'null');
+  if(value?.id===target.id||value?.draft?.id===target.id)sessionStorage.removeItem(key);
+ }
+ root.querySelector('#draft-form')?.remove();
+ draft={id:'GF-DRAFT-'+Date.now(),type:target.type,tags:[],hashtags:[]};selected='';savedAt='';savedAtISO='';submitted=false;resubmit=null;image=null;
+ dialog.close();journalDeleteTarget=null;
+ nav(target.type==='구매'?'JNL-13':'JNL-14');toast('상담일지가 삭제되었습니다.');
+});
+let deleteButtonScheduled=false;
+new MutationObserver(()=>{if(deleteButtonScheduled)return;deleteButtonScheduled=true;queueMicrotask(()=>{deleteButtonScheduled=false;syncJournalDeleteButton();});}).observe(root,{childList:true,subtree:true});
+render();})();
 
 
 
