@@ -83,3 +83,7 @@
 .journal-amount-help-text li + li {
   margin-block-start: 6px;
 }
+
+/* 상담일지 좌측 작업 묶음은 배경 없이 기존 기본 버튼을 유지한다. */
+#app #content>.page-bottom-actions>.journal-left-actions{background:transparent;border:0;padding:0;box-shadow:none}
+#app #content>.page-bottom-actions>.journal-left-actions>.btn{flex:0 0 auto;margin:0}
