@@ -56,7 +56,7 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   const screen=route();
   let ordered=orderDescriptionLabels(layoutRecords(),screen);
   // 공통 설명은 등록·상세에서 같은 저장 좌표를 사용한다.
-  if(['JNL-05','JNL-16'].includes(screen)){
+  if(['JNL-04','JNL-15','JNL-05','JNL-16'].includes(screen)){
    ordered=ordered.map(record=>{
     const anchor=store.records.find(saved=>saved.id===record.id)?.anchor;
     if(!anchor)return record;
@@ -212,6 +212,22 @@ return spec;}catch{return null;}}
    if(selector)return selectionScope()?.querySelector(selector)||null;
   }
   const anchor=record.anchor,scope=selectionScope();if(!scope)return null;
+  if(['JNL-04','JNL-15'].includes(route())){
+   const targets={"3ac513aa-2171-42e0-972e-b2803c6084d1":"#draft-form .journal-section:first-child","2c6f0554-5a4e-4217-8a27-00a1ec59a11a":"#draft-form .purchase-company-section .journal-table-row:first-child","973ab0d9-324d-462b-b8e7-c5b13adafdcd":"#draft-image","a8e73fd3-a8a1-438e-88cb-9096c490b2f6":"#draft-form .journal-consult-product","19583f6c-70ca-43d6-9732-c5089256bdef":"#draft-form .purchase-result-choices","7154d65c-6478-4970-a94d-0fd03f34bd88":"#draft-form [data-journal-money]","ebbe5a48-bb00-4ec9-89e7-7a383c5a37a7":"#draft-form .journal-section:has([name=\"followUpYn\"]) .journal-table","0342308a-6673-4c6d-9a20-b9f48360aa16":"#draft-form [name=\"content\"]","bea381cb-ab6f-405d-a37d-a2fcbe44a84a":"#draft-form [name=\"hashtag-input\"]","70937e8e-4290-491a-863b-47cbe593280b":"[data-action=\"purchase-company-scan\"]","b6556771-0e46-49fa-b387-a3113f76a042":"button[data-action=\"save\"]","2af39da3-c599-4ff4-83a0-ca3b00e6a273":"button[data-journal-request]","c531dd6b-677a-4bee-a0fd-acaaf3886228":"button[type=\"submit\"][form=\"draft-form\"]:not([data-journal-request])","1e04778a-417b-405a-9607-977407a079fa":null,"2b4264de-94e0-40d4-8e3d-4f2cbc85067c":"button[data-action=\"approve\"]","e9c3fdb3-c543-4d64-bb15-849269e103cd":"button[data-action=\"reject\"]","8ce10cbb-3ca7-48f0-8793-9ac50940f383":".journal-audit-section>summary"};
+   if(Object.hasOwn(targets,record.id)){
+    const detailOnly=new Set(["1e04778a-417b-405a-9607-977407a079fa","2b4264de-94e0-40d4-8e3d-4f2cbc85067c","e9c3fdb3-c543-4d64-bb15-849269e103cd","8ce10cbb-3ca7-48f0-8793-9ac50940f383"]);
+    if(route()==='JNL-04'&&detailOnly.has(record.id))return null;
+    if(record.id==='1e04778a-417b-405a-9607-977407a079fa')return [...scope.querySelectorAll('#draft-form .journal-section')].find(section=>section.querySelector('h2')?.textContent.trim()==='검수 의견')||null;
+    const buyer=document.querySelector('#role-picker')?.value==='buyer';
+    if(record.id==='2af39da3-c599-4ff4-83a0-ca3b00e6a273'&&!buyer||record.id==='c531dd6b-677a-4bee-a0fd-acaaf3886228'&&buyer)return null;
+    return scope.querySelector(targets[record.id]);
+   }
+  }
+  if(route()==='JNL-13'){
+   const targets={"c054f1b2-b5e6-48f7-8322-c1be0fbf4f8b":"#journal-filter","96ec0f86-ea46-4f1d-8eff-3c584bb3aec7":"[aria-label=\"태그 복수 선택\"],[aria-label=\"태그 검색\"]","78bde882-e8ba-44de-91b4-835d243c5c89":".tablewrap table","1a47f116-8bb9-4d7a-84c6-846d0aba32e2":"[data-jnl14-all]","af761941-7eda-4cda-bf3c-497cc15ad0be":"[data-action=\"jnl14-approve\"]","9abda451-e2a7-4eaa-bb87-94176361f9b6":"[data-action=\"jnl14-reject\"]","3b38c20c-1459-4c80-9b71-25c2e47ffe26":"[data-action=\"jnl14-request\"]","9f383584-3910-484e-86f7-a3569d5a5c2e":"a[href=\"#JNL-04\"]","abc425a1-ee3c-4859-8e47-5b858b354aed":"[data-action=\"xlsx\"]"};
+   if(Object.hasOwn(targets,record.id))return scope.querySelector(targets[record.id]);
+  }
+
   if(['JNL-05','JNL-16'].includes(route())){
    const detail=route()==='JNL-16';
    const sharedTargets={
