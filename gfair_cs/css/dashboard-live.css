@@ -181,3 +181,6 @@
 .dashboard-business-type-track>span{display:block;height:100%;background:#929292;border-radius:5px}
 .dashboard-business-type-note{font-size:12px;color:#666;line-height:1.6;margin:16px 0 0}
 @media(max-width:600px){.dashboard-business-types{grid-template-columns:1fr;gap:14px}}
+
+/* MON-01 검토 완료: 기획비고도 본문과 같은 검은색으로 표시한다. */
+#annotation-panel:has(#annotation-dashboard-live-control-20261028-MON-01) .annotation-planning-note{color:#222}
