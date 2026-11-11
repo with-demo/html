@@ -9,7 +9,7 @@
  const current=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
  // 설문 등록·상세는 화면 ID를 유지하고 SET-11의 Description을 공동 편집한다.
  // 기존 SET-12 저장 이력은 삭제하지 않는다.
- const descriptionScreen=id=>PROJECT==='gfair_cs'?(id==='SET-12'?'SET-11':id==='JNL-16'?'JNL-05':id):id;
+ const descriptionScreen=id=>PROJECT==='gfair_cs'?(id==='SET-12'?'SET-11':id==='JNL-16'?'JNL-05':id==='JNL-15'?'JNL-04':id):id;
  async function api(op,body,options={}){
   const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:options.originalScreen?(options.route||current()):descriptionScreen(options.route||current())}));
   const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body,...(typeof body.screen==='string'?{screen:descriptionScreen(body.screen)}:{})}):undefined});
@@ -28,6 +28,14 @@
     const detailIds=new Set(['a26171c4-52d7-4bbf-8318-ba0faa0ad16d','44664c6f-3f07-408d-9cb1-ddcc767f2609','627b422f-2c05-4299-90d3-3d34a674d053','bbd5617f-4040-4c55-8a39-1057c95e172d','e51035f2-ac69-4d78-85d0-0fa40bee8060']);
     const ids=new Set(result.records.map(record=>record.id));
     result.records=[...result.records,...(legacy.records||[]).filter(record=>detailIds.has(record.id)&&!ids.has(record.id))];
+   }
+   
+   // 구매 등록·상세는 JNL-04 설명을 공동 편집하며 기존 상세 설명 ID를 보존한다.
+   if(PROJECT==='gfair_cs'&&['JNL-04','JNL-15'].includes(route)){
+    const legacy=await api('list',undefined,{route:'JNL-15',originalScreen:true,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});
+    if(activeRequest!==request||route!==current())return;
+    const ids=new Set(result.records.map(record=>record.id));
+    result.records=[...result.records,...(legacy.records||[]).filter(record=>record.id==='0342308a-6673-4c6d-9a20-b9f48360aa16'&&!ids.has(record.id))];
    }
    user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
