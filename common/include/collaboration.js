@@ -35,7 +35,7 @@
     const legacy=await api('list',undefined,{route:'JNL-15',originalScreen:true,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});
     if(activeRequest!==request||route!==current())return;
     const ids=new Set(result.records.map(record=>record.id));
-    result.records=[...result.records,...(legacy.records||[]).filter(record=>record.id==='0342308a-6673-4c6d-9a20-b9f48360aa16'&&!ids.has(record.id))];
+    result.records=[...result.records,...(legacy.records||[]).filter(record=>record.id==='81c5f08f-06aa-43a3-b4fb-f878dd6dcc0e'&&!ids.has(record.id))];
    }
    user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
