@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  const app=document.getElementById('app'),store=window.GFAIR_COLLAB;if(!app||!store)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=conditional-description-bullets-20261031',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/annotations.css?v=overview-actions-20261111',document.currentScript.src);document.head.append(css);
  let selected=null,picking=false,queued=false,dragging=null,view=window.GFAIR_DESCRIPTION_VIEW||{closed:document.querySelector('.ui-spec-panel')?.hidden??true,full:false,numbers:true};
  const savingPins=new Set();
  const route=()=>window.MOCKUP_DESCRIPTION_CONTEXT?.id||decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen||'screens';
@@ -389,6 +389,7 @@ const eventEntry=window.GFAIR_EVENT_DESCRIPTION_LAYOUT?.[route()]?.find(entry=>e
   if(canEdit())heading.append(button('개요 수정',()=>showOverviewEditor(screen,record)));
   if(route()==='JNL-14'&&!record){if(canEdit())section.append(button('화면 개요 작성',()=>showOverviewEditor(screen,null)));return section;}
   if(route()==='JNL-14'&&record&&canEdit())heading.append(button('개요 삭제',()=>{dialog.replaceChildren(element('h2','화면 개요를 삭제할까요?'),element('p','JNL-14의 저장된 화면 개요를 삭제합니다. 화면 목업은 유지됩니다.'),button('취소',()=>dialog.close()),button('삭제',async event=>{if(await change('delete',{id:record.id,revision:record.revision},event.currentTarget)){dialog.close();render();}}));dialog.showModal();}));
+  const headingButtons=[...heading.querySelectorAll('button')];if(headingButtons.length){const actions=element('div',undefined,'annotation-overview-actions');actions.append(...headingButtons);heading.append(actions);}
   const text=record?JSON.parse(record.text).overview:defaultOverview(screen);
   const paragraph=element('p',undefined,'annotation-text');if(record)window.GFAIR_DESCRIPTION_CHANGES.append(paragraph,JSON.parse(record.text),'overview');else paragraph.textContent=text;section.append(heading,paragraph);return section;
  }

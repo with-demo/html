@@ -35,3 +35,5 @@ body .annotation-planning-note,body .annotation-planning-note *,body .annotation
 
 /* 하이픈 목록과 일반 문장을 줄 단위로 구분한다. */
 .annotation-description-line{white-space:pre-wrap;min-height:1.7em}.annotation-description-blank{height:1.7em}.annotation-spec dd>.annotation-summary-list{white-space:normal}
+
+.annotation-overview-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-left:auto}
