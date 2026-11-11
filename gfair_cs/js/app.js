@@ -237,10 +237,12 @@ function journalInterpreterField(d, pair, select) {
  return select('통역원명','interpreterName',name,names,'통역원명을 검색하세요',true);
 }
 function matchedJournalBuyers(options, interpreter) {
- return interpreter ? options.filter(buyer => window.GFAIR_CURRENT_MATCHING?.assignedName(buyer.value) === interpreter) : [];
+ return interpreter ? options.filter(buyer => window.GFAIR_CURRENT_MATCHING?.assignedName(buyer.value) === interpreter).slice(0,1) : [];
 }
 function proxyJournalBuyer(select, d, buyers) {
  const options = matchedJournalBuyers(buyers, d.interpreterName);
+ const matched = options[0];
+ if (!d.buyer && matched) Object.assign(d,{buyer:matched.value,buyerCode:matched.code||'',buyerCountry:matched.country||'',buyerCountryCode:matched.countryCode||'',buyerCompanyName:matched.companyName||'',buyerPhone:matched.phone||''});
  const selected = d.buyer || '';
  const unavailable = d.interpreterName && !options.length && !selected;
  return select('바이어명','buyer',selected,options,'바이어명을 검색하세요',true)
@@ -272,7 +274,7 @@ function refreshJournalBuyers(form, interpreter) {
  const box = form.querySelector('[data-buyer-pool]');
  if (!box) return;
  const options = matchedJournalBuyers(JSON.parse(box.dataset.buyerPool), interpreter);
- const buyer = options.length === 1 ? options[0] : null;
+ const buyer = options[0] || null;
  box.dataset.options = JSON.stringify(options);
  draft.buyer = buyer?.value || '';
  box.querySelector('input[data-select-value]').value = draft.buyer;
@@ -292,7 +294,7 @@ function exportJournalWrite(s){const d=draft,evname=rows(map.get('BAS-01')).find
   return {...o,...buyerRecords.find(buyer => buyer.value === o.value),companyName:profile?.companyName||'',phone:profile?.phone||'',search:o.search+' '+o.code+' '+o.country};
 });
  const interpreterBuyers = proxy ? [] : matchedJournalBuyers(buyers, d.interpreterName);
- const interpreterBuyer = interpreterBuyers.find(buyer => buyer.value === d.buyer) || (interpreterBuyers.length === 1 ? interpreterBuyers[0] : null);
+ const interpreterBuyer = interpreterBuyers.find(buyer => buyer.value === d.buyer) || (interpreterBuyers[0] || null);
  if (!proxy) {
   d.buyer = interpreterBuyer?.value || '';
   d.buyerCode = interpreterBuyer?.code || '';
