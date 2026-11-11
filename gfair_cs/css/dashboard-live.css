@@ -154,12 +154,3 @@
  #content .monitoring-count-kpis .kpi,#content .monitoring-money-kpis .kpi{min-height:116px;padding:18px}
 }
 
-/* 금액은 구매·수출 대시보드 제목 바로 아래에 나란히 배치한다. */
-#content .monitoring-count-kpis{margin-bottom:32px}
-#content .monitoring-module-money{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 20px}
-#content .monitoring-module-money .kpi{padding:20px 16px;min-height:132px}
-#content .monitoring-module-money .kpi-value{font-size:28px}
-#content .overview-count-only{grid-template-columns:minmax(0,1fr)}
-#content .overview-count-only .overview-tile{display:flex;justify-content:space-between;align-items:center;gap:12px}
-#content .overview-count-only .overview-tile h3{margin:0}
-@media(max-width:600px){#content .monitoring-module-money{grid-template-columns:minmax(0,1fr)}}
