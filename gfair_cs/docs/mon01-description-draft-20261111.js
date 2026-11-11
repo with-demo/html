@@ -1,10 +1,10 @@
-/* 공동작업자가 명시적으로 실행하는 MON-01 검토 완료 처리. 자동 저장하지 않는다. */
 (()=>{'use strict';
-if(new URL(location.href).searchParams.get('descriptionReview')!=='mon01')return;
-let button;
-function setup(){
-const store=window.GFAIR_COLLAB;if(location.hash!=='#MON-01'||!store?.user?.editor||button)return;
-button=document.createElement('button');button.className='btn';button.textContent='MON-01 빨간색 표시 검토 완료';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
-button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);const records=[...store.records];let count=0;for(const saved of records){let spec;try{spec=JSON.parse(saved.text)}catch{continue}if(!spec.codexHighlights)continue;delete spec.codexHighlights;const latest=store.records.find(r=>r.id===saved.id);if(latest.text!==saved.text)throw Error('설명이 변경되었습니다. 다시 불러와 주세요.');await store.mutate('update',{id:latest.id,revision:latest.revision,text:JSON.stringify(spec)});button.textContent=++count+'개 검은색으로 저장 중';}button.textContent='MON-01 검은색 텍스트 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(error){button.textContent=error.message;button.disabled=false;}};}
-window.addEventListener('collaboration-updated',setup);setup();
-})();
+if(new URL(location.href).searchParams.get('descriptionDaily')!=='mon01')return;let button;
+const parse=r=>{try{return JSON.parse(r.text)}catch{return {}}};
+function setup(){const store=window.GFAIR_COLLAB;if(location.hash!=='#MON-01'||!store?.user?.editor||button)return;button=document.createElement('button');button.className='btn';button.textContent='MON-01 자정 초기화 정책 저장';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
+button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);let count=0;for(const record of [...store.records]){const spec=parse(record);if(spec.format!=='description-spec-v1')continue;const before=JSON.stringify(spec);
+if(spec.item==='전체·구매·수출 탭')spec.policy='- 선택한 행사의 당일 운영 현황을 실시간으로 조회한다.\n- 한국 시간 기준 매일 자정(00:00)에 전일 집계를 종료하고 당일 집계를 0부터 시작한다.\n- 초기화는 대시보드 집계에만 적용하며 원본 기록과 이력은 보존하여 통계에서 누적 조회한다.\n- 전체는 구매·수출을 함께 표시하고, 구매·수출 탭은 해당 유형만 표시한다.';
+if(spec.planningNote){spec.planningNote=spec.planningNote.split('\n').filter(line=>!line.includes('일별 초기화 대상')&&!line.includes('일별 상태 초기화')).map(line=>line.includes('당일·행사 누적')?'- 상담일·제출일·승인일 중 일별 실적을 구분할 날짜 기준 협의 필요.':line).filter(line=>!line.includes('일별 초기화 적용 여부와 실행 시점')).join('\n').trim();}
+if(JSON.stringify(spec)===before)continue;const old=JSON.parse(before);spec.codexHighlights={...(spec.codexHighlights||{})};for(const key of ['policy','planningNote']){if(spec[key]!==old[key]){if(spec[key])spec.codexHighlights[key]=[{start:0,end:spec[key].length,text:spec[key]}];else delete spec.codexHighlights[key];}}await store.mutate('update',{id:record.id,revision:record.revision,text:JSON.stringify(spec)});button.textContent=++count+'개 정책 저장 중';}
+button.textContent='자정 초기화 정책 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(e){button.textContent=e.message;button.disabled=false;}};}
+window.addEventListener('collaboration-updated',setup);setup();})();
