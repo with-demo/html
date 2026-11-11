@@ -81,7 +81,7 @@
     for(const button of buttons)if(button.parentElement!==left)left.append(button);
    }
   }
-  for(const b of bar.children){const text=(b.textContent||b.value||'').trim();b.classList.toggle('page-action-delete',/삭제/.test(text));b.classList.toggle('page-action-submit',/제출/.test(text));}
+  for(const b of bar.children){if(!b.matches('button,a.btn,input[type=submit]')){b.classList.remove('page-action-delete','page-action-submit');continue;}const text=(b.textContent||b.value||'').trim();b.classList.toggle('page-action-delete',/삭제/.test(text));b.classList.toggle('page-action-submit',/제출/.test(text));}
   const audit=['JNL-15','JNL-16'].includes(route)?main.querySelector(':scope>.journal-audit-section'):null;
   if(audit){
    if(bar.nextElementSibling!==audit)audit.before(bar);
