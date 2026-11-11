@@ -891,7 +891,7 @@ function dashboardBusinessTypes(){
   const profile=window.GFAIR_OVERSEAS_BUYER_DETAIL.exportRecord(row,records,'BAS-06',event);
   return profile.businessTypeValues.includes(value);
  }).length);
- return '<div class="dashboard-business-types">'+options.map(([,label],index)=>{
+ return '<div class="dashboard-business-total" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;margin-top:12px;background:#f5f5f5;border-radius:4px;font-size:13px"><span>전체 국내 바이어</span><strong>'+participants.length+'명</strong></div><div class="dashboard-business-types">'+options.map(([,label],index)=>{
  const count=counts[index],percent=participants.length?Math.round(count/participants.length*1000)/10:0;
  return '<div class="dashboard-business-type"><div class="dashboard-business-type-label"><span>'+E(label)+'</span><strong>'+count+'명 <span>· '+percent+'%</span></strong></div><div class="dashboard-business-type-track" role="img" aria-label="'+E(label+' '+count+'명, '+percent+'%')+'"><span style="width:'+percent+'%"></span></div></div>';
  }).join('')+'</div><p class="dashboard-business-type-note">현재 행사 참가 국내 바이어 '+participants.length+'명 기준 · 복수 선택으로 비율 합계는 100%를 초과할 수 있습니다.</p>';
