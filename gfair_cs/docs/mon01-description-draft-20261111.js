@@ -1,10 +1,11 @@
-(()=>{'use strict';
-if(new URL(location.href).searchParams.get('descriptionDaily')!=='mon01')return;let button;
-const parse=r=>{try{return JSON.parse(r.text)}catch{return {}}};
-function setup(){const store=window.GFAIR_COLLAB;if(location.hash!=='#MON-01'||!store?.user?.editor||button)return;button=document.createElement('button');button.className='btn';button.textContent='MON-01 자정 초기화 정책 저장';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
-button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);let count=0;for(const record of [...store.records]){const spec=parse(record);if(spec.format!=='description-spec-v1')continue;const before=JSON.stringify(spec);
-if(spec.item==='전체·구매·수출 탭')spec.policy='- 선택한 행사의 당일 운영 현황을 실시간으로 조회한다.\n- 한국 시간 기준 매일 자정(00:00)에 전일 집계를 종료하고 당일 집계를 0부터 시작한다.\n- 초기화는 대시보드 집계에만 적용하며 원본 기록과 이력은 보존하여 통계에서 누적 조회한다.\n- 전체는 구매·수출을 함께 표시하고, 구매·수출 탭은 해당 유형만 표시한다.';
-if(spec.planningNote){spec.planningNote=spec.planningNote.split('\n').filter(line=>!line.includes('일별 초기화 대상')&&!line.includes('일별 상태 초기화')).map(line=>line.includes('당일·행사 누적')?'- 상담일·제출일·승인일 중 일별 실적을 구분할 날짜 기준 협의 필요.':line).filter(line=>!line.includes('일별 초기화 적용 여부와 실행 시점')).join('\n').trim();}
-if(JSON.stringify(spec)===before)continue;const old=JSON.parse(before);spec.codexHighlights={...(spec.codexHighlights||{})};for(const key of ['policy','planningNote']){if(spec[key]!==old[key]){if(spec[key])spec.codexHighlights[key]=[{start:0,end:spec[key].length,text:spec[key]}];else delete spec.codexHighlights[key];}}await store.mutate('update',{id:record.id,revision:record.revision,text:JSON.stringify(spec)});button.textContent=++count+'개 정책 저장 중';}
-button.textContent='자정 초기화 정책 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(e){button.textContent=e.message;button.disabled=false;}};}
+/* 확정된 날짜 기준을 공동작업자가 명시적으로 저장하는 일회성 도구. */
+(()=>{'use strict';if(new URL(location.href).searchParams.get('descriptionDates')!=='mon01')return;
+const policies={"상담일지 등록 건수":"- 최초 승인 요청일이 당일인 일지를 집계한다.","계약 추진 건수":"- 승인 완료일이 당일인 일지를 집계한다.","구매 상담 금액·계약 추진 금액":"- 승인 완료일이 당일인 일지의 금액을 합산한다.","수출 상담 금액·계약 추진 금액":"- 승인 완료일이 당일인 일지의 금액을 합산한다.","구매상담일지 상태별 현황":"- 당일 처리 상태를 실시간으로 갱신하고, 자정 마감 시점의 상태를 해당 일자의 최종 현황으로 보존한다.","수출상담일지 상태별 현황":"- 당일 처리 상태를 실시간으로 갱신하고, 자정 마감 시점의 상태를 해당 일자의 최종 현황으로 보존한다.","구매 품목별 상담 현황":"- 승인 완료일이 당일인 일지의 메인 카테고리를 집계한다.","수출 품목별 상담 현황":"- 승인 완료일이 당일인 일지의 메인 카테고리를 집계한다."};let button;
+function setup(){const store=window.GFAIR_COLLAB;if(location.hash!=='#MON-01'||!store?.user?.editor||button)return;
+button=document.createElement('button');button.className='btn';button.textContent='확정 날짜 기준 8개 설명 저장';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
+button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);let count=0;for(const record of [...store.records]){let spec;try{spec=JSON.parse(record.text)}catch{continue}const line=policies[spec.item];if(!line)continue;
+const previous=spec.policy||'';if(!previous.split('\n').includes(line)){spec.policy=previous+(previous?'\n':'')+line;spec.codexHighlights={...(spec.codexHighlights||{}),policy:[...(spec.codexHighlights?.policy||[]),{start:previous.length+(previous?1:0),end:spec.policy.length,text:line}]};}
+spec.planningNote=(spec.planningNote||'').split('\n').filter(line=>!line.includes('일별 실적을 구분할 날짜 기준 협의 필요')).join('\n').trim();if(spec.codexHighlights?.planningNote)delete spec.codexHighlights.planningNote;
+await store.mutate('update',{id:record.id,revision:record.revision,text:JSON.stringify(spec)});button.textContent=++count+'/8 설명 저장 중';}
+button.textContent='날짜 기준 8개 설명 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(e){button.textContent=e.message;button.disabled=false;}};}
 window.addEventListener('collaboration-updated',setup);setup();})();
