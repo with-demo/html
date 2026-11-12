@@ -647,7 +647,7 @@ if(purchaseQrReturn?.screen===current&&purchaseQrReturn.role===role){
  if(purchaseQrReturn.record&&!journals.some(j=>j.id===purchaseQrReturn.record.id))journals.push(purchaseQrReturn.record);
  selected=purchaseQrReturn.id;
  draft=purchaseQrReturn.draft;
- if(company)Object.assign(draft,{company:company[1],booth:company[3],sellerCode:company[0],sellerCountry:'대한민국',sellerCountryCode:'KR',productGroup:(window.GFAIR_COMPANY_FILTER?.categoriesFor(company)||[]).join(' / '),contactPerson:company[4],contactPhone:company[5],representativeCategory:'',additionalCategories:[]});
+ if(company)Object.assign(draft,{company:company[1],booth:company[3],sellerCode:company[0],sellerCountry:'대한민국',sellerCountryCode:'KR',productGroup:((company?window.GFAIR_COMPANY_FILTER?.categoriesFor(company):[])||[]).join(' / '),contactPerson:company[4],contactPhone:company[5],representativeCategory:'',additionalCategories:[]});
 }
 const exportQrReturn=['JNL-05','JNL-16'].includes(current)&&popupContext.get('popup')==='export-journal'?JSON.parse(sessionStorage.getItem('gfair.export-qr-return')||'null'):null;
 const restoringExport=exportQrReturn?.screen===current&&exportQrReturn.role===role&&exportQrReturn.year===event;
@@ -691,10 +691,11 @@ function journalWorkbookRows(items,purchase){
  const headers=['일지번호','처리 상태','업데이트 일시','제출 일시',...(purchase?['국내 바이어','바이어 ID','바이어 기업명','직위']:['담당 통역원','해외 바이어','바이어 국가','바이어 기업명','바이어 연락처']),'참가기업','부스번호','기업 메인 카테고리','담당자','담당자 연락처','상담 시작 일시','상담 종료 일시','상담 제품 카테고리','상담 제품','주요 상담내용',purchase?'구매 상담액(KRW)':'수출 상담액(USD)',purchase?'계약 추진액(KRW)':'계약 추진액(USD)','아직 금액을 산정할 수 없음',...(purchase?['상담수준','주요 보완사항','후속조치 예정','후속조치 유형']:['거래 가능성','현장 계약','우수 사례','샘플 전달','MOU 체결','MOU 예정']),'해시태그','반려 사유'];
  return [headers,...items.map(j=>{
   const profile=purchase?purchaseBuyerProfiles().find(p=>p.name===j.buyer):null;
+  const foreignRows=purchase?[]:rows(map.get('BAS-03'));const foreignRow=foreignRows.find(r=>r[1]===j.buyer);const foreign=foreignRow?window.GFAIR_OVERSEAS_BUYER_DETAIL?.exportRecord(foreignRow,foreignRows,'BAS-04',event):null;
   const company=rows(map.get('BAS-09')).find(r=>r[1]===j.company);
   const productRows=[{category:j.representativeCategory||'',product:j.consultProduct||''},...(j.additionalProducts||[]).map((product,index)=>({category:j.additionalCategories?.[index]||'',product}))];
   return [j.id,j.status,j.updatedAt||j.time||'',exportJournalSubmittedAt(j),
-   ...(purchase?[j.buyer,j.buyerCode??profile?.id??'',j.buyerCompanyName??profile?.company??'',j.buyerPosition??profile?.position??'']:[(j.interpreterName??(j.createdByProxy?'':j.writer))||'',j.buyer,[j.buyerCountry,j.buyerCountryCode].filter(Boolean).join(' / '),j.buyerCompanyName||'',j.buyerPhone||'']),
+   ...(purchase?[j.buyer,j.buyerCode??profile?.id??'',j.buyerCompanyName??profile?.company??'',j.buyerPosition??profile?.position??'']:[(j.interpreterName??(j.createdByProxy?'':j.writer))||'',j.buyer,[j.buyerCountry,j.buyerCountryCode].filter(Boolean).join(' / ')||foreign?.country||'',j.buyerCompanyName??foreign?.companyName??'',j.buyerPhone??foreign?.phone??'']),
    j.company,j.booth||company?.[3]||'',j.productGroup??(window.GFAIR_COMPANY_FILTER?.categoriesFor(company)||[]).join(' / '),j.contactPerson??company?.[4]??'',j.contactPhone??company?.[5]??'',
    j.consultStart||'',j.consultEnd||'',productRows.map(r=>r.category).join('\n'),productRows.map(r=>r.product).join('\n'),j.content??'',number(j.amount),j.contractUnestimated?'':number(j.contract),j.contractUnestimated?'예':'아니오',
    ...(purchase?[j.tradePotential||'',j.issueCode||'',j.followUpYn||'',j.followUpYn==='예'?j.followUpType||'':'']:[j.tradePotential||'',j.onSiteContract||'',j.excellentCase||'',j.sampleDelivered||'',j.mouSigned||'',j.mouPlanned||'']),
