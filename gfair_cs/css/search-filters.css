@@ -70,8 +70,12 @@
 #app #content #journal-filter.journal-filters-v2.journal-filters-purchase.unified-search > .search-condition:has([name="status"]){grid-column:1/-1}
 #app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;min-height:36px}
 #app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options label{white-space:nowrap}
-/* 작성자는 처리상태·상담일 한 행과 키워드만 표시한다. */
-#app #content #journal-filter.journal-filters-v2.journal-filters-author.unified-search > .search-condition:has([name="status"],[name="consultDay"]){grid-column:span 3}
+/* 작성자는 상태 옵션이 한 줄에 들어가도록 상태·상담일을 7:5로 배치한다. */
+#app #content #journal-filter.journal-filters-author.unified-search{grid-template-columns:repeat(12,minmax(0,1fr))}
+#app #content #journal-filter.journal-filters-author.unified-search .search-radio-options{column-gap:12px}
+#app #content #journal-filter.journal-filters-author.unified-search .search-condition-controls{padding-left:12px;padding-right:12px}
+#app #content #journal-filter.journal-filters-v2.journal-filters-author.unified-search > .search-condition:has([name="status"]){grid-column:span 7}
+#app #content #journal-filter.journal-filters-v2.journal-filters-author.unified-search > .search-condition:has([name="consultDay"]){grid-column:span 5}
 @container search-content (max-width:620px){
  #app #content #journal-filter.journal-filters-v2.journal-filters-author.unified-search > .search-condition:has([name="status"],[name="consultDay"]),
  #app #content #journal-filter.journal-filters-v2.unified-search > .search-condition{grid-column:1/-1}
