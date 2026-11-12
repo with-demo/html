@@ -1,7 +1,7 @@
 /* QR 동선 목업. 예시 체크 이력만 현재 탭에 보관한다. */
 (()=>{'use strict';
-const states=['입국','호텔 이동','호텔 도착','전시장 출발','전시장 입장','통역원 만남','전시장 퇴장'];
-const attendanceStates = new Set(['전시장 입장', '전시장 퇴장']);
+const states=['입국','호텔 이동','호텔 도착','전시장 출발','전시장 입장','통역원 만남','행사장 퇴장'];
+const attendanceStates = new Set(['전시장 입장', '행사장 퇴장']);
 const statusOperators = ['admin', 'exportOperator', 'buyOperator'];
 const attendanceProfiles = {BUYER:['BAS-05','BAS-06'], INTERPRETER:['BAS-07','BAS-08']};
 const screens=GFAIR_SCREENS.flatMap(g=>g.screens),get=id=>screens.find(s=>s.id===id);
