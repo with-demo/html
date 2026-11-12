@@ -696,7 +696,7 @@ function journalWorkbookRows(items,purchase){
   const productRows=[{category:j.representativeCategory||'',product:j.consultProduct||''},...(j.additionalProducts||[]).map((product,index)=>({category:j.additionalCategories?.[index]||'',product}))];
   return [j.id,j.status,j.updatedAt||j.time||'',exportJournalSubmittedAt(j),
    ...(purchase?[j.buyer,j.buyerCode??profile?.id??'',j.buyerCompanyName??profile?.company??'',j.buyerPosition??profile?.position??'']:[(j.interpreterName??(j.createdByProxy?'':j.writer))||'',j.buyer,[j.buyerCountry,j.buyerCountryCode].filter(Boolean).join(' / ')||foreign?.country||'',j.buyerCompanyName??foreign?.companyName??'',j.buyerPhone??foreign?.phone??'']),
-   j.company,j.booth||company?.[3]||'',j.productGroup??(window.GFAIR_COMPANY_FILTER?.categoriesFor(company)||[]).join(' / '),j.contactPerson??company?.[4]??'',j.contactPhone??company?.[5]??'',
+   j.company,j.booth||company?.[3]||'',j.productGroup??((company?window.GFAIR_COMPANY_FILTER?.categoriesFor(company):[])||[]).join(' / '),j.contactPerson??company?.[4]??'',j.contactPhone??company?.[5]??'',
    j.consultStart||'',j.consultEnd||'',productRows.map(r=>r.category).join('\n'),productRows.map(r=>r.product).join('\n'),j.content??'',number(j.amount),j.contractUnestimated?'':number(j.contract),j.contractUnestimated?'예':'아니오',
    ...(purchase?[j.tradePotential||'',j.issueCode||'',j.followUpYn||'',j.followUpYn==='예'?j.followUpType||'':'']:[j.tradePotential||'',j.onSiteContract||'',j.excellentCase||'',j.sampleDelivered||'',j.mouSigned||'',j.mouPlanned||'']),
    journalTagNames(j).map(t=>'#'+t).join(', '),j.reason||''];
