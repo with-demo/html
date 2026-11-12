@@ -48,3 +48,17 @@
 /* 수출 상담일지의 태그·바이어국가는 같은 행에 두고 모바일에서는 한 쌍씩 표시한다. */
 #app #content #journal-filter.unified-search:has([name="buyerCountries"]) > .search-condition:has([name="exportTags"],[name="buyerCountries"]) {grid-column:span 3}
 @container search-content (max-width:620px){#app #content #journal-filter.unified-search:has([name="buyerCountries"]) > .search-condition:has([name="exportTags"],[name="buyerCountries"]) {grid-column:1/-1}}
+
+/* 상담일지 검색필터: 같은 열의 컨트롤 너비·높이 및 키워드 작업 버튼 정렬. */
+#app #content #journal-filter.unified-search .search-condition-controls>:is(select,.matching-multi){flex:1 1 0%;width:100%;max-width:100%}
+#app #content #journal-filter.unified-search .matching-multi summary{height:36px;min-height:36px;padding:6px 10px;font-size:13px;line-height:22px;box-sizing:border-box}
+#app #content #journal-filter.unified-search .matching-options{width:100%;min-width:0;max-width:100%;left:0;right:auto}
+#app #content #journal-filter.unified-search .search-keyword-controls>select{flex:0 0 176px;width:176px;max-width:176px}
+#app #content #journal-filter.unified-search .search-keyword-controls>.search-actions{margin-left:0}
+@container search-content (max-width:620px){
+ #app #content #journal-filter.unified-search .search-condition-controls,#app #content #journal-filter.unified-search .search-keyword-controls{padding:10px 12px}
+ #app #content #journal-filter.unified-search .search-keyword-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+ #app #content #journal-filter.unified-search .search-keyword-controls>:is(select,input){width:100%;max-width:100%;min-width:0}
+ #app #content #journal-filter.unified-search .search-keyword-controls>.search-actions{width:100%;margin:0;justify-content:flex-end}
+ #app #content #journal-filter.unified-search .search-actions .btn{flex:1;min-width:0}
+}
