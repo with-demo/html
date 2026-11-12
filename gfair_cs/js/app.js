@@ -131,7 +131,7 @@ function journalListKeywordMatches(j){
  return (Object.hasOwn(fields,scope)?[fields[scope]]:Object.values(fields)).some(v=>String(v||'').toLocaleLowerCase().includes(query));
 }
 function exportJournalKeywordMatches(j){return journalListKeywordMatches(j)}
-function journalConsultTime(j){return [j.consultStart,j.consultEnd].filter(Boolean).map(v=>String(v).replace('T',' ')).join(' ~ ')||'-'}
+function journalConsultTime(j){const start=String(j.consultStart||'').replace('T',' '),end=String(j.consultEnd||'').replace('T',' ');return start&&end?start+' ~\n'+end:start||end||'-'}
 function exportJournalSubmittedAt(j) {
  return ['작성 중','임시 저장'].includes(j.status) ? '' : j.time || '';
 }
@@ -153,7 +153,7 @@ function jTableExportReview(rows){
   const codeLink=B('j-detail',E(journalCode(j)),'btn ghost journal-code-link','data-id="'+E(j.id)+'"'+(role==='interpreter'?' data-personal="true"':''));
   const country=j.buyerCountry;
   const values=[j.buyer,country,j.company,j.booth,...(role==='interpreter'?[]:[j.interpreterName??j.writer]),journalConsultTime(j),exportJournalSubmittedAt(j)];
-  return '<tr><td>'+codeLink+'</td>'+values.map(v=>'<td>'+E(v||'-')+'</td>').join('')+'<td>'+journalStatusBadge(j.status)+'</td></tr>';
+  return '<tr><td>'+codeLink+'</td>'+values.map((v,i)=>'<td>'+(i===values.length-2?'<span class="journal-consult-time">'+E(v||'-')+'</span>':E(v||'-'))+'</td>').join('')+'<td>'+journalStatusBadge(j.status)+'</td></tr>';
  }).join('');
  return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+(body||'<tr><td colspan="'+headers.length+'"><div class="empty">해당 조건의 상담일지가 없습니다.</div></td></tr>')+'</tbody></table></div>';
 }
@@ -998,7 +998,7 @@ function purchaseJournalTable(rows){
  const headers=['일지코드','국내 바이어','참가기업','부스번호','상담일시','제출 일시','처리 상태'];
  const body=rows.map(j=>{
   const link=B('j-detail',E(journalCode(j)),'btn ghost journal-code-link','data-id="'+E(j.id)+'"');
-  const cells=[E(j.buyer||'-'),E(j.company||'-'),E(j.booth||'-'),E(journalConsultTime(j)),E(exportJournalSubmittedAt(j)||'-'),journalStatusBadge(j.status)];
+  const cells=[E(j.buyer||'-'),E(j.company||'-'),E(j.booth||'-'),'<span class="journal-consult-time">'+E(journalConsultTime(j))+'</span>',E(exportJournalSubmittedAt(j)||'-'),journalStatusBadge(j.status)];
   return '<tr><td>'+link+'</td>'+cells.map(value=>'<td>'+value+'</td>').join('')+'</tr>';
  }).join('');
  return '<div class="tablewrap"><table><thead><tr>'+headers.map(label=>'<th>'+label+'</th>').join('')+'</tr></thead><tbody>'+(body||'<tr><td colspan="'+headers.length+'"><div class="empty">해당 조건의 상담일지가 없습니다.</div></td></tr>')+'</tbody></table></div>';
