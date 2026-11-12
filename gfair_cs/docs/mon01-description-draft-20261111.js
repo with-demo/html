@@ -1,11 +1,10 @@
-/* 확정된 날짜 기준을 공동작업자가 명시적으로 저장하는 일회성 도구. */
-(()=>{'use strict';if(new URL(location.href).searchParams.get('descriptionDates')!=='mon01')return;
-const policies={"상담일지 등록 건수":"- 최초 승인 요청일이 당일인 일지를 집계한다.","계약 추진 건수":"- 승인 완료일이 당일인 일지를 집계한다.","구매 상담 금액·계약 추진 금액":"- 승인 완료일이 당일인 일지의 금액을 합산한다.","수출 상담 금액·계약 추진 금액":"- 승인 완료일이 당일인 일지의 금액을 합산한다.","구매상담일지 상태별 현황":"- 당일 처리 상태를 실시간으로 갱신하고, 자정 마감 시점의 상태를 해당 일자의 최종 현황으로 보존한다.","수출상담일지 상태별 현황":"- 당일 처리 상태를 실시간으로 갱신하고, 자정 마감 시점의 상태를 해당 일자의 최종 현황으로 보존한다.","구매 품목별 상담 현황":"- 승인 완료일이 당일인 일지의 메인 카테고리를 집계한다.","수출 품목별 상담 현황":"- 승인 완료일이 당일인 일지의 메인 카테고리를 집계한다."};let button;
-function setup(){const store=window.GFAIR_COLLAB;if(location.hash!=='#MON-01'||!store?.user?.editor||button)return;
-button=document.createElement('button');button.className='btn';button.textContent='확정 날짜 기준 8개 설명 저장';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
-button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);let count=0;for(const record of [...store.records]){let spec;try{spec=JSON.parse(record.text)}catch{continue}const line=policies[spec.item];if(!line)continue;
-const previous=spec.policy||'';if(!previous.split('\n').includes(line)){spec.policy=previous+(previous?'\n':'')+line;spec.codexHighlights={...(spec.codexHighlights||{}),policy:[...(spec.codexHighlights?.policy||[]),{start:previous.length+(previous?1:0),end:spec.policy.length,text:line}]};}
-spec.planningNote=(spec.planningNote||'').split('\n').filter(line=>!line.includes('일별 실적을 구분할 날짜 기준 협의 필요')).join('\n').trim();if(spec.codexHighlights?.planningNote)delete spec.codexHighlights.planningNote;
-await store.mutate('update',{id:record.id,revision:record.revision,text:JSON.stringify(spec)});button.textContent=++count+'/8 설명 저장 중';}
-button.textContent='날짜 기준 8개 설명 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(e){button.textContent=e.message;button.disabled=false;}};}
+(()=>{'use strict';if(new URL(location.href).searchParams.get('descriptionCurrency')!=='usd')return;let button;
+function setup(){const store=window.GFAIR_COLLAB;if(location.hash!=='#JNL-05'||!store?.user?.editor||button)return;button=document.createElement('button');button.className='btn';button.textContent='수출 USD 고정 정책 저장';button.style.cssText='position:fixed;right:24px;bottom:20px;z-index:100000;background:#fff;padding:12px;border:2px solid #333';document.body.append(button);
+button.onclick=async()=>{button.disabled=true;try{await store.refresh(true);const record=store.records.find(r=>r.id==='c440b995-754d-47a3-9077-ebec8b17a58f');if(!record)throw Error('금액 설명을 찾지 못했습니다.');const spec=JSON.parse(record.text);const oldDetail='금액 추가 버튼을 누르면 해당 금액 입력값에 더한다. 통화는 항목별로 선택한다.',detail='금액 추가 버튼을 누르면 해당 금액 입력값에 더한다.';
+const oldPolicy='신규 등록 시 금액은 빈 값, 통화는 USD가 기본이며 USD·KRW 중 선택한다. 상세에서는 저장값을 표시한다.',policy='등록·상세의 수출 상담액과 계약 추진액은 USD로 고정하며 통화 선택은 제공하지 않는다. 신규 등록 시 금액은 빈 값, 상세에서는 저장된 금액을 표시한다.';
+if(!spec.detail.includes(oldDetail)||!spec.policy.includes(oldPolicy))throw Error('설명이 변경되었습니다. 기존 내용을 다시 확인해 주세요.');
+spec.detail=spec.detail.replace(oldDetail,detail);spec.policy=spec.policy.replace(oldPolicy,policy);
+spec.planningNote=(spec.planningNote||'').split('\n').filter(line=>!line.includes('국내 원 / 수출 usd')).join('\n').trim();
+spec.codexHighlights={...(spec.codexHighlights||{}),detail:[{start:spec.detail.indexOf(detail),end:spec.detail.indexOf(detail)+detail.length,text:detail}],policy:[{start:spec.policy.indexOf(policy),end:spec.policy.indexOf(policy)+policy.length,text:policy}]};delete spec.codexHighlights.planningNote;
+await store.mutate('update',{id:record.id,revision:record.revision,text:JSON.stringify(spec)});button.textContent='USD 고정 정책 서버 저장 완료';window.dispatchEvent(new Event('annotation-render'));}catch(e){button.textContent=e.message;button.disabled=false;}};}
 window.addEventListener('collaboration-updated',setup);setup();})();
