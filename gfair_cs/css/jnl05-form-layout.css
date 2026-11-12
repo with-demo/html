@@ -268,3 +268,7 @@
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
+/* 상담내용 최소 250자 입력 안내 */
+#app #purchase-memo-count[data-length-met="false"]{color:#c62828}
+#app #purchase-memo-count[data-length-met="true"]{color:#2e7d32}
