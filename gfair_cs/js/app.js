@@ -1563,9 +1563,9 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     const writer=j.id.includes('DRAFT')?j.writer:ownExample?'박서연':(interpreters.some(row=>row[1]===assigned)&&assigned||((index%3===0||j.id==='GF-000487'||j.id==='GF-000488')?'박서연':interpreters[index%interpreters.length]?.[1])||j.writer);
     let consultStart=day+'T09:'+String(index%6*5).padStart(2,'0'),consultEnd=day+'T09:'+String(30+index%6*5).padStart(2,'0');
     if(writer==='박서연'){
-      const sequence=interpreterExampleIndex++,name=ownExample?(['GF-000488','GF-000484'].includes(j.id)?'Emily Carter':'James Whitmore'):['James Whitmore','Emily Carter'][sequence%2];
+      const sequence=interpreterExampleIndex++,name=sequence<8?'James Whitmore':'Emily Carter';
       buyer=buyers.find(row=>row[1]===name)||buyers.find(row=>['James Whitmore','Emily Carter'].includes(row[1]))||buyer;
-      day='2026-10-'+String(29+Math.floor(sequence/6));const startHour=[9,10,11,13,14,15][sequence%6];
+      day='2026-10-'+String(29+Math.floor(sequence/6));const startHour=(sequence<6?[9,10,11,13,14,15]:[9,11,13,14,15,16])[sequence%6];
       consultStart=day+'T'+String(startHour).padStart(2,'0')+':00';consultEnd=day+'T'+String(startHour).padStart(2,'0')+':30';hour=String(startHour+1).padStart(2,'0');
     }
     const oldWriter=j.writer;
