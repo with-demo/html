@@ -21,7 +21,7 @@ if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
 if(location.hash.slice(1)==='PRE-01')labels=['바이어명','기업명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','기업'];
 if(location.hash.slice(1)==='SET-03')labels=['사용자','메뉴명','IP'];
-if(location.hash.slice(1)==='JNL-13')labels=['국내바이어','통역원','참가기업명/부스번호','상담내용'];
+if(location.hash.slice(1)==='JNL-13')labels=['국내바이어','참가기업명/부스번호','상담내용'];
 if(location.hash.slice(1)==='JNL-14')labels=['해외바이어','통역원','참가기업명/부스번호','상담내용'];
 if(location.hash.slice(1)==='SET-19')labels=['사용자','메뉴명','작업 이력','정보주체','IP'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];

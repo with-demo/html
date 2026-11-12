@@ -154,7 +154,7 @@ function journalFilterControls(s,records){
  return '<form id="journal-filter" class="panel filters matching-filters journal-filters-v2 '+(s.id==='JNL-13'?'journal-filters-purchase':'')+'">'+
  journalRadioFilter('처리상태','status',journalStatusOptions().map(value=>({value,label:journalStatusLabel(value)})),filter.status||'전체')+
  (s.id==='JNL-14'?matchingMulti('바이어국가','buyerCountries',(window.GFAIR_COUNTRY_CODES||[]).map(c=>c.name),'국가 검색'):'')+
- exportJournalSubmissionFilter()+matchingMulti('메인 카테고리','mainCategories',categories,'카테고리 검색')+matchingMulti('태그','exportTags',tags,'태그 검색')+
+ matchingMulti('메인 카테고리','mainCategories',categories,'카테고리 검색')+exportJournalSubmissionFilter()+matchingMulti('태그','exportTags',tags,'태그 검색')+
  F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))+
  '<div class="row"><button type="submit" class="btn primary">검색</button>'+B('reset','초기화')+'</div></form>'
 }
@@ -1024,6 +1024,7 @@ function purchaseJournalTable(rows){
 const buyJournalList=journalList;
 journalList=function(s){
  if(s.id!=='JNL-13')return buyJournalList(s);
+ applyJournalDefaultStatus(s);
  const rows=jRows(s);
  const tags=[...new Set(journals.filter(purchaseJournalVisible).flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko'));
  const controls=journalFilterControls(s,journals.filter(purchaseJournalVisible));
