@@ -1625,6 +1625,16 @@ root.addEventListener('change',ev=>{if(current!=='PRE-01'||!ev.target.matches('[
     }
   });
 }
+/* 승인요청 예시는 실제 제출 기준을 충족하는 상담내용을 사용한다. */
+for(const j of journals.filter(j=>j.status==='승인 요청'&&purchaseMemoLength(j.content)<250)){
+ j.content=[
+  j.company+' 부스에서 '+j.buyer+' 바이어와 주요 제품의 특징, 공급 가격 및 판매 채널별 도입 가능성을 확인했다.',
+  '바이어는 현재 취급 중인 상품과 비교하여 제품의 소재와 사용 편의성에 관심을 보였으며, 소비자에게 설명할 수 있는 차별점과 품질 보증 범위를 요청했다.',
+  '참가기업은 기본 포장 단위와 최소 주문 수량을 안내하고, 초도 물량에 적용할 단가 및 수량별 할인 조건을 별도 견적서로 전달하기로 했다.',
+  '납기는 주문 확정과 계약금 입금 이후 생산 일정을 기준으로 협의하며, 운송 비용과 배송 조건은 도착지 및 발주 규모를 확인한 뒤 산정할 예정이다.',
+  '후속 조치로 제품 소개 자료와 인증 현황을 공유하고 샘플 검토 결과를 회신받아 추가 미팅에서 거래 조건을 구체화하기로 했다.'
+ ].join(' ');
+}
 const memberRegistration=window.GFAIR_MEMBER_REGISTRATION;
 memberRegistration.bind({source:id=>({screen:map.get(id),rows:rows(map.get(id))}),setRows:(id,value)=>{lists[id]=value;},year:()=>event,role:()=>role,nav,toast});
 const memberList=list;list=function(s){return memberList(s)+memberRegistration.button(s.id);};
