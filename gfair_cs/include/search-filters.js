@@ -21,8 +21,8 @@ if(location.hash.slice(1)==='SET-01')labels=['그룹명'];
 if(location.hash.slice(1)==='PRE-01')labels=['바이어명','기업명'];
 if(location.hash.slice(1)==='BAS-05')labels=['바이어코드','바이어명','기업'];
 if(location.hash.slice(1)==='SET-03')labels=['사용자','메뉴명','IP'];
-if(location.hash.slice(1)==='JNL-13')labels=[...(app.querySelector('#role-picker')?.value==='buyer'?[]:['국내 바이어']),'참가기업','부스번호'];
-if(location.hash.slice(1)==='JNL-14')labels=['해외 바이어','국가','참가기업','부스번호',...(app.querySelector('#role-picker')?.value==='interpreter'?[]:['통역원'])];
+if(location.hash.slice(1)==='JNL-13')labels=['국내바이어','통역원','참가기업명/부스번호','상담내용'];
+if(location.hash.slice(1)==='JNL-14')labels=['해외바이어','통역원','참가기업명/부스번호','상담내용'];
 if(location.hash.slice(1)==='SET-19')labels=['사용자','메뉴명','작업 이력','정보주체','IP'];
 if(['BAS-16','BAS-17','COM-07'].includes(location.hash.slice(1)))labels=['이름','아이디','소속'];
 if(location.hash.slice(1)==='BAS-15')labels=['기업','담당자'];if(location.hash.slice(1)==='BAS-09')labels=['참가기업','사업자 번호','부스번호','담당자'];
@@ -36,7 +36,7 @@ form.querySelectorAll(':scope>fieldset.search-condition').forEach((fieldset,inde
 form.querySelectorAll(':scope>.search-condition').forEach(field=>{
  const controls=field.querySelector('.search-condition-controls'),caption=field.querySelector('.search-condition-caption')?.textContent||'';if(!controls)return;
  const select=controls.querySelector(':scope>select');
- if(select&&!select.multiple&&select.name&&!select.disabled&&/상태|구분|여부|유형|사용/.test(caption)&&select.options.length>=2&&select.options.length<=(['JNL-13','JNL-14'].includes(location.hash.slice(1))&&select.name==='status'?5:4)&&[...select.options].every(o=>o.text.length<=8)){
+ if(!(['JNL-13','JNL-14'].includes(location.hash.slice(1))&&select?.name==='status')&&select&&!select.multiple&&select.name&&!select.disabled&&/상태|구분|여부|유형|사용/.test(caption)&&select.options.length>=2&&select.options.length<=(['JNL-13','JNL-14'].includes(location.hash.slice(1))&&select.name==='status'?5:4)&&[...select.options].every(o=>o.text.length<=8)){
  const radios=document.createElement('div');radios.className='search-radio-options';radios.setAttribute('role','radiogroup');radios.setAttribute('aria-label',caption);
  [...select.options].forEach(option=>{const label=document.createElement('label'),radio=document.createElement('input');radio.type='radio';radio.name=select.name;radio.value=option.value;radio.checked=radio.defaultChecked=option.selected;radio.disabled=option.disabled;radio.addEventListener('change',()=>{select.value=radio.value;select.dispatchEvent(new Event('change',{bubbles:true}));});label.append(radio,document.createTextNode(option.text));radios.append(label);});
  select.hidden=true;select.disabled=true;controls.append(radios);
