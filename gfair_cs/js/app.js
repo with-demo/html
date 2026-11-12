@@ -148,8 +148,7 @@ function jTableExportReview(rows){
  const headers=['해외 바이어','바이어국가','참가기업','부스번호',...(role==='interpreter'?[]:['통역원']),'상담일시','제출 일시','처리 상태'];
  const body=rows.map(j=>{
   const buyerLink=B('j-detail',E(j.buyer||'미선택'),'btn ghost','data-id="'+E(j.id)+'"'+(role==='interpreter'?' data-personal="true"':''));
-  const code=j.buyerCountryCode || window.GFAIR_COUNTRY_CODES?.find(c=>c.name===j.buyerCountry)?.code;
-  const country=j.buyerCountry && code ? j.buyerCountry+'('+code+')' : j.buyerCountry;
+  const country=j.buyerCountry;
   const values=[country,j.company,j.booth,...(role==='interpreter'?[]:[j.interpreterName??j.writer]),journalConsultTime(j),exportJournalSubmittedAt(j)];
   return '<tr><td>'+buyerLink+'</td>'+values.map(v=>'<td>'+E(v||'-')+'</td>').join('')+'<td>'+badge(j.status)+'</td></tr>';
  }).join('');
