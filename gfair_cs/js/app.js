@@ -145,7 +145,7 @@ function journalConsultDays(){
  return result;
 }
 function journalRadioFilter(label,name,options,value){return '<div class="field"><span>'+E(label)+'</span><div class="search-radio-options" role="radiogroup" aria-label="'+E(label)+'">'+options.map(o=>'<label><input type="radio" name="'+E(name)+'" value="'+E(o.value)+'"'+(String(value)===o.value?' checked':'')+'>'+E(o.label)+'</label>').join('')+'</div></div>'}
-function exportJournalSubmissionFilter(){return journalRadioFilter('상담일','consultDay',[{value:'',label:'전체'},...journalConsultDays()],filter.consultDay||'')}
+function exportJournalSubmissionFilter(){return F('상담일','<select name="consultDay" aria-label="상담일"><option value="">전체</option>'+journalConsultDays().map(d=>'<option value="'+d.value+'"'+(filter.consultDay===d.value?' selected':'')+'>'+E(d.label)+'</option>').join('')+'</select>')}
 function applyJournalDefaultStatus(s){if(['JNL-13','JNL-14'].includes(s.id)&&['admin','buyOperator','exportOperator'].includes(role)&&!Object.prototype.hasOwnProperty.call(filter,'status'))filter.status='승인 요청'}
 function journalMainCategories(j){return String(j.productGroup||j.representativeCategory||'').split(/\s*[/,]\s*/).map(v=>v.trim()).filter(Boolean)}
 function journalCategoryMatches(j){return !Array.isArray(filter.mainCategories)||!filter.mainCategories.length||journalMainCategories(j).some(v=>filter.mainCategories.includes(v))}
