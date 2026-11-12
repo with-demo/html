@@ -129,6 +129,7 @@
 
     if (table) {
       const consultationTime = getField(form, 'consultStart')?.closest('.journal-pair');
+      const productRows = [...table.querySelectorAll('.journal-consult-product')];
       const orderedRows = [
         [participant, consultationTime],
         [booth, product],
@@ -143,7 +144,7 @@
         if (items.length === 1) items[0]?.classList.add('full');
         items.filter(Boolean).forEach(pair => row.append(pair));
         return row;
-      }));
+      }), ...productRows);
     }
     const upload = card?.querySelector('.journal-upload');
     if (upload) {

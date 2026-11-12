@@ -1,4 +1,4 @@
-/* 현재 화면 순서에 따른 표시 번호. 저장된 설명 ID·핀 위치는 유지한다. */
+/* 화면 배치에 맞춘 Description 표시 순서. 저장 본문·ID·댓글은 유지한다. */
 window.GFAIR_DESCRIPTION_LABEL_ORDER={
   "JNL-04": [
     "3ac513aa-2171-42e0-972e-b2803c6084d1",
@@ -18,7 +18,7 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "2b4264de-94e0-40d4-8e3d-4f2cbc85067c",
     "e9c3fdb3-c543-4d64-bb15-849269e103cd",
     "8ce10cbb-3ca7-48f0-8793-9ac50940f383"
-],
+  ],
   "JNL-15": [
     "3ac513aa-2171-42e0-972e-b2803c6084d1",
     "2c6f0554-5a4e-4217-8a27-00a1ec59a11a",
@@ -37,7 +37,7 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "2b4264de-94e0-40d4-8e3d-4f2cbc85067c",
     "e9c3fdb3-c543-4d64-bb15-849269e103cd",
     "8ce10cbb-3ca7-48f0-8793-9ac50940f383"
-],
+  ],
   "JNL-13": [
     "c054f1b2-b5e6-48f7-8322-c1be0fbf4f8b",
     "96ec0f86-ea46-4f1d-8eff-3c584bb3aec7",
@@ -48,47 +48,47 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "3b38c20c-1459-4c80-9b71-25c2e47ffe26",
     "9f383584-3910-484e-86f7-a3569d5a5c2e",
     "abc425a1-ee3c-4859-8e47-5b858b354aed"
-],
+  ],
   "JNL-05": [
     "5b093d9a-5bf7-4fbb-8a87-b4581566c4f5",
-    "48ecfd20-8927-454f-9552-36a521f86ccb",
-    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb",
     "cdb01469-49a6-43f5-a19b-e08a9e064cd2",
-    "c440b995-754d-47a3-9077-ebec8b17a58f",
+    "48ecfd20-8927-454f-9552-36a521f86ccb",
+    "34116bf7-a1c5-4fe6-9091-8c2d924610f8",
+    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb",
+    "340a41dc-0b62-408a-98ef-b9f8078399c1",
     "ddb15c7b-3b9b-4f89-9c60-e97490de4444",
+    "c440b995-754d-47a3-9077-ebec8b17a58f",
+    "77e60485-8a1e-419c-8edb-8ae09db17a7e",
     "365722b7-cdfb-4f8d-b623-fb316ef15d7d",
     "b301c68d-2472-4329-82be-250c5767602e",
     "99d8d7df-7391-463a-b746-d801017c3107",
     "3a5463bc-5e0c-4e65-ba1b-699de34a6e2d",
-    "340a41dc-0b62-408a-98ef-b9f8078399c1",
-    "77e60485-8a1e-419c-8edb-8ae09db17a7e",
-    "34116bf7-a1c5-4fe6-9091-8c2d924610f8",
     "a26171c4-52d7-4bbf-8318-ba0faa0ad16d",
     "44664c6f-3f07-408d-9cb1-ddcc767f2609",
     "627b422f-2c05-4299-90d3-3d34a674d053",
     "bbd5617f-4040-4c55-8a39-1057c95e172d",
     "e51035f2-ac69-4d78-85d0-0fa40bee8060"
-],
+  ],
   "JNL-16": [
     "5b093d9a-5bf7-4fbb-8a87-b4581566c4f5",
-    "48ecfd20-8927-454f-9552-36a521f86ccb",
-    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb",
     "cdb01469-49a6-43f5-a19b-e08a9e064cd2",
-    "c440b995-754d-47a3-9077-ebec8b17a58f",
+    "48ecfd20-8927-454f-9552-36a521f86ccb",
+    "34116bf7-a1c5-4fe6-9091-8c2d924610f8",
+    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb",
+    "340a41dc-0b62-408a-98ef-b9f8078399c1",
     "ddb15c7b-3b9b-4f89-9c60-e97490de4444",
+    "c440b995-754d-47a3-9077-ebec8b17a58f",
+    "77e60485-8a1e-419c-8edb-8ae09db17a7e",
     "365722b7-cdfb-4f8d-b623-fb316ef15d7d",
     "b301c68d-2472-4329-82be-250c5767602e",
     "99d8d7df-7391-463a-b746-d801017c3107",
     "3a5463bc-5e0c-4e65-ba1b-699de34a6e2d",
-    "340a41dc-0b62-408a-98ef-b9f8078399c1",
-    "77e60485-8a1e-419c-8edb-8ae09db17a7e",
-    "34116bf7-a1c5-4fe6-9091-8c2d924610f8",
     "a26171c4-52d7-4bbf-8318-ba0faa0ad16d",
     "44664c6f-3f07-408d-9cb1-ddcc767f2609",
     "627b422f-2c05-4299-90d3-3d34a674d053",
     "bbd5617f-4040-4c55-8a39-1057c95e172d",
     "e51035f2-ac69-4d78-85d0-0fa40bee8060"
-],
+  ],
   "BAS-04": [
     "bas04-draft-20261022-01",
     "bas04-draft-20261022-02",
@@ -234,4 +234,230 @@ window.GFAIR_DESCRIPTION_LABEL_ORDER={
     "three-review-pre-01-roster",
     "align-pre01-qr"
   ]
+};
+window.GFAIR_JOURNAL_DESCRIPTION_LAYOUT={
+  "JNL-05": {
+    "5b093d9a-5bf7-4fbb-8a87-b4581566c4f5": {
+      "selector": "#draft-form .journal-pair:has([name=\"interpreterName\"])",
+      "previous": {
+        "selector": "#draft-form > div:nth-of-type(1) > h2:nth-of-type(1)",
+        "sample": "기본 정보",
+        "x": 0.4963072378138848,
+        "y": 0.5097668557025835,
+        "offsetX": -497.0832977294922,
+        "offsetY": -76.80555725097658
+      }
+    },
+    "cdb01469-49a6-43f5-a19b-e08a9e064cd2": {
+      "selector": "#draft-form .journal-pair:has([data-name=\"buyer\"])",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(2)",
+        "sample": "바이어정보",
+        "x": 0.5,
+        "y": 0.49779458097038437,
+        "offsetX": -178.66664123535156,
+        "offsetY": -21.3333282470703
+      }
+    },
+    "48ecfd20-8927-454f-9552-36a521f86ccb": {
+      "selector": "#draft-form .participant-booth-row",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(1)",
+        "sample": "기업 정보",
+        "x": 0.5,
+        "y": 0.5066162570888468,
+        "offsetX": -320.22222900390625,
+        "offsetY": -18.666656494140607
+      }
+    },
+    "34116bf7-a1c5-4fe6-9091-8c2d924610f8": {
+      "selector": "#draft-form [data-action=\"export-company-scan\"]",
+      "previous": {
+        "selector": "#content button[data-action=\"export-company-scan\"]",
+        "sample": "부스 QR 스캔",
+        "x": 0.49353175158317036,
+        "y": 0.485076306610018,
+        "offsetX": -70,
+        "offsetY": -18.888885498046875
+      }
+    },
+    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb": {
+      "selector": "#draft-form .journal-pair:has(#draft-image)",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(3)",
+        "sample": "상담정보",
+        "x": 0.5,
+        "y": 0.49464398235664775,
+        "offsetX": -273.1111297607422,
+        "offsetY": -24.666687011718768
+      }
+    },
+    "340a41dc-0b62-408a-98ef-b9f8078399c1": {
+      "selector": "#draft-form .journal-consult-product",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(4)",
+        "sample": "대표 상담 제품군선택해 주세요LeisureFashion상담 제품상담 상세 *비고",
+        "x": 0.05437071909571112,
+        "y": 0.0918060113568639,
+        "offsetX": 97.5590057373047,
+        "offsetY": 3.790878295898409
+      }
+    },
+    "ddb15c7b-3b9b-4f89-9c60-e97490de4444": {
+      "selector": "#draft-form .journal-table-row:has([name=\"tradePotential\"])",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "sample": "",
+        "x": 0.4963531494140625,
+        "y": 0.4737823486328125,
+        "offsetX": -133.33334350585938,
+        "offsetY": -23.3333740234375
+      }
+    },
+    "c440b995-754d-47a3-9077-ebec8b17a58f": {
+      "selector": "#draft-form .journal-table-row:has([name=\"amount\"])",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(4)",
+        "sample": "상담성과",
+        "x": 0.5,
+        "y": 0.502835538752363,
+        "offsetX": -197.5555419921875,
+        "offsetY": -25.777770996093746
+      }
+    },
+    "77e60485-8a1e-419c-8edb-8ae09db17a7e": {
+      "selector": "#draft-form .journal-pair:has([name=\"content\"])",
+      "previous": {
+        "selector": "#content textarea[name=\"content\"]",
+        "sample": "",
+        "x": 0.49902558395340635,
+        "y": 0.39482012463759586,
+        "offsetX": -470,
+        "offsetY": -42.22222900390625
+      }
+    },
+    "365722b7-cdfb-4f8d-b623-fb316ef15d7d": {
+      "selector": "#draft-form .journal-pair:has([name=\"hashtag-input\"])",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > input:nth-of-type(1)",
+        "sample": "",
+        "x": 0.4970369466145833,
+        "y": 0.4894928419405318,
+        "offsetX": -148.88888549804688,
+        "offsetY": -14.4444580078125
+      }
+    }
+  },
+  "JNL-16": {
+    "5b093d9a-5bf7-4fbb-8a87-b4581566c4f5": {
+      "selector": "#draft-form .journal-pair:has([name=\"interpreterName\"])",
+      "previous": {
+        "selector": "#draft-form > div:nth-of-type(1) > h2:nth-of-type(1)",
+        "sample": "기본 정보",
+        "x": 0.4963072378138848,
+        "y": 0.5097668557025835,
+        "offsetX": -497.0832977294922,
+        "offsetY": -76.80555725097658
+      }
+    },
+    "cdb01469-49a6-43f5-a19b-e08a9e064cd2": {
+      "selector": "#draft-form .journal-pair:has([data-name=\"buyer\"])",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(2)",
+        "sample": "바이어정보",
+        "x": 0.5,
+        "y": 0.49779458097038437,
+        "offsetX": -178.66664123535156,
+        "offsetY": -21.3333282470703
+      }
+    },
+    "48ecfd20-8927-454f-9552-36a521f86ccb": {
+      "selector": "#draft-form .participant-booth-row",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(1)",
+        "sample": "기업 정보",
+        "x": 0.5,
+        "y": 0.5066162570888468,
+        "offsetX": -320.22222900390625,
+        "offsetY": -18.666656494140607
+      }
+    },
+    "34116bf7-a1c5-4fe6-9091-8c2d924610f8": {
+      "selector": "#draft-form [data-action=\"export-company-scan\"]",
+      "previous": {
+        "selector": "#content button[data-action=\"export-company-scan\"]",
+        "sample": "부스 QR 스캔",
+        "x": 0.49353175158317036,
+        "y": 0.485076306610018,
+        "offsetX": -70,
+        "offsetY": -18.888885498046875
+      }
+    },
+    "dab82af9-2c37-4fe1-b8a2-71af5fe652eb": {
+      "selector": "#draft-form .journal-pair:has(#draft-image)",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(3)",
+        "sample": "상담정보",
+        "x": 0.5,
+        "y": 0.49464398235664775,
+        "offsetX": -273.1111297607422,
+        "offsetY": -24.666687011718768
+      }
+    },
+    "340a41dc-0b62-408a-98ef-b9f8078399c1": {
+      "selector": "#draft-form .journal-consult-product",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(4)",
+        "sample": "대표 상담 제품군선택해 주세요LeisureFashion상담 제품상담 상세 *비고",
+        "x": 0.05437071909571112,
+        "y": 0.0918060113568639,
+        "offsetX": 97.5590057373047,
+        "offsetY": 3.790878295898409
+      }
+    },
+    "ddb15c7b-3b9b-4f89-9c60-e97490de4444": {
+      "selector": "#draft-form .journal-table-row:has([name=\"tradePotential\"])",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "sample": "",
+        "x": 0.4963531494140625,
+        "y": 0.4737823486328125,
+        "offsetX": -133.33334350585938,
+        "offsetY": -23.3333740234375
+      }
+    },
+    "c440b995-754d-47a3-9077-ebec8b17a58f": {
+      "selector": "#draft-form .journal-table-row:has([name=\"amount\"])",
+      "previous": {
+        "selector": "#draft-form > h2:nth-of-type(4)",
+        "sample": "상담성과",
+        "x": 0.5,
+        "y": 0.502835538752363,
+        "offsetX": -197.5555419921875,
+        "offsetY": -25.777770996093746
+      }
+    },
+    "77e60485-8a1e-419c-8edb-8ae09db17a7e": {
+      "selector": "#draft-form .journal-pair:has([name=\"content\"])",
+      "previous": {
+        "selector": "#content textarea[name=\"content\"]",
+        "sample": "",
+        "x": 0.49902558395340635,
+        "y": 0.39482012463759586,
+        "offsetX": -470,
+        "offsetY": -42.22222900390625
+      }
+    },
+    "365722b7-cdfb-4f8d-b623-fb316ef15d7d": {
+      "selector": "#draft-form .journal-pair:has([name=\"hashtag-input\"])",
+      "previous": {
+        "selector": "#draft-form > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > input:nth-of-type(1)",
+        "sample": "",
+        "x": 0.4970369466145833,
+        "y": 0.4894928419405318,
+        "offsetX": -148.88888549804688,
+        "offsetY": -14.4444580078125
+      }
+    }
+  }
 };

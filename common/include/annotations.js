@@ -63,6 +63,12 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
     return {...record,anchor:{...record.anchor,x:anchor.x??0,y:anchor.y??0,offsetX:anchor.offsetX??0,offsetY:anchor.offsetY??0}};
    });
   }
+  const journalLayout=window.GFAIR_JOURNAL_DESCRIPTION_LAYOUT?.[screen];
+  if(journalLayout)ordered=ordered.map(record=>{
+   const entry=journalLayout[record.id],saved=store.records.find(r=>r.id===record.id)?.anchor;
+   if(!entry||JSON.stringify(saved)!==JSON.stringify(entry.previous))return record;
+   return {...record,anchor:{...record.anchor,selector:entry.selector,sample:'',x:0,y:0,offsetX:-8,offsetY:-8}};
+  });
   if(screen==='PRE-03'&&ordered.some(record=>record.anchor?.selector==='#qr-launch')){
    ordered=ordered.filter(record=>{
     const spec=readSpec(record.text);
@@ -212,6 +218,7 @@ return spec;}catch{return null;}}
    if(selector)return selectionScope()?.querySelector(selector)||null;
   }
   const anchor=record.anchor,scope=selectionScope();if(!scope)return null;
+  const journalTarget=window.GFAIR_JOURNAL_DESCRIPTION_LAYOUT?.[route()]?.[record.id];if(journalTarget)return scope.querySelector(journalTarget.selector);
   if(['JNL-04','JNL-05','JNL-15','JNL-16'].includes(route())&&readSpec(record.text)?.item==='[삭제] 버튼')return scope.querySelector('[data-journal-draft-delete]');
   if(['JNL-04','JNL-15'].includes(route())){
    const targets={"3ac513aa-2171-42e0-972e-b2803c6084d1":"#draft-form .journal-section","2c6f0554-5a4e-4217-8a27-00a1ec59a11a":"#draft-form .purchase-company-section .journal-table-row:first-child","973ab0d9-324d-462b-b8e7-c5b13adafdcd":"#draft-image","a8e73fd3-a8a1-438e-88cb-9096c490b2f6":"#draft-form .journal-consult-product","19583f6c-70ca-43d6-9732-c5089256bdef":"#draft-form .purchase-result-choices","7154d65c-6478-4970-a94d-0fd03f34bd88":"#draft-form [data-journal-money]","ebbe5a48-bb00-4ec9-89e7-7a383c5a37a7":"#draft-form .journal-section:has([name=\"followUpYn\"]) .journal-table","81c5f08f-06aa-43a3-b4fb-f878dd6dcc0e":"#draft-form [name=\"content\"]","bea381cb-ab6f-405d-a37d-a2fcbe44a84a":"#draft-form [name=\"hashtag-input\"]","70937e8e-4290-491a-863b-47cbe593280b":"[data-action=\"purchase-company-scan\"]","b6556771-0e46-49fa-b387-a3113f76a042":"button[data-action=\"save\"]","2af39da3-c599-4ff4-83a0-ca3b00e6a273":"button[data-journal-request]","c531dd6b-677a-4bee-a0fd-acaaf3886228":"button[type=\"submit\"][form=\"draft-form\"]:not([data-journal-request])","1e04778a-417b-405a-9607-977407a079fa":null,"2b4264de-94e0-40d4-8e3d-4f2cbc85067c":"button[data-action=\"approve\"]","e9c3fdb3-c543-4d64-bb15-849269e103cd":"button[data-action=\"reject\"]","8ce10cbb-3ca7-48f0-8793-9ac50940f383":".journal-audit-section>summary"};
