@@ -59,3 +59,10 @@
 #app .journal-detail-code{grid-column:1/-1;font-size:13px;margin-top:4px;color:#555}
 
 #app .journal-consult-time{display:inline-block;white-space:pre;line-height:1.5}
+
+.journal-rejection-target{padding:10px 12px;border:1px solid #ddd;background:#f7f7f7;margin-bottom:12px;font-size:13px;overflow-wrap:anywhere}
+.journal-rejection-target strong,.journal-rejection-target small{display:block}
+.journal-rejection-target small{margin-top:4px;color:#666}
+.journal-rejection-targets{max-height:180px;overflow:auto;margin-bottom:16px}
+.journal-rejection-targets .journal-rejection-target:last-child{margin-bottom:0}
+#app .journal-review-history{margin-top:24px}

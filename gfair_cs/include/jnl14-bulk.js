@@ -1,6 +1,6 @@
 /* JNL-14 사용구분별 일괄 처리. 실제 서버 연계 시에도 상태·작성자 권한을 재검증한다. */
 (()=>{
- 'use strict';let context=null,pending=[];
+ 'use strict';const E=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));let context=null,pending=[];
  const reviewer=(role,screen)=>role==='admin'||role===(screen==='JNL-13'?'buyOperator':'exportOperator');
  const author=(role,screen)=>role===(screen==='JNL-13'?'buyer':'interpreter');
  const eligible=(j,role,screen)=>author(role,screen)?['작성 중','임시 저장','반려'].includes(j.status)&&(screen!=='JNL-13'||j.writer==='김민준'):reviewer(role,screen)&&j.status==='승인 요청';
@@ -23,7 +23,7 @@
    const ids=selected(),rows=c.rows.filter(j=>ids.includes(j.id)&&eligible(j,c.role,c.current));if(!rows.length)return c.toast('처리할 상담일지를 선택해 주세요.');pending=rows.map(j=>j.id);
    const verb=action==='jnl14-request'?'승인 요청':action==='jnl14-approve'?'승인':'반려';
    if(action==='jnl14-reject'){
-    c.modal('상담일지 반려 사유','<div class="jnl14-reject-layout"><label class="field" for="jnl14-reject-reason"><span>공통 반려 사유 <em>*</em></span><textarea id="jnl14-reject-reason" rows="4" placeholder="선택한 상담일지에 공통으로 적용할 반려 사유를 입력하세요." required></textarea></label><p id="jnl14-reject-error" role="alert"></p></div>',action+'-confirm','다음');return;
+    c.modal('상담일지 반려 사유','<div class="jnl14-reject-layout"><div class="journal-rejection-targets">'+rows.map(j=>c.rejectTarget?c.rejectTarget(j):'<p>'+E(j.buyer||j.id)+'</p>').join('')+'</div><label class="field" for="jnl14-reject-reason"><span>반려 사유 <em>*</em></span><textarea id="jnl14-reject-reason" rows="4" placeholder="반려 사유를 입력하세요." required></textarea></label><p id="jnl14-reject-error" role="alert"></p></div>',action+'-confirm','다음');return;
    }
    process(action+'-confirm');return;
   }
