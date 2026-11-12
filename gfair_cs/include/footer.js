@@ -33,7 +33,7 @@ window.GFAIR_INCLUDE.footer=()=>'<footer class="footer"><span>COPYRIGHT 2026 (C)
 
 (()=>{const script=document.createElement("script");script.src=new URL("list-summary.js?v=journal-audit-20261110",document.currentScript.src).href;document.head.append(script);})();
 
-(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=jnl14-filter-rows-20261109",base).href;js.src=new URL("search-filters.js?v=journal-list-filters-20261112-r1",base).href;document.head.append(css,js);})();
+(()=>{const base=document.currentScript.src,css=document.createElement("link"),js=document.createElement("script");css.rel="stylesheet";css.href=new URL("../css/search-filters.css?v=journal-filter-pair-20261112",base).href;js.src=new URL("search-filters.js?v=journal-list-filters-20261112-r1",base).href;document.head.append(css,js);})();
 
 (()=>{const s=document.createElement('script');s.src=new URL('people-excel.js?v=member-templates-20261028',document.currentScript.src);document.head.append(s);})();
 
