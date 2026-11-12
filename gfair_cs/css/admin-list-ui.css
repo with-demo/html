@@ -54,3 +54,6 @@
 #content table.company-participant-table thead th:last-child{background:#f7f7f7;z-index:2}
 
 .admin-list-panel .participant-master-table .participant-code-state{white-space:nowrap;max-width:100%}.admin-list-panel .participant-master-table th,.admin-list-panel .participant-master-table td{vertical-align:middle}
+
+#app .journal-code-link{font-weight:700;text-decoration:underline;white-space:nowrap}
+#app .journal-detail-code{grid-column:1/-1;font-size:13px;margin-top:4px;color:#555}
