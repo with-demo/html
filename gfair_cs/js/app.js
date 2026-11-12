@@ -147,10 +147,10 @@ function journalConsultDays(){
 function journalRadioFilter(label,name,options,value){return '<div class="field"><span>'+E(label)+'</span><div class="search-radio-options" role="radiogroup" aria-label="'+E(label)+'">'+options.map(o=>'<label><input type="radio" name="'+E(name)+'" value="'+E(o.value)+'"'+(String(value)===o.value?' checked':'')+'>'+E(o.label)+'</label>').join('')+'</div></div>'}
 function exportJournalSubmissionFilter(){return F('상담일','<select name="consultDay" aria-label="상담일"><option value="">전체</option>'+journalConsultDays().map(d=>'<option value="'+d.value+'"'+(filter.consultDay===d.value?' selected':'')+'>'+E(d.label)+'</option>').join('')+'</select>')}
 function applyJournalDefaultStatus(s){if(['JNL-13','JNL-14'].includes(s.id)&&['admin','buyOperator','exportOperator'].includes(role)&&!Object.prototype.hasOwnProperty.call(filter,'status'))filter.status='승인 요청'}
-function journalMainCategories(j){return String(j.productGroup||j.representativeCategory||'').split(/\s*[/,]\s*/).map(v=>v.trim()).filter(Boolean)}
+function journalMainCategories(j){const company=rows(map.get('BAS-09')).find(r=>j.sellerCode?r[0]===j.sellerCode:r[1]===j.company),linked=company?window.GFAIR_COMPANY_FILTER.categoriesFor(company):[];return linked.length?linked:String(j.productGroup||'').split(/\s*[/,]\s*/).map(v=>v.trim()).filter(Boolean)}
 function journalCategoryMatches(j){return !Array.isArray(filter.mainCategories)||!filter.mainCategories.length||journalMainCategories(j).some(v=>filter.mainCategories.includes(v))}
 function journalFilterControls(s,records){
- const categories=[...new Set(records.flatMap(journalMainCategories))].sort((a,b)=>a.localeCompare(b,'ko')),tags=[...new Set(records.flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko'));
+ const categories=window.GFAIR_COMPANY_FILTER.categories.slice(),tags=[...new Set([...JNL05_TAG_CATALOG.map(t=>t.name),...records.flatMap(journalTagNames)])].sort((a,b)=>a.localeCompare(b,'ko'));
  return '<form id="journal-filter" class="panel filters matching-filters journal-filters-v2 '+(s.id==='JNL-13'?'journal-filters-purchase':'')+'">'+
  journalRadioFilter('처리상태','status',journalStatusOptions().map(value=>({value,label:journalStatusLabel(value)})),filter.status||'전체')+
  (s.id==='JNL-14'?matchingMulti('바이어국가','buyerCountries',(window.GFAIR_COUNTRY_CODES||[]).map(c=>c.name),'국가 검색'):'')+
