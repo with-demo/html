@@ -63,9 +63,10 @@
  #app #content #journal-filter.unified-search .search-actions .btn{flex:1;min-width:0}
 }
 
-/* 상태·국가, 메인 카테고리·상담일 두 열. 태그는 전체 행. */
+/* 수출: 상태 전체 행, 국가·상담일 / 카테고리·태그. 구매: 카테고리·상담일 / 태그 전체 행. */
 #app #content #journal-filter.journal-filters-v2.unified-search > .search-condition{grid-column:span 3}
-#app #content #journal-filter.journal-filters-v2.unified-search > .search-condition:has([name="exportTags"]),
+#app #content #journal-filter.journal-filters-v2:not(.journal-filters-purchase).unified-search > .search-condition:has([name="status"]),
+#app #content #journal-filter.journal-filters-v2.journal-filters-purchase.unified-search > .search-condition:has([name="exportTags"]),
 #app #content #journal-filter.journal-filters-v2.journal-filters-purchase.unified-search > .search-condition:has([name="status"]){grid-column:1/-1}
 #app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;min-height:36px}
 #app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options label{white-space:nowrap}
