@@ -51,7 +51,7 @@ const effective=s=>['buyer','interpreter'].includes(role)?role:('JNL-05 PRE-03 P
 const isMobile=s=>s.kind==='mobile'||['buyer','interpreter'].includes(role);
 const B=(a,t,c='btn',attrs='')=>`<button type="button" class="${c}" data-action="${a}" ${attrs}>${E(t)}</button>`,A=(id,t,c='btn')=>`<a href="#${id}" class="${c}">${E(t)}</a>`;
 function journalStatusLabel(value){return ({'작성중':'작성 중','임시저장':'작성 중','승인요청':'승인 요청','승인완료':'승인 완료','반려':'반려'})[String(value||'').replace(/\s/g,'')]||String(value||'').trim()}
-function journalStatusBadge(value){const label=journalStatusLabel(value),style=({'작성 중':'pending','승인 요청':'pending','승인 완료':'approved','반려':'rejected'})[label]||'';return '<span class="badge journal-status-badge '+style+'">'+E(label)+'</span>'}
+function journalStatusBadge(value){const label=journalStatusLabel(value),style=({'작성 중':'pending','승인 요청':'pending','승인 완료':'approved','반려':'rejected'})[label]||'';return '<span class="badge journal-status-badge '+style+'" data-journal-status="'+E(label)+'">'+E(label)+'</span>'}
 const badge=v=>`<span class="badge ${/대기|승인 요청|준비|미확인|미완료|미출석|임시/.test(v)?'pending':/반려|실패|불가/.test(v)?'rejected':/승인|완료|확정|출석|성공|게시/.test(v)?'approved':''}">${E(v)}</span>`;
 const O=(a,v)=>a.map(t=>`<option ${v===t?'selected':''}>${E(t)}</option>`).join('');
 const I=(n,t='text',v='',x='')=>`<input name="${E(n)}" type="${t}" value="${E(v)}" ${x}>`;
