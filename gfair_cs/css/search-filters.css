@@ -62,3 +62,13 @@
  #app #content #journal-filter.unified-search .search-keyword-controls>.search-actions{width:100%;margin:0;justify-content:flex-end}
  #app #content #journal-filter.unified-search .search-actions .btn{flex:1;min-width:0}
 }
+
+/* 상태 한 행, 국가·상담일 및 카테고리·태그 두 열. */
+#app #content #journal-filter.journal-filters-v2.unified-search > .search-condition{grid-column:span 3}
+#app #content #journal-filter.journal-filters-v2.unified-search > .search-condition:has([name="status"]),
+#app #content #journal-filter.journal-filters-v2.journal-filters-purchase.unified-search > .search-condition:has([name="consultDay"]){grid-column:1/-1}
+#app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;min-height:36px}
+#app #content #journal-filter.journal-filters-v2.unified-search .search-radio-options label{white-space:nowrap}
+@container search-content (max-width:620px){
+ #app #content #journal-filter.journal-filters-v2.unified-search > .search-condition{grid-column:1/-1}
+}

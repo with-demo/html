@@ -2,10 +2,10 @@
 .admin-list-panel tr.journal-approval-priority>td{background:#f4f4f4}
 .admin-list-panel tr.journal-approval-priority [data-action="j-detail"]{font-weight:700}
 #app #content .journal-status-badge{font-weight:500;font-size:11px;letter-spacing:normal;word-spacing:normal;border:1px solid transparent}
-#app #content .journal-status-badge[data-journal-status="작성 중"]{background:#f0f0f0;color:#555;border-color:#d0d0d0}
+#app #content .journal-status-badge[data-journal-status="작성중"]{background:#f0f0f0;color:#555;border-color:#d0d0d0}
 #app #content .journal-status-badge[data-journal-status="반려"]{background:#fff;color:#222;border-color:#444}
-#app #content .journal-status-badge[data-journal-status="승인 요청"]{background:#666;color:#fff;border-color:#666}
-#app #content .journal-status-badge[data-journal-status="승인 완료"]{background:#222;color:#fff;border-color:#222}
+#app #content .journal-status-badge[data-journal-status="승인요청"]{background:#666;color:#fff;border-color:#666}
+#app #content .journal-status-badge[data-journal-status="승인완료"]{background:#222;color:#fff;border-color:#222}
 #content.admin-list-layout .pagehead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:start}
 #content.admin-list-layout .pagehead>div:first-child{display:contents}
 #content.admin-list-layout .pagehead .breadcrumb{grid-column:2;grid-row:1;justify-content:flex-end;align-self:center;margin:0;text-align:right;flex-wrap:wrap}

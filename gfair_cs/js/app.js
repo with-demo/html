@@ -51,8 +51,8 @@ const effective=s=>['buyer','interpreter'].includes(role)?role:('JNL-05 PRE-03 P
 const isMobile=s=>s.kind==='mobile'||['buyer','interpreter'].includes(role);
 const B=(a,t,c='btn',attrs='')=>`<button type="button" class="${c}" data-action="${a}" ${attrs}>${E(t)}</button>`,A=(id,t,c='btn')=>`<a href="#${id}" class="${c}">${E(t)}</a>`;
 function journalCode(j){return window.GFAIR_JOURNAL_CODES.code(j,journals,event)}
-function journalStatusLabel(value){return ({'작성중':'작성 중','임시저장':'작성 중','승인요청':'승인 요청','승인완료':'승인 완료','반려':'반려'})[String(value||'').replace(/\s/g,'')]||String(value||'').trim()}
-function journalStatusBadge(value){const label=journalStatusLabel(value),style=({'작성 중':'pending','승인 요청':'pending','승인 완료':'approved','반려':'rejected'})[label]||'';return '<span class="badge journal-status-badge '+style+'" data-journal-status="'+E(label)+'">'+E(label)+'</span>'}
+function journalStatusLabel(value){return ({'작성중':'작성중','임시저장':'작성중','승인요청':'승인요청','승인완료':'승인완료','반려':'반려'})[String(value||'').replace(/\s/g,'')]||String(value||'').trim()}
+function journalStatusBadge(value){const label=journalStatusLabel(value),style=({'작성중':'pending','승인요청':'pending','승인완료':'approved','반려':'rejected'})[label]||'';return '<span class="badge journal-status-badge '+style+'" data-journal-status="'+E(label)+'">'+E(label)+'</span>'}
 const badge=v=>`<span class="badge ${/대기|승인 요청|준비|미확인|미완료|미출석|임시/.test(v)?'pending':/반려|실패|불가/.test(v)?'rejected':/승인|완료|확정|출석|성공|게시/.test(v)?'approved':''}">${E(v)}</span>`;
 const O=(a,v)=>a.map(t=>`<option ${v===t?'selected':''}>${E(t)}</option>`).join('');
 const I=(n,t='text',v='',x='')=>`<input name="${E(n)}" type="${t}" value="${E(v)}" ${x}>`;
@@ -144,11 +144,24 @@ function journalConsultDays(){
  for(let day=start;Number.isFinite(day.getTime())&&day<=end;day=new Date(day.getTime()+86400000)){const value=day.toISOString().slice(0,10);result.push({value,label:(result.length+1)+'일차 ('+value.slice(5).replace('-','/')+')'})}
  return result;
 }
-function exportJournalSubmissionFilter(){return F('상담일','<select name="consultDay" aria-label="상담일"><option value="">전체</option>'+journalConsultDays().map(d=>'<option value="'+d.value+'"'+(filter.consultDay===d.value?' selected':'')+'>'+d.label+'</option>').join('')+'</select>')}
+function journalRadioFilter(label,name,options,value){return '<div class="field"><span>'+E(label)+'</span><div class="search-radio-options" role="radiogroup" aria-label="'+E(label)+'">'+options.map(o=>'<label><input type="radio" name="'+E(name)+'" value="'+E(o.value)+'"'+(String(value)===o.value?' checked':'')+'>'+E(o.label)+'</label>').join('')+'</div></div>'}
+function exportJournalSubmissionFilter(){return journalRadioFilter('상담일','consultDay',[{value:'',label:'전체'},...journalConsultDays()],filter.consultDay||'')}
+function applyJournalDefaultStatus(s){if(['JNL-13','JNL-14'].includes(s.id)&&['admin','buyOperator','exportOperator'].includes(role)&&!Object.prototype.hasOwnProperty.call(filter,'status'))filter.status='승인 요청'}
+function journalMainCategories(j){return String(j.productGroup||j.representativeCategory||'').split(/\s*[/,]\s*/).map(v=>v.trim()).filter(Boolean)}
+function journalCategoryMatches(j){return !Array.isArray(filter.mainCategories)||!filter.mainCategories.length||journalMainCategories(j).some(v=>filter.mainCategories.includes(v))}
+function journalFilterControls(s,records){
+ const categories=[...new Set(records.flatMap(journalMainCategories))].sort((a,b)=>a.localeCompare(b,'ko')),tags=[...new Set(records.flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko'));
+ return '<form id="journal-filter" class="panel filters matching-filters journal-filters-v2 '+(s.id==='JNL-13'?'journal-filters-purchase':'')+'">'+
+ journalRadioFilter('처리상태','status',journalStatusOptions().map(value=>({value,label:journalStatusLabel(value)})),filter.status||'전체')+
+ (s.id==='JNL-14'?matchingMulti('바이어국가','buyerCountries',(window.GFAIR_COUNTRY_CODES||[]).map(c=>c.name),'국가 검색'):'')+
+ exportJournalSubmissionFilter()+matchingMulti('메인 카테고리','mainCategories',categories,'카테고리 검색')+matchingMulti('태그','exportTags',tags,'태그 검색')+
+ F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))+
+ '<div class="row"><button type="submit" class="btn primary">검색</button>'+B('reset','초기화')+'</div></form>'
+}
 function jRows(s){let rr=journals.filter(j=>(!s.journalType||j.type===s.journalType)&&(!filter.type||filter.type==='전체'||j.type===filter.type)&&(!filter.status||filter.status==='전체'||j.status===filter.status)&&(s.id==='JNL-14'?exportJournalKeywordMatches(j)&&exportJournalSubmissionMatches(j):(!filter.query||({'기업명':j.company,'참가기업':j.company,'바이어':j.buyer,'국내 바이어':j.buyer,'해외 바이어':j.buyer,'작성자':j.writer}[window.GFAIR_SEARCH_SCOPE?.('query')]||(j.company+j.buyer+j.writer+j.id)).includes(filter.query))));if(s.id==='JNL-07')rr=rr.filter(j=>j.writer===(effective(s)==='interpreter'?'박서연':'김민준'));else if(s.id==='JNL-14'&&role==='interpreter')rr=rr.filter(j=>j.writer==='박서연');else if(s.id==='JNL-14'&&['admin','exportOperator'].includes(role))rr=rr.filter(j=>!['작성 중','임시 저장'].includes(j.status)||isOwnReviewerDraft(j));else if(scope==='buy'||scope==='export')rr=rr.filter(j=>j.type===(scope==='buy'?'구매':'수출'));return filter.status==='승인 요청'?rr.sort(journalLatestSubmission):rr}
 function jTable(rr,personal=false,showType=true){return `<div class="tablewrap"><table><thead><tr><th>일지번호</th>${showType?'<th>유형</th>':''}<th>참가기업 / 부스</th><th>바이어 / 작성자</th><th>제출 일자</th><th>처리 상태</th><th>상세</th></tr></thead><tbody>${rr.length?rr.map(j=>`<tr><td>${E(j.id)}</td>${showType?`<td>${j.type}</td>`:''}<td><strong>${E(j.company)}</strong><small>${E(j.booth)}</small></td><td>${E(j.buyer)}<small>작성 ${E(j.writer)}</small></td><td>${E(j.time)}</td><td>${journalStatusBadge(j.status)}</td><td>${B('j-detail','조회','btn ghost',`data-id="${j.id}" data-personal="${personal||['buyer','interpreter'].includes(role)}"`)}</td></tr>`).join(''):`<tr><td colspan="${showType?7:6}"><div class="empty"><strong>해당 조건의 상담일지가 없습니다.</strong>검색 조건을 변경해 주세요.</div></td></tr>`}</tbody></table></div>`}
 function jTableExportReview(rows){
- const headers=['일지코드','해외 바이어','바이어국가',...(role==='interpreter'?[]:['통역원']),'참가기업','부스번호','상담일시','제출 일시','처리 상태'];
+ const headers=['일지코드','해외 바이어','바이어국가',...(role==='interpreter'?[]:['통역원']),'참가기업','부스번호','상담일시','제출일시','처리 상태'];
  const body=rows.map(j=>{
   const codeLink=B('j-detail',E(journalCode(j)),'btn ghost journal-code-link','data-id="'+E(j.id)+'"'+(role==='interpreter'?' data-personal="true"':''));
   const country=j.buyerCountry;
@@ -698,7 +711,7 @@ if(/다운로드/.test(label)){if(label.includes('PDF'))window.print();else if(l
 
 function journalWorkbookRows(items,purchase){
  const number=value=>value===undefined||value===null||String(value).trim()===''?'':Number.isFinite(Number(value))?Number(value):String(value);
- const headers=['일지코드','처리 상태','상담일시','제출 일시',...(purchase?['국내 바이어','바이어 ID','바이어 기업명','직위']:['담당 통역원','해외 바이어','바이어 국가','바이어 기업명','바이어 연락처']),'참가기업','부스번호','기업 메인 카테고리','담당자','담당자 연락처','상담 시작 일시','상담 종료 일시','상담 제품 카테고리','상담 제품','주요 상담내용',purchase?'구매 상담액(KRW)':'수출 상담액(USD)',purchase?'계약 추진액(KRW)':'계약 추진액(USD)','아직 금액을 산정할 수 없음',...(purchase?['상담수준','주요 보완사항','후속조치 예정','후속조치 유형']:['거래 가능성','현장 계약','우수 사례','샘플 전달','MOU 체결','MOU 예정']),'해시태그','반려 사유'];
+ const headers=['일지코드','처리 상태','상담일시','제출일시',...(purchase?['국내 바이어','바이어 ID','바이어 기업명','직위']:['담당 통역원','해외 바이어','바이어 국가','바이어 기업명','바이어 연락처']),'참가기업','부스번호','기업 메인 카테고리','담당자','담당자 연락처','상담 시작 일시','상담 종료 일시','상담 제품 카테고리','상담 제품','주요 상담내용',purchase?'구매 상담액(KRW)':'수출 상담액(USD)',purchase?'계약 추진액(KRW)':'계약 추진액(USD)','아직 금액을 산정할 수 없음',...(purchase?['상담수준','주요 보완사항','후속조치 예정','후속조치 유형']:['거래 가능성','현장 계약','우수 사례','샘플 전달','MOU 체결','MOU 예정']),'해시태그','반려 사유'];
  return [headers,...items.map(j=>{
   const profile=purchase?purchaseBuyerProfiles().find(p=>p.name===j.buyer):null;
   const foreignRows=purchase?[]:rows(map.get('BAS-03'));const foreignRow=foreignRows.find(r=>r[1]===j.buyer);const foreign=foreignRow?window.GFAIR_OVERSEAS_BUYER_DETAIL?.exportRecord(foreignRow,foreignRows,'BAS-04',event):null;
@@ -908,7 +921,7 @@ const dashboardExample={
 const dashTile=(label,value,unit='명')=>`<article class="overview-tile"><h3>${E(label)}</h3><strong>${E(value)}<small>${E(unit)}</small></strong></article>`;
 function dashboardStack(labels,values,colors){const total=values.reduce((a,b)=>a+b,0);return `<ul class="overview-legend">${labels.map((t,i)=>`<li><i style="background:${colors[i]}"></i><span>${E(t)}</span><b>${values[i]}명</b></li>`).join('')}</ul><div class="overview-stack" role="img" aria-label="${E(labels.map((t,i)=>t+' '+values[i]+'명').join(', '))}">${values.map((v,i)=>`<span style="width:${total?v/total*100:0}%;background:${colors[i]}">${Math.round(total?v/total*100:0)}%</span>`).join('')}</div>`}
 function journalLatestSubmission(a,b){return String(b.time||'').localeCompare(String(a.time||''))||String(b.id).localeCompare(String(a.id));}
-function dashboardPending(type){const buy=type==='구매',rr=jRows({id:'JNL-01'}).filter(j=>j.type===type&&j.status==='승인 요청').sort(journalLatestSubmission),widths=buy?[17,23,18,18,24]:[22,18,12,13,13,22];return `<section class="overview-pending" id="dashboard-pending-${buy?'buy':'export'}"><div class="overview-section-head overview-module-heading"><h3 class="overview-module-title">승인 요청 ${type}상담일지 <span>/ ${rr.length}건</span></h3>${B('dashboard-pending','더보기 +','btn overview-view-all',`data-page="${buy?'JNL-13':'JNL-14'}"`)}</div><div class="overview-area overview-pending-body"><div class="tablewrap"><table class="dashboard-journal-preview ${buy?'preview-buy':'preview-export'}"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr><th>${buy?'국내 바이어':'해외 바이어'}</th><th>참가기업</th>${buy?'':'<th>통역원</th>'}<th>상담액</th><th>계약 추진액</th><th>제출 일시</th></tr></thead><tbody>${rr.length?rr.slice(0,5).map(j=>`<tr><td><button type="button" class="dashboard-company-link" data-action="j-detail" data-id="${E(j.id)}">${E(j.buyer)}</button></td><td>${E(j.company)}</td>${buy?'':`<td>${E(j.writer)}</td>`}<td>${Number(j.amount).toLocaleString()}<small>${E(j.currency)}</small></td><td>${Number(j.contract).toLocaleString()}<small>${E(j.currency)}</small></td><td class="dashboard-submitted-at"><time datetime="${E(j.time.replace(' ','T'))}">${E(j.time)}</time></td></tr>`).join(''):`<tr><td colspan="${buy?5:6}">승인 요청 상담일지가 없습니다.</td></tr>`}</tbody></table></div></div></section>`}
+function dashboardPending(type){const buy=type==='구매',rr=jRows({id:'JNL-01'}).filter(j=>j.type===type&&j.status==='승인 요청').sort(journalLatestSubmission),widths=buy?[17,23,18,18,24]:[22,18,12,13,13,22];return `<section class="overview-pending" id="dashboard-pending-${buy?'buy':'export'}"><div class="overview-section-head overview-module-heading"><h3 class="overview-module-title">승인 요청 ${type}상담일지 <span>/ ${rr.length}건</span></h3>${B('dashboard-pending','더보기 +','btn overview-view-all',`data-page="${buy?'JNL-13':'JNL-14'}"`)}</div><div class="overview-area overview-pending-body"><div class="tablewrap"><table class="dashboard-journal-preview ${buy?'preview-buy':'preview-export'}"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr><th>${buy?'국내 바이어':'해외 바이어'}</th><th>참가기업</th>${buy?'':'<th>통역원</th>'}<th>상담액</th><th>계약 추진액</th><th>제출일시</th></tr></thead><tbody>${rr.length?rr.slice(0,5).map(j=>`<tr><td><button type="button" class="dashboard-company-link" data-action="j-detail" data-id="${E(j.id)}">${E(j.buyer)}</button></td><td>${E(j.company)}</td>${buy?'':`<td>${E(j.writer)}</td>`}<td>${Number(j.amount).toLocaleString()}<small>${E(j.currency)}</small></td><td>${Number(j.contract).toLocaleString()}<small>${E(j.currency)}</small></td><td class="dashboard-submitted-at"><time datetime="${E(j.time.replace(' ','T'))}">${E(j.time)}</time></td></tr>`).join(''):`<tr><td colspan="${buy?5:6}">승인 요청 상담일지가 없습니다.</td></tr>`}</tbody></table></div></div></section>`}
 function dashboardBusinessTypes(){
  // 화면 검토용 더미 값. 유형은 복수 선택 가능하므로 비율을 독립 표시한다.
  const total=48,options=window.GFAIR_BUYER_FIELDS.business.domestic,counts=[18,24,12,6];
@@ -981,9 +994,9 @@ root.addEventListener('click',ev=>{const remove=ev.target.closest('[data-action=
 document.addEventListener('click',ev=>{root.querySelectorAll('[data-multi-filter][open]').forEach(e=>{if(!e.contains(ev.target))e.open=false})});
 root.addEventListener('keydown',ev=>{if(ev.key==='Escape'){const multi=ev.target.closest('[data-multi-filter]');if(multi){multi.open=false;multi.querySelector('summary').focus()}}});
 const exportJournalRows=jRows;
-jRows=function(s){const rr=exportJournalRows(s),companies=Array.isArray(filter.exportCompanies)?filter.exportCompanies:[],buyers=Array.isArray(filter.exportBuyers)?filter.exportBuyers:[],interpreters=Array.isArray(filter.exportInterpreters)?filter.exportInterpreters:[];const tags=s.id==='JNL-14'&&Array.isArray(filter.exportTags)?filter.exportTags:[];return rr.filter(j=>(s.id!=='JNL-14'||!Array.isArray(filter.buyerCountries)||!filter.buyerCountries.length||filter.buyerCountries.includes(j.buyerCountry))&&(s.id==='JNL-14'||(!companies.length||companies.includes(j.company))&&(!buyers.length||buyers.includes(j.buyer))&&(!interpreters.length||interpreters.includes(j.writer)))&&(!tags.length||journalTagNames(j).some(tag=>tags.includes(tag))))};
+jRows=function(s){const rr=exportJournalRows(s).filter(j=>s.id!=='JNL-14'||journalCategoryMatches(j)),companies=Array.isArray(filter.exportCompanies)?filter.exportCompanies:[],buyers=Array.isArray(filter.exportBuyers)?filter.exportBuyers:[],interpreters=Array.isArray(filter.exportInterpreters)?filter.exportInterpreters:[];const tags=s.id==='JNL-14'&&Array.isArray(filter.exportTags)?filter.exportTags:[];return rr.filter(j=>(s.id!=='JNL-14'||!Array.isArray(filter.buyerCountries)||!filter.buyerCountries.length||filter.buyerCountries.includes(j.buyerCountry))&&(s.id==='JNL-14'||(!companies.length||companies.includes(j.company))&&(!buyers.length||buyers.includes(j.buyer))&&(!interpreters.length||interpreters.includes(j.writer)))&&(!tags.length||journalTagNames(j).some(tag=>tags.includes(tag))))};
 const exportJournalList=journalList;
-journalList=function(s){const html=exportJournalList(s);if(s.id!=='JNL-14')return html;const exportRows=journals.filter(j=>j.type==='수출'&&(role!=='interpreter'||j.writer==='박서연')&&(!['admin','exportOperator'].includes(role)||!['작성 중','임시 저장'].includes(j.status)||isOwnReviewerDraft(j))),tags=[...new Set(exportRows.flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko')),isInterpreter=role==='interpreter';const controls=`<form id="journal-filter" class="panel filters matching-filters">${F('처리 상태',`<select name="status">${O(journalStatusOptions(),filter.status||'전체')}</select>`)}${exportJournalSubmissionFilter()}${matchingMulti('태그','exportTags',tags,'태그 검색')}${matchingMulti('바이어국가','buyerCountries',(window.GFAIR_COUNTRY_CODES||[]).map(c=>c.name),'국가 검색')}${F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))}<div class="row"><button type="submit" class="btn primary">검색</button>${B('reset','초기화')}</div></form>`;let result=html.replace(/<form id="journal-filter"[\s\S]*?<\/form>/,controls);if(isInterpreter)result=result.replace(/<div class="tablewrap"><table>[\s\S]*?<\/table><\/div>/,window.GFAIR_JNL14.table(jTableExportReview(jRows(s)),jRows(s),role));return result};
+journalList=function(s){applyJournalDefaultStatus(s);const html=exportJournalList(s);if(s.id!=='JNL-14')return html;const exportRows=journals.filter(j=>j.type==='수출'&&(role!=='interpreter'||j.writer==='박서연')&&(!['admin','exportOperator'].includes(role)||!['작성 중','임시 저장'].includes(j.status)||isOwnReviewerDraft(j))),tags=[...new Set(exportRows.flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko')),isInterpreter=role==='interpreter';const controls=journalFilterControls(s,exportRows);let result=html.replace(/<form id="journal-filter"[\s\S]*?<\/form>/,controls);if(isInterpreter)result=result.replace(/<div class="tablewrap"><table>[\s\S]*?<\/table><\/div>/,window.GFAIR_JNL14.table(jTableExportReview(jRows(s)),jRows(s),role));return result};
 function purchaseJournalKeywordMatches(j){return journalListKeywordMatches(j)}
 function purchaseJournalVisible(j){
  if(j.type!=='구매')return false;
@@ -994,13 +1007,13 @@ const buyJournalRows=jRows;
 jRows=function(s){
  if(s.id!=='JNL-13')return buyJournalRows(s);
  const tags=Array.isArray(filter.exportTags)?filter.exportTags:[];
- return journals.filter(j=>purchaseJournalVisible(j)
+ return journals.filter(j=>purchaseJournalVisible(j)&&journalCategoryMatches(j)
   &&(!filter.status||filter.status==='전체'||(purchaseDraft(j)?'작성 중':j.status)===filter.status)
   &&exportJournalSubmissionMatches(j)&&purchaseJournalKeywordMatches(j)
   &&(!tags.length||journalTagNames(j).some(tag=>tags.includes(tag)))).sort((a,b)=>filter.status==='승인 요청'?journalLatestSubmission(a,b):0);
 };
 function purchaseJournalTable(rows){
- const headers=['일지코드','국내 바이어','참가기업','부스번호','상담일시','제출 일시','처리 상태'];
+ const headers=['일지코드','국내 바이어','참가기업','부스번호','상담일시','제출일시','처리 상태'];
  const body=rows.map(j=>{
   const link=B('j-detail',E(journalCode(j)),'btn ghost journal-code-link','data-id="'+E(j.id)+'"');
   const cells=[E(j.buyer||'-'),E(j.company||'-'),E(j.booth||'-'),'<span class="journal-consult-time">'+E(journalConsultTime(j))+'</span>',E(exportJournalSubmittedAt(j)||'-'),journalStatusBadge(j.status)];
@@ -1013,11 +1026,7 @@ journalList=function(s){
  if(s.id!=='JNL-13')return buyJournalList(s);
  const rows=jRows(s);
  const tags=[...new Set(journals.filter(purchaseJournalVisible).flatMap(journalTagNames))].sort((a,b)=>a.localeCompare(b,'ko'));
- const controls='<form id="journal-filter" class="panel filters matching-filters">'+
-  F('처리 상태','<select name="status">'+O(journalStatusOptions(),filter.status||'전체')+'</select>')+
-  exportJournalSubmissionFilter()+matchingMulti('태그','exportTags',tags,'태그 검색')+
-  F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))+
-  '<div class="row"><button type="submit" class="btn primary">검색</button>'+B('reset','초기화')+'</div></form>';
+ const controls=journalFilterControls(s,journals.filter(purchaseJournalVisible));
  const table=window.GFAIR_JNL14.table(purchaseJournalTable(rows),rows,role,s.id);
  const tools=role==='buyer'?'':B('xlsx','엑셀 다운로드');
  return head(s)+controls+'<section class="panel"><div class="panelhead"><h2>상담일지 '+rows.length+'건</h2><span class="row">'+tools+'</span></div>'+table+
