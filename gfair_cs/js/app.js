@@ -1163,7 +1163,7 @@ function surveySeedResponseExamples(){
 surveySeedResponseExamples();
 // 기존 국내 바이어 응답 예시의 임시 코드를 고유식별코드 형식으로 정리한다.
 for(const q of surveyStore.filter(q=>q.target==='국내 바이어'))for(const response of q.responses){
- const legacy=String(response.participantCode||response.userId||'').match(/^DEMO-K(\\d{4})-(\\d+)$/);if(!legacy)continue;
+ const legacy=String(response.participantCode||response.userId||'').match(/^DEMO-K(\d{4})-(\d+)$/);if(!legacy)continue;
  const record=rows(map.get('BAS-05')).find(row=>row[1]===response.name);
  const code=record?.[0]||'K'+legacy[1]+String(9000+Number(legacy[2])).padStart(4,'0');
  response.participantCode=code;response.userId=code;
