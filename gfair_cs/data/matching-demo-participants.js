@@ -10,6 +10,20 @@ for(const [screen,examples]of Object.entries(absentExamples))for(const row of ge
 // 예시의 최초 등록연도는 가장 오래된 참가연도와 맞추고 대상·연도별로 순차 채번한다.
 const codeAliases={};
 for(const screen of ['BAS-03','BAS-05','BAS-07']){const ui=get(screen).ui,yearIndex=screen==='BAS-03'?4:3,prefix={'BAS-03':'F','BAS-05':'K','BAS-07':'I'}[screen],counts=new Map(),births={...(ui.birthDates||{})},changes=[];for(const row of ui.rows){const firstYear=Math.min(...(String(row[yearIndex]||'').match(/20\d{2}/g)||[]).map(Number));if(!Number.isFinite(firstYear))continue;const sequence=(counts.get(firstYear)||0)+1;counts.set(firstYear,sequence);const old=row[0],next=prefix+firstYear+String(sequence).padStart(4,'0');changes.push({row,old,next,birth:births[old]});if(old!==next)codeAliases[old]=next;}for(const change of changes)delete births[change.old];for(const {row,next,birth}of changes){row[0]=next;if(birth!==undefined)births[next]=birth;}ui.birthDates=births;}
+// 국내 바이어 풀 61명: 기존 3명과 설문 검토용 응답자의 가상 참가자 58명을 연계한다.
+const domestic=get('BAS-05').ui;
+const domesticNames=["박서준","최유진","정민서","강도윤","조수빈","윤지호","장하은","임시우","한서진","오지안","서준혁","신예린","권태현","황소윤","안민재","송다은","류현우","홍지민","전수아","고건우","문예원","양승현","손채원","배지훈","백수현","허은서","남유찬","심가은","노성민","하유정","곽준영","성다현","차민성","주예진","우진우","구서연","민도현","진수빈","지우진","엄하린","채정우","원소연","천준호","방예은","공태민","현지윤","함성준","변나연","염재윤","여수민","추정민","도혜원","소준서","석유나","선민규","설지은","길현준","연수정","봉시현","탁지수"],domesticCompanies=["가온리테일","누리커머스","다온생활유통","라온푸드","마루라이프","바른상품연구소","새봄유통","아람트레이딩","온새미리테일","이룸커머스","자연담마켓","채움리빙","푸른유통","하람스토어","한결커머스","해든리테일","나래상품기획","더온라이프","두루유통","로움마켓","미담커머스","보담리빙","서로트레이딩","솔빛유통","아온리테일","여울마켓","오름커머스","우림생활","정담유통","지음마켓","초록상품기획","키움리테일","태림커머스","파란유통","해솔리빙","다솜푸드","늘봄커머스","담은유통","리움마켓","모아생활","봄빛리테일","산들푸드","소담커머스","수림유통","아침마켓","에움리빙","예담트레이딩","온담커머스","유림리테일","이든마켓","자람유통","청아리빙","코너커머스","토담마켓","하늬유통","해밀라이프","가람푸드","누림리테일","도담커머스","별하마켓"];
+domestic.birthDates=domestic.birthDates||{};
+for(let i=2;i<domesticNames.length;i++){
+ const code='K2026'+String(9000+i+1).padStart(4,'0');
+ if(!domestic.rows.some(row=>row[0]===code||row[1]===domesticNames[i])){
+  domestic.rows.push([code,domesticNames[i],domesticCompanies[i],'2026','참가 확정']);
+  domestic.birthDates[code]=(1980+i%20)+'-'+String(i%12+1).padStart(2,'0')+'-'+String(i%28+1).padStart(2,'0');
+ }
+}
+const returningDomestic=domestic.rows.find(row=>row[1]==='박지은');
+if(returningDomestic){returningDomestic[3]=[...new Set([...(String(returningDomestic[3]).match(/20\d{2}/g)||[]),'2026'])].sort((a,b)=>Number(b)-Number(a)).join(', ');returningDomestic[4]='참가 확정';}
+
 // 이미 열어 둔 목업의 저장 정보도 같은 사람의 새 코드에 연결한다. 로그인 계정은 바꾸지 않는다.
 const remapCode=value=>value.replace(/\b[FKI]20\d{6}\b/g,code=>codeAliases[code]||code),remap=value=>typeof value==='string'?remapCode(value):Array.isArray(value)?value.map(remap):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).map(([key,item])=>[remapCode(key),remap(item)])):value;
 function migrateCodeStorage(store,keys){const marker='gfair-demo-first-registration-codes-20261031',backups=[];try{if(store.getItem(marker)==='done')return;for(const key of keys){const value=store.getItem(key);if(value!==null){const next=JSON.stringify(remap(JSON.parse(value)));backups.push([key,value]);store.setItem(key,next);}}store.setItem(marker,'done');}catch{for(const [key,value]of backups)try{store.setItem(key,value);}catch{}}}
