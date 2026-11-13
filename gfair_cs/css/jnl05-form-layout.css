@@ -277,3 +277,6 @@
 #app .export-journal-form:not(.purchase-journal-form) .consult-date-range{flex-direction:column;align-items:stretch;max-width:300px}
 #app .export-journal-form:not(.purchase-journal-form) .consult-date-range input{width:100%}
 #app .export-journal-form:not(.purchase-journal-form) .consult-date-range>span{display:none}
+
+#app .journal-review-history .journal-table .journal-history-entry>p{margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
+#app .export-journal-form .journal-control:has(.journal-tag-hint){flex-wrap:wrap}
