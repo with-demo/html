@@ -65,6 +65,8 @@
    if(!original.children.length)original.classList.add('page-action-source-empty');
   }
   if(['JNL-04','JNL-05','JNL-15','JNL-16'].includes(route)){
+   if(['JNL-15','JNL-16'].includes(route))for(const button of bar.querySelectorAll('button')){const label=button.textContent.trim();if(label==='승인 요청')button.textContent='승인요청';else if(label==='임시 저장')button.textContent='임시저장';}
+
    const request=bar.querySelector('[data-journal-request],[data-export-request]'),remove=bar.querySelector('[data-journal-draft-delete]'),reviews=[...bar.querySelectorAll('[data-action="approve"],[data-action="reject"]')];
    if(request||remove||reviews.length){
     let left=bar.querySelector('.journal-left-actions');
