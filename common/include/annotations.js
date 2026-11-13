@@ -37,7 +37,7 @@ return visible.filter(r=>r.id!=='fabc070e-3193-4300-b004-afe51d9adcc2').sort((a,
   '421ee8f5-e482-4ab4-ad08-3000661de36b',
   'b5d5b082-f13e-4d4f-8eaf-291167f62a52'
  ]);
- const layoutRecords=()=>{const screen=route(),existing=originalRecords()
+ const layoutRecords=()=>{const screen=route(),journalLayout=window.GFAIR_JOURNAL_LIST_DESCRIPTION_LAYOUT?.[screen];if(journalLayout){const rank=new Map(journalLayout.map((item,index)=>[item.id,{...item,index}]));return store.records.filter(record=>!isOverview(record)&&(()=>{try{return JSON.parse(record.text).format==='description-spec-v1';}catch{return false;}})()).sort((a,b)=>(rank.get(a.id)?.index??999)-(rank.get(b.id)?.index??999)).map((record,index)=>({...record,number:index+1,...(rank.has(record.id)?{anchor:{...record.anchor,selector:rank.get(record.id).selector,sample:'',x:0,y:0}}:{})}));}const existing=originalRecords()
   .filter(record=>screen!=='JNL-14'||!consolidatedJournalFilters.has(record.id))
   .map(record=>{
   const categoryPins={'JNL-05':'340a41dc-0b62-408a-98ef-b9f8078399c1','JNL-16':'f681564b-78f0-462c-84d5-ec65a9d6e180'};
