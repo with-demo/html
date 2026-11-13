@@ -23,7 +23,7 @@
    const ids=selected(),rows=c.rows.filter(j=>ids.includes(j.id)&&eligible(j,c.role,c.current));if(!rows.length)return c.toast('처리할 상담일지를 선택해 주세요.');pending=rows.map(j=>j.id);
    const verb=action==='jnl14-request'?'승인 요청':action==='jnl14-approve'?'승인':'반려';
    if(action==='jnl14-reject'){
-    c.modal('상담일지 반려 사유','<div class="jnl14-reject-layout"><div class="journal-rejection-targets">'+rows.map(j=>c.rejectTarget?c.rejectTarget(j):'<p>'+E(j.buyer||j.id)+'</p>').join('')+'</div><label class="field" for="jnl14-reject-reason"><span>반려 사유 <em>*</em></span><textarea id="jnl14-reject-reason" rows="4" placeholder="반려 사유를 입력하세요." required></textarea></label><p id="jnl14-reject-error" role="alert"></p></div>',action+'-confirm','반려');return;
+    c.modal('상담일지 반려 사유','<div class="jnl14-reject-layout"><p class="journal-rejection-count" style="margin:0 0 8px">총 <strong>'+rows.length+'</strong>건</p><div class="journal-rejection-targets">'+rows.map(j=>c.rejectTarget?c.rejectTarget(j):'<p>'+E(j.buyer||j.id)+'</p>').join('')+'</div><label class="field" for="jnl14-reject-reason"><span>반려 사유 <em>*</em></span><textarea id="jnl14-reject-reason" rows="4" placeholder="반려 사유를 입력하세요." required></textarea></label><p id="jnl14-reject-error" role="alert"></p></div>',action+'-confirm','반려');return;
    }
    process(action+'-confirm');return;
   }
