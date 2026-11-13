@@ -7,7 +7,7 @@
  function validTime(value){const m=String(value||'').match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/);if(!m)return false;const [,y,mo,d,h,mi,se='0']=m,date=new Date(Date.UTC(+y,+mo-1,+d,+h,+mi,+se));return date.getUTCFullYear()===+y&&date.getUTCMonth()===+mo-1&&date.getUTCDate()===+d&&+h<24&&+mi<60&&+se<60;}
  const time=value=>String(value).replace('T',' ')+(String(value).length===16?':00':'');
  const ordered=records=>records.map(r=>({...r,stage:normalize(r.stage)})).filter(r=>stages.includes(r.stage)&&validTime(r.effective)&&(r.source!=='journal'||r.effective<=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date()))).slice().sort((a,b)=>a.effective.localeCompare(b.effective));
- function timeline(records){const rows=ordered(records),arrival=rows.find(r=>r.stage==='입국')?.effective.slice(0,10),dayNumber=date=>arrival?Math.round((Date.parse(date+'T00:00:00Z')-Date.parse(arrival+'T00:00:00Z'))/86400000)+1:null;return rows.map(r=>({...r,date:r.effective.slice(0,10),day:dayNumber(r.effective.slice(0,10))}));}
+ function timeline(records){return ordered(records).map(r=>({...r,date:r.effective.slice(0,10)}));}
  function create(storage){
   const read=()=>{try{return JSON.parse(storage.getItem(storageKey)||'{}');}catch{return {};}};
   const member=(year,code)=>String(year)+'|'+code;
