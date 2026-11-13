@@ -40,7 +40,7 @@
   }
   if(!window.confirm(confirmationMessage(rows,request?'승인 요청':reject?'반려':'승인')))return;
   const latest=c.rows.filter(j=>pending.includes(j.id)&&eligible(j,c.role,c.current));if(context!==c||latest.length!==pending.length)return c.toast('처리 상태가 변경되었습니다. 목록을 다시 확인해 주세요.');
-  const state=request?'승인 요청':reject?'반려':'승인 완료';const now=new Date().toLocaleString('sv-SE',{timeZone:'Asia/Seoul'}).slice(0,16);for(const j of rows){j.status=state;j.updatedAt=now;if(reject)j.reason=reason;else if(request){j.reason='';j.time=now;}j.history=j.history||[];j.history.unshift([state,({admin:'관리자',exportOperator:'수출상담 운영용역사',buyOperator:'구매상담 운영용역사',interpreter:'통역원',buyer:'국내 바이어'})[c.role]+' · '+now,reject?reason:'']);}
+  const state=request?'승인 요청':reject?'반려':'승인 완료';const now=new Date().toLocaleString('sv-SE',{timeZone:'Asia/Seoul'}).slice(0,16);for(const j of rows){j.status=state;j.updatedAt=now;if(reject)j.reason=reason;else if(request){j.reason='';j.time=now;}j.history=j.history||[];j.history.unshift([state,(request?({interpreter:'통역원',buyer:'국내 바이어'})[c.role]:(c.reviewerName?.()||({admin:'관리자',exportOperator:'수출상담 운영용역사',buyOperator:'구매상담 운영용역사'})[c.role]))+' · '+now,reject?reason:'']);}
   document.getElementById('dialog').close();c.render();c.toast(rows.length+'건을 '+state+' 상태로 변경했습니다.');
   }
  });
