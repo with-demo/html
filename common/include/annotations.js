@@ -237,6 +237,7 @@ return spec;}catch{return null;}}
    if(Object.hasOwn(targets,record.id))return scope.querySelector(targets[record.id]);
   }
 
+  if(route()==='JNL-14-p05'&&record.id==='79544142-569e-4d38-bdab-2c6a49b088b2')return scope.querySelector('[data-action="jnl14-reject-confirm"]');
   if(['JNL-05','JNL-16'].includes(route())){
    const detail=route()==='JNL-16';
    if(record.id==='57cd099c-0b37-46b0-87ce-ce0396052f69')return scope.querySelector('#content h1');
