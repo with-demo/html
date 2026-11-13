@@ -126,7 +126,7 @@ function privacyLogPage(s){
 function list(s){if(s.id==='SET-03')return accessLogPage(s);if(s.id==='SET-19')return privacyLogPage(s);if(s.id==='BAS-01'){const rr=filtered(s);return `${head({...s,summary:'G-FAIR KOREA 연도별 행사 일정과 운영 상태를 확인합니다.'})}${filters(s)}<div class="event-sync-meta"><span class="event-last-sync" data-event-last-sync role="status">최근 동기화: ${E(eventLastSyncText())}</span></div><section class="panel"><div class="panelhead"><h2>행사 목록 <small>${rr.length}건</small></h2><div class="event-list-tools">${B('event-sync','동기화','btn')}</div></div>${eventTable(rr)}</section>`}if(['JNL-01','JNL-07'].includes(s.id))return journalList(s);if(s.id==='ENT-01')return companies(s);if(s.id==='NTC-07')return notifications(s);if(s.id==='NTC-02')return faq(s);if(s.id==='SET-03'&&logs.length){lists[s.id]=logs.map(x=>[x.time,'운영 관리자',x.target,x.action,x.target,'성공'])}return `${head(s,actionButtons(s))}${isMobile(s)?'':sub(s)}${filters(s)}<section class="panel"><div class="panelhead"><h2>${s.id==='PRE-08'?'담당 상담 일정':'조회 결과'}</h2><span>현재 행사 · 예시</span></div>${table(s,filtered(s))}</section>`}
 function journalListKeywordMatches(j){
  const query=String(filter.query||'').trim().toLocaleLowerCase();if(!query)return true;
- const fields={'해외바이어':j.buyer,'국내바이어':j.buyer,'통역원':j.interpreterName||j.writer,'참가기업명/부스번호':[j.company,j.booth].join(' '),'상담내용':j.content};
+ const fields={'일지코드':journalCode(j),'해외바이어':j.buyer,'국내바이어':j.buyer,'통역원':j.interpreterName||j.writer,'참가기업명/부스번호':[j.company,j.booth].join(' '),'상담내용':j.content};
  const scope=window.GFAIR_SEARCH_SCOPE?.('query')||'전체';
  return (Object.hasOwn(fields,scope)?[fields[scope]]:Object.values(fields)).some(v=>String(v||'').toLocaleLowerCase().includes(query));
 }
@@ -146,11 +146,10 @@ function journalConsultDays(){
 }
 function journalRadioFilter(label,name,options,value){return '<div class="field"><span>'+E(label)+'</span><div class="search-radio-options" role="radiogroup" aria-label="'+E(label)+'">'+options.map(o=>'<label><input type="radio" name="'+E(name)+'" value="'+E(o.value)+'"'+(String(value)===o.value?' checked':'')+'>'+E(o.label)+'</label>').join('')+'</div></div>'}
 function exportJournalSubmissionFilter(){return F('상담일','<select name="consultDay" aria-label="상담일"><option value="">전체</option>'+journalConsultDays().map(d=>'<option value="'+d.value+'"'+(filter.consultDay===d.value?' selected':'')+'>'+E(d.label)+'</option>').join('')+'</select>')}
-function applyJournalDefaultStatus(s){if(['JNL-13','JNL-14'].includes(s.id)&&['admin','buyOperator','exportOperator'].includes(role)&&!Object.prototype.hasOwnProperty.call(filter,'status'))filter.status='승인 요청'}
+function applyJournalDefaultStatus(s){if(['JNL-13','JNL-14'].includes(s.id)&&!Object.prototype.hasOwnProperty.call(filter,'status'))filter.status='전체'}
 function journalMainCategories(j){const company=rows(map.get('BAS-09')).find(r=>j.sellerCode?r[0]===j.sellerCode:r[1]===j.company),linked=company?window.GFAIR_COMPANY_FILTER.categoriesFor(company):[];return linked.length?linked:String(j.productGroup||'').split(/\s*[/,]\s*/).map(v=>v.trim()).filter(Boolean)}
 function journalCategoryMatches(j){return !Array.isArray(filter.mainCategories)||!filter.mainCategories.length||journalMainCategories(j).some(v=>filter.mainCategories.includes(v))}
 function journalFilterControls(s,records){
- if(['buyer','interpreter'].includes(role))return '<form id="journal-filter" class="panel filters matching-filters journal-filters-v2 journal-filters-author">'+journalRadioFilter('처리상태','status',journalStatusOptions().map(value=>({value,label:journalStatusLabel(value)})),filter.status||'전체')+exportJournalSubmissionFilter()+F('키워드 검색',I('query','search',filter.query||'','aria-label="키워드 검색어"'))+'<div class="row"><button type="submit" class="btn primary">검색</button>'+B('reset','초기화')+'</div></form>';
  const categories=window.GFAIR_COMPANY_FILTER.categories.slice(),tags=[...new Set([...JNL05_TAG_CATALOG.map(t=>t.name),...records.flatMap(journalTagNames)])].sort((a,b)=>a.localeCompare(b,'ko'));
  return '<form id="journal-filter" class="panel filters matching-filters journal-filters-v2 '+(s.id==='JNL-13'?'journal-filters-purchase':'')+'">'+
  journalRadioFilter('처리상태','status',journalStatusOptions().map(value=>({value,label:journalStatusLabel(value)})),filter.status||'전체')+
