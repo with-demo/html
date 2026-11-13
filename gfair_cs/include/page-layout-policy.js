@@ -65,11 +65,12 @@
    if(!original.children.length)original.classList.add('page-action-source-empty');
   }
   if(['JNL-04','JNL-05','JNL-15','JNL-16'].includes(route)){
-   const request=bar.querySelector('[data-journal-request],[data-export-request]'),remove=bar.querySelector('[data-journal-draft-delete]');
-   if(request||remove){
+   const request=bar.querySelector('[data-journal-request],[data-export-request]'),remove=bar.querySelector('[data-journal-draft-delete]'),reviews=[...bar.querySelectorAll('[data-action="approve"],[data-action="reject"]')];
+   if(request||remove||reviews.length){
     let left=bar.querySelector('.journal-left-actions');
     if(!left){left=document.createElement('div');left.className='journal-left-actions';left.style.cssText='display:flex;align-items:center;gap:8px;margin-right:auto;';bar.prepend(left);}
     if(request){request.style.marginRight='';if(request.parentElement!==left)left.prepend(request);}
+    for(const button of reviews)if(button.parentElement!==left)left.append(button);
     if(remove&&remove.parentElement!==left)left.append(remove);
    }
   }
