@@ -272,3 +272,8 @@
 /* 상담내용 최소 250자 입력 안내 */
 #app #purchase-memo-count[data-length-met="false"]{color:#c62828}
 #app #purchase-memo-count[data-length-met="true"]{color:#2e7d32}
+
+/* 수출상담일지 등록·상세: 상담 시작/종료 일시를 두 줄로 표시. */
+#app .export-journal-form:not(.purchase-journal-form) .consult-date-range{flex-direction:column;align-items:stretch;max-width:300px}
+#app .export-journal-form:not(.purchase-journal-form) .consult-date-range input{width:100%}
+#app .export-journal-form:not(.purchase-journal-form) .consult-date-range>span{display:none}
