@@ -10,6 +10,20 @@
  // 설문 등록·상세는 화면 ID를 유지하고 SET-11의 Description을 공동 편집한다.
  // 기존 SET-12 저장 이력은 삭제하지 않는다.
  const descriptionScreen=id=>PROJECT==='gfair_cs'?(id==='SET-12'?'SET-11':id==='JNL-16'?'JNL-05':id==='JNL-15'?'JNL-04':id):id;
+
+ function mergeJournalDescriptions(registration,detail){
+  const aliases={'1b92f207-330d-4f57-b403-89f36c345455':'b301c68d-2472-4329-82be-250c5767602e','bd14544d-0685-4bd1-b45e-8ff781880d85':'b301c68d-2472-4329-82be-250c5767602e','0b03982f-86c2-43f0-bdf1-a9c414aff441':'99d8d7df-7391-463a-b746-d801017c3107','6359d3ab-05d1-4e17-a119-2720a61aedfc':'3a5463bc-5e0c-4e65-ba1b-699de34a6e2d'};
+  const parse=r=>{try{return JSON.parse(r.text)}catch{return null}},key=r=>{const p=parse(r);return p?.format==='screen-overview-v1'?'overview':p?.item?'item:'+p.item.replace(/\s/g,''):'id:'+r.id;};
+  const result=registration.slice(),byId=new Map(result.map((r,i)=>[r.id,i])),byKey=new Map(result.map((r,i)=>[key(r),i]));
+  for(const incoming of detail){if(byId.has(incoming.id))continue;const index=byId.get(aliases[incoming.id])??byKey.get(key(incoming));if(index===undefined){byId.set(incoming.id,result.length);byKey.set(key(incoming),result.length);result.push(incoming);continue;}
+   const base=result[index],old=parse(base),extra=parse(incoming);if(!old||!extra)continue;let next={...old};const newer=Date.parse(incoming.updated||incoming.created||0)>Date.parse(base.updated||base.created||0);
+   if(old.format!=='screen-overview-v1'&&key(base)===key(incoming)&&!aliases[incoming.id]&&newer)next={...old,...extra};
+   else{for(const field of ['detail','policy','exception','overview','planningNote'])if(extra[field]&&extra[field]!==old[field]&&!String(next[field]||'').includes(extra[field]))next[field]=[next[field],(field==='planningNote'?'':'[상세'+(extra.item?' · '+extra.item:'')+']\n')+extra[field]].filter(Boolean).join('\n\n');}
+   next.planningNote=[...new Set([old.planningNote,extra.planningNote].filter(Boolean))].join('\n');
+   result[index]={...base,text:JSON.stringify(next),comments:[...new Map([...(base.comments||[]),...(incoming.comments||[])].map(c=>[c.id,c])).values()]};
+  }
+  return result;
+ }
  async function api(op,body,options={}){
   const url=SERVER+'/api/collab'+(body?'':'?'+new URLSearchParams({op,project:PROJECT,screen:options.originalScreen?(options.route||current()):descriptionScreen(options.route||current())}));
   const response=await fetch(url,{method:body?'POST':'GET',credentials:'omit',cache:'no-store',signal:options.signal,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify({op,project:PROJECT,...body,...(typeof body.screen==='string'?{screen:descriptionScreen(body.screen)}:{})}):undefined});
@@ -21,21 +35,11 @@
   activeRequest?.controller.abort();if(route==='screens'){activeRequest=null;loading=false;changed();return;}
   const request={route,controller:new AbortController(),notify:screen!==route||!!window.GFAIR_COLLAB.error};activeRequest=request;loading=true;if(request.notify)changed();
   try{const result=await api('list',undefined,{route,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;if(!Array.isArray(result.records))throw Error('디스크립션 응답을 확인하지 못했습니다. 다시 불러와 주세요.');if(route==='SET-13'){const legacy=await api('list',undefined,{route:'SET-05-p12',signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});if(activeRequest!==request||route!==current())return;const ids=new Set(result.records.map(r=>r.id));result.records=[...result.records,...(legacy.records||[]).filter(r=>!ids.has(r.id))].map(r=>({...r,screen:'SET-13'}));const merged=new Map();for(const record of result.records){let key=record.id;try{const spec=JSON.parse(record.text);if(spec.format==='screen-overview-v1')key='overview';else if(spec.item)key='item:'+spec.item;}catch{}const previous=merged.get(key);if(!previous){merged.set(key,record);continue;}const chosen=Date.parse(record.updated||record.created||0)>=Date.parse(previous.updated||previous.created||0)?record:previous;const comments=[...new Map([...(previous.comments||[]),...(record.comments||[])].map(comment=>[comment.id,comment])).values()];merged.set(key,{...chosen,comments});}result.records=[...merged.values()];}
-   // 수출상담일지는 JNL-05 공통 설명과 기존 JNL-16 전용 설명을 같은 ID로 공동 편집한다.
-   if(PROJECT==='gfair_cs'&&['JNL-05','JNL-16'].includes(route)){
-    const legacy=await api('list',undefined,{route:'JNL-16',originalScreen:true,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});
+   if(PROJECT==='gfair_cs'&&['JNL-04','JNL-15','JNL-05','JNL-16'].includes(route)){
+    const legacyScreen=['JNL-04','JNL-15'].includes(route)?'JNL-15':'JNL-16';
+    const legacy=await api('list',undefined,{route:legacyScreen,originalScreen:true,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});
     if(activeRequest!==request||route!==current())return;
-    const detailIds=new Set(['a26171c4-52d7-4bbf-8318-ba0faa0ad16d','44664c6f-3f07-408d-9cb1-ddcc767f2609','627b422f-2c05-4299-90d3-3d34a674d053','bbd5617f-4040-4c55-8a39-1057c95e172d','e51035f2-ac69-4d78-85d0-0fa40bee8060']);
-    const ids=new Set(result.records.map(record=>record.id));
-    result.records=[...result.records,...(legacy.records||[]).filter(record=>detailIds.has(record.id)&&!ids.has(record.id))];
-   }
-   
-   // 구매 등록·상세는 JNL-04 설명을 공동 편집하며 기존 상세 설명 ID를 보존한다.
-   if(PROJECT==='gfair_cs'&&['JNL-04','JNL-15'].includes(route)){
-    const legacy=await api('list',undefined,{route:'JNL-15',originalScreen:true,signal:AbortSignal.any([request.controller.signal,AbortSignal.timeout(15000)])});
-    if(activeRequest!==request||route!==current())return;
-    const ids=new Set(result.records.map(record=>record.id));
-    result.records=[...result.records,...(legacy.records||[]).filter(record=>record.id==='81c5f08f-06aa-43a3-b4fb-f878dd6dcc0e'&&!ids.has(record.id))];
+    result.records=mergeJournalDescriptions(result.records,legacy.records||[]);
    }
    user=result.user;githubReady=!!result.githubConfigured;records=result.records;screen=route;const next=JSON.stringify(result);request.notify=request.notify||snapshot!==next;snapshot=next;if(!new URL(location.href).searchParams.has('annotation_error')&&!window.GFAIR_COLLAB.authError)window.GFAIR_COLLAB.error='';}
   catch(error){if(activeRequest!==request||request.controller.signal.aborted)return;request.notify=true;window.GFAIR_COLLAB.error=error.name==='TimeoutError'?'디스크립션 조회가 지연되고 있습니다. 다시 불러와 주세요.':error.message;}finally{if(activeRequest===request){activeRequest=null;loading=false;if(request.notify)changed();}}
