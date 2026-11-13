@@ -1312,11 +1312,12 @@ list=function(s){return surveyRoute(s)??surveyOldList(s)};
 form=function(s){return surveyRoute(s)??surveyOldForm(s)};
 let surveyEditorDirty=false;
 function surveyHasUnsavedChanges(){
- return surveyEditorDirty&&!!document.getElementById('survey-editor');
+ return surveyEditorDirty&&!!document.getElementById('survey-editor')||!!window.GFAIR_SURVEY_PARTICIPATION?.hasUnsavedChanges();
 }
 function confirmSurveyExit(){
  if(surveyHasUnsavedChanges()&&!window.confirm('저장하지 않은 변경사항이 있습니다. 이 화면을 나가시겠습니까?'))return false;
  surveyEditorDirty=false;
+ window.GFAIR_SURVEY_PARTICIPATION?.discardDrafts();
  return true;
 }
 for(const eventType of ['input','change']){
