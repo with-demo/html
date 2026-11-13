@@ -280,3 +280,11 @@
 
 #app .journal-review-history .journal-table .journal-history-entry>p{margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
 #app .export-journal-form .journal-control:has(.journal-tag-hint){flex-wrap:wrap}
+
+/* 상담일시 시작·종료 행 라벨: 구매·수출 등록 및 상세 공통 */
+#app .export-journal-form .consult-date-range.consult-date-labeled{display:flex;flex-direction:column;align-items:stretch;width:100%;max-width:none;gap:8px}
+#app .consult-date-labeled .consult-date-row{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:10px;min-width:0;margin:0}
+#app .consult-date-labeled .consult-date-row>span{display:block;color:#555;font-size:12px;text-align:center}
+#app .export-journal-form .consult-date-labeled .consult-date-row>input{width:100%;min-width:0}
+
+#app .journal-section>.journal-tag-hint{margin:8px 0 0;color:#666;font-size:13px}
