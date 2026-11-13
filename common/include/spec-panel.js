@@ -9,6 +9,8 @@
  toolbar.innerHTML='<div class="ui-spec-identity"><strong>With / 기획팀 SB</strong><select class="ui-spec-screen-picker" data-spec="screen" aria-label="목업 화면 선택"></select><button type="button" data-spec="screen-search">화면검색</button><span class="ui-spec-preview">예시 데이터 · 검토용</span></div><div class="ui-spec-actions"><label>사용구분 <select aria-label="사용구분"></select></label><button type="button" data-spec="close">닫기</button><span class="ui-spec-status" role="status"></span></div>';
  if(policyProject){const policyButton=toolbar.querySelector('[data-spec=screen-search]');policyButton.textContent='기획정책';policyButton.title='새 창으로 열기';policyButton.setAttribute('aria-label','기획정책 새 창 열기');}
  const screenPicker=toolbar.querySelector('[data-spec=screen]');
+ const journalPairs={'JNL-04':'JNL-15','JNL-05':'JNL-16'},journalBase=id=>({'JNL-15':'JNL-04','JNL-16':'JNL-05'})[id]||id;
+ const journalMode=document.createElement('select');journalMode.dataset.spec='journal-mode';journalMode.setAttribute('aria-label','상담일지 등록·상세 모드');journalMode.innerHTML='<option value="create">등록</option><option value="detail">상세</option>';journalMode.hidden=true;screenPicker.after(journalMode);
  let catalogKey='';
  function refreshScreenPicker(){
   const groups=window.GFAIR_BUILD_SCREEN_CATALOG?.()||window.GFAIR_SCREEN_CATALOG||window.GFAIR_SCREENS||[];
@@ -16,7 +18,7 @@
   catalogKey=next;screenPicker.replaceChildren();
   groups.forEach(group=>{
    const section=document.createElement('optgroup');section.label=group.name;
-   group.screens.forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+screen.title;section.append(option);});screenPicker.append(section);
+   group.screens.filter(screen=>!policyProject||!['JNL-15','JNL-16'].includes(screen.id)).forEach(screen=>{const option=document.createElement('option');option.value=screen.id;option.textContent=screen.id+' : '+(policyProject&&journalPairs[screen.id]?screen.title.replace(/ 등록$/,' 등록·상세'):screen.title);section.append(option);});screenPicker.append(section);
   });
   if(!policyProject){const overview=document.createElement('option');overview.value='screens';overview.textContent='SCREEN-LIST : 전체 화면 목록';screenPicker.append(overview);}
  }
@@ -37,7 +39,7 @@
   app.querySelectorAll('#content .pagehead .subtitle,#content .management-note,#content .attendance-demo-note,#content .statistics-footnote,#content .notice-save-note,#content .notice-file-note').forEach(el=>{el.dataset.descriptionOverview='';});
   const route=decodeURIComponent(location.hash.slice(1))||document.body.dataset.screen,overview=route==='screens';
   if(policyProject&&overview){openPlanningPolicy(true);return;}
-  toolbar.hidden=false;panel.hidden=closed||overview;screenPicker.value=route;
+  toolbar.hidden=false;panel.hidden=closed||overview;screenPicker.value=policyProject?journalBase(route):route;journalMode.hidden=!policyProject||!journalPairs[journalBase(route)];journalMode.value=journalBase(route)===route?'create':'detail';
   ['close','numbers'].forEach(action=>{toolbar.querySelector('[data-spec='+action+']').hidden=overview;});status.hidden=overview;
   layout.classList.toggle('with-spec',!closed&&!overview);layout.classList.toggle('spec-full',!closed&&!overview&&full);
   toolbar.querySelector('[data-spec=close]').textContent=closed?'디스크립션 열기':'디스크립션 닫기';
@@ -56,6 +58,7 @@
   sync();
  });
  toolbar.addEventListener('change',event=>{
+  if(event.target===journalMode){const base=journalBase(decodeURIComponent(location.hash.slice(1)));if(journalPairs[base])location.hash=journalMode.value==='detail'?journalPairs[base]:base;sync();return;}
   if(event.target.dataset.spec==='screen'){full=false;location.hash=event.target.value;sync();return;}
   if(event.target===toolbar.querySelector('.ui-spec-actions select')){
    const role=document.getElementById('role-picker'),form=document.getElementById('filter-form');
