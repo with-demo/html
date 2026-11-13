@@ -42,6 +42,12 @@
  extra.disabled=!vs.includes(String(oi));
  if(extra.disabled)extra.value='';
  else extras[k+'-'+oi]=extra.value;});}));drafts.set(key(ctx,t),{answers,extras});return {answers,extras};}
+ function hasUnsavedChanges(){
+  if(!ctx)return false;
+  return [...drafts.entries()].some(([draftKey,d])=>!submitted.has(draftKey)&&
+   [...Object.values(d.answers||{}),...Object.values(d.extras||{})].some(value=>Array.isArray(value)?value.length>0:String(value??'').length>0));
+ }
+ function discardDrafts(){drafts.clear();}
  function conditionHint(q,v){if(!v.visibleWhen)return '';const [gi,qi]=v.visibleWhen.question.split('-').map(Number),source=q.groups[gi]?.questions[qi],option=source?.options[Number(v.visibleWhen.option)];if(!source||!option)return '';const no=q.groups.slice(0,gi).reduce((n,g)=>n+g.questions.length,0)+qi+1;const text=q.target==='해외 바이어'?'(If you selected “'+option.label+'” for question '+no+' (“'+source.title+'”))':'('+no+'번 ‘'+source.title+'’에서 ‘'+option.label+'’을 선택한 경우 응답)';return '<p class="small survey-participation-condition" style="color:#777">'+E(text)+'</p>';}
 function fields(q,d){let no=0;const skipped=skippedQuestions(q,d.answers,true);return q.groups.map((g,gi)=>'<section class="survey-paper-group survey-participation-group"><h3>'+E(g.title)+'</h3>'+g.questions.map((v,qi)=>{const k=gi+'-'+qi,show=!skipped.has(k)&&visible(v,d.answers,q),a=show?d.answers[k]:'',arr=Array.isArray(a)?a:[a];let content;if(['단답형','서술형'].includes(v.type))content=v.type==='서술형'?'<textarea name="answer-'+k+'" aria-label="'+E(v.title)+'">'+E(a||'')+'</textarea>':'<input name="answer-'+k+'" aria-label="'+E(v.title)+'" value="'+E(a||'')+'">';else content='<div class="survey-answer-options survey-participation-options'+(v.type==='척도형'?' scale':'')+'">'+v.options.map((o,oi)=>'<label><input type="'+(v.type==='복수응답형'?'checkbox':'radio')+'" name="answer-'+k+'" value="'+oi+'"'+(arr.includes(String(oi))?' checked':'')+'><span>'+(v.type==='척도형'?(oi+1)+'. ':'')+E(o.label)+'</span></label>'+(v.type!=='척도형'&&o.extra?'<input name="extra-'+k+'-'+oi+'"'+(arr.includes(String(oi))?'':' disabled')+' value="'+E(arr.includes(String(oi))?d.extras[k+'-'+oi]||'':'')+'" aria-label="'+E(v.title+' '+o.label+' 추가 입력')+'" placeholder="'+(q.target==='해외 바이어'?'Please specify':'내용 입력')+'">':'')).join('')+'</div>';return '<fieldset data-survey-question="'+k+'"'+(show?'':' disabled aria-disabled="true" class="survey-question-disabled"')+'><legend>'+ ++no+'. '+E(v.title)+(v.required?' <span class="account-required" aria-label="필수"'+(v.visibleWhen&&!show?' hidden':'')+'>*</span>':'')+'</legend>'+conditionHint(q,v)+(v.maxSelections?'<p class="small">'+(q.target==='해외 바이어'?'Select up to '+v.maxSelections:'최대 '+v.maxSelections+'개 선택')+'</p>':'')+content+'</fieldset>';}).join('')+'</section>').join('');}
  function answerError(v,a,en){const values=Array.isArray(a)?a:[a];if(v.required&&(!values.length||values.every(value=>!String(value??'').trim())))return ['단답형','서술형'].includes(v.type)?(en?'Please enter your answer.':'답변을 입력해주세요.'):(en?'Please select an option.':'항목을 선택해주세요.');if(v.maxSelections&&values.length>v.maxSelections)return en?'Select up to '+v.maxSelections+' options.':'최대 '+v.maxSelections+'개까지 선택해 주세요.';return '';}
@@ -64,6 +70,6 @@ function fields(q,d){let no=0;const skipped=skippedQuestions(q,d.answers,true);r
  // 국내 바이어는 화면 검토를 반복할 수 있도록 제출을 시연한 뒤 빈 설문으로 돌아간다. 실제 서비스의 1회 제출 정책과 별개다.
  if(ctx.role==='buyer'){drafts.delete(key(ctx,t));ctx.refresh();document.getElementById('survey-person-panel')?.scrollIntoView({block:'start'});window.alert('제출이 완료되었습니다.');return;}
  if(ctx.save?.(q,t,d)===false)return;submitted.add(key(ctx,t));ctx.refresh();},true);
- window.addEventListener('hashchange',()=>{if(location.hash!=='#NTC-08'){drafts.clear();ctx=null;}});
- window.GFAIR_SURVEY_PARTICIPATION={render,targets,skippedQuestions,menuOpen};
+ window.addEventListener('hashchange',()=>{queueMicrotask(()=>{if(location.hash!=='#NTC-08'){drafts.clear();ctx=null;}});});
+ window.GFAIR_SURVEY_PARTICIPATION={render,targets,skippedQuestions,menuOpen,hasUnsavedChanges,discardDrafts};
 })();
