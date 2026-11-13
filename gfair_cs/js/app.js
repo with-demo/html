@@ -1237,7 +1237,7 @@ function surveyQuestionSettings(v,gi,qi){
  return eligible?'<div class="field survey-condition-field"><div class="survey-condition-heading">'+
   '<label class="check"><input type="checkbox" name="'+name+'" data-survey-branch role="switch" '+(v.branchEnabled?'checked':'')+'> 응답에 따라 문항 이동</label>'+
   '<details class="survey-condition-help"><summary aria-label="응답에 따라 문항 이동 도움말">i</summary>'+
-  '<ul><li>단일응답형·척도형은 보기별 이동 문항 지정 가능</li><li>이동 문항 미지정 시 기본 순서로 진행 (응답 불가 문항은 건너뜀)</li></ul></details></div></div>':'';
+  '<ul><li>단일응답형·척도형은 보기별 이동 문항 지정 가능</li><li>이동 문항 미지정 시 기본 순서로 진행</li></ul></details></div></div>':'';
 }
 function surveyBranchField(v,gi,qi,oi,options){
  if(!surveyCanBranch(v))return '';
