@@ -339,7 +339,7 @@ function journalAuditTable(j){
   const next=state==='임시 저장'?'작성 중':state==='재제출 예시'?'승인 요청':state;
   if(!['작성 중','승인 요청','승인 완료','반려'].includes(next)||next===previous)continue;
   if(!firstSubmission&&next!=='작성 중')firstSubmission=at;
-  const label=next==='작성 중'?'상담일지 최초 등록':next==='승인 요청'?(previous==='반려'?'승인 재요청':'승인 요청'):next==='승인 완료'?'승인 완료':'반려';
+  const label=next==='작성 중'?'상담일지 최초 등록':next==='승인 요청'?'승인 요청':next==='승인 완료'?'승인 완료':'반려';
   events.push([at,label,previous?previous+' → '+next:'—',next,reason]);
   previous=next;
  }
